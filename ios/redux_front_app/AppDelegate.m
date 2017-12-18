@@ -12,7 +12,7 @@
 #import <React/RCTBundleURLProvider.h>
 #import <React/RCTRootView.h>
 
-#import "../../node_modules/react-native-orientation/iOS/RCTOrientation/Orientation.h"
+#import "Orientation.h"
 
 
 @implementation AppDelegate
