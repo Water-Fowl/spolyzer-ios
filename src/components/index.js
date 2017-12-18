@@ -6,12 +6,14 @@ import { FieldOutSide } from './field_outside';
 import {
     TopBar,
     Background,
+    LandScapeBackground,
     TopContentBar,
     NavigateButton,
 } from "../components/general";
 export { 
     TopBar, 
     Background,
+    LandScapeBackground,
     TopContentBar,
     NavigateButton,
     ActionModal,

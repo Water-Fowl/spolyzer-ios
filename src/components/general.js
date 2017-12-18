@@ -36,6 +36,14 @@ export class TopBar extends React.Component{
     }
 }
 
+export class LandScapeBackground extends React.Component {
+    render(){
+        return(
+            <View style={GeneralStyles.landscape_background}/>
+        )
+    }
+}
+
 export class TopContentBar extends React.Component{
     constructor(props) {
         super(props);
@@ -125,6 +133,16 @@ const GeneralStyles = StyleSheet.create({
         alignSelf: 'stretch',
         width: win.width,
         height: win.height,
+    },
+    landscape_background: {
+        zIndex:0,
+        flex: 1,
+        top:0,
+        backgroundColor:"rgb(30, 55, 80)",
+        position:"absolute",
+        alignSelf: 'stretch',
+        width: win.height,
+        height: win.width,
     },
     bar:{
         zIndex:2,

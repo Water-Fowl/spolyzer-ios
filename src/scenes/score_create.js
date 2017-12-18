@@ -13,7 +13,7 @@ import { Actions } from 'react-native-router-flux';
 import Orientation from 'react-native-orientation';
 import {
     TopBar,
-    Background,
+    LandScapeBackground,
     TopContentBar,
     NavigateButton,
     ActionModal,
@@ -38,7 +38,7 @@ export default class ScoreCreate extends React.Component {
 
         return(
             <View style={{alignItems:"center"}}>
-            <Background/>
+            <LandScapeBackground/>
             <TopContentBar content_name="Score Sheet" />
                 {/*書き直す*/}
                 <ActionModal />
