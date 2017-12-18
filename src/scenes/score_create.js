@@ -10,6 +10,7 @@ import {
 } from "react-native";
 import { connect } from 'react-redux'; 
 import { Actions } from 'react-native-router-flux';
+import Orientation from 'react-native-orientation';
 import {
     TopBar,
     Background,
@@ -28,6 +29,10 @@ export default class ScoreCreate extends React.Component {
     constructor(props){
         super(props);
     } 
+    componentDidMount() {
+    // this locks the view to Portrait Mode
+    Orientation.lockToLandscape();
+    }
 
     render(){
 

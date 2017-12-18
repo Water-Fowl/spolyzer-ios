@@ -110,9 +110,7 @@ export class NavigateButton extends React.Component{
     
     render(){
         return(
-            <View> 
             <Text style={GeneralStyles.button_text}>{ this.props.content_name }</Text>
-            </View>
         )
     }
 } 
