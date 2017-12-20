@@ -29,9 +29,8 @@ export default class ScoreCreate extends React.Component {
     constructor(props){
         super(props);
     } 
-    componentDidMount() {
-    // this locks the view to Portrait Mode
-    Orientation.lockToLandscape();
+    componentWillMount() {
+        Orientation.lockToLandscape();
     }
 
     render(){

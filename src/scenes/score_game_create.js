@@ -14,6 +14,7 @@ import{
     NavigateButton,
 }
 from "../components";
+import Orientation from 'react-native-orientation';
 import { Actions } from 'react-native-router-flux';
 
 const win = Dimensions.get('window');
@@ -24,6 +25,9 @@ export default class ScoreGameCreate extends React.Component {
     constructor(props){
         super(props);
         this.state = {left_user_name: "ユーザーを選択", right_user_name: "ユーザーを選択"}
+    }
+    componentWillMount() {
+        Orientation.lockToPortrait();
     }
     
     render(){

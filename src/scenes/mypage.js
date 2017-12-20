@@ -8,6 +8,7 @@ import {
     TouchableHighlight
 } from 'react-native';
 import { connect } from 'react-redux';
+import Orientation from 'react-native-orientation';
 
 import {
     Background,
@@ -21,6 +22,9 @@ const win = Dimensions.get('window');
 class Mypage extends React.Component {
     constructor(props){
         super(props); 
+    }
+    componentWillMount() {
+        Orientation.lockToPortrait();
     }
 
     render(){
