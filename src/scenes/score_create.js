@@ -33,6 +33,24 @@ export default class ScoreCreate extends React.Component {
         Orientation.lockToLandscape();
     }
 
+    fetchScoreGame(){
+        const { dispatch, players, score_game, actions, positions, time_to_drop_shuttle, score_users, conceded_users, sides } = this.props
+
+        const score_game_request_body = {
+            players: players,
+            score_game: score_game,
+            scores:{
+                actions: actions,
+                positions: positions,
+                time_to_drop_shuttle: time_to_drop_shuttle,
+                score_users: score_users,
+                conceded_users: conceded_users,
+                sides: sides
+            }
+        }
+        dispatch(postScoreGame(score_game_request_body))
+    }
+
     render(){
 
         return(
@@ -87,7 +105,7 @@ export default class ScoreCreate extends React.Component {
                         position = { 12 }
                     />
                 </View>
-                <TouchableHighlight style={{ marginTop:10, marginBottom:10 }} onPress={Actions.score_view}>
+                <TouchableHighlight style={{ marginTop:10, marginBottom:10 }} onPress={ Actions.score_view }>
                     <Text>ScoreView</Text>
                 </TouchableHighlight>
             </View>
