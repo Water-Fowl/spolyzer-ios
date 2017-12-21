@@ -4,6 +4,7 @@ import { Provider, connect } from 'react-redux';
 import {
     Scene,
     Router,
+    Tabs,
 } from 'react-native-router-flux';
 import thunkMiddleware from 'redux-thunk';
 import { apiMiddleware } from 'redux-api-middleware';
@@ -16,6 +17,8 @@ import {
     ScoreView,
     AnalysisView,
     AnalysisCreate,
+    Login,
+    SignUp,
 } from '../scenes';
 import reducers from '../reducers';
 
@@ -31,8 +34,10 @@ const Route = () => (
     <Provider store={store}>
         <RouterWithRedux>
             <Scene key='root'>
-                <Scene key="tab" tabs={true} >
-                    <Scene key="Mypage" headerMode="none">
+                <Scene key="login" component={Login} initial />
+                <Scene key="sign_up" component={SignUp} />
+                <Tabs key="tab">
+                    <Scene key="Mypage" initail headerMode="none">
                         <Scene key="mypage_top" component={Mypage} title="マイページ"/>
                     </Scene>
                     <Scene key='Score' headerMode="none">
@@ -44,7 +49,7 @@ const Route = () => (
                         <Scene key="analysis_create" initial component={AnalysisCreate} title="複合分析"/>
                         <Scene key="analysis_view" component={AnalysisView} title="単分析"/>
                     </Scene>
-                </Scene>
+                </Tabs>
             </Scene>
         </RouterWithRedux>
     </Provider>

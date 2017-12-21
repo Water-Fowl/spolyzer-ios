@@ -7,16 +7,14 @@ import {
 import { Actions } from 'react-native-router-flux';
 import Orientation from 'react-native-orientation';
 
-export default class Login extends Component{
+
+export default class SignUp extends Component{
     componentWillMount() {
         Orientation.lockToPortrait();
     }
     render(){
         return(
             <View>
-                <TouchableOpacity onPress={Actions.sign_up}>
-                    <Text>サインアップ</Text>
-                </TouchableOpacity>
                 <TouchableOpacity onPress={Actions.tab}>
                     <Text>ログイン</Text>
                 </TouchableOpacity>
