@@ -19,9 +19,8 @@ export class Background extends React.Component {
                 source={require("../../data/img/background.png")}
             />
             */
-            <View
-                style={GeneralStyles.background}
-            />
+            <View />
+               
         );
     }
 }
