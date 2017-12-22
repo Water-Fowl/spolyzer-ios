@@ -13,10 +13,7 @@ const win = Dimensions.get('window');
 export class Background extends React.Component {
     render(){
         return(
-            <Image 
-                source={require("../../data/img/background.png")}
-
-            />
+            <View />
                
         );
     }
