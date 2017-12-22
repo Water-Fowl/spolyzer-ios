@@ -13,9 +13,9 @@ const win = Dimensions.get('window');
 export class Background extends React.Component {
     render(){
         return(
-            <Image 
-                source={require("../../data/img/background.png")}
-
+            <Image
+                source={require("../../assets/img/background.png")}
+                style={GeneralStyles.background}
             />
                
         );
@@ -124,7 +124,6 @@ const GeneralStyles = StyleSheet.create({
         zIndex:0,
         flex: 1,
         top:0,
-        backgroundColor:"rgb(30, 55, 80)",
         position:"absolute",
         alignSelf: 'stretch',
         width: win.width,
