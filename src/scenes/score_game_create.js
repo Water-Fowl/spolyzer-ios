@@ -32,6 +32,9 @@ export default class ScoreGameCreate extends React.Component {
     render(){
         return (
             <View style={ styles.align_items_center }>
+            <Image
+                  style={{width: win.width, height: win.height, zIndex: 0, position: 'absolute'}}
+                  source={require('../../assets/aaaa-16.png')} />
                 <Background/>
                 <TopContentBar content_name={"Game Setting"} />
                 <Text onPress={Actions.score_create}>ScoreCreate</Text>
