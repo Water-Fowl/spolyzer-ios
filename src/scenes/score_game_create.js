@@ -1,11 +1,11 @@
 import React from 'react';
-import { 
+import {
     Dimensions,
     StyleSheet,
-    Image, 
-    Text, 
+    Image,
+    Text,
     TouchableHighlight,
-    View } 
+    View }
 from 'react-native';
 import{
     Background,
@@ -21,15 +21,14 @@ const win = Dimensions.get('window');
 
 
 export default class ScoreGameCreate extends React.Component {
-    
+
     constructor(props){
         super(props);
-        this.state = {left_user_name: "ユーザーを選択", right_user_name: "ユーザーを選択"}
     }
     componentWillMount() {
         Orientation.lockToPortrait();
     }
-    
+
     render(){
         return (
             <View style={ styles.align_items_center }>
@@ -55,10 +54,10 @@ const styles = StyleSheet.create({
         zIndex: 5,
         textAlign: "center",
         fontWeight: "bold",
-        margin:10, 
+        margin:10,
         flex: 1,
         flexDirection: 'row',
-        justifyContent: 'space-between', 
+        justifyContent: 'space-between',
     },
     score_game_create_column_contents:{
         flex:3,
@@ -93,27 +92,27 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
     },
-    score_game_create_columns_sets: { 
+    score_game_create_columns_sets: {
         flex: 1,
         flexDirection: 'column',
         justifyContent: 'space-between',
     },
     score_game_create_column_vs: {
         flex: 0.2,
-        color:"white", 
+        color:"white",
         backgroundColor: 'rgba(0,0,0,0)',
     },
     score_game_create_deuce_text: {
         textAlign: "center",
         marginTop: 10,
-        color:"white", 
+        color:"white",
         backgroundColor: 'rgba(0,0,0,0)',
     },
     column_bar: {
         margin:10,
         opacity:0.7,
         flexDirection: 'row',
-        justifyContent: 'space-between', 
+        justifyContent: 'space-between',
     },
     column_bar_num_img: {
         marginRight:3,
