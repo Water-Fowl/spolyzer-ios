@@ -34,7 +34,7 @@ const Route = () => (
     <Provider store={store}>
         <RouterWithRedux>
             <Scene key='root'>
-                <Scene key="login" component={Login} initial />
+                <Scene key="login" component={Login} initial hideNavBar={true} />
                 <Scene key="sign_up" component={SignUp} />
                 <Tabs key="tab">
                     <Scene key="Mypage" initail headerMode="none">
