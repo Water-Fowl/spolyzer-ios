@@ -32,6 +32,9 @@ export default class ScoreCreate extends React.Component {
     componentWillMount() {
         Orientation.lockToLandscape();
     }
+    componentWillUnmount() {
+        Orientation.lockToPortrait();
+    }
 
     fetchScoreGame(){
         const { dispatch, players, score_game, actions, positions, time_to_drop_shuttle, score_users, conceded_users, sides } = this.props

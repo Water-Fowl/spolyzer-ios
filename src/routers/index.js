@@ -9,6 +9,7 @@ import {
 import thunkMiddleware from 'redux-thunk';
 import { apiMiddleware } from 'redux-api-middleware';
 import { createLogger } from 'redux-logger';
+import { Actions } from 'react-native-router-flux';
 
 import {
     Mypage,
@@ -30,6 +31,12 @@ const store = compose(
   applyMiddleware(...middleware)
 )(createStore)(reducers);
 
+
+function remount(props){
+    key = props.scene.route.key
+    Actions.push(key);
+}
+
 const Route = () => (
     <Provider store={store}>
         <RouterWithRedux>
@@ -37,12 +44,12 @@ const Route = () => (
                 <Scene key="login" component={Login} initial />
                 <Scene key="sign_up" component={SignUp} />
                 <Tabs key="tab">
-                    <Scene key="Mypage" initail headerMode="none">
-                        <Scene key="mypage_top" component={Mypage} title="マイページ"/>
+                    <Scene key="Mypage" headerMode="none">
+                        <Scene key="mypage_top" initial component={Mypage} title="マイページ"/>
                     </Scene>
                     <Scene key='Score' headerMode="none">
-                        <Scene key="scre_game_create" initial tabs={false} component={ScoreGameCreate} title="単分析"/>
-                        <Scene key="score_create" component={ScoreCreate} title="スコアシート" />
+                        <Scene key="scre_game_create" initial component={ScoreGameCreate} title="単分析"/>
+                        <Scene key="score_create" hideTabBar={true} component={ScoreCreate} title="スコアシート" />
                         <Scene key="score_view" component={ScoreView} title="結果" />
                     </Scene>
                     <Scene key='Analysis' headerMode="none">
