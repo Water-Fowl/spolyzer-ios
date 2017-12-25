@@ -6,7 +6,7 @@ import {
   View,
   Image,
   Dimensions,
-  TextInput
+  TextInput,
 } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import Orientation from 'react-native-orientation';
@@ -35,49 +35,52 @@ export default class Login extends Component{
                 <Text style={styles.logo_text}>
                     Spolyzer
                 </Text>
-                <View style={styles.frame}>
-                    
-                <TextInput onChangeText={(text) => this.setState({text})} 
-                placeholder={"メールアドレス"} 
-                placeholderTextColor={'#666677'} 
-                style={styles.textfield} />
-                    
-                 </View>
-                    
-                <View style={styles.frame}>
+                
+                <View style={styles.frame}>    
                     <TextInput onChangeText={(text) => this.setState({text})} 
-                placeholder={"パスワード"} 
-                placeholderTextColor={'#666677'} 
-                secureTextEntry={true}
-                style={styles.textfield} />
+                        placeholder={"メールアドレス"} 
+                        placeholderTextColor={'#666677'} 
+                        style={styles.text_field}
+                        keyboardType={'email-address'}
+                        returnKeyType={'done'}
+                     />    
+                </View>
+                    
+                <View style={styles.frame}>    
+                    <TextInput onChangeText={(text) => this.setState({text})} 
+                        placeholder={"ログイン"} 
+                        placeholderTextColor={'#666677'} 
+                        style={styles.text_field}
+                        keyboardType={'email-address'}
+                        returnKeyType={'done'}
+                     />    
                 </View>
             
                 <View style={{flexDirection:"row"}}>
-                    <View style={styles.sqf} />
-                    <Text style={styles.auto_text}>
+                    <View style={styles.square} />
+                    <Text style={styles.auto_login_text}>
                         次回から自動でログインする
                     </Text>
                 </View>
                 
                 <View style={styles.frame}> 
-                    <TouchableOpacity onPress={Actions.mypage_top}>
-                        <Text style={styles.debr_text}>
+                    <TouchableOpacity onPress={Actions.mypage}>
+                        <Text style={styles.login_button_text}>
                             ログイン
                         </Text>
                     </TouchableOpacity>
                 </View>
 
                     
-                    <Text style={styles.forget_text}>
-                        パスワードをお忘れの方
-                    </Text>
+                <Text style={styles.forget_password_text}>
+                    パスワードをお忘れの方
+                </Text>
 
                 <View style={styles.frame}>
                     <TouchableOpacity onPress={Actions.sign_up}>
-                    
-                            <Text style={styles.debr_text2}>
-                                新規登録(無料)
-                            </Text>
+                        <Text style={styles.sign_up_button_text}>
+                            新規登録(無料)
+                        </Text>
                     </TouchableOpacity>
                 </View>
 
@@ -91,18 +94,14 @@ const styles = StyleSheet.create({
         flex: 1,
      },
 
-    textfield: {
-       
-       fontSize: 20,
+    text_field: {
+        fontSize: 20,
         color: '#ffffff',
         paddingTop: 8,
         paddingLeft: 12,
         paddingBottom: 8,
         letterSpacing: 0,
-
-
      },
-
 
     frame: {
         borderRightColor: '#28a8de',
@@ -117,11 +116,7 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         marginTop: 9,
         marginBottom: 9,
-
-
      },
-
-
 
     logo_text: {
         color: '#000000',
@@ -135,12 +130,9 @@ const styles = StyleSheet.create({
         textShadowColor: '#ffffff',
         marginBottom: 40,
         backgroundColor: 'transparent',
-        
     },
 
-
-    sqf: {
-
+    square: {
         borderRightColor: '#28a8de',
         borderTopColor: '#28a8de',
         borderLeftColor: '#28a8de',
@@ -153,13 +145,9 @@ const styles = StyleSheet.create({
         borderRadius: 3,
         marginTop: 7,
         marginBottom: 5,
-
-        
     },
 
-
-
-    auto_text: {
+    auto_login_text: {
         color: '#ffffff',
         marginTop: 10,
         fontSize: 15,
@@ -168,9 +156,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'transparent',
     },
     
-
-
-    debr_text: {
+    login_button_text: {
         color: '#28a8de',
         textAlign: 'center',
         fontSize: 20,
@@ -179,9 +165,9 @@ const styles = StyleSheet.create({
         paddingBottom: 8,
         marginBottom: 1,
         backgroundColor: 'transparent',
-
     },
-    debr_text2: {
+
+    sign_up_button_text: {
         color: '#28a8de',
         textAlign: 'center',
         fontSize: 19,
@@ -190,9 +176,9 @@ const styles = StyleSheet.create({
         paddingBottom: 8,
         marginBottom: 1,
         backgroundColor: 'transparent',
-        
     },
-    forget_text: {
+    
+    forget_password_text: {
         color: '#28a8de',
         textDecorationLine: 'underline',
         textDecorationColor: '#28a8de',
