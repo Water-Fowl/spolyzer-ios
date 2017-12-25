@@ -23,8 +23,12 @@ class Mypage extends React.Component {
     constructor(props){
         super(props); 
     }
-    componentWillMount() {
+    static navigationOptions = {
+        headerLeft: <View></View>,
+	}
+    componentWillUpdate() {
         Orientation.lockToPortrait();
+        console.log('Update')
     }
 
     render(){
