@@ -48,11 +48,12 @@ export default class Login extends Component{
                     
                 <View style={styles.frame}>    
                     <TextInput onChangeText={(text) => this.setState({text})} 
-                        placeholder={"ログイン"} 
+                        placeholder={"パスワード"} 
                         placeholderTextColor={'#666677'} 
                         style={styles.text_field}
                         keyboardType={'email-address'}
                         returnKeyType={'done'}
+                        secureTextEntry
                      />    
                 </View>
             
@@ -64,7 +65,7 @@ export default class Login extends Component{
                 </View>
                 
                 <View style={styles.frame}> 
-                    <TouchableOpacity onPress={Actions.mypage}>
+                    <TouchableOpacity onPress={Actions.tab}>
                         <Text style={styles.login_button_text}>
                             ログイン
                         </Text>
@@ -78,7 +79,7 @@ export default class Login extends Component{
 
                 <View style={styles.frame}>
                     <TouchableOpacity onPress={Actions.sign_up}>
-                        <Text style={styles.sign_up_button_text}>
+                        <Text style={styles.action_sign_up_button_text}>
                             新規登録(無料)
                         </Text>
                     </TouchableOpacity>
@@ -167,7 +168,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'transparent',
     },
 
-    sign_up_button_text: {
+    action_sign_up_button_text: {
         color: '#28a8de',
         textAlign: 'center',
         fontSize: 19,
@@ -177,7 +178,7 @@ const styles = StyleSheet.create({
         marginBottom: 1,
         backgroundColor: 'transparent',
     },
-    
+
     forget_password_text: {
         color: '#28a8de',
         textDecorationLine: 'underline',
