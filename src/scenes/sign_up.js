@@ -12,9 +12,7 @@ import { Actions } from 'react-native-router-flux';
 import Orientation from 'react-native-orientation';
 import { Background } from "../components";
 
-const win = Dimensions.get('window');
-
-export default class Login extends Component{
+export default class SignUp extends Component{
     componentWillMount() {
         Orientation.lockToPortrait();
     }
@@ -36,7 +34,7 @@ export default class Login extends Component{
                     Spolyzer
                 </Text>
                 
-                <View style={styles.frame}>    
+                <View style={styles.form}>    
                     <TextInput onChangeText={(text) => this.setState({text})} 
                         placeholder={"メールアドレス"} 
                         placeholderTextColor={'#666677'} 
@@ -46,7 +44,7 @@ export default class Login extends Component{
                      />    
                 </View>
                     
-                <View style={styles.frame}>    
+                <View style={styles.form}>    
                     <TextInput onChangeText={(text) => this.setState({text})} 
                         placeholder={"パスワード"} 
                         placeholderTextColor={'#666677'} 
@@ -57,7 +55,7 @@ export default class Login extends Component{
                      />    
                 </View>
 
-                 <View style={styles.frame}>    
+                 <View style={styles.form}>    
                     <TextInput onChangeText={(text) => this.setState({text})} 
                         placeholder={"パスワード（確認用）"} 
                         placeholderTextColor={'#666677'} 
@@ -69,9 +67,9 @@ export default class Login extends Component{
                 </View>
             
                 
-                <View style={styles.frame_2}> 
+                <View style={styles.registration_form}> 
                     <TouchableOpacity onPress={Actions.tab}>
-                        <Text style={styles.sign_up_button_text}>
+                        <Text style={styles.registration_button_text}>
                             登録
                         </Text>
                     </TouchableOpacity>
@@ -87,16 +85,7 @@ const styles = StyleSheet.create({
         flex: 1,
      },
 
-    text_field: {
-        fontSize: 20,
-        color: '#ffffff',
-        paddingTop: 8,
-        paddingLeft: 12,
-        paddingBottom: 8,
-        letterSpacing: 0,
-     },
-
-    frame: {
+    form: {
         borderRightColor: '#28a8de',
         borderTopColor: '#28a8de',
         borderLeftColor: '#28a8de',
@@ -111,19 +100,13 @@ const styles = StyleSheet.create({
         marginBottom: 9,
      },
 
-     frame_2: {
-        borderRightColor: '#28a8de',
-        borderTopColor: '#28a8de',
-        borderLeftColor: '#28a8de',
-        borderBottomColor: '#28a8de',
-        height: 42,
-        width: 324,
-        borderWidth: 1.3,
-        marginLeft: 25,
-        marginRight: 25,
-        borderRadius: 5,
-        marginTop: 120,
-        marginBottom: 9,
+       text_field: {
+        fontSize: 20,
+        color: '#ffffff',
+        paddingTop: 8,
+        paddingLeft: 12,
+        paddingBottom: 8,
+        letterSpacing: 0,
      },
 
     logo_text: {
@@ -139,8 +122,23 @@ const styles = StyleSheet.create({
         marginBottom: 40,
         backgroundColor: 'transparent',
     },
+
+        registration_form: {
+        borderRightColor: '#28a8de',
+        borderTopColor: '#28a8de',
+        borderLeftColor: '#28a8de',
+        borderBottomColor: '#28a8de',
+        height: 42,
+        width: 324,
+        borderWidth: 1.3,
+        marginLeft: 25,
+        marginRight: 25,
+        borderRadius: 5,
+        marginTop: 120,
+        marginBottom: 9,
+     },
     
-    sign_up_button_text: {
+    registration_button_text: {
         color: '#28a8de',
         textAlign: 'center',
         fontSize: 20,
