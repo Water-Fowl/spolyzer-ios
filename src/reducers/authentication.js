@@ -1,5 +1,5 @@
 import {
-    REUQUEST,
+    REQUEST,
     SUCCESS,
     FAILURE,
 } from "../actions/authentication"
@@ -22,4 +22,5 @@ export default function authenticationReducer(state=initialState, action={}){
                 is_authentication: false
             })
     }
+    return state
 }

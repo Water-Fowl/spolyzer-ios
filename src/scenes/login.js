@@ -26,7 +26,7 @@ class Login extends Component{
                 <TouchableOpacity onPress={Actions.sign_up}>
                     <Text>サインアップ</Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={Actions.tab}>
+                <TouchableOpacity onPress={this.postAuthenticationForm}>
                     <Text>ログイン</Text>
                 </TouchableOpacity>
             </View>
