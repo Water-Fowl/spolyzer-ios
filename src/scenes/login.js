@@ -7,10 +7,19 @@ import {
 import { Actions } from 'react-native-router-flux';
 import Orientation from 'react-native-orientation';
 
-export default class Login extends Component{
+import { connect } from 'react-redux';
+import { postAuthenticationUser } from '../actions/authentication';
+
+class Login extends Component{
     componentWillMount() {
         Orientation.lockToPortrait();
     }
+
+    postAuthenticationForm(){
+        const { dispatch } = this.props
+        dispatch(postAuthenticationUser())
+    }
+
     render(){
         return(
             <View>
@@ -24,3 +33,5 @@ export default class Login extends Component{
         )
     }
 }
+
+export default connect()(Login)
