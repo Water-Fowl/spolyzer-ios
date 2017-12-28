@@ -12,8 +12,6 @@ import { Actions } from 'react-native-router-flux';
 import Orientation from 'react-native-orientation';
 import { Background } from "../components";
 
-const win = Dimensions.get('window');
-
 export default class Login extends Component{
     componentWillMount() {
         Orientation.lockToPortrait();
@@ -36,7 +34,7 @@ export default class Login extends Component{
                     Spolyzer
                 </Text>
                 
-                <View style={styles.frame}>    
+                <View style={styles.form}>    
                     <TextInput onChangeText={(text) => this.setState({text})} 
                         placeholder={"メールアドレス"} 
                         placeholderTextColor={'#666677'} 
@@ -46,13 +44,14 @@ export default class Login extends Component{
                      />    
                 </View>
                     
-                <View style={styles.frame}>    
+                <View style={styles.form}>    
                     <TextInput onChangeText={(text) => this.setState({text})} 
-                        placeholder={"ログイン"} 
+                        placeholder={"パスワード"} 
                         placeholderTextColor={'#666677'} 
                         style={styles.text_field}
                         keyboardType={'email-address'}
                         returnKeyType={'done'}
+                        secureTextEntry
                      />    
                 </View>
             
@@ -63,8 +62,8 @@ export default class Login extends Component{
                     </Text>
                 </View>
                 
-                <View style={styles.frame}> 
-                    <TouchableOpacity onPress={Actions.mypage}>
+                <View style={styles.form}> 
+                    <TouchableOpacity onPress={Actions.tab}>
                         <Text style={styles.login_button_text}>
                             ログイン
                         </Text>
@@ -76,7 +75,7 @@ export default class Login extends Component{
                     パスワードをお忘れの方
                 </Text>
 
-                <View style={styles.frame}>
+                <View style={styles.form}>
                     <TouchableOpacity onPress={Actions.sign_up}>
                         <Text style={styles.sign_up_button_text}>
                             新規登録(無料)
@@ -94,16 +93,7 @@ const styles = StyleSheet.create({
         flex: 1,
      },
 
-    text_field: {
-        fontSize: 20,
-        color: '#ffffff',
-        paddingTop: 8,
-        paddingLeft: 12,
-        paddingBottom: 8,
-        letterSpacing: 0,
-     },
-
-    frame: {
+    form: {
         borderRightColor: '#28a8de',
         borderTopColor: '#28a8de',
         borderLeftColor: '#28a8de',
@@ -132,6 +122,15 @@ const styles = StyleSheet.create({
         backgroundColor: 'transparent',
     },
 
+        text_field: {
+        fontSize: 20,
+        color: '#ffffff',
+        paddingTop: 8,
+        paddingLeft: 12,
+        paddingBottom: 8,
+        letterSpacing: 0,
+     },
+
     square: {
         borderRightColor: '#28a8de',
         borderTopColor: '#28a8de',
@@ -156,6 +155,17 @@ const styles = StyleSheet.create({
         backgroundColor: 'transparent',
     },
     
+      forget_password_text: {
+        color: '#28a8de',
+        textDecorationLine: 'underline',
+        textDecorationColor: '#28a8de',
+        marginBottom: 55,
+        marginTop: 8,
+        marginLeft: 34,
+        fontSize: 16,
+        backgroundColor: 'transparent',
+    },
+
     login_button_text: {
         color: '#28a8de',
         textAlign: 'center',
@@ -175,17 +185,6 @@ const styles = StyleSheet.create({
         paddingTop: 6,
         paddingBottom: 8,
         marginBottom: 1,
-        backgroundColor: 'transparent',
-    },
-    
-    forget_password_text: {
-        color: '#28a8de',
-        textDecorationLine: 'underline',
-        textDecorationColor: '#28a8de',
-        marginBottom: 55,
-        marginTop: 8,
-        marginLeft: 34,
-        fontSize: 16,
         backgroundColor: 'transparent',
     },
     
