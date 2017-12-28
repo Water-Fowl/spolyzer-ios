@@ -96,9 +96,7 @@ class Login extends React.Component{
     }
 }
 
-<<<<<<< HEAD
 export default connect()(Login)
-=======
 const styles = StyleSheet.create({
     container: {
         flex: 1,
@@ -200,4 +198,3 @@ const styles = StyleSheet.create({
     },
     
 })
->>>>>>> 63ba3612c4c467c74b2a49f552c8d623936eeeaf
