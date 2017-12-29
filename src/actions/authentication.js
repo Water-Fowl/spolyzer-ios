@@ -3,8 +3,7 @@ import { Actions } from 'react-native-router-flux';
 
 const BASE_URL = 'ec2-52-198-150-98.ap-northeast-1.compute.amazonaws.com/api/v1';
 export const REQUEST = "REQUEST"
-export const SUCCESS = "SUCCESS"
-export const FAILURE = "FAILURE"
+export const RECIEVED = "RECIEVED"
 
 
 export function postUserAuthentication(body){
@@ -15,7 +14,7 @@ export function postUserAuthentication(body){
       headers:{
         'Accept': 'application/json',
 				'Content-Type': 'application/json',
-      }
+      },
       body: JSON.stringify(body)
     })
     .then(response => response.json())
@@ -26,13 +25,13 @@ export function postUserAuthentication(body){
 
 function requestAuthentication(){
   return {
-    type: 'RQUEST'
+    type: REQUEST
   }
 }
 
 function receivedAuthentication(is_authentication){
   return {
-    type: 'RECIEVED',
+    type: RECIEVED,
     is_authenticated: is_authentication,
   }
 }

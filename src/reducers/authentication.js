@@ -1,7 +1,6 @@
 import {
     REQUEST,
-    SUCCESS,
-    FAILURE,
+    RECIEVED,
 } from "../actions/authentication"
 
 const initialState = {
