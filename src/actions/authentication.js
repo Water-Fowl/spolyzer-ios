@@ -8,7 +8,7 @@ export const FAILURE = "FAILURE"
 export const postUserAuthentication = (data) => ({
     [CALL_API]:{
         endpoint: BASE_URL + '/auth/',
-        headers: { 
+        headers: {
             'Content-Type': 'application/json',
             'Accept': 'application/json',
         },
@@ -17,7 +17,6 @@ export const postUserAuthentication = (data) => ({
         types: ["REQUEST", {
             type: "SUCCESS",
             payload: () => {
-                console.log('hoge')
                 Actions.tab()
             }
         }, "FAILURE"]
