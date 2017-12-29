@@ -7,10 +7,9 @@ export const SUCCESS = "SUCCESS"
 export const FAILURE = "FAILURE"
 
 
-export const postUserAuthentication(body){
+export function postUserAuthentication(body){
   return dispatch => {
     dispatch(requestAuthentication(body))
-
     return fetch(BASE_URL + '/auth/', {
       method: 'POST',
       headers:{
