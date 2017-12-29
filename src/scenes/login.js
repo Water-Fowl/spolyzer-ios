@@ -13,9 +13,17 @@ import Orientation from 'react-native-orientation';
 import { Background } from "../components";
 
 import { connect } from 'react-redux';
-import { postAuthenticationUser } from '../actions/authentication';
+import { postUserAuthentication } from '../actions/authentication';
 
+const postAuthUser = {
+    name:"takumimuggl",
+    email:"taumimuggle@gmail.com", 
+    password:"takumimuggle", 
+    password_confirmation:"takumimuggle", 
+    confirm_success_url:"api.water-fowl.co.jp"
+} 
 class Login extends React.Component{
+
     constructor(props) {
         super(props);
         this.postAuthenticationForm.bind(this);
@@ -23,13 +31,14 @@ class Login extends React.Component{
             text: '',
         };
     }
+
     componentWillMount() {
         Orientation.lockToPortrait();
     }
 
     postAuthenticationForm(){
         const { dispatch } = this.props
-        dispatch(postAuthenticationUser())
+        dispatch(postUserAuthentication(postAuthUser))
     }
 
     render(){
@@ -71,7 +80,9 @@ class Login extends React.Component{
                 </View>
                 
                 <View style={styles.form}> 
-                    <TouchableOpacity onPress={Actions.tab}>
+                    <TouchableOpacity onPress={() =>{
+                        this.postAuthenticationForm()
+                    }}>
                         <Text style={styles.login_button_text}>
                             ログイン
                         </Text>
