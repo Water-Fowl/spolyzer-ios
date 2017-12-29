@@ -10,11 +10,11 @@ const initialState = {
 export default function authenticationReducer(state=initialState, action={}){
     switch (action.type){
         case REQUEST:
-            return Objects.assign({}, state, {
+            return Object.assign({}, state, {
                 is_authenticated: true
             })
         case RECIEVED:
-            return Objects.assign({}, state, {
+            return Object.assign({}, state, {
                 is_authenticated: action.is_authentication
             })
         default:
