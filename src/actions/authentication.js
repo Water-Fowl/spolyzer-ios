@@ -24,3 +24,16 @@ export const postUserAuthentication(body) => ({
     .then(dispatch(receivedAuthentication))
   }
 })
+
+function requestAuthentication(){
+  return {
+    type: 'RQUEST'
+  }
+}
+
+function receivedAuthentication(is_authentication){
+  return {
+    type: 'RECIEVED',
+    is_authenticated: is_authentication
+  }
+}
