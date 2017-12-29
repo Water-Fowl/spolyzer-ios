@@ -7,7 +7,6 @@ import {
     Tabs,
 } from 'react-native-router-flux';
 import thunkMiddleware from 'redux-thunk';
-import { apiMiddleware } from 'redux-api-middleware';
 import { createLogger } from 'redux-logger';
 import { Actions } from 'react-native-router-flux';
 
@@ -26,7 +25,7 @@ import reducers from '../reducers';
 const RouterWithRedux = connect()(Router);
 
 const loggerMiddleware = createLogger();
-const middleware = [thunkMiddleware, loggerMiddleware, apiMiddleware];
+const middleware = [thunkMiddleware, loggerMiddleware];
 const store = compose(
   applyMiddleware(...middleware)
 )(createStore)(reducers);
