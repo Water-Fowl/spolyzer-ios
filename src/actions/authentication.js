@@ -7,7 +7,7 @@ export const SUCCESS = "SUCCESS"
 export const FAILURE = "FAILURE"
 
 
-export const postUserAuthentication(body) => ({
+export const postUserAuthentication(body){
   return dispatch => {
     dispatch(requestAuthentication(body))
 
@@ -23,7 +23,7 @@ export const postUserAuthentication(body) => ({
     .then(console.log(response))
     .then(dispatch(receivedAuthentication))
   }
-})
+}
 
 function requestAuthentication(){
   return {
@@ -34,6 +34,6 @@ function requestAuthentication(){
 function receivedAuthentication(is_authentication){
   return {
     type: 'RECIEVED',
-    is_authenticated: is_authentication, 
+    is_authenticated: is_authentication,
   }
 }
