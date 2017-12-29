@@ -34,6 +34,6 @@ function requestAuthentication(){
 function receivedAuthentication(is_authentication){
   return {
     type: 'RECIEVED',
-    is_authenticated: is_authentication
+    is_authenticated: is_authentication, 
   }
 }

@@ -12,16 +12,11 @@ export default function authenticationReducer(state=initialState, action={}){
     switch (action.type){
         case REQUEST:
             return Objects.assign({}, state, {
-                is_authentication: true
+                is_authenticated: true
             })
-        case SUCCESS:
+        case RECIEVED:
             return Objects.assign({}, state, {
-                is_authentication: true
-            })
-
-        case FAILURE:
-            return Objects.assign({}, state, {
-                is_authentication: true
+                is_authenticated: action.is_authentication
             })
         default:
             return state
