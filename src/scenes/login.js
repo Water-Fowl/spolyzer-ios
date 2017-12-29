@@ -16,12 +16,12 @@ import { connect } from 'react-redux';
 import { postUserAuthentication } from '../actions/authentication';
 
 const postAuthUser = {
-    name:"takumimuggl",
-    email:"taumimuggle@gmail.com", 
-    password:"takumimuggle", 
-    password_confirmation:"takumimuggle", 
+    name:"takumigl",
+    email:"taumime@gmail.com",
+    password:"takumimuggle",
+    password_confirmation:"takumimuggle",
     confirm_success_url:"api.water-fowl.co.jp"
-} 
+}
 class Login extends React.Component{
 
     constructor(props) {
@@ -46,40 +46,40 @@ class Login extends React.Component{
             <View style={styles.container}>
 
                <Background/>
-                
+
                 <Text style={styles.logo_text}>
                     Spolyzer
                 </Text>
-                
-                <View style={styles.form}>    
-                    <TextInput onChangeText={(text) => this.setState({text})} 
-                        placeholder={"メールアドレス"} 
-                        placeholderTextColor={'#666677'} 
+
+                <View style={styles.form}>
+                    <TextInput onChangeText={(text) => this.setState({text})}
+                        placeholder={"メールアドレス"}
+                        placeholderTextColor={'#666677'}
                         style={styles.text_field}
                         keyboardType={'email-address'}
                         returnKeyType={'done'}
-                     />    
+                     />
                 </View>
-                    
-                <View style={styles.form}>    
-                    <TextInput onChangeText={(text) => this.setState({text})} 
-                        placeholder={"パスワード"} 
-                        placeholderTextColor={'#666677'} 
+
+                <View style={styles.form}>
+                    <TextInput onChangeText={(text) => this.setState({text})}
+                        placeholder={"パスワード"}
+                        placeholderTextColor={'#666677'}
                         style={styles.text_field}
                         keyboardType={'email-address'}
                         returnKeyType={'done'}
                         secureTextEntry
-                     />    
+                     />
                 </View>
-            
+
                 <View style={{flexDirection:"row"}}>
                     <View style={styles.square} />
                     <Text style={styles.auto_login_text}>
                         次回から自動でログインする
                     </Text>
                 </View>
-                
-                <View style={styles.form}> 
+
+                <View style={styles.form}>
                     <TouchableOpacity onPress={() =>{
                         this.postAuthenticationForm()
                     }}>
@@ -89,7 +89,7 @@ class Login extends React.Component{
                     </TouchableOpacity>
                 </View>
 
-                    
+
                 <Text style={styles.forget_password_text}>
                     パスワードをお忘れの方
                 </Text>
@@ -174,7 +174,7 @@ const styles = StyleSheet.create({
         marginBottom: 16,
         backgroundColor: 'transparent',
     },
-    
+
       forget_password_text: {
         color: '#28a8de',
         textDecorationLine: 'underline',
@@ -207,5 +207,5 @@ const styles = StyleSheet.create({
         marginBottom: 1,
         backgroundColor: 'transparent',
     },
-    
+
 })
