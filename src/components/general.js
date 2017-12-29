@@ -13,11 +13,15 @@ const win = Dimensions.get('window');
 export class Background extends React.Component {
     render(){
         return(
+            /*
             <Image
-                source={require("../../assets/img/background.png")}
+                style={GeneralStyles.background}
+                source={require("../../data/img/background.png")}
+            />
+            */
+            <View
                 style={GeneralStyles.background}
             />
-               
         );
     }
 }
@@ -35,10 +39,7 @@ export class TopBar extends React.Component{
 export class LandScapeBackground extends React.Component {
     render(){
         return(
-            <Image
-                source={require("../../assets/img/landscape_background.png")}
-                style={GeneralStyles.background}
-            />
+            <View style={GeneralStyles.landscape_background}/>
         )
     }
 }
@@ -46,7 +47,7 @@ export class LandScapeBackground extends React.Component {
 export class TopContentBar extends React.Component{
     constructor(props) {
         super(props);
-    } 
+    }
     render(){
         return(
 
@@ -59,7 +60,7 @@ export class TopContentBar extends React.Component{
             { this.state.fontLoaded ? (
                 <Text style={{
                     fontSize:23,
-                    fontFamily:'abadi', 
+                    fontFamily:'abadi',
                     backgroundColor:"rgba(0,0,0,0)",
                     textAlign:"center",
                     color:"white"
@@ -91,14 +92,14 @@ export class TopContentBar extends React.Component{
                     { this.props.content_name }
                 </Text>
 */
-            
+
         <View>
             <Text style={{
                 fontSize:23,
                 backgroundColor: 'rgb(20, 35, 70)',
                 padding:5,
-                paddingLeft:15, 
-                paddingRight:15, 
+                paddingLeft:15,
+                paddingRight:15,
                 textAlign:"center",
                 color:"white"
             }}>
@@ -114,32 +115,40 @@ export class NavigateButton extends React.Component{
     constructor(props){
         super(props);
     }
-    
+
     render(){
         return(
             <Text style={GeneralStyles.button_text}>{ this.props.content_name }</Text>
         )
     }
-} 
+}
 
 const GeneralStyles = StyleSheet.create({
     background: {
+        zIndex:0,
         flex: 1,
-        resizeMode: 'cover',
-        position:'absolute',
-        alignSelf: 'stretch',
-    },
-    landscape_background: {
-        flex: 1,
-        resizeMode: 'cover',
+        top:0,
+        backgroundColor:"rgb(30, 55, 80)",
         position:"absolute",
         alignSelf: 'stretch',
+        width: win.width,
+        height: win.height,
+    },
+    landscape_background: {
+        zIndex:0,
+        flex: 1,
+        top:0,
+        backgroundColor:"rgb(30, 55, 80)",
+        position:"absolute",
+        alignSelf: 'stretch',
+        width: win.height,
+        height: win.width,
     },
     bar:{
         zIndex:2,
         margin:0,
         padding:0,
-        backgroundColor: 'rgba(46, 167, 224, 1)', 
+        backgroundColor: 'rgba(46, 167, 224, 1)',
         width: win.width,
     },
     trapezoid: {
@@ -157,7 +166,7 @@ const GeneralStyles = StyleSheet.create({
         fontWeight: "bold",
         fontSize: 25,
         color: "white",
-        paddingTop: 13,   
+        paddingTop: 13,
         paddingBottom: 13,
         textAlign: "center",
     },
@@ -170,7 +179,7 @@ const GeneralStyles = StyleSheet.create({
         paddingTop: 10,
         alignItems: "center",
     },
-    top_content_bar_text:{        
+    top_content_bar_text:{
         fontWeight: "bold",
         fontSize: 22,
         color: "white",
@@ -181,7 +190,7 @@ const GeneralStyles = StyleSheet.create({
         paddingBottom: 10,
         paddingLeft: 20,
         paddingRight: 20,
-        textAlign: "center", 
+        textAlign: "center",
         fontWeight: "bold",
         fontSize: 23,
         color: "white",
@@ -205,5 +214,5 @@ const GeneralStyles = StyleSheet.create({
     paddingTop105:{
         paddingTop:105,
     },
-    
+
 })
