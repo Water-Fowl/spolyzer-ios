@@ -16,11 +16,8 @@ import { connect } from 'react-redux';
 import { postUserAuthentication } from '../actions/authentication';
 
 const postAuthUser = {
-    name:"takumigl",
     email:"taumime@gmail.com",
     password:"takumimuggle",
-    password_confirmation:"takumimuggle",
-    confirm_success_url:"api.water-fowl.co.jp"
 }
 class Login extends React.Component{
 
