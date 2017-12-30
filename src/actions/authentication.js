@@ -1,7 +1,7 @@
 import { CALL_API } from 'redux-api-middleware'
 import { Actions } from 'react-native-router-flux';
+import { SIGN_IN_ENDPOINT } from '../config/api';
 
-const BASE_URL = "http://52.198.150.98/api/v1";
 export const REQUEST = "REQUEST"
 export const RECIEVED = "RECIEVED"
 
@@ -9,7 +9,7 @@ export const RECIEVED = "RECIEVED"
 export function postUserAuthentication(body){
   return dispatch => {
     dispatch(requestAuthentication(body));
-    return fetch(BASE_URL + "/auth/sign_in", {
+    return fetch(SIGN_IN_ENDPOINT, {
       method: 'POST',
       headers:{
         'Accept': 'application/json',
@@ -20,6 +20,7 @@ export function postUserAuthentication(body){
     .then(response => response.json())
     .then(json => console.log(json))
     .then(dispatch(receivedAuthentication(true)))
+    .then(Actions.tab())
     .catch(function(error){
       console.log(error.message)
     })
