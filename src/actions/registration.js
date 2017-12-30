@@ -1,6 +1,10 @@
 import { Actions } from 'react-native-router-flux';
 import { REGISTRATION_ENDPOINT } from '../config/api';
 
+export const REQUEST = "REQUEST"
+export const RECIEVED = "RECIEVED"
+
+
 export function postUserRegistration(body){
   return dispatch => {
     dispatch(requestRegistration());
@@ -9,7 +13,7 @@ export function postUserRegistration(body){
       headers: {
         'Accept': 'application/json',
 				'Content-Type': 'application/json',
-      }
+      },
       body: JSON.stringify(body)
     })
     .then(response => response.json())
@@ -28,7 +32,7 @@ function requestRegistration(){
   }
 }
 
-function receivedAuthentication(is_authentication){
+function receivedRegistration(is_authentication){
   return {
     type: RECIEVED,
     is_authenticated: is_authentication,
