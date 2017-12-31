@@ -5,13 +5,15 @@ import {
     Image,
     Text,
     TouchableHighlight,
-    View }from 'react-native';
+    View }
+from 'react-native';
 import{
     Background,
     TopBar,
     TopContentBar,
     NavigateButton,
-}from "../components";
+}
+from "../components";
 import Orientation from 'react-native-orientation';
 import { Actions } from 'react-native-router-flux';
 
@@ -30,15 +32,14 @@ export default class ScoreGameCreate extends React.Component {
 
     render(){
         return (
-
             <View style={ styles.align_items_center }>
                 <Background/>
                 <TopContentBar content_name={"試合設定"} />
-                <View style={styles.game_setting1} >
-                  <View style={styles.game_setting2}>
+                <View style={styles.game_setting_border} >
+                  <View style={styles.game_setting_table}>
                      <Text style={ styles.score_game_create_opponents}>対戦者</Text>
-                     <View style={ styles.game_setting3}>
-                        <View style={styles.game_setting4}>
+                     <View style={ styles.game_setting_table_inner}>
+                        <View style={styles.game_setting_table_inner_left}>
                           <Image
                             source={require('../../assets/img/score_creat_person.png')}
                             style={ styles.score_game_create_competitor_person }
@@ -58,10 +59,11 @@ export default class ScoreGameCreate extends React.Component {
                            ></Image>
                         </View>
 
-                        <View style={styles.game_setting5}>
+                        <View style={ styles.game_setting_table_inner_center }>
+                        <Text　style={ styles.score_game_create_vs }>vs</Text>
                         </View>
 
-                        <View style={styles.game_setting6} >
+                        <View style={styles.game_setting_inner_right} >
                           <Image
                             source={require('../../assets/img/score_creat_person.png')}
                             style={ styles.score_game_create_competitor_person }
@@ -83,10 +85,10 @@ export default class ScoreGameCreate extends React.Component {
                   </View>
                 </View>
                 <View
-                  style={styles.game_setting7}  >
+                  style={styles.game_setting_under_table} >
                   <Image
                   source={require('../../assets/img/frame_next_button.png')}
-                  style={styles.game_setting8}
+                  style={styles.game_setting_under_table_frame_next_button}
                   >
                   </Image>
 
@@ -106,38 +108,40 @@ const styles = StyleSheet.create({
     align_items_center:{
         alignItems: "center",
     },
-    game_setting1:{
+    game_setting_border:{
       padding:5,
       backgroundColor: 'rgba(0, 0, 0, 0)',
       borderWidth: 2.5,
       marginTop:20,
       borderColor: "rgb(20, 35, 70)",
     },
-    game_setting2:{
+    game_setting_table:{
       width:320,
       height:270,
       backgroundColor:"rgb(20, 35, 70)",
       justifyContent: 'center',
     },
-    game_setting3:{
+    game_setting_table_inner:{
       flexDirection: 'row',
       justifyContent: 'center',
       width:310,
       height:240,
       margin:5,
     },
-    game_setting4:{
+    game_setting_table_inner_left:{
       flex:2,
       width: 70,
       height: 220,
       justifyContent: 'center',
     },
-    game_setting5:{
+    game_setting_table_inner_center:{
       flex:1,
       width: 30,
       height: 220,
+      textAlign:'center',
+      paddingRight:7,
     },
-    game_setting6:{
+    game_setting_table_inner_right:{
       flex: 2,
       width: 70,
       height: 220,
@@ -145,27 +149,18 @@ const styles = StyleSheet.create({
       textAlign:'center',
       alignItems: 'center',
     },
-    game_setting7:{
+    game_setting_under_table:{
       width:300,
       height:220,
       alignItems: 'center',
       justifyContent: 'center',
     },
-    game_setting8:{
+    game_setting_under_table_frame_next_button:{
       position: 'absolute',
       alignItems: 'center',
       justifyContent: 'center',
       textAlign:"center",
   },
-    game_setting9:{
-      fontSize:10,
-      color:"white",
-
-      marginLeft:40,
-      position:"absolute",
-
-
-    },
     column_bar_text:{
         textAlign:"center",
         fontSize:25,
@@ -177,14 +172,13 @@ const styles = StyleSheet.create({
     score_game_create_vs:{
         fontWeight: 'bold',
         color:"skyblue",
-        paddingTop: 20,
+        paddingTop: 70,
         paddingRight:5,
         paddingLeft:5,
         fontSize:50,
         textAlign: 'center',
         alignItems: 'center',
         justifyContent: 'center',
-
     },
     score_game_create_opponents: {
         padding:0,
