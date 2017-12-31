@@ -13,12 +13,6 @@ const win = Dimensions.get('window');
 export class Background extends React.Component {
     render(){
         return(
-            /*
-            <Image
-                style={GeneralStyles.background}
-                source={require("../../data/img/background.png")}
-            />
-            */
             <View
                 style={GeneralStyles.background}
             />
@@ -50,49 +44,6 @@ export class TopContentBar extends React.Component{
     }
     render(){
         return(
-
-            /*(
-            <View style={GeneralStyles.top_bar}>
-                <Image
-                    style={GeneralStyles.top_content_bar}
-                    source={require("../../data/img/top_content_bar.png")}
-                >
-            { this.state.fontLoaded ? (
-                <Text style={{
-                    fontSize:23,
-                    fontFamily:'abadi',
-                    backgroundColor:"rgba(0,0,0,0)",
-                    textAlign:"center",
-                    color:"white"
-                }}>
-                    { this.props.content_name }
-                </Text>
-            ) : null
-            }
-                </Image>
-            </View>
-            */
-/*
-            <Text style={{
-                fontSize:23,
-                textAlign:"center",
-                color:"white",
-                paddingTop:10,
-                paddingLeft:5,
-                paddingRight:5,
-                height: 40,
-                borderTopWidth: 40,
-                backgroundColor: 'rgb(20, 35, 70)',
-                borderLeftWidth: 20,
-                borderLeftColor: 'transparent',
-                borderRightWidth: 20,
-                borderRightColor: 'transparent',
-                borderStyle: 'solid'
-            }}>
-                    { this.props.content_name }
-                </Text>
-*/
-
         <View>
             <Text style={{
                 fontSize:23,
