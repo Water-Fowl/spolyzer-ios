@@ -15,7 +15,6 @@ from '../actions/score';
 import { connect } from 'react-redux';
 
 class ActionModal extends React.Component {
-    
     constructor(props) {
         super(props);
         this.setScoreData.bind(this);
@@ -26,12 +25,12 @@ class ActionModal extends React.Component {
         const { dispatch } = this.props
         dispatch(hideModal())
     }
-    
+
     setScoreData(action){
         const { position, side, dispatch } = this.props
         dispatch(fetchAddScore(position, action, side))
     }
-    
+
     render(){
         const { modal, position, side } = this.props;
         return( 
@@ -149,10 +148,9 @@ class ActionModal extends React.Component {
                         </View>
                         ):null
                         }
-                        
                         <TouchableHighlight 
                             onPress={() => {
-                                this.hideModal()    
+                                this.hideModal()
                             }
                         }>
                             <Text style={{textAlign:"center",marginTop: 20, color:"white"}}>戻る</Text>

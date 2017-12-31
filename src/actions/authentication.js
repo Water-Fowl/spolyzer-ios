@@ -18,9 +18,8 @@ export function postUserAuthentication(body){
       body: JSON.stringify(body)
     })
     .then(response => response.json())
-    .then(json => console.log(json))
-    .then(dispatch(receivedAuthentication(true)))
-    .then(Actions.tab())
+    .then(json => json.errors)
+    .then(errors => dispatch(receivedAuthentication(errors)))
     .catch(function(error){
       console.log(error.message)
     })
@@ -33,9 +32,21 @@ function requestAuthentication(){
   }
 }
 
-function receivedAuthentication(is_authentication){
-  return {
-    type: RECIEVED,
-    is_authenticated: is_authentication,
-  }
+function receivedAuthentication(errors){
+    if(errors == null){
+        Actions.tab();
+        return {
+            type: RECIEVED,
+            is_authenticated: true,
+            occurs_invalid_login_error: false
+        }
+    }
+    else{
+        console.log(errors)
+        return {
+            type: RECIEVED,
+            is_authenticated: false,
+            occurs_invalid_login_error: true
+        }
+    }
 }

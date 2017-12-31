@@ -23,5 +23,4 @@ export default class AnalysisCreate extends React.Component{
 }
 
 const styles = StyleSheet.create({
-    
 });

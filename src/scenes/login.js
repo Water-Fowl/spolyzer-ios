@@ -15,17 +15,15 @@ import { Background } from "../components";
 import { connect } from 'react-redux';
 import { postUserAuthentication } from '../actions/authentication';
 
-const postAuthUser = {
-    email:"taumime@gmail.com",
-    password:"takumimuggle",
-}
 class Login extends React.Component{
 
     constructor(props) {
         super(props);
-        this.postAuthenticationForm.bind(this);
+        this.postAuthenticationInformation.bind(this);
         this.state = {
-            text: '',
+            email: '',
+            password: '',
+            occurs_invalid_login_error: false,
         };
     }
 
@@ -33,9 +31,19 @@ class Login extends React.Component{
         Orientation.lockToPortrait();
     }
 
-    postAuthenticationForm(){
+    componentWillReceiveProps(nextProps){
+        const { occurs_invalid_login_error } = nextProps
+        console.log(occurs_invalid_login_error)
+        this.setState({occurs_invalid_login_error: true})
+    }
+
+    postAuthenticationInformation(){
         const { dispatch } = this.props
-        dispatch(postUserAuthentication(postAuthUser))
+        formAuthenticationInformation = {
+            email: this.state.email,
+            password: this.state.password,
+        }
+        dispatch(postUserAuthentication(formAuthenticationInformation))
     }
 
     render(){
@@ -49,7 +57,7 @@ class Login extends React.Component{
                 </Text>
 
                 <View style={styles.form}>
-                    <TextInput onChangeText={(text) => this.setState({text})}
+                    <TextInput onChangeText={(email) => this.setState({email})}
                         placeholder={"メールアドレス"}
                         placeholderTextColor={'#666677'}
                         style={styles.text_field}
@@ -59,7 +67,7 @@ class Login extends React.Component{
                 </View>
 
                 <View style={styles.form}>
-                    <TextInput onChangeText={(text) => this.setState({text})}
+                    <TextInput onChangeText={(password) => this.setState({password})}
                         placeholder={"パスワード"}
                         placeholderTextColor={'#666677'}
                         style={styles.text_field}
@@ -68,7 +76,17 @@ class Login extends React.Component{
                         secureTextEntry
                      />
                 </View>
-
+                {(() => {
+                    if (this.state.occurs_invalid_login_error) {
+                        return (
+                            <View style={{flexDirection:"row"}}>
+                                <Text style={styles.auto_login_text}>
+                                    メールアドレスかパスワードが間違っています。
+                                </Text>
+                            </View>
+                        )
+                    }
+                })()}
                 <View style={{flexDirection:"row"}}>
                     <View style={styles.square} />
                     <Text style={styles.auto_login_text}>
@@ -78,7 +96,7 @@ class Login extends React.Component{
 
                 <View style={styles.form}>
                     <TouchableOpacity onPress={() =>{
-                        this.postAuthenticationForm()
+                        this.postAuthenticationInformation()
                     }}>
                         <Text style={styles.login_button_text}>
                             ログイン
@@ -104,7 +122,19 @@ class Login extends React.Component{
     }
 }
 
-export default connect()(Login)
+function mapStateToProps(state, props){
+    const { authenticationReducer } = state
+    const {
+        occurs_invalid_login_error: occurs_invalid_login_error,
+    } = authenticationReducer ||{
+        occurs_invalid_login_error: false
+    }
+    return {
+        occurs_invalid_login_error,
+    }
+}
+
+export default connect(mapStateToProps)(Login)
 const styles = StyleSheet.create({
     container: {
         flex: 1,
