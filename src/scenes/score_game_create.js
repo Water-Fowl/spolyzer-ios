@@ -5,15 +5,13 @@ import {
     Image,
     Text,
     TouchableHighlight,
-    View }
-from 'react-native';
+    View }from 'react-native';
 import{
     Background,
     TopBar,
     TopContentBar,
     NavigateButton,
-}
-from "../components";
+}from "../components";
 import Orientation from 'react-native-orientation';
 import { Actions } from 'react-native-router-flux';
 
@@ -32,6 +30,7 @@ export default class ScoreGameCreate extends React.Component {
 
     render(){
         return (
+
             <View style={ styles.align_items_center }>
                 <Background/>
                 <TopContentBar content_name={"試合設定"} />
