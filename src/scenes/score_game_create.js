@@ -5,15 +5,13 @@ import {
     Image,
     Text,
     TouchableHighlight,
-    View }
-from 'react-native';
+    View } from 'react-native';
 import{
     Background,
     TopBar,
     TopContentBar,
     NavigateButton,
-}
-from "../components";
+} from "../components";
 import Orientation from 'react-native-orientation';
 import { Actions } from 'react-native-router-flux';
 
