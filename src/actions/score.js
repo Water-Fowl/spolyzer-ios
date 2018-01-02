@@ -27,3 +27,35 @@ export function hideModal(){
         modal: false,
     }
 }
+
+export function postScoreGame(body){
+    return dispath => {
+        disopath(requestScoreGame());
+        return fetch(POST_SCORE_GAME_ENDPOINT, {
+            method: 'POST',
+            headers: {
+                'Accept' : 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(body)
+        })
+        .then(response => response.json())
+        .then(json => dispatch(receiveScoreGame(json.score_game_id)))
+        .catch(function(error){
+            console.log(error)
+        })
+    }
+}
+
+function requestScoreGame(){
+    return {
+        type: REQUEST
+    }
+}
+
+function receicedScoreGame(score_game_id){
+    return {
+        type: RECIEVED,
+        current_score_game_id: score_game_id
+    }
+}
