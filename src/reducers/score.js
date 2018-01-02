@@ -1,4 +1,4 @@
-import {
+import{
     ADD_SCORE,
     SET_MODAL,
     HIDE_MODAL,
@@ -32,11 +32,17 @@ export default function scoreReducer(state = initialState, action = {}){
                 position: action.position,
                 side: action.side
             })
-        case HIDE_MODAL:    
+        case HIDE_MODAL:
             return Object.assign({}, state, {
                 modal : action.modal,
             })
+
+        case REQUEST:
+            return state
+
+        case RECIEVED:
+            return {...state,}
         default:
-            return state;    
+            return state;
     }
 }
