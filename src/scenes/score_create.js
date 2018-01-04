@@ -8,7 +8,7 @@ import {
     BackgroundImage,
     StyleSheet,
 } from "react-native";
-import { connect } from 'react-redux'; 
+import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 import Orientation from 'react-native-orientation';
 import {
@@ -28,7 +28,7 @@ const win = Dimensions.get('window');
 export default class ScoreCreate extends React.Component {
     constructor(props){
         super(props);
-    } 
+    }
     componentWillMount() {
         Orientation.lockToLandscape();
     }
@@ -57,71 +57,38 @@ export default class ScoreCreate extends React.Component {
     render(){
 
         return(
-            <View style={{alignItems:"center"}}>
-            <LandScapeBackground/>
-            <TopContentBar content_name="Score Sheet" />
-                {/*書き直す*/}
-                <ActionModal />
-                <View style={{marginTop:10, alignItems: "center"}}>
-                    <FieldOutSide
-                        position = { 9 }
-                    />
-                    <View style={{ marginTop: 6, marginBottom: 6, padding:4, flexDirection: "row" }}>
-                        <FieldOutLength
-                            position = { 10 }
-                            side = { 1 }
-                        />
-                        <View style = {{marginLeft: 16,marginRight: 17, flexDirection:"row"}}>
-                            <FieldInLength
-                                position = { 2 }
-                                side = { 0 }
-                            />
-                            <FieldInSide
-                                position = { 1 }
-                                side = { 0 }
-                            />
-                            <FieldInLength
-                                position = { 0 }
-                                side = { 0 }
-                            />
-                        </View>
-                        <View style={{marginLeft: 17, marginRight: 16, flexDirection:"row"}}>
-                            <FieldInLength
-                                position = { 0 }
-                                side = { 1 }
-                            />
-                            <FieldInSide
-                                position = { 1 }
-                                side = { 1 }
-                            />
-                            <FieldInLength
-                                position = { 2 }
-                                side = { 1 }
-                            />
-                        </View>
-                        <FieldOutLength
-                            position = { 10 }
-                            side = { 0 }
-                        />
-                    </View>
-                    <FieldOutSide
-                        position = { 12 }
-                    />
-                </View>
-                <TouchableHighlight style={{ marginTop:10, marginBottom:10 }} onPress={ Actions.score_view }>
-                    <Text>ScoreView</Text>
-                </TouchableHighlight>
+            <View style={{
+              alignItems:"center"}}>
+              <Image
+                source={ require('../../assets/img/field-line.png')}
+                style={ styles.field_line}
+              />
+            <TopContentBar
+                content_name="スコアシート"
+                style={{position:'absolute',
+               }}
+            />
+            <View style={{
+              flexDirection:"row",
+            }}>
+            </View>
             </View>
         )
     }
-}   
+}
 
 const styles = StyleSheet.create({
+
+    field_line:{
+      position: 'absolute',
+      height: 360,
+      resizeMode: 'contain'
+    },
     align_items_center:{
         alignItems: "center",
     },
     score_create_field: {
-        zIndex:1    
+        zIndex:1
     },
     score_game_create_score_text:{
         color:"white",
@@ -148,7 +115,7 @@ const styles = StyleSheet.create({
         marginRight:20,
         marginBottom:0,
         flexDirection: 'row',
-        justifyContent: 'space-between', 
+        justifyContent: 'space-between',
     },
     score_create_incort_side: {
         zIndex:0,
@@ -156,7 +123,7 @@ const styles = StyleSheet.create({
         marginRight:10,
         marginBottom:0,
         flexDirection: 'row',
-        justifyContent: 'space-between', 
+        justifyContent: 'space-between',
     },
     score_create_outcort_length: {
     },
