@@ -11,7 +11,7 @@ import {
 import { connect } from 'react-redux';
 import Orientation from 'react-native-orientation';
 import { Background } from "../components";
-
+import { Navibar } from "../components";
 
 export default class AnalysisCreate extends React.Component{
     componentWillMount() {
@@ -22,6 +22,9 @@ export default class AnalysisCreate extends React.Component{
             <View style={styles.container}>
 
                <Background/>
+
+
+                <Navibar/>
 
                <Text style={styles.subtitle_text}>
                     検索条件
