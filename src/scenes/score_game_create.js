@@ -136,7 +136,6 @@ const styles = StyleSheet.create({
       flex:1,
       width: 30,
       height: 220,
-      textAlign:'center',
       paddingRight:7,
     },
     game_setting_table_inner_right:{
@@ -144,7 +143,6 @@ const styles = StyleSheet.create({
       width: 70,
       height: 220,
       justifyContent: 'center',
-      textAlign:'center',
       alignItems: 'center',
     },
     game_setting_under_table:{
@@ -157,10 +155,8 @@ const styles = StyleSheet.create({
       position: 'absolute',
       alignItems: 'center',
       justifyContent: 'center',
-      textAlign:"center",
   },
     column_bar_text:{
-        textAlign:"center",
         fontSize:25,
         color:"white",
         fontWeight:'bold',
@@ -174,7 +170,6 @@ const styles = StyleSheet.create({
         paddingRight:5,
         paddingLeft:5,
         fontSize:50,
-        textAlign: 'center',
         alignItems: 'center',
         justifyContent: 'center',
     },
@@ -192,13 +187,11 @@ const styles = StyleSheet.create({
         marginRight:12,
         marginLeft:19,
         marginBottom:3,
-        textAlign: "center",
     },
     score_game_create_competitor_frame:{
         marginTop:3,
         marginRight:12,
         marginLeft:14,
         marginBottom:8,
-        textAlign: "center",
     },
 })
