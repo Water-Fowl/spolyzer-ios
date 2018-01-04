@@ -45,6 +45,40 @@ export default class AnalysisCreate extends React.Component{
                     </View>
                 </View>
 
+                <View style={{flexDirection:"row"}}>
+                    <Text style={styles.shot_type_text}>
+                    球種
+                    </Text>
+                    <View style={styles.shot_type_frame}>
+                        <View style={{flexDirection:"row"}}>
+                            <Text style={styles.singles_text}>
+                                スマッシュ 
+                             </Text>
+                             <Text style={styles.doubles_text}>
+                                クリアー
+                            </Text>
+                        </View>
+
+                        <View style={{flexDirection:"row"}}>
+                            <Text style={styles.doubles_text}>
+                                ドロップ 
+                            </Text>
+                             <Text style={styles.doubles_text}>
+                                プッシュ 
+                            </Text>
+                        </View>
+
+                         <View style={{flexDirection:"row"}}>
+                            <Text style={styles.doubles_text}>
+                                ヘアピン
+                            </Text>
+                            <Text style={styles.doubles_text}>
+                               ドライブ
+                            </Text>
+                        </View>
+                    </View>
+                </View>
+
              
             </View>
 
@@ -70,9 +104,8 @@ const styles = StyleSheet.create({
     subtitle_text: {
         color: '#ffffff',
         fontSize: 22,
-        textAlign: 'center',
         alignSelf: 'center',
-        marginTop: 66,
+        marginTop: -30,
         backgroundColor: 'transparent',
         fontWeight: 'bold',
         
@@ -112,13 +145,12 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         alignSelf: 'flex-start',
         paddingTop: 5,
-        paddingLeft: 14,
+        paddingLeft: 12,
         paddingBottom: 5,
-        paddingRight: 14,
+        paddingRight: 12,
         marginLeft: 10,
-        marginRight: 6,
         marginTop: 2,
-        marginBottom: 3,
+        marginBottom: 4,
         
      },
 
@@ -129,13 +161,42 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         alignSelf: 'flex-start',
         paddingTop: 5,
-        paddingLeft: 17,
+        paddingLeft: 20,
         paddingBottom: 5,
-        paddingRight: 17,
+        paddingRight: 20,
         marginTop: 2,
-        marginBottom: 3,
+        marginBottom: 8,
+        marginLeft: 6,
+     },
+
+
+
+
+      shot_type_text: {
+        color: '#ffffff',
+        fontSize: 15,
+        marginTop: 68,
+        marginLeft: 40,
+        backgroundColor: 'transparent',
+        fontWeight: 'bold',
+        alignSelf: 'flex-start',
         
      },
+
+    shot_type_frame: {
+        backgroundColor: 'transparent',
+        borderRightColor: '#0a2444',
+        borderTopColor: '#0a2444',
+        borderLeftColor: '#0a2444',
+        borderBottomColor: '#0a2444',
+        height: 110,
+        width: 222,
+        borderWidth: 1.5,
+        marginLeft: 58,
+        borderRadius: 3,
+        marginTop: 24,
+
+     },     
 
 
 });

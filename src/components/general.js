@@ -144,9 +144,8 @@ const GeneralStyles = StyleSheet.create({
     },
     navibar: {
         justifyContent: 'center',
-        marginLeft: -10,
+        marginLeft: -20,
         marginTop: -10,
-        opacity: 0.3,
     },
     landscape_background: {
         flex: 1,
