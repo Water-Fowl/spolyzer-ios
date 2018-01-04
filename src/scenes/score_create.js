@@ -59,15 +59,16 @@ export default class ScoreCreate extends React.Component {
         return(
             <View style={{
               alignItems:"center"}}>
+              <LandScapeBackground/>
               <Image
-                source={ require('../../assets/img/field-line.png')}
-                style={ styles.field_line}
+                  source={ require('../../assets/img/field-line.png')}
+                  style={ styles.field_line}
               />
-            <TopContentBar
-                content_name="スコアシート"
-                style={{position:'absolute',
+              <TopContentBar
+                  content_name="スコアシート"
+                  style={{position:'absolute',
                }}
-            />
+               />
             <View style={{
               flexDirection:"row",
             }}>

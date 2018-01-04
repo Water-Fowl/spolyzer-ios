@@ -34,11 +34,13 @@ export class TopBar extends React.Component{
 export class LandScapeBackground extends React.Component {
     render(){
         return(
-            <View style={GeneralStyles.landscape_background}/>
+            <Image
+                source={require('../../assets/img/landscape_background.png')}
+                style={GeneralStyles.background}
+            />
         )
     }
 }
-
 export class TopContentBar extends React.Component{
     constructor(props) {
         super(props);
@@ -76,15 +78,13 @@ export class NavigateButton extends React.Component{
 }
 
 const GeneralStyles = StyleSheet.create({
-    background: {
-        zIndex:0,
-        flex: 1,
-        top:0,
-        position:"absolute",
-        alignSelf: 'stretch',
-        width: win.width,
-        height: win.height,
-    },
+  background: {
+          flex: 1,
+          resizeMode: 'cover',
+          position:'absolute',
+          alignSelf: 'stretch',
+          width:win.width,
+      },
     landscape_background: {
         zIndex:0,
         flex: 1,
