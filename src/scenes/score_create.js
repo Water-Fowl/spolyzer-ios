@@ -7,6 +7,7 @@ import {
     TouchableHighlight,
     BackgroundImage,
     StyleSheet,
+    TriangleCorner,
 } from "react-native";
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
@@ -69,10 +70,41 @@ export default class ScoreCreate extends React.Component {
                   style={{position:'absolute',
                }}
                />
-            <View style={{
-              flexDirection:"row",
-            }}>
-            </View>
+                <View style={{
+                  flexDirection:"row",
+                  flex:1,
+                  position:"absolute",
+                }}>
+                      <View style={{
+                        backgroundColor:"transparent",
+                        flexDirection:"row",
+                        flex:1,
+                        paddingTop:18,
+                        paddingBottom:8,
+                      }}>
+                      {/*ここのマークは変更予定ゆえ空白。スコアの戻しのボタンとなる*/}
+                      <Image
+                        source={ require('../../assets/img/score_create_score_return_button.png')}
+                        style={styles.score_return_button}
+                        />
+                      <View style={styles.frame_name}><Text style={{color:"white"}}>Nameが表示される</Text></View>
+                      <View style={styles.frame_score}><Text style={{color:"white",fontSize:40,}}>0</Text></View>
+                      {/*この三角形の中は何もかかなくなった*/}
+                      <Image
+                        source={require('../../assets/img/score_create_triangle_left.png')}
+                        style={styles.triangle_left}
+                      />
+                      </View>
+
+                      <View style={{
+                        backgroundColor:"pink",
+                        flex:1,
+                        height:10,
+                      }}>
+                      <Text>右上のview</Text>
+                      </View>
+                  </View>
+
             </View>
         )
     }
@@ -85,6 +117,39 @@ const styles = StyleSheet.create({
       height: 360,
       resizeMode: 'contain'
     },
+    score_return_button:{
+      marginLeft:25,
+      marginRight:5,
+    },
+    frame_name: {
+        borderRightColor: '#28a8de',
+        borderTopColor: '#28a8de',
+        borderLeftColor: '#28a8de',
+        borderBottomColor: '#28a8de',
+        height:  40,
+        width: 130,
+        borderWidth: 1.3,
+        borderRadius: 5,
+        marginRight:3,
+        justifyContent:"center",
+        alignItems: "center",
+     },
+     frame_score:{
+         borderRightColor: '#28a8de',
+         borderTopColor: '#28a8de',
+         borderLeftColor: '#28a8de',
+         borderBottomColor: '#28a8de',
+         height:  40,
+         width: 50,
+         borderWidth: 1.3,
+         borderRadius: 5,
+         marginRight:5,
+         justifyContent:"center",
+         alignItems: "center",
+      },
+      triangle_left:{
+        marginTop:10,
+      },
     align_items_center:{
         alignItems: "center",
     },
