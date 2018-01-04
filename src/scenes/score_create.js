@@ -8,7 +8,7 @@ import {
     BackgroundImage,
     StyleSheet,
 } from "react-native";
-import { connect } from 'react-redux'; 
+import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 import Orientation from 'react-native-orientation';
 import {
