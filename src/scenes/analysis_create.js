@@ -79,6 +79,47 @@ export default class AnalysisCreate extends React.Component{
                     </View>
                 </View>
 
+                 <View style={{flexDirection:"row"}}>
+                    <Text style={styles.period_text}>
+                    期間
+                    </Text>
+                    <View style={styles.period_frame}>
+                        <Text style={styles.singles_text}>
+                            Day
+                         </Text>
+                         <Text style={styles.doubles_text}>
+                            Week
+                         </Text>
+                         <Text style={styles.doubles_text}>
+                            Month
+                         </Text>
+                    </View>
+                </View>
+
+                 <View style={{flexDirection:"row"}}>
+                    <Text style={styles.opponent_text}>
+                    対戦相手
+                    </Text>
+                    <View style={styles.opponent_frame}/>
+                    <View style={styles.opponent_frame}/>
+                </View>
+
+                 <View style={{flexDirection:"row"}}>
+                    <Text style={styles.game_select_text}>
+                    試合選択
+                    </Text>
+                    <View style={styles.game_select_frame}/>
+                </View>
+
+                <Image
+                source={require("../../assets/img/analyze_button.png")}
+                style={styles.analyze_button}
+                />
+
+                <Text style={styles.analyze_text}>
+                    Analyze
+                </Text>
+
              
             </View>
 
@@ -189,14 +230,119 @@ const styles = StyleSheet.create({
         borderTopColor: '#0a2444',
         borderLeftColor: '#0a2444',
         borderBottomColor: '#0a2444',
-        height: 110,
+        height: 108,
         width: 222,
         borderWidth: 1.5,
         marginLeft: 58,
         borderRadius: 3,
-        marginTop: 24,
+        marginTop: 25,
 
-     },     
+     },
+
+    period_text: {
+        color: '#ffffff',
+        fontSize: 15,
+        marginTop: 30,
+        marginLeft: 40,
+        backgroundColor: 'transparent',
+        fontWeight: 'bold',
+        alignSelf: 'flex-start',
+        
+     },
+
+    period_frame: {
+        
+        flexDirection: "row",
+        backgroundColor: 'transparent',
+        borderRightColor: '#0a2444',
+        borderTopColor: '#0a2444',
+        borderLeftColor: '#0a2444',
+        borderBottomColor: '#0a2444',
+        height: 34,
+        width: 222,
+        borderWidth: 1.5,
+        marginLeft: 57,
+        borderRadius: 3,
+        marginTop: 25,
+
+     },
+
+    opponent_text: {
+        color: '#ffffff',
+        fontSize: 15,
+        marginTop: 32,
+        marginLeft: 40,
+        backgroundColor: 'transparent',
+        fontWeight: 'bold',
+        alignSelf: 'flex-start',
+        marginRight: 22,
+        
+     },
+     opponent_frame: {
+        
+        flexDirection: "row",
+        backgroundColor: 'transparent',
+        borderRightColor: '#0a2444',
+        borderTopColor: '#0a2444',
+        borderLeftColor: '#0a2444',
+        borderBottomColor: '#0a2444',
+        height: 34,
+        width: 108,
+        borderWidth: 1.5,
+        marginLeft: 6,
+        borderRadius: 3,
+        marginTop: 25,
+
+     },
+
+    game_select_text: {
+        color: '#ffffff',
+        fontSize: 15,
+        marginTop: 36,
+        marginLeft: 40,
+        backgroundColor: 'transparent',
+        fontWeight: 'bold',
+        alignSelf: 'flex-start',
+        
+     },
+
+    game_select_frame: {
+        
+        flexDirection: "row",
+        backgroundColor: 'transparent',
+        borderRightColor: '#0a2444',
+        borderTopColor: '#0a2444',
+        borderLeftColor: '#0a2444',
+        borderBottomColor: '#0a2444',
+        height: 34,
+        width: 222,
+        borderWidth: 1.5,
+        marginLeft: 28,
+        borderRadius: 3,
+        marginTop: 25,
+
+     },
+
+     analyze_button: {
+
+        marginTop: 524,
+        marginLeft: 96,
+        opacity: 0.4,
+        position:'absolute',
+
+
+     },
+
+     analyze_text: {
+
+        marginTop: 66,
+        marginLeft: 154,
+        fontSize: 20,
+        backgroundColor: 'transparent',
+        color: '#ffffff',
+
+
+     }
 
 
 });
