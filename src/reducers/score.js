@@ -2,6 +2,8 @@ import{
     ADD_SCORE,
     SET_MODAL,
     HIDE_MODAL,
+    REQUEST,
+    RECIEVED,
 } from '../actions/score';
 
 // 初期化

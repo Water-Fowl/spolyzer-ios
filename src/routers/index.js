@@ -9,6 +9,8 @@ import {
 import thunkMiddleware from 'redux-thunk';
 import { createLogger } from 'redux-logger';
 import { Actions } from 'react-native-router-flux';
+import { persistStore, autoRehydrate } from 'redux-persist';
+import localforage from 'localforage';
 
 import {
     Mypage,
@@ -27,14 +29,13 @@ const RouterWithRedux = connect()(Router);
 const loggerMiddleware = createLogger();
 const middleware = [thunkMiddleware, loggerMiddleware];
 const store = compose(
-  applyMiddleware(...middleware)
+    applyMiddleware(...middleware),
+    autoRehydrate()
 )(createStore)(reducers);
 
-
-function remount(props){
-    key = props.scene.route.key
-    Actions.push(key);
-}
+persistStore(store, {storage: localforage}, () => {
+    console.log('autoRehydrate completed');
+});
 
 const Route = () => (
     <Provider store={store}>
