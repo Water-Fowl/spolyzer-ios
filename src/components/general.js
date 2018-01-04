@@ -128,6 +128,8 @@ const GeneralStyles = StyleSheet.create({
         resizeMode: 'cover',
         position:'absolute',
         alignSelf: 'stretch',
+        width: win.width,
+
     },
     landscape_background: {
         flex: 1,

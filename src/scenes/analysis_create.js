@@ -12,6 +12,7 @@ import { connect } from 'react-redux';
 import Orientation from 'react-native-orientation';
 import { Background } from "../components";
 
+
 export default class AnalysisCreate extends React.Component{
     componentWillMount() {
         Orientation.lockToPortrait();
