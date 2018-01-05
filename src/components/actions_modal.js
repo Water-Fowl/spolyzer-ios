@@ -19,27 +19,41 @@ class ActionModal extends React.Component {
         super(props);
         this.setScoreData.bind(this);
         this.hideModal.bind(this);
+        this.setModalVisible.bind(this);
+        this.state = { modalVisible: false }
     }
 
     hideModal(){
         const { dispatch } = this.props
         dispatch(hideModal())
+        const { modal } = this.props
+        console.log(modal)
+        this.setState({modalVisible: modal})
     }
 
     setScoreData(action){
         const { position, side, dispatch } = this.props
         dispatch(fetchAddScore(position, action, side))
     }
+    setModalVisible(){
+        if (this.state.modalVisible){
+            return{
+                backgroundColor: 'blue'
+            }
+        }
+        else{
+            return {
+                height: 0,
+                opacity: 0
+            }
+        }
+    }
 
     render(){
         const { modal, position, side } = this.props;
         return(
-                <Modal
-                    animationInTiming ={ 100 }
-                    animationOutTiming = { 100 }
-                    backdropColor={'rgb(46, 167, 224)'}
-                    backdropOpacity={0.5}
-                    isVisible={ modal }
+                <View
+                    style={this.setModalVisible()}
                 >
                     <View style={{ margin:40, alignItems:"center" }}>
                         <TouchableHighlight onPress={
@@ -155,16 +169,16 @@ class ActionModal extends React.Component {
                             <Text style={{textAlign:"center",marginTop: 20, color:"white"}}>戻る</Text>
                         </TouchableHighlight>
                     </View>
-                </Modal>
+                </View>
         )
     }
 }
 
 function mapStateToProps(state, props){
-    const { scoreReducer } = state
+    const { score } = state
     const {
         modal:modal,
-    } = scoreReducer ||{
+    } = score ||{
         modal: false,
     }
     return {
