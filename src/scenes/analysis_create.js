@@ -5,9 +5,11 @@ import {
     View,
     Dimensions,
     TouchableHighlight,
+    TouchableOpacity,
     BackgroundImage,
     StyleSheet,
 } from "react-native";
+import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 import Orientation from 'react-native-orientation';
 import { Background } from "../components";
@@ -111,14 +113,17 @@ export default class AnalysisCreate extends React.Component{
                     <View style={styles.game_select_frame}/>
                 </View>
 
+                
                 <Image
-                source={require("../../assets/img/analyze_button.png")}
-                style={styles.analyze_button}
+                    source={require("../../assets/img/analyze_button.png")}
+                    style={styles.analyze_button}
                 />
 
-                <Text style={styles.analyze_text}>
-                    Analyze
-                </Text>
+                <TouchableOpacity onPress={Actions.analysis_view} style={styles.analyze}>
+                    <Text style={styles.analyze_text}>
+                        Analyze
+                    </Text>
+                </TouchableOpacity>
 
              
             </View>
@@ -148,8 +153,7 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         marginTop: -30,
         backgroundColor: 'transparent',
-        fontWeight: 'bold',
-        
+        fontWeight: 'bold',       
      },
     
     game_style_text: {
@@ -159,8 +163,7 @@ const styles = StyleSheet.create({
         marginLeft: 40,
         backgroundColor: 'transparent',
         fontWeight: 'bold',
-        alignSelf: 'flex-start',
-        
+        alignSelf: 'flex-start',     
      },
 
      frame: {
@@ -176,7 +179,6 @@ const styles = StyleSheet.create({
         marginLeft: 30,
         borderRadius: 3,
         marginTop: 37,
-
      },
 
       singles_text: {
@@ -191,8 +193,7 @@ const styles = StyleSheet.create({
         paddingRight: 12,
         marginLeft: 10,
         marginTop: 2,
-        marginBottom: 4,
-        
+        marginBottom: 4,       
      },
 
       doubles_text: {
@@ -210,9 +211,6 @@ const styles = StyleSheet.create({
         marginLeft: 6,
      },
 
-
-
-
       shot_type_text: {
         color: '#ffffff',
         fontSize: 15,
@@ -220,8 +218,7 @@ const styles = StyleSheet.create({
         marginLeft: 40,
         backgroundColor: 'transparent',
         fontWeight: 'bold',
-        alignSelf: 'flex-start',
-        
+        alignSelf: 'flex-start',     
      },
 
     shot_type_frame: {
@@ -236,7 +233,6 @@ const styles = StyleSheet.create({
         marginLeft: 58,
         borderRadius: 3,
         marginTop: 25,
-
      },
 
     period_text: {
@@ -246,12 +242,10 @@ const styles = StyleSheet.create({
         marginLeft: 40,
         backgroundColor: 'transparent',
         fontWeight: 'bold',
-        alignSelf: 'flex-start',
-        
+        alignSelf: 'flex-start',     
      },
 
-    period_frame: {
-        
+    period_frame: {      
         flexDirection: "row",
         backgroundColor: 'transparent',
         borderRightColor: '#0a2444',
@@ -264,7 +258,6 @@ const styles = StyleSheet.create({
         marginLeft: 57,
         borderRadius: 3,
         marginTop: 25,
-
      },
 
     opponent_text: {
@@ -275,11 +268,10 @@ const styles = StyleSheet.create({
         backgroundColor: 'transparent',
         fontWeight: 'bold',
         alignSelf: 'flex-start',
-        marginRight: 22,
-        
+        marginRight: 22,       
      },
-     opponent_frame: {
-        
+
+     opponent_frame: {        
         flexDirection: "row",
         backgroundColor: 'transparent',
         borderRightColor: '#0a2444',
@@ -292,7 +284,6 @@ const styles = StyleSheet.create({
         marginLeft: 6,
         borderRadius: 3,
         marginTop: 25,
-
      },
 
     game_select_text: {
@@ -303,11 +294,9 @@ const styles = StyleSheet.create({
         backgroundColor: 'transparent',
         fontWeight: 'bold',
         alignSelf: 'flex-start',
-        
      },
 
     game_select_frame: {
-        
         flexDirection: "row",
         backgroundColor: 'transparent',
         borderRightColor: '#0a2444',
@@ -320,29 +309,29 @@ const styles = StyleSheet.create({
         marginLeft: 28,
         borderRadius: 3,
         marginTop: 25,
-
      },
 
      analyze_button: {
-
         marginTop: 524,
         marginLeft: 96,
         opacity: 0.4,
         position:'absolute',
+     },
 
-
+     analyze: {
+        alignSelf: 'center',
+        marginTop: 55,
      },
 
      analyze_text: {
-
-        marginTop: 66,
-        marginLeft: 154,
         fontSize: 20,
         backgroundColor: 'transparent',
         color: '#ffffff',
-
-
-     }
+        paddingTop: 12,
+        paddingRight: 26,
+        paddingBottom: 16,
+        paddingLeft:26,
+     },
 
 
 });
