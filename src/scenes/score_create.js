@@ -70,39 +70,36 @@ export default class ScoreCreate extends React.Component {
                   style={{position:'absolute',
                }}
                />
-                <View style={{
-                  flexDirection:"row",
-                  flex:1,
-                  position:"absolute",
-                }}>
-                      <View style={{
-                        backgroundColor:"transparent",
-                        flexDirection:"row",
-                        flex:1,
-                        paddingTop:18,
-                        paddingBottom:8,
-                      }}>
-                      {/*ここのマークは変更予定ゆえ空白。スコアの戻しのボタンとなる*/}
-                      <Image
-                        source={ require('../../assets/img/score_create_score_return_button.png')}
-                        style={styles.score_return_button}
-                        />
-                      <View style={styles.frame_name}><Text style={{color:"white"}}>Nameが表示される</Text></View>
-                      <View style={styles.frame_score}><Text style={{color:"white",fontSize:40,}}>0</Text></View>
-                      {/*この三角形の中は何もかかなくなった*/}
-                      <Image
-                        source={require('../../assets/img/score_create_triangle_left.png')}
-                        style={styles.triangle_left}
-                      />
+                <View style={style=styles.score_board_top}>
+                      <View style={styles.score_board_top_left}>
+                          {/*ここのマークは変更予定ゆえ空白。スコアの戻しのボタンとなる*/}
+                          <Image
+                            source={ require('../../assets/img/score_create_score_return_button.png')}
+                            style={styles.score_return_button}
+                            />
+                          <View style={styles.frame_name}><Text style={{color:"white"}}>Nameが表示される</Text></View>
+                          <View style={styles.frame_score}><Text style={{color:"white",fontSize:40,}}>0</Text></View>
+                          {/*この三角形の中は何もかかなくなった*/}
+                          <Image
+                            source={require('../../assets/img/score_create_triangle_left.png')}
+                            style={styles.triangle}
+                          />
                       </View>
 
-                      <View style={{
-                        backgroundColor:"pink",
-                        flex:1,
-                        height:10,
-                      }}>
-                      <Text>右上のview</Text>
+                      <View style={styles.score_board_top_right}>
+                          {/*この三角形の中は何もかかなくなった*/}
+                          <Image
+                            source={require('../../assets/img/score_create_triangle_right.png')}
+                            style={styles.triangle}
+                          />
+                          <View style={styles.frame_score}><Text style={{color:"white",fontSize:40,}}>0</Text></View>
+                          <View style={styles.frame_name}><Text style={{color:"white"}}>Nameが表示される</Text></View>
+                          <Image
+                            source={ require('../../assets/img/score_create_reset_button.png')}
+                            style={styles.score_reset_button}
+                            />
                       </View>
+
                   </View>
 
             </View>
@@ -116,6 +113,18 @@ const styles = StyleSheet.create({
       position: 'absolute',
       height: 360,
       resizeMode: 'contain'
+    },
+    score_board_top:{
+      flexDirection:"row",
+      flex:1,
+      position:"absolute",
+    },
+    score_board_top_left:{
+      backgroundColor:"transparent",
+      flexDirection:"row",
+      flex:1,
+      paddingTop:18,
+      paddingBottom:8,
     },
     score_return_button:{
       marginLeft:25,
@@ -131,6 +140,7 @@ const styles = StyleSheet.create({
         borderWidth: 1.3,
         borderRadius: 5,
         marginRight:3,
+        marginLeft:3,
         justifyContent:"center",
         alignItems: "center",
      },
@@ -143,63 +153,26 @@ const styles = StyleSheet.create({
          width: 50,
          borderWidth: 1.3,
          borderRadius: 5,
-         marginRight:5,
+         marginRight:3,
+         marginLeft:3,
          justifyContent:"center",
          alignItems: "center",
       },
-      triangle_left:{
+      triangle:{
         marginTop:10,
+        marginRight:3,
+        marginLeft:3,
       },
-    align_items_center:{
-        alignItems: "center",
-    },
-    score_create_field: {
-        zIndex:1
-    },
-    score_game_create_score_text:{
-        color:"white",
-        paddingTop: 5,
-        paddingBottom: 5,
+      score_board_top_right:{
+        backgroundColor:"transparent",
+        flexDirection:"row",
+        flex:1,
+        paddingTop:18,
+        paddingBottom:8,
+        justifyContent:"flex-end",
+      },
+      score_reset_button:{
         marginLeft:5,
-        marginRight:5,
-        width: 50,
-        textAlign:"center",
-        backgroundColor: 'rgb(30, 110, 155)',
-    },
-    score_create_text: {
-        padding: 5,
-        margin: 5,
-        width: 200,
-        textAlign: "center",
-        backgroundColor: "rgb(217, 55, 142)",
-        fontWeight: 'bold',
-        color: "white",
-    },
-    score_create_outcort_side: {
-        zIndex:0,
-        marginLeft:20,
-        marginRight:20,
-        marginBottom:0,
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-    },
-    score_create_incort_side: {
-        zIndex:0,
-        marginLeft:10,
-        marginRight:10,
-        marginBottom:0,
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-    },
-    score_create_outcort_length: {
-    },
-    score_create_incort_img: {
-        zIndex:0,
-        marginLeft: 15,
-        marginRight: 15,
-    },
-    score_create_outcort_img: {
-        marginLeft: 5,
-        marginRight: 5,
-    },
-})
+        marginRight:25,
+      },
+    })
