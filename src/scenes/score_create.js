@@ -101,6 +101,21 @@ export default class ScoreCreate extends React.Component {
                       </View>
 
                   </View>
+                  <View style={{flexDirection:"row",}}>
+                  <View style={styles.left_view_for_horizontal_yellow_bar}>
+                    <View style={styles.horizontal_yellow_bar}>
+                    </View>
+                  </View>
+                  <View style={styles.right_view_for_horizontal_yellow_bar}>
+                    <View style={styles.horizontal_yellow_bar}>
+                    </View >
+                  </View>
+
+
+
+
+
+                  </View>
 
             </View>
         )
@@ -144,19 +159,25 @@ const styles = StyleSheet.create({
         justifyContent:"center",
         alignItems: "center",
      },
-     frame_score:{
-         borderRightColor: '#28a8de',
-         borderTopColor: '#28a8de',
-         borderLeftColor: '#28a8de',
-         borderBottomColor: '#28a8de',
-         height:  40,
-         width: 50,
+     horizontal_yellow_bar:{
+         borderColor: '#BDB76B',
+         backgroundColor:"#BDB76B",
+         height:  12,
+         width: 200,
          borderWidth: 1.3,
-         borderRadius: 5,
-         marginRight:3,
-         marginLeft:3,
-         justifyContent:"center",
-         alignItems: "center",
+         borderRadius: 3,
+      },
+      right_view_for_horizontal_yellow_bar:{
+        flexDirection:"row",
+        flex:1,
+        justifyContent:"flex-end",
+        marginTop:30,
+        marginRight:108,},
+      left_view_for_horizontal_yellow_bar:{
+        flexDirection:"row",
+        flex:1,
+        marginTop:30,
+        marginLeft:108,
       },
       triangle:{
         marginTop:10,
@@ -175,4 +196,18 @@ const styles = StyleSheet.create({
         marginLeft:5,
         marginRight:25,
       },
+      frame_score:{
+          borderRightColor: '#28a8de',
+          borderTopColor: '#28a8de',
+          borderLeftColor: '#28a8de',
+          borderBottomColor: '#28a8de',
+          height:  40,
+          width: 50,
+          borderWidth: 1.3,
+          borderRadius: 5,
+          marginRight:3,
+          marginLeft:3,
+          justifyContent:"center",
+          alignItems: "center",
+       },
     })
