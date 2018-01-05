@@ -22,7 +22,7 @@ export class Background extends React.Component {
     }
 }
 
-export class Navibar extends React.Component {
+export class NavBar extends React.Component {
     render(){
         return(
             <Image

@@ -9,7 +9,7 @@ import {
     LandScapeBackground,
     TopContentBar,
     NavigateButton,
-    Navibar,
+    NavBar,
 } from "../components/general";
 export { 
     TopBar, 
@@ -22,5 +22,5 @@ export {
     FieldInSide,
     FieldOutLength,
     FieldOutSide,
-    Navibar,
+    NavBar,
 };

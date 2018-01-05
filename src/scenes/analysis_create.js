@@ -13,7 +13,7 @@ import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 import Orientation from 'react-native-orientation';
 import { Background } from "../components";
-import { Navibar } from "../components";
+import { NavBar } from "../components";
 
 export default class AnalysisCreate extends React.Component{
     componentWillMount() {
@@ -26,7 +26,7 @@ export default class AnalysisCreate extends React.Component{
                <Background/>
 
 
-                <Navibar/>
+                <NavBar/>
 
                <Text style={styles.subtitle_text}>
                     検索条件
