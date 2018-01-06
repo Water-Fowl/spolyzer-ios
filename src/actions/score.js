@@ -3,9 +3,9 @@ import { Actions } from 'react-native-router-flux';
 
 export const ADD_SCORE = 'ADD_SCORE'
 export const SET_MODAL = 'SET_MODAL'
-export const HIDE_MODAL = 'HIDA_MODAL'
-export const REQUEST = 'REQUEST'
-export const RECIEVED = 'RECIEVED'
+export const HIDE_MODAL = 'HIDE_MODAL'
+export const SCORE_REQUEST = 'SCORE_REQUEST'
+export const SCORE_RECIEVED = 'SCORE_RECIEVED'
 
 export function fetchAddScore(position, action, side){
     return{
@@ -33,8 +33,8 @@ export function hideModal(){
 }
 
 export function postScoreGame(body){
-    return dispath => {
-        disopath(requestScoreGame());
+    return dispatch => {
+        dispatch(requestScoreGame());
         return fetch(POST_SCORE_GAME_ENDPOINT, {
             method: 'POST',
             headers: {
@@ -44,8 +44,8 @@ export function postScoreGame(body){
             body: JSON.stringify(body)
         })
         .then(response => response.json())
-        .then(json => dispatch(receiveScoreGame(json.score_game_id)))
-        .then(Actions.score_view)
+        .then(json => dispatch(receivedScoreGame(json.score_game_id)))
+        .then(Actions.score_view())
         .catch(function(error){
             console.log(error)
         })
@@ -54,13 +54,14 @@ export function postScoreGame(body){
 
 function requestScoreGame(){
     return {
-        type: REQUEST
+        type: SCORE_REQUEST
     }
 }
 
-function receicedScoreGame(score_game_id){
+function receivedScoreGame(score_game_id){
+    console.log(score_game_id)
     return {
-        type: RECIEVED,
+        type: SCORE_RECIEVED,
         current_score_game_id: score_game_id
     }
 }

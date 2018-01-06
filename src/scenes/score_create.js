@@ -22,13 +22,14 @@ import {
     FieldOutLength,
     FieldOutSide,
 } from '../components';
+import { postScoreGame } from '../actions/score'
 
 const win = Dimensions.get('window');
 
-export default class ScoreCreate extends React.Component {
+class ScoreCreate extends React.Component {
     constructor(props){
         super(props);
-    } 
+    }
     componentWillMount() {
         Orientation.lockToLandscape();
     }
@@ -37,11 +38,10 @@ export default class ScoreCreate extends React.Component {
     }
 
     fetchScoreGame(){
-        const { dispatch, players, score_game, actions, positions, time_to_drop_shuttle, score_users, conceded_users, sides } = this.props
+        const { dispatch, players, actions, positions, time_to_drop_shuttle, score_users, conceded_users, sides } = this.props
 
         const score_game_request_body = {
             players: players,
-            score_game: score_game,
             scores:{
                 actions: actions,
                 positions: positions,
@@ -51,7 +51,28 @@ export default class ScoreCreate extends React.Component {
                 sides: sides
             }
         }
-        dispatch(postScoreGame(score_game_request_body))
+        const score_game_request_body_sample = {
+            players:{
+                left_user_id_1:2,
+                right_user_id_1:1,
+                left_user_id_2:2,
+            },
+            score_game:{
+                game_time:"20171013T123030+0900",
+                serve_user_id:3,
+                match_point:7,
+                deuce:true
+            },
+            scores:{
+                action:[1,2,3,4,5,6,7,8,9,10,11,12],
+                position:[0,4,2,5,6,7,5,6,6,4,3,4],
+                time_to_drop_shuttle:[10,33,45,100,135,145,200,333,444,555,600,700],
+                score_users:[3,19,3,3,3,19,19,19,3,19,3,3],
+                conceded_users:[19,3,19,19,19,3,3,3,19,3,19,19],
+                sides:[1,1,1,0,1,1,1,1,1,1,1,1]
+            }
+        }
+        dispatch(postScoreGame(score_game_request_body_sample))
     }
 
     render(){
@@ -62,6 +83,13 @@ export default class ScoreCreate extends React.Component {
             <TopContentBar content_name="Score Sheet" />
                 {/*書き直す*/}
                 <ActionModal />
+                <TouchableHighlight 
+                    style={{ marginTop:10, marginBottom:10 }} 
+                    onPress={() =>{
+                        this.fetchScoreGame()
+                }}>
+                    <Text style={{color: 'white'}}>ScoreView</Text>
+                </TouchableHighlight>
                 <View style={{marginTop:10, alignItems: "center"}}>
                     <FieldOutSide
                         position = { 9 }
@@ -108,20 +136,41 @@ export default class ScoreCreate extends React.Component {
                         position = { 12 }
                     />
                 </View>
-                <TouchableHighlight style={{ marginTop:10, marginBottom:10 }} onPress={ Actions.score_view }>
-                    <Text>ScoreView</Text>
-                </TouchableHighlight>
             </View>
         )
     }
-}   
+}
+function mapStateToProps(state, props){
+    const { score } = state
+    const {
+        players: players,
+        actions: actions,
+        positions: positions,
+        time_to_drop_shuttle: time_to_drop_shuttle,
+        score_users: score_users,
+        conceded_users: conceded_users,
+        sides: sides
+    } = score || {
+    }
+    return {
+        players,
+        actions,
+        positions,
+        time_to_drop_shuttle,
+        score_users,
+        conceded_users,
+        sides,
+    }
+}
+
+export default connect(mapStateToProps)(ScoreCreate)
 
 const styles = StyleSheet.create({
     align_items_center:{
         alignItems: "center",
     },
     score_create_field: {
-        zIndex:1    
+        zIndex:1
     },
     score_game_create_score_text:{
         color:"white",

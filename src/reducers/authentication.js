@@ -1,6 +1,6 @@
 import {
-    REQUEST,
-    RECIEVED,
+    AUTH_REQUEST,
+    AUTH_RECIEVED,
 } from "../actions/authentication"
 
 const initialState = {
@@ -10,9 +10,9 @@ const initialState = {
 
 export default function authenticationReducer(state=initialState, action={}){
     switch (action.type){
-        case REQUEST:
+        case AUTH_REQUEST:
             return state
-        case RECIEVED:
+        case AUTH_RECIEVED:
             return Object.assign({}, state, {
                 is_authenticated: action.is_authenticated,
                 occurs_invalid_login_error: true

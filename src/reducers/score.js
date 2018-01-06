@@ -2,8 +2,8 @@ import{
     ADD_SCORE,
     SET_MODAL,
     HIDE_MODAL,
-    REQUEST,
-    RECIEVED,
+    SCORE_REQUEST,
+    SCORE_RECIEVED,
 } from '../actions/score';
 
 // 初期化
@@ -39,11 +39,13 @@ export default function scoreReducer(state = initialState, action = {}){
                 modal : action.modal,
             })
 
-        case REQUEST:
+        case SCORE_REQUEST:
             return state
 
-        case RECIEVED:
-            return {...state,}
+        case SCORE_RECIEVED:
+            return Object.assign({}, state, {
+                current_score_game_id: action.current_score_game_id
+            })
         default:
             return state;
     }
