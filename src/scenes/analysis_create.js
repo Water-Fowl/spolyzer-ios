@@ -6,7 +6,6 @@ import {
     Dimensions,
     TouchableHighlight,
     TouchableOpacity,
-    BackgroundImage,
     StyleSheet,
 } from "react-native";
 import { Actions } from 'react-native-router-flux';
@@ -16,6 +15,34 @@ import { Background } from "../components";
 import { NavBar } from "../components";
 
 export default class AnalysisCreate extends React.Component{
+
+    constructor(props) {
+        super(props);
+        gameStylePressed = [true, false]
+        shotTypePressed = [true, false, false, false, false, false]
+        termPressed = [true, false, false]
+        this.state = {gameStylePressed:gameStylePressed, shotTypePressed:shotTypePressed, termPressed:termPressed}
+    }
+
+    gameStyleOnPressButton(id){
+    gameStylePressed = [false, false]
+    gameStylePressed[id] = true
+    this.setState({gameStylePressed: gameStylePressed})
+  }
+
+    shotTypeOnPressButton(id){
+    shotTypePressed = [false, false, false, false, false, false]
+    shotTypePressed[id] = true
+    this.setState({shotTypePressed:shotTypePressed})
+  } 
+
+    termOnPressButton(id){
+    termPressed = [false, false, false]
+    termPressed[id] = true
+    this.setState({termPressed:termPressed})
+  }
+
+
     componentWillMount() {
         Orientation.lockToPortrait();
     }
@@ -24,108 +51,228 @@ export default class AnalysisCreate extends React.Component{
             <View style={styles.container}>
 
                <Background/>
-
-
-                <NavBar/>
+               <NavBar/>
 
                <Text style={styles.subtitle_text}>
                     検索条件
                 </Text>
 
-
+                
                 <View style={{flexDirection:"row"}}>
+                    
                     <Text style={styles.game_style_text}>
-                    試合形式
+                        試合形式
                     </Text>
+                    
                     <View style={styles.frame}>
-                        <Text style={styles.singles_text}>
-                            シングルス 
-                         </Text>
-                         <Text style={styles.doubles_text}>
-                           ダブルス
-                         </Text>
+                        
+                        <TouchableHighlight
+                            activeOpacity={ 0.6 }
+                            underlayColor={'transparent'}
+                            style={ this.state.gameStylePressed[0] ? styles.game_style_button_press : styles.game_style_button }
+                            onPress={() =>{
+                                this.gameStyleOnPressButton(0)
+                            }}
+                        >
+                            <Text style={ this.state.gameStylePressed[0] ? styles.select_text_Press : styles.select_text }>
+                                シングルス
+                            </Text>
+                        </TouchableHighlight>
+                         
+                        <TouchableHighlight
+                            activeOpacity={ 0.6 }
+                            underlayColor={'transparent'}
+                            style={ this.state.gameStylePressed[1] ? styles.game_style_button_press : styles.game_style_button }
+                            onPress={() =>{
+                                this.gameStyleOnPressButton(1)
+                            }}
+                        >
+                            <Text style={ this.state.gameStylePressed[1] ? styles.select_text_Press : styles.select_text }>
+                                ダブルス
+                            </Text>
+                        </TouchableHighlight>
+
                     </View>
+
                 </View>
 
+
                 <View style={{flexDirection:"row"}}>
+                    
                     <Text style={styles.shot_type_text}>
-                    球種
+                        球種
                     </Text>
+                    
                     <View style={styles.shot_type_frame}>
-                        <View style={{flexDirection:"row"}}>
-                            <Text style={styles.singles_text}>
-                                スマッシュ 
-                             </Text>
-                             <Text style={styles.doubles_text}>
-                                クリアー
+                        
+                        <TouchableHighlight
+                            activeOpacity={ 0.6 }
+                            underlayColor={'transparent'}
+                            style={ this.state.shotTypePressed[0] ? styles.shot_type_button_press : styles.shot_type_button }
+                            onPress={() =>{
+                                this.shotTypeOnPressButton(0)
+                            }}
+                        >
+                            <Text style={ this.state.shotTypePressed[0] ? styles.select_text_Press : styles.select_text }>
+                                スマッシュ
                             </Text>
-                        </View>
+                        </TouchableHighlight>
+                         
+                        <TouchableHighlight
+                            activeOpacity={ 0.6 }
+                            underlayColor={'transparent'}
+                            style={ this.state.shotTypePressed[1] ? styles.shot_type_button_press : styles.shot_type_button }
+                            onPress={() =>{
+                                this.shotTypeOnPressButton(1)
+                            }}
+                        >
+                            <Text style={ this.state.shotTypePressed[1] ? styles.select_text_Press : styles.select_text }>
+                                ドロップ
+                            </Text>
+                        </TouchableHighlight>
 
-                        <View style={{flexDirection:"row"}}>
-                            <Text style={styles.doubles_text}>
-                                ドロップ 
-                            </Text>
-                             <Text style={styles.doubles_text}>
-                                プッシュ 
-                            </Text>
-                        </View>
-
-                         <View style={{flexDirection:"row"}}>
-                            <Text style={styles.doubles_text}>
+                        <TouchableHighlight
+                            activeOpacity={ 0.6 }
+                            underlayColor={'transparent'}
+                            style={ this.state.shotTypePressed[2] ? styles.shot_type_button_press : styles.shot_type_button }
+                            onPress={() =>{
+                                this.shotTypeOnPressButton(2)
+                            }}
+                        >
+                            <Text style={ this.state.shotTypePressed[2] ? styles.select_text_Press : styles.select_text }>
                                 ヘアピン
                             </Text>
-                            <Text style={styles.doubles_text}>
-                               ドライブ
+                        </TouchableHighlight>
+                         
+                        <TouchableHighlight
+                            activeOpacity={ 0.6 }
+                            underlayColor={'transparent'}
+                            style={ this.state.shotTypePressed[3] ? styles.shot_type_button_press : styles.shot_type_button }
+                            onPress={() =>{
+                                this.shotTypeOnPressButton(3)
+                            }}
+                        >
+                            <Text style={ this.state.shotTypePressed[3] ? styles.select_text_Press : styles.select_text }>
+                                クリアー
                             </Text>
-                        </View>
+                        </TouchableHighlight>
+
+                        <TouchableHighlight
+                            activeOpacity={ 0.6 }
+                            underlayColor={'transparent'}
+                            style={ this.state.shotTypePressed[4] ? styles.shot_type_button_press : styles.shot_type_button }
+                            onPress={() =>{
+                                this.shotTypeOnPressButton(4)
+                            }}
+                        >
+                            <Text style={ this.state.shotTypePressed[4] ? styles.select_text_Press : styles.select_text }>
+                                プッシュ
+                            </Text>
+                        </TouchableHighlight>
+                         
+                        <TouchableHighlight
+                            activeOpacity={ 0.6 }
+                            underlayColor={'transparent'}
+                            style={ this.state.shotTypePressed[5] ? styles.shot_type_button_press : styles.shot_type_button }
+                            onPress={() =>{
+                                this.shotTypeOnPressButton(5)
+                            }}
+                        >
+                            <Text style={ this.state.shotTypePressed[5] ? styles.select_text_Press : styles.select_text }>
+                                ドライブ
+                            </Text>
+                        </TouchableHighlight>
+                        
                     </View>
+
                 </View>
 
+
                  <View style={{flexDirection:"row"}}>
-                    <Text style={styles.period_text}>
-                    期間
+
+                    <Text style={styles.term_text}>
+                        期間
                     </Text>
-                    <View style={styles.period_frame}>
-                        <Text style={styles.singles_text}>
-                            Day
-                         </Text>
-                         <Text style={styles.doubles_text}>
-                            Week
-                         </Text>
-                         <Text style={styles.doubles_text}>
-                            Month
-                         </Text>
+
+                    <View style={styles.term_frame}>
+                        
+                        <TouchableHighlight
+                            activeOpacity={ 0.6 }
+                            underlayColor={'transparent'}
+                            style={ this.state.termPressed[0] ? styles.term_button_press : styles.term_button }
+                            onPress={() =>{
+                                this.termOnPressButton(0)
+                            }}
+                        >
+                            <Text style={ this.state.termPressed[0] ? styles.select_text_Press : styles.select_text }>
+                                Day
+                            </Text>
+                        </TouchableHighlight>
+                         
+                        <TouchableHighlight
+                            activeOpacity={ 0.6 }
+                            underlayColor={'transparent'}
+                            style={ this.state.termPressed[1] ? styles.term_button_press : styles.term_button }
+                            onPress={() =>{
+                                this.termOnPressButton(1)
+                            }}
+                        >
+                            <Text style={ this.state.termPressed[1] ? styles.select_text_Press : styles.select_text }>
+                                Week
+                            </Text>
+                        </TouchableHighlight>
+
+                        <TouchableHighlight
+                            activeOpacity={ 0.6 }
+                            underlayColor={'transparent'}
+                            style={ this.state.termPressed[2] ? styles.term_button_press : styles.term_button }
+                            onPress={() =>{
+                                this.termOnPressButton(2)
+                            }}
+                        >
+                            <Text style={ this.state.termPressed[2] ? styles.select_text_Press : styles.select_text }>
+                                Month
+                            </Text>
+                        </TouchableHighlight>
+
                     </View>
+
                 </View>
 
+
                  <View style={{flexDirection:"row"}}>
+
                     <Text style={styles.opponent_text}>
-                    対戦相手
+                        対戦相手
                     </Text>
+
                     <View style={styles.opponent_frame}/>
                     <View style={styles.opponent_frame}/>
+
                 </View>
+
 
                  <View style={{flexDirection:"row"}}>
+
                     <Text style={styles.game_select_text}>
-                    試合選択
+                        試合選択
                     </Text>
+
                     <View style={styles.game_select_frame}/>
+
                 </View>
 
-                
-                <Image
-                    source={require("../../assets/img/analyze_button.png")}
-                    style={styles.analyze_button}
-                />
 
-                <TouchableOpacity onPress={Actions.analysis_view} style={styles.analyze}>
+                <TouchableOpacity onPress={Actions.analysis_view} style={styles.analyze}>                
+                    <Image
+                        source={require("../../assets/img/analyze_button.png")}
+                        style={styles.analyze_button}
+                    />
                     <Text style={styles.analyze_text}>
                         Analyze
                     </Text>
-                </TouchableOpacity>
+                </TouchableOpacity>          
 
-             
             </View>
 
 
@@ -145,7 +292,7 @@ const styles = StyleSheet.create({
 
     container: {
         flex: 1,
-     },
+    },
 
     subtitle_text: {
         color: '#ffffff',
@@ -154,7 +301,7 @@ const styles = StyleSheet.create({
         marginTop: -30,
         backgroundColor: 'transparent',
         fontWeight: 'bold',       
-     },
+    },
     
     game_style_text: {
         color: '#ffffff',
@@ -164,9 +311,9 @@ const styles = StyleSheet.create({
         backgroundColor: 'transparent',
         fontWeight: 'bold',
         alignSelf: 'flex-start',     
-     },
+    },
 
-     frame: {
+    frame: {
         flexDirection: "row",
         backgroundColor: 'transparent',
         borderRightColor: '#0a2444',
@@ -179,39 +326,48 @@ const styles = StyleSheet.create({
         marginLeft: 30,
         borderRadius: 3,
         marginTop: 37,
-     },
+        justifyContent: 'center',
+    },
 
-      singles_text: {
+    game_style_button_press: {
+        backgroundColor: '#0a2444',
+        width: 90,
+        marginRight: 3,
+        marginLeft: 3,
+        marginTop: 2,
+        marginBottom: 2,
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRadius: 3,
+    },
+
+    game_style_button: {
+        backgroundColor: 'transparent',
+        width: 90,
+        marginRight: 3,
+        marginLeft: 3,
+        marginTop: 2,
+        marginBottom: 2,
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRadius: 3,
+    },
+
+    select_text_Press: {
         color: '#ffffff',
         fontSize: 15,
         backgroundColor: 'transparent',
         fontWeight: 'bold',
-        alignSelf: 'flex-start',
-        paddingTop: 5,
-        paddingLeft: 12,
-        paddingBottom: 5,
-        paddingRight: 12,
-        marginLeft: 10,
-        marginTop: 2,
-        marginBottom: 4,       
-     },
+    },
 
-      doubles_text: {
+    select_text: {
         color: '#ffffff',
         fontSize: 15,
         backgroundColor: 'transparent',
         fontWeight: 'bold',
-        alignSelf: 'flex-start',
-        paddingTop: 5,
-        paddingLeft: 20,
-        paddingBottom: 5,
-        paddingRight: 20,
-        marginTop: 2,
-        marginBottom: 8,
-        marginLeft: 6,
-     },
+    },
 
-      shot_type_text: {
+    shot_type_text: {
         color: '#ffffff',
         fontSize: 15,
         marginTop: 68,
@@ -233,9 +389,38 @@ const styles = StyleSheet.create({
         marginLeft: 58,
         borderRadius: 3,
         marginTop: 25,
+        flexWrap: 'wrap',
+        justifyContent: 'center',
+        alignContent: 'center',
      },
 
-    period_text: {
+    shot_type_button_press: {
+        backgroundColor: '#0a2444',
+        height: 26,
+        width: 90,
+        marginRight: 3,
+        marginLeft: 3,
+        marginTop: 3,
+        marginBottom: 4,
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRadius: 3,
+    },
+
+    shot_type_button: {
+        backgroundColor: 'transparent',
+        height: 26,
+        width: 90,
+        marginRight: 3,
+        marginLeft: 3,
+        marginTop: 3,
+        marginBottom: 4,
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRadius: 3,
+    },
+
+    term_text: {
         color: '#ffffff',
         fontSize: 15,
         marginTop: 30,
@@ -245,7 +430,7 @@ const styles = StyleSheet.create({
         alignSelf: 'flex-start',     
      },
 
-    period_frame: {      
+    term_frame: {      
         flexDirection: "row",
         backgroundColor: 'transparent',
         borderRightColor: '#0a2444',
@@ -258,7 +443,32 @@ const styles = StyleSheet.create({
         marginLeft: 57,
         borderRadius: 3,
         marginTop: 25,
-     },
+        justifyContent: 'center',
+    },
+
+     term_button_press: {
+        backgroundColor: '#0a2444',
+        width: 60,
+        marginRight: 3,
+        marginLeft: 3,
+        marginTop: 2,
+        marginBottom: 2,
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRadius: 3,
+    },
+
+    term_button: {
+        backgroundColor: 'transparent',
+        width: 60,
+        marginRight: 3,
+        marginLeft: 3,
+        marginTop: 2,
+        marginBottom: 2,
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRadius: 3,
+    },
 
     opponent_text: {
         color: '#ffffff',
@@ -311,26 +521,23 @@ const styles = StyleSheet.create({
         marginTop: 25,
      },
 
-     analyze_button: {
-        marginTop: 524,
-        marginLeft: 96,
-        opacity: 0.4,
-        position:'absolute',
-     },
-
      analyze: {
         alignSelf: 'center',
-        marginTop: 55,
+        marginTop: 48,
+     },
+
+     analyze_button: {
+        opacity: 0.4,
+        marginTop: 0,
      },
 
      analyze_text: {
+        position: "absolute",
+        top: 14, 
         fontSize: 20,
         backgroundColor: 'transparent',
         color: '#ffffff',
-        paddingTop: 12,
-        paddingRight: 26,
-        paddingBottom: 16,
-        paddingLeft:26,
+        alignSelf: 'center',
      },
 
 
