@@ -245,8 +245,8 @@ const styles = StyleSheet.create({
           alignItems: "center",
        },
      horizontal_yellow_bar_left:{
-         borderColor: '#BDB76B',
-         backgroundColor:"#BDB76B",
+         borderColor: '#A29A67',
+         backgroundColor:"#A29A67",
          height: win.width*0.020,
          width: win.width*0.32,
          borderWidth: 1.3,
@@ -256,8 +256,8 @@ const styles = StyleSheet.create({
          marginLeft:win.width*0.12,
       },
       horizontal_yellow_bar_right:{
-          borderColor: '#BDB76B',
-          backgroundColor:"#BDB76B",
+          borderColor: '#A29A67',
+          backgroundColor:"#A29A67",
           height: win.width*0.020,
           width: win.width*0.32,
           borderWidth: 1.3,
@@ -294,8 +294,8 @@ const styles = StyleSheet.create({
         justifyContent:"flex-end",
       },
        vartical_yellow_bar_left:{
-           borderColor: '#BDB76B',
-           backgroundColor:"#BDB76B",
+           borderColor: '#A29A67',
+           backgroundColor:"#A29A67",
            height: win.height*0.24,
            width: win.width*0.020,
            borderWidth: 1.3,
@@ -304,8 +304,8 @@ const styles = StyleSheet.create({
            marginTop:win.height*0.03,
         },
         vartical_yellow_bar_right:{
-            borderColor: '#BDB76B',
-            backgroundColor:"#BDB76B",
+            borderColor: '#A29A67',
+            backgroundColor:"#A29A67",
             height: win.height*0.24,
             width: win.width*0.020,
             borderWidth: 1.3,
