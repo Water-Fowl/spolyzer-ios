@@ -47,7 +47,7 @@ const Route = () => (
                     <Scene key="Mypage" headerMode="none">
                         <Scene key="mypage_top" initial component={Mypage} title="マイページ"/>
                     </Scene>
-                    <Scene key='Score' headerMode="none">
+                    <Scene key='Score' hideNavBar={true}>
                         <Scene key="scre_game_create" initial component={ScoreGameCreate} title="単分析"/>
                         <Scene key="score_create" hideTabBar={true} component={ScoreCreate} title="スコアシート" />
                         <Scene key="score_view" component={ScoreView} title="結果" />

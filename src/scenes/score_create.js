@@ -65,10 +65,9 @@ export default class ScoreCreate extends React.Component {
                   source={ require('../../assets/img/field-line.png')}
                   style={ styles.field_line}
               />
+
               <TopContentBar
                   content_name="スコアシート"
-                  style={{position:'absolute',
-               }}
                />
                 <View style={style=styles.score_board_top}>
                       <View style={styles.score_board_top_left}>
@@ -101,21 +100,47 @@ export default class ScoreCreate extends React.Component {
                       </View>
 
                   </View>
-                  <View style={{flexDirection:"row",}}>
-                  <View style={styles.left_view_for_horizontal_yellow_bar}>
-                    <View style={styles.horizontal_yellow_bar}>
-                    </View>
+
+
+                  <View style={{flexDirection:"row",position:"absolute"}}>
+                      <View style={{position:"absolute",height:win.height,width:win.width*0.5,justifyContent:"center",alignItems:"center"}}>
+                        <View style={styles.horizontal_yellow_bar}></View>
+                        <View style={styles.horizontal_yellow_bar}></View>
+                      </View>
+
+                        <View style={{flex:1, height:win.height,flexDirection:"row",}}>
+
+                            <View style={{flex:1, height:win.height,justifyContent:"center",marginLeft:win.width*0.10,}}>
+                              <View style={styles.vartical_yellow_bar}></View>
+                              <View style={styles.vartical_yellow_bar}></View>
+                            </View>
+
+                            <View style={{flex:1, height:win.height,justifyContent:"center",alignItems:"center",marginLeft:-win.width*0.025,}}>
+                              <View style={styles.vartical_blue_bar}></View>
+                              <View style={styles.vartical_blue_bar}></View>
+                            </View>
+
+                            <View style={{flex:2, height:win.height,justifyContent:"center",alignItems:"center",marginLeft:-win.width*0.035,marginRight:-win.width*0.035}}>
+                              <View style={styles.horizontal_blue_bar}></View>
+                              <View style={styles.blue_circle}></View>
+                              <View style={styles.horizontal_blue_bar}></View>
+                            </View>
+
+                            <View style={{flex:1, height:win.height,justifyContent:"center",alignItems:"center",marginRight:win.width*0.030,}}>
+                              <View style={styles.vartical_blue_bar}></View>
+                              <View style={styles.vartical_blue_bar}></View>
+                            </View>
+
+
+                        </View>
+
+
+                        <View style={{flex:1,}}>
+
+
+                        </View>
                   </View>
-                  <View style={styles.right_view_for_horizontal_yellow_bar}>
-                    <View style={styles.horizontal_yellow_bar}>
-                    </View >
-                  </View>
 
-
-
-
-
-                  </View>
 
             </View>
         )
@@ -126,7 +151,7 @@ const styles = StyleSheet.create({
 
     field_line:{
       position: 'absolute',
-      height: 360,
+      height: win.height,
       resizeMode: 'contain'
     },
     score_board_top:{
@@ -162,10 +187,13 @@ const styles = StyleSheet.create({
      horizontal_yellow_bar:{
          borderColor: '#BDB76B',
          backgroundColor:"#BDB76B",
-         height:  12,
-         width: 200,
+         height: win.width*0.020,
+         width: win.width*0.32,
          borderWidth: 1.3,
          borderRadius: 3,
+         marginTop:win.height*0.33,
+         marginBottom:win.height*0.33,
+         marginLeft:win.width*0.12,
       },
       right_view_for_horizontal_yellow_bar:{
         flexDirection:"row",
@@ -210,4 +238,47 @@ const styles = StyleSheet.create({
           justifyContent:"center",
           alignItems: "center",
        },
+       vartical_yellow_bar:{
+           borderColor: '#BDB76B',
+           backgroundColor:"#BDB76B",
+           height: win.height*0.24,
+           width: win.width*0.020,
+           borderWidth: 1.3,
+           borderRadius: 3,
+           marginBottom:win.height*0.03,
+           marginTop:win.height*0.03,
+        },
+        vartical_blue_bar:{
+            borderColor: '#2EA7E0',
+            backgroundColor:"#2EA7E0",
+            height: win.height*0.24,
+            width: win.width*0.040,
+            borderWidth: 1.3,
+            borderRadius: 3,
+            opacity:0.3,
+            marginBottom:win.height*0.03,
+            marginTop:win.height*0.03,
+         },
+         horizontal_blue_bar:{
+             borderColor: '#2EA7E0',
+             backgroundColor:"#2EA7E0",
+             height: win.width*0.040,
+             width: win.height*0.22,
+             borderWidth: 1.3,
+             borderRadius: 3,
+             opacity:0.3,
+             alignSelf:"center",
+          },
+          blue_circle:{
+              borderColor: '#2EA7E0',
+              backgroundColor:"#2EA7E0",
+              height: win.height*0.17,
+              width: win.height*0.17,
+              borderWidth: 1,
+              borderRadius: 100,
+              opacity:0.3,
+              marginTop:win.height*0.11,
+              marginBottom:win.height*0.11,
+              alignSelf:"center",
+          },
     })
