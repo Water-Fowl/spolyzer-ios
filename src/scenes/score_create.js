@@ -104,15 +104,15 @@ export default class ScoreCreate extends React.Component {
 
                   <View style={{flexDirection:"row",position:"absolute"}}>
                       <View style={{position:"absolute",height:win.height,width:win.width*0.5,justifyContent:"center",alignItems:"center"}}>
-                        <View style={styles.horizontal_yellow_bar}></View>
-                        <View style={styles.horizontal_yellow_bar}></View>
+                        <View style={styles.horizontal_yellow_bar_left}></View>
+                        <View style={styles.horizontal_yellow_bar_left}></View>
                       </View>
 
                         <View style={{flex:1, height:win.height,flexDirection:"row",}}>
 
                             <View style={{flex:1, height:win.height,justifyContent:"center",marginLeft:win.width*0.10,}}>
-                              <View style={styles.vartical_yellow_bar}></View>
-                              <View style={styles.vartical_yellow_bar}></View>
+                              <View style={styles.vartical_yellow_bar_left}></View>
+                              <View style={styles.vartical_yellow_bar_left}></View>
                             </View>
 
                             <View style={{flex:1, height:win.height,justifyContent:"center",alignItems:"center",marginLeft:-win.width*0.025,}}>
@@ -136,7 +136,35 @@ export default class ScoreCreate extends React.Component {
 
 
                         <View style={{flex:1,}}>
+                        <View style={{position:"absolute",height:win.height,width:win.width*0.5,alignItems:"center",justifyContent:"center"}}>
+                          <View style={styles.horizontal_yellow_bar_right}></View>
+                          <View style={styles.horizontal_yellow_bar_right}></View>
+                        </View>
 
+                          <View style={{flex:1, height:win.height,flexDirection:"row-reverse",}}>
+
+                              <View style={{flex:1, height:win.height,justifyContent:"center",marginRight:win.width*0.10,}}>
+                                <View style={styles.vartical_yellow_bar_right}></View>
+                                <View style={styles.vartical_yellow_bar_right}></View>
+                              </View>
+
+                              <View style={{flex:1, height:win.height,justifyContent:"center",alignItems:"center",marginRight:-win.width*0.025,}}>
+                                <View style={styles.vartical_blue_bar}></View>
+                                <View style={styles.vartical_blue_bar}></View>
+                              </View>
+
+                              <View style={{flex:2, height:win.height,justifyContent:"center",alignItems:"center",marginLeft:-win.width*0.035,marginRight:-win.width*0.035}}>
+                                <View style={styles.horizontal_blue_bar}></View>
+                                <View style={styles.blue_circle}></View>
+                                <View style={styles.horizontal_blue_bar}></View>
+                              </View>
+
+                              <View style={{flex:1, height:win.height,justifyContent:"center",alignItems:"center",marginLeft:win.width*0.030,}}>
+                                <View style={styles.vartical_blue_bar}></View>
+                                <View style={styles.vartical_blue_bar}></View>
+                              </View>
+
+                              </View>
 
                         </View>
                   </View>
@@ -184,7 +212,7 @@ const styles = StyleSheet.create({
         justifyContent:"center",
         alignItems: "center",
      },
-     horizontal_yellow_bar:{
+     horizontal_yellow_bar_left:{
          borderColor: '#BDB76B',
          backgroundColor:"#BDB76B",
          height: win.width*0.020,
@@ -194,6 +222,17 @@ const styles = StyleSheet.create({
          marginTop:win.height*0.33,
          marginBottom:win.height*0.33,
          marginLeft:win.width*0.12,
+      },
+      horizontal_yellow_bar_right:{
+          borderColor: '#BDB76B',
+          backgroundColor:"#BDB76B",
+          height: win.width*0.020,
+          width: win.width*0.32,
+          borderWidth: 1.3,
+          borderRadius: 3,
+          marginTop:win.height*0.33,
+          marginBottom:win.height*0.33,
+          marginRight:win.width*0.12,
       },
       right_view_for_horizontal_yellow_bar:{
         flexDirection:"row",
@@ -238,7 +277,7 @@ const styles = StyleSheet.create({
           justifyContent:"center",
           alignItems: "center",
        },
-       vartical_yellow_bar:{
+       vartical_yellow_bar_left:{
            borderColor: '#BDB76B',
            backgroundColor:"#BDB76B",
            height: win.height*0.24,
@@ -248,6 +287,17 @@ const styles = StyleSheet.create({
            marginBottom:win.height*0.03,
            marginTop:win.height*0.03,
         },
+        vartical_yellow_bar_right:{
+            borderColor: '#BDB76B',
+            backgroundColor:"#BDB76B",
+            height: win.height*0.24,
+            width: win.width*0.020,
+            borderWidth: 1.3,
+            borderRadius: 3,
+            marginBottom:win.height*0.03,
+            marginTop:win.height*0.03,
+            marginLeft:win.width*0.075
+         },
         vartical_blue_bar:{
             borderColor: '#2EA7E0',
             backgroundColor:"#2EA7E0",
