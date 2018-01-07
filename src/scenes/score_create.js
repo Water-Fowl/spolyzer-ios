@@ -71,13 +71,10 @@ export default class ScoreCreate extends React.Component {
                />
                 <View style={style=styles.score_board_top}>
                       <View style={styles.score_board_top_left}>
-                          {/*ここのマークは変更予定ゆえ空白。スコアの戻しのボタンとなる*/}
-                          <Image
-                            source={ require('../../assets/img/score_create_score_return_button.png')}
-                            style={styles.score_return_button}
-                            />
-                          <View style={styles.frame_name}><Text style={{color:"white"}}>Nameが表示される</Text></View>
-                          <View style={styles.frame_score}><Text style={{color:"white",fontSize:40,}}>0</Text></View>
+                          {/*スコアの戻しのボタンとなる。マークは要検討。*/}
+                          <View style={styles.score_return_button}><Text style={{color:"white"}}>前ラリー</Text></View>
+                          <View style={styles.frame_name}><Text style={{color:"white"}}>ここにNameが表示される</Text></View>
+                          <View style={styles.frame_score}><Text style={{color:"white",fontSize:30,}}>0</Text></View>
                           {/*この三角形の中は何もかかなくなった*/}
                           <Image
                             source={require('../../assets/img/score_create_triangle_left.png')}
@@ -91,12 +88,9 @@ export default class ScoreCreate extends React.Component {
                             source={require('../../assets/img/score_create_triangle_right.png')}
                             style={styles.triangle}
                           />
-                          <View style={styles.frame_score}><Text style={{color:"white",fontSize:40,}}>0</Text></View>
-                          <View style={styles.frame_name}><Text style={{color:"white"}}>Nameが表示される</Text></View>
-                          <Image
-                            source={ require('../../assets/img/score_create_reset_button.png')}
-                            style={styles.score_reset_button}
-                            />
+                          <View style={styles.frame_score}><Text style={{color:"white",fontSize:30,}}>0</Text></View>
+                          <View style={styles.frame_name}><Text style={{color:"white"}}>ここにNameが表示される</Text></View>
+                          <View style={styles.game_finish_button}><Text style={{color:"white"}}>試合終了</Text></View>
                       </View>
 
                   </View>
@@ -191,20 +185,30 @@ const styles = StyleSheet.create({
       backgroundColor:"transparent",
       flexDirection:"row",
       flex:1,
-      paddingTop:18,
+      paddingTop:10,
       paddingBottom:8,
     },
     score_return_button:{
-      marginLeft:25,
-      marginRight:5,
-    },
+        borderRightColor: '#28a8de',
+        borderTopColor: '#28a8de',
+        borderLeftColor: '#28a8de',
+        borderBottomColor: '#28a8de',
+        height:  30,
+        width: 40,
+        borderWidth: 1.3,
+        borderRadius: 5,
+        marginRight:3,
+        marginLeft:15,
+        justifyContent:"center",
+        alignItems: "center",
+     },
     frame_name: {
         borderRightColor: '#28a8de',
         borderTopColor: '#28a8de',
         borderLeftColor: '#28a8de',
         borderBottomColor: '#28a8de',
-        height:  40,
-        width: 130,
+        height:  30,
+        width: 110,
         borderWidth: 1.3,
         borderRadius: 5,
         marginRight:3,
@@ -212,6 +216,34 @@ const styles = StyleSheet.create({
         justifyContent:"center",
         alignItems: "center",
      },
+     frame_score:{
+         borderRightColor: '#28a8de',
+         borderTopColor: '#28a8de',
+         borderLeftColor: '#28a8de',
+         borderBottomColor: '#28a8de',
+         height:  30,
+         width: 40,
+         borderWidth: 1.3,
+         borderRadius: 5,
+         marginRight:3,
+         marginLeft:3,
+         justifyContent:"center",
+         alignItems: "center",
+      },
+      game_finish_button:{
+          borderRightColor: '#28a8de',
+          borderTopColor: '#28a8de',
+          borderLeftColor: '#28a8de',
+          borderBottomColor: '#28a8de',
+          height:  30,
+          width: 40,
+          borderWidth: 1.3,
+          borderRadius: 5,
+          marginRight:15,
+          marginLeft:3,
+          justifyContent:"center",
+          alignItems: "center",
+       },
      horizontal_yellow_bar_left:{
          borderColor: '#BDB76B',
          backgroundColor:"#BDB76B",
@@ -247,36 +279,20 @@ const styles = StyleSheet.create({
         marginLeft:108,
       },
       triangle:{
-        marginTop:10,
+        marginTop:5,
         marginRight:3,
         marginLeft:3,
+        width:27,
+        height:24,
       },
       score_board_top_right:{
         backgroundColor:"transparent",
         flexDirection:"row",
         flex:1,
-        paddingTop:18,
+        paddingTop:10,
         paddingBottom:8,
         justifyContent:"flex-end",
       },
-      score_reset_button:{
-        marginLeft:5,
-        marginRight:25,
-      },
-      frame_score:{
-          borderRightColor: '#28a8de',
-          borderTopColor: '#28a8de',
-          borderLeftColor: '#28a8de',
-          borderBottomColor: '#28a8de',
-          height:  40,
-          width: 50,
-          borderWidth: 1.3,
-          borderRadius: 5,
-          marginRight:3,
-          marginLeft:3,
-          justifyContent:"center",
-          alignItems: "center",
-       },
        vartical_yellow_bar_left:{
            borderColor: '#BDB76B',
            backgroundColor:"#BDB76B",
