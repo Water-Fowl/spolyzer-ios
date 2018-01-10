@@ -298,7 +298,7 @@ const styles = StyleSheet.create({
         color: '#ffffff',
         fontSize: 22,
         alignSelf: 'center',
-        marginTop: -30,
+        marginTop: -26,
         backgroundColor: 'transparent',
         fontWeight: 'bold',       
     },
