@@ -58,8 +58,7 @@ export default class ScoreCreate extends React.Component {
     render(){
 
         return(
-            <View style={{
-              alignItems:"center"}}>
+            <View style={styles.over_view}>
               <LandScapeBackground/>
               <Image
                   source={ require('../../assets/img/field-line.png')}
@@ -72,9 +71,9 @@ export default class ScoreCreate extends React.Component {
                 <View style={style=styles.score_board_top}>
                       <View style={styles.score_board_top_left}>
                           {/*スコアの戻しのボタンとなる。マークは要検討。*/}
-                          <View style={styles.score_return_button}><Text style={{color:"white"}}>前ラリー</Text></View>
-                          <View style={styles.frame_name}><Text style={{color:"white"}}>ここにNameが表示される</Text></View>
-                          <View style={styles.frame_score}><Text style={{color:"white",fontSize:30,}}>0</Text></View>
+                          <View style={styles.score_return_button}><Text style={styles.white_text}>前ラリー</Text></View>
+                          <View style={styles.frame_name}><Text style={styles.white_text}>ここにNameが表示される</Text></View>
+                          <View style={styles.frame_score}><Text style={styles.score_text}>0</Text></View>
                           {/*この三角形の中は何もかかなくなった*/}
                           <Image
                             source={require('../../assets/img/score_create_triangle_left.png')}
@@ -88,39 +87,39 @@ export default class ScoreCreate extends React.Component {
                             source={require('../../assets/img/score_create_triangle_right.png')}
                             style={styles.triangle}
                           />
-                          <View style={styles.frame_score}><Text style={{color:"white",fontSize:30,}}>0</Text></View>
-                          <View style={styles.frame_name}><Text style={{color:"white"}}>ここにNameが表示される</Text></View>
-                          <View style={styles.game_finish_button}><Text style={{color:"white"}}>試合終了</Text></View>
+                          <View style={styles.frame_score}><Text style={styles.score_text}>0</Text></View>
+                          <View style={styles.frame_name}><Text style={styles.white_text}>ここにNameが表示される</Text></View>
+                          <View style={styles.game_finish_button}><Text style={styles.white_text}>試合終了</Text></View>
                       </View>
 
                   </View>
 
 
-                  <View style={{flexDirection:"row",position:"absolute"}}>
-                      <View style={{position:"absolute",height:win.height,width:win.width*0.5,justifyContent:"center",alignItems:"center"}}>
+                  <View style={styles.field_outer_view}>
+                      <View style={styles.view_for_horizontal_yellow_bar_left}>
                         <View style={styles.horizontal_yellow_bar_left}></View>
                         <View style={styles.horizontal_yellow_bar_left}></View>
                       </View>
 
-                        <View style={{flex:1, height:win.height,flexDirection:"row",}}>
+                        <View style={styles.field_outer_view_left_side}>
 
-                            <View style={{flex:1, height:win.height,justifyContent:"center",marginLeft:win.width*0.10,}}>
+                            <View style={styles.view_for_vartical_yellow_bar_left}>
                               <View style={styles.vartical_yellow_bar_left}></View>
                               <View style={styles.vartical_yellow_bar_left}></View>
                             </View>
 
-                            <View style={{flex:1, height:win.height,justifyContent:"center",alignItems:"center",marginLeft:-win.width*0.025,}}>
+                            <View style={styles.view_for_vartical_blue_bar}>
                               <View style={styles.vartical_blue_bar}></View>
                               <View style={styles.vartical_blue_bar}></View>
                             </View>
 
-                            <View style={{flex:2, height:win.height,justifyContent:"center",alignItems:"center",marginLeft:-win.width*0.035,marginRight:-win.width*0.035}}>
+                            <View style={styles.view_for_horizontal_blue_bar_and_circle}>
                               <View style={styles.horizontal_blue_bar}></View>
                               <View style={styles.blue_circle}></View>
                               <View style={styles.horizontal_blue_bar}></View>
                             </View>
 
-                            <View style={{flex:1, height:win.height,justifyContent:"center",alignItems:"center",marginRight:win.width*0.030,}}>
+                            <View style={styles.view_for_vartical_blue_bar_inner}>
                               <View style={styles.vartical_blue_bar}></View>
                               <View style={styles.vartical_blue_bar}></View>
                             </View>
@@ -129,31 +128,31 @@ export default class ScoreCreate extends React.Component {
                         </View>
 
 
-                        <View style={{flex:1,}}>
-                        <View style={{position:"absolute",height:win.height,width:win.width*0.5,alignItems:"center",justifyContent:"center"}}>
+                        <View style={styles.field_outer_view_right_side}>
+                        <View style={styles.view_for_horizantal_yellow_bar_right}>
                           <View style={styles.horizontal_yellow_bar_right}></View>
                           <View style={styles.horizontal_yellow_bar_right}></View>
                         </View>
 
-                          <View style={{flex:1, height:win.height,flexDirection:"row-reverse",}}>
+                          <View style={styles.reverse_view}>
 
-                              <View style={{flex:1, height:win.height,justifyContent:"center",marginRight:win.width*0.10,}}>
+                              <View style={styles.view_for_vartical_yellow_bar_right}>
                                 <View style={styles.vartical_yellow_bar_right}></View>
                                 <View style={styles.vartical_yellow_bar_right}></View>
                               </View>
 
-                              <View style={{flex:1, height:win.height,justifyContent:"center",alignItems:"center",marginRight:-win.width*0.025,}}>
+                              <View style={styles.right_side_vartical_blue_bar}>
                                 <View style={styles.vartical_blue_bar}></View>
                                 <View style={styles.vartical_blue_bar}></View>
                               </View>
 
-                              <View style={{flex:2, height:win.height,justifyContent:"center",alignItems:"center",marginLeft:-win.width*0.035,marginRight:-win.width*0.035}}>
+                              <View style={styles.right_side_horizontal_blue_bar_and_circle}>
                                 <View style={styles.horizontal_blue_bar}></View>
                                 <View style={styles.blue_circle}></View>
                                 <View style={styles.horizontal_blue_bar}></View>
                               </View>
 
-                              <View style={{flex:1, height:win.height,justifyContent:"center",alignItems:"center",marginLeft:win.width*0.030,}}>
+                              <View style={styles.right_side_vartical_blue_bar_inner}>
                                 <View style={styles.vartical_blue_bar}></View>
                                 <View style={styles.vartical_blue_bar}></View>
                               </View>
@@ -170,11 +169,30 @@ export default class ScoreCreate extends React.Component {
 }
 
 const styles = StyleSheet.create({
-
+    over_view:{
+      alignItems:"center"
+    },
     field_line:{
       position: 'absolute',
       height: win.height,
       resizeMode: 'contain'
+    },
+    field_outer_view:{
+      flexDirection:"row",position:"absolute"
+    },
+    field_outer_view_left_side:{
+      flex:1,
+      height:win.height,
+      flexDirection:"row",
+    },
+    field_outer_view_right_side:{
+      flex:1,
+    },
+    white_text:{
+      color:"white"
+    },
+    score_text:{
+      color:"white",fontSize:30,
     },
     score_board_top:{
       flexDirection:"row",
@@ -187,6 +205,14 @@ const styles = StyleSheet.create({
       flex:1,
       paddingTop:10,
       paddingBottom:8,
+    },
+    score_board_top_right:{
+      backgroundColor:"transparent",
+      flexDirection:"row",
+      flex:1,
+      paddingTop:10,
+      paddingBottom:8,
+      justifyContent:"flex-end",
     },
     score_return_button:{
         borderRightColor: '#28a8de',
@@ -244,56 +270,123 @@ const styles = StyleSheet.create({
           justifyContent:"center",
           alignItems: "center",
        },
-     horizontal_yellow_bar_left:{
-         borderColor: '#A29A67',
-         backgroundColor:"#A29A67",
-         height: win.width*0.020,
-         width: win.width*0.32,
-         borderWidth: 1.3,
-         borderRadius: 3,
-         marginTop:win.height*0.33,
-         marginBottom:win.height*0.33,
-         marginLeft:win.width*0.12,
-      },
-      horizontal_yellow_bar_right:{
-          borderColor: '#A29A67',
-          backgroundColor:"#A29A67",
-          height: win.width*0.020,
-          width: win.width*0.32,
-          borderWidth: 1.3,
-          borderRadius: 3,
-          marginTop:win.height*0.33,
-          marginBottom:win.height*0.33,
-          marginRight:win.width*0.12,
-      },
-      right_view_for_horizontal_yellow_bar:{
+      view_for_horizontal_yellow_bar_left:{
+         position:"absolute",
+         height:win.height,
+         width:win.width*0.5,
+         justifyContent:"center",
+         alignItems:"center"
+     },
+     view_for_vartical_yellow_bar_left:{
+       flex:1,
+       height:win.height,
+       justifyContent:"center",
+       marginLeft:win.width*0.10,
+     },
+     view_for_vartical_yellow_bar_right:{
+       flex:1,
+       height:win.height,
+       justifyContent:"center",
+       marginRight:win.width*0.10,
+     },
+     view_for_vartical_blue_bar:{
+       flex:1,
+       height:win.height,
+       justifyContent:"center",
+       alignItems:"center",
+       marginLeft:-win.width*0.025,
+   },
+   view_for_horizantal_yellow_bar_right:{
+     position:"absolute",
+     height:win.height,
+     width:win.width*0.5,
+     alignItems:"center",
+     justifyContent:"center"
+   },
+   view_for_horizontal_blue_bar_and_circle:{
+     flex:2,
+     height:win.height,
+     justifyContent:"center",
+     alignItems:"center",
+     marginLeft:-win.width*0.035,
+     marginRight:-win.width*0.035
+   },
+   view_for_vartical_blue_bar_inner:{
+     flex:1,
+     height:win.height,
+     justifyContent:"center",
+     alignItems:"center",
+     marginRight:win.width*0.030,
+   },
+   reverse_view:{
+     flex:1,
+     height:win.height,
+     flexDirection:"row-reverse",
+   },
+   right_side_vartical_blue_bar:{
+     flex:1,
+     height:win.height,
+     justifyContent:"center",
+     alignItems:"center",
+     marginRight:-win.width*0.025,
+   },
+   right_side_horizontal_blue_bar_and_circle:{
+     flex:2,
+     height:win.height,
+     justifyContent:"center",
+     alignItems:"center",
+     marginLeft:-win.width*0.035,
+     marginRight:-win.width*0.035
+   },
+   right_side_vartical_blue_bar_inner:{
+     flex:1,
+     height:win.height,
+     justifyContent:"center",
+     alignItems:"center",
+     marginLeft:win.width*0.030,
+   },
+  right_view_for_horizontal_yellow_bar:{
         flexDirection:"row",
         flex:1,
         justifyContent:"flex-end",
         marginTop:30,
         marginRight:108,},
-      left_view_for_horizontal_yellow_bar:{
+  left_view_for_horizontal_yellow_bar:{
         flexDirection:"row",
         flex:1,
         marginTop:30,
         marginLeft:108,
       },
-      triangle:{
+  horizontal_yellow_bar_left:{
+        borderColor: '#A29A67',
+        backgroundColor:"#A29A67",
+        height: win.width*0.020,
+        width: win.width*0.32,
+        borderWidth: 1.3,
+        borderRadius: 3,
+        marginTop:win.height*0.33,
+        marginBottom:win.height*0.33,
+        marginLeft:win.width*0.12,
+         },
+  horizontal_yellow_bar_right:{
+        borderColor: '#A29A67',
+        backgroundColor:"#A29A67",
+        height: win.width*0.020,
+        width: win.width*0.32,
+        borderWidth: 1.3,
+        borderRadius: 3,
+        marginTop:win.height*0.33,
+        marginBottom:win.height*0.33,
+        marginRight:win.width*0.12,
+         },
+  triangle:{
         marginTop:5,
         marginRight:3,
         marginLeft:3,
         width:27,
         height:24,
       },
-      score_board_top_right:{
-        backgroundColor:"transparent",
-        flexDirection:"row",
-        flex:1,
-        paddingTop:10,
-        paddingBottom:8,
-        justifyContent:"flex-end",
-      },
-       vartical_yellow_bar_left:{
+    vartical_yellow_bar_left:{
            borderColor: '#A29A67',
            backgroundColor:"#A29A67",
            height: win.height*0.24,
@@ -303,7 +396,7 @@ const styles = StyleSheet.create({
            marginBottom:win.height*0.03,
            marginTop:win.height*0.03,
         },
-        vartical_yellow_bar_right:{
+    vartical_yellow_bar_right:{
             borderColor: '#A29A67',
             backgroundColor:"#A29A67",
             height: win.height*0.24,
@@ -314,7 +407,7 @@ const styles = StyleSheet.create({
             marginTop:win.height*0.03,
             marginLeft:win.width*0.075
          },
-        vartical_blue_bar:{
+    vartical_blue_bar:{
             borderColor: '#2EA7E0',
             backgroundColor:"#2EA7E0",
             height: win.height*0.24,
@@ -325,7 +418,7 @@ const styles = StyleSheet.create({
             marginBottom:win.height*0.03,
             marginTop:win.height*0.03,
          },
-         horizontal_blue_bar:{
+      horizontal_blue_bar:{
              borderColor: '#2EA7E0',
              backgroundColor:"#2EA7E0",
              height: win.width*0.040,
@@ -335,7 +428,7 @@ const styles = StyleSheet.create({
              opacity:0.3,
              alignSelf:"center",
           },
-          blue_circle:{
+      blue_circle:{
               borderColor: '#2EA7E0',
               backgroundColor:"#2EA7E0",
               height: win.height*0.17,
