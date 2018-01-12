@@ -7,7 +7,7 @@ export const GAME_INFORMATION_SUCCESS = "GAME_INFORMATION_SUCCESS"
 export function postGameInformation(information_body){
     return dispatch => {
         dispatch(requestGameInformation());
-        return fetch(POST_SCORE_GAME_ENDPOINT, {
+        return fetch(GET_GAMES_ENDPOINT, {
             method: 'POST',
             heaers: {
                 'Accept': 'application/json',

@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
 import scoreReducer from './score';
 import authenticationReducer from './authentication';
+import analyzeReducer from './authentication';
 
-export { scoreReducer, authenticationReducer }
+export { analyzeReducer, scoreReducer, authenticationReducer }

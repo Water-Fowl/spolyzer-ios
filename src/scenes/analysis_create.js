@@ -34,7 +34,9 @@ class AnalysisCreate extends React.Component{
     render(){
         return(
             <View>
-              <TouchableHighlight onPress={this.postGameInformationForm}>
+              <TouchableHighlight onPress={() =>{
+                  this.postGameInformationForm()
+              }}>
                 <Text>ポスト</Text>
               </TouchableHighlight>
             </View>
