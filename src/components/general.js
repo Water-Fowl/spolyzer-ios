@@ -21,6 +21,19 @@ export class Background extends React.Component {
     }
 }
 
+export class NavBar extends React.Component {
+    render(){
+        return(
+            <Image
+                source={require("../../assets/img/navibar.png")}
+                style={GeneralStyles.navibar}
+            />
+               
+        );
+    }
+}
+
+
 export class TopBar extends React.Component{
     render(){
         return(
@@ -78,13 +91,18 @@ export class NavigateButton extends React.Component{
 }
 
 const GeneralStyles = StyleSheet.create({
-  background: {
-          flex: 1,
-          resizeMode: 'cover',
-          position:'absolute',
-          alignSelf: 'stretch',
-          width:win.width,
-      },
+    background: {
+        flex: 1,
+        resizeMode: 'cover',
+        position:'absolute',
+        alignSelf: 'stretch',
+        width:win.width,
+    },
+    navibar: {
+        justifyContent: 'center',
+        marginLeft: -20,
+        marginTop: -10,
+    },
     landscape_background: {
         zIndex:0,
         flex: 1,
