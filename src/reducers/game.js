@@ -3,9 +3,11 @@ import {
     GAME_INFORMATION_RECEIVED,
 } from '../actions/analyze'
 
-const initailState = {}
+const initialState = {
+    score_game_ids: []
+}
 
-export default function analyzeReducer(state=initialState, action={}){
+export default function gameReducer(state=initialState, action={}){
     switch(action.type){
         case GAME_INFORMATION_REQUEST:
             return state
@@ -13,6 +15,6 @@ export default function analyzeReducer(state=initialState, action={}){
             return Object.assign({}, state, {
                 score_game_ids: state.score_game_ids
             })
-            return state
     }
+    return state
 }

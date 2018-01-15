@@ -3,7 +3,7 @@ import { Actions } from 'react-native-router-flux'
 import { GET_GAMES_ENDPOINT } from '../config/api'
 
 export const GAME_INFORMATION_REQUEST = "GAME_INFORMATION_REQUEST"
-export const GAME_INFORMATION_SUCCESS = "GAME_INFORMATION_SUCCESS"
+export const GAME_INFORMATION_RECEIVED = "GAME_INFORMATION_RECIEVED"
 export function postGameInformation(information_body){
     return dispatch => {
         dispatch(requestGameInformation());
@@ -16,8 +16,8 @@ export function postGameInformation(information_body){
             body: JSON.stringify(information_body)
         })
         .then(response => response.json())
-        .then(json => dispath(receivedGameInformation(json.score_game_ids)))
-        .then(Actions.action_view())
+        .then(json => dispatch(receivedGameInformation(json.score_game_ids)))
+        .then(Actions.analysis_view())
         .catch(function(error){
             console.log(error)
         })
