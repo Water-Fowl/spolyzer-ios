@@ -6,10 +6,11 @@ export const GAME_INFORMATION_REQUEST = "GAME_INFORMATION_REQUEST"
 export const GAME_INFORMATION_RECEIVED = "GAME_INFORMATION_RECIEVED"
 export function postGameInformation(information_body){
     return dispatch => {
+        console.log(JSON.stringify(information_body))
         dispatch(requestGameInformation());
         return fetch(GET_GAMES_ENDPOINT, {
             method: 'POST',
-            heaers: {
+            headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
             },
@@ -34,6 +35,6 @@ function receivedGameInformation(score_game_ids){
     console.log(score_game_ids)
     return {
         type: GAME_INFORMATION_RECEIVED,
-        current_score_game_ids: score_game_ids,
+        score_game_ids: score_game_ids,
     }
 }

@@ -13,7 +13,7 @@ export default function gameReducer(state=initialState, action={}){
             return state
         case GAME_INFORMATION_RECEIVED:
             return Object.assign({}, state, {
-                score_game_ids: state.score_game_ids
+                score_game_ids: action.score_game_ids
             })
     }
     return state

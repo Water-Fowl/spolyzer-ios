@@ -24,9 +24,9 @@ class AnalysisCreate extends React.Component{
         const { dispatch } = this.props;
         const sample_data = {
             "data":{
-                "user_id": "2",
-                "opponent_user_id": "1",
-                "victory": "1",
+                "user_id": 2,
+                "opponent_user": 1,
+                "victory": 1,
             }
         }
         dispatch(postGameInformation(sample_data))
