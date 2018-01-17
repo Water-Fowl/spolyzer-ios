@@ -1,53 +1,66 @@
 import React from 'react';
-import { 
+import {
     Dimensions,
     StyleSheet,
     Image,
     Text,
     View,
-    TouchableHighlight 
+    TouchableHighlight
 } from 'react-native';
 import Modal from 'react-native-modal';
-import { 
-    hideModal, 
-    fetchAddScore, } 
+import {
+    hideModal,
+    fetchAddScore, }
 from '../actions/score';
 import { connect } from 'react-redux';
 
 class ActionModal extends React.Component {
-    
     constructor(props) {
         super(props);
         this.setScoreData.bind(this);
         this.hideModal.bind(this);
+        this.setModalVisible.bind(this);
+        this.state = { modalVisible: false }
     }
 
     hideModal(){
         const { dispatch } = this.props
         dispatch(hideModal())
+        const { modal } = this.props
+        console.log(modal)
+        this.setState({modalVisible: modal})
     }
-    
+
     setScoreData(action){
         const { position, side, dispatch } = this.props
         dispatch(fetchAddScore(position, action, side))
     }
-    
+    setModalVisible(){
+        if (this.state.modalVisible){
+            return{
+                backgroundColor: 'blue'
+            }
+        }
+        else{
+            return {
+                height: 0,
+                opacity: 0
+            }
+        }
+    }
+
     render(){
         const { modal, position, side } = this.props;
-        return( 
-                <Modal
-                    animationInTiming ={ 100 }
-                    animationOutTiming = { 100 }
-                    backdropColor={'rgb(46, 167, 224)'}
-                    backdropOpacity={0.5}
-                    isVisible={ modal }
+        return(
+                <View
+                    style={this.setModalVisible()}
                 >
                     <View style={{ margin:40, alignItems:"center" }}>
                         <TouchableHighlight onPress={
                             () =>{
                                 this.setScoreData(position, 0, side)
                                 this.hideModal()
-                            } 
+                            }
                         }>
                             <Text style={ styles.score_create_text }>ヘアピン</Text>
                         </TouchableHighlight>
@@ -55,7 +68,7 @@ class ActionModal extends React.Component {
                             () =>{
                                 this.setScoreData(1)
                                 this.hideModal()
-                            } 
+                            }
                         }>
                             <Text style={ styles.score_create_text }>スマッシュ</Text>
                         </TouchableHighlight>
@@ -63,7 +76,7 @@ class ActionModal extends React.Component {
                             () =>{
                                 this.setScoreData(2)
                                 this.hideModal()
-                            } 
+                            }
                         }>
                             <Text style={ styles.score_create_text }>クリアー</Text>
                         </TouchableHighlight>
@@ -71,7 +84,7 @@ class ActionModal extends React.Component {
                             () =>{
                                 this.setScoreData(position, 3, side)
                                 this.hideModal()
-                            } 
+                            }
                         }>
                             <Text style={ styles.score_create_text }>ドライブ</Text>
                         </TouchableHighlight>
@@ -79,7 +92,7 @@ class ActionModal extends React.Component {
                             () =>{
                                 this.setScoreData(position, 4, side)
                                 this.hideModal()
-                            } 
+                            }
                         }>
                             <Text style={ styles.score_create_text }>プッシュ</Text>
                         </TouchableHighlight>
@@ -88,18 +101,17 @@ class ActionModal extends React.Component {
                             () =>{
                                 this.setScoreData(5)
                                 this.hideModal()
-                            } 
+                            }
                         }>
                             <Text style={ styles.score_create_text }>ロブ</Text>
                         </TouchableHighlight>
                         ):null
                         }
-                        
                         <TouchableHighlight onPress={
                             () =>{
                                 this.setScoreData(6)
                                 this.hideModal()
-                            } 
+                            }
                         }>
                             <Text style={ styles.score_create_text }>ドロップ</Text>
                         </TouchableHighlight>
@@ -109,7 +121,7 @@ class ActionModal extends React.Component {
                             () =>{
                                 this.setScoreData(7)
                                 this.hideModal()
-                            } 
+                            }
                         }>
 
                             <Text style={ styles.score_create_text }>ミス(スマッシュ)</Text>
@@ -118,7 +130,7 @@ class ActionModal extends React.Component {
                             () =>{
                                 this.setScoreData(8)
                                 this.hideModal()
-                            } 
+                            }
                         }>
                             <Text style={ styles.score_create_text }>ミス(ドライブ)</Text>
                         </TouchableHighlight>
@@ -126,7 +138,7 @@ class ActionModal extends React.Component {
                             () =>{
                                 this.setScoreData(9)
                                 this.hideModal()
-                            } 
+                            }
                         }>
                             <Text style={ styles.score_create_text }>ミス(ドロップ)</Text>
                         </TouchableHighlight>
@@ -134,7 +146,7 @@ class ActionModal extends React.Component {
                             () =>{
                                 this.setScoreData(10)
                                 this.hideModal()
-                            } 
+                            }
                         }>
                             <Text style={ styles.score_create_text }>ミス(ヘアピン)</Text>
                         </TouchableHighlight>
@@ -142,32 +154,31 @@ class ActionModal extends React.Component {
                             () =>{
                                 this.setScoreData(11)
                                 this.hideModal()
-                            } 
+                            }
                         }>
                             <Text style={ styles.score_create_text }>ミス(プッシュ)</Text>
                         </TouchableHighlight>
                         </View>
                         ):null
                         }
-                        
-                        <TouchableHighlight 
+                        <TouchableHighlight
                             onPress={() => {
-                                this.hideModal()    
+                                this.hideModal()
                             }
                         }>
                             <Text style={{textAlign:"center",marginTop: 20, color:"white"}}>戻る</Text>
                         </TouchableHighlight>
                     </View>
-                </Modal>
+                </View>
         )
     }
 }
 
 function mapStateToProps(state, props){
-    const { scoreReducer } = state
+    const { score } = state
     const {
         modal:modal,
-    } = scoreReducer ||{
+    } = score ||{
         modal: false,
     }
     return {
@@ -193,7 +204,7 @@ const styles = StyleSheet.create({
         alignItems: "center",
     },
     score_create_field: {
-        zIndex:1    
+        zIndex: 1,
     },
     score_game_create_score_text:{
         color:"white",
@@ -220,7 +231,7 @@ const styles = StyleSheet.create({
         marginRight:20,
         marginBottom:0,
         flexDirection: 'row',
-        justifyContent: 'space-between', 
+        justifyContent: 'space-between',
     },
     score_create_incort_side: {
         zIndex:0,
@@ -228,7 +239,7 @@ const styles = StyleSheet.create({
         marginRight:10,
         marginBottom:0,
         flexDirection: 'row',
-        justifyContent: 'space-between', 
+        justifyContent: 'space-between',
     },
     score_create_outcort_length: {
     },

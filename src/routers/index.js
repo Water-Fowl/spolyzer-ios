@@ -6,11 +6,7 @@ import {
     Router,
     Tabs,
 } from 'react-native-router-flux';
-import thunkMiddleware from 'redux-thunk';
-import { apiMiddleware } from 'redux-api-middleware';
-import { createLogger } from 'redux-logger';
 import { Actions } from 'react-native-router-flux';
-
 import {
     Mypage,
     ScoreCreate,
@@ -21,22 +17,10 @@ import {
     Login,
     SignUp,
 } from '../scenes';
-import reducers from '../reducers';
+import { configureStore } from '../stores';
 
 const RouterWithRedux = connect()(Router);
-
-const loggerMiddleware = createLogger();
-const middleware = [thunkMiddleware, loggerMiddleware, apiMiddleware];
-const store = compose(
-  applyMiddleware(...middleware)
-)(createStore)(reducers);
-
-
-function remount(props){
-    key = props.scene.route.key
-    Actions.push(key);
-}
-
+const { persistor, store } = configureStore()
 const Route = () => (
     <Provider store={store}>
         <RouterWithRedux>
