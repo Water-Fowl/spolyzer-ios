@@ -26,19 +26,19 @@ const Route = () => (
         <RouterWithRedux>
             <Scene key='root'>
                 <Scene key="login" component={Login} initial hideNavBar={true} />
-                <Scene key="sign_up" component={SignUp} />
+                <Scene key="sign_up" component={SignUp} hideNavBar={true} />
                 <Tabs key="tab">
                     <Scene key="Mypage" headerMode="none">
-                        <Scene key="mypage_top" initial component={Mypage} title="マイページ"/>
+                        <Scene key="mypage_top" initial component={Mypage} title="マイページ" hideNavBar={true} />
                     </Scene>
                     <Scene key='Score' headerMode="none">
-                        <Scene key="scre_game_create" initial component={ScoreGameCreate} title="単分析"/>
-                        <Scene key="score_create" hideTabBar={true} component={ScoreCreate} title="スコアシート" />
-                        <Scene key="score_view" component={ScoreView} title="結果" />
+                        <Scene key="scre_game_create" initial component={ScoreGameCreate} title="単分析" hideNavBar={true} />
+                        <Scene key="score_create" hideTabBar={true} component={ScoreCreate} title="スコアシート" hideNavBar={true} />
+                        <Scene key="score_view" component={ScoreView} title="結果" hideNavBar={true} />
                     </Scene>
                     <Scene key='Analysis' headerMode="none">
-                        <Scene key="analysis_create" initial component={AnalysisCreate} title="複合分析"/>
-                        <Scene key="analysis_view" component={AnalysisView} title="単分析"/>
+                        <Scene key="analysis_create" initial component={AnalysisCreate} title="複合分析" hideNavBar={true} />
+                        <Scene key="analysis_view" component={AnalysisView} title="単分析" hideNavBar={true}/>
                     </Scene>
                 </Tabs>
             </Scene>

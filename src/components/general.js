@@ -14,13 +14,25 @@ export class Background extends React.Component {
     render(){
         return(
             <Image
-                source={require("../../assets/img/background.png")}
+                source={require('../../assets/img/background.png')}
                 style={GeneralStyles.background}
+            />
+        );
+    }
+}
+
+export class NavBar extends React.Component {
+    render(){
+        return(
+            <Image
+                source={require("../../assets/img/navibar.png")}
+                style={GeneralStyles.navibar}
             />
                
         );
     }
 }
+
 
 export class TopBar extends React.Component{
     render(){
@@ -36,69 +48,25 @@ export class LandScapeBackground extends React.Component {
     render(){
         return(
             <Image
-                source={require("../../assets/img/landscape_background.png")}
+                source={require('../../assets/img/landscape_background.png')}
                 style={GeneralStyles.background}
             />
         )
     }
 }
-
 export class TopContentBar extends React.Component{
     constructor(props) {
         super(props);
-    } 
+    }
     render(){
         return(
-
-            /*(
-            <View style={GeneralStyles.top_bar}>
-                <Image
-                    style={GeneralStyles.top_content_bar}
-                    source={require("../../data/img/top_content_bar.png")}
-                >
-            { this.state.fontLoaded ? (
-                <Text style={{
-                    fontSize:23,
-                    fontFamily:'abadi', 
-                    backgroundColor:"rgba(0,0,0,0)",
-                    textAlign:"center",
-                    color:"white"
-                }}>
-                    { this.props.content_name }
-                </Text>
-            ) : null
-            }
-                </Image>
-            </View>
-            */
-/*
-            <Text style={{
-                fontSize:23,
-                textAlign:"center",
-                color:"white",
-                paddingTop:10,
-                paddingLeft:5,
-                paddingRight:5,
-                height: 40,
-                borderTopWidth: 40,
-                backgroundColor: 'rgb(20, 35, 70)',
-                borderLeftWidth: 20,
-                borderLeftColor: 'transparent',
-                borderRightWidth: 20,
-                borderRightColor: 'transparent',
-                borderStyle: 'solid'
-            }}>
-                    { this.props.content_name }
-                </Text>
-*/
-            
         <View>
             <Text style={{
                 fontSize:23,
                 backgroundColor: 'rgb(20, 35, 70)',
                 padding:5,
-                paddingLeft:15, 
-                paddingRight:15, 
+                paddingLeft:15,
+                paddingRight:15,
                 textAlign:"center",
                 color:"white"
             }}>
@@ -114,13 +82,13 @@ export class NavigateButton extends React.Component{
     constructor(props){
         super(props);
     }
-    
+
     render(){
         return(
             <Text style={GeneralStyles.button_text}>{ this.props.content_name }</Text>
         )
     }
-} 
+}
 
 const GeneralStyles = StyleSheet.create({
     background: {
@@ -128,18 +96,28 @@ const GeneralStyles = StyleSheet.create({
         resizeMode: 'cover',
         position:'absolute',
         alignSelf: 'stretch',
+        width:win.width,
+    },
+    navibar: {
+        justifyContent: 'center',
+        marginLeft: -20,
+        marginTop: -10,
     },
     landscape_background: {
+        zIndex:0,
         flex: 1,
-        resizeMode: 'cover',
+        top:0,
+        backgroundColor:"rgb(30, 55, 80)",
         position:"absolute",
         alignSelf: 'stretch',
+        width: win.height,
+        height: win.width,
     },
     bar:{
         zIndex:2,
         margin:0,
         padding:0,
-        backgroundColor: 'rgba(46, 167, 224, 1)', 
+        backgroundColor: 'rgba(46, 167, 224, 1)',
         width: win.width,
     },
     trapezoid: {
@@ -157,7 +135,7 @@ const GeneralStyles = StyleSheet.create({
         fontWeight: "bold",
         fontSize: 25,
         color: "white",
-        paddingTop: 13,   
+        paddingTop: 13,
         paddingBottom: 13,
         textAlign: "center",
     },
@@ -170,7 +148,7 @@ const GeneralStyles = StyleSheet.create({
         paddingTop: 10,
         alignItems: "center",
     },
-    top_content_bar_text:{        
+    top_content_bar_text:{
         fontWeight: "bold",
         fontSize: 22,
         color: "white",
@@ -181,7 +159,7 @@ const GeneralStyles = StyleSheet.create({
         paddingBottom: 10,
         paddingLeft: 20,
         paddingRight: 20,
-        textAlign: "center", 
+        textAlign: "center",
         fontWeight: "bold",
         fontSize: 23,
         color: "white",
@@ -205,5 +183,5 @@ const GeneralStyles = StyleSheet.create({
     paddingTop105:{
         paddingTop:105,
     },
-    
+
 })
