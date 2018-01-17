@@ -12,16 +12,16 @@ export function postUserAuthentication(body){
     return fetch(SIGN_IN_ENDPOINT, {
       method: 'POST', headers:{
         'Accept': 'application/json',
-				'Content-Type': 'application/json',
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify(body)
     })
-    .then(response => response.json())
-    .then(json => json.errors)
-    .then(errors => dispatch(receivedAuthentication(errors)))
-    .catch(function(error){
-      console.log(error.message)
-    })
+      .then(response => response.json())
+      .then(json => json.errors)
+      .then(errors => dispatch(receivedAuthentication(errors)))
+      .catch(function(error){
+        console.log(error.message)
+      })
   }
 }
 
@@ -32,18 +32,18 @@ function requestAuthentication(){
 }
 
 function receivedAuthentication(errors){
-    if(errors == null){
-        Actions.tab();
-        return {
-            type: AUTH_RECIEVED,
-        }
+  if(errors == null){
+    Actions.tab();
+    return {
+      type: AUTH_RECIEVED,
     }
-    else{
-        console.log(errors)
-        return {
-            type: AUTH_RECIEVED,
-            is_authenticated: false,
-            occurs_invalid_login_error: true
-        }
+  }
+  else{
+    console.log(errors)
+    return {
+      type: AUTH_RECIEVED,
+      is_authenticated: false,
+      occurs_invalid_login_error: true
     }
+  }
 }

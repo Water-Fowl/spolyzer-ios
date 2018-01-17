@@ -18,12 +18,12 @@ import { NavBar } from "../components";
 class AnalysisCreate extends React.Component{
 
   constructor(props) {
-      super(props);
-      this.postGameInformationForm.bind(this)
-      gameStylePressed = [true, false]
-      shotTypePressed = [true, false, false, false, false, false]
-      termPressed = [true, false, false]
-      this.state = {gameStylePressed:gameStylePressed, shotTypePressed:shotTypePressed, termPressed:termPressed}
+    super(props);
+    this.postGameInformationForm.bind(this)
+    gameStylePressed = [true, false]
+    shotTypePressed = [true, false, false, false, false, false]
+    termPressed = [true, false, false]
+    this.state = {gameStylePressed:gameStylePressed, shotTypePressed:shotTypePressed, termPressed:termPressed}
   }
 
   gameStyleOnPressButton(id){
@@ -43,35 +43,34 @@ class AnalysisCreate extends React.Component{
     termPressed[id] = true
     this.setState({termPressed:termPressed})
   }
-    componentWillMount() {
-        Orientation.lockToPortrait();
+  componentWillMount() {
+    Orientation.lockToPortrait();
+  }
+  postGameInformationForm(){
+    const { dispatch } = this.props;
+    const sample_data = {
+      "data":{
+        "user_id": 2,
+        "opponent_user": 1,
+        "victory": 1,
+      }
     }
-    postGameInformationForm(){
-        const { dispatch } = this.props;
-        const sample_data = {
-            "data":{
-                "user_id": 2,
-                "opponent_user": 1,
-                "victory": 1,
-            }
-        }
-        dispatch(postGameInformation(sample_data))
-    }
-    render(){
-        return(
-            <View style={styles.container}>
+    dispatch(postGameInformation(sample_data))
+  }
+  render(){
+    return(
+      <View style={styles.container}>
 
-               <Background/>
-               <NavBar/>
-
-               <Text style={styles.subtitle_text}>
-                    検索条件
-                </Text>
+        <Background/>
+        <NavBar/>
+        <Text style={styles.subtitle_text}>
+          検索条件
+        </Text>
 
                 
-                <View style={{flexDirection:"row"}}>
+        <View style={{flexDirection:"row"}}>
                     
-                    <Text style={styles.game_style_text}>
+              <Text style={styles.game_style_text}>
                         試合形式
                     </Text>
                     

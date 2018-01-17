@@ -12,18 +12,18 @@ export function postUserRegistration(body){
       method: "POST",
       headers: {
         'Accept': 'application/json',
-				'Content-Type': 'application/json',
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify(body)
     })
-    .then(response => response.json())
-    .then(json => console.log(json))
-      /* 一時的に絶対ログインできるようにする*/
-    .then(dispatch(receivedRegistration(true)))
-    .then(Actions.tab())
-    .catch(function(error){
+      .then(response => response.json())
+      .then(json => console.log(json))
+    /* 一時的に絶対ログインできるようにする*/
+      .then(dispatch(receivedRegistration(true)))
+      .then(Actions.tab())
+      .catch(function(error){
         console.log(error.message)
-    })
+      })
   }
 }
 
