@@ -23,7 +23,7 @@ class Login extends React.Component{
         this.state = {
             email: '',
             password: '',
-            occurs_invalid_login_error: false,
+            error: false,
         };
     }
 
@@ -32,9 +32,9 @@ class Login extends React.Component{
     }
 
     componentWillReceiveProps(nextProps){
-        const { occurs_invalid_login_error } = nextProps
-        console.log(occurs_invalid_login_error)
-        this.setState({occurs_invalid_login_error: true})
+        const { error } = nextProps
+        console.log(error)
+        this.setState({error: true})
     }
 
     postAuthenticationInformation(){
@@ -77,7 +77,7 @@ class Login extends React.Component{
                      />
                 </View>
                 {(() => {
-                    if (this.state.occurs_invalid_login_error) {
+                    if (this.state.error) {
                         return (
                             <View style={{flexDirection:"row"}}>
                                 <Text style={styles.auto_login_text}>
@@ -96,7 +96,11 @@ class Login extends React.Component{
 
                 <View style={styles.form}>
                     <TouchableOpacity onPress={() =>{
-                        this.postAuthenticationInformation()
+                        Actions.mypage_top()
+                        /*
+                            API完成するまでここはコメントアウト 
+                            this.postAuthenticationInformation()
+                        */
                     }}>
                         <Text style={styles.login_button_text}>
                             ログイン
@@ -125,12 +129,12 @@ class Login extends React.Component{
 function mapStateToProps(state, props){
     const { authenticationReducer } = state
     const {
-        occurs_invalid_login_error: occurs_invalid_login_error,
+        error: error,
     } = authenticationReducer ||{
-        occurs_invalid_login_error: false
+        error: false
     }
     return {
-        occurs_invalid_login_error,
+        error,
     }
 }
 

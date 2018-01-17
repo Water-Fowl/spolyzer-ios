@@ -10,7 +10,7 @@ import {
 } from "react-native";
 import { connect } from 'react-redux';
 import Orientation from 'react-native-orientation';
-import { postGameInformation } from '../actions/analyze'
+import { postGameInformation } from '../actions/game'
 
 class AnalysisCreate extends React.Component{
     constructor(props){

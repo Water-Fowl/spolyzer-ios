@@ -5,7 +5,7 @@ import {
 
 const initialState = {
     is_authenticated: false,
-    occurs_invalid_login_error: false
+    error: false
 }
 
 export default function authenticationReducer(state=initialState, action={}){
@@ -15,7 +15,7 @@ export default function authenticationReducer(state=initialState, action={}){
         case AUTH_RECIEVED:
             return Object.assign({}, state, {
                 is_authenticated: action.is_authenticated,
-                occurs_invalid_login_error: true
+                error: action.error 
             })
         default:
             return state

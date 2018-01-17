@@ -1,7 +1,7 @@
 import {
     GAME_INFORMATION_REQUEST,
     GAME_INFORMATION_RECEIVED,
-} from '../actions/analyze'
+} from '../actions/game'
 
 const initialState = {
     score_game_ids: []

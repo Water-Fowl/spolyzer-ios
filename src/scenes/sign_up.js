@@ -14,7 +14,7 @@ import { Background } from "../components";
 import { postUserRegistration } from '../actions/registration';
 import { connect } from 'react-redux';
 
-const postRegistrationUser = {
+const registrationUser = {
     name: "takumimuggle",
     email:"taumime@gmail.com",
     password:"takumimuggle",
@@ -86,7 +86,7 @@ class SignUp extends Component{
 
                 <View style={styles.registration_form}>
                     <TouchableOpacity onPress={() => {
-                        this.postRegistrationForm(postRegistrationUser)
+                        this.postRegistrationForm(registrationUser)
                     }}>
                         <Text style={styles.registration_button_text}>
                             登録
