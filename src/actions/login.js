@@ -8,7 +8,7 @@ export const LOGIN_RECIEVED = "LOGIN_RECIEVED"
 
 export function postUserLogin(body){
   return dispatch => {
-    dispatch(requestLogin(body));
+    dispatch(requestLogin());
     return fetch(SIGN_IN_ENDPOINT, {
       method: 'POST', headers:{
         'Accept': 'application/json',

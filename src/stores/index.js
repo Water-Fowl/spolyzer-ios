@@ -6,7 +6,7 @@ import { createLogger } from 'redux-logger';
 import { gameReducer, scoreReducer, authenticationReducer } from '../reducers'
 
 const authenticationConfig = {
-  key: 'root',
+  key: 'authentication',
   storage,
 }
 const scoreConfig = {

@@ -35,15 +35,15 @@ class SignUp extends Component{
         Orientation.lockToPortrait();
     }
 
-    postRegistrationForm(body) {
+    postRegistrationForm() {
       const { dispatch } = this.props
-      registration_body = {
+      const registration_body = {
         email: this.state.email,
         password: this.state.password,
-        password_confirmation: this.state.password,
+        password_confirmation: this.state.password_confirmation,
         confirm_success_url : "api.water-fowl.co.jp"
       }
-      dispatch(postUserRegistration(body))
+      dispatch(postUserRegistration(registration_body))
     }
 
     render(){
@@ -57,7 +57,7 @@ class SignUp extends Component{
                 </Text>
 
                 <View style={styles.form}>
-                    <TextInput onChangeText={(text) => this.setState({text})}
+                    <TextInput onChangeText={(email) => this.setState({email})}
                         placeholder={"メールアドレス"}
                         placeholderTextColor={'#666677'}
                         style={styles.text_field}
@@ -67,7 +67,7 @@ class SignUp extends Component{
                 </View>
 
                 <View style={styles.form}>
-                    <TextInput onChangeText={(text) => this.setState({text})}
+                    <TextInput onChangeText={(password) => this.setState({password})}
                         placeholder={"パスワード"}
                         placeholderTextColor={'#666677'}
                         style={styles.text_field}
@@ -78,7 +78,7 @@ class SignUp extends Component{
                 </View>
 
                  <View style={styles.form}>
-                    <TextInput onChangeText={(text) => this.setState({text})}
+                    <TextInput onChangeText={(password_confirmation) => this.setState({password_confirmation})}
                         placeholder={"パスワード（確認用）"}
                         placeholderTextColor={'#666677'}
                         style={styles.text_field}
@@ -91,7 +91,7 @@ class SignUp extends Component{
 
                 <View style={styles.registration_form}>
                     <TouchableOpacity onPress={() => {
-                        this.postRegistrationForm(registrationUser)
+                        this.postRegistrationForm()
                     }}>
                         <Text style={styles.registration_button_text}>
                             登録

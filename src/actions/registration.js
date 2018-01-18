@@ -17,10 +17,7 @@ export function postUserRegistration(body){
       body: JSON.stringify(body)
     })
       .then(response => response.json())
-      .then(json => console.log(json))
-      /* 一時的に絶対ログインできるようにする*/
-      .then(dispatch(receivedRegistration(json.error)))
-      .then(Actions.tab())
+      .then(json => dispatch(receivedRegistration(json.errors)))
       .catch(function(error){
         console.log(error.message)
       })
@@ -33,9 +30,10 @@ function requestRegistration(){
   }
 }
 
-function receivedRegistration(error){
-  if (error != nil) {
-    Action.tab()
+function receivedRegistration(errors){
+  console.log(errors)
+  if (errors == null) {
+    Actions.tab();
     return {
       type: REGISTRATION_RECIEVED,
       is_authenticated: true,
@@ -44,7 +42,7 @@ function receivedRegistration(error){
   }
   else{
     return {
-      type: RECIEVED,
+      type: REGISTRATION_RECIEVED,
       is_authenticated: false,
       error: true
     }

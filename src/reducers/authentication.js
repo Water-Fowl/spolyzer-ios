@@ -9,7 +9,8 @@ import {
 
 const initialState = {
   is_authenticated: false,
-  error: false
+  login_error: false,
+  registration_error: false,
 }
 
 export default function authenticationReducer(state=initialState, action={}){
