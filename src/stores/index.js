@@ -13,24 +13,24 @@ const scoreConfig = {
   key: 'score',
   storage,
 }
-    
+
 const loggerMiddleware = createLogger();
 const middleware = [thunkMiddleware, loggerMiddleware];
 const reducers = combineReducers({
-    score: persistReducer(scoreConfig, scoreReducer),
-    authentication: persistReducer(authenticationConfig, authenticationReducer),
-    game: gameReducer,
+  score: persistReducer(scoreConfig, scoreReducer),
+  authentication: persistReducer(authenticationConfig, authenticationReducer),
+  game: gameReducer,
 })
 
 export function configureStore () {
-    let store = createStore(
-        reducers,
-        undefined,
-        compose(
-            applyMiddleware(...middleware),
-        )
+  let store = createStore(
+    reducers,
+    undefined,
+    compose(
+      applyMiddleware(...middleware),
     )
-    let persistor = persistStore(store)
+  )
+  let persistor = persistStore(store)
 
-    return { persistor, store }
+  return { persistor, store }
 }

@@ -59,7 +59,6 @@ function requestScoreGame(){
 }
 
 function receivedScoreGame(score_game_id){
-  console.log(score_game_id)
   return {
     type: SCORE_RECIEVED,
     current_score_game_id: score_game_id

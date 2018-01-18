@@ -21,7 +21,6 @@ const registrationUser = {
     password_confirmation: "takumimuggle",
     confirm_success_url : "api.water-fowl.co.jp"
 }
-
 class SignUp extends Component{
 
     constructor(props) {
@@ -38,6 +37,12 @@ class SignUp extends Component{
 
     postRegistrationForm(body) {
       const { dispatch } = this.props
+      registration_body = {
+        email: this.state.email,
+        password: this.state.password,
+        password_confirmation: this.state.password,
+        confirm_success_url : "api.water-fowl.co.jp"
+      }
       dispatch(postUserRegistration(body))
     }
 

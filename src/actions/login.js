@@ -2,13 +2,13 @@ import { CALL_API } from 'redux-api-middleware'
 import { Actions } from 'react-native-router-flux';
 import { SIGN_IN_ENDPOINT } from '../config/api';
 
-export const AUTH_REQUEST = "AUTH_REQUEST"
-export const AUTH_RECIEVED = "AUTH_RECIEVED"
+export const LOGIN_REQUEST = "LOGIN_REQUEST"
+export const LOGIN_RECIEVED = "LOGIN_RECIEVED"
 
 
-export function postUserAuthentication(body){
+export function postUserLogin(body){
   return dispatch => {
-    dispatch(requestAuthentication(body));
+    dispatch(requestLogin(body));
     return fetch(SIGN_IN_ENDPOINT, {
       method: 'POST', headers:{
         'Accept': 'application/json',
@@ -18,32 +18,33 @@ export function postUserAuthentication(body){
     })
       .then(response => response.json())
       .then(json => json.errors)
-      .then(errors => dispatch(receivedAuthentication(errors)))
+      .then(errors => dispatch(receivedLogin(errors)))
       .catch(function(error){
         console.log(error.message)
       })
   }
 }
 
-function requestAuthentication(){
+function requestLogin(){
   return {
-    type: AUTH_REQUEST
+    type: LOGIN_REQUEST
   }
 }
 
-function receivedAuthentication(errors){
+function receivedLogin(errors){
   if(errors == null){
     Actions.tab();
     return {
-      type: AUTH_RECIEVED,
+      type: LOGIN_RECIEVED,
+      is_authenticated: true,
+      error: false
     }
   }
   else{
-    console.log(errors)
     return {
-      type: AUTH_RECIEVED,
+      type: LOGIN_RECIEVED,
       is_authenticated: false,
-      occurs_invalid_login_error: true
+      error: true
     }
   }
 }
