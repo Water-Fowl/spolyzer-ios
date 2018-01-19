@@ -2,7 +2,7 @@ import { Actions } from 'react-native-router-flux';
 import { REGISTRATION_ENDPOINT } from '../config/api';
 
 export const REGISTRATION_REQUEST = "REGISTRATION_REQUEST"
-export const REGISTRATION_RECIEVED = "REGISTRATION_RECIEVED"
+export const REGISTRATION_RECEIVED = "REGISTRATION_RECEIVED"
 
 
 export function postUserRegistration(body){
@@ -17,7 +17,8 @@ export function postUserRegistration(body){
       body: JSON.stringify(body)
     })
       .then(response => response.json())
-      .then(json => dispatch(receivedRegistration(json.errors)))
+      .then(json => json.errors)
+      .then(errors => dispatch(receivedRegistration(errors)))
       .catch(function(error){
         console.log(error.message)
       })
@@ -31,18 +32,17 @@ function requestRegistration(){
 }
 
 function receivedRegistration(errors){
-  console.log(errors)
   if (errors == null) {
     Actions.tab();
     return {
-      type: REGISTRATION_RECIEVED,
+      type: REGISTRATION_RECEIVED,
       is_authenticated: true,
       error: false,
     }
   }
   else{
     return {
-      type: REGISTRATION_RECIEVED,
+      type: REGISTRATION_RECEIVED,
       is_authenticated: false,
       error: true
     }

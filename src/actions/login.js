@@ -10,7 +10,8 @@ export function postUserLogin(body){
   return dispatch => {
     dispatch(requestLogin());
     return fetch(SIGN_IN_ENDPOINT, {
-      method: 'POST', headers:{
+      method: 'POST', 
+      headers:{
         'Accept': 'application/json',
         'Content-Type': 'application/json',
       },

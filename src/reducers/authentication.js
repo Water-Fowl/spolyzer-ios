@@ -23,8 +23,10 @@ export default function authenticationReducer(state=initialState, action={}){
         login_error: action.error 
       })
     case REGISTRATION_REQUEST:
+      console.log(REGISTRATION_REQUEST)
       return state
     case REGISTRATION_RECEIVED:
+      console.log(REGISTRATION_RECEIVED)
       return Object.assign({}, state, {
         is_authenticated: action.is_authenticated,
         registration_error: action.error 
