@@ -11,6 +11,8 @@ import {
 import { connect } from 'react-redux';
 import { VictoryBar } from "victory-native";
 import Orientation from 'react-native-orientation';
+import { Background } from "../components";
+import { NavBar } from "../components";
 
 const sample_data = [ 
     {hoge: 1, geho: 2},
@@ -23,15 +25,46 @@ export default class AnalysisView extends React.Component{
     }
     render(){
         return(
-            <VictoryBar 
-              data = {sample_data}
-              x='hoge'
-              y='geho'
-            />
+            
+
+            <View style={styles.container}>
+
+                <Background/>
+                <NavBar/>
+
+                <Text style={styles.subtitle_text}>
+                    複合分析結果
+                </Text>
+
+
+
+
+
+                <VictoryBar 
+                  data = {sample_data}
+                  x='hoge'
+                  y='geho'
+                />
+
+            </View>
         );
     }
 }
 
 const styles = StyleSheet.create({
+
+
+    container: {
+        flex: 1,
+    },
+
+    subtitle_text: {
+        color: '#ffffff',
+        fontSize: 19,
+        alignSelf: 'center',
+        marginTop: -28,
+        backgroundColor: 'transparent',
+        fontWeight: 'bold',       
+    },
     
 });

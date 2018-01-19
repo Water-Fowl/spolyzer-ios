@@ -50,10 +50,10 @@ export default class AnalysisCreate extends React.Component{
         return(
             <View style={styles.container}>
 
-               <Background/>
-               <NavBar/>
+                <Background/>
+                <NavBar/>
 
-               <Text style={styles.subtitle_text}>
+                <Text style={styles.subtitle_text}>
                     検索条件
                 </Text>
 
@@ -298,7 +298,7 @@ const styles = StyleSheet.create({
         color: '#ffffff',
         fontSize: 22,
         alignSelf: 'center',
-        marginTop: -30,
+        marginTop: -28,
         backgroundColor: 'transparent',
         fontWeight: 'bold',       
     },
@@ -396,12 +396,12 @@ const styles = StyleSheet.create({
 
     shot_type_button_press: {
         backgroundColor: '#0a2444',
-        height: 26,
+        height: 28,
         width: 90,
         marginRight: 3,
         marginLeft: 3,
-        marginTop: 3,
-        marginBottom: 4,
+        marginTop: 4,
+        marginBottom: 3,
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: 3,
@@ -409,12 +409,12 @@ const styles = StyleSheet.create({
 
     shot_type_button: {
         backgroundColor: 'transparent',
-        height: 26,
+        height: 28,
         width: 90,
         marginRight: 3,
         marginLeft: 3,
-        marginTop: 3,
-        marginBottom: 4,
+        marginTop: 4,
+        marginBottom: 3,
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: 3,
