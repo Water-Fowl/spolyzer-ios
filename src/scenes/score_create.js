@@ -18,7 +18,7 @@ import {
     TopContentBar,
     NavigateButton,
     ActionModal,
-    FieldInLength,
+    InFieldLength,
     FieldInSide,
     FieldOutLength,
     FieldOutSide,
@@ -109,8 +109,8 @@ export default class ScoreCreate extends React.Component {
                             </View>
 
                             <View style={styles.view_for_vartical_blue_bar}>
-                              <View style={styles.vartical_blue_bar}></View>
-                              <View style={styles.vartical_blue_bar}></View>
+                              <InFieldLength/>
+                              <InFieldLength/>
                             </View>
 
                             <View style={styles.view_for_horizontal_blue_bar_and_circle}>
@@ -120,8 +120,8 @@ export default class ScoreCreate extends React.Component {
                             </View>
 
                             <View style={styles.view_for_vartical_blue_bar_inner}>
-                              <View style={styles.vartical_blue_bar}></View>
-                              <View style={styles.vartical_blue_bar}></View>
+                              <InFieldLength/>
+                              <InFieldLength/>
                             </View>
 
 
@@ -142,8 +142,8 @@ export default class ScoreCreate extends React.Component {
                               </View>
 
                               <View style={styles.right_side_vartical_blue_bar}>
-                                <View style={styles.vartical_blue_bar}></View>
-                                <View style={styles.vartical_blue_bar}></View>
+                                <InFieldLength/>
+                                <InFieldLength/>
                               </View>
 
                               <View style={styles.right_side_horizontal_blue_bar_and_circle}>
@@ -153,8 +153,8 @@ export default class ScoreCreate extends React.Component {
                               </View>
 
                               <View style={styles.right_side_vartical_blue_bar_inner}>
-                                <View style={styles.vartical_blue_bar}></View>
-                                <View style={styles.vartical_blue_bar}></View>
+                                <InFieldLength/>
+                                <InFieldLength/>
                               </View>
 
                               </View>
@@ -408,17 +408,6 @@ const styles = StyleSheet.create({
       marginTop:win.height*0.03,
       marginLeft:win.width*0.075
     },
-    vartical_blue_bar:{
-      borderColor: '#2EA7E0',
-      backgroundColor:"#2EA7E0",
-      height: win.height*0.24,
-      width: win.width*0.040,
-      borderWidth: 1.3,
-      borderRadius: 3,
-      opacity:0.3,
-      marginBottom:win.height*0.03,
-      marginTop:win.height*0.03,
-    },
     horizontal_blue_bar:{
       borderColor: '#2EA7E0',
       backgroundColor:"#2EA7E0",
@@ -441,5 +430,5 @@ const styles = StyleSheet.create({
       marginBottom:win.height*0.11,
       alignSelf:"center",
     },
-    
+
     })
