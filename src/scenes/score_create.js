@@ -19,7 +19,7 @@ import {
     NavigateButton,
     ActionModal,
     InFieldLength,
-    FieldInSide,
+    InFieldSide,
     FieldOutLength,
     FieldOutSide,
 } from '../components';
@@ -114,9 +114,9 @@ export default class ScoreCreate extends React.Component {
                             </View>
 
                             <View style={styles.view_for_horizontal_blue_bar_and_circle}>
-                              <View style={styles.horizontal_blue_bar}></View>
+                              <InFieldSide/>
                               <View style={styles.blue_circle}></View>
-                              <View style={styles.horizontal_blue_bar}></View>
+                              <InFieldSide/>
                             </View>
 
                             <View style={styles.view_for_vartical_blue_bar_inner}>
@@ -147,9 +147,9 @@ export default class ScoreCreate extends React.Component {
                               </View>
 
                               <View style={styles.right_side_horizontal_blue_bar_and_circle}>
-                                <View style={styles.horizontal_blue_bar}></View>
+                                <InFieldSide/>
                                 <View style={styles.blue_circle}></View>
-                                <View style={styles.horizontal_blue_bar}></View>
+                                <InFieldSide/>
                               </View>
 
                               <View style={styles.right_side_vartical_blue_bar_inner}>
@@ -407,16 +407,6 @@ const styles = StyleSheet.create({
       marginBottom:win.height*0.03,
       marginTop:win.height*0.03,
       marginLeft:win.width*0.075
-    },
-    horizontal_blue_bar:{
-      borderColor: '#2EA7E0',
-      backgroundColor:"#2EA7E0",
-      height: win.width*0.040,
-      width: win.height*0.22,
-      borderWidth: 1.3,
-      borderRadius: 3,
-      opacity:0.3,
-      alignSelf:"center",
     },
     blue_circle:{
       borderColor: '#2EA7E0',

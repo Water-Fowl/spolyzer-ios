@@ -1,6 +1,6 @@
 import ActionModal from './actions_modal';
 import  InFieldLength  from './infield_length';
-import { FieldInSide } from './field_inside';
+import { InFieldSide } from './infield_side';
 import { FieldOutLength } from './field_outlength';
 import { FieldOutSide } from './field_outside';
 import {
@@ -19,7 +19,7 @@ export {
     NavigateButton,
     ActionModal,
     InFieldLength,
-    FieldInSide,
+    InFieldSide,
     FieldOutLength,
     FieldOutSide,
     NavBar,
