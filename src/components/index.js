@@ -11,6 +11,11 @@ import {
     NavigateButton,
     NavBar,
 } from "../components/general";
+import {
+    GameStyleButton,
+    ShotTypeButton,
+    TermButton,
+} from "../components/serch_condition";
 export { 
     TopBar, 
     Background,
@@ -23,4 +28,7 @@ export {
     FieldOutLength,
     FieldOutSide,
     NavBar,
+    GameStyleButton,
+    ShotTypeButton,
+    TermButton,
 };
