@@ -3,6 +3,7 @@ import  InFieldLength  from './infield_length';
 import { InFieldSide } from './infield_side';
 import { InFieldCircle } from './infield_circle';
 import { LeftOutFieldLength } from './left_outfield_length';
+import { LeftOutFieldSide } from './left_outfield_side';
 import { FieldOutSide } from './field_outside';
 import {
     TopBar,
@@ -23,6 +24,7 @@ export {
     InFieldSide,
     InFieldCircle,
     LeftOutFieldLength,
+    LeftOutFieldSide,
     FieldOutSide,
     NavBar,
 };

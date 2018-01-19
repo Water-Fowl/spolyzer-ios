@@ -22,6 +22,7 @@ import {
     InFieldSide,
     InFieldCircle,
     LeftOutFieldLength,
+    LeftOutFieldSide,
     FieldOutSide,
 } from '../components';
 
@@ -98,8 +99,8 @@ export default class ScoreCreate extends React.Component {
 
                   <View style={styles.field_outer_view}>
                       <View style={styles.view_for_horizontal_yellow_bar_left}>
-                        <View style={styles.horizontal_yellow_bar_left}></View>
-                        <View style={styles.horizontal_yellow_bar_left}></View>
+                        <LeftOutFieldSide/>
+                        <LeftOutFieldSide/>
                       </View>
 
                         <View style={styles.field_outer_view_left_side}>
@@ -359,28 +360,6 @@ const styles = StyleSheet.create({
       marginTop:30,
       marginLeft:108,
       },
-   horizontal_yellow_bar_left:{
-      borderColor: '#A29A67',
-      backgroundColor:"#A29A67",
-      height: win.width*0.020,
-      width: win.width*0.32,
-      borderWidth: 1.3,
-      borderRadius: 3,
-      marginTop:win.height*0.33,
-      marginBottom:win.height*0.33,
-      marginLeft:win.width*0.12,
-   },
-   horizontal_yellow_bar_right:{
-      borderColor: '#A29A67',
-      backgroundColor:"#A29A67",
-      height: win.width*0.020,
-      width: win.width*0.32,
-      borderWidth: 1.3,
-      borderRadius: 3,
-      marginTop:win.height*0.33,
-      marginBottom:win.height*0.33,
-      marginRight:win.width*0.12,
-   },
    triangle:{
       marginTop:5,
       marginRight:3,
@@ -398,6 +377,17 @@ const styles = StyleSheet.create({
       marginBottom:win.height*0.03,
       marginTop:win.height*0.03,
       marginLeft:win.width*0.075
+    },
+    horizontal_yellow_bar_right:{
+       borderColor: '#A29A67',
+       backgroundColor:"#A29A67",
+       height: win.width*0.020,
+       width: win.width*0.32,
+       borderWidth: 1.3,
+       borderRadius: 3,
+       marginTop:win.height*0.33,
+       marginBottom:win.height*0.33,
+       marginRight:win.width*0.12,
     },
 
 
