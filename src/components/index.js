@@ -5,7 +5,7 @@ import { InFieldCircle } from './infield_circle';
 import { LeftOutFieldLength } from './left_outfield_length';
 import { LeftOutFieldSide } from './left_outfield_side';
 import { RightOutFieldSide } from './right_outfield_side';
-import { FieldOutSide } from './field_outside';
+import { RightOutFieldLength } from './right_outfield_length';
 import {
     TopBar,
     Background,
@@ -27,6 +27,6 @@ export {
     LeftOutFieldLength,
     LeftOutFieldSide,
     RightOutFieldSide,
-    FieldOutSide,
+    RightOutFieldLength,
     NavBar,
 };
