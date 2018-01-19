@@ -95,7 +95,11 @@ class Login extends React.Component{
 
                 <View style={styles.form}>
                     <TouchableOpacity onPress={() =>{
-                          this.postLoginInformation()
+                      Actions.tab();
+                      /*
+                       * Rails環境なしでもログインできるようにここはコメントアウト
+                       * this.postLoginInformation()
+                      */
                     }}>
                         <Text style={styles.login_button_text}>
                             ログイン
