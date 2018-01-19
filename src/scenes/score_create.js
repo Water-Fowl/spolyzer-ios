@@ -20,6 +20,7 @@ import {
     ActionModal,
     InFieldLength,
     InFieldSide,
+    InFieldCircle,
     FieldOutLength,
     FieldOutSide,
 } from '../components';
@@ -115,7 +116,7 @@ export default class ScoreCreate extends React.Component {
 
                             <View style={styles.view_for_horizontal_blue_bar_and_circle}>
                               <InFieldSide/>
-                              <View style={styles.blue_circle}></View>
+                              <InFieldCircle/>
                               <InFieldSide/>
                             </View>
 
@@ -148,7 +149,7 @@ export default class ScoreCreate extends React.Component {
 
                               <View style={styles.right_side_horizontal_blue_bar_and_circle}>
                                 <InFieldSide/>
-                                <View style={styles.blue_circle}></View>
+                                <InFieldCircle/>
                                 <InFieldSide/>
                               </View>
 
@@ -408,17 +409,6 @@ const styles = StyleSheet.create({
       marginTop:win.height*0.03,
       marginLeft:win.width*0.075
     },
-    blue_circle:{
-      borderColor: '#2EA7E0',
-      backgroundColor:"#2EA7E0",
-      height: win.height*0.17,
-      width: win.height*0.17,
-      borderWidth: 1,
-      borderRadius: 100,
-      opacity:0.3,
-      marginTop:win.height*0.11,
-      marginBottom:win.height*0.11,
-      alignSelf:"center",
-    },
+
 
     })

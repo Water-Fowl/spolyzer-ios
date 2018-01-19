@@ -1,6 +1,7 @@
 import ActionModal from './actions_modal';
 import  InFieldLength  from './infield_length';
 import { InFieldSide } from './infield_side';
+import { InFieldCircle } from './infield_circle';
 import { FieldOutLength } from './field_outlength';
 import { FieldOutSide } from './field_outside';
 import {
@@ -20,6 +21,7 @@ export {
     ActionModal,
     InFieldLength,
     InFieldSide,
+    InFieldCircle,
     FieldOutLength,
     FieldOutSide,
     NavBar,
