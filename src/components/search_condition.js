@@ -20,7 +20,6 @@ export class GameStyleButton extends React.Component {
         this.setState({gameStylePressed: gameStylePressed})
     }
 
-
     render(){
         return(
             <View style={styles.frame}>

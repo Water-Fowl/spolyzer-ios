@@ -13,7 +13,7 @@ import { connect } from 'react-redux';
 import Orientation from 'react-native-orientation';
 import { Background } from "../components";
 import { NavBar } from "../components";
-import { ActionButton } from "../components";
+import { NavigateButton } from "../components";
 import { GameStyleButton } from "../components";
 import { ShotTypeButton } from "../components";
 import { TermButton } from "../components";
@@ -85,22 +85,7 @@ export default class AnalysisCreate extends React.Component{
 
                 </View>
 
-
-
-
-
-
-
-                <ActionButton action={Actions.analysis_view} style={styles.analyze} text='Analyze' />          
-
-
-
-
-
-
-
-
-
+                <NavigateButton action={Actions.analysis_view} style={styles.analyze} text='Analyze' />          
 
             </View>
 

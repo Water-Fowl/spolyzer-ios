@@ -5,10 +5,8 @@ import {
     Image,
     Text,
     View,
-    TouchableHighlight,
     TouchableOpacity,
 } from 'react-native';
-import { Actions } from 'react-native-router-flux';
 
 const win = Dimensions.get('window');
 
@@ -35,25 +33,22 @@ export class NavBar extends React.Component {
     }
 }
 
-
-export class ActionButton extends React.Component {
-
+export class NavigateButton extends React.Component {
 
     render(){
         return(
             <TouchableOpacity onPress={this.props.action} style={this.props.style}>                
                     <Image
-                        source={require("../../assets/img/action_button.png")}
-                        style={GeneralStyles.action_button}
+                        source={require("../../assets/img/navigate_button.png")}
+                        style={GeneralStyles.navigate_button}
                     />
-                    <Text style={GeneralStyles.action_text}>
+                    <Text style={GeneralStyles.navigate_text}>
                         {this.props.text}
                     </Text>
                 </TouchableOpacity>
         );
     }
 }
-
 
 export class TopBar extends React.Component{
     render(){
@@ -75,6 +70,7 @@ export class LandScapeBackground extends React.Component {
         )
     }
 }
+
 export class TopContentBar extends React.Component{
     constructor(props) {
         super(props);
@@ -98,19 +94,6 @@ export class TopContentBar extends React.Component{
     }
 }
 
-export class NavigateButton extends React.Component{
-
-    constructor(props){
-        super(props);
-    }
-
-    render(){
-        return(
-            <Text style={GeneralStyles.button_text}>{ this.props.content_name }</Text>
-        )
-    }
-}
-
 const GeneralStyles = StyleSheet.create({
     background: {
         flex: 1,
@@ -124,11 +107,11 @@ const GeneralStyles = StyleSheet.create({
         marginLeft: -20,
         marginTop: -10,
     },
-    action_button: {
+    navigate_button: {
         opacity: 0.4,
         marginTop: 0,
     },
-    action_text: {
+    navigate_text: {
         position: "absolute",
         top: 14, 
         fontSize: 20,
@@ -187,17 +170,7 @@ const GeneralStyles = StyleSheet.create({
         color: "white",
         backgroundColor: 'rgba(0,0,0,0)',
     },
-    button_text: {
-        paddingTop: 10,
-        paddingBottom: 10,
-        paddingLeft: 20,
-        paddingRight: 20,
-        textAlign: "center",
-        fontWeight: "bold",
-        fontSize: 23,
-        color: "white",
-        backgroundColor: 'rgb(30, 110, 155)',
-    },
+   
     marginTop10:{
         marginTop: 10
     },
