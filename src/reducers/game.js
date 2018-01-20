@@ -1,6 +1,7 @@
 import {
   GAME_INFORMATION_REQUEST,
   GAME_INFORMATION_RECEIVED,
+  GAME_SETTING,
 } from '../actions/game'
 
 const initialState = {

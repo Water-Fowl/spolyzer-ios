@@ -4,6 +4,7 @@ import { GET_GAMES_ENDPOINT } from '../config/api'
 
 export const GAME_INFORMATION_REQUEST = "GAME_INFORMATION_REQUEST"
 export const GAME_INFORMATION_RECEIVED = "GAME_INFORMATION_RECIEVED"
+export const GAME_SETTING = "GAME_SETTING"
 export function postGameInformation(information_body){
   return dispatch => {
     console.log(JSON.stringify(information_body))
