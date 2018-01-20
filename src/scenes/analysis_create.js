@@ -11,7 +11,7 @@ import {
 import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 import Orientation from 'react-native-orientation';
-import { postGameInformation } from '../actions/game'
+import { getAnalysisGames } from '../actions/analyze_games'
 import { Background } from "../components";
 import { NavBar } from "../components";
 import { NavigateButton } from "../components";
@@ -26,13 +26,13 @@ class AnalysisCreate extends React.Component{
     }
   constructor(props) {
     super(props);
-    this.postGameInformationForm.bind(this)
+    this.getGameInformationForm.bind(this)
   }
 
   componentWillMount() {
     Orientation.lockToPortrait();
   }
-  postGameInformationForm(){
+  getGameInformationForm(){
     const { dispatch } = this.props;
     const sample_data = {
       "data":{
@@ -41,7 +41,7 @@ class AnalysisCreate extends React.Component{
         "victory": 1,
       }
     }
-    dispatch(postGameInformation(sample_data))
+    dispatch(getAnalysisGames(sample_data))
   }
   render(){
     return(
