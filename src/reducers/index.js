@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
 import scoreReducer from './score';
+import authenticationReducer from './authentication';
+import gameReducer from './game';
 
-export default combineReducers({
-  scoreReducer, 
-})
+export { gameReducer, scoreReducer, authenticationReducer }
+

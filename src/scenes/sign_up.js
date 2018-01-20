@@ -11,17 +11,39 @@ import {
 import { Actions } from 'react-native-router-flux';
 import Orientation from 'react-native-orientation';
 import { Background } from "../components";
+import { postUserRegistration } from '../actions/registration';
+import { connect } from 'react-redux';
 
-export default class SignUp extends Component{
-    componentWillMount() {
-        Orientation.lockToPortrait();
-    }
+const registrationUser = {
+    name: "takumimuggle",
+    email:"taumime@gmail.com",
+    password:"takumimuggle",
+    password_confirmation: "takumimuggle",
+    confirm_success_url : "api.water-fowl.co.jp"
+}
+class SignUp extends Component{
 
     constructor(props) {
         super(props);
         this.state = {
             text: '',
         };
+        this.postRegistrationForm.bind(this)
+    }
+
+    componentWillMount() {
+        Orientation.lockToPortrait();
+    }
+
+    postRegistrationForm() {
+      const { dispatch } = this.props
+      const registration_body = {
+        email: this.state.email,
+        password: this.state.password,
+        password_confirmation: this.state.password_confirmation,
+        confirm_success_url : "api.water-fowl.co.jp"
+      }
+      dispatch(postUserRegistration(registration_body))
     }
 
     render(){
@@ -29,46 +51,48 @@ export default class SignUp extends Component{
             <View style={styles.container}>
 
                <Background/>
-                
+
                 <Text style={styles.logo_text}>
                     Spolyzer
                 </Text>
-                
-                <View style={styles.form}>    
-                    <TextInput onChangeText={(text) => this.setState({text})} 
-                        placeholder={"メールアドレス"} 
-                        placeholderTextColor={'#666677'} 
+
+                <View style={styles.form}>
+                    <TextInput onChangeText={(email) => this.setState({email})}
+                        placeholder={"メールアドレス"}
+                        placeholderTextColor={'#666677'}
                         style={styles.text_field}
                         keyboardType={'email-address'}
                         returnKeyType={'done'}
-                     />    
-                </View>
-                    
-                <View style={styles.form}>    
-                    <TextInput onChangeText={(text) => this.setState({text})} 
-                        placeholder={"パスワード"} 
-                        placeholderTextColor={'#666677'} 
-                        style={styles.text_field}
-                        keyboardType={'email-address'}
-                        returnKeyType={'done'}
-                        secureTextEntry
-                     />    
+                     />
                 </View>
 
-                 <View style={styles.form}>    
-                    <TextInput onChangeText={(text) => this.setState({text})} 
-                        placeholder={"パスワード（確認用）"} 
-                        placeholderTextColor={'#666677'} 
+                <View style={styles.form}>
+                    <TextInput onChangeText={(password) => this.setState({password})}
+                        placeholder={"パスワード"}
+                        placeholderTextColor={'#666677'}
                         style={styles.text_field}
                         keyboardType={'email-address'}
                         returnKeyType={'done'}
                         secureTextEntry
-                     />    
+                     />
                 </View>
-            
-                
-                <View style={styles.registration_form}> 
-                    <TouchableOpacity onPress={Actions.tab}>
+
+                 <View style={styles.form}>
+                    <TextInput onChangeText={(password_confirmation) => this.setState({password_confirmation})}
+                        placeholder={"パスワード（確認用）"}
+                        placeholderTextColor={'#666677'}
+                        style={styles.text_field}
+                        keyboardType={'email-address'}
+                        returnKeyType={'done'}
+                        secureTextEntry
+                     />
+                </View>
+
+
+                <View style={styles.registration_form}>
+                    <TouchableOpacity onPress={() => {
+                        this.postRegistrationForm()
+                    }}>
                         <Text style={styles.registration_button_text}>
                             登録
                         </Text>
@@ -79,6 +103,8 @@ export default class SignUp extends Component{
         )
     }
 }
+
+export default connect()(SignUp)
 
 const styles = StyleSheet.create({
     container: {
@@ -137,7 +163,7 @@ const styles = StyleSheet.create({
         marginTop: 120,
         marginBottom: 9,
      },
-    
+
     registration_button_text: {
         color: '#28a8de',
         textAlign: 'center',

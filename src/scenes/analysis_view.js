@@ -9,7 +9,13 @@ import {
     StyleSheet,
 } from "react-native";
 import { connect } from 'react-redux';
+import { VictoryBar } from "victory-native";
 import Orientation from 'react-native-orientation';
+
+const sample_data = [ 
+    {hoge: 1, geho: 2},
+    {hoge: 2, geho: 3},
+]
 
 export default class AnalysisView extends React.Component{
     componentDidMount() {
@@ -17,7 +23,11 @@ export default class AnalysisView extends React.Component{
     }
     render(){
         return(
-            <View/>
+            <VictoryBar 
+              data = {sample_data}
+              x='hoge'
+              y='geho'
+            />
         );
     }
 }

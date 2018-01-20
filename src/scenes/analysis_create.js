@@ -1,4 +1,4 @@
-import React from "react";
+import React from "react"; 
 import {
     Text,
     Image,
@@ -11,56 +11,66 @@ import {
 import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 import Orientation from 'react-native-orientation';
+import { postGameInformation } from '../actions/game'
 import { Background } from "../components";
 import { NavBar } from "../components";
 
-export default class AnalysisCreate extends React.Component{
+class AnalysisCreate extends React.Component{
 
-    constructor(props) {
-        super(props);
-        gameStylePressed = [true, false]
-        shotTypePressed = [true, false, false, false, false, false]
-        termPressed = [true, false, false]
-        this.state = {gameStylePressed:gameStylePressed, shotTypePressed:shotTypePressed, termPressed:termPressed}
-    }
+  constructor(props) {
+    super(props);
+    this.postGameInformationForm.bind(this)
+    gameStylePressed = [true, false]
+    shotTypePressed = [true, false, false, false, false, false]
+    termPressed = [true, false, false]
+    this.state = {gameStylePressed:gameStylePressed, shotTypePressed:shotTypePressed, termPressed:termPressed}
+  }
 
-    gameStyleOnPressButton(id){
+  gameStyleOnPressButton(id){
     gameStylePressed = [false, false]
     gameStylePressed[id] = true
     this.setState({gameStylePressed: gameStylePressed})
   }
 
-    shotTypeOnPressButton(id){
+  shotTypeOnPressButton(id){
     shotTypePressed = [false, false, false, false, false, false]
     shotTypePressed[id] = true
     this.setState({shotTypePressed:shotTypePressed})
   } 
 
-    termOnPressButton(id){
+  termOnPressButton(id){
     termPressed = [false, false, false]
     termPressed[id] = true
     this.setState({termPressed:termPressed})
   }
-
-
-    componentWillMount() {
-        Orientation.lockToPortrait();
+  componentWillMount() {
+    Orientation.lockToPortrait();
+  }
+  postGameInformationForm(){
+    const { dispatch } = this.props;
+    const sample_data = {
+      "data":{
+        "user_id": 2,
+        "opponent_user": 1,
+        "victory": 1,
+      }
     }
-    render(){
-        return(
-            <View style={styles.container}>
+    dispatch(postGameInformation(sample_data))
+  }
+  render(){
+    return(
+      <View style={styles.container}>
 
-               <Background/>
-               <NavBar/>
-
-               <Text style={styles.subtitle_text}>
-                    検索条件
-                </Text>
+        <Background/>
+        <NavBar/>
+        <Text style={styles.subtitle_text}>
+          検索条件
+        </Text>
 
                 
-                <View style={{flexDirection:"row"}}>
+        <View style={{flexDirection:"row"}}>
                     
-                    <Text style={styles.game_style_text}>
+              <Text style={styles.game_style_text}>
                         試合形式
                     </Text>
                     
@@ -274,22 +284,12 @@ export default class AnalysisCreate extends React.Component{
                 </TouchableOpacity>          
 
             </View>
-
-
-
-
-
-
-
-
-
-        
         );
     }
 }
+export default connect()(AnalysisCreate)
 
 const styles = StyleSheet.create({
-
     container: {
         flex: 1,
     },
@@ -539,6 +539,4 @@ const styles = StyleSheet.create({
         color: '#ffffff',
         alignSelf: 'center',
      },
-
-
 });
