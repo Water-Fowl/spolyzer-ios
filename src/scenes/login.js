@@ -12,16 +12,37 @@ import { Actions } from 'react-native-router-flux';
 import Orientation from 'react-native-orientation';
 import { Background } from "../components";
 
-export default class Login extends Component{
+import { connect } from 'react-redux';
+import { postUserLogin } from '../actions/login';
+
+class Login extends React.Component{
+
+    constructor(props) {
+        super(props);
+        this.postLoginInformation.bind(this);
+        this.state = {
+            email: '',
+            password: '',
+            login_error: false,
+        };
+    }
+
     componentWillMount() {
         Orientation.lockToPortrait();
     }
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            text: '',
-        };
+    componentWillReceiveProps(nextProps){
+        const { login_error } = nextProps
+        this.setState({login_error: login_error})
+    }
+
+    postLoginInformation(){
+        const { dispatch } = this.props
+        formLoginInformation = {
+            email: this.state.email,
+            password: this.state.password,
+        }
+        dispatch(postUserLogin(formLoginInformation))
     }
 
     render(){
@@ -29,48 +50,64 @@ export default class Login extends Component{
             <View style={styles.container}>
 
                <Background/>
-                
+
                 <Text style={styles.logo_text}>
                     Spolyzer
                 </Text>
-                
-                <View style={styles.form}>    
-                    <TextInput onChangeText={(text) => this.setState({text})} 
-                        placeholder={"メールアドレス"} 
-                        placeholderTextColor={'#666677'} 
+
+                <View style={styles.form}>
+                    <TextInput onChangeText={(email) => this.setState({email})}
+                        placeholder={"メールアドレス"}
+                        placeholderTextColor={'#666677'}
                         style={styles.text_field}
                         keyboardType={'email-address'}
                         returnKeyType={'done'}
-                     />    
+                     />
                 </View>
-                    
-                <View style={styles.form}>    
-                    <TextInput onChangeText={(text) => this.setState({text})} 
-                        placeholder={"パスワード"} 
-                        placeholderTextColor={'#666677'} 
+
+                <View style={styles.form}>
+                    <TextInput onChangeText={(password) => this.setState({password})}
+                        placeholder={"パスワード"}
+                        placeholderTextColor={'#666677'}
                         style={styles.text_field}
                         keyboardType={'email-address'}
                         returnKeyType={'done'}
                         secureTextEntry
-                     />    
+                     />
                 </View>
-            
+                {(() => {
+                    if (this.state.login_error) {
+                        return (
+                            <View style={{flexDirection:"row"}}>
+                                <Text style={styles.auto_login_text}>
+                                    メールアドレスかパスワードが間違っています。
+                                </Text>
+                            </View>
+                        )
+                    }
+                })()}
                 <View style={{flexDirection:"row"}}>
                     <View style={styles.square} />
                     <Text style={styles.auto_login_text}>
                         次回から自動でログインする
                     </Text>
                 </View>
-                
-                <View style={styles.form}> 
-                    <TouchableOpacity onPress={Actions.tab}>
+
+                <View style={styles.form}>
+                    <TouchableOpacity onPress={() =>{
+                      Actions.tab();
+                      /*
+                       * Rails環境なしでもログインできるようにここはコメントアウト
+                       * this.postLoginInformation()
+                      */
+                    }}>
                         <Text style={styles.login_button_text}>
                             ログイン
                         </Text>
                     </TouchableOpacity>
                 </View>
 
-                    
+
                 <Text style={styles.forget_password_text}>
                     パスワードをお忘れの方
                 </Text>
@@ -87,6 +124,20 @@ export default class Login extends Component{
         )
     }
 }
+
+function mapStateToProps(state, props){
+    const { authentication } = state
+    const {
+        login_error: login_error,
+    } = authentication ||{
+        login_error: false
+    }
+    return {
+        login_error,
+    }
+}
+
+export default connect(mapStateToProps)(Login)
 
 const styles = StyleSheet.create({
     container: {
@@ -154,7 +205,7 @@ const styles = StyleSheet.create({
         marginBottom: 16,
         backgroundColor: 'transparent',
     },
-    
+
       forget_password_text: {
         color: '#28a8de',
         textDecorationLine: 'underline',
@@ -187,5 +238,5 @@ const styles = StyleSheet.create({
         marginBottom: 1,
         backgroundColor: 'transparent',
     },
-    
+
 })
