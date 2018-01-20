@@ -8,19 +8,27 @@ import {
     Background,
     LandScapeBackground,
     TopContentBar,
-    NavigateButton,
     NavBar,
+    NavigateButton,
 } from "../components/general";
+import {
+    GameStyleButton,
+    ShotTypeButton,
+    TermButton,
+} from "../components/search_condition";
 export { 
     TopBar, 
     Background,
     LandScapeBackground,
     TopContentBar,
-    NavigateButton,
     ActionModal,
     FieldInLength,
     FieldInSide,
     FieldOutLength,
     FieldOutSide,
     NavBar,
+    NavigateButton,
+    GameStyleButton,
+    ShotTypeButton,
+    TermButton,
 };
