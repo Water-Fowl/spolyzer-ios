@@ -13,14 +13,12 @@ import { connect } from 'react-redux';
 import Orientation from 'react-native-orientation';
 import { Background } from "../components";
 import { NavBar } from "../components";
+import { ActionButton } from "../components";
 import { GameStyleButton } from "../components";
 import { ShotTypeButton } from "../components";
 import { TermButton } from "../components";
 
 export default class AnalysisCreate extends React.Component{
-
-    
-
 
     componentWillMount() {
         Orientation.lockToPortrait();
@@ -87,15 +85,22 @@ export default class AnalysisCreate extends React.Component{
 
                 </View>
 
-                <TouchableOpacity onPress={Actions.analysis_view} style={styles.analyze}>                
-                    <Image
-                        source={require("../../assets/img/analyze_button.png")}
-                        style={styles.analyze_button}
-                    />
-                    <Text style={styles.analyze_text}>
-                        Analyze
-                    </Text>
-                </TouchableOpacity>          
+
+
+
+
+
+
+                <ActionButton action={Actions.analysis_view} style={styles.analyze} text='Analyze' />          
+
+
+
+
+
+
+
+
+
 
             </View>
 
@@ -204,18 +209,8 @@ const styles = StyleSheet.create({
         marginTop: 48,
      },
 
-     analyze_button: {
-        opacity: 0.4,
-        marginTop: 0,
-     },
+     
 
-     analyze_text: {
-        position: "absolute",
-        top: 14, 
-        fontSize: 20,
-        backgroundColor: 'transparent',
-        color: '#ffffff',
-        alignSelf: 'center',
-     },
+     
 
 });

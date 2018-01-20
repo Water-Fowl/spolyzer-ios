@@ -10,12 +10,13 @@ import {
     TopContentBar,
     NavigateButton,
     NavBar,
+    ActionButton,
 } from "../components/general";
 import {
     GameStyleButton,
     ShotTypeButton,
     TermButton,
-} from "../components/serch_condition";
+} from "../components/search_condition";
 export { 
     TopBar, 
     Background,
@@ -28,6 +29,7 @@ export {
     FieldOutLength,
     FieldOutSide,
     NavBar,
+    ActionButton,
     GameStyleButton,
     ShotTypeButton,
     TermButton,

@@ -5,8 +5,10 @@ import {
     Image,
     Text,
     View,
-    TouchableHighlight
+    TouchableHighlight,
+    TouchableOpacity,
 } from 'react-native';
+import { Actions } from 'react-native-router-flux';
 
 const win = Dimensions.get('window');
 
@@ -29,6 +31,25 @@ export class NavBar extends React.Component {
                 style={GeneralStyles.navibar}
             />
                
+        );
+    }
+}
+
+
+export class ActionButton extends React.Component {
+
+
+    render(){
+        return(
+            <TouchableOpacity onPress={this.props.action} style={this.props.style}>                
+                    <Image
+                        source={require("../../assets/img/action_button.png")}
+                        style={GeneralStyles.action_button}
+                    />
+                    <Text style={GeneralStyles.action_text}>
+                        {this.props.text}
+                    </Text>
+                </TouchableOpacity>
         );
     }
 }
@@ -102,6 +123,18 @@ const GeneralStyles = StyleSheet.create({
         justifyContent: 'center',
         marginLeft: -20,
         marginTop: -10,
+    },
+    action_button: {
+        opacity: 0.4,
+        marginTop: 0,
+    },
+    action_text: {
+        position: "absolute",
+        top: 14, 
+        fontSize: 20,
+        backgroundColor: 'transparent',
+        color: '#ffffff',
+        alignSelf: 'center',
     },
     landscape_background: {
         zIndex:0,
