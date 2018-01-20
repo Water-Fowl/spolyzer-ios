@@ -219,7 +219,8 @@ const styles = StyleSheet.create({
 
   },
   field_outer_view:{
-    flexDirection:"row",position:"absolute"
+    flexDirection:"row",
+    position:"absolute"
   },
   field_outer_view_left_side:{
     flex:1,
@@ -313,8 +314,7 @@ const styles = StyleSheet.create({
   },
   view_for_horizontal_yellow_bar_left:{
     position:"absolute",
-    height:win.height,
-    width:win.width*0.5,
+    flex: 0.5,
     justifyContent:"center",
     alignItems:"center"
   },
