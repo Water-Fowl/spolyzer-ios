@@ -27,12 +27,12 @@ export class GameStyleButton extends React.Component {
                <TouchableHighlight
                     activeOpacity={ 0.6 }
                     underlayColor={'transparent'}
-                    style={ this.state.gameStylePressed[0] ? styles.game_style_button_press : styles.game_style_button }
+                    style={ this.state.gameStylePressed[0] ? styles.game_style_button_pressed : styles.game_style_button }
                     onPress={() =>{
                         this.gameStyleOnPressButton(0)
                     }}
                 >
-                    <Text style={ this.state.gameStylePressed[0] ? styles.select_text_Press : styles.select_text }>
+                    <Text style={ this.state.gameStylePressed[0] ? styles.select_text_pressed : styles.select_text }>
                         シングルス
                     </Text>
                 </TouchableHighlight>
@@ -40,12 +40,12 @@ export class GameStyleButton extends React.Component {
                 <TouchableHighlight
                     activeOpacity={ 0.6 }
                     underlayColor={'transparent'}
-                    style={ this.state.gameStylePressed[1] ? styles.game_style_button_press : styles.game_style_button }
+                    style={ this.state.gameStylePressed[1] ? styles.game_style_button_pressed : styles.game_style_button }
                     onPress={() =>{
                         this.gameStyleOnPressButton(1)
                     }}
                 >
-                    <Text style={ this.state.gameStylePressed[1] ? styles.select_text_Press : styles.select_text }>
+                    <Text style={ this.state.gameStylePressed[1] ? styles.select_text_pressed : styles.select_text }>
                         ダブルス
                     </Text>
                 </TouchableHighlight>
@@ -73,12 +73,12 @@ export class ShotTypeButton extends React.Component {
                 <TouchableHighlight
                     activeOpacity={ 0.6 }
                     underlayColor={'transparent'}
-                    style={ this.state.shotTypePressed[0] ? styles.shot_type_button_press : styles.shot_type_button }
+                    style={ this.state.shotTypePressed[0] ? styles.shot_type_button_pressed : styles.shot_type_button }
                     onPress={() =>{
                         this.shotTypeOnPressButton(0)
                     }}
                 >
-                    <Text style={ this.state.shotTypePressed[0] ? styles.select_text_Press : styles.select_text }>
+                    <Text style={ this.state.shotTypePressed[0] ? styles.select_text_pressed : styles.select_text }>
                         スマッシュ
                     </Text>
                 </TouchableHighlight>
@@ -86,12 +86,12 @@ export class ShotTypeButton extends React.Component {
                 <TouchableHighlight
                     activeOpacity={ 0.6 }
                     underlayColor={'transparent'}
-                    style={ this.state.shotTypePressed[1] ? styles.shot_type_button_press : styles.shot_type_button }
+                    style={ this.state.shotTypePressed[1] ? styles.shot_type_button_pressed : styles.shot_type_button }
                     onPress={() =>{
                         this.shotTypeOnPressButton(1)
                     }}
                 >
-                    <Text style={ this.state.shotTypePressed[1] ? styles.select_text_Press : styles.select_text }>
+                    <Text style={ this.state.shotTypePressed[1] ? styles.select_text_pressed : styles.select_text }>
                         ドロップ
                     </Text>
                 </TouchableHighlight>
@@ -99,12 +99,12 @@ export class ShotTypeButton extends React.Component {
                 <TouchableHighlight
                     activeOpacity={ 0.6 }
                     underlayColor={'transparent'}
-                    style={ this.state.shotTypePressed[2] ? styles.shot_type_button_press : styles.shot_type_button }
+                    style={ this.state.shotTypePressed[2] ? styles.shot_type_button_pressed : styles.shot_type_button }
                     onPress={() =>{
                         this.shotTypeOnPressButton(2)
                     }}
                 >
-                   <Text style={ this.state.shotTypePressed[2] ? styles.select_text_Press : styles.select_text }>
+                   <Text style={ this.state.shotTypePressed[2] ? styles.select_text_pressed : styles.select_text }>
                         ヘアピン
                    </Text>
                 </TouchableHighlight>
@@ -112,12 +112,12 @@ export class ShotTypeButton extends React.Component {
                 <TouchableHighlight
                     activeOpacity={ 0.6 }
                     underlayColor={'transparent'}
-                    style={ this.state.shotTypePressed[3] ? styles.shot_type_button_press : styles.shot_type_button }
+                    style={ this.state.shotTypePressed[3] ? styles.shot_type_button_pressed : styles.shot_type_button }
                     onPress={() =>{
                         this.shotTypeOnPressButton(3)
                     }}
                 >
-                    <Text style={ this.state.shotTypePressed[3] ? styles.select_text_Press : styles.select_text }>
+                    <Text style={ this.state.shotTypePressed[3] ? styles.select_text_pressed : styles.select_text }>
                         クリアー
                     </Text>
                 </TouchableHighlight>
@@ -125,12 +125,12 @@ export class ShotTypeButton extends React.Component {
                 <TouchableHighlight
                     activeOpacity={ 0.6 }
                     underlayColor={'transparent'}
-                    style={ this.state.shotTypePressed[4] ? styles.shot_type_button_press : styles.shot_type_button }
+                    style={ this.state.shotTypePressed[4] ? styles.shot_type_button_pressed : styles.shot_type_button }
                     onPress={() =>{
                         this.shotTypeOnPressButton(4)
                     }}
                 >
-                    <Text style={ this.state.shotTypePressed[4] ? styles.select_text_Press : styles.select_text }>
+                    <Text style={ this.state.shotTypePressed[4] ? styles.select_text_pressed : styles.select_text }>
                         プッシュ
                     </Text>
                 </TouchableHighlight>
@@ -138,12 +138,12 @@ export class ShotTypeButton extends React.Component {
                 <TouchableHighlight
                     activeOpacity={ 0.6 }
                     underlayColor={'transparent'}
-                    style={ this.state.shotTypePressed[5] ? styles.shot_type_button_press : styles.shot_type_button }
+                    style={ this.state.shotTypePressed[5] ? styles.shot_type_button_pressed : styles.shot_type_button }
                     onPress={() =>{
                         this.shotTypeOnPressButton(5)
                     }}
                 >
-                    <Text style={ this.state.shotTypePressed[5] ? styles.select_text_Press : styles.select_text }>
+                    <Text style={ this.state.shotTypePressed[5] ? styles.select_text_pressed : styles.select_text }>
                         ドライブ
                     </Text>
                 </TouchableHighlight>
@@ -172,12 +172,12 @@ export class TermButton extends React.Component {
                 <TouchableHighlight
                     activeOpacity={ 0.6 }
                     underlayColor={'transparent'}
-                    style={ this.state.termPressed[0] ? styles.term_button_press : styles.term_button }
+                    style={ this.state.termPressed[0] ? styles.term_button_pressed : styles.term_button }
                     onPress={() =>{
                         this.termOnPressButton(0)
                     }}
                 >
-                    <Text style={ this.state.termPressed[0] ? styles.select_text_Press : styles.select_text }>
+                    <Text style={ this.state.termPressed[0] ? styles.select_text_pressed : styles.select_text }>
                         Day
                     </Text>
                 </TouchableHighlight>
@@ -185,12 +185,12 @@ export class TermButton extends React.Component {
                 <TouchableHighlight
                     activeOpacity={ 0.6 }
                     underlayColor={'transparent'}
-                    style={ this.state.termPressed[1] ? styles.term_button_press : styles.term_button }
+                    style={ this.state.termPressed[1] ? styles.term_button_pressed : styles.term_button }
                     onPress={() =>{
                         this.termOnPressButton(1)
                     }}
                 >
-                    <Text style={ this.state.termPressed[1] ? styles.select_text_Press : styles.select_text }>
+                    <Text style={ this.state.termPressed[1] ? styles.select_text_pressed : styles.select_text }>
                         Week
                     </Text>
                 </TouchableHighlight>
@@ -198,12 +198,12 @@ export class TermButton extends React.Component {
                 <TouchableHighlight
                     activeOpacity={ 0.6 }
                     underlayColor={'transparent'}
-                    style={ this.state.termPressed[2] ? styles.term_button_press : styles.term_button }
+                    style={ this.state.termPressed[2] ? styles.term_button_pressed : styles.term_button }
                     onPress={() =>{
                         this.termOnPressButton(2)
                     }}
                 >
-                    <Text style={ this.state.termPressed[2] ? styles.select_text_Press : styles.select_text }>
+                    <Text style={ this.state.termPressed[2] ? styles.select_text_pressed : styles.select_text }>
                         Month
                     </Text>
                 </TouchableHighlight>
@@ -214,7 +214,7 @@ export class TermButton extends React.Component {
 
 const styles = StyleSheet.create({
 
-    game_style_button_press: {
+    game_style_button_pressed: {
         backgroundColor: '#0a2444',
         width: 90,
         marginRight: 3,
@@ -238,7 +238,7 @@ const styles = StyleSheet.create({
         borderRadius: 3,
     },
 
-    select_text_Press: {
+    select_text_pressed: {
         color: '#ffffff',
         fontSize: 15,
         backgroundColor: 'transparent',
@@ -252,7 +252,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
 
-    shot_type_button_press: {
+    shot_type_button_pressed: {
         backgroundColor: '#0a2444',
         height: 28,
         width: 90,
@@ -278,7 +278,7 @@ const styles = StyleSheet.create({
         borderRadius: 3,
     },
     
-    term_button_press: {
+    term_button_pressed: {
         backgroundColor: '#0a2444',
         width: 60,
         marginRight: 3,
