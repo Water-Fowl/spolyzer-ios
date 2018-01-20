@@ -315,6 +315,7 @@ const styles = StyleSheet.create({
   view_for_horizontal_yellow_bar_left:{
     position:"absolute",
     flex: 0.5,
+    height: win.height,
     justifyContent:"center",
     alignItems:"center"
   },
