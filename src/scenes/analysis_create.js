@@ -27,29 +27,8 @@ class AnalysisCreate extends React.Component{
   constructor(props) {
     super(props);
     this.postGameInformationForm.bind(this)
-    gameStylePressed = [true, false]
-    shotTypePressed = [true, false, false, false, false, false]
-    termPressed = [true, false, false]
-    this.state = {gameStylePressed:gameStylePressed, shotTypePressed:shotTypePressed, termPressed:termPressed}
   }
 
-  gameStyleOnPressButton(id){
-    gameStylePressed = [false, false]
-    gameStylePressed[id] = true
-    this.setState({gameStylePressed: gameStylePressed})
-  }
-
-  shotTypeOnPressButton(id){
-    shotTypePressed = [false, false, false, false, false, false]
-    shotTypePressed[id] = true
-    this.setState({shotTypePressed:shotTypePressed})
-  } 
-
-  termOnPressButton(id){
-    termPressed = [false, false, false]
-    termPressed[id] = true
-    this.setState({termPressed:termPressed})
-  }
   componentWillMount() {
     Orientation.lockToPortrait();
   }
@@ -232,20 +211,6 @@ const styles = StyleSheet.create({
      analyze: {
         alignSelf: 'center',
         marginTop: 48,
-     },
-
-     analyze_button: {
-        opacity: 0.4,
-        marginTop: 0,
-     },
-
-     analyze_text: {
-        position: "absolute",
-        top: 14, 
-        fontSize: 20,
-        backgroundColor: 'transparent',
-        color: '#ffffff',
-        alignSelf: 'center',
      },
 
 });
