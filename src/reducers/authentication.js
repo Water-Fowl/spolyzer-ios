@@ -1,23 +1,37 @@
 import {
-    AUTH_REQUEST,
-    AUTH_RECIEVED,
-} from "../actions/authentication"
+  LOGIN_REQUEST,
+  LOGIN_RECIEVED,
+} from "../actions/login"
+import {
+  REGISTRATION_REQUEST,
+  REGISTRATION_RECEIVED,
+} from "../actions/registration"
 
 const initialState = {
-    is_authenticated: false,
-    error: false
+  is_authenticated: false,
+  login_error: false,
+  registration_error: false,
 }
 
 export default function authenticationReducer(state=initialState, action={}){
-    switch (action.type){
-        case AUTH_REQUEST:
-            return state
-        case AUTH_RECIEVED:
-            return Object.assign({}, state, {
-                is_authenticated: action.is_authenticated,
-                error: action.error 
-            })
-        default:
-            return state
-    }
+  switch (action.type){
+    case LOGIN_REQUEST:
+      return state
+    case LOGIN_RECIEVED:
+      return Object.assign({}, state, {
+        is_authenticated: action.is_authenticated,
+        login_error: action.error 
+      })
+    case REGISTRATION_REQUEST:
+      console.log(REGISTRATION_REQUEST)
+      return state
+    case REGISTRATION_RECEIVED:
+      console.log(REGISTRATION_RECEIVED)
+      return Object.assign({}, state, {
+        is_authenticated: action.is_authenticated,
+        registration_error: action.error 
+      })
+    default:
+      return state
+  }
 }

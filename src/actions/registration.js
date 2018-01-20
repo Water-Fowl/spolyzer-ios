@@ -1,8 +1,8 @@
 import { Actions } from 'react-native-router-flux';
 import { REGISTRATION_ENDPOINT } from '../config/api';
 
-export const REQUEST = "REQUEST"
-export const RECIEVED = "RECIEVED"
+export const REGISTRATION_REQUEST = "REGISTRATION_REQUEST"
+export const REGISTRATION_RECEIVED = "REGISTRATION_RECEIVED"
 
 
 export function postUserRegistration(body){
@@ -12,31 +12,39 @@ export function postUserRegistration(body){
       method: "POST",
       headers: {
         'Accept': 'application/json',
-				'Content-Type': 'application/json',
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify(body)
     })
-    .then(response => response.json())
-    .then(json => console.log(json))
-      /* 一時的に絶対ログインできるようにする*/
-    .then(dispatch(receivedRegistration(true)))
-    .then(Actions.tab())
-    .catch(function(error){
+      .then(response => response.json())
+      .then(json => json.errors)
+      .then(errors => dispatch(receivedRegistration(errors)))
+      .catch(function(error){
         console.log(error.message)
-    })
+      })
   }
 }
 
 function requestRegistration(){
   return{
-    type: REQUEST
+    type: REGISTRATION_REQUEST
   }
 }
 
-function receivedRegistration(is_authentication){
-  return {
-    type: RECIEVED,
-    is_authenticated: is_authentication,
-    error: false,
+function receivedRegistration(errors){
+  if (errors == null) {
+    Actions.tab();
+    return {
+      type: REGISTRATION_RECEIVED,
+      is_authenticated: true,
+      error: false,
+    }
+  }
+  else{
+    return {
+      type: REGISTRATION_RECEIVED,
+      is_authenticated: false,
+      error: true
+    }
   }
 }

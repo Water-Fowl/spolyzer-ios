@@ -13,17 +13,17 @@ import Orientation from 'react-native-orientation';
 import { Background } from "../components";
 
 import { connect } from 'react-redux';
-import { postUserAuthentication } from '../actions/authentication';
+import { postUserLogin } from '../actions/login';
 
 class Login extends React.Component{
 
     constructor(props) {
         super(props);
-        this.postAuthenticationInformation.bind(this);
+        this.postLoginInformation.bind(this);
         this.state = {
             email: '',
             password: '',
-            error: false,
+            login_error: false,
         };
     }
 
@@ -32,18 +32,17 @@ class Login extends React.Component{
     }
 
     componentWillReceiveProps(nextProps){
-        const { error } = nextProps
-        console.log(error)
-        this.setState({error: true})
+        const { login_error } = nextProps
+        this.setState({login_error: login_error})
     }
 
-    postAuthenticationInformation(){
+    postLoginInformation(){
         const { dispatch } = this.props
-        formAuthenticationInformation = {
+        formLoginInformation = {
             email: this.state.email,
             password: this.state.password,
         }
-        dispatch(postUserAuthentication(formAuthenticationInformation))
+        dispatch(postUserLogin(formLoginInformation))
     }
 
     render(){
@@ -77,7 +76,7 @@ class Login extends React.Component{
                      />
                 </View>
                 {(() => {
-                    if (this.state.error) {
+                    if (this.state.login_error) {
                         return (
                             <View style={{flexDirection:"row"}}>
                                 <Text style={styles.auto_login_text}>
@@ -96,11 +95,11 @@ class Login extends React.Component{
 
                 <View style={styles.form}>
                     <TouchableOpacity onPress={() =>{
-                        Actions.mypage_top()
-                        /*
-                            API完成するまでここはコメントアウト 
-                            this.postAuthenticationInformation()
-                        */
+                      Actions.tab();
+                      /*
+                       * Rails環境なしでもログインできるようにここはコメントアウト
+                       * this.postLoginInformation()
+                      */
                     }}>
                         <Text style={styles.login_button_text}>
                             ログイン
@@ -127,18 +126,19 @@ class Login extends React.Component{
 }
 
 function mapStateToProps(state, props){
-    const { authenticationReducer } = state
+    const { authentication } = state
     const {
-        error: error,
-    } = authenticationReducer ||{
-        error: false
+        login_error: login_error,
+    } = authentication ||{
+        login_error: false
     }
     return {
-        error,
+        login_error,
     }
 }
 
 export default connect(mapStateToProps)(Login)
+
 const styles = StyleSheet.create({
     container: {
         flex: 1,

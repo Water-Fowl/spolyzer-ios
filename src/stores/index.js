@@ -6,31 +6,34 @@ import { createLogger } from 'redux-logger';
 import { gameReducer, scoreReducer, authenticationReducer } from '../reducers'
 
 const authenticationConfig = {
-  key: 'root',
+  key: 'authentication',
   storage,
 }
 const scoreConfig = {
   key: 'score',
   storage,
 }
-    
+
 const loggerMiddleware = createLogger();
 const middleware = [thunkMiddleware, loggerMiddleware];
 const reducers = combineReducers({
-    score: persistReducer(scoreConfig, scoreReducer),
-    authentication: persistReducer(authenticationConfig, authenticationReducer),
-    game: gameReducer,
+  score: persistReducer(scoreConfig, scoreReducer),
+  /*
+  authentication: persistReducer(authenticationConfig, authenticationReducer),
+  */
+  authentication: authenticationReducer,
+  game: gameReducer,
 })
 
 export function configureStore () {
-    let store = createStore(
-        reducers,
-        undefined,
-        compose(
-            applyMiddleware(...middleware),
-        )
+  let store = createStore(
+    reducers,
+    undefined,
+    compose(
+      applyMiddleware(...middleware),
     )
-    let persistor = persistStore(store)
+  )
+  let persistor = persistStore(store)
 
-    return { persistor, store }
+  return { persistor, store }
 }
