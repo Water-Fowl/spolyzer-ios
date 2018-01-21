@@ -45,16 +45,19 @@ class Mypage extends React.Component {
               </Text>
 
               <View style={styles.align_items_center}>
-              <Image
-                source={require('../../assets/img/my_page_user_icon.png')}
-                style={styles.user_icon}
-              />
-              <Image
-                source={require('../../assets/img/my_page_center_design.png')}
-              />
-              <View style={styles.game_setting_border}>
-                <View style={styles.game_setting_table}/>
-              </View>
+                  <Image
+                    source={require('../../assets/img/my_page_user_icon.png')}
+                    style={styles.user_icon}
+                  />
+                  <Image
+                    source={require('../../assets/img/my_page_center_design.png')}
+                  />
+                  <Text style={styles.my_name}>
+                    ここにNAME
+                  </Text>
+                  <View style={styles.game_setting_border}>
+                      <View style={styles.game_setting_table}/>
+                  </View>
               </View>
             </View>
         );
@@ -90,14 +93,6 @@ const styles = StyleSheet.create({
         backgroundColor: 'transparent',
         fontWeight: 'bold',
     },
-    background: {
-        zIndex:0,
-        flex: 1,
-        position:"absolute",
-        alignSelf: 'stretch',
-        width: win.width,
-        height: win.height,
-    },
     user_icon:{
         margin:15,
         opacity:0.3,
@@ -118,26 +113,15 @@ const styles = StyleSheet.create({
       borderColor: "rgb(20, 35, 70)",
       borderRadius: 3,
     },
+    my_name:{
+      position:"absolute",
+      marginTop:220,
+      backgroundColor: 'transparent',
+      color: '#ffffff',
+      fontSize:20,
+    },
     align_items_center:{
         alignItems: "center",
     },
-    flex_row:{
-        flexDirection: "row",
-    },
-    bar:{
-        zIndex:2,
-    },
-    topbarimg:{
-        alignItems: "center",
-        width: win.width,
-    },
-    menu:{
-        zIndex:3,
-        flex:1,
-    },
-    profile: {
-        alignItems: 'center',
-        zIndex:4,
-        margin: 30,
-    },
+
 });
