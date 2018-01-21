@@ -14,6 +14,7 @@ import {
     Background,
     TopBar,
     TopContentBar,
+    NavBar,
 } from "../components";
 
 const win = Dimensions.get('window');
@@ -21,7 +22,7 @@ const win = Dimensions.get('window');
 
 class Mypage extends React.Component {
     constructor(props){
-        super(props); 
+        super(props);
     }
     static navigationOptions = {
         headerLeft: <View></View>,
@@ -34,10 +35,14 @@ class Mypage extends React.Component {
     render(){
         const { actions } = this.props
         return(
-            <View style={styles.container,
-                            styles.align_items_center}>
-                <Background/>
-                <TopContentBar content_name={"My Data"}/>
+
+
+            <View style={styles.container}>
+                            <Background/>
+                            <NavBar/>
+                            <Text style={styles.subtitle_text}>
+                              マイデータ
+                            </Text>
             </View>
         );
     }
@@ -61,6 +66,17 @@ function mapStateToProps(state, props) {
 export default connect(mapStateToProps)(Mypage);
 
 const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+    },
+    subtitle_text: {
+        color: '#ffffff',
+        fontSize: 22,
+        alignSelf: 'center',
+        marginTop: -28,
+        backgroundColor: 'transparent',
+        fontWeight: 'bold',
+    },
     background: {
         zIndex:0,
         flex: 1,
@@ -73,7 +89,7 @@ const styles = StyleSheet.create({
         alignItems: "center",
     },
     flex_row:{
-        flexDirection: "row", 
+        flexDirection: "row",
     },
     bar:{
         zIndex:2,
