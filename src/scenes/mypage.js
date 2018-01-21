@@ -52,6 +52,9 @@ class Mypage extends React.Component {
               <Image
                 source={require('../../assets/img/my_page_center_design.png')}
               />
+              <View style={styles.game_setting_border}>
+                <View style={styles.game_setting_table}/>
+              </View>
               </View>
             </View>
         );
@@ -96,8 +99,24 @@ const styles = StyleSheet.create({
         height: win.height,
     },
     user_icon:{
-        margin:20,
+        margin:15,
         opacity:0.3,
+    },
+    game_setting_border:{
+      marginTop: 10,
+      padding:5,
+      backgroundColor: 'rgba(0, 0, 0, 0)',
+      borderWidth: 1.5,
+      borderColor: "rgb(20, 35, 70)",
+      borderRadius: 3,
+    },
+    game_setting_table:{
+      width:320,
+      height:245,
+      justifyContent: 'center',
+      borderWidth: 1.5,
+      borderColor: "rgb(20, 35, 70)",
+      borderRadius: 3,
     },
     align_items_center:{
         alignItems: "center",
