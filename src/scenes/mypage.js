@@ -49,6 +49,9 @@ class Mypage extends React.Component {
                 source={require('../../assets/img/my_page_user_icon.png')}
                 style={styles.user_icon}
               />
+              <Image
+                source={require('../../assets/img/my_page_center_design.png')}
+              />
               </View>
             </View>
         );
