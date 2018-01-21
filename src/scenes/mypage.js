@@ -38,11 +38,18 @@ class Mypage extends React.Component {
 
 
             <View style={styles.container}>
-                            <Background/>
-                            <NavBar/>
-                            <Text style={styles.subtitle_text}>
-                              マイデータ
-                            </Text>
+              <Background/>
+              <NavBar/>
+              <Text style={styles.subtitle_text}>
+                マイデータ
+              </Text>
+
+              <View style={styles.align_items_center}>
+              <Image
+                source={require('../../assets/img/my_page_user_icon.png')}
+                style={styles.user_icon}
+              />
+              </View>
             </View>
         );
     }
@@ -84,6 +91,10 @@ const styles = StyleSheet.create({
         alignSelf: 'stretch',
         width: win.width,
         height: win.height,
+    },
+    user_icon:{
+        margin:20,
+        opacity:0.3,
     },
     align_items_center:{
         alignItems: "center",
