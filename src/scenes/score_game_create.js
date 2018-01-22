@@ -11,13 +11,13 @@ import{
     TopBar,
     TopContentBar,
     NavigateButton,
+    NavBar,
 } from "../components";
 import Orientation from 'react-native-orientation';
 import { Actions } from 'react-native-router-flux';
 
 
 const win = Dimensions.get('window');
-
 
 export default class ScoreGameCreate extends React.Component {
 
@@ -30,9 +30,14 @@ export default class ScoreGameCreate extends React.Component {
 
     render(){
         return (
-            <View style={ styles.align_items_center }>
-                <Background/>
-                <TopContentBar content_name={"試合設定"} />
+            <View style={ styles.container }>
+                      <Background/>
+                      <NavBar/>
+
+                      <Text style={styles.subtitle_text}>
+                          試合設定
+                      </Text>
+              <View style={styles.align_items_center} >
                 <View style={styles.game_setting_border} >
                   <View style={styles.game_setting_table}>
                      <Text style={ styles.score_game_create_opponents}>対戦者</Text>
@@ -98,19 +103,31 @@ export default class ScoreGameCreate extends React.Component {
                   </View>
 
                 </View>
+              </View>
             </View>
         );
     }
 }
 const styles = StyleSheet.create({
+    container:{
+      flex: 1,
+    },
     align_items_center:{
         alignItems: "center",
+    },
+    subtitle_text: {
+        color: '#ffffff',
+        fontSize: 22,
+        alignSelf: 'center',
+        marginTop: -28,
+        backgroundColor: 'transparent',
+        fontWeight: 'bold',
     },
     game_setting_border:{
       padding:5,
       backgroundColor: 'rgba(0, 0, 0, 0)',
       borderWidth: 2.5,
-      marginTop:20,
+      marginTop:30,
       borderColor: "rgb(20, 35, 70)",
     },
     game_setting_table:{
