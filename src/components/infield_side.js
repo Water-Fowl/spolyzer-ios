@@ -1,8 +1,6 @@
 import React from 'react';
 import { Dimensions,StyleSheet,Image, Text, View, TouchableHighlight } from 'react-native';
 
-const win = Dimensions.get('window');
-
 export class InFieldSide extends React.Component{
 
     constructor(props) {
@@ -22,8 +20,8 @@ const styles = StyleSheet.create({
   horizontal_blue_bar:{
     borderColor: '#2EA7E0',
     backgroundColor:"#2EA7E0",
-    height: win.width*0.040,
-    width: win.height*0.22,
+    height: 20,
+    width: 80,
     borderWidth: 1.3,
     borderRadius: 3,
     opacity:0.3,

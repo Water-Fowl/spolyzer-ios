@@ -54,7 +54,16 @@ export class TopBar extends React.Component{
     render(){
         return(
             <View>
-            <Text style={{backgroundColor:"rgb(30, 110, 155)",color:"white", fontSize:28, fontWeight:"bold", padding:10,paddingTop:12, textAlign:"center", height:60,  width: win.width}}>Spolyzer</Text>
+            <Text style={{
+              backgroundColor:"rgb(30, 110, 155)",
+                color:"white",
+                fontSize:28,
+                fontWeight:"bold",
+                padding:10,
+                paddingTop:12, 
+                textAlign:"center", 
+                height:60,  
+                width: win.width}}>Spolyzer</Text>
             </View>
         )
     }
@@ -65,7 +74,7 @@ export class LandScapeBackground extends React.Component {
         return(
             <Image
                 source={require('../../assets/img/landscape_background.png')}
-                style={GeneralStyles.background}
+                style={GeneralStyles.landscape_background}
             />
         )
     }
@@ -77,34 +86,36 @@ export class TopContentBar extends React.Component{
     }
     render(){
         return(
-        <View>
+          <View style={{
+            flex:1,
+            alignItems: 'center'
+          }}>
             <Text style={{
                 fontSize:23,
                 backgroundColor: 'rgb(20, 35, 70)',
                 padding:5,
                 paddingLeft:15,
                 paddingRight:15,
+                position:'absolute',
                 textAlign:"center",
                 color:"white"
             }}>
                 { this.props.content_name }
             </Text>
-        </View>
+          </View>
 )
     }
 }
 
 const GeneralStyles = StyleSheet.create({
     background: {
-        flex: 1,
-        resizeMode: 'cover',
         position:'absolute',
-        alignSelf: 'stretch',
-        width:win.width,
+        width: '100%',
+        height: '100%',
     },
     navibar: {
         justifyContent: 'center',
-        marginLeft: -20,
+        width: '100%',
         marginTop: -10,
     },
     navigate_button: {
@@ -121,13 +132,11 @@ const GeneralStyles = StyleSheet.create({
     },
     landscape_background: {
         zIndex:0,
-        flex: 1,
-        top:0,
+        resizeMode: 'stretch',
+        width: '100%',
+        height: '100%',
         backgroundColor:"rgb(30, 55, 80)",
         position:"absolute",
-        alignSelf: 'stretch',
-        width: win.height,
-        height: win.width,
     },
     bar:{
         zIndex:2,

@@ -2,10 +2,8 @@ import ActionModal from './actions_modal';
 import  InFieldLength  from './infield_length';
 import { InFieldSide } from './infield_side';
 import { InFieldCircle } from './infield_circle';
-import { LeftOutFieldLength } from './left_outfield_length';
-import { LeftOutFieldSide } from './left_outfield_side';
-import { RightOutFieldSide } from './right_outfield_side';
-import { RightOutFieldLength } from './right_outfield_length';
+import { OutFieldLength } from './outfield_length';
+import { OutFieldSide } from './outfield_side';
 import {
     TopBar,
     Background,
@@ -28,10 +26,8 @@ export {
     InFieldLength,
     InFieldSide,
     InFieldCircle,
-    LeftOutFieldLength,
-    LeftOutFieldSide,
-    RightOutFieldSide,
-    RightOutFieldLength,
+    OutFieldLength,
+    OutFieldSide,
     NavBar,
     NavigateButton,
     GameStyleButton,
