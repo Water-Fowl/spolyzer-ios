@@ -22,15 +22,22 @@ export class Background extends React.Component {
 }
 
 export class NavBar extends React.Component {
-    render(){
-        return(
-            <Image
-                source={require("../../assets/img/navibar.png")}
-                style={GeneralStyles.navibar}
-            />
-               
-        );
-    }
+  render(){
+    return(
+      <View style={{
+        backgroundColor:"rgba(46, 167, 224, 0.1)",
+        height:60,
+        justifyContent: 'flex-end', 
+        paddingLeft:20,
+        paddingBottom: 5,
+
+      }}>
+        <Image source={require('../../assets/img/spolyzer_header.png')}/>
+      </View>
+
+
+    );
+  }
 }
 
 export class NavigateButton extends React.Component {
@@ -53,17 +60,10 @@ export class NavigateButton extends React.Component {
 export class TopBar extends React.Component{
     render(){
         return(
-            <View>
-            <Text style={{
-              backgroundColor:"rgb(30, 110, 155)",
-                color:"white",
-                fontSize:28,
-                fontWeight:"bold",
-                padding:10,
-                paddingTop:12, 
-                textAlign:"center", 
-                height:60,  
-                width: win.width}}>Spolyzer</Text>
+            <View style={{
+              backgroundColor:"rgba(46, 167, 224, 0.5)",
+            }}>
+            <Image source={require('../../assets/img/spolyzer_header.png')}/>
             </View>
         )
     }
