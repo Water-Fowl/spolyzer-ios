@@ -26,16 +26,14 @@ class Mypage extends React.Component {
     static navigationOptions = {
         headerLeft: <View></View>,
 	}
-    componentWillUpdate() {
-        Orientation.lockToPortrait();
-        console.log('Update')
-    }
+  componentWillMount() {
+    Orientation.lockToPortrait();
+  }
 
     render(){
         const { actions } = this.props
         return(
-            <View style={styles.container,
-                            styles.align_items_center}>
+            <View>
                 <Background/>
                 <TopContentBar content_name={"My Data"}/>
             </View>
