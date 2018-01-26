@@ -31,12 +31,9 @@ export default class ScoreGameCreate extends React.Component {
     render(){
         return (
             <View style={ styles.container }>
-                      <Background/>
-                      <NavBar/>
-
-                      <Text style={styles.subtitle_text}>
-                          試合設定
-                      </Text>
+              <Background/>
+              <NavBar/>
+              <TopContentBar>試合設定</TopContentBar>
               <View style={styles.align_items_center} >
                 <View style={styles.game_setting_border} >
                   <View style={styles.game_setting_table}>
@@ -114,13 +111,6 @@ const styles = StyleSheet.create({
     },
     align_items_center:{
         alignItems: "center",
-    },
-    subtitle_text: {
-        color: '#ffffff',
-        fontSize: 22,
-        alignSelf: 'center',
-        backgroundColor: 'transparent',
-        fontWeight: 'bold',
     },
     game_setting_border:{
       padding:5,
