@@ -15,7 +15,7 @@ export class Background extends React.Component {
         return(
             <Image
                 source={require('../../assets/img/background.png')}
-                style={GeneralStyles.background}
+                style={styles.background}
             />
         );
     }
@@ -26,16 +26,13 @@ export class NavBar extends React.Component {
     return(
       <View style={{
         backgroundColor:"rgba(46, 167, 224, 0.1)",
-        height:60,
+        height:70,
         justifyContent: 'flex-end', 
         paddingLeft:20,
         paddingBottom: 5,
-
       }}>
         <Image source={require('../../assets/img/spolyzer_header.png')}/>
       </View>
-
-
     );
   }
 }
@@ -47,9 +44,9 @@ export class NavigateButton extends React.Component {
             <TouchableOpacity onPress={this.props.action} style={this.props.style}>                
                     <Image
                         source={require("../../assets/img/navigate_button.png")}
-                        style={GeneralStyles.navigate_button}
+                        style={styles.navigate_button}
                     />
-                    <Text style={GeneralStyles.navigate_text}>
+                    <Text style={styles.navigate_text}>
                         {this.props.text}
                     </Text>
                 </TouchableOpacity>
@@ -63,7 +60,7 @@ export class TopBar extends React.Component{
             <View style={{
               backgroundColor:"rgba(46, 167, 224, 0.5)",
             }}>
-            <Image source={require('../../assets/img/spolyzer_header.png')}/>
+              <Image source={require('../../assets/img/spolyzer_header.png')}/>
             </View>
         )
     }
@@ -74,129 +71,121 @@ export class LandScapeBackground extends React.Component {
         return(
             <Image
                 source={require('../../assets/img/landscape_background.png')}
-                style={GeneralStyles.landscape_background}
+                style={styles.landscape_background}
             />
         )
     }
 }
 
 export class TopContentBar extends React.Component{
-    constructor(props) {
-        super(props);
-    }
-    render(){
-        return(
-          <View style={{
-            flex:1,
-            alignItems: 'center'
-          }}>
-            <Text style={{
-                fontSize:23,
-                backgroundColor: 'rgb(20, 35, 70)',
-                padding:5,
-                paddingLeft:15,
-                paddingRight:15,
-                position:'absolute',
-                textAlign:"center",
-                color:"white"
-            }}>
-                { this.props.content_name }
-            </Text>
-          </View>
-)
-    }
+  constructor(props) {
+    super(props);
+  }
+  render(){
+    return(
+      <View>
+      <Image 
+        style={styles.top_content_bar_img} 
+        source={require("../../assets/img/top_content_bar.png")} 
+      />
+      <Text style={styles.top_content_bar_text}>{this.props.children}</Text>
+      </View>
+    )
+  }
 }
 
-const GeneralStyles = StyleSheet.create({
-    background: {
-        position:'absolute',
-        width: '100%',
-        height: '100%',
-    },
-    navibar: {
-        justifyContent: 'center',
-        width: '100%',
-        marginTop: -10,
-    },
-    navigate_button: {
-        opacity: 0.4,
-        marginTop: 0,
-    },
-    navigate_text: {
-        position: "absolute",
-        top: 14, 
-        fontSize: 20,
-        backgroundColor: 'transparent',
-        color: '#ffffff',
-        alignSelf: 'center',
-    },
-    landscape_background: {
-        zIndex:0,
-        resizeMode: 'stretch',
-        width: '100%',
-        height: '100%',
-        backgroundColor:"rgb(30, 55, 80)",
-        position:"absolute",
-    },
-    bar:{
-        zIndex:2,
-        margin:0,
-        padding:0,
-        backgroundColor: 'rgba(46, 167, 224, 1)',
-        width: win.width,
-    },
-    trapezoid: {
-        width: 120,
-        height: 0,
-        borderTopWidth: 40,
-        borderTopColor: 'rgb(30, 110, 155)',
-        borderLeftWidth: 20,
-        borderLeftColor: 'transparent',
-        borderRightWidth: 20,
-        borderRightColor: 'transparent',
-        borderStyle: 'solid'
-    },
-    bar_text:{
-        fontWeight: "bold",
-        fontSize: 25,
-        color: "white",
-        paddingTop: 13,
-        paddingBottom: 13,
-        textAlign: "center",
-    },
-    top_bar:{
-        zIndex:3,
-        alignItems: "center",
-        width: win.width,
-    },
-    top_content_bar:{
-        paddingTop: 10,
-        alignItems: "center",
-    },
-    top_content_bar_text:{
-        fontWeight: "bold",
-        fontSize: 22,
-        color: "white",
-        backgroundColor: 'rgba(0,0,0,0)',
-    },
-   
-    marginTop10:{
-        marginTop: 10
-    },
-    marginTop30: {
-        marginTop: 30
-    },
-    paddingTop30:{
-        paddingTop:30,
-    },
-    paddingTop50:{
-        paddingTop:50,
-    },
-    paddingTop10:{
-        paddingTop:10,
-    },
-    paddingTop105:{
-        paddingTop:105,
-    },
+const styles = StyleSheet.create({
+  background: {
+    position:'absolute',
+    width: '100%',
+    height: '100%',
+  },
+  navibar: {
+    justifyContent: 'center',
+    width: '100%',
+    marginTop: -10,
+  },
+  navigate_button: {
+    opacity: 0.4,
+    marginTop: 0,
+  },
+  navigate_text: {
+    position: "absolute",
+    top: 14, 
+    fontSize: 20,
+    backgroundColor: 'transparent',
+    color: '#ffffff',
+    alignSelf: 'center',
+  },
+  landscape_background: {
+    zIndex:0,
+    resizeMode: 'stretch',
+    width: '100%',
+    height: '100%',
+    backgroundColor:"rgb(30, 55, 80)",
+    position:"absolute",
+  },
+  bar:{
+    zIndex:2,
+    margin:0,
+    padding:0,
+    backgroundColor: 'rgba(46, 167, 224, 1)',
+    width: win.width,
+  },
+  trapezoid: {
+    width: 120,
+    height: 0,
+    borderTopWidth: 40,
+    borderTopColor: 'rgb(30, 110, 155)',
+    borderLeftWidth: 20,
+    borderLeftColor: 'transparent',
+    borderRightWidth: 20,
+    borderRightColor: 'transparent',
+    borderStyle: 'solid'
+  },
+  bar_text:{
+    fontWeight: "bold",
+    fontSize: 25,
+    color: "white",
+    paddingTop: 13,
+    paddingBottom: 13,
+    textAlign: "center",
+  },
+  top_bar:{
+    zIndex:3,
+    alignItems: "center",
+    width: win.width,
+  },
+  top_content_bar_text: {
+    color: '#ffffff',
+    fontSize: 22,
+    alignSelf: 'center',
+    backgroundColor: 'transparent',
+    fontWeight: 'bold',
+    marginTop:5,
+  },
+  top_content_bar_img: {
+    alignSelf: "center",
+    position: 'absolute',
+  },
+
+  marginTop10:{
+    marginTop: 10
+  },
+  marginTop30: {
+    marginTop: 30
+  },
+  paddingTop30:{
+    paddingTop:30,
+  },
+  paddingTop50:{
+    paddingTop:50,
+  },
+  paddingTop10:{
+    paddingTop:10,
+  },
+  paddingTop105:{
+    paddingTop:105,
+  },
 
 })
