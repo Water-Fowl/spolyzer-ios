@@ -1,28 +1,29 @@
 import React from "react";
 import {
-    Text,
-    Image,
-    View,
-    Dimensions,
-    TouchableHighlight,
-    BackgroundImage,
-    StyleSheet,
-    TriangleCorner,
+  Text,
+  Image,
+  View,
+  Dimensions,
+  TouchableHighlight,
+  BackgroundImage,
+  StyleSheet,
+  TriangleCorner,
 } from "react-native";
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 import Orientation from 'react-native-orientation';
 import {
-    TopBar,
-    LandScapeBackground,
-    TopContentBar,
-    NavigateButton,
-    ActionModal,
-    InFieldLength,
-    InFieldSide,
-    InFieldCircle,
-    OutFieldLength,
-    OutFieldSide,
+  TopBar,
+  LandScapeBackground,
+  TopContentBar,
+  NavigateButton,
+  ActionModal,
+  InFieldLength,
+  InFieldSide,
+  InFieldCircle,
+  OutFieldLength,
+  OutFieldSide,
+  ScoreCreateModal
 } from '../components';
 import { postScoreGame } from '../actions/score'
 import { scoreCreateEnhancer } from '../enhances/score_create'
@@ -30,8 +31,12 @@ import { scoreCreateEnhancer } from '../enhances/score_create'
 class ScoreCreate extends React.Component{
   render(){
     return(
-      <View style={{alignItems:'center',
-        width: this.state.width, height: this.state.height}} >
+      <View style={{
+        alignItems:'center',
+        width: this.state.width, 
+        height: this.state.height}} 
+      >
+        <ScoreCreateModal visible={this.props.modal}/>
         <LandScapeBackground/ >
         <TopContentBar>スコアシート</TopContentBar>
         <View style={styles.score_information_bar}>
@@ -132,7 +137,18 @@ class ScoreCreate extends React.Component{
   }
 }
 
-export default scoreCreateEnhancer(ScoreCreate)
+function mapStateToProps(state, props){
+  const { score } = state
+  const {
+    modal: modal,
+  } = score ||{
+    modal: false
+  }
+  return {
+    modal,
+  }
+}
+export default connect(mapStateToProps)(scoreCreateEnhancer(ScoreCreate))
 
 const styles = StyleSheet.create({
   container:{
