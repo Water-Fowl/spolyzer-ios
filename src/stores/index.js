@@ -17,7 +17,7 @@ const scoreConfig = {
 const loggerMiddleware = createLogger();
 const middleware = [thunkMiddleware, loggerMiddleware];
 const reducers = combineReducers({
-  score: persistReducer(scoreConfig, scoreReducer),
+  score: scoreReducer,
   /*
   authentication: persistReducer(authenticationConfig, authenticationReducer),
   */
