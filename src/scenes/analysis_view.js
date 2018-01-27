@@ -41,8 +41,8 @@ export default class AnalysisView extends React.Component{
                         vs
                     </Text>
 
-                    <View style={styles.name_frame}>
-                        <View style={styles.opponent_name_frame}>
+                    <View style={styles.name_outside_frame}>
+                        <View style={styles.name_inside_frame}>
                             <Image
                             source={require('../../assets/img/score_creat_person.png')}
                             style={ styles.person }
@@ -55,7 +55,26 @@ export default class AnalysisView extends React.Component{
 
                     </View>
                 </View>
+                <View style={styles.option}>
+                    
+                    <View style={styles.frame}>
+                        <Text style={styles.option_text}>
+                            １日トータル
+                        </Text>
+                    </View>
+                    <View style={styles.frame}>
+                        <Text style={styles.option_text}>
+                            球種
+                         </Text>
+                    </View>
+                    <View style={styles.frame}>
+                        <Text style={styles.option_text}>
+                            負け試合
+                        </Text>
+                    </View>
 
+
+                </View>
 
 
 
@@ -93,17 +112,17 @@ const styles = StyleSheet.create({
         fontSize:26,
         alignSelf: 'flex-start',
         marginTop: 16,
-        marginLeft: 210,
+        marginLeft: 206,
         backgroundColor: "transparent",
     },
 
-    name_frame: {
+    name_outside_frame: {
         borderRightColor: '#0a2444',
         borderTopColor: '#0a2444',
         borderLeftColor: '#0a2444',
         borderBottomColor: '#0a2444',
         height: 30,
-        width: 110,
+        width: 104,
         borderWidth: 1,
         marginLeft: 6,
         borderRadius: 4,
@@ -112,13 +131,13 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
      },
 
-    opponent_name_frame: {
+    name_inside_frame: {
         borderRightColor: '#0a2444',
         borderTopColor: '#0a2444',
         borderLeftColor: '#0a2444',
         borderBottomColor: '#0a2444',
         height: 26,
-        width: 106,
+        width: 100,
         borderWidth: 1,
         borderRadius: 2,
         flexDirection:"row"
@@ -126,7 +145,7 @@ const styles = StyleSheet.create({
      },
 
      person: {
-        marginTop: 1,
+        marginTop: 2,
         marginLeft: 8,
         height: 20,
         width: 20,
@@ -135,10 +154,47 @@ const styles = StyleSheet.create({
      opponent_name: {
         backgroundColor: "transparent",
         color: "#ffffff",
-        marginTop: 5,
+        marginTop: 7,
         marginLeft: 7,
         fontWeight: 'bold', 
+        fontSize: 12,
+     },
+     option: {
+        flexDirection:"row",
+        justifyContent: 'space-between',
+        alignSelf: 'center',
+        width: 310,
+        marginTop: 4,
+
+     },
+     frame: {
+        borderRightColor: '#0a2444',
+        borderTopColor: '#0a2444',
+        borderLeftColor: '#0a2444',
+        borderBottomColor: '#0a2444',
+        height: 30,
+        width: 96,
+        borderWidth: 1,
+        borderRadius: 4,
+        alignItems: 'center',
+        justifyContent: 'center',
+     },
+
+     option_text: {
+
+        backgroundColor: '#0a2444',
+        color: '#ffffff',
         fontSize: 13,
+        fontWeight: 'bold',
+        height: 24,
+        width: 90,
+        borderRadius: 2,
+        textAlign: "center",
+        paddingTop: 5,
+
      }
+
+
+     
     
 });
