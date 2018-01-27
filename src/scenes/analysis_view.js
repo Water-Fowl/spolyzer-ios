@@ -76,14 +76,20 @@ export default class AnalysisView extends React.Component{
 
                 </View>
 
+                <View style={styles.court}>
+
+                </View>
 
 
+                <View style={styles.gragh_frame}>
 
-                <VictoryBar 
-                  data = {sample_data}
-                  x='hoge'
-                  y='geho'
-                />
+                    <VictoryBar 
+                      data = {sample_data}
+                      x='hoge'
+                      y='geho'
+                    />
+
+                </View>
 
             </View>
         );
@@ -172,7 +178,7 @@ const styles = StyleSheet.create({
         borderTopColor: '#0a2444',
         borderLeftColor: '#0a2444',
         borderBottomColor: '#0a2444',
-        height: 30,
+        height: 32,
         width: 96,
         borderWidth: 1,
         borderRadius: 4,
@@ -184,17 +190,44 @@ const styles = StyleSheet.create({
 
         backgroundColor: '#0a2444',
         color: '#ffffff',
-        fontSize: 13,
+        fontSize: 14,
         fontWeight: 'bold',
-        height: 24,
+        height: 26,
         width: 90,
-        borderRadius: 2,
+        borderRadius: 4,
         textAlign: "center",
         paddingTop: 5,
+        fontWeight: 'bold', 
+
+     },
+
+     court: {
+        alignSelf: 'center',
+        width: 330,
+        height: 170,
+        backgroundColor: "#ffffff",
+        marginTop: 26,
+
+
+
+     },
+
+
+     gragh_frame: {
+
+        borderRightColor: '#28a8de',
+        borderTopColor: '#28a8de',
+        borderLeftColor: '#28a8de',
+        borderBottomColor: '#28a8de',
+        height: 170,
+        width: 310,
+        borderWidth: 1,
+        borderRadius: 4,
+        borderWidth: 1,
+        alignSelf: "center",
+        marginTop: 20,
+
 
      }
-
-
-     
     
 });
