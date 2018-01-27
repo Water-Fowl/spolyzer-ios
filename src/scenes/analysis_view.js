@@ -6,6 +6,7 @@ import {
     Dimensions,
     TouchableHighlight,
     BackgroundImage,
+    TouchableOpacity,
     StyleSheet,
 } from "react-native";
 import { connect } from 'react-redux';
@@ -13,6 +14,7 @@ import { VictoryBar } from "victory-native";
 import Orientation from 'react-native-orientation';
 import { Background } from "../components";
 import { NavBar } from "../components";
+import { Actions } from 'react-native-router-flux';
 
 const sample_data = [ 
     {hoge: 1, geho: 2},
@@ -89,6 +91,14 @@ export default class AnalysisView extends React.Component{
                       y='geho'
                     />
 
+                </View>
+
+                <View style={styles.back_button_frame}>
+                    <TouchableOpacity onPress={Actions.analysis_create}>
+                        <Text style={styles.back_button_text}>
+                            検索条件に戻る
+                        </Text>
+                    </TouchableOpacity>
                 </View>
 
             </View>
@@ -223,10 +233,36 @@ const styles = StyleSheet.create({
         width: 310,
         borderWidth: 1,
         borderRadius: 4,
-        borderWidth: 1,
         alignSelf: "center",
         marginTop: 20,
+     },
 
+     back_button_frame: {
+
+        borderRightColor: '#28a8de',
+        borderTopColor: '#28a8de',
+        borderLeftColor: '#28a8de',
+        borderBottomColor: '#28a8de',
+        height: 34,
+        width: 154,
+        borderWidth: 1,
+        borderRadius: 4,
+        marginLeft: 190,
+        marginTop: 8,
+
+
+     },
+
+     back_button_text: {
+        backgroundColor: "transparent",
+        color: '#ffffff',
+        fontSize: 16,
+        fontWeight: 'bold',
+        borderRadius: 4,
+        textAlign: "center",
+        paddingTop: 7,
+        paddingLeft: 20,
+        fontWeight: 'bold', 
 
      }
     
