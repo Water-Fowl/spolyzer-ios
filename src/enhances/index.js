@@ -1,3 +1,4 @@
-import { baseHigherOrderComponentEnhancer } from '../base_view';
-
-
+import { baseHigherOrderComponentEnhancer } from './base_view';
+export {
+  baseHigherOrderComponentEnhancer
+}

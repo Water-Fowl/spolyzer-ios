@@ -13,26 +13,17 @@ import{
     NavigateButton,
     NavBar,
 } from "../components";
+import {
+  baseHigherOrderComponentEnhancer 
+} from '../enhances';
 import Orientation from 'react-native-orientation';
 import { Actions } from 'react-native-router-flux';
 
-
-const win = Dimensions.get('window');
-
-export default class ScoreGameCreate extends React.Component {
-
-    constructor(props){
-        super(props);
-    }
-    componentWillMount() {
-        Orientation.lockToPortrait();
-    }
+class ScoreGameCreate extends React.Component {
 
     render(){
         return (
             <View style={ styles.container }>
-              <Background/>
-              <NavBar/>
               <TopContentBar>試合設定</TopContentBar>
               <View style={styles.align_items_center} >
                 <View style={styles.game_setting_border} >
@@ -105,6 +96,8 @@ export default class ScoreGameCreate extends React.Component {
         );
     }
 }
+export default baseHigherOrderComponentEnhancer(ScoreGameCreate)
+
 const styles = StyleSheet.create({
     container:{
       flex: 1,

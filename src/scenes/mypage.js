@@ -16,27 +16,16 @@ import {
   TopContentBar,
   NavBar,
 } from "../components";
-
-const win = Dimensions.get('window');
+import {
+  baseHigherOrderComponentEnhancer
+} from '../enhances';
 
 
 class Mypage extends React.Component {
-  constructor(props){
-    super(props);
-  }
-  static navigationOptions = {
-    headerLeft: <View></View>,
-  }
-  componentWillMount() {
-    Orientation.lockToPortrait();
-  }
-
   render(){
     const { actions } = this.props
     return(
       <View style={styles.container}>
-        <Background/>
-        <NavBar/>
         <View style={styles.main_container}>
           <TopContentBar>マイページ</TopContentBar>
           <View style={styles.align_items_center}>
@@ -75,7 +64,7 @@ function mapStateToProps(state, props) {
   }
 }
 
-export default connect(mapStateToProps)(Mypage);
+export default connect(mapStateToProps)(baseHigherOrderComponentEnhancer(Mypage));
 
 const styles = StyleSheet.create({
   container: {
