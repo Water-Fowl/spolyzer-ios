@@ -11,6 +11,9 @@ import Orientation from 'react-native-orientation';
 
 export function baseHigherOrderComponentEnhancer(ComponentClass){
   return class BaseHightOrderComponent extends React.Component{
+    constructor(props){
+      super(props)
+    }
     componentWillMount() {
       Orientation.lockToPortrait();
     }

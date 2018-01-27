@@ -12,32 +12,26 @@ import {
 import { connect } from 'react-redux';
 import { VictoryBar } from "victory-native";
 import Orientation from 'react-native-orientation';
+<<<<<<< HEAD
 import { Background } from "../components";
 import { NavBar } from "../components";
 import { Actions } from 'react-native-router-flux';
+=======
+import { baseHigherOrderComponentEnhancer } from '../enhances/'
+>>>>>>> 213f655... [add] HOC化の続き
 
 const sample_data = [ 
     {hoge: 1, geho: 2},
     {hoge: 2, geho: 3},
 ]
 
-export default class AnalysisView extends React.Component{
-    componentDidMount() {
-        Orientation.lockToPortrait();
-    }
+class AnalysisView extends React.Component{
     render(){
         return(
-            
-
             <View style={styles.container}>
-
-                <Background/>
-                <NavBar/>
-
                 <Text style={styles.subtitle_text}>
                     複合分析結果
                 </Text>
-
                 <View style={{flexDirection:"row"}}>
                     <Text　style={styles.analysis_view_vs}>
                         vs
@@ -74,25 +68,16 @@ export default class AnalysisView extends React.Component{
                             負け試合
                         </Text>
                     </View>
-
-
                 </View>
-
                 <View style={styles.court}>
-
                 </View>
-
-
                 <View style={styles.gragh_frame}>
-
                     <VictoryBar 
                       data = {sample_data}
                       x='hoge'
                       y='geho'
                     />
-
                 </View>
-
                 <View style={styles.back_button_frame}>
                     <TouchableOpacity onPress={Actions.analysis_create}>
                         <Text style={styles.back_button_text}>
@@ -100,19 +85,17 @@ export default class AnalysisView extends React.Component{
                         </Text>
                     </TouchableOpacity>
                 </View>
-
             </View>
         );
     }
 }
 
+export default baseHigherOrderComponentEnhancer(AnalysisView)
+
 const styles = StyleSheet.create({
-
-
     container: {
         flex: 1,
     },
-
     subtitle_text: {
         color: '#ffffff',
         fontSize: 19,

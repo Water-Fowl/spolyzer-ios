@@ -13,8 +13,6 @@ import { connect } from 'react-redux';
 import Orientation from 'react-native-orientation';
 import { getAnalysisGames } from '../actions/analyze_games'
 import {
-  NavBar,
-  Background,
   NavigateButton,
   GameStyleButton,
   ShotTypeButton,

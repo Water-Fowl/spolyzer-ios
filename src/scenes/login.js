@@ -14,37 +14,9 @@ import { Background } from "../components";
 
 import { connect } from 'react-redux';
 import { postUserLogin } from '../actions/login';
+import { loginEnhancer } from '../enhances/login';
 
 class Login extends React.Component{
-
-  constructor(props) {
-    super(props);
-    this.postLoginInformation.bind(this);
-    this.state = {
-      email: '',
-      password: '',
-      login_error: false,
-    };
-  }
-
-  componentWillMount() {
-    Orientation.lockToPortrait();
-  }
-
-  componentWillReceiveProps(nextProps){
-    const { login_error } = nextProps
-    this.setState({login_error: login_error})
-  }
-
-  postLoginInformation(){
-    const { dispatch } = this.props
-    formLoginInformation = {
-      email: this.state.email,
-      password: this.state.password,
-    }
-    dispatch(postUserLogin(formLoginInformation))
-  }
-
   render(){
     return(
       <View style={styles.container}>
@@ -127,7 +99,7 @@ function mapStateToProps(state, props){
   }
 }
 
-export default connect(mapStateToProps)(Login)
+export default connect(mapStateToProps)(loginEnhancer(Login))
 
 const styles = StyleSheet.create({
   container: {
