@@ -1,66 +1,60 @@
 import React from "react";
 import {
-    Text,
-    Image,
-    View,
-    Dimensions,
-    TouchableHighlight,
-    BackgroundImage,
-    StyleSheet,
-    TriangleCorner,
+  Text,
+  Image,
+  View,
+  Dimensions,
+  TouchableHighlight,
+  BackgroundImage,
+  StyleSheet,
+  TriangleCorner,
 } from "react-native";
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 import Orientation from 'react-native-orientation';
 import {
-    TopBar,
-    LandScapeBackground,
-    TopContentBar,
-    NavigateButton,
-    ActionModal,
-    InFieldLength,
-    InFieldSide,
-    InFieldCircle,
-    OutFieldLength,
-    OutFieldSide,
+  TopBar,
+  LandScapeBackground,
+  TopContentBar,
+  NavigateButton,
+  ActionModal,
+  InFieldLength,
+  InFieldSide,
+  InFieldCircle,
+  OutFieldLength,
+  OutFieldSide,
+  ScoreCreateModal
 } from '../components';
 import { postScoreGame } from '../actions/score'
+import { scoreCreateEnhancer } from '../enhances/score_create'
 
-export default class ScoreCreate extends React.Component{
-  constructor(props){
-    super(props)
-    this.state = {
-      height: Dimensions.get('window').width, 
-      width: Dimensions.get('window').height, 
-    }
-  }
-  componentDidMount(){
-    Orientation.lockToLandscape();
-  }
-
-  componentWillUnmount() {
-      Orientation.lockToPortrait();
-  }
-
+class ScoreCreate extends React.Component{
   render(){
     return(
-      <View style={{alignItems:'center',
-        width: this.state.width, height: this.state.height}} >
+      <View style={{
+        alignItems:'center',
+        width: this.state.width, 
+        height: this.state.height}} 
+      >
+        <ScoreCreateModal visible={this.props.modal}/>
         <LandScapeBackground/ >
-        <TopContentBar
-            content_name="スコアシート"
-        />
+        <TopContentBar>スコアシート</TopContentBar>
         <View style={styles.score_information_bar}>
           <View style={styles.score_information_container}>
             <View style={styles.score_information_user_name_container}>
               <Text style={styles.score_information_user_name}>Name</Text>
             </View>
-            <Text style={styles.score_information_point}>0</Text>
+            <View style={styles.score_information_point_container}>
+              <Text style={styles.score_information_point}>0</Text>
+            </View> 
             <Text style={styles.score_information_game_point}>0</Text>
           </View>
+          <Image style={styles.score_information_back} source={require('../../assets/img/score_create_back.png')}/>
           <View style={styles.score_information_container}>
             <Text style={styles.score_information_game_point}>0</Text>
-            <Text style={styles.score_information_point}>0</Text>
+            <View style={styles.score_information_point_container}>
+              <Text style={styles.score_information_point}>0</Text>
+            </View> 
             <View style={styles.score_information_user_name_container}>
               <Text style={styles.score_information_user_name}>Name</Text>
             </View>
@@ -143,6 +137,19 @@ export default class ScoreCreate extends React.Component{
   }
 }
 
+function mapStateToProps(state, props){
+  const { score } = state
+  const {
+    modal: modal,
+  } = score ||{
+    modal: false
+  }
+  return {
+    modal,
+  }
+}
+export default connect(mapStateToProps)(scoreCreateEnhancer(ScoreCreate))
+
 const styles = StyleSheet.create({
   container:{
     alignItems: 'center',
@@ -151,12 +158,21 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     height: 40, 
+    marginTop: -20,
+  },
+  score_information_back:{
+    marginTop:25,
+    marginLeft: 20,
+    marginRight: 20,
   },
   score_information_user_name_container:{
-    flex: 2
+    flex: 2,
+    justifyContent:'flex-end',
   },
   score_information_user_name: {
-    flex:2,
+    paddingTop:8,
+    paddingBottom:8,
+    justifyContent:'center',
     color: 'white',
     textAlign: 'center',
     fontSize: 23,
@@ -167,10 +183,12 @@ const styles = StyleSheet.create({
     borderWidth: 0.5,
     borderRadius: 4,
     borderColor: '#2EA7E0',
-    
  },
+  score_information_point_container: {
+    justifyContent:'flex-end'
+  },
   score_information_point:{
-    height: 40,
+    justifyContent: 'center',
     width: 40,
     fontSize: 40,
     color: 'white',
@@ -181,6 +199,8 @@ const styles = StyleSheet.create({
     borderColor: '#2EA7E0',
   },
   score_information_game_point:{
+    marginLeft:10,
+    marginRight:10,
     alignSelf: 'flex-end',
     height: 20,
     width: 20,

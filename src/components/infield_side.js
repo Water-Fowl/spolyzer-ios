@@ -1,20 +1,33 @@
 import React from 'react';
-import { Dimensions,StyleSheet,Image, Text, View, TouchableHighlight } from 'react-native';
+import { 
+  Dimensions,
+  StyleSheet,
+  Image, 
+  Text, 
+  View, 
+  TouchableHighlight 
+} from 'react-native';
+import { fieldButtonEnhancer } from '../enhances'
+import { connect } from 'react-redux'
 
 export class InFieldSide extends React.Component{
+  render(){
+    return(
+      <TouchableHighlight 
+        style={styles.horizontal_blue_bar}
+        onPress={()=>
+          {
+            this.setModalEvent()
+          }
+        }
+      >
+      <View/>
+      </TouchableHighlight>
 
-    constructor(props) {
-        super(props);
-    }
-
-    render(){
-        const {actions, positions, this_position, setParams, side} = this.props;
-        return(
-            <View style={styles.horizontal_blue_bar}></View>
-
-        );
-    }
+    );
+  }
 }
+export default connect()(fieldButtonEnhancer(InFieldSide))
 
 const styles = StyleSheet.create({
   horizontal_blue_bar:{

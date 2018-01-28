@@ -1,21 +1,33 @@
 import React from 'react';
-import { Dimensions,StyleSheet,Image, Text, View, TouchableHighlight } from 'react-native';
+import { 
+  Dimensions,
+  StyleSheet,
+  Image, 
+  Text, 
+  View, 
+  TouchableHighlight 
+} from 'react-native';
+import { fieldButtonEnhancer } from '../enhances'
+import { connect } from 'react-redux'
 
-const win = Dimensions.get('window');
 
 export class OutFieldLength extends React.Component{
-
-    constructor(props) {
-        super(props);
-    }
-
-    render(){
-        const {actions, positions, this_position, setParams, side} = this.props;
-        return(
-            <View style={styles.vartical_yellow_bar_left}></View>
-        );
-    }
+  render(){
+    return(
+      <TouchableHighlight 
+        style={styles.vartical_yellow_bar_left}
+        onPress={()=>
+          {
+            this.setModalEvent()
+          }
+        }
+      >
+      <View/>
+      </TouchableHighlight>
+    );
+  }
 }
+export default connect()(fieldButtonEnhancer(OutFieldLength))
 
 const styles = StyleSheet.create({
   vartical_yellow_bar_left:{

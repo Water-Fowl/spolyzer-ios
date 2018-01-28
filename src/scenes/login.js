@@ -14,44 +14,17 @@ import { Background } from "../components";
 
 import { connect } from 'react-redux';
 import { postUserLogin } from '../actions/login';
+import { loginEnhancer } from '../enhances/login';
 
 class Login extends React.Component{
-
-  constructor(props) {
-    super(props);
-    this.postLoginInformation.bind(this);
-    this.state = {
-      email: '',
-      password: '',
-      login_error: false,
-    };
-  }
-
-  componentWillMount() {
-    Orientation.lockToPortrait();
-  }
-
-  componentWillReceiveProps(nextProps){
-    const { login_error } = nextProps
-    this.setState({login_error: login_error})
-  }
-
-  postLoginInformation(){
-    const { dispatch } = this.props
-    formLoginInformation = {
-      email: this.state.email,
-      password: this.state.password,
-    }
-    dispatch(postUserLogin(formLoginInformation))
-  }
-
   render(){
     return(
       <View style={styles.container}>
         <Background/>
-        <Text style={styles.logo_text}>
-          Spolyzer
-        </Text>
+        <Image 
+          style={styles.logo}
+          source={require('../../assets/img/spolyzer_top.png')}
+        />
         <View style={styles.form_container}>
           <View style={styles.form}>
             <TextInput onChangeText={(email) => this.setState({email})}
@@ -126,7 +99,7 @@ function mapStateToProps(state, props){
   }
 }
 
-export default connect(mapStateToProps)(Login)
+export default connect(mapStateToProps)(loginEnhancer(Login))
 
 const styles = StyleSheet.create({
   container: {
@@ -164,29 +137,11 @@ const styles = StyleSheet.create({
     marginBottom: 9,
     justifyContent: 'center',
   },
-
-
-  logo_text: {
-    color: '#000000',
-    fontSize: 60,
-    textAlign: 'center',
+  logo :{
+    marginTop: 80,
+    marginBottom: 80,
     alignSelf: 'center',
-    marginTop: 60,
-    textShadowOffset: {width: 1, height: 1},
-    textShadowOffset: {width: -1, height: -1},
-    textShadowRadius: 4,
-    textShadowColor: '#ffffff',
-    marginBottom: 40,
-    backgroundColor: 'transparent',
   },
-
-  text_field: {
-    fontSize: 20,
-    color: '#ffffff',
-    paddingLeft: 12,
-    letterSpacing: 0,
-  },
-
   square: {
     borderRightColor: '#28a8de',
     borderTopColor: '#28a8de',
@@ -198,6 +153,12 @@ const styles = StyleSheet.create({
     borderRadius: 3,
     marginTop: 7,
     marginBottom: 5,
+  },
+  text_field: {
+    fontSize: 20,
+    color: '#ffffff',
+    paddingLeft: 12,
+    letterSpacing: 0,
   },
 
   auto_login_text: {
