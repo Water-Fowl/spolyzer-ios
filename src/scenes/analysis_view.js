@@ -78,6 +78,11 @@ class AnalysisView extends React.Component{
                         </Text>
                     </TouchableOpacity>
                 </View>
+                <VictoryBar 
+                  data = {sample_data}
+                  x='hoge'
+                  y='geho'
+                />
             </View>
         );
     }
@@ -171,7 +176,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
      },
-
      option_text: {
 
         backgroundColor: '#0a2444',
@@ -186,19 +190,13 @@ const styles = StyleSheet.create({
         fontWeight: 'bold', 
 
      },
-
      court: {
         alignSelf: 'center',
         width: 330,
         height: 170,
         backgroundColor: "#ffffff",
         marginTop: 26,
-
-
-
      },
-
-
      gragh_frame: {
 
         borderRightColor: '#28a8de',
@@ -225,8 +223,6 @@ const styles = StyleSheet.create({
         borderRadius: 4,
         marginLeft: 190,
         marginTop: 8,
-
-
      },
 
      back_button_text: {
