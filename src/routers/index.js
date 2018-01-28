@@ -8,7 +8,7 @@ import {
 } from 'react-native-router-flux';
 import { Actions } from 'react-native-router-flux';
 import {
-    Mypage,
+    ProfileTop,
     ScoreCreate,
     ScoreGameCreate,
     ScoreView,
@@ -16,7 +16,7 @@ import {
     AnalysisCreate,
     Login,
     SignUp,
-} from '../scenes';
+} from '../containers'
 import { configureStore } from '../stores';
 
 const RouterWithRedux = connect()(Router);
