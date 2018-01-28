@@ -3,8 +3,6 @@ import {
     Text,
     Image,
     View,
-    Dimensions,
-    TouchableHighlight,
     BackgroundImage,
     TouchableOpacity,
     StyleSheet,
@@ -12,13 +10,8 @@ import {
 import { connect } from 'react-redux';
 import { VictoryBar } from "victory-native";
 import Orientation from 'react-native-orientation';
-<<<<<<< HEAD
-import { Background } from "../components";
-import { NavBar } from "../components";
 import { Actions } from 'react-native-router-flux';
-=======
 import { baseHigherOrderComponentEnhancer } from '../enhances/'
->>>>>>> 213f655... [add] HOC化の続き
 
 const sample_data = [ 
     {hoge: 1, geho: 2},
