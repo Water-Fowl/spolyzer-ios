@@ -1,6 +1,6 @@
 import { CALL_API } from 'redux-api-middleware'
 import { Actions } from 'react-native-router-flux';
-import { SIGN_IN_ENDPOINT } from '../config/api';
+import { SIGN_IN_ENDPOINT } from '../../../config/api';
 import {
   LOGIN_REQUEST,
   LOGIN_RECIEVED,

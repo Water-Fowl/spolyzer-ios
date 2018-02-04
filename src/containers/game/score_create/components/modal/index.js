@@ -6,8 +6,8 @@ import {
 } from 'react-native'
 import {
   scoreCreateModalEnhancer,
-} from '../enhances/score_create_modal'
-import ScoreCreateShotTypeButton from './shot_type_button'
+} from './hoc'
+import ScoreCreateShotTypeButton from '../shot_type_button'
 
 class Modal extends React.Component{
   render(){
@@ -29,7 +29,7 @@ class Modal extends React.Component{
     )
   }
 }
-export default scoreCreateModalEnhancer(ScoreCreateModal)
+export default scoreCreateModalEnhancer(Modal)
 
 const styles = StyleSheet.create({
   container: {

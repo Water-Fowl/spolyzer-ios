@@ -15,10 +15,10 @@ import {
   TopBar,
   TopContentBar,
   NavBar,
-} from "../components";
+} from "components";
 import {
   baseHigherOrderComponentEnhancer
-} from '../enhances';
+} from 'enhances';
 
 
 class ProfileTop extends React.Component {
@@ -30,11 +30,11 @@ class ProfileTop extends React.Component {
           <TopContentBar>マイページ</TopContentBar>
           <View style={styles.align_items_center}>
             <Image
-              source={require('../../assets/img/my_page_user_icon.png')}
+              source={require('../../../assets/img/my_page_user_icon.png')}
               style={styles.user_icon}
             />
             <Image
-              source={require('../../assets/img/my_page_center_design.png')}
+              source={require('../../../assets/img/my_page_center_design.png')}
             />
             <Text style={styles.my_name}>
               ここにNAME

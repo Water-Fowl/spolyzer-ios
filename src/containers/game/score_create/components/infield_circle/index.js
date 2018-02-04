@@ -8,7 +8,7 @@ import {
   View, 
   TouchableHighlight 
 } from 'react-native';
-import { fieldButtonEnhancer } from '../enhances'
+import { fieldButtonEnhancer } from '../shared/hoc'
 
 
 class InFieldCircle extends React.Component{

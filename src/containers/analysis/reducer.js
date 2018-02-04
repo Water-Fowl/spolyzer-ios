@@ -2,7 +2,7 @@ import {
   GAME_INFORMATION_REQUEST,
   GAME_INFORMATION_RECEIVED,
   GAME_SETTING_REQUEST,
-  GAME_SETTING_RECEIVED
+  GAME_SETTING_RECEIVED,
   GAME_TYPE_SETTING,
   SHOT_TYPE_SETTING,
   TERM_SETTING,
@@ -16,9 +16,9 @@ const initialState = {
 
 export default function gameReducer(state=initialState, action={}){
   switch(action.type){
-    case GAME_ANALYSIS_REQUEST:
+    case GAME_INFORMATION_REQUEST:
       return state
-    case GAME_ANALYSIS_RECEIVED:
+    case GAME_INFORMATION_RECEIVED:
       return Object.assign({}, state, {
         score_game_ids: action.score_game_ids
       })

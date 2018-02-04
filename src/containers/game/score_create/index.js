@@ -23,9 +23,10 @@ import {
 import {
   LandScapeBackground,
   TopContentBar,
-} from '../../components';
-import { postScoreGame } from '../actions/score'
-import { scoreCreateEnhancer } from '../enhances/score_create'
+} from 'components';
+
+import { postScoreGame } from '../actions'
+import { enhancer } from './hoc'
 
 class ScoreCreate extends React.Component{
   render(){
@@ -35,7 +36,7 @@ class ScoreCreate extends React.Component{
         width: this.state.width, 
         height: this.state.height}} 
       >
-        <Modal visible={this.props.modal}/>
+        <Modal visible={this.props.score_create_modal}/>
         <LandScapeBackground/ >
         <TopContentBar>スコアシート</TopContentBar>
         <View style={styles.score_information_bar}>
@@ -48,7 +49,7 @@ class ScoreCreate extends React.Component{
             </View> 
             <Text style={styles.score_information_game_point}>0</Text>
           </View>
-          <Image style={styles.score_information_back} source={require('../../assets/img/score_create_back.png')}/>
+          <Image style={styles.score_information_back} source={require('../../../assets/img/score_create_back.png')}/>
           <View style={styles.score_information_container}>
             <Text style={styles.score_information_game_point}>0</Text>
             <View style={styles.score_information_point_container}>
@@ -61,13 +62,13 @@ class ScoreCreate extends React.Component{
         </View>
         <View style={styles.score_field_container}>
           <Image
-              source={ require('../../assets/img/field-line.png')}
+              source={ require('../../../assets/img/field-line.png')}
               style={ styles.score_field_line }
           />
           <View style={styles.score_field_button_container}>
             <View style={styles.score_over_container}>
               <View style={{flex:0.36, justifyContent:'space-around', flexDirection:'row'}}>
-                <OutFieldSide />
+                <OutFieldSide position={1} side={1}/>
                 <OutFieldSide />
               </View>
               <View style={{flex:0.36, justifyContent:'space-around', flexDirection:'row'}}>
@@ -137,17 +138,17 @@ class ScoreCreate extends React.Component{
 }
 
 function mapStateToProps(state, props){
-  const { score } = state
+  const { view } = state
   const {
-    modal: modal,
-  } = score ||{
-    modal: false
+    score_create_modal: score_create_modal,
+  } = view ||{
+    score_create_modal: false, 
   }
   return {
-    modal,
+    score_create_modal 
   }
 }
-export default connect(mapStateToProps)(scoreCreateEnhancer(ScoreCreate))
+export default connect(mapStateToProps)(enhancer(ScoreCreate))
 
 const styles = StyleSheet.create({
   container:{

@@ -1,11 +1,11 @@
-import { SEARCH_USER_ENDPOINT } from '../config/api'
+import { SEARCH_USER_ENDPOINT } from '../../../config/api'
 import {
   SEARCH_USER_REQUEST,
   SEARCH_USER_RECEIVED,
-} from '../action_type'
+} from '../action_types'
 
 
-export function postUserName(body){
+export function getUserName(body){
   return dispatch => {
     dispatch(requestUserName());
     return fetch(SEARCH_USER_ENDPOINT, {

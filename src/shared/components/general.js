@@ -1,3 +1,7 @@
+/**
+ * @providesModule components
+ */
+
 import React from 'react';
 import {
     Dimensions,

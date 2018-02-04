@@ -7,7 +7,7 @@ import {
   View,
   TouchableHighlight
 } from 'react-native';
-import { fieldButtonEnhancer } from '../enhances'
+import { fieldButtonEnhancer } from '../shared/hoc'
 import { connect } from 'react-redux'
 
 class InFieldLength extends React.Component{

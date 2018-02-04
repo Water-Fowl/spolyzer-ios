@@ -10,11 +10,11 @@ import {
 } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import Orientation from 'react-native-orientation';
-import { Background } from "../components";
+import { Background } from "components";
 
 import { connect } from 'react-redux';
 import { postUserLogin } from '../actions/login';
-import { loginEnhancer } from '../enhances/login';
+import { enhancer } from './hoc';
 
 class Login extends React.Component{
   render(){
@@ -23,7 +23,7 @@ class Login extends React.Component{
         <Background/>
         <Image 
           style={styles.logo}
-          source={require('../../assets/img/spolyzer_top.png')}
+          source={require('../../../assets/img/spolyzer_top.png')}
         />
         <View style={styles.form_container}>
           <View style={styles.form}>
@@ -99,7 +99,7 @@ function mapStateToProps(state, props){
   }
 }
 
-export default connect(mapStateToProps)(loginEnhancer(Login))
+export default connect(mapStateToProps)(enhancer(Login))
 
 const styles = StyleSheet.create({
   container: {

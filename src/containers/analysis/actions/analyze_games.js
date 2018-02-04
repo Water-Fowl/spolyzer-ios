@@ -1,6 +1,6 @@
 import { CALL_API } from 'redux-api-middleware'
 import { Actions } from 'react-native-router-flux'
-import { GET_GAMES_ENDPOINT } from '../config/api'
+import { GET_GAMES_ENDPOINT } from '../../../config/api'
 import {
   GAME_INFORMATION_REQUEST,
   GAME_INFORMATION_RECEIVED,

@@ -10,7 +10,7 @@ import { Actions } from 'react-native-router-flux';
 import {
     ProfileTop,
     ScoreCreate,
-    ScoreGameCreate,
+    GameCreate,
     ScoreView,
     AnalysisView,
     AnalysisCreate,
@@ -29,10 +29,10 @@ const Route = () => (
                 <Scene key="sign_up" component={SignUp} hideNavBar={true} />
                 <Tabs key="tab">
                     <Scene key="Mypage" headerMode="none">
-                        <Scene key="mypage_top" initial component={Mypage} title="マイページ" hideNavBar={true} />
+                        <Scene key="mypage_top" initial component={ProfileTop} title="マイページ" hideNavBar={true} />
                     </Scene>
                     <Scene key='Score' headerMode="none">
-                        <Scene key="scre_game_create" initial component={ScoreGameCreate} title="単分析" hideNavBar={true} />
+                        <Scene key="scre_game_create" initial component={GameCreate} title="単分析" hideNavBar={true} />
                         <Scene key="score_create" hideTabBar={true} component={ScoreCreate} title="スコアシート" hideNavBar={true} />
                         <Scene key="score_view" component={ScoreView} title="結果" hideNavBar={true} />
                     </Scene>

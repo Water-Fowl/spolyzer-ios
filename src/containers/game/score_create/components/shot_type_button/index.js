@@ -4,7 +4,7 @@ import {
   StyleSheet,
   TouchableHighlight,
 } from 'react-native'
-import { scoreCreateShotTypeButtonEnhancer } from '../enhances'
+import { scoreCreateShotTypeButtonEnhancer } from './hoc'
 import { connect } from 'react-redux'
 class ScoreCreateShotTypeButton extends React.Component {
   render(){

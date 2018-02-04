@@ -1,4 +1,4 @@
-import { POST_SCORE_GAME_ENDPOINT } from '../config/api'
+import { POST_SCORE_GAME_ENDPOINT } from '../../../config/api'
 import { Actions } from 'react-native-router-flux';
 
 export const ADD_SCORE = 'ADD_SCORE'
@@ -16,21 +16,6 @@ export function fetchAddScore(position, action, side){
   }
 }
 
-export function setModal(position, side){
-  return{
-    type: SET_MODAL,
-    position: position,
-    side: side,
-    modal: true,
-  }
-}
-
-export function hideModal(){
-  return{
-    type: HIDE_MODAL,
-    modal: false,
-  }
-}
 
 export function postScoreGame(body){
   return dispatch => {

@@ -14,14 +14,14 @@ import Orientation from 'react-native-orientation';
 import { getAnalysisGames } from '../actions/analyze_games'
 import {
   NavigateButton,
+  TopContentBar
+} from 'components';
+import {
   GameStyleButton,
   ShotTypeButton,
   TermButton,
-  TopContentBar
-} from '../../shared/components/general';
-import {
-  enhancer,
-} from './hoc'
+} from './components'
+import enhancer from './hoc'
 
 class AnalysisCreate extends React.Component{
   render(){

@@ -1,3 +1,6 @@
+/**
+ * @providesModule enhances 
+ */
 import React from "react";
 import {
   View,
@@ -6,7 +9,7 @@ import {
 import {
   Background,
   NavBar,
-} from '../components';
+} from 'components';
 import Orientation from 'react-native-orientation';
 
 export function baseHigherOrderComponentEnhancer(ComponentClass){

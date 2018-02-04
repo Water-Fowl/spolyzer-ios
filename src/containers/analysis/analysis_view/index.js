@@ -11,7 +11,7 @@ import { connect } from 'react-redux';
 import { VictoryBar } from "victory-native";
 import Orientation from 'react-native-orientation';
 import { Actions } from 'react-native-router-flux';
-import { baseHigherOrderComponentEnhancer } from '../../shared/enhances/base_view'
+import { baseHigherOrderComponentEnhancer } from 'enhances'
 
 const sample_data = [ 
     {hoge: 1, geho: 2},
@@ -33,7 +33,7 @@ class AnalysisView extends React.Component{
                     <View style={styles.name_outside_frame}>
                         <View style={styles.name_inside_frame}>
                             <Image
-                            source={require('assets/img/score_creat_person.png')}
+                            source={require('../../../assets/img/score_creat_person.png')}
                             style={ styles.person }
                            />
 

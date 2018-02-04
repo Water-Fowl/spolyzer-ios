@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import Orientation from 'react-native-orientation';
-import { Background } from "../components";
+import { Background } from "components";
 import { postUserRegistration } from '../actions/registration';
 import { connect } from 'react-redux';
 

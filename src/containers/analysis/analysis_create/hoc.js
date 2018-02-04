@@ -1,7 +1,8 @@
-import { baseHigherOrderComponentEnhancer } from '../../../shared/enhances/base_view';
+import { baseHigherOrderComponentEnhancer } from 'enhances';
 
-export function enhancer (ComponentClass){
+export default function enhancer(ComponentClass){
   BaseHOComponentClass = baseHigherOrderComponentEnhancer(ComponentClass)
+  return BaseHOComponentClass
   return class AnalysisCreateHOC extends BaseHOComponentClass{
     constructor(props) {
       super(props)

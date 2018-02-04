@@ -12,10 +12,10 @@ import{
     TopContentBar,
     NavigateButton,
     NavBar,
-} from "../components";
+} from "components";
 import {
   baseHigherOrderComponentEnhancer 
-} from '../enhances';
+} from 'enhances';
 import Orientation from 'react-native-orientation';
 import { Actions } from 'react-native-router-flux';
 
@@ -32,20 +32,20 @@ class ScoreGameCreate extends React.Component {
                      <View style={ styles.game_setting_table_inner}>
                         <View style={styles.game_setting_table_inner_left}>
                           <Image
-                            source={require('../../assets/img/score_creat_person.png')}
+                            source={require('../../../assets/img/score_creat_person.png')}
                             style={ styles.score_game_create_competitor_person }
                            />
 
                           <Image
-                            source={require('../../assets/img/simple_frame.png')}
+                            source={require('../../../assets/img/simple_frame.png')}
                             style={ styles.score_game_create_competitor_frame }
                            ></Image>
                           <Image
-                            source={require('../../assets/img/simple_circle.png')}
+                            source={require('../../../assets/img/simple_circle.png')}
                             style={ styles.score_game_create_competitor_person }
                            ></Image>
                           <Image
-                            source={require('../../assets/img/simple_frame.png')}
+                            source={require('../../../assets/img/simple_frame.png')}
                             style={ styles.score_game_create_competitor_frame }
                            ></Image>
                         </View>
@@ -56,19 +56,19 @@ class ScoreGameCreate extends React.Component {
 
                         <View style={styles.game_setting_inner_right} >
                           <Image
-                            source={require('../../assets/img/score_creat_person.png')}
+                            source={require('../../../assets/img/score_creat_person.png')}
                             style={ styles.score_game_create_competitor_person }
                            />
                           <Image
-                            source={require('../../assets/img/simple_frame.png')}
+                            source={require('../../../assets/img/simple_frame.png')}
                             style={ styles.score_game_create_competitor_frame }
                            ></Image>
                           <Image
-                            source={require('../../assets/img/simple_circle.png')}
+                            source={require('../../../assets/img/simple_circle.png')}
                             style={ styles.score_game_create_competitor_person }
                            ></Image>
                          <Image
-                            source={require('../../assets/img/simple_frame.png')}
+                            source={require('../../../assets/img/simple_frame.png')}
                             style={ styles.score_game_create_competitor_frame }
                            ></Image>
                         </View>
@@ -78,7 +78,7 @@ class ScoreGameCreate extends React.Component {
                 <View
                   style={styles.game_setting_under_table} >
                   <Image
-                  source={require('../../assets/img/frame_next_button.png')}
+                  source={require('../../../assets/img/frame_next_button.png')}
                   style={styles.game_setting_under_table_frame_next_button}
                   >
                   </Image>

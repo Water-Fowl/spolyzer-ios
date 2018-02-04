@@ -1,5 +1,5 @@
 import { Actions } from 'react-native-router-flux';
-import { REGISTRATION_ENDPOINT } from '../config/api';
+import { REGISTRATION_ENDPOINT } from '../../../config/api';
 import {
   REGISTRATION_RECEIVED,
   REGISTRATION_REQUEST,
