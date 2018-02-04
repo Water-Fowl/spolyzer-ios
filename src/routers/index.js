@@ -1,4 +1,8 @@
 import React from 'react';
+import {
+  Image,
+  StyleSheet,
+} from 'react-native'
 import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider, connect } from 'react-redux';
 import {
@@ -27,16 +31,16 @@ const Route = () => (
             <Scene key='root'>
                 <Scene key="login" component={Login} initial hideNavBar={true} />
                 <Scene key="sign_up" component={SignUp} hideNavBar={true} />
-                <Tabs key="tab">
-                    <Scene key="Mypage" headerMode="none">
+                <Tabs key="tab" tabBarStyle={styles.tab_bar_style} tabStyle={styles.tab_style}>
+                    <Scene key="Mypage" tabBarLabel="プロフィール" icon={() => (<Image source={require('../assets/img/tabs_home.png')} />)} headerMode="none">
                         <Scene key="mypage_top" initial component={ProfileTop} title="マイページ" hideNavBar={true} />
                     </Scene>
-                    <Scene key='Score' headerMode="none">
+                    <Scene key='Score' tabBarLabel="単分析" icon={() => (<Image source={require('../assets/img/tabs_score.png')} />)} headerMode="none">
                         <Scene key="scre_game_create" initial component={GameCreate} title="単分析" hideNavBar={true} />
                         <Scene key="score_create" hideTabBar={true} component={ScoreCreate} title="スコアシート" hideNavBar={true} />
                         <Scene key="score_view" component={ScoreView} title="結果" hideNavBar={true} />
                     </Scene>
-                    <Scene key='Analysis' headerMode="none">
+                    <Scene key='Analysis' tabBarLabel="複合分析" icon={() => (<Image source={require('../assets/img/tabs_analysis.png')} />)} headerMode="none">
                         <Scene key="analysis_create" initial component={AnalysisCreate} title="複合分析" hideNavBar={true} />
                         <Scene key="analysis_view" component={AnalysisView} title="単分析" hideNavBar={true}/>
                     </Scene>
@@ -47,3 +51,12 @@ const Route = () => (
 );
 
 export default Route;
+
+const styles = StyleSheet.create({
+  tab_style:{
+    backgroundColor:'#3A82A9',
+  },
+  tab_bar_style:{
+    backgroundColor: 'black',
+  }
+})
