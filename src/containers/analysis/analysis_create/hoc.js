@@ -1,29 +1,29 @@
-import { baseHigherOrderComponentEnhancer } from 'enhances';
+import baseHigherOrderComponentEnhancer from 'enhances';
+import { getAnalysisGames } from '../actions/analyze_games';
 
-export default function enhancer(ComponentClass){
-  BaseHOComponentClass = baseHigherOrderComponentEnhancer(ComponentClass)
-  return BaseHOComponentClass
-  return class AnalysisCreateHOC extends BaseHOComponentClass{
+export default function enhancer(ComponentClass) {
+  const BaseHOComponentClass = baseHigherOrderComponentEnhancer(ComponentClass);
+  return class AnalysisCreateHOC extends BaseHOComponentClass {
     constructor(props) {
-      super(props)
-      this.getGameInformationForm.bind(this)
+      super(props);
+      this.getGameInformationForm.bind(this);
     }
-    getGameInformationForm(){
+    getGameInformationForm() {
       const { dispatch } = this.props;
-      const sample_data = {
-        "data":{
-          "user_id": 2,
-          "opponent_user": 1,
-          "victory": 1,
-        }
-      }
-      dispatch(getAnalysisGames(sample_data))
+      const sampleData = {
+        data: {
+          user_id: 2,
+          opponent_user: 1,
+          victory: 1,
+        },
+      };
+      dispatch(getAnalysisGames(sampleData));
     }
-    render(){
-      return(
+    render() {
+      return (
         super.render()
-      )
+      );
     }
-  }
+  };
 }
 

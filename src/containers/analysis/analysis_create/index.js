@@ -1,70 +1,64 @@
-import React from "react"; 
+import React from 'react';
 import {
-    Text,
-    Image,
-    View,
-    Dimensions,
-    TouchableHighlight,
-    TouchableOpacity,
-    StyleSheet,
-} from "react-native";
+  Text,
+  View,
+  StyleSheet,
+} from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
-import Orientation from 'react-native-orientation';
-import { getAnalysisGames } from '../actions/analyze_games'
 import {
   NavigateButton,
-  TopContentBar
+  TopContentBar,
 } from 'components';
+import enhancer from './hoc';
 import {
-  GameStyleButton,
+  GameTypeButton,
   ShotTypeButton,
   TermButton,
-} from './components'
-import enhancer from './hoc'
+} from './components';
 
-class AnalysisCreate extends React.Component{
-  render(){
-    return(
+class AnalysisCreate extends React.Component {
+  render() {
+    return (
       <View style={styles.container}>
-        <TopContentBar>検索条件</TopContentBar> 
-        <View style={{flexDirection:"row"}}>
+        <TopContentBar>検索条件</TopContentBar>
+        <View style={{ flexDirection: 'row' }}>
           <Text style={styles.game_style_text}>
             試合形式
           </Text>
-          <GameStyleButton/>
+          <GameTypeButton />
         </View>
-        <View style={{flexDirection:"row"}}>
+        <View style={{ flexDirection: 'row' }}>
           <Text style={styles.shot_type_text}>
             球種
           </Text>
-          <ShotTypeButton/>
+          <ShotTypeButton />
         </View>
-        <View style={{flexDirection:"row"}}>
+        <View style={{ flexDirection: 'row' }}>
           <Text style={styles.term_text}>
             期間
           </Text>
-          <TermButton/>
+          <TermButton />
         </View>
-        <View style={{flexDirection:"row"}}>
+        <View style={{ flexDirection: 'row' }}>
           <Text style={styles.opponent_text}>
             対戦相手
           </Text>
-          <View style={styles.opponent_frame}/>
-          <View style={styles.opponent_frame}/>
+          <View style={styles.opponent_frame} />
+          <View style={styles.opponent_frame} />
         </View>
-       <View style={{flexDirection:"row"}}>
-         <Text style={styles.game_select_text}>
+        <View style={{ flexDirection: 'row' }}>
+          <Text style={styles.game_select_text}>
             試合選択
-         </Text>
-          <View style={styles.game_select_frame}/>
+          </Text>
+          <View style={styles.game_select_frame} />
         </View>
-        <NavigateButton action={Actions.analysis_view} style={styles.analyze} text='Analyze' />          
+        <NavigateButton action={Actions.analysis_view} style={styles.analyze} text="Analyze" />
       </View>
     );
   }
 }
-export default connect()(enhancer(AnalysisCreate))
+export default connect()(enhancer(AnalysisCreate));
 
 const styles = StyleSheet.create({
   container: {
@@ -77,7 +71,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     marginTop: -28,
     backgroundColor: 'transparent',
-    fontWeight: 'bold',       
+    fontWeight: 'bold',
   },
 
   game_style_text: {
@@ -87,7 +81,7 @@ const styles = StyleSheet.create({
     marginLeft: 40,
     backgroundColor: 'transparent',
     fontWeight: 'bold',
-    alignSelf: 'flex-start',     
+    alignSelf: 'flex-start',
   },
 
   shot_type_text: {
@@ -97,7 +91,7 @@ const styles = StyleSheet.create({
     marginLeft: 40,
     backgroundColor: 'transparent',
     fontWeight: 'bold',
-    alignSelf: 'flex-start',     
+    alignSelf: 'flex-start',
   },
 
   term_text: {
@@ -107,7 +101,7 @@ const styles = StyleSheet.create({
     marginLeft: 40,
     backgroundColor: 'transparent',
     fontWeight: 'bold',
-    alignSelf: 'flex-start',     
+    alignSelf: 'flex-start',
   },
 
   opponent_text: {
@@ -118,11 +112,11 @@ const styles = StyleSheet.create({
     backgroundColor: 'transparent',
     fontWeight: 'bold',
     alignSelf: 'flex-start',
-    marginRight: 22,       
+    marginRight: 22,
   },
 
-  opponent_frame: {        
-    flexDirection: "row",
+  opponent_frame: {
+    flexDirection: 'row',
     backgroundColor: 'transparent',
     borderRightColor: '#0a2444',
     borderTopColor: '#0a2444',
@@ -147,7 +141,7 @@ const styles = StyleSheet.create({
   },
 
   game_select_frame: {
-    flexDirection: "row",
+    flexDirection: 'row',
     backgroundColor: 'transparent',
     borderRightColor: '#0a2444',
     borderTopColor: '#0a2444',

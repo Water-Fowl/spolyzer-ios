@@ -1,7 +1,7 @@
 /**
- * @providesModule enhances 
+ * @providesModule enhances
  */
-import React from "react";
+import React from 'react';
 import {
   View,
   StyleSheet,
@@ -12,28 +12,25 @@ import {
 } from 'components';
 import Orientation from 'react-native-orientation';
 
-export function baseHigherOrderComponentEnhancer(ComponentClass){
-  return class BaseHightOrderComponent extends React.Component{
-    constructor(props){
-      super(props)
-    }
+export default function baseHigherOrderComponentEnhancer(ComponentClass) {
+  return class BaseHightOrderComponent extends React.Component {
     componentWillMount() {
       Orientation.lockToPortrait();
     }
-    render(){
-      return(
+    render() {
+      return (
         <View style={styles.container}>
-          <Background/>
-          <NavBar/>
+          <Background />
+          <NavBar />
           <ComponentClass {...this.props} />
         </View>
       );
     }
-  }
+  };
 }
 
 const styles = StyleSheet.create({
-  container:{
-    flex: 1
+  container: {
+    flex: 1,
   },
-})
+});

@@ -4,103 +4,103 @@
 
 import React from 'react';
 import {
-    Dimensions,
-    StyleSheet,
-    Image,
-    Text,
-    View,
-    TouchableOpacity,
+  Dimensions,
+  StyleSheet,
+  Image,
+  Text,
+  View,
+  TouchableOpacity,
 } from 'react-native';
 
 const win = Dimensions.get('window');
 
 export class Background extends React.Component {
-    render(){
-        return(
-            <Image
-                source={require('../assets/img/background.png')}
-                style={styles.background}
-            />
-        );
-    }
+  render() {
+    return (
+      <Image
+        source={require('../assets/img/background.png')}
+        style={styles.background}
+      />
+    );
+  }
 }
 
 export class NavBar extends React.Component {
-  render(){
-    return(
+  render() {
+    return (
       <View style={{
-        backgroundColor:"rgba(46, 167, 224, 0.1)",
-        height:70,
-        justifyContent: 'flex-end', 
-        paddingLeft:20,
+        backgroundColor: 'rgba(46, 167, 224, 0.1)',
+        height: 70,
+        justifyContent: 'flex-end',
+        paddingLeft: 20,
         paddingBottom: 5,
-      }}>
-        <Image source={require('../assets/img/spolyzer_header.png')}/>
+      }}
+      >
+        <Image source={require('../assets/img/spolyzer_header.png')} />
       </View>
     );
   }
 }
 
 export class NavigateButton extends React.Component {
-
-    render(){
-        return(
-            <TouchableOpacity onPress={this.props.action} style={this.props.style}>                
-                    <Image
-                        source={require("../assets/img/navigate_button.png")}
-                        style={styles.navigate_button}
-                    />
-                    <Text style={styles.navigate_text}>
-                        {this.props.text}
-                    </Text>
-                </TouchableOpacity>
-        );
-    }
+  render() {
+    return (
+      <TouchableOpacity onPress={this.props.action} style={this.props.style}>
+        <Image
+          source={require('../assets/img/navigate_button.png')}
+          style={styles.navigate_button}
+        />
+        <Text style={styles.navigate_text}>
+          {this.props.text}
+        </Text>
+      </TouchableOpacity>
+    );
+  }
 }
 
-export class TopBar extends React.Component{
-    render(){
-        return(
-            <View style={{
-              backgroundColor:"rgba(46, 167, 224, 0.5)",
-            }}>
-              <Image source={require('../assets/img/spolyzer_header.png')}/>
-            </View>
-        )
-    }
+export class TopBar extends React.Component {
+  render() {
+    return (
+      <View style={{
+        backgroundColor: 'rgba(46, 167, 224, 0.5)',
+      }}>
+        <Image source={require('../assets/img/spolyzer_header.png')} />
+      </View>
+    );
+  }
 }
 
 export class LandScapeBackground extends React.Component {
-    render(){
-        return(
-            <Image
-                source={require('../assets/img/landscape_background.png')}
-                style={styles.landscape_background}
-            />
-        )
-    }
+  render() {
+    return (
+      <Image
+        source={require('../assets/img/landscape_background.png')}
+        style={styles.landscape_background}
+      />
+    );
+  }
 }
 
-export class TopContentBar extends React.Component{
+export class TopContentBar extends React.Component {
   constructor(props) {
     super(props);
   }
-  render(){
-    return(
+  render() {
+    return (
       <View>
-      <Image 
-        style={styles.top_content_bar_img} 
-        source={require("../assets/img/top_content_bar.png")} 
-      />
-      <Text style={styles.top_content_bar_text}>{this.props.children}</Text>
+        <Image
+          style={styles.top_content_bar_img}
+          source={require('../assets/img/top_content_bar.png')}
+        />
+        <Text style={styles.top_content_bar_text}>{this.props.children}</Text>
       </View>
-    )
+    );
   }
 }
 
 const styles = StyleSheet.create({
   background: {
-    position:'absolute',
+    position: 'absolute',
     width: '100%',
     height: '100%',
   },
@@ -114,25 +114,25 @@ const styles = StyleSheet.create({
     marginTop: 0,
   },
   navigate_text: {
-    position: "absolute",
-    top: 14, 
+    position: 'absolute',
+    top: 14,
     fontSize: 20,
     backgroundColor: 'transparent',
     color: '#ffffff',
     alignSelf: 'center',
   },
   landscape_background: {
-    zIndex:0,
+    zIndex: 0,
     resizeMode: 'stretch',
     width: '100%',
     height: '100%',
-    backgroundColor:"rgb(30, 55, 80)",
-    position:"absolute",
+    backgroundColor: 'rgb(30, 55, 80)',
+    position: 'absolute',
   },
-  bar:{
-    zIndex:2,
-    margin:0,
-    padding:0,
+  bar: {
+    zIndex: 2,
+    margin: 0,
+    padding: 0,
     backgroundColor: 'rgba(46, 167, 224, 1)',
     width: win.width,
   },
@@ -145,19 +145,19 @@ const styles = StyleSheet.create({
     borderLeftColor: 'transparent',
     borderRightWidth: 20,
     borderRightColor: 'transparent',
-    borderStyle: 'solid'
+    borderStyle: 'solid',
   },
-  bar_text:{
-    fontWeight: "bold",
+  bar_text: {
+    fontWeight: 'bold',
     fontSize: 25,
-    color: "white",
+    color: 'white',
     paddingTop: 13,
     paddingBottom: 13,
-    textAlign: "center",
+    textAlign: 'center',
   },
-  top_bar:{
-    zIndex:3,
-    alignItems: "center",
+  top_bar: {
+    zIndex: 3,
+    alignItems: 'center',
     width: win.width,
   },
   top_content_bar_text: {
@@ -166,30 +166,30 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     backgroundColor: 'transparent',
     fontWeight: 'bold',
-    marginTop:5,
+    marginTop: 5,
   },
   top_content_bar_img: {
-    alignSelf: "center",
+    alignSelf: 'center',
     position: 'absolute',
   },
 
-  marginTop10:{
-    marginTop: 10
+  marginTop10: {
+    marginTop: 10,
   },
   marginTop30: {
-    marginTop: 30
+    marginTop: 30,
   },
-  paddingTop30:{
-    paddingTop:30,
+  paddingTop30: {
+    paddingTop: 30,
   },
-  paddingTop50:{
-    paddingTop:50,
+  paddingTop50: {
+    paddingTop: 50,
   },
-  paddingTop10:{
-    paddingTop:10,
+  paddingTop10: {
+    paddingTop: 10,
   },
-  paddingTop105:{
-    paddingTop:105,
+  paddingTop105: {
+    paddingTop: 105,
   },
 
-})
+});

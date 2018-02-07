@@ -1,14 +1,20 @@
-import { hideScoreCreateModal } from '../../../../shared/redux/view/actions'
-export function scoreCreateShotTypeButtonEnhancer(ComponentClass){
-  return class HOComponent extends ComponentClass{
-    hideModalEvent(){
-      const { dispatch } = this.props
-      dispatch(hideScoreCreateModal())
+import { hideScoreCreateModal } from '../../../../shared/redux/view/actions';
+import { setShotType } from '../../../actions/set_score'
+
+export function scoreCreateShotTypeButtonEnhancer(ComponentClass) {
+  return class HOComponent extends ComponentClass {
+    setShotTypeEvent(shot_type_id){
+      const { dispatch } = this.props;
+      dispatch(setShotType(shot_type_id));
     }
-    render(){
-      return(
+    hideModalEvent() {
+      const { dispatch } = this.props;
+      dispatch(hideScoreCreateModal());
+    }
+    render() {
+      return (
         super.render()
-      )
+      );
     }
-  }
+  };
 }
