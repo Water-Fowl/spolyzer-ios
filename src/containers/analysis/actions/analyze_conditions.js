@@ -3,25 +3,25 @@ import {
   SHOT_TYPE_SETTING,
   TERM_SETTING,
   OPPONENT_USER_SETTING,
-} from '../action_type'
+} from '../action_type';
 
-export function setGameType(game_type){
+export function setGameType(game_type_id) {
   return {
     type: GAME_TYPE_SETTING,
-    game_type: game_type
-  }
+    game_type_id,
+  };
 }
 
-export function setShotType(shot_type){
-  return{
+export function setShotType(shot_type_id) {
+  return {
     type: SHOT_TYPE_SETTING,
-    shot_type: shot_type
-  }
+    shot_type_id,
+  };
 }
 
-export function setTerm(term){
+export function setTerm(term_id) {
   return {
     type: TERM_SETTING,
-    term: term
-  }
+    term_id,
+  };
 }

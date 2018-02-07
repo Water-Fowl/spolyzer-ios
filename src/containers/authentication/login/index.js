@@ -10,62 +10,64 @@ import {
 } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import Orientation from 'react-native-orientation';
-import { Background } from "components";
+import { Background } from 'components';
 
 import { connect } from 'react-redux';
 import { postUserLogin } from '../actions/login';
 import { enhancer } from './hoc';
 
-class Login extends React.Component{
-  render(){
-    return(
+class Login extends React.Component {
+  render() {
+    return (
       <View style={styles.container}>
-        <Background/>
-        <Image 
+        <Background />
+        <Image
           style={styles.logo}
           source={require('../../../assets/img/spolyzer_top.png')}
         />
         <View style={styles.form_container}>
           <View style={styles.form}>
-            <TextInput onChangeText={(email) => this.setState({email})}
-              placeholder={"メールアドレス"}
-              placeholderTextColor={'#666677'}
+            <TextInput
+              onChangeText={email => this.setState({ email })}
+              placeholder="メールアドレス"
+              placeholderTextColor="#666677"
               style={styles.text_field}
-              keyboardType={'email-address'}
-              returnKeyType={'done'}
+              keyboardType="email-address"
+              returnKeyType="done"
             />
           </View>
           <View style={styles.form}>
-            <TextInput onChangeText={(password) => this.setState({password})}
-              placeholder={"パスワード"}
-              placeholderTextColor={'#666677'}
+            <TextInput
+              onChangeText={password => this.setState({ password })}
+              placeholder="パスワード"
+              placeholderTextColor="#666677"
               style={styles.text_field}
-              keyboardType={'email-address'}
-              returnKeyType={'done'}
+              keyboardType="email-address"
+              returnKeyType="done"
               secureTextEntry
             />
           </View>
           {(() => {
             if (this.state.login_error) {
               return (
-                <View style={{flexDirection:"row"}}>
-                <Text style={styles.auto_login_text}>
+                <View style={{ flexDirection: 'row' }}>
+                  <Text style={styles.auto_login_text}>
                 メールアドレスかパスワードが間違っています。
-                </Text>
+                  </Text>
                 </View>
-              )
+              );
             }
           })()}
-          <View style={{flexDirection:"row"}}>
-          </View>
+          <View style={{ flexDirection: 'row' }} />
           <View style={styles.button}>
-            <TouchableOpacity onPress={() =>{
+            <TouchableOpacity onPress={() => {
               Actions.tab();
               /*
                * Rails環境なしでもログインできるようにここはコメントアウト
                * this.postLoginInformation()
                */
-            }}>
+            }}
+            >
               <Text style={styles.button_text}>
                 ログイン
               </Text>
@@ -83,23 +85,23 @@ class Login extends React.Component{
           </View>
         </View>
       </View>
-    )
+    );
   }
 }
 
-function mapStateToProps(state, props){
-  const { authentication } = state
+function mapStateToProps(state, props) {
+  const { authentication } = state;
   const {
-    login_error: login_error,
-  } = authentication ||{
-    login_error: false
-  }
+    login_error,
+  } = authentication || {
+    login_error: false,
+  };
   return {
     login_error,
-  }
+  };
 }
 
-export default connect(mapStateToProps)(enhancer(Login))
+export default connect(mapStateToProps)(enhancer(Login));
 
 const styles = StyleSheet.create({
   container: {
@@ -107,7 +109,7 @@ const styles = StyleSheet.create({
   },
   form_container: {
     alignSelf: 'center',
-    width: "80%",
+    width: '80%',
   },
   form: {
     borderRightColor: '#28a8de',
@@ -117,7 +119,7 @@ const styles = StyleSheet.create({
     height: 42,
     width: '100%',
     borderWidth: 1.3,
-    alignSelf: "center",
+    alignSelf: 'center',
     justifyContent: 'center',
     borderRadius: 5,
     marginTop: 9,
@@ -131,13 +133,13 @@ const styles = StyleSheet.create({
     height: 42,
     width: '100%',
     borderWidth: 1.3,
-    alignSelf: "center",
+    alignSelf: 'center',
     borderRadius: 5,
     marginTop: 9,
     marginBottom: 9,
     justifyContent: 'center',
   },
-  logo :{
+  logo: {
     marginTop: 80,
     marginBottom: 80,
     alignSelf: 'center',
@@ -187,4 +189,4 @@ const styles = StyleSheet.create({
     marginBottom: 1,
     backgroundColor: 'transparent',
   },
-})
+});
