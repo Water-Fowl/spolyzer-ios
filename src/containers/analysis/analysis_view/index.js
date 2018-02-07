@@ -20,54 +20,51 @@ class AnalysisView extends React.Component {
     return (
       <View style={styles.container}>
         <Text style={styles.subtitle_text}>
-                    複合分析結果
+          複合分析結果
         </Text>
         <View style={{ flexDirection: 'row' }}>
           <Text style={styles.analysis_view_vs}>vs</Text>
-          <View style={styles.name_outside_frame}>
-            <View style={styles.name_inside_frame}>
+          <View style={styles.name_outside_container}>
+            <View style={styles.name_inside_container}>
               <Image
                 source={require('../../../assets/img/score_creat_person.png')}
                 style={styles.person}
               />
-
               <Text style={styles.opponent_name}>
                 池田社長
               </Text>
             </View>
-
           </View>
         </View>
-        <View style={styles.option}>
-
-          <View style={styles.frame}>
+        <View style={styles.option_container}>
+          <View style={styles.option_text_container}>
             <Text style={styles.option_text}>
-                            １日トータル
+              １日トータル
             </Text>
           </View>
-          <View style={styles.frame}>
+          <View style={styles.option_text_container}>
             <Text style={styles.option_text}>
-                            球種
+              球種
             </Text>
           </View>
-          <View style={styles.frame}>
+          <View style={styles.option_text_container}>
             <Text style={styles.option_text}>
-                            負け試合
+              負け試合
             </Text>
           </View>
         </View>
         <View style={styles.court} />
-        <View style={styles.gragh_frame}>
+        <View style={styles.gragh_container}>
           <VictoryBar
             data={sampleData}
             x="hoge"
             y="geho"
           />
         </View>
-        <View style={styles.back_button_frame}>
+        <View style={styles.back_button_container}>
           <TouchableOpacity onPress={Actions.analysis_create}>
             <Text style={styles.back_button_text}>
-                            検索条件に戻る
+              検索条件に戻る
             </Text>
           </TouchableOpacity>
         </View>
@@ -95,7 +92,6 @@ const styles = StyleSheet.create({
     backgroundColor: 'transparent',
     fontWeight: 'bold',
   },
-
   analysis_view_vs: {
     fontWeight: 'bold',
     color: 'skyblue',
@@ -105,8 +101,7 @@ const styles = StyleSheet.create({
     marginLeft: 206,
     backgroundColor: 'transparent',
   },
-
-  name_outside_frame: {
+  name_outside_container: {
     borderRightColor: '#0a2444',
     borderTopColor: '#0a2444',
     borderLeftColor: '#0a2444',
@@ -120,8 +115,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-
-  name_inside_frame: {
+  name_inside_container: {
     borderRightColor: '#0a2444',
     borderTopColor: '#0a2444',
     borderLeftColor: '#0a2444',
@@ -131,9 +125,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 2,
     flexDirection: 'row',
-
   },
-
   person: {
     marginTop: 2,
     marginLeft: 8,
@@ -149,15 +141,14 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 12,
   },
-  option: {
+  option_container: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignSelf: 'center',
     width: 310,
     marginTop: 4,
-
   },
-  frame: {
+  option_text_container: {
     borderRightColor: '#0a2444',
     borderTopColor: '#0a2444',
     borderLeftColor: '#0a2444',
@@ -170,7 +161,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   option_text: {
-
     backgroundColor: '#0a2444',
     color: '#ffffff',
     fontSize: 14,
@@ -180,7 +170,6 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     textAlign: 'center',
     paddingTop: 5,
-
   },
   court: {
     alignSelf: 'center',
@@ -189,8 +178,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#ffffff',
     marginTop: 26,
   },
-  gragh_frame: {
-
+  gragh_container: {
     borderRightColor: '#28a8de',
     borderTopColor: '#28a8de',
     borderLeftColor: '#28a8de',
@@ -202,9 +190,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     marginTop: 20,
   },
-
-  back_button_frame: {
-
+  back_button_container: {
     borderRightColor: '#28a8de',
     borderTopColor: '#28a8de',
     borderLeftColor: '#28a8de',
@@ -216,7 +202,6 @@ const styles = StyleSheet.create({
     marginLeft: 190,
     marginTop: 8,
   },
-
   back_button_text: {
     backgroundColor: 'transparent',
     color: '#ffffff',
@@ -227,5 +212,4 @@ const styles = StyleSheet.create({
     paddingTop: 7,
     paddingLeft: 20,
   },
-
 });
