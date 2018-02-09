@@ -31,7 +31,7 @@ class ProfileEdit extends React.Component {
 
             <View style={styles.frame_name}>
               <View style={styles.plate_name}>
-                <Text>Ikeda Yoshiki</Text>
+                <Text style={{fontSize:23,color:'white',textAlign:'center'}} >Ikeda Yoshiki</Text>
               </View>
             </View>
 <View style={{paddingTop:40,}}>
