@@ -22,11 +22,20 @@ class ProfileEdit extends React.Component {
       <View style={{flex:5,paddingTop:60}}>
           <View style={{flexDirection:'row'}}>
 
-          <View style={{flex:3,alignItems:'center'}}>
-        <Image
-          source={require('../../../assets/img/score_create_person.png')}
-          style={{marginLeft:20,}}/>
-          </View>
+          <View style={{flex:3,alignItems:'center',backgroundColor:'transparent'}}>
+            <Image
+              source={require('../../../assets/img/score_create_person.png')}
+              style={{marginLeft:20,}}/>
+              <View style={{paddingTop:25,}}>
+                <Text style={styles.profile_title}>Gender</Text>
+                <Text style={styles.profile_title}>Phone</Text>
+                <Text style={styles.profile_title}>Email</Text>
+                <Text style={styles.profile_title}>Status</Text>
+                </View>
+                <View style={{paddingTop:40,}}>
+                  <Text style={styles.profile_title}>Profile</Text>
+                  </View>
+            </View>
           <View style={{flex:7,alignItems:'center',paddingTop:15,}}>
 
             <View style={styles.frame_name}>
@@ -90,7 +99,7 @@ const styles = StyleSheet.create({
   frame_profile: {
     marginTop:8,
     borderColor: '#0a2444',
-    height: 120,
+    height: 130,
     width: 230,
     borderWidth: 2,
     borderRadius: 4,
@@ -99,9 +108,14 @@ const styles = StyleSheet.create({
   },
   plate_profile: {
     backgroundColor: '#0a2444',
-    height: 110,
+    height: 120,
     width: 220,
 
+  },
+  profile_title:{
+    color:'white',
+    fontWeight:'bold',
+    marginTop:10,
   },
 
   subtitle_text: {
