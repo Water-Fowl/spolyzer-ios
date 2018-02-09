@@ -26,7 +26,7 @@ class ProfileEdit extends React.Component {
             <Image
               source={require('../../../assets/img/score_create_person.png')}
               style={{marginLeft:20,}}/>
-              <View style={{paddingTop:25,}}>
+              <View style={{paddingTop:28,}}>
                 <Text style={styles.profile_title}>Gender</Text>
                 <Text style={styles.profile_title}>Phone</Text>
                 <Text style={styles.profile_title}>Email</Text>
@@ -43,18 +43,25 @@ class ProfileEdit extends React.Component {
                 <Text style={{fontSize:23,color:'white',textAlign:'center'}} >Ikeda Yoshiki</Text>
               </View>
             </View>
-<View style={{paddingTop:40,}}>
 
-            <View style={styles.frame_profile}>
-              <View style={styles.plate_profile}>
+            <View style={{paddingTop:40,}}>
+
+              <View style={styles.frame_profile}>
+                <View style={styles.plate_profile}>
+                  <View style={{paddingLeft:20,}}>
+                    <Text style={styles.profile_title}>Male</Text>
+                    <Text style={styles.profile_title}>000000</Text>
+                    <Text style={styles.profile_title}>gmail.com</Text>
+                    <Text style={styles.profile_title}>single Player</Text>
+                  </View>
+                </View>
+              </View>
+
+              <View style={styles.frame_profile}>
+                <View style={styles.plate_profile}>
+                </View>
               </View>
             </View>
-
-            <View style={styles.frame_profile}>
-              <View style={styles.plate_profile}>
-              </View>
-            </View>
-</View>
           </View>
 
 
