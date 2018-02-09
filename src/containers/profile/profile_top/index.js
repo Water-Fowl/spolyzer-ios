@@ -4,6 +4,7 @@ import {
   Image,
   Text,
   View,
+  TouchableOpacity,
 } from 'react-native';
 import { connect } from 'react-redux';
 
@@ -11,7 +12,7 @@ import {
   TopContentBar,
 } from 'components';
 import baseHigherOrderComponentEnhancer from 'enhances';
-
+import { Actions } from 'react-native-router-flux';
 
 class ProfileTop extends React.Component {
   render() {
@@ -24,6 +25,11 @@ class ProfileTop extends React.Component {
               source={require('../../../assets/img/my_page_user_icon.png')}
               style={styles.user_icon}
             />
+                <TouchableOpacity onPress={Actions.profile_edit}>
+                  <Text>
+                   Edit
+                  </Text>
+                </TouchableOpacity>
             <Image
               source={require('../../../assets/img/my_page_center_design.png')}
             />

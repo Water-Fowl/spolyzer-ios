@@ -29,7 +29,7 @@ class ScoreGameCreate extends React.Component {
               <View style={styles.game_setting_table_inner}>
                 <View style={styles.game_setting_table_inner_left}>
                   <Image
-                    source={require('../../../assets/img/score_creat_person.png')}
+                    source={require('../../../assets/img/score_create_person.png')}
                     style={styles.score_game_create_competitor_person}
                   />
 
@@ -53,7 +53,7 @@ class ScoreGameCreate extends React.Component {
 
                 <View style={styles.game_setting_inner_right} >
                   <Image
-                    source={require('../../../assets/img/score_creat_person.png')}
+                    source={require('../../../assets/img/score_create_person.png')}
                     style={styles.score_game_create_competitor_person}
                   />
                   <Image
