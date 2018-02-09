@@ -50,9 +50,13 @@ class ProfileEdit extends React.Component {
                 <View style={styles.plate_profile}>
                   <View style={{paddingLeft:20,}}>
                     <Text style={styles.profile_title}>Male</Text>
+                    <View style={styles.profile_underline}></View>
                     <Text style={styles.profile_title}>000000</Text>
+                    <View style={styles.profile_underline}></View>
                     <Text style={styles.profile_title}>gmail.com</Text>
+                    <View style={styles.profile_underline}></View>
                     <Text style={styles.profile_title}>single Player</Text>
+                    <View style={styles.profile_underline}></View>
                   </View>
                 </View>
               </View>
@@ -123,6 +127,11 @@ const styles = StyleSheet.create({
     color:'white',
     fontWeight:'bold',
     marginTop:10,
+  },
+  profile_underline:{
+    borderWidth:0.5,
+    borderColor:'#4780c6',
+    marginRight:20,
   },
   complete: {
     alignSelf: 'center',
