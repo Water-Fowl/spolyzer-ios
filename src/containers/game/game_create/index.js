@@ -75,19 +75,7 @@ class ScoreGameCreate extends React.Component {
           <View
             style={styles.game_setting_under_table}
           >
-            <Image
-              source={require('../../../assets/img/frame_next_button.png')}
-              style={styles.game_setting_under_table_frame_next_button}
-            />
-
-            <View>
-              <Text
-                onPress={Actions.score_create}
-                style={styles.column_bar_text}
-              >Play
-              </Text>
-            </View>
-
+            <NavigateButton action={Actions.score_create} text="Play"/>
           </View>
         </View>
       </View>

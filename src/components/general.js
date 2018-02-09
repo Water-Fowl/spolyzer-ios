@@ -1,7 +1,6 @@
 /**
  * @providesModule components
  */
-
 import React from 'react';
 import {
   Dimensions,
@@ -110,12 +109,12 @@ const styles = StyleSheet.create({
     marginTop: -10,
   },
   navigate_button: {
-    opacity: 0.4,
     marginTop: 0,
+    alignSelf: 'center',
+    position: 'absolute',
   },
   navigate_text: {
-    position: 'absolute',
-    top: 14,
+    top: 15,
     fontSize: 20,
     backgroundColor: 'transparent',
     color: '#ffffff',

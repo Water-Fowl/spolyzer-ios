@@ -14,7 +14,7 @@ import {
   VictoryAxis,
   VictoryLabel,
 } from 'victory-native';
-import { Actions } from 'react-native-router-flux';
+import { Actions, ActionConst } from 'react-native-router-flux';
 import {
   TopContentBar,
 } from 'components'
@@ -43,6 +43,20 @@ class ScoreView extends React.Component {
       <View style={styles.container}>
         <TopContentBar>単分析結果</TopContentBar>
         <ScrollView>
+          <View style={styles.user_name_container}>
+            <Text style={styles.user_name_text}>Name</Text>
+            <Text style={styles.user_name_text}>Name</Text>
+          </View>
+          <View style={styles.game_informations_contaier}> 
+            <View style={styles.game_information_text_container}>
+              <Text style={styles.win_loss_text}>Win</Text>
+              <Text style={styles.score_text}>20</Text>
+            </View>
+            <View style={styles.game_information_text_container}>
+              <Text style={styles.score_text}>15</Text>
+              <Text style={styles.win_loss_text}>Lose</Text>
+            </View>
+          </View>
           <View style={styles.field}>
             <Image style={styles.field_line} source={require('../../../assets/img/field-line.png')}/>
               <View style={styles.over_container}>
@@ -165,9 +179,9 @@ class ScoreView extends React.Component {
             </VictoryChart>
           </View>
           <View style={styles.back_button_container}>
-            <TouchableOpacity onPress={Actions.analysis_create}>
+            <TouchableOpacity onPress={() => {Actions.popTo("game_create")} }>
               <Text style={styles.back_button_text}>
-                検索条件に戻る
+                保存して終了
               </Text>
             </TouchableOpacity>
           </View>
@@ -182,6 +196,66 @@ export default baseHigherOrderComponentEnhancer(ScoreView);
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  user_name_container:{
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingLeft: 20,
+    paddingRight: 20,
+    marginTop: 20,
+  },
+  user_name_text:{
+    color: 'white',
+    alignSelf: 'center',
+    textAlign: 'center',
+    paddingTop: 5,
+    paddingBottom: 5,
+    flex: 0.4,
+    fontSize: 20,
+    backgroundColor: 'transparent',
+    borderColor: '#28a8de',
+    borderRadius: 3,
+    borderWidth: 1,
+  },
+  game_information_text_container:{
+    flexDirection: 'row',
+    paddingLeft: 20,
+    paddingRight: 20,
+  },
+  game_informations_contaier: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    marginTop:8,
+  },
+  game_information_text_container:{
+    flex: 0.4,
+    justifyContent: 'space-between',
+    paddingLeft: 50,
+    paddingRight: 50,
+    flexDirection: 'row',
+  },
+  score_text:{
+    color: 'white',
+    textAlign:'center',
+    backgroundColor: 'transparent',
+    borderColor: '#28a8de',
+    borderRadius: 3,
+    borderWidth: 1,
+    fontSize: 30,
+    padding: 3,
+  },
+  win_loss_text:{
+    alignSelf: 'flex-end',
+    color: 'white',
+    textAlign:'center',
+    backgroundColor: 'transparent',
+    borderRadius: 3,
+    borderColor: '#28a8de',
+    borderWidth: 1,
+    fontSize: 10,
+    padding: 3,
+    marginLeft: 5,
+    marginRight: 5,
   },
   field: {
     alignSelf: 'center',
