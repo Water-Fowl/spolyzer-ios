@@ -40,7 +40,7 @@ class ProfileEdit extends React.Component {
 
             <View style={styles.frame_name}>
               <View style={styles.plate_name}>
-                <Text style={{fontSize:23,color:'white',textAlign:'center'}} >Ikeda Yoshiki</Text>
+                <Text style={{fontSize:23,color:'white',textAlign:'center',}} >Ikeda Yoshiki</Text>
               </View>
             </View>
 
@@ -101,7 +101,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#0a2444',
     height: 30,
     width: 220,
-
+    opacity:0.7,
   },
   frame_profile: {
     marginTop:8,
@@ -117,14 +117,13 @@ const styles = StyleSheet.create({
     backgroundColor: '#0a2444',
     height: 120,
     width: 220,
-
+    opacity:0.7,
   },
   profile_title:{
     color:'white',
     fontWeight:'bold',
     marginTop:10,
   },
-
   complete: {
     alignSelf: 'center',
   },
