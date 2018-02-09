@@ -22,19 +22,21 @@ import {
   InFieldCircle,
   InFieldLength,
   InFieldSide,
+  InArea,
   OutFieldSide,
   OutFieldLength,
+  OutArea,
 } from './components'
 
 import baseHigherOrderComponentEnhancer from 'enhances';
 
 const data = [
-  {shot_type: "スマッシュ", counts: 1},
-  {shot_type: "ドロップ", counts: 2},
-  {shot_type: "ドライブ", counts: 3},
-  {shot_type: "ヘアピン", counts: 4},
-  {shot_type: "プッシュ", counts: 5},
-  {shot_type: "ネットイン", counts: 6},
+  {position: "A", counts: 1},
+  {position: "B", counts: 2},
+  {position: "C", counts: 3},
+  {position: "D", counts: 4},
+  {position: "E", counts: 5},
+  {position: "F", counts: 6},
 ];
 
 class AnalysisView extends React.Component {
@@ -76,10 +78,13 @@ class AnalysisView extends React.Component {
           </View>
           <View style={styles.field}>
             <Image style={styles.field_line} source={require('../../../assets/img/field-line.png')}/>
+              <InArea/>
+              <OutArea/>
               <View style={styles.over_container}>
                 <View style={styles.over_out_field_side_container}>
                   <OutFieldSide position={1} side={1} />
                   <OutFieldSide />
+                  
                 </View>
                 <View style={styles.over_out_field_side_container}>
                   <OutFieldSide />
@@ -189,7 +194,7 @@ class AnalysisView extends React.Component {
                 }}
                 data={data}
                 alignment="start"
-                x="shot_type"
+                x="position"
                 y="counts"
               />
             </VictoryChart>
@@ -310,7 +315,38 @@ const styles = StyleSheet.create({
     position: 'absolute',
     alignSelf:'center',
     height: 170,
+    backfaceVisibility: 'hidden',
+    zIndex:3,
     resizeMode: 'contain',
+  },
+  in_field_area_container:{
+    width: 330,
+    position: 'absolute',
+    flexDirection: 'row',
+    justifyContent:'space-around',
+    paddingLeft:10,
+    paddingRight:10,
+  },
+  in_field_area:{
+    flex: 0.4,
+    alignSelf: 'center',
+    backgroundColor:'black',
+    height:138,
+    marginTop:16,
+    marginBottom:16,
+  },
+  out_field_area_container:{
+    width: 330,
+    position: 'absolute',
+    flexDirection: 'row',
+    justifyContent:'space-between',
+  },
+  out_field_area:{
+    alignSelf: 'center',
+    flex: 0.45,
+    backgroundColor:'#FAEE00',
+    opacity:0.3,
+    height:170,
   },
   over_container: {
     flexDirection: 'row',

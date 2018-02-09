@@ -6,7 +6,7 @@ import {
   StyleSheet,
 } from 'react-native';
 import { connect } from 'react-redux';
-import { setTerm } from '../../../../actions/analyze_conditions';
+import { setTerm } from '../../../../actions/set_query';
 
 class Button extends React.Component {
   constructor(props) {

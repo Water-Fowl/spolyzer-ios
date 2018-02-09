@@ -6,7 +6,7 @@ import {
   StyleSheet,
 } from 'react-native';
 import { connect } from 'react-redux';
-import { setGameType } from '../../../../actions/analyze_conditions';
+import { setGameType } from '../../../../actions/set_query';
 
 class Button extends React.Component {
   constructor(props) {

@@ -6,7 +6,7 @@ import {
   StyleSheet,
 } from 'react-native';
 import { connect } from 'react-redux';
-import { setShotType } from '../../../../actions/analyze_conditions';
+import { setShotType } from '../../../../actions/set_query';
 
 class Button extends React.Component {
   constructor(props) {
