@@ -25,7 +25,7 @@ class ProfileTop extends React.Component {
               source={require('../../../assets/img/my_page_user_icon.png')}
               style={styles.user_icon}
             />
-                <TouchableOpacity onPress={Actions.edit}>
+                <TouchableOpacity onPress={Actions.profile_edit}>
                   <Text>
                    Edit
                   </Text>

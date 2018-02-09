@@ -4,6 +4,7 @@ import ScoreCreate from './game/score_create';
 import GameCreate from './game/game_create';
 import ScoreView from './game/score_view';
 import ProfileTop from './profile/profile_top';
+import ProfileEdit from './profile/profile_edit';
 import Login from './authentication/login';
 import SignUp from './authentication/sign_up';
 
@@ -20,6 +21,7 @@ export {
   GameCreate,
   ScoreView,
   ProfileTop,
+  ProfileEdit,
   SignUp,
   Login,
   /* Reducersのexport */

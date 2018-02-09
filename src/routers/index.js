@@ -20,6 +20,7 @@ import {
   AnalysisCreate,
   Login,
   SignUp,
+  ProfileEdit,
 } from '../containers';
 import configureStore from '../stores';
 
@@ -34,6 +35,7 @@ const Route = () => (
         <Tabs key="tab" labelStyle={styles.label} tabBarStyle={styles.tab_bar_style} tabStyle={styles.tab_style}>
           <Scene key="Mypage" tabBarLabel='マイページ' icon={() => (<Image style={styles.icon} source={require('../assets/img/tabs_home.png')} />)} headerMode="none">
             <Scene key="mypage_top" initial component={ProfileTop} title="マイページ" hideNavBar />
+            <Scene key="profile_edit" component={ProfileEdit} title="マイデータ編集" hideNavBar />
           </Scene>
           <Scene key="Score" tabBarLabel="スコアシート" icon={() => (<Image style={styles.icon} source={require('../assets/img/tabs_score.png')} />)} headerMode="none">
             <Scene key="scre_game_create" initial component={GameCreate} title="単分析" hideNavBar />

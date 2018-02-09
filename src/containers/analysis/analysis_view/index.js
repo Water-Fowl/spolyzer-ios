@@ -27,7 +27,7 @@ class AnalysisView extends React.Component {
           <View style={styles.name_outside_frame}>
             <View style={styles.name_inside_frame}>
               <Image
-                source={require('../../../assets/img/score_creat_person.png')}
+                source={require('../../../assets/img/score_create_person.png')}
                 style={styles.person}
               />
 
