@@ -1,5 +1,5 @@
 import baseHigherOrderComponentEnhancer from 'enhances';
-import { getAnalysisGames } from '../actions/analyze_games';
+import { getAnalysisGames } from '../actions/get_games';
 
 export default function enhancer(ComponentClass) {
   const BaseHOComponentClass = baseHigherOrderComponentEnhancer(ComponentClass);

@@ -6,7 +6,7 @@ import {
   StyleSheet,
 } from 'react-native';
 import { connect } from 'react-redux';
-import { setShotType } from '../../../../actions/analyze_conditions';
+import { setShotType } from '../../../../actions/set_query';
 
 class Button extends React.Component {
   constructor(props) {
@@ -43,10 +43,6 @@ class Button extends React.Component {
     );
   }
 }
-Button.propTypes = {
-  shot_type_id: PropTypes.number.isRequired,
-  children: PropTypes.string.isRequired,
-};
 
 function mapStateToProps(state, props) {
   const { game } = state;
