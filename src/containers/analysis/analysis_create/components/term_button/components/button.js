@@ -43,10 +43,6 @@ class Button extends React.Component {
     );
   }
 }
-Button.propTypes = {
-  term_id: PropTypes.number.isRequired,
-  children: PropTypes.string.isRequired,
-};
 
 function mapStateToProps(state, props) {
   const { game } = state;

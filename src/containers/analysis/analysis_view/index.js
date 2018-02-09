@@ -5,74 +5,203 @@ import {
   View,
   TouchableOpacity,
   StyleSheet,
+  ScrollView,
 } from 'react-native';
-import { VictoryBar } from 'victory-native';
+import { 
+  VictoryBar,
+  VictoryChart,
+  VictoryTheme,
+  VictoryAxis,
+  VictoryLabel,
+} from 'victory-native';
 import { Actions } from 'react-native-router-flux';
+import {
+  TopContentBar,
+} from 'components'
+import {
+  InFieldCircle,
+  InFieldLength,
+  InFieldSide,
+  OutFieldSide,
+  OutFieldLength,
+} from './components'
+
 import baseHigherOrderComponentEnhancer from 'enhances';
 
-const sampleData = [
-  { hoge: 1, geho: 2 },
-  { hoge: 2, geho: 3 },
+const data = [
+  {shot_type: "スマッシュ", counts: 1},
+  {shot_type: "ドロップ", counts: 2},
+  {shot_type: "ドライブ", counts: 3},
+  {shot_type: "ヘアピン", counts: 4},
+  {shot_type: "プッシュ", counts: 5},
+  {shot_type: "ネットイン", counts: 6},
 ];
 
 class AnalysisView extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.subtitle_text}>
-          複合分析結果
-        </Text>
-        <View style={{ flexDirection: 'row' }}>
-          <Text style={styles.analysis_view_vs}>vs</Text>
-          <View style={styles.name_outside_container}>
-            <View style={styles.name_inside_container}>
-              <Image
-                source={require('../../../assets/img/score_creat_person.png')}
-                style={styles.person}
-              />
-              <Text style={styles.opponent_name}>
-                池田社長
+        <TopContentBar>複合分析結果</TopContentBar>
+        <ScrollView>
+          <View style={{ flexDirection: 'row' }}>
+            <Text style={styles.analysis_view_vs}>vs</Text>
+            <View style={styles.name_outside_container}>
+              <View style={styles.name_inside_container}>
+                <Image
+                  source={require('../../../assets/img/score_creat_person.png')}
+                  style={styles.person}
+                />
+                <Text style={styles.opponent_name}>
+                  池田社長
+                </Text>
+              </View>
+            </View>
+          </View>
+          <View style={styles.option_container}>
+            <View style={styles.option_text_container}>
+              <Text style={styles.option_text}>
+                １日トータル
+              </Text>
+            </View>
+            <View style={styles.option_text_container}>
+              <Text style={styles.option_text}>
+                球種
+              </Text>
+            </View>
+            <View style={styles.option_text_container}>
+              <Text style={styles.option_text}>
+                負け試合
               </Text>
             </View>
           </View>
-        </View>
-        <View style={styles.option_container}>
-          <View style={styles.option_text_container}>
-            <Text style={styles.option_text}>
-              １日トータル
-            </Text>
+          <View style={styles.field}>
+            <Image style={styles.field_line} source={require('../../../assets/img/field-line.png')}/>
+              <View style={styles.over_container}>
+                <View style={styles.over_out_field_side_container}>
+                  <OutFieldSide position={1} side={1} />
+                  <OutFieldSide />
+                </View>
+                <View style={styles.over_out_field_side_container}>
+                  <OutFieldSide />
+                  <OutFieldSide />
+                </View>
+              </View>
+              <View style={styles.middle_container}>
+                <View style={styles.out_field_length_container}>
+                  <OutFieldLength />
+                  <OutFieldLength />
+                </View>
+                <View style={styles.in_field_container}>
+                  <View style={styles.in_field_length_container}>
+                    <InFieldLength />
+                    <InFieldLength />
+                  </View>
+                  <View style={styles.in_field_side_container}>
+                    <InFieldSide />
+                    <View style={styles.in_field_circle_container}>
+                      <InFieldCircle />
+                    </View>
+                    <InFieldSide />
+                  </View>
+                  <View style={styles.in_field_length_container}>
+                    <InFieldLength />
+                    <InFieldLength />
+                  </View>
+                </View>
+                <View style={styles.in_field_container}>
+                  <View style={styles.in_field_length_container}>
+                    <InFieldLength />
+                    <InFieldLength />
+                  </View>
+                  <View style={styles.in_field_side_container}>
+                    <InFieldSide />
+                    <View style={styles.in_field_circle_container}>
+                      <InFieldCircle />
+                    </View>
+                    <InFieldSide />
+                  </View>
+                  <View style={styles.in_field_length_container}>
+                    <InFieldLength />
+                    <InFieldLength />
+                  </View>
+                </View>
+                <View style={styles.out_field_length_container}>
+                  <OutFieldLength />
+                  <OutFieldLength />
+                </View>
+              </View>
+              <View style={styles.under_container}>
+                <View style={styles.under_out_field_side_container}>
+                  <OutFieldSide position={1} side={1} />
+                  <OutFieldSide />
+                </View>
+                <View style={styles.under_out_field_side_container}>
+                  <OutFieldSide />
+                  <OutFieldSide />
+                </View>
+              </View>
           </View>
-          <View style={styles.option_text_container}>
-            <Text style={styles.option_text}>
-              球種
-            </Text>
+          <View style={styles.graph_container}>
+            <VictoryChart
+            	width={320}
+            	height={240}
+              theme={VictoryTheme.material}
+              padding={{left: 25, right: 30, top: 20, bottom: 40}}
+              domainPadding={{x: [20, 0]}}
+            >
+            	<VictoryAxis dependentAxis	/* Y軸 */
+                style={{
+                  grid: {
+                    stroke: "#035f89"
+                  },
+                  axis: {
+                    stroke:'transparent',
+                  },
+                  tickLabels: {
+                    fontSize: 10, 
+                    fill:"white"
+                  },
+                }}
+                tickFormat={(tick) =>{   /* 整数目盛のみ表示 */
+                  if (tick === Math.round(tick)) return String(tick);
+                  else return "";
+                }}
+              />
+              <VictoryAxis	/* X軸 */
+                style={{
+                  color:"white",
+                  grid: {stroke: "transparent"},
+                  axis:{
+                    stroke: '#2EA7E0'
+                  },
+                  tickLabels: {fontSize: 10, fill:"white"},
+                }}
+              />
+              <VictoryBar
+                style={{
+                  data: {
+                    fill: '#2EA7E0',
+                  },
+                }}
+                animate={{	/* 表示のアニメーション */
+                  duration: 400,
+                  onLoad: { duration: 300 }
+                }}
+                data={data}
+                alignment="start"
+                x="shot_type"
+                y="counts"
+              />
+            </VictoryChart>
           </View>
-          <View style={styles.option_text_container}>
-            <Text style={styles.option_text}>
-              負け試合
-            </Text>
+          <View style={styles.back_button_container}>
+            <TouchableOpacity onPress={Actions.analysis_create}>
+              <Text style={styles.back_button_text}>
+                検索条件に戻る
+              </Text>
+            </TouchableOpacity>
           </View>
-        </View>
-        <View style={styles.court} />
-        <View style={styles.gragh_container}>
-          <VictoryBar
-            data={sampleData}
-            x="hoge"
-            y="geho"
-          />
-        </View>
-        <View style={styles.back_button_container}>
-          <TouchableOpacity onPress={Actions.analysis_create}>
-            <Text style={styles.back_button_text}>
-              検索条件に戻る
-            </Text>
-          </TouchableOpacity>
-        </View>
-        <VictoryBar
-          data={sampleData}
-          x="hoge"
-          y="geho"
-        />
+        </ScrollView>
       </View>
     );
   }
@@ -171,20 +300,77 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     paddingTop: 5,
   },
-  court: {
+  field: {
     alignSelf: 'center',
     width: 330,
     height: 170,
-    backgroundColor: '#ffffff',
     marginTop: 26,
   },
-  gragh_container: {
+  field_line:{
+    position: 'absolute',
+    alignSelf:'center',
+    height: 170,
+    resizeMode: 'contain',
+  },
+  over_container: {
+    flexDirection: 'row',
+    flex: 1,
+    justifyContent: 'space-between',
+  },
+  over_out_field_side_container:{
+    alignSelf:'flex-start',
+    flex: 0.5,
+    justifyContent: 'space-around',
+    flexDirection: 'row',
+  },
+  middle_container: {
+    flexDirection: 'row',
+    flex: 2,
+    justifyContent: 'space-between',
+  },
+  under_container: {
+    flexDirection: 'row',
+    flex: 1,
+    justifyContent: 'space-between',
+  },
+  out_field_length_container: {
+    marginLeft: 4,
+    marginRight: 4,
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+  },
+  in_field_container: {
+    flexDirection: 'row',
+    marginLeft: 10,
+    marginRight: 10,
+  },
+  in_field_length_container: {
+    marginLeft: 8,
+    marginRight: 8,
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  in_field_circle_container: {
+    justifyContent: 'space-between',
+  },
+  in_field_side_container: {
+    marginLeft: 6,
+    marginRight: 6,
+    justifyContent: 'space-between',
+  },
+  under_out_field_side_container:{
+    alignSelf:'flex-end',
+    flex: 0.5,
+    justifyContent: 'space-around',
+    flexDirection: 'row',
+  },
+  graph_container: {
     borderRightColor: '#28a8de',
     borderTopColor: '#28a8de',
     borderLeftColor: '#28a8de',
     borderBottomColor: '#28a8de',
-    height: 170,
-    width: 310,
+    height: 240,
+    width: 320,
     borderWidth: 1,
     borderRadius: 4,
     alignSelf: 'center',
