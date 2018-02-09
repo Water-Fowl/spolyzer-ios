@@ -17,7 +17,7 @@ class InFieldCircle extends React.Component {
       <TouchableHighlight
         style={styles.blue_circle}
         onPress={() => {
-            this.setModalEvent();
+            this.postPositionEvent();
           }
         }
       >

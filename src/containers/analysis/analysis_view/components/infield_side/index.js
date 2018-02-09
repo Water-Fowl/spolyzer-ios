@@ -16,7 +16,7 @@ export class InFieldSide extends React.Component {
       <TouchableHighlight
         style={styles.horizontal_blue_bar}
         onPress={() => {
-            this.setModalEvent();
+            this.postPositionEvent();
           }
         }
       >

@@ -4,7 +4,7 @@ export function fieldButtonEnhancer(ComponentClass) {
   return class FieldButtonHOC extends ComponentClass {
     constructor(props) {
       super(props);
-      this.postPositionEvent();
+      this.postPositionEvent.bind(this);
     }
     postPositionEvent() {
       const { dispatch } = this.props;

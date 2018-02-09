@@ -325,7 +325,7 @@ const styles = StyleSheet.create({
   },
   middle_container: {
     flexDirection: 'row',
-    flex: 2,
+    flex: 3,
     justifyContent: 'space-between',
   },
   under_container: {
