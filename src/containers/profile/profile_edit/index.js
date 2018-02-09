@@ -19,61 +19,51 @@ class ProfileEdit extends React.Component {
     return (
       <View style={styles.container}>
       <TopContentBar><Text style={styles.top_bar}>マイデータ編集</Text></TopContentBar>
-      <View style={{flex:5,paddingTop:40}}>
-          <View style={{flexDirection:'row'}}>
-
-          <View style={{flex:3,alignItems:'center',backgroundColor:'transparent'}}>
+      <View style={styles.most_out}>
+          <View style={styles.row_direcition}>
+          <View style={styles.left_side}>
             <Image
               source={require('../../../assets/img/score_create_person.png')}
-              style={{marginLeft:10,opacity:0.5,width:100,height:100,}}/>
-              <View style={{paddingTop:22,}}>
-                <Text style={styles.profile_title}>Gender</Text>
-                <Text style={styles.profile_title}>Phone</Text>
-                <Text style={styles.profile_title}>Email</Text>
-                <Text style={styles.profile_title}>Status</Text>
+              style={styles.image_style}/>
+                <View style={styles.paddingtop22}>
+                  <Text style={styles.profile_title}>Gender</Text>
+                  <Text style={styles.profile_title}>Phone</Text>
+                  <Text style={styles.profile_title}>Email</Text>
+                  <Text style={styles.profile_title}>Status</Text>
                 </View>
-                <View style={{paddingTop:40,}}>
+                <View style={styles.paddingtop40}>
                   <Text style={styles.profile_title}>Profile</Text>
-                  </View>
+                </View>
             </View>
-          <View style={{flex:7,alignItems:'center',paddingTop:30,}}>
-
+          <View style={styles.right_side}>
             <View style={styles.frame_name}>
               <View style={styles.plate_name}>
-                <Text style={{fontSize:23,color:'white',textAlign:'center',}} >Ikeda Yoshiki</Text>
+                <Text style={styles.name} >Ikeda Yoshiki</Text>
               </View>
             </View>
-
-            <View style={{paddingTop:40,}}>
-
+            <View style={styles.paddingtop40}>
               <View style={styles.frame_profile}>
                 <View style={styles.plate_profile}>
-                  <View style={{paddingLeft:20,}}>
+                  <View style={styles.paddingleft20}>
                     <Text style={styles.profile_title}>Male</Text>
-                    <View style={styles.profile_underline}></View>
+                    <View style={styles.profile_underline}/>
                     <Text style={styles.profile_title}>000000</Text>
-                    <View style={styles.profile_underline}></View>
+                    <View style={styles.profile_underline}/>
                     <Text style={styles.profile_title}>gmail.com</Text>
-                    <View style={styles.profile_underline}></View>
+                    <View style={styles.profile_underline}/>
                     <Text style={styles.profile_title}>single Player</Text>
-                    <View style={styles.profile_underline}></View>
+                    <View style={styles.profile_underline}/>
                   </View>
                 </View>
               </View>
-
               <View style={styles.frame_profile}>
-                <View style={styles.plate_profile}>
-                </View>
+                <View style={styles.plate_profile}/>
               </View>
             </View>
           </View>
-
-
           </View>
       </View>
-
-
-      <View style={{flex:1,}}>
+      <View style={styles.container}>
           <NavigateButton action={Actions.mypage_top} style={styles.complete} text="Complete" />
       </View>
       </View>
@@ -86,8 +76,22 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  container2:{
-    flexDirection:'row',
+  most_out:{
+    flex:5,
+    paddingTop:40,
+  },
+  row_direcition:{
+    flexDirection:'row'
+  },
+  left_side:{
+    flex:3,
+    alignItems:'center',
+    backgroundColor:'transparent'
+  },
+  right_side:{
+    flex:7,
+    alignItems:'center',
+    paddingTop:30,
   },
   top_bar: {
     fontSize:16,
@@ -136,5 +140,24 @@ const styles = StyleSheet.create({
   complete: {
     alignSelf: 'center',
   },
-
+  image_style:{
+    marginLeft:10,
+    opacity:0.5,
+    width:100,
+    height:100,
+  },
+  name:{
+    fontSize:23,
+    color:'white',
+    textAlign:'center',
+  },
+  paddingtop40:{
+    paddingTop:40,
+  },
+  paddingtop22:{
+    paddingTop:22
+  },
+  paddingleft20:{
+    paddingLeft:20,
+  },
 });
