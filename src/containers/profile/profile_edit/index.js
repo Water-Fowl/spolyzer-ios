@@ -19,14 +19,14 @@ class ProfileEdit extends React.Component {
     return (
       <View style={styles.container}>
       <TopContentBar><Text style={styles.top_bar}>マイデータ編集</Text></TopContentBar>
-      <View style={{flex:5,paddingTop:60}}>
+      <View style={{flex:5,paddingTop:40}}>
           <View style={{flexDirection:'row'}}>
 
           <View style={{flex:3,alignItems:'center',backgroundColor:'transparent'}}>
             <Image
               source={require('../../../assets/img/score_create_person.png')}
-              style={{marginLeft:20,}}/>
-              <View style={{paddingTop:28,}}>
+              style={{marginLeft:10,opacity:0.5,width:100,height:100,}}/>
+              <View style={{paddingTop:22,}}>
                 <Text style={styles.profile_title}>Gender</Text>
                 <Text style={styles.profile_title}>Phone</Text>
                 <Text style={styles.profile_title}>Email</Text>
@@ -36,7 +36,7 @@ class ProfileEdit extends React.Component {
                   <Text style={styles.profile_title}>Profile</Text>
                   </View>
             </View>
-          <View style={{flex:7,alignItems:'center',paddingTop:15,}}>
+          <View style={{flex:7,alignItems:'center',paddingTop:30,}}>
 
             <View style={styles.frame_name}>
               <View style={styles.plate_name}>
