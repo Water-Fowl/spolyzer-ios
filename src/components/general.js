@@ -87,7 +87,7 @@ export class TopContentBar extends React.Component {
   }
   render() {
     return (
-      <View>
+      <View style={styles.top_content_bar_container}>
         <Image
           style={styles.top_content_bar_img}
           source={require('../assets/img/top_content_bar.png')}
@@ -162,34 +162,18 @@ const styles = StyleSheet.create({
   },
   top_content_bar_text: {
     color: '#ffffff',
-    fontSize: 22,
+    fontSize: 18,
     alignSelf: 'center',
     backgroundColor: 'transparent',
     fontWeight: 'bold',
     marginTop: 5,
+    marginBottom: 7,
   },
   top_content_bar_img: {
     alignSelf: 'center',
     position: 'absolute',
   },
-
-  marginTop10: {
-    marginTop: 10,
+  top_content_bar_container:{
+    backgroundColor: 'transparent',
   },
-  marginTop30: {
-    marginTop: 30,
-  },
-  paddingTop30: {
-    paddingTop: 30,
-  },
-  paddingTop50: {
-    paddingTop: 50,
-  },
-  paddingTop10: {
-    paddingTop: 10,
-  },
-  paddingTop105: {
-    paddingTop: 105,
-  },
-
 });
