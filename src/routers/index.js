@@ -20,6 +20,7 @@ import {
   AnalysisCreate,
   Login,
   SignUp,
+  UserSearch,
   ProfileEdit,
 } from "../containers";
 import configureStore from "../stores";
@@ -44,6 +45,7 @@ const Route = () => (
           </Scene>
           <Scene key="Analysis" tabBarLabel="分析" icon={() => (<Image style={styles.icon} source={require("../assets/img/tabs_analysis.png")} />)} headerMode="none">
             <Scene key="analysis_create" initial component={AnalysisCreate} title="複合分析" hideNavBar />
+            <Scene key="user_search" component={UserSearch} title="ユーザー検索" hideNavBar />
             <Scene key="analysis_view" component={AnalysisView} title="単分析" hideNavBar />
           </Scene>
         </Tabs>
