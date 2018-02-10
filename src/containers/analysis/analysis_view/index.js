@@ -7,7 +7,7 @@ import {
   StyleSheet,
   ScrollView,
 } from 'react-native';
-import { 
+import {
   VictoryBar,
   VictoryChart,
   VictoryTheme,
@@ -50,7 +50,7 @@ class AnalysisView extends React.Component {
             <View style={styles.name_outside_container}>
               <View style={styles.name_inside_container}>
                 <Image
-                  source={require('../../../assets/img/score_creat_person.png')}
+                  source={require('../../../assets/img/score_create_person.png')}
                   style={styles.person}
                 />
                 <Text style={styles.opponent_name}>
@@ -84,7 +84,7 @@ class AnalysisView extends React.Component {
                 <View style={styles.over_out_field_side_container}>
                   <OutFieldSide position={1} side={1} />
                   <OutFieldSide />
-                  
+
                 </View>
                 <View style={styles.over_out_field_side_container}>
                   <OutFieldSide />
@@ -163,7 +163,7 @@ class AnalysisView extends React.Component {
                     stroke:'transparent',
                   },
                   tickLabels: {
-                    fontSize: 10, 
+                    fontSize: 10,
                     fill:"white"
                   },
                 }}
