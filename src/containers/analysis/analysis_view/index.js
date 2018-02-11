@@ -17,7 +17,7 @@ import {
 import { Actions, ActionConst } from 'react-native-router-flux';
 import {
   TopContentBar,
-} from 'components'
+} from 'components';
 import {
   InFieldCircle,
   InFieldLength,
@@ -26,17 +26,17 @@ import {
   OutFieldSide,
   OutFieldLength,
   OutArea,
-} from './components'
+} from './components';
 
 import baseHigherOrderComponentEnhancer from 'enhances';
 
 const data = [
-  {position: "A", counts: 1},
-  {position: "B", counts: 2},
-  {position: "C", counts: 3},
-  {position: "D", counts: 4},
-  {position: "E", counts: 5},
-  {position: "F", counts: 6},
+  { position: 'A', counts: 1 },
+  { position: 'B', counts: 2 },
+  { position: 'C', counts: 3 },
+  { position: 'D', counts: 4 },
+  { position: 'E', counts: 5 },
+  { position: 'F', counts: 6 },
 ];
 
 class AnalysisView extends React.Component {
@@ -77,109 +77,112 @@ class AnalysisView extends React.Component {
             </View>
           </View>
           <View style={styles.field}>
-            <Image style={styles.field_line} source={require('../../../assets/img/field-line.png')}/>
-              <InArea/>
-              <OutArea/>
-              <View style={styles.over_container}>
-                <View style={styles.over_out_field_side_container}>
-                  <OutFieldSide position={1} side={1} />
-                  <OutFieldSide />
+            <Image style={styles.field_line} source={require('../../../assets/img/field-line.png')} />
+            <InArea />
+            <OutArea />
+            <View style={styles.over_container}>
+              <View style={styles.over_out_field_side_container}>
+                <OutFieldSide position={1} side={1} />
+                <OutFieldSide />
 
+              </View>
+              <View style={styles.over_out_field_side_container}>
+                <OutFieldSide />
+                <OutFieldSide />
+              </View>
+            </View>
+            <View style={styles.middle_container}>
+              <View style={styles.out_field_length_container}>
+                <OutFieldLength />
+                <OutFieldLength />
+              </View>
+              <View style={styles.in_field_container}>
+                <View style={styles.in_field_length_container}>
+                  <InFieldLength />
+                  <InFieldLength />
                 </View>
-                <View style={styles.over_out_field_side_container}>
-                  <OutFieldSide />
-                  <OutFieldSide />
+                <View style={styles.in_field_side_container}>
+                  <InFieldSide />
+                  <View style={styles.in_field_circle_container}>
+                    <InFieldCircle />
+                  </View>
+                  <InFieldSide />
+                </View>
+                <View style={styles.in_field_length_container}>
+                  <InFieldLength />
+                  <InFieldLength />
                 </View>
               </View>
-              <View style={styles.middle_container}>
-                <View style={styles.out_field_length_container}>
-                  <OutFieldLength />
-                  <OutFieldLength />
+              <View style={styles.in_field_container}>
+                <View style={styles.in_field_length_container}>
+                  <InFieldLength />
+                  <InFieldLength />
                 </View>
-                <View style={styles.in_field_container}>
-                  <View style={styles.in_field_length_container}>
-                    <InFieldLength />
-                    <InFieldLength />
+                <View style={styles.in_field_side_container}>
+                  <InFieldSide />
+                  <View style={styles.in_field_circle_container}>
+                    <InFieldCircle />
                   </View>
-                  <View style={styles.in_field_side_container}>
-                    <InFieldSide />
-                    <View style={styles.in_field_circle_container}>
-                      <InFieldCircle />
-                    </View>
-                    <InFieldSide />
-                  </View>
-                  <View style={styles.in_field_length_container}>
-                    <InFieldLength />
-                    <InFieldLength />
-                  </View>
+                  <InFieldSide />
                 </View>
-                <View style={styles.in_field_container}>
-                  <View style={styles.in_field_length_container}>
-                    <InFieldLength />
-                    <InFieldLength />
-                  </View>
-                  <View style={styles.in_field_side_container}>
-                    <InFieldSide />
-                    <View style={styles.in_field_circle_container}>
-                      <InFieldCircle />
-                    </View>
-                    <InFieldSide />
-                  </View>
-                  <View style={styles.in_field_length_container}>
-                    <InFieldLength />
-                    <InFieldLength />
-                  </View>
-                </View>
-                <View style={styles.out_field_length_container}>
-                  <OutFieldLength />
-                  <OutFieldLength />
+                <View style={styles.in_field_length_container}>
+                  <InFieldLength />
+                  <InFieldLength />
                 </View>
               </View>
-              <View style={styles.under_container}>
-                <View style={styles.under_out_field_side_container}>
-                  <OutFieldSide position={1} side={1} />
-                  <OutFieldSide />
-                </View>
-                <View style={styles.under_out_field_side_container}>
-                  <OutFieldSide />
-                  <OutFieldSide />
-                </View>
+              <View style={styles.out_field_length_container}>
+                <OutFieldLength />
+                <OutFieldLength />
               </View>
+            </View>
+            <View style={styles.under_container}>
+              <View style={styles.under_out_field_side_container}>
+                <OutFieldSide position={1} side={1} />
+                <OutFieldSide />
+              </View>
+              <View style={styles.under_out_field_side_container}>
+                <OutFieldSide />
+                <OutFieldSide />
+              </View>
+            </View>
           </View>
           <View style={styles.graph_container}>
             <VictoryChart
-            	width={320}
-            	height={240}
+              width={320}
+              height={240}
               theme={VictoryTheme.material}
-              padding={{left: 25, right: 30, top: 20, bottom: 40}}
-              domainPadding={{x: [20, 0]}}
+              padding={{
+ left: 25, right: 30, top: 20, bottom: 40,
+}}
+              domainPadding={{ x: [20, 0] }}
             >
-            	<VictoryAxis dependentAxis	/* Y軸 */
+              <VictoryAxis
+                dependentAxis	/* Y軸 */
                 style={{
                   grid: {
-                    stroke: "#035f89"
+                    stroke: '#035f89',
                   },
                   axis: {
-                    stroke:'transparent',
+                    stroke: 'transparent',
                   },
                   tickLabels: {
                     fontSize: 10,
-                    fill:"white"
+                    fill: 'white',
                   },
                 }}
-                tickFormat={(tick) =>{   /* 整数目盛のみ表示 */
+                tickFormat={(tick) => { /* 整数目盛のみ表示 */
                   if (tick === Math.round(tick)) return String(tick);
-                  else return "";
+                  return '';
                 }}
               />
               <VictoryAxis	/* X軸 */
                 style={{
-                  color:"white",
-                  grid: {stroke: "transparent"},
-                  axis:{
-                    stroke: '#2EA7E0'
+                  color: 'white',
+                  grid: { stroke: 'transparent' },
+                  axis: {
+                    stroke: '#2EA7E0',
                   },
-                  tickLabels: {fontSize: 10, fill:"white"},
+                  tickLabels: { fontSize: 10, fill: 'white' },
                 }}
               />
               <VictoryBar
@@ -190,7 +193,7 @@ class AnalysisView extends React.Component {
                 }}
                 animate={{	/* 表示のアニメーション */
                   duration: 400,
-                  onLoad: { duration: 300 }
+                  onLoad: { duration: 300 },
                 }}
                 data={data}
                 alignment="start"
@@ -200,7 +203,7 @@ class AnalysisView extends React.Component {
             </VictoryChart>
           </View>
           <View style={styles.back_button_container}>
-            <TouchableOpacity onPress={() =>{Actions.analysis_create({ type: ActionConst.BACK_ACTION })}}>
+            <TouchableOpacity onPress={() => { Actions.analysis_create({ type: ActionConst.BACK_ACTION }); }}>
               <Text style={styles.back_button_text}>
                 検索条件に戻る
               </Text>
@@ -311,50 +314,50 @@ const styles = StyleSheet.create({
     height: 170,
     marginTop: 26,
   },
-  field_line:{
+  field_line: {
     position: 'absolute',
-    alignSelf:'center',
+    alignSelf: 'center',
     height: 170,
     backfaceVisibility: 'hidden',
-    zIndex:3,
+    zIndex: 3,
     resizeMode: 'contain',
   },
-  in_field_area_container:{
+  in_field_area_container: {
     width: 330,
     position: 'absolute',
     flexDirection: 'row',
-    justifyContent:'space-around',
-    paddingLeft:10,
-    paddingRight:10,
+    justifyContent: 'space-around',
+    paddingLeft: 10,
+    paddingRight: 10,
   },
-  in_field_area:{
+  in_field_area: {
     flex: 0.4,
     alignSelf: 'center',
-    backgroundColor:'black',
-    height:138,
-    marginTop:16,
-    marginBottom:16,
+    backgroundColor: 'black',
+    height: 138,
+    marginTop: 16,
+    marginBottom: 16,
   },
-  out_field_area_container:{
+  out_field_area_container: {
     width: 330,
     position: 'absolute',
     flexDirection: 'row',
-    justifyContent:'space-between',
+    justifyContent: 'space-between',
   },
-  out_field_area:{
+  out_field_area: {
     alignSelf: 'center',
     flex: 0.45,
-    backgroundColor:'#FAEE00',
-    opacity:0.3,
-    height:170,
+    backgroundColor: '#FAEE00',
+    opacity: 0.3,
+    height: 170,
   },
   over_container: {
     flexDirection: 'row',
     flex: 1,
     justifyContent: 'space-between',
   },
-  over_out_field_side_container:{
-    alignSelf:'flex-start',
+  over_out_field_side_container: {
+    alignSelf: 'flex-start',
     flex: 0.5,
     justifyContent: 'space-around',
     flexDirection: 'row',
@@ -394,8 +397,8 @@ const styles = StyleSheet.create({
     marginRight: 6,
     justifyContent: 'space-between',
   },
-  under_out_field_side_container:{
-    alignSelf:'flex-end',
+  under_out_field_side_container: {
+    alignSelf: 'flex-end',
     flex: 0.5,
     justifyContent: 'space-around',
     flexDirection: 'row',

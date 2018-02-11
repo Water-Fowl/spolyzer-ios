@@ -5,7 +5,7 @@ import {
   View,
   TouchableHighlight,
 } from 'react-native';
-import Button from './components/button' 
+import Button from './components/button';
 
 
 export default class TermButton extends React.Component {
@@ -34,7 +34,7 @@ export default class TermButton extends React.Component {
 
 const styles = StyleSheet.create({
   term_frame: {
-    flexDirection: "row",
+    flexDirection: 'row',
     backgroundColor: 'transparent',
     borderRightColor: '#0a2444',
     borderTopColor: '#0a2444',
@@ -48,4 +48,4 @@ const styles = StyleSheet.create({
     marginTop: 25,
     justifyContent: 'center',
   },
-})
+});
