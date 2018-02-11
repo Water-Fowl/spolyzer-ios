@@ -64,7 +64,7 @@ class ProfileEdit extends React.Component {
           </View>
       </View>
       <View style={styles.container}>
-          <NavigateButton action={Actions.mypage_top} style={styles.complete} text="Complete" />
+          <NavigateButton action={Actions.profile_top} style={styles.complete} text="Complete" />
       </View>
       </View>
     );

@@ -34,7 +34,7 @@ const Route = () => (
         <Scene key="sign_up" component={SignUp} hideNavBar />
         <Tabs key="tab" labelStyle={styles.label} tabBarStyle={styles.tab_bar_style} tabStyle={styles.tab_style}>
           <Scene key="Mypage" tabBarLabel='マイページ' icon={() => (<Image style={styles.icon} source={require('../assets/img/tabs_home.png')} />)} headerMode="none">
-            <Scene key="mypage_top" initial component={ProfileTop} title="マイページ" hideNavBar />
+            <Scene key="profile_top" initial component={ProfileTop} title="マイページ" hideNavBar />
             <Scene key="profile_edit" component={ProfileEdit} title="マイデータ編集" hideNavBar />
           </Scene>
           <Scene key="Score" tabBarLabel="スコアシート" icon={() => (<Image style={styles.icon} source={require('../assets/img/tabs_score.png')} />)} headerMode="none">
