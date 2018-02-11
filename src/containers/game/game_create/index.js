@@ -26,34 +26,29 @@ class ScoreGameCreate extends React.Component {
           <View style={styles.game_setting_border} >
             <View style={styles.game_setting_table}>
               <Text style={styles.score_game_create_opponents}>対戦者</Text>
-
-              <View style={styles.game_setting_table_inner}>
-                <View style={styles.game_setting_table_inner_left}>
-                  <View style={styles.circle}/>
-                  <View style={styles.textbox}/>
-                  <View style={styles.circle}/>
-                  <View style={styles.textbox}/>
+                <View style={styles.game_setting_table_inner}>
+                  <View style={styles.game_setting_table_inner_left}>
+                    <View style={styles.circle}/>
+                    <View style={styles.textbox}/>
+                    <View style={styles.circle}/>
+                    <View style={styles.textbox}/>
+                  </View>
+                  <View style={styles.game_setting_table_inner_center}>
+                  <Image
+                    source={require('../../../assets/img/game_create_vs.png')}
+                    style={styles.vs_position}
+                  />
+                  </View>
+                  <View style={styles.game_setting_inner_right} >
+                    <View style={styles.circle}/>
+                    <View style={styles.textbox}/>
+                    <View style={styles.circle}/>
+                    <View style={styles.textbox}/>
+                  </View>
                 </View>
-
-                <View style={styles.game_setting_table_inner_center}>
-                <Image
-                  source={require('../../../assets/img/game_create_vs.png')}
-                  style={{height:27,width:35,marginTop:90,}}
-                />
-                </View>
-
-                <View style={styles.game_setting_inner_right} >
-                  <View style={styles.circle}/>
-                  <View style={styles.textbox}/>
-                  <View style={styles.circle}/>
-                  <View style={styles.textbox}/>
-                </View>
-              </View>
             </View>
           </View>
-
             <NavigateButton action={Actions.score_create} style={styles.button_style} text="Play"/>
-
         </View>
       </View>
     );
@@ -135,7 +130,7 @@ const styles = StyleSheet.create({
   },
   score_game_create_opponents: {
     padding: 0,
-    marginTop: 20,
+    marginTop: 10,
     marginLeft: 20,
     marginRight: 240,
     fontSize: 20,
@@ -143,24 +138,30 @@ const styles = StyleSheet.create({
     color: 'white',
   },
   circle:{
-  borderColor: '#2EA7E0',
-  height: 75,
-  width: 75,
-  borderWidth: 2,
-  borderRadius: 100,
-  opacity: 0.5,
-  alignSelf: 'center',
-},
-button_style:{
-  marginTop:80
-},
-textbox:{
-  borderColor: '#2EA7E0',
-  height: 20,
-  width: 88,
-  borderWidth: 1.5,
-  borderRadius: 5,
-  opacity: 0.5,
-  alignSelf: 'center',
-}
+    borderColor: '#2EA7E0',
+    height: 75,
+    width: 75,
+    borderWidth: 2,
+    borderRadius: 100,
+    opacity: 0.5,
+    alignSelf: 'center',
+    margin:7,
+  },
+  button_style:{
+    marginTop:80
+  },
+  textbox:{
+    borderColor: '#2EA7E0',
+    height: 20,
+    width: 88,
+    borderWidth: 1.5,
+    borderRadius: 5,
+    opacity: 0.5,
+    alignSelf: 'center',
+  },
+  vs_position:{
+    height:27,
+    width:35,
+    marginTop:100,
+  },
 });
