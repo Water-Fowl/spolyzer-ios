@@ -38,6 +38,7 @@ class ScoreGameCreate extends React.Component {
                 <View style={styles.game_setting_table_inner_center}>
                 <Image
                   source={require('../../../assets/img/game_create_vs.png')}
+                  style={{height:27,width:35,marginTop:90,}}
                 />
                 </View>
 
@@ -86,7 +87,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignSelf:'center',
     alignItems:'center',
-    width: 310,
+    width: 280,
     height: 240,
   },
   game_setting_table_inner_left: {
@@ -100,6 +101,7 @@ const styles = StyleSheet.create({
     flex: 1,
     width: 30,
     height: 220,
+    alignItems:'center',
   },
   game_setting_table_inner_right: {
     flex: 1,
