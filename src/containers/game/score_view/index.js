@@ -29,12 +29,13 @@ import {
 import baseHigherOrderComponentEnhancer from 'enhances';
 
 const data = [
-  {position: "A", counts: 1},
-  {position: "B", counts: 2},
-  {position: "C", counts: 3},
-  {position: "D", counts: 4},
-  {position: "E", counts: 5},
-  {position: "F", counts: 6},
+  /* TODO カタカナ崩れの対策 */
+  {shot_type: "スマッシュ", counts: 1},
+  {shot_type: "ドロップ", counts: 2},
+  {shot_type: "ネットイン", counts: 3},
+  {shot_type: "クリアー", counts: 4},
+  {shot_type: "ヘアピン", counts: 5},
+  {shot_type: "ドライブ", counts: 6},
 ];
 
 class ScoreView extends React.Component {
@@ -173,7 +174,7 @@ class ScoreView extends React.Component {
                 }}
                 data={data}
                 alignment="start"
-                x="position"
+                x="shot_type"
                 y="counts"
               />
             </VictoryChart>
