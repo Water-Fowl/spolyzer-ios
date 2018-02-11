@@ -1,9 +1,12 @@
+/**
+ * @providesModule const 
+ */
 import {
-  deepBlue,
-  lightBlue,
+  deep_blue,
+  light_blue,
 } from "./color";
 
 export {
-  deepBlue,
-  lightBlue,
+  deep_blue,
+  light_blue,
 };
