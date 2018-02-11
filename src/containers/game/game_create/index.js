@@ -26,17 +26,19 @@ class ScoreGameCreate extends React.Component {
           <View style={styles.game_setting_border} >
             <View style={styles.game_setting_table}>
               <Text style={styles.score_game_create_opponents}>対戦者</Text>
+
               <View style={styles.game_setting_table_inner}>
                 <View style={styles.game_setting_table_inner_left}>
                   <View style={styles.circle}/>
-
                   <View style={styles.textbox}/>
                   <View style={styles.circle}/>
                   <View style={styles.textbox}/>
                 </View>
 
                 <View style={styles.game_setting_table_inner_center}>
-                  <Text　style={styles.score_game_create_vs}>vs</Text>
+                <Image
+                  source={require('../../../assets/img/game_create_vs.png')}
+                />
                 </View>
 
                 <View style={styles.game_setting_inner_right} >
@@ -77,16 +79,18 @@ const styles = StyleSheet.create({
     height: 270,
     backgroundColor: 'rgb(20, 35, 70)',
     justifyContent: 'center',
+    opacity:0.7,
   },
   game_setting_table_inner: {
     flexDirection: 'row',
     justifyContent: 'center',
+    alignSelf:'center',
+    alignItems:'center',
     width: 310,
     height: 240,
-    margin: 5,
   },
   game_setting_table_inner_left: {
-    flex: 2,
+    flex: 1,
     width: 70,
     height: 220,
     justifyContent: 'center',
@@ -96,10 +100,9 @@ const styles = StyleSheet.create({
     flex: 1,
     width: 30,
     height: 220,
-    paddingRight: 7,
   },
   game_setting_table_inner_right: {
-    flex: 2,
+    flex: 1,
     width: 70,
     height: 220,
     justifyContent: 'center',
@@ -108,11 +111,6 @@ const styles = StyleSheet.create({
   game_setting_under_table: {
     width: 300,
     height: 220,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  game_setting_under_table_frame_next_button: {
-    position: 'absolute',
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -138,21 +136,9 @@ const styles = StyleSheet.create({
     marginTop: 20,
     marginLeft: 20,
     marginRight: 240,
-    marginBottom: 5,
     fontSize: 20,
     fontWeight: 'bold',
     color: 'white',
-  },
-  score_game_create_competitor_person: {
-    marginRight: 12,
-    marginLeft: 19,
-    marginBottom: 3,
-  },
-  score_game_create_competitor_frame: {
-    marginTop: 3,
-    marginRight: 12,
-    marginLeft: 14,
-    marginBottom: 8,
   },
   circle:{
   borderColor: '#2EA7E0',
