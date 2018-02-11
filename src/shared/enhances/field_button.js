@@ -1,5 +1,5 @@
-import React from 'react';
-import { setModal } from '../actions/score';
+import React from "react";
+import { setModal } from "../actions/score";
 
 export function fieldButtonEnhancer(ComponentClass) {
   return class FieldButtonHOC extends ComponentClass {

@@ -1,20 +1,20 @@
-import { CALL_API } from 'redux-api-middleware';
-import { Actions } from 'react-native-router-flux';
-import { SIGN_IN_ENDPOINT } from '../../../config/api';
+import { CALL_API } from "redux-api-middleware";
+import { Actions } from "react-native-router-flux";
+import { SIGN_IN_ENDPOINT } from "../../../config/api";
 import {
   LOGIN_REQUEST,
   LOGIN_RECIEVED,
-} from '../action_type';
+} from "../action_type";
 
 
 export function postUserLogin(body) {
   return (dispatch) => {
     dispatch(requestLogin());
     return fetch(SIGN_IN_ENDPOINT, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
+        Accept: "application/json",
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(body),
     })

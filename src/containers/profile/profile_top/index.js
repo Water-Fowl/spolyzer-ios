@@ -1,18 +1,18 @@
-import React from 'react';
+import React from "react";
 import {
   StyleSheet,
   Image,
   Text,
   View,
   TouchableOpacity,
-} from 'react-native';
-import { connect } from 'react-redux';
+} from "react-native";
+import { connect } from "react-redux";
 
 import {
   TopContentBar,
-} from 'components';
-import baseHigherOrderComponentEnhancer from 'enhances';
-import { Actions } from 'react-native-router-flux';
+} from "components";
+import baseHigherOrderComponentEnhancer from "enhances";
+import { Actions } from "react-native-router-flux";
 
 class ProfileTop extends React.Component {
   render() {
@@ -22,16 +22,16 @@ class ProfileTop extends React.Component {
           <TopContentBar>マイページ</TopContentBar>
           <View style={styles.align_items_center}>
             <Image
-              source={require('../../../assets/img/my_page_user_icon.png')}
+              source={require("../../../assets/img/my_page_user_icon.png")}
               style={styles.user_icon}
             />
-                <TouchableOpacity onPress={Actions.profile_edit}>
-                  <Text>
+            <TouchableOpacity onPress={Actions.profile_edit}>
+              <Text>
                    Edit
-                  </Text>
-                </TouchableOpacity>
+              </Text>
+            </TouchableOpacity>
             <Image
-              source={require('../../../assets/img/my_page_center_design.png')}
+              source={require("../../../assets/img/my_page_center_design.png")}
             />
             <Text style={styles.my_name}>
               ここにNAME
@@ -53,16 +53,16 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   subtitle_text: {
-    color: '#ffffff',
+    color: "#ffffff",
     fontSize: 22,
-    alignSelf: 'center',
-    backgroundColor: 'transparent',
-    fontWeight: 'bold',
+    alignSelf: "center",
+    backgroundColor: "transparent",
+    fontWeight: "bold",
     marginTop: 5,
   },
   subtitle: {
-    alignSelf: 'center',
-    position: 'absolute',
+    alignSelf: "center",
+    position: "absolute",
   },
   user_icon: {
     margin: 15,
@@ -71,28 +71,28 @@ const styles = StyleSheet.create({
   game_setting_border: {
     marginTop: 10,
     padding: 5,
-    backgroundColor: 'rgba(0, 0, 0, 0)',
+    backgroundColor: "rgba(0, 0, 0, 0)",
     borderWidth: 1.5,
-    borderColor: 'rgb(20, 35, 70)',
+    borderColor: "rgb(20, 35, 70)",
     borderRadius: 3,
   },
   game_setting_table: {
     width: 320,
     height: 245,
-    justifyContent: 'center',
+    justifyContent: "center",
     borderWidth: 1.5,
-    borderColor: 'rgb(20, 35, 70)',
+    borderColor: "rgb(20, 35, 70)",
     borderRadius: 3,
   },
   my_name: {
-    position: 'absolute',
+    position: "absolute",
     marginTop: 220,
-    backgroundColor: 'transparent',
-    color: '#ffffff',
+    backgroundColor: "transparent",
+    color: "#ffffff",
     fontSize: 20,
   },
   align_items_center: {
-    alignItems: 'center',
+    alignItems: "center",
   },
 
 });

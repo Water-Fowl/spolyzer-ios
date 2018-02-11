@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 export function scoreCreateModalEnhancer(ComponentClass) {
   return class HOComponent extends React.Component {

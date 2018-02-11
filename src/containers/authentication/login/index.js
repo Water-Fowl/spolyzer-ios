@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import {
   StyleSheet,
   Text,
@@ -7,14 +7,14 @@ import {
   Image,
   Dimensions,
   TextInput,
-} from 'react-native';
-import { Actions } from 'react-native-router-flux';
-import Orientation from 'react-native-orientation';
-import { Background } from 'components';
+} from "react-native";
+import { Actions } from "react-native-router-flux";
+import Orientation from "react-native-orientation";
+import { Background } from "components";
 
-import { connect } from 'react-redux';
-import { postUserLogin } from '../actions/login';
-import { enhancer } from './hoc';
+import { connect } from "react-redux";
+import { postUserLogin } from "../actions/login";
+import { enhancer } from "./hoc";
 
 class Login extends React.Component {
   render() {
@@ -23,7 +23,7 @@ class Login extends React.Component {
         <Background />
         <Image
           style={styles.logo}
-          source={require('../../../assets/img/spolyzer_top.png')}
+          source={require("../../../assets/img/spolyzer_top.png")}
         />
         <View style={styles.form_container}>
           <View style={styles.form}>
@@ -50,7 +50,7 @@ class Login extends React.Component {
           {(() => {
             if (this.state.login_error) {
               return (
-                <View style={{ flexDirection: 'row' }}>
+                <View style={{ flexDirection: "row" }}>
                   <Text style={styles.auto_login_text}>
                 メールアドレスかパスワードが間違っています。
                   </Text>
@@ -58,7 +58,7 @@ class Login extends React.Component {
               );
             }
           })()}
-          <View style={{ flexDirection: 'row' }} />
+          <View style={{ flexDirection: "row" }} />
           <View style={styles.button}>
             <TouchableOpacity onPress={() => {
               Actions.tab();
@@ -108,47 +108,47 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   form_container: {
-    alignSelf: 'center',
-    width: '80%',
+    alignSelf: "center",
+    width: "80%",
   },
   form: {
-    borderRightColor: '#28a8de',
-    borderTopColor: '#28a8de',
-    borderLeftColor: '#28a8de',
-    borderBottomColor: '#28a8de',
+    borderRightColor: "#28a8de",
+    borderTopColor: "#28a8de",
+    borderLeftColor: "#28a8de",
+    borderBottomColor: "#28a8de",
     height: 42,
-    width: '100%',
+    width: "100%",
     borderWidth: 1.3,
-    alignSelf: 'center',
-    justifyContent: 'center',
+    alignSelf: "center",
+    justifyContent: "center",
     borderRadius: 5,
     marginTop: 9,
     marginBottom: 9,
   },
   button: {
-    borderRightColor: '#28a8de',
-    borderTopColor: '#28a8de',
-    borderLeftColor: '#28a8de',
-    borderBottomColor: '#28a8de',
+    borderRightColor: "#28a8de",
+    borderTopColor: "#28a8de",
+    borderLeftColor: "#28a8de",
+    borderBottomColor: "#28a8de",
     height: 42,
-    width: '100%',
+    width: "100%",
     borderWidth: 1.3,
-    alignSelf: 'center',
+    alignSelf: "center",
     borderRadius: 5,
     marginTop: 9,
     marginBottom: 9,
-    justifyContent: 'center',
+    justifyContent: "center",
   },
   logo: {
     marginTop: 80,
     marginBottom: 80,
-    alignSelf: 'center',
+    alignSelf: "center",
   },
   square: {
-    borderRightColor: '#28a8de',
-    borderTopColor: '#28a8de',
-    borderLeftColor: '#28a8de',
-    borderBottomColor: '#28a8de',
+    borderRightColor: "#28a8de",
+    borderTopColor: "#28a8de",
+    borderLeftColor: "#28a8de",
+    borderBottomColor: "#28a8de",
     height: 19,
     width: 19,
     borderWidth: 1,
@@ -158,35 +158,35 @@ const styles = StyleSheet.create({
   },
   text_field: {
     fontSize: 20,
-    color: '#ffffff',
+    color: "#ffffff",
     paddingLeft: 12,
     letterSpacing: 0,
   },
 
   auto_login_text: {
-    color: '#ffffff',
+    color: "#ffffff",
     marginTop: 10,
     fontSize: 15,
     marginLeft: 6,
     marginBottom: 16,
-    backgroundColor: 'transparent',
+    backgroundColor: "transparent",
   },
 
   forget_password_text: {
-    color: '#28a8de',
-    textDecorationLine: 'underline',
-    textDecorationColor: '#28a8de',
+    color: "#28a8de",
+    textDecorationLine: "underline",
+    textDecorationColor: "#28a8de",
     marginBottom: 35,
     marginTop: 8,
     fontSize: 16,
-    backgroundColor: 'transparent',
+    backgroundColor: "transparent",
   },
   button_text: {
-    color: '#28a8de',
-    textAlign: 'center',
+    color: "#28a8de",
+    textAlign: "center",
     fontSize: 19,
     marginTop: 1,
     marginBottom: 1,
-    backgroundColor: 'transparent',
+    backgroundColor: "transparent",
   },
 });

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import {
   StyleSheet,
   Text,
@@ -7,25 +7,25 @@ import {
   Image,
   Dimensions,
   TextInput,
-} from 'react-native';
-import { Actions } from 'react-native-router-flux';
-import Orientation from 'react-native-orientation';
-import { Background } from 'components';
-import { postUserRegistration } from '../actions/registration';
-import { connect } from 'react-redux';
+} from "react-native";
+import { Actions } from "react-native-router-flux";
+import Orientation from "react-native-orientation";
+import { Background } from "components";
+import { postUserRegistration } from "../actions/registration";
+import { connect } from "react-redux";
 
 const registrationUser = {
-  name: 'takumimuggle',
-  email: 'taumime@gmail.com',
-  password: 'takumimuggle',
-  password_confirmation: 'takumimuggle',
-  confirm_success_url: 'api.water-fowl.co.jp',
+  name: "takumimuggle",
+  email: "taumime@gmail.com",
+  password: "takumimuggle",
+  password_confirmation: "takumimuggle",
+  confirm_success_url: "api.water-fowl.co.jp",
 };
 class SignUp extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      text: '',
+      text: "",
     };
     this.postRegistrationForm.bind(this);
   }
@@ -40,7 +40,7 @@ class SignUp extends Component {
       email: this.state.email,
       password: this.state.password,
       password_confirmation: this.state.password_confirmation,
-      confirm_success_url: 'api.water-fowl.co.jp',
+      confirm_success_url: "api.water-fowl.co.jp",
     };
     dispatch(postUserRegistration(registration_body));
   }
@@ -93,8 +93,8 @@ class SignUp extends Component {
 
         <View style={styles.registration_form}>
           <TouchableOpacity onPress={() => {
-                        this.postRegistrationForm();
-                    }}
+            this.postRegistrationForm();
+          }}
           >
             <Text style={styles.registration_button_text}>
                             登録
@@ -115,10 +115,10 @@ const styles = StyleSheet.create({
   },
 
   form: {
-    borderRightColor: '#28a8de',
-    borderTopColor: '#28a8de',
-    borderLeftColor: '#28a8de',
-    borderBottomColor: '#28a8de',
+    borderRightColor: "#28a8de",
+    borderTopColor: "#28a8de",
+    borderLeftColor: "#28a8de",
+    borderBottomColor: "#28a8de",
     height: 42,
     width: 324,
     borderWidth: 1.3,
@@ -131,7 +131,7 @@ const styles = StyleSheet.create({
 
   text_field: {
     fontSize: 20,
-    color: '#ffffff',
+    color: "#ffffff",
     paddingTop: 8,
     paddingLeft: 12,
     paddingBottom: 8,
@@ -139,24 +139,24 @@ const styles = StyleSheet.create({
   },
 
   logo_text: {
-    color: '#000000',
+    color: "#000000",
     fontSize: 60,
-    textAlign: 'center',
-    alignSelf: 'center',
+    textAlign: "center",
+    alignSelf: "center",
     marginTop: 60,
     textShadowOffset: { width: 1, height: 1 },
     textShadowOffset: { width: -1, height: -1 },
     textShadowRadius: 4,
-    textShadowColor: '#ffffff',
+    textShadowColor: "#ffffff",
     marginBottom: 40,
-    backgroundColor: 'transparent',
+    backgroundColor: "transparent",
   },
 
   registration_form: {
-    borderRightColor: '#28a8de',
-    borderTopColor: '#28a8de',
-    borderLeftColor: '#28a8de',
-    borderBottomColor: '#28a8de',
+    borderRightColor: "#28a8de",
+    borderTopColor: "#28a8de",
+    borderLeftColor: "#28a8de",
+    borderBottomColor: "#28a8de",
     height: 42,
     width: 324,
     borderWidth: 1.3,
@@ -168,14 +168,14 @@ const styles = StyleSheet.create({
   },
 
   registration_button_text: {
-    color: '#28a8de',
-    textAlign: 'center',
+    color: "#28a8de",
+    textAlign: "center",
     fontSize: 20,
     marginTop: 1,
     paddingTop: 8,
     paddingBottom: 8,
     marginBottom: 1,
-    backgroundColor: 'transparent',
+    backgroundColor: "transparent",
   },
 
 });

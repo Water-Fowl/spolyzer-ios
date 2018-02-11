@@ -1,11 +1,11 @@
-import React from 'react';
+import React from "react";
 import {
   Text,
   StyleSheet,
   TouchableHighlight,
-} from 'react-native';
-import { scoreCreateShotTypeButtonEnhancer } from './hoc';
-import { connect } from 'react-redux';
+} from "react-native";
+import { scoreCreateShotTypeButtonEnhancer } from "./hoc";
+import { connect } from "react-redux";
 
 class ScoreCreateShotTypeButton extends React.Component {
   render() {
@@ -24,12 +24,12 @@ export default connect()(scoreCreateShotTypeButtonEnhancer(ScoreCreateShotTypeBu
 const styles = StyleSheet.create({
   shot_type: {
     fontSize: 30,
-    alignSelf: 'center',
-    textAlign: 'center',
+    alignSelf: "center",
+    textAlign: "center",
     padding: 5,
     margin: 5,
-    color: 'white',
-    backgroundColor: '#2EA7E0',
+    color: "white",
+    backgroundColor: "#2EA7E0",
   },
 });
 
