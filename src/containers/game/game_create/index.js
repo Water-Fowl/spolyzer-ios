@@ -28,23 +28,11 @@ class ScoreGameCreate extends React.Component {
               <Text style={styles.score_game_create_opponents}>対戦者</Text>
               <View style={styles.game_setting_table_inner}>
                 <View style={styles.game_setting_table_inner_left}>
-                  <Image
-                    source={require('../../../assets/img/score_create_person.png')}
-                    style={styles.score_game_create_competitor_person}
-                  />
+                  <View style={styles.circle}/>
 
-                  <Image
-                    source={require('../../../assets/img/simple_frame.png')}
-                    style={styles.score_game_create_competitor_frame}
-                  />
-                  <Image
-                    source={require('../../../assets/img/simple_circle.png')}
-                    style={styles.score_game_create_competitor_person}
-                  />
-                  <Image
-                    source={require('../../../assets/img/simple_frame.png')}
-                    style={styles.score_game_create_competitor_frame}
-                  />
+                  <View style={styles.textbox}/>
+                  <View style={styles.circle}/>
+                  <View style={styles.textbox}/>
                 </View>
 
                 <View style={styles.game_setting_table_inner_center}>
@@ -52,31 +40,17 @@ class ScoreGameCreate extends React.Component {
                 </View>
 
                 <View style={styles.game_setting_inner_right} >
-                  <Image
-                    source={require('../../../assets/img/score_create_person.png')}
-                    style={styles.score_game_create_competitor_person}
-                  />
-                  <Image
-                    source={require('../../../assets/img/simple_frame.png')}
-                    style={styles.score_game_create_competitor_frame}
-                  />
-                  <Image
-                    source={require('../../../assets/img/simple_circle.png')}
-                    style={styles.score_game_create_competitor_person}
-                  />
-                  <Image
-                    source={require('../../../assets/img/simple_frame.png')}
-                    style={styles.score_game_create_competitor_frame}
-                  />
+                  <View style={styles.circle}/>
+                  <View style={styles.textbox}/>
+                  <View style={styles.circle}/>
+                  <View style={styles.textbox}/>
                 </View>
               </View>
             </View>
           </View>
-          <View
-            style={styles.game_setting_under_table}
-          >
-            <NavigateButton action={Actions.score_create} text="Play"/>
-          </View>
+
+            <NavigateButton action={Actions.score_create} style={styles.button_style} text="Play"/>
+
         </View>
       </View>
     );
@@ -116,6 +90,7 @@ const styles = StyleSheet.create({
     width: 70,
     height: 220,
     justifyContent: 'center',
+    alignItems:'center',
   },
   game_setting_table_inner_center: {
     flex: 1,
@@ -179,4 +154,25 @@ const styles = StyleSheet.create({
     marginLeft: 14,
     marginBottom: 8,
   },
+  circle:{
+  borderColor: '#2EA7E0',
+  height: 75,
+  width: 75,
+  borderWidth: 2,
+  borderRadius: 100,
+  opacity: 0.5,
+  alignSelf: 'center',
+},
+button_style:{
+  marginTop:80
+},
+textbox:{
+  borderColor: '#2EA7E0',
+  height: 20,
+  width: 88,
+  borderWidth: 1.5,
+  borderRadius: 5,
+  opacity: 0.5,
+  alignSelf: 'center',
+}
 });
