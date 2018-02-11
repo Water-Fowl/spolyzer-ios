@@ -1,7 +1,7 @@
 import {
   SET_POSITION_AND_SIDE,
   SET_SHOT_TYPE,
-} from '../action_types';
+} from "../action_types";
 
 export function setPositionAndSide(position, side) {
   return {

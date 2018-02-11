@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   Text,
   Image,
@@ -6,18 +6,17 @@ import {
   TouchableOpacity,
   StyleSheet,
   ScrollView,
-} from 'react-native';
+} from "react-native";
 import {
   VictoryBar,
   VictoryChart,
   VictoryTheme,
   VictoryAxis,
-  VictoryLabel,
-} from 'victory-native';
-import { Actions, ActionConst } from 'react-native-router-flux';
+} from "victory-native";
+import { Actions, ActionConst } from "react-native-router-flux";
 import {
   TopContentBar,
-} from 'components';
+} from "components";
 import {
   InFieldCircle,
   InFieldLength,
@@ -26,17 +25,17 @@ import {
   OutFieldSide,
   OutFieldLength,
   OutArea,
-} from './components';
+} from "./components";
 
-import baseHigherOrderComponentEnhancer from 'enhances';
+import baseHigherOrderComponentEnhancer from "enhances";
 
 const data = [
-  { position: 'A', counts: 1 },
-  { position: 'B', counts: 2 },
-  { position: 'C', counts: 3 },
-  { position: 'D', counts: 4 },
-  { position: 'E', counts: 5 },
-  { position: 'F', counts: 6 },
+  { position: "A", counts: 1 },
+  { position: "B", counts: 2 },
+  { position: "C", counts: 3 },
+  { position: "D", counts: 4 },
+  { position: "E", counts: 5 },
+  { position: "F", counts: 6 },
 ];
 
 class AnalysisView extends React.Component {
@@ -45,12 +44,12 @@ class AnalysisView extends React.Component {
       <View style={styles.container}>
         <TopContentBar>複合分析結果</TopContentBar>
         <ScrollView>
-          <View style={{ flexDirection: 'row' }}>
+          <View style={{ flexDirection: "row" }}>
             <Text style={styles.analysis_view_vs}>vs</Text>
             <View style={styles.name_outside_container}>
               <View style={styles.name_inside_container}>
                 <Image
-                  source={require('../../../assets/img/score_create_person.png')}
+                  source={require("../../../assets/img/score_create_person.png")}
                   style={styles.person}
                 />
                 <Text style={styles.opponent_name}>
@@ -77,7 +76,7 @@ class AnalysisView extends React.Component {
             </View>
           </View>
           <View style={styles.field}>
-            <Image style={styles.field_line} source={require('../../../assets/img/field-line.png')} />
+            <Image style={styles.field_line} source={require("../../../assets/img/field-line.png")} />
             <InArea />
             <OutArea />
             <View style={styles.over_container}>
@@ -152,46 +151,47 @@ class AnalysisView extends React.Component {
               height={240}
               theme={VictoryTheme.material}
               padding={{
- left: 25, right: 30, top: 20, bottom: 40,
-}}
+                left: 25, right: 30, top: 20, bottom: 40,
+              }}
               domainPadding={{ x: [20, 0] }}
             >
               <VictoryAxis
-                dependentAxis	/* Y軸 */
+                dependentAxis
                 style={{
                   grid: {
-                    stroke: '#035f89',
+                    stroke: "#035f89",
                   },
                   axis: {
-                    stroke: 'transparent',
+                    stroke: "transparent",
                   },
                   tickLabels: {
                     fontSize: 10,
-                    fill: 'white',
+                    fill: "white",
                   },
                 }}
-                tickFormat={(tick) => { /* 整数目盛のみ表示 */
+                /* 整数目盛りのみを表示 */
+                tickFormat={(tick) => {
                   if (tick === Math.round(tick)) return String(tick);
-                  return '';
+                  return "";
                 }}
               />
-              <VictoryAxis	/* X軸 */
+              <VictoryAxis
                 style={{
-                  color: 'white',
-                  grid: { stroke: 'transparent' },
+                  color: "white",
+                  grid: { stroke: "transparent" },
                   axis: {
-                    stroke: '#2EA7E0',
+                    stroke: "#2EA7E0",
                   },
-                  tickLabels: { fontSize: 10, fill: 'white' },
+                  tickLabels: { fontSize: 10, fill: "white" },
                 }}
               />
               <VictoryBar
                 style={{
                   data: {
-                    fill: '#2EA7E0',
+                    fill: "#2EA7E0",
                   },
                 }}
-                animate={{	/* 表示のアニメーション */
+                animate={{
                   duration: 400,
                   onLoad: { duration: 300 },
                 }}
@@ -203,7 +203,10 @@ class AnalysisView extends React.Component {
             </VictoryChart>
           </View>
           <View style={styles.back_button_container}>
-            <TouchableOpacity onPress={() => { Actions.analysis_create({ type: ActionConst.BACK_ACTION }); }}>
+            <TouchableOpacity onPress={() => {
+              Actions.analysis_create({ type: ActionConst.BACK_ACTION });
+            }}
+            >
               <Text style={styles.back_button_text}>
                 検索条件に戻る
               </Text>
@@ -222,46 +225,46 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   subtitle_text: {
-    color: '#ffffff',
+    color: "#ffffff",
     fontSize: 19,
-    alignSelf: 'center',
+    alignSelf: "center",
     marginTop: -28,
-    backgroundColor: 'transparent',
-    fontWeight: 'bold',
+    backgroundColor: "transparent",
+    fontWeight: "bold",
   },
   analysis_view_vs: {
-    fontWeight: 'bold',
-    color: 'skyblue',
+    fontWeight: "bold",
+    color: "skyblue",
     fontSize: 26,
-    alignSelf: 'flex-start',
+    alignSelf: "flex-start",
     marginTop: 16,
     marginLeft: 206,
-    backgroundColor: 'transparent',
+    backgroundColor: "transparent",
   },
   name_outside_container: {
-    borderRightColor: '#0a2444',
-    borderTopColor: '#0a2444',
-    borderLeftColor: '#0a2444',
-    borderBottomColor: '#0a2444',
+    borderRightColor: "#0a2444",
+    borderTopColor: "#0a2444",
+    borderLeftColor: "#0a2444",
+    borderBottomColor: "#0a2444",
     height: 30,
     width: 104,
     borderWidth: 1,
     marginLeft: 6,
     borderRadius: 4,
     marginTop: 20,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
   },
   name_inside_container: {
-    borderRightColor: '#0a2444',
-    borderTopColor: '#0a2444',
-    borderLeftColor: '#0a2444',
-    borderBottomColor: '#0a2444',
+    borderRightColor: "#0a2444",
+    borderTopColor: "#0a2444",
+    borderLeftColor: "#0a2444",
+    borderBottomColor: "#0a2444",
     height: 26,
     width: 100,
     borderWidth: 1,
     borderRadius: 2,
-    flexDirection: 'row',
+    flexDirection: "row",
   },
   person: {
     marginTop: 2,
@@ -271,155 +274,155 @@ const styles = StyleSheet.create({
     opacity: 0.5,
   },
   opponent_name: {
-    backgroundColor: 'transparent',
-    color: '#ffffff',
+    backgroundColor: "transparent",
+    color: "#ffffff",
     marginTop: 7,
     marginLeft: 7,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     fontSize: 12,
   },
   option_container: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignSelf: 'center',
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignSelf: "center",
     width: 310,
     marginTop: 4,
   },
   option_text_container: {
-    borderRightColor: '#0a2444',
-    borderTopColor: '#0a2444',
-    borderLeftColor: '#0a2444',
-    borderBottomColor: '#0a2444',
+    borderRightColor: "#0a2444",
+    borderTopColor: "#0a2444",
+    borderLeftColor: "#0a2444",
+    borderBottomColor: "#0a2444",
     height: 32,
     width: 96,
     borderWidth: 1,
     borderRadius: 4,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
   },
   option_text: {
-    backgroundColor: '#0a2444',
-    color: '#ffffff',
+    backgroundColor: "#0a2444",
+    color: "#ffffff",
     fontSize: 14,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     height: 26,
     width: 90,
     borderRadius: 4,
-    textAlign: 'center',
+    textAlign: "center",
     paddingTop: 5,
   },
   field: {
-    alignSelf: 'center',
+    alignSelf: "center",
     width: 330,
     height: 170,
     marginTop: 26,
   },
   field_line: {
-    position: 'absolute',
-    alignSelf: 'center',
+    position: "absolute",
+    alignSelf: "center",
     height: 170,
-    backfaceVisibility: 'hidden',
+    backfaceVisibility: "hidden",
     zIndex: 3,
-    resizeMode: 'contain',
+    resizeMode: "contain",
   },
   in_field_area_container: {
     width: 330,
-    position: 'absolute',
-    flexDirection: 'row',
-    justifyContent: 'space-around',
+    position: "absolute",
+    flexDirection: "row",
+    justifyContent: "space-around",
     paddingLeft: 10,
     paddingRight: 10,
   },
   in_field_area: {
     flex: 0.4,
-    alignSelf: 'center',
-    backgroundColor: 'black',
+    alignSelf: "center",
+    backgroundColor: "black",
     height: 138,
     marginTop: 16,
     marginBottom: 16,
   },
   out_field_area_container: {
     width: 330,
-    position: 'absolute',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    position: "absolute",
+    flexDirection: "row",
+    justifyContent: "space-between",
   },
   out_field_area: {
-    alignSelf: 'center',
+    alignSelf: "center",
     flex: 0.45,
-    backgroundColor: '#FAEE00',
+    backgroundColor: "#FAEE00",
     opacity: 0.3,
     height: 170,
   },
   over_container: {
-    flexDirection: 'row',
+    flexDirection: "row",
     flex: 1,
-    justifyContent: 'space-between',
+    justifyContent: "space-between",
   },
   over_out_field_side_container: {
-    alignSelf: 'flex-start',
+    alignSelf: "flex-start",
     flex: 0.5,
-    justifyContent: 'space-around',
-    flexDirection: 'row',
+    justifyContent: "space-around",
+    flexDirection: "row",
   },
   middle_container: {
-    flexDirection: 'row',
+    flexDirection: "row",
     flex: 3,
-    justifyContent: 'space-between',
+    justifyContent: "space-between",
   },
   under_container: {
-    flexDirection: 'row',
+    flexDirection: "row",
     flex: 1,
-    justifyContent: 'space-between',
+    justifyContent: "space-between",
   },
   out_field_length_container: {
     marginLeft: 4,
     marginRight: 4,
-    flexDirection: 'column',
-    justifyContent: 'space-between',
+    flexDirection: "column",
+    justifyContent: "space-between",
   },
   in_field_container: {
-    flexDirection: 'row',
+    flexDirection: "row",
     marginLeft: 10,
     marginRight: 10,
   },
   in_field_length_container: {
     marginLeft: 8,
     marginRight: 8,
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    justifyContent: "space-between",
+    alignItems: "center",
   },
   in_field_circle_container: {
-    justifyContent: 'space-between',
+    justifyContent: "space-between",
   },
   in_field_side_container: {
     marginLeft: 6,
     marginRight: 6,
-    justifyContent: 'space-between',
+    justifyContent: "space-between",
   },
   under_out_field_side_container: {
-    alignSelf: 'flex-end',
+    alignSelf: "flex-end",
     flex: 0.5,
-    justifyContent: 'space-around',
-    flexDirection: 'row',
+    justifyContent: "space-around",
+    flexDirection: "row",
   },
   graph_container: {
-    borderRightColor: '#28a8de',
-    borderTopColor: '#28a8de',
-    borderLeftColor: '#28a8de',
-    borderBottomColor: '#28a8de',
+    borderRightColor: "#28a8de",
+    borderTopColor: "#28a8de",
+    borderLeftColor: "#28a8de",
+    borderBottomColor: "#28a8de",
     height: 240,
     width: 320,
     borderWidth: 1,
     borderRadius: 4,
-    alignSelf: 'center',
+    alignSelf: "center",
     marginTop: 20,
   },
   back_button_container: {
-    borderRightColor: '#28a8de',
-    borderTopColor: '#28a8de',
-    borderLeftColor: '#28a8de',
-    borderBottomColor: '#28a8de',
+    borderRightColor: "#28a8de",
+    borderTopColor: "#28a8de",
+    borderLeftColor: "#28a8de",
+    borderBottomColor: "#28a8de",
     height: 34,
     width: 154,
     borderWidth: 1,
@@ -428,12 +431,12 @@ const styles = StyleSheet.create({
     marginTop: 8,
   },
   back_button_text: {
-    backgroundColor: 'transparent',
-    color: '#ffffff',
+    backgroundColor: "transparent",
+    color: "#ffffff",
     fontSize: 16,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     borderRadius: 4,
-    textAlign: 'center',
+    textAlign: "center",
     paddingTop: 7,
     paddingLeft: 20,
   },

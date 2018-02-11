@@ -1,9 +1,9 @@
-import { hideScoreCreateModal } from '../../../../shared/redux/view/actions';
-import { setShotType } from '../../../actions/set_score'
+import { hideScoreCreateModal } from "../../../../shared/redux/view/actions";
+import { setShotType } from "../../../actions/set_score";
 
 export function scoreCreateShotTypeButtonEnhancer(ComponentClass) {
   return class HOComponent extends ComponentClass {
-    setShotTypeEvent(shot_type_id){
+    setShotTypeEvent(shot_type_id) {
       const { dispatch } = this.props;
       dispatch(setShotType(shot_type_id));
     }

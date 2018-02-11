@@ -1,5 +1,5 @@
-import ProfileImage from './profile_image'
+import ProfileImage from "./profile_image";
 
 export {
-  ProfileImage
-}
+  ProfileImage,
+};

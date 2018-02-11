@@ -1,11 +1,11 @@
-import React from 'react';
+import React from "react";
 import {
   StyleSheet,
   Text,
   View,
   TouchableHighlight,
-} from 'react-native';
-import Button from './components/button';
+} from "react-native";
+import Button from "./components/button";
 
 
 export default class TermButton extends React.Component {
@@ -34,18 +34,18 @@ export default class TermButton extends React.Component {
 
 const styles = StyleSheet.create({
   term_frame: {
-    flexDirection: 'row',
-    backgroundColor: 'transparent',
-    borderRightColor: '#0a2444',
-    borderTopColor: '#0a2444',
-    borderLeftColor: '#0a2444',
-    borderBottomColor: '#0a2444',
+    flexDirection: "row",
+    backgroundColor: "transparent",
+    borderRightColor: "#0a2444",
+    borderTopColor: "#0a2444",
+    borderLeftColor: "#0a2444",
+    borderBottomColor: "#0a2444",
     height: 34,
     width: 222,
     borderWidth: 1.5,
     marginLeft: 57,
     borderRadius: 3,
     marginTop: 25,
-    justifyContent: 'center',
+    justifyContent: "center",
   },
 });

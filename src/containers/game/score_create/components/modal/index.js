@@ -1,13 +1,13 @@
-import React from 'react';
+import React from "react";
 import {
   View,
   Text,
   StyleSheet,
-} from 'react-native';
+} from "react-native";
 import {
   scoreCreateModalEnhancer,
-} from './hoc';
-import ScoreCreateShotTypeButton from '../shot_type_button';
+} from "./hoc";
+import ScoreCreateShotTypeButton from "../shot_type_button";
 
 class Modal extends React.Component {
   render() {
@@ -34,26 +34,26 @@ export default scoreCreateModalEnhancer(Modal);
 const styles = StyleSheet.create({
   container: {
     zIndex: 2,
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
-    position: 'absolute',
-    width: '100%',
-    height: '100%',
-    justifyContent: 'center',
-    alignItems: 'center',
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
+    position: "absolute",
+    width: "100%",
+    height: "100%",
+    justifyContent: "center",
+    alignItems: "center",
   },
   shot_type_container: {
     padding: 10,
-    borderColor: '#2EA7E0',
+    borderColor: "#2EA7E0",
     borderWidth: 1,
-    flexDirection: 'row',
+    flexDirection: "row",
   },
   shot_type: {
     fontSize: 30,
-    alignSelf: 'center',
-    textAlign: 'center',
+    alignSelf: "center",
+    textAlign: "center",
     padding: 5,
     margin: 5,
-    color: 'white',
-    backgroundColor: '#2EA7E0',
+    color: "white",
+    backgroundColor: "#2EA7E0",
   },
 });

@@ -1,16 +1,16 @@
 /**
  * @providesModule enhances
  */
-import React from 'react';
+import React from "react";
 import {
   View,
   StyleSheet,
-} from 'react-native';
+} from "react-native";
 import {
   Background,
   NavBar,
-} from 'components';
-import Orientation from 'react-native-orientation';
+} from "components";
+import Orientation from "react-native-orientation";
 
 export default function baseHigherOrderComponentEnhancer(ComponentClass) {
   return class BaseHightOrderComponent extends React.Component {

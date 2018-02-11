@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   Dimensions,
   StyleSheet,
@@ -6,9 +6,9 @@ import {
   Text,
   View,
   TouchableHighlight,
-} from 'react-native';
-import { fieldButtonEnhancer } from '../shared/hoc';
-import { connect } from 'react-redux';
+} from "react-native";
+import { fieldButtonEnhancer } from "../shared/hoc";
+import { connect } from "react-redux";
 
 
 class OutFieldSide extends React.Component {
@@ -17,9 +17,9 @@ class OutFieldSide extends React.Component {
       <TouchableHighlight
         style={styles.horizontal_yellow_bar_left}
         onPress={() => {
-            this.setModalEvent();
-          }
-      }
+          this.setModalEvent();
+        }
+        }
       >
         <View />
       </TouchableHighlight>
@@ -31,12 +31,12 @@ export default connect()(fieldButtonEnhancer(OutFieldSide));
 
 const styles = StyleSheet.create({
   horizontal_yellow_bar_left: {
-    borderColor: '#A29A67',
-    backgroundColor: '#A29A67',
+    borderColor: "#A29A67",
+    backgroundColor: "#A29A67",
     borderWidth: 1.3,
     borderRadius: 3,
     width: 90,
     height: 20,
-    alignSelf: 'center',
+    alignSelf: "center",
   },
 });

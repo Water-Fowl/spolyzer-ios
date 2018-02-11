@@ -1,19 +1,19 @@
-import { Actions } from 'react-native-router-flux';
-import { REGISTRATION_ENDPOINT } from '../../../config/api';
+import { Actions } from "react-native-router-flux";
+import { REGISTRATION_ENDPOINT } from "../../../config/api";
 import {
   REGISTRATION_RECEIVED,
   REGISTRATION_REQUEST,
-} from '../action_type';
+} from "../action_type";
 
 
 export function postUserRegistration(body) {
   return (dispatch) => {
     dispatch(requestRegistration());
     return fetch(REGISTRATION_ENDPOINT, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
+        Accept: "application/json",
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(body),
     })

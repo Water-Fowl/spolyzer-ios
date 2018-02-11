@@ -1,0 +1,31 @@
+parser: "babel-eslint"
+env:
+  browser: false 
+  commonjs: false 
+  react-native/react-native: true 
+  es6: true
+extends: "plugin:react-native/all"
+parserOptions:
+  ecmaFeatures:
+    experimentalObjectRestSpread: true 
+    jsx: true
+    modules: true
+  sourceType: module
+plugins:
+  - react
+  - react-native    
+  - import
+  - jsx-a11y
+rules:
+  indent:
+    - error
+    - 2 
+  linebreak-style:
+    - error
+    - unix
+  quotes:
+    - error
+    - double
+  semi:
+    - error
+    - always
