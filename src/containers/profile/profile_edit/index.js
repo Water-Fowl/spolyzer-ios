@@ -3,18 +3,49 @@ import {
   Text,
   View,
   StyleSheet,
+  TouchableOpacity,
   Image,
+  CameraRoll
 } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
+import ImagePicker from 'react-native-image-crop-picker'
 import {
   NavigateButton,
   TopContentBar,
 } from 'components';
 import baseHigherOrderComponentEnhancer from 'enhances';
+import { ProfileImage } from './components'
 
 
 class ProfileEdit extends React.Component {
+  constructor(){
+    super();
+    this.selectPhotoTapped = this.selectPhotoTapped.bind(this);
+    this.state = {
+      profileImageSource: null
+    }
+  }
+  selectPhotoTapped() {
+    ImagePicker.openPicker({
+      width: 200,
+      height: 200,
+    }).then(image => {
+      this.openCropper(image.path);
+    })
+  }
+  openCropper(path){
+    ImagePicker.openCropper({
+      path: path,
+      width: 200,
+      height: 200,
+      cropperCircleOverlay: true,
+    }).then(image => {
+      this.setState({
+        profileImageSource: image.path 
+      });
+    })
+  }
   render() {
     return (
       <View style={styles.container}>
@@ -22,9 +53,11 @@ class ProfileEdit extends React.Component {
       <View style={styles.most_out}>
           <View style={styles.row_direcition}>
           <View style={styles.left_side}>
-            <Image
-              source={require('../../../assets/img/score_create_person.png')}
-              style={styles.image_style}/>
+            <TouchableOpacity
+              onPress={this.selectPhotoTapped}
+            >
+              <ProfileImage profileImageSource={this.state.profileImageSource}/>
+            </TouchableOpacity>
                 <View style={styles.paddingtop22}>
                   <Text style={styles.profile_title}>Gender</Text>
                   <Text style={styles.profile_title}>Phone</Text>
@@ -139,12 +172,6 @@ const styles = StyleSheet.create({
   },
   complete: {
     alignSelf: 'center',
-  },
-  image_style:{
-    marginLeft:10,
-    opacity:0.5,
-    width:100,
-    height:100,
   },
   name:{
     fontSize:23,
