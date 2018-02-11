@@ -14,7 +14,7 @@ import {
   VictoryAxis,
   VictoryLabel,
 } from 'victory-native';
-import { Actions } from 'react-native-router-flux';
+import { Actions, ActionConst } from 'react-native-router-flux';
 import {
   TopContentBar,
 } from 'components'
@@ -200,7 +200,7 @@ class AnalysisView extends React.Component {
             </VictoryChart>
           </View>
           <View style={styles.back_button_container}>
-            <TouchableOpacity onPress={Actions.analysis_create}>
+            <TouchableOpacity onPress={() =>{Actions.analysis_create({ type: ActionConst.BACK_ACTION })}}>
               <Text style={styles.back_button_text}>
                 検索条件に戻る
               </Text>

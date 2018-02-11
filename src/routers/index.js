@@ -38,7 +38,7 @@ const Route = () => (
             <Scene key="profile_edit" component={ProfileEdit} title="マイデータ編集" hideNavBar />
           </Scene>
           <Scene key="Score" tabBarLabel="スコアシート" icon={() => (<Image style={styles.icon} source={require('../assets/img/tabs_score.png')} />)} headerMode="none">
-            <Scene key="scre_game_create" initial component={GameCreate} title="単分析" hideNavBar />
+            <Scene key="game_create" initial component={GameCreate} title="単分析" hideNavBar />
             <Scene key="score_create" hideTabBar component={ScoreCreate} title="スコアシート" hideNavBar />
             <Scene key="score_view" component={ScoreView} title="結果" hideNavBar />
           </Scene>

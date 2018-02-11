@@ -64,7 +64,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-
   subtitle_text: {
     color: '#ffffff',
     fontSize: 22,
@@ -73,7 +72,6 @@ const styles = StyleSheet.create({
     backgroundColor: 'transparent',
     fontWeight: 'bold',
   },
-
   game_style_text: {
     color: '#ffffff',
     fontSize: 15,
@@ -83,7 +81,6 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     alignSelf: 'flex-start',
   },
-
   shot_type_text: {
     color: '#ffffff',
     fontSize: 15,
@@ -93,7 +90,6 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     alignSelf: 'flex-start',
   },
-
   term_text: {
     color: '#ffffff',
     fontSize: 15,
@@ -103,7 +99,6 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     alignSelf: 'flex-start',
   },
-
   opponent_text: {
     color: '#ffffff',
     fontSize: 15,
@@ -114,7 +109,6 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-start',
     marginRight: 22,
   },
-
   opponent_frame: {
     flexDirection: 'row',
     backgroundColor: 'transparent',
@@ -129,7 +123,6 @@ const styles = StyleSheet.create({
     borderRadius: 3,
     marginTop: 25,
   },
-
   game_select_text: {
     color: '#ffffff',
     fontSize: 15,
@@ -139,7 +132,6 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     alignSelf: 'flex-start',
   },
-
   game_select_frame: {
     flexDirection: 'row',
     backgroundColor: 'transparent',
@@ -154,10 +146,8 @@ const styles = StyleSheet.create({
     borderRadius: 3,
     marginTop: 25,
   },
-
   analyze: {
     alignSelf: 'center',
     marginTop: 48,
   },
-
 });
