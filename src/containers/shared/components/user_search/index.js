@@ -42,7 +42,7 @@ class UserSearch extends React.Component {
           />
         </View>
 
-        <View style={styles.frame}>
+        <View style={styles.users_container}>
 
           <View style={styles.user_account}>
             
@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
     letterSpacing: 0,
   },
 
-  frame: {
+  users_container: {
     backgroundColor: 'transparent',
     borderRightColor: '#0a2444',
     borderTopColor: '#0a2444',
@@ -131,7 +131,7 @@ const styles = StyleSheet.create({
     height: 45,
     width: '95%',
     borderRadius: 3,
-    backgroundColor: '#0a2444',
+    backgroundColor: 'rgba(23,82,155,0.3)',
     flexDirection: 'row',
   },
 
