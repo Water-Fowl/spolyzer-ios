@@ -19,7 +19,7 @@ class UserSearch extends React.Component {
   constructor(props) {
       super(props);
       this.state = {
-        user_name: '',
+        search_user_name: '',
       };
     }
 
@@ -33,8 +33,8 @@ class UserSearch extends React.Component {
 
         <View style={styles.form}>
           <TextInput
-            onChangeText={user_name => this.setState({ user_name })}
-            placeholder="名前検索"
+            onChangeText={search_user_name => this.setState({ search_user_name })}
+            placeholder="名前入力"
             placeholderTextColor="#666677"
             style={styles.text_field}
             keyboardType="email-address"
@@ -44,10 +44,32 @@ class UserSearch extends React.Component {
 
         <View style={styles.frame}>
 
+          <View style={styles.user_account}>
+            
+            <View style={styles.user_image}>
+              <Image
+                source={require('../../../../assets/img/score_creat_person.png')}
+                style={styles.person}
+              />
+            </View>
+
+            <View style={styles.user_name}>
+              <Text style={styles.user_name_text}>
+                Ikeda Syacho
+              </Text>
+            </View>
+
+            <View style={styles.user_status}>
+              <Text style={styles.user_status_text}>
+                Status
+              </Text>
+            </View>
+
+          </View>
+
         </View>
 
         <NavigateButton action={Actions.analysis_create} style={styles.chose} text="Chose" />
-
 
       </View>
 
@@ -81,7 +103,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
     color: '#ffffff',
-    paddingLeft: 12,
+    paddingLeft: 20,
     letterSpacing: 0,
   },
 
@@ -96,12 +118,60 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 2,
     alignSelf: 'center',
+    alignItems: 'center',
 
   },
 
   chose: {
     alignSelf: 'center',
     marginTop: 11,
+  },
+
+  user_account: {
+    height: 45,
+    width: '95%',
+    borderRadius: 3,
+    backgroundColor: '#0a2444',
+    flexDirection: 'row',
+  },
+
+  user_image: {
+    width: '20%',
+    backgroundColor: 'transparent',
+  },
+
+  person: {
+    marginTop: 5,
+    marginLeft: 10,
+    height: 36,
+    width: 36,
+  },
+
+  user_name: {
+    width: '50%',
+    backgroundColor: 'transparent',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+
+  user_name_text: {
+
+    fontWeight: 'bold',
+    fontSize: 18,
+    color: "white",
+  },
+
+  user_status: {
+    width: '30%',
+    backgroundColor: 'transparent',
+    justifyContent: 'center',
+  },
+
+  user_status_text: {
+
+    fontWeight: 'bold',
+    fontSize: 18,
+    color: "white",
   },
 
  });
