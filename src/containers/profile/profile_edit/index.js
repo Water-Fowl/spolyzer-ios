@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   Image,
   Picker,
+  TextInput,
 } from "react-native";
 import { 
   Actions,
@@ -31,7 +32,8 @@ class ProfileEdit extends React.Component {
     this.state = {
       profileImageSource: null,
       sex: "男性",
-      is_picker_visible: false
+      email: "yohiki@gmail.com",
+      is_picker_visible: false,
     };
   }
   _selectPhotoTapped() {
@@ -89,7 +91,15 @@ class ProfileEdit extends React.Component {
                     <View style={styles.paddingleft20}>
                       <Text onPress={this._setPicker} style={styles.profile_title}>{this.state.sex}</Text>
                       <View style={styles.profile_underline} />
-                      <Text style={styles.profile_title}>gmail.com</Text>
+                      <TextInput
+                        ref="email"
+                        style={styles.profile_title}
+                        onChangeText={email => this.setState({ email })}
+                        value={this.state.email}
+                        placeholder="メールアドレス"
+                        keyboardType="email-address"
+                        returnKeyType="done"
+                      />
                       <View style={styles.profile_underline} />
                     </View>
                   </View>
