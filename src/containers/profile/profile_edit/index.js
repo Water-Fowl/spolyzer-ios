@@ -5,7 +5,7 @@ import {
   StyleSheet,
   TouchableOpacity,
   Image,
-  CameraRoll,
+  Picker,
 } from "react-native";
 import { 
   Actions,
@@ -19,25 +19,30 @@ import {
 } from "components";
 import baseHigherOrderComponentEnhancer from "enhances";
 import { ProfileImage } from "./components";
+import SexPicker from './components/sex_picker';
 
 
 class ProfileEdit extends React.Component {
   constructor() {
     super();
-    this.selectPhotoTapped = this.selectPhotoTapped.bind(this);
+    this._selectPhotoTapped = this._selectPhotoTapped.bind(this);
+    this._setPicker = this._setPicker.bind(this);
+    this._hidePicker = this._hidePicker.bind(this);
     this.state = {
       profileImageSource: null,
+      sex: "男性",
+      is_picker_visible: false
     };
   }
-  selectPhotoTapped() {
+  _selectPhotoTapped() {
     ImagePicker.openPicker({
       width: 200,
       height: 200,
     }).then((image) => {
-      this.openCropper(image.path);
+      this._openCropper(image.path);
     });
   }
-  openCropper(path) {
+  _openCropper(path) {
     ImagePicker.openCropper({
       path,
       width: 200,
@@ -49,6 +54,12 @@ class ProfileEdit extends React.Component {
       });
     });
   }
+  _setPicker(){
+    this.setState({ is_picker_visible: true })
+  }
+  _hidePicker(){
+    this.setState({ is_picker_visible: false })
+  }
   render() {
     return (
       <View style={styles.container}>
@@ -57,7 +68,7 @@ class ProfileEdit extends React.Component {
           <View style={styles.row_direcition}>
             <View style={styles.left_side}>
               <TouchableOpacity
-                onPress={this.selectPhotoTapped}
+                onPress={this._selectPhotoTapped}
               >
                 <ProfileImage profileImageSource={this.state.profileImageSource} />
               </TouchableOpacity>
@@ -76,7 +87,7 @@ class ProfileEdit extends React.Component {
                 <View style={styles.frame_profile}>
                   <View style={styles.plate_profile}>
                     <View style={styles.paddingleft20}>
-                      <Text style={styles.profile_title}>男性</Text>
+                      <Text onPress={this._setPicker} style={styles.profile_title}>{this.state.sex}</Text>
                       <View style={styles.profile_underline} />
                       <Text style={styles.profile_title}>gmail.com</Text>
                       <View style={styles.profile_underline} />
@@ -90,6 +101,13 @@ class ProfileEdit extends React.Component {
         <View style={styles.container}>
           <NavigateButton action={() => {Actions.profile_top({ type: ActionConst.BACK_ACTION})}} style={styles.complete} text="完了" />
         </View>
+        <SexPicker
+          _hidePicker={this._hidePicker}
+          isVisible={this.state.is_picker_visible}
+          selectedValue={this.state.sex}
+          enabled={false}
+          onValueChange={(itemValue, itemIndex) => this.setState({sex: itemValue})}
+        />
       </View>
     );
   }
