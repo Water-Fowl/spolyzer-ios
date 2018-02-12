@@ -57,7 +57,7 @@ class UserSearch extends React.Component {
                 Status
               </Text>
             </View>
-          </View
+          </View>
         </View>
         <NavigateButton action={Actions.analysis_create} style={styles.chose} text="Chose" />
       </View>
