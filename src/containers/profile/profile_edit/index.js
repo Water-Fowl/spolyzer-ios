@@ -62,13 +62,8 @@ class ProfileEdit extends React.Component {
                 <ProfileImage profileImageSource={this.state.profileImageSource} />
               </TouchableOpacity>
               <View style={styles.paddingtop22}>
-                <Text style={styles.profile_title}>Gender</Text>
-                <Text style={styles.profile_title}>Phone</Text>
-                <Text style={styles.profile_title}>Email</Text>
-                <Text style={styles.profile_title}>Status</Text>
-              </View>
-              <View style={styles.paddingtop40}>
-                <Text style={styles.profile_title}>Profile</Text>
+                <Text style={styles.profile_title}>性別</Text>
+                <Text style={styles.profile_title}>メールアドレス</Text>
               </View>
             </View>
             <View style={styles.right_side}>
@@ -81,19 +76,12 @@ class ProfileEdit extends React.Component {
                 <View style={styles.frame_profile}>
                   <View style={styles.plate_profile}>
                     <View style={styles.paddingleft20}>
-                      <Text style={styles.profile_title}>Male</Text>
-                      <View style={styles.profile_underline} />
-                      <Text style={styles.profile_title}>000000</Text>
+                      <Text style={styles.profile_title}>男性</Text>
                       <View style={styles.profile_underline} />
                       <Text style={styles.profile_title}>gmail.com</Text>
                       <View style={styles.profile_underline} />
-                      <Text style={styles.profile_title}>single Player</Text>
-                      <View style={styles.profile_underline} />
                     </View>
                   </View>
-                </View>
-                <View style={styles.frame_profile}>
-                  <View style={styles.plate_profile} />
                 </View>
               </View>
             </View>
