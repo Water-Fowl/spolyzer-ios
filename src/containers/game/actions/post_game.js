@@ -7,17 +7,8 @@ export const HIDE_MODAL = "HIDE_MODAL";
 export const SCORE_REQUEST = "SCORE_REQUEST";
 export const SCORE_RECIEVED = "SCORE_RECIEVED";
 
-export function fetchAddScore(position, action, side) {
-  return {
-    type: ADD_SCORE,
-    action,
-    position,
-    side,
-  };
-}
 
-
-export function postScoreGame(body) {
+export function postGame(body) {
   return (dispatch) => {
     dispatch(requestScoreGame());
     return fetch(POST_SCORE_GAME_ENDPOINT, {

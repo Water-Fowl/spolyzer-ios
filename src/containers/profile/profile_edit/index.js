@@ -7,7 +7,10 @@ import {
   Image,
   CameraRoll,
 } from "react-native";
-import { Actions } from "react-native-router-flux";
+import { 
+  Actions,
+  ActionConst,
+} from "react-native-router-flux";
 import { connect } from "react-redux";
 import ImagePicker from "react-native-image-crop-picker";
 import {
@@ -97,7 +100,7 @@ class ProfileEdit extends React.Component {
           </View>
         </View>
         <View style={styles.container}>
-          <NavigateButton action={Actions.profile_top} style={styles.complete} text="Complete" />
+          <NavigateButton action={() => {Actions.profile_top({ type: ActionConst.BACK_ACTION})}} style={styles.complete} text="完了" />
         </View>
       </View>
     );

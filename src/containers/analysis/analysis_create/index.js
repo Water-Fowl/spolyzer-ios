@@ -53,7 +53,7 @@ class AnalysisCreate extends React.Component {
           </Text>
           <View style={styles.game_select_frame} />
         </View>
-        <NavigateButton action={Actions.analysis_view} style={styles.analyze} text="Analyze" />
+        <NavigateButton action={Actions.analysis_view} style={styles.analyze} text="分析" />
       </View>
     );
   }

@@ -48,7 +48,7 @@ class ScoreGameCreate extends React.Component {
               </View>
             </View>
           </View>
-          <NavigateButton action={Actions.score_create} style={styles.button_style} text="Play" />
+          <NavigateButton action={Actions.score_create} style={styles.button_style} text="試合開始" />
         </View>
       </View>
     );
