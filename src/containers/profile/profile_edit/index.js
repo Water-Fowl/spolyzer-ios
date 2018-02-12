@@ -7,7 +7,10 @@ import {
   Image,
   CameraRoll,
 } from "react-native";
-import { Actions } from "react-native-router-flux";
+import { 
+  Actions,
+  ActionConst,
+} from "react-native-router-flux";
 import { connect } from "react-redux";
 import ImagePicker from "react-native-image-crop-picker";
 import {
@@ -59,13 +62,8 @@ class ProfileEdit extends React.Component {
                 <ProfileImage profileImageSource={this.state.profileImageSource} />
               </TouchableOpacity>
               <View style={styles.paddingtop22}>
-                <Text style={styles.profile_title}>Gender</Text>
-                <Text style={styles.profile_title}>Phone</Text>
-                <Text style={styles.profile_title}>Email</Text>
-                <Text style={styles.profile_title}>Status</Text>
-              </View>
-              <View style={styles.paddingtop40}>
-                <Text style={styles.profile_title}>Profile</Text>
+                <Text style={styles.profile_title}>性別</Text>
+                <Text style={styles.profile_title}>メールアドレス</Text>
               </View>
             </View>
             <View style={styles.right_side}>
@@ -78,26 +76,19 @@ class ProfileEdit extends React.Component {
                 <View style={styles.frame_profile}>
                   <View style={styles.plate_profile}>
                     <View style={styles.paddingleft20}>
-                      <Text style={styles.profile_title}>Male</Text>
-                      <View style={styles.profile_underline} />
-                      <Text style={styles.profile_title}>000000</Text>
+                      <Text style={styles.profile_title}>男性</Text>
                       <View style={styles.profile_underline} />
                       <Text style={styles.profile_title}>gmail.com</Text>
                       <View style={styles.profile_underline} />
-                      <Text style={styles.profile_title}>single Player</Text>
-                      <View style={styles.profile_underline} />
                     </View>
                   </View>
-                </View>
-                <View style={styles.frame_profile}>
-                  <View style={styles.plate_profile} />
                 </View>
               </View>
             </View>
           </View>
         </View>
         <View style={styles.container}>
-          <NavigateButton action={Actions.profile_top} style={styles.complete} text="Complete" />
+          <NavigateButton action={() => {Actions.profile_top({ type: ActionConst.BACK_ACTION})}} style={styles.complete} text="完了" />
         </View>
       </View>
     );

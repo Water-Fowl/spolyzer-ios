@@ -3,6 +3,7 @@ import {
   Dimensions,
 } from "react-native";
 import Orientation from "react-native-orientation";
+import { postGame } from "../actions/post_game";
 
 export default function enhancer(ComponentClass) {
   return class ScoreCreateHOC extends ComponentClass {
@@ -19,6 +20,11 @@ export default function enhancer(ComponentClass) {
 
     componentWillUnmount() {
       Orientation.lockToPortrait();
+    }
+    navigateEvent(){
+      const { dispatch } = this.props
+      dispatch(postGame())
+      Action.score_view();
     }
     render() {
       return (
