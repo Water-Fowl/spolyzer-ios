@@ -9,9 +9,10 @@ import Login from "./authentication/login";
 import SignUp from "./authentication/sign_up";
 
 /* Reducersのimport  */
-import gameReducer from "./analysis/reducer";
-import scoreReducer from "./game/reducer";
+import analysisReducer from "./analysis/reducer";
+import gameReducer from "./game/reducer";
 import authenticationReducer from "./authentication/reducer";
+import viewReducer from './shared/redux/view/reducer'
 
 export {
   /* Componentのexport */
@@ -25,7 +26,8 @@ export {
   SignUp,
   Login,
   /* Reducersのexport */
+  analysisReducer,
   gameReducer,
-  scoreReducer,
   authenticationReducer,
+  viewReducer,
 };

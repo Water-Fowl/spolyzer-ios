@@ -14,7 +14,7 @@ const initialState = {
   score_game_ids: [],
 };
 
-export default function gameReducer(state = initialState, action = {}) {
+export default function analysisReducer(state = initialState, action = {}) {
   switch (action.type) {
   case GAME_INFORMATION_REQUEST:
     return state;

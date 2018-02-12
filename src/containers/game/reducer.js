@@ -11,7 +11,7 @@ const initialState = {
   sides: [],
 };
 
-export default function scoreReducer(state = initialState, action = {}) {
+export default function gameReducer(state = initialState, action = {}) {
   switch (action.type) {
   case SET_SHOT_TYPE:
     return Object.assign({}, state, {
