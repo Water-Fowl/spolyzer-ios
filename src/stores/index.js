@@ -3,7 +3,7 @@ import storage from "redux-persist/lib/storage";
 import { combineReducers, createStore, applyMiddleware, compose } from "redux";
 import thunkMiddleware from "redux-thunk";
 import { createLogger } from "redux-logger";
-import { gameReducer, scoreReducer, authenticationReducer, viewReducer } from "../reducers";
+import { analysisReducer, gameReducer, authenticationReducer, viewReducer } from "../containers";
 
 const authenticationConfig = {
   key: "authentication",
@@ -13,12 +13,12 @@ const authenticationConfig = {
 const loggerMiddleware = createLogger();
 const middleware = [thunkMiddleware, loggerMiddleware];
 const reducers = combineReducers({
-  score: scoreReducer,
+  game: gameReducer,
   /*
   authentication: persistReducer(authenticationConfig, authenticationReducer),
   */
   authentication: authenticationReducer,
-  game: gameReducer,
+  analysis: analysisReducer,
   view: viewReducer,
 });
 
