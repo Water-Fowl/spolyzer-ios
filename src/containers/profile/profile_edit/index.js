@@ -33,6 +33,7 @@ class ProfileEdit extends React.Component {
       profileImageSource: null,
       sex: "男性",
       email: "yohiki@gmail.com",
+      user_name: "yohikisex",
       is_picker_visible: false,
     };
   }
@@ -57,10 +58,10 @@ class ProfileEdit extends React.Component {
     });
   }
   _setPicker(){
-    this.setState({ is_picker_visible: true })
+    this.setState({is_picker_visible: true})
   }
   _hidePicker(){
-    this.setState({ is_picker_visible: false })
+    this.setState({is_picker_visible: false})
   }
   render() {
     return (
@@ -82,7 +83,15 @@ class ProfileEdit extends React.Component {
             <View style={styles.right_side}>
               <View style={styles.frame_name}>
                 <View style={styles.plate_name}>
-                  <Text style={styles.name} >Ikeda Yoshiki</Text>
+                  <TextInput
+                    ref="email"
+                    style={styles.user_name}
+                    onChangeText={user_name => this.setState({ user_name })}
+                    value={this.state.user_name}
+                    placeholder="ユーザーネーム"
+                    keyboardType="email-address"
+                    returnKeyType="done"
+                  />
                 </View>
               </View>
               <View style={styles.paddingtop40}>
@@ -192,7 +201,7 @@ const styles = StyleSheet.create({
   complete: {
     alignSelf: "center",
   },
-  name: {
+  user_name: {
     fontSize: 23,
     color: "white",
     textAlign: "center",
