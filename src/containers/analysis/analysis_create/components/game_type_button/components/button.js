@@ -45,10 +45,10 @@ class Button extends React.Component {
 }
 
 function mapStateToProps(state, props) {
-  const { game } = state;
+  const { analysis } = state;
   const {
     game_type_id,
-  } = game || {
+  } = analysis || {
     game_type_id: null,
   };
   return {
