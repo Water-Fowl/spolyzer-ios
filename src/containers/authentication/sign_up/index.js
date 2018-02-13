@@ -14,6 +14,7 @@ import { Background } from "components";
 import { postUserRegistration, emailValidation } from "../actions/registration";
 import { connect } from "react-redux";
 import { emailReg } from "const";
+import EmailErrorMessage from "./components/email_error_message";
 
 const registrationUser = {
   name: "takumimuggle",
@@ -89,6 +90,7 @@ class SignUp extends React.Component {
             secureTextEntry
           />
         </View>
+        <EmailErrorMessage isVisible={this.props.sign_up_email_error} />
         <View style={styles.registration_form}>
           <TouchableOpacity onPress={() => {
             this.postRegistrationForm();
@@ -102,6 +104,18 @@ class SignUp extends React.Component {
       </View>
     );
   }
+}
+
+function mapStateToProps(state, props){
+  const { view } = state;
+  const {
+    sign_up_email_error: sign_up_email_error
+  } = view || {
+    sign_up_email_error: false,
+  };
+  return{
+    sign_up_email_error
+  };
 }
 
 export default connect()(SignUp);
