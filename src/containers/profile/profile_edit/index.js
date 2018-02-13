@@ -5,7 +5,8 @@ import {
   StyleSheet,
   TouchableOpacity,
   Image,
-  CameraRoll,
+  Picker,
+  TextInput,
 } from "react-native";
 import { 
   Actions,
@@ -19,25 +20,32 @@ import {
 } from "components";
 import baseHigherOrderComponentEnhancer from "enhances";
 import { ProfileImage } from "./components";
+import SexPicker from './components/sex_picker';
 
 
 class ProfileEdit extends React.Component {
   constructor() {
     super();
-    this.selectPhotoTapped = this.selectPhotoTapped.bind(this);
+    this._selectPhotoTapped = this._selectPhotoTapped.bind(this);
+    this._setPicker = this._setPicker.bind(this);
+    this._hidePicker = this._hidePicker.bind(this);
     this.state = {
       profileImageSource: null,
+      sex: "男性",
+      email: "yohiki@gmail.com",
+      user_name: "yohikisex",
+      is_picker_visible: false,
     };
   }
-  selectPhotoTapped() {
+  _selectPhotoTapped() {
     ImagePicker.openPicker({
       width: 200,
       height: 200,
     }).then((image) => {
-      this.openCropper(image.path);
+      this._openCropper(image.path);
     });
   }
-  openCropper(path) {
+  _openCropper(path) {
     ImagePicker.openCropper({
       path,
       width: 200,
@@ -49,6 +57,12 @@ class ProfileEdit extends React.Component {
       });
     });
   }
+  _setPicker(){
+    this.setState({is_picker_visible: true})
+  }
+  _hidePicker(){
+    this.setState({is_picker_visible: false})
+  }
   render() {
     return (
       <View style={styles.container}>
@@ -57,7 +71,7 @@ class ProfileEdit extends React.Component {
           <View style={styles.row_direcition}>
             <View style={styles.left_side}>
               <TouchableOpacity
-                onPress={this.selectPhotoTapped}
+                onPress={this._selectPhotoTapped}
               >
                 <ProfileImage profileImageSource={this.state.profileImageSource} />
               </TouchableOpacity>
@@ -69,16 +83,32 @@ class ProfileEdit extends React.Component {
             <View style={styles.right_side}>
               <View style={styles.frame_name}>
                 <View style={styles.plate_name}>
-                  <Text style={styles.name} >Ikeda Yoshiki</Text>
+                  <TextInput
+                    ref="email"
+                    style={styles.user_name}
+                    onChangeText={user_name => this.setState({ user_name })}
+                    value={this.state.user_name}
+                    placeholder="ユーザーネーム"
+                    keyboardType="email-address"
+                    returnKeyType="done"
+                  />
                 </View>
               </View>
               <View style={styles.paddingtop40}>
                 <View style={styles.frame_profile}>
                   <View style={styles.plate_profile}>
                     <View style={styles.paddingleft20}>
-                      <Text style={styles.profile_title}>男性</Text>
+                      <Text onPress={this._setPicker} style={styles.profile_title}>{this.state.sex}</Text>
                       <View style={styles.profile_underline} />
-                      <Text style={styles.profile_title}>gmail.com</Text>
+                      <TextInput
+                        ref="email"
+                        style={styles.profile_title}
+                        onChangeText={email => this.setState({ email })}
+                        value={this.state.email}
+                        placeholder="メールアドレス"
+                        keyboardType="email-address"
+                        returnKeyType="done"
+                      />
                       <View style={styles.profile_underline} />
                     </View>
                   </View>
@@ -90,6 +120,13 @@ class ProfileEdit extends React.Component {
         <View style={styles.container}>
           <NavigateButton action={() => {Actions.profile_top({ type: ActionConst.BACK_ACTION})}} style={styles.complete} text="完了" />
         </View>
+        <SexPicker
+          _hidePicker={this._hidePicker}
+          isVisible={this.state.is_picker_visible}
+          selectedValue={this.state.sex}
+          enabled={false}
+          onValueChange={(itemValue, itemIndex) => this.setState({sex: itemValue})}
+        />
       </View>
     );
   }
@@ -164,7 +201,7 @@ const styles = StyleSheet.create({
   complete: {
     alignSelf: "center",
   },
-  name: {
+  user_name: {
     fontSize: 23,
     color: "white",
     textAlign: "center",

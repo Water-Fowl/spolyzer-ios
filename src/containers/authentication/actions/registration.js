@@ -3,6 +3,7 @@ import { REGISTRATION_ENDPOINT } from "../../../config/api";
 import {
   REGISTRATION_RECEIVED,
   REGISTRATION_REQUEST,
+  EMAIL_VALIDATION,
 } from "../action_type";
 
 
@@ -23,6 +24,13 @@ export function postUserRegistration(body) {
       .catch((error) => {
         console.log(error.message);
       });
+  };
+}
+
+export function emailValidation(is_email){
+  return{
+    type: EMAIL_VALIDATION,
+    is_email: is_email 
   };
 }
 
