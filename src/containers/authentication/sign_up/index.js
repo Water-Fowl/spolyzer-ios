@@ -27,11 +27,9 @@ class SignUp extends React.Component {
     super(props);
     this.postRegistrationForm.bind(this);
   }
-
   componentWillMount() {
     Orientation.lockToPortrait();
   }
-
   postRegistrationForm() {
     const { dispatch } = this.props;
     const isEmail = emailReg.test(this.state.email)
@@ -49,14 +47,14 @@ class SignUp extends React.Component {
       Actions.tab();
     }
   }
-
   render() {
     return (
       <View style={styles.container}>
         <Background />
-        <Text style={styles.logo_text}>
-          Spolyzer
-        </Text>
+        <Image
+          style={styles.logo}
+          source={require("../../../assets/img/spolyzer_top.png")}
+        />
         <View style={styles.form}>
           <TextInput
             ref="email"
@@ -111,6 +109,12 @@ export default connect()(SignUp);
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    alignItems: 'center',
+  },
+  logo: {
+    marginTop: 80,
+    marginBottom: 80,
+    alignSelf: "center",
   },
   form: {
     borderRightColor: "#28a8de",
@@ -120,8 +124,6 @@ const styles = StyleSheet.create({
     height: 42,
     width: 324,
     borderWidth: 1.3,
-    marginLeft: 25,
-    marginRight: 25,
     borderRadius: 5,
     marginTop: 9,
     marginBottom: 9,
@@ -155,8 +157,6 @@ const styles = StyleSheet.create({
     height: 42,
     width: 324,
     borderWidth: 1.3,
-    marginLeft: 25,
-    marginRight: 25,
     borderRadius: 5,
     marginTop: 120,
     marginBottom: 9,
