@@ -25,8 +25,8 @@ export default function enhancer(ComponentClass) {
       this.forceUpdate();
     }
     navigateEvent(){
-      const { dispatch } = this.props
-      dispatch(postGame())
+      const { dispatch } = this.props;
+      dispatch(postGame());
       Action.score_view();
     }
     render() {

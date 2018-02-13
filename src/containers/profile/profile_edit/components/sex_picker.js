@@ -23,34 +23,34 @@ export default class SexPicker extends React.Component{
             <Picker.Item label="女性" value="女性" />
           </Picker>
         </View>
-      )
+      );
     }
     else{
       return(
         null
-      )
+      );
     }
   }
 }
 
 const styles = StyleSheet.create({
   picker_text_container:{
-    flexDirection: 'row',
-    justifyContent: 'flex-end',
-    backgroundColor: 'white',
+    flexDirection: "row",
+    justifyContent: "flex-end",
+    backgroundColor: "white",
   },
   picker_container: {
-    position: 'absolute',
+    position: "absolute",
     bottom: 0,
-    width: '100%',
+    width: "100%",
   },
   picker_text: {
     fontSize: 18,
     color: lightBlue,
     padding: 10,
-    backgroundColor: 'white',
+    backgroundColor: "white",
   },
   picker: {
-    backgroundColor: 'white',
+    backgroundColor: "white",
   },
-})
+});

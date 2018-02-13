@@ -149,7 +149,7 @@ function mapStateToProps(state, props) {
   } = view || {
     score_create_modal: false,
   };
-  const { scores } = game
+  const { scores } = game;
   return {
     score_create_modal, scores 
   };
