@@ -17,7 +17,7 @@ class OutFieldSide extends React.Component {
       <TouchableHighlight
         style={styles.horizontal_yellow_bar_left}
         onPress={() => {
-          this.setModalEvent();
+          this.setModalEvent(this.props.position, this.props.side);
         }
         }
       >

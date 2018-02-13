@@ -47,7 +47,7 @@ class ScoreCreate extends React.Component {
               <Text style={styles.score_information_user_name}>Name</Text>
             </View>
             <View style={styles.score_information_point_container}>
-              <Text style={styles.score_information_point}>0</Text>
+              <Text style={styles.score_information_point}>{this.props.scores[0]}</Text>
             </View>
             <Text style={styles.score_information_game_point}>0</Text>
           </View>
@@ -55,7 +55,7 @@ class ScoreCreate extends React.Component {
           <View style={styles.score_information_container}>
             <Text style={styles.score_information_game_point}>0</Text>
             <View style={styles.score_information_point_container}>
-              <Text style={styles.score_information_point}>0</Text>
+              <Text style={styles.score_information_point}>{this.props.scores[1]}</Text>
             </View>
             <View style={styles.score_information_user_name_container}>
               <Text style={styles.score_information_user_name}>Name</Text>
@@ -73,66 +73,66 @@ class ScoreCreate extends React.Component {
           <View style={styles.score_field_button_container}>
             <View style={styles.score_over_container}>
               <View style={{ flex: 0.36, justifyContent: "space-around", flexDirection: "row" }}>
-                <OutFieldSide position={1} side={1} />
-                <OutFieldSide />
+                <OutFieldSide position={5} side={0} />
+                <OutFieldSide position={6} side={0}/>
               </View>
               <View style={{ flex: 0.36, justifyContent: "space-around", flexDirection: "row" }}>
-                <OutFieldSide />
-                <OutFieldSide />
+                <OutFieldSide position={0} side={1}/>
+                <OutFieldSide position={1} side={1}/>
               </View>
             </View>
             <View style={styles.score_middle_container}>
               <View style={styles.score_out_field_length_container}>
-                <OutFieldLength />
-                <OutFieldLength />
+                <OutFieldLength position={4} side={0}/>
+                <OutFieldLength position={3} side={0}/>
               </View>
               <View style={styles.score_in_field_container}>
                 <View style={styles.score_in_field_length_container}>
-                  <InFieldLength />
-                  <InFieldLength />
+                  <InFieldLength position={11} side={0}/>
+                  <InFieldLength position={10} side={0}/>
                 </View>
                 <View style={styles.score_in_field_side_container}>
-                  <InFieldSide />
+                  <InFieldSide position={12} side={0}/>
                   <View style={styles.score_in_field_circle_container}>
-                    <InFieldCircle />
+                    <InFieldCircle position={7} side={0}/>
                   </View>
-                  <InFieldSide />
+                  <InFieldSide position={9} side={0}/>
                 </View>
                 <View style={styles.score_in_field_length_container}>
-                  <InFieldLength />
-                  <InFieldLength />
+                  <InFieldLength position={13} side={0}/>
+                  <InFieldLength position={8} side={0}/>
                 </View>
               </View>
               <View style={styles.score_in_field_container}>
                 <View style={styles.score_in_field_length_container}>
-                  <InFieldLength />
-                  <InFieldLength />
+                  <InFieldLength position={8} side={1}/>
+                  <InFieldLength position={13} side={1}/>
                 </View>
                 <View style={styles.score_in_field_side_container}>
-                  <InFieldSide />
+                  <InFieldSide position={9} side={1}/>
                   <View style={styles.score_in_field_circle_container}>
-                    <InFieldCircle />
+                    <InFieldCircle position={7} side={1}/>
                   </View>
-                  <InFieldSide />
+                  <InFieldSide position={12} side={1}/>
                 </View>
                 <View style={styles.score_in_field_length_container}>
-                  <InFieldLength />
-                  <InFieldLength />
+                  <InFieldLength position={10} side={1}/>
+                  <InFieldLength position={11} side={1}/>
                 </View>
               </View>
               <View style={styles.score_out_field_length_container}>
-                <OutFieldLength />
-                <OutFieldLength />
+                <OutFieldLength position={3} side={1}/>
+                <OutFieldLength position={4} side={1}/>
               </View>
             </View>
             <View style={styles.score_under_container}>
               <View style={{ flex: 0.36, justifyContent: "space-around", flexDirection: "row" }}>
-                <OutFieldSide />
-                <OutFieldSide />
+                <OutFieldSide position={2} side={0} />
+                <OutFieldSide position={1} side={0}/>
               </View>
               <View style={{ flex: 0.36, justifyContent: "space-around", flexDirection: "row" }}>
-                <OutFieldSide />
-                <OutFieldSide />
+                <OutFieldSide position={6} side={1}/>
+                <OutFieldSide position={5} side={1}/>
               </View>
             </View>
           </View>
@@ -143,14 +143,15 @@ class ScoreCreate extends React.Component {
 }
 
 function mapStateToProps(state, props) {
-  const { view } = state;
+  const { game, view } = state;
   const {
     score_create_modal,
   } = view || {
     score_create_modal: false,
   };
+  const { scores } = game
   return {
-    score_create_modal,
+    score_create_modal, scores 
   };
 }
 export default connect(mapStateToProps)(enhancer(ScoreCreate));
@@ -214,7 +215,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     width: 40,
     height: 40,
-    fontSize: 40,
+    fontSize: 30,
     color: "white",
     textAlign: "center",
     backgroundColor: "rgba(0, 0, 0, 0)",

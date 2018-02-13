@@ -16,7 +16,7 @@ class InFieldLength extends React.Component {
       <TouchableHighlight
         style={styles.vartical_blue_bar}
         onPress={() => {
-          this.setModalEvent();
+          this.setModalEvent(this.props.position, this.props.side);
         }
         }
       >
