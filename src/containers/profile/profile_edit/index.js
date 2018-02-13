@@ -20,7 +20,7 @@ import {
 } from "components";
 import baseHigherOrderComponentEnhancer from "enhances";
 import { ProfileImage } from "./components";
-import SexPicker from './components/sex_picker';
+import SexPicker from "./components/sex_picker";
 
 
 class ProfileEdit extends React.Component {
@@ -58,10 +58,10 @@ class ProfileEdit extends React.Component {
     });
   }
   _setPicker(){
-    this.setState({is_picker_visible: true})
+    this.setState({is_picker_visible: true});
   }
   _hidePicker(){
-    this.setState({is_picker_visible: false})
+    this.setState({is_picker_visible: false});
   }
   render() {
     return (
@@ -118,7 +118,7 @@ class ProfileEdit extends React.Component {
           </View>
         </View>
         <View style={styles.container}>
-          <NavigateButton action={() => {Actions.profile_top({ type: ActionConst.BACK_ACTION})}} style={styles.complete} text="完了" />
+          <NavigateButton action={() => {Actions.profile_top({ type: ActionConst.BACK_ACTION});}} style={styles.complete} text="完了" />
         </View>
         <SexPicker
           _hidePicker={this._hidePicker}

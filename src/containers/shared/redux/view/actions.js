@@ -1,7 +1,8 @@
 import {
   SET_SCORE_CREATE_MODAL,
   HIDE_SCORE_CREATE_MODAL,
-  EMAIL_ERROR_IN_SIGN_UP,
+  IS_NOT_EMAIL_IN_SIGN_UP,
+  IS_EMAIL_IN_SIGN_UP,
 } from "./action_types";
 
 export function setScoreCreateModal() {
@@ -18,10 +19,16 @@ export function hideScoreCreateModal() {
   };
 }
 
-export function emailErrorInSignUp(){
+export function isNotEmailInSignUp(){
   return {
-    type: EMAIL_ERROR_IN_SIGN_UP,
-    sign_up_email_error: true
-  }
+    type: IS_NOT_EMAIL_IN_SIGN_UP,
+    sign_up_email_error_message: true
+  };
 }
 
+export function isEmailInSignUp(){
+  return {
+    type: IS_EMAIL_IN_SIGN_UP,
+    sign_up_email_error_message: false 
+  };
+}

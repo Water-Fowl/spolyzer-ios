@@ -30,7 +30,7 @@ export default function enhancer(ComponentClass){
     render(){
       return(
         super.render()
-      )
+      );
     }
-  }
+  };
 }

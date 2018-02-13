@@ -12,7 +12,7 @@ import SignUp from "./authentication/sign_up";
 import analysisReducer from "./analysis/reducer";
 import gameReducer from "./game/reducer";
 import authenticationReducer from "./authentication/reducer";
-import viewReducer from './shared/redux/view/reducer'
+import viewReducer from "./shared/redux/view/reducer";
 
 export {
   /* Componentのexport */

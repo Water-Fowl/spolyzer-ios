@@ -11,7 +11,14 @@ import {
 import { Actions } from "react-native-router-flux";
 import Orientation from "react-native-orientation";
 import { Background } from "components";
-import { postUserRegistration, emailValidation } from "../actions/registration";
+import { 
+  postUserRegistration, 
+  emailValidation 
+} from "../actions/registration";
+import { 
+  isNotEmailInSignUp, 
+  isEmailInSignUp 
+} from "../../shared/redux/view/actions";
 import { connect } from "react-redux";
 import { emailReg } from "const";
 import EmailErrorMessage from "./components/email_error_message";
@@ -33,10 +40,10 @@ class SignUp extends React.Component {
   }
   postRegistrationForm() {
     const { dispatch } = this.props;
-    const isEmail = emailReg.test(this.state.email)
-    console.log(isEmail)
-    dispatch(emailValidation(isEmail))
+    const isEmail = emailReg.test(this.state.email);
+    dispatch(emailValidation(isEmail));
     if (isEmail){
+      dispatch(isEmailInSignUp());
       /*
       const registration_body = { email: this.state.email,
         password: this.state.password,
@@ -46,6 +53,9 @@ class SignUp extends React.Component {
       dispatch(postUserRegistration(registration_body));
       */
       Actions.tab();
+    }
+    else{
+      dispatch(isNotEmailInSignUp());
     }
   }
   render() {
@@ -118,12 +128,12 @@ function mapStateToProps(state, props){
   };
 }
 
-export default connect()(SignUp);
+export default connect(mapStateToProps)(SignUp);
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
+    alignItems: "center",
   },
   logo: {
     marginTop: 80,
