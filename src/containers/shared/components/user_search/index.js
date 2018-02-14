@@ -43,7 +43,7 @@ class UserSearch extends React.Component {
           <View style={styles.user_account}>
             <View style={styles.user_image}>
               <Image
-                source={require('../../../../assets/img/score_creat_person.png')}
+                source={require('../../../../assets/img/score_create_person.png')}
                 style={styles.person}
               />
             </View>

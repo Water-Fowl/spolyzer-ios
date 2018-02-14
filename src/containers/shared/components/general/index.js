@@ -46,11 +46,7 @@ export class NavigateButton extends React.Component {
     return (
       <TouchableOpacity onPress={this.props.action} style={this.props.style}>
         <Image
-<<<<<<< HEAD:src/components/general.js
-          source={require("../assets/img/navigate_button.png")}
-=======
           source={require('../../../../assets/img/navigate_button.png')}
->>>>>>> 61d79dc... [add]エラーを直しながら、空の画面を表示できるようにした。:src/containers/shared/components/general/index.js
           style={styles.navigate_button}
         />
         <Text style={styles.navigate_text}>
