@@ -17,7 +17,7 @@ export class OutFieldLength extends React.Component {
       <TouchableHighlight
         style={styles.vartical_yellow_bar_left}
         onPress={() => {
-          this.setModalEvent();
+          this.setModalEvent(this.props.position, this.props.side);
         }
         }
       >

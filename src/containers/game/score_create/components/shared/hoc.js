@@ -8,10 +8,10 @@ export function fieldButtonEnhancer(ComponentClass) {
       super(props);
       this.setModalEvent.bind(this);
     }
-    setModalEvent() {
+    setModalEvent(position, side) {
       const { dispatch } = this.props;
       dispatch(setScoreCreateModal());
-      dispatch(setPositionAndSide(this.props.position, this.props.side));
+      dispatch(setPositionAndSide(position, side));
     }
     render() {
       return (

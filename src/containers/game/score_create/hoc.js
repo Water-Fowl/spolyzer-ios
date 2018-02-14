@@ -21,9 +21,12 @@ export default function enhancer(ComponentClass) {
     componentWillUnmount() {
       Orientation.lockToPortrait();
     }
+    componentWillReceiveProps(nextProps){
+      this.forceUpdate();
+    }
     navigateEvent(){
-      const { dispatch } = this.props
-      dispatch(postGame())
+      const { dispatch } = this.props;
+      dispatch(postGame());
       Action.score_view();
     }
     render() {

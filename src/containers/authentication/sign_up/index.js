@@ -34,9 +34,9 @@ class SignUp extends React.Component {
 
   postRegistrationForm() {
     const { dispatch } = this.props;
-    const isEmail = emailReg.test(this.state.email)
-    console.log(isEmail)
-    dispatch(emailValidation(isEmail))
+    const isEmail = emailReg.test(this.state.email);
+    console.log(isEmail);
+    dispatch(emailValidation(isEmail));
     if (isEmail){
       /*
       const registration_body = { email: this.state.email,

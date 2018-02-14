@@ -4,20 +4,28 @@ import {
   SCORE_REQUEST,
   SCORE_RECIEVED,
 } from "./action_types";
+import {
+  getScoreByPositionAndSide
+} from "utils";
 
 const initialState = {
   positions: [],
   actions: [],
   sides: [],
+  scores: [0, 0]
 };
 
 export default function gameReducer(state = initialState, action = {}) {
   switch (action.type) {
   case SET_SHOT_TYPE:
+    /* 今回得られたスコアを取得し、配列に格納する */
+    const current_score = getScoreByPositionAndSide(state.position, state.side);
+    const current_scores = [state.scores[0] + current_score[0], state.scores[1] + current_score[1]];
     return Object.assign({}, state, {
       actions: state.actions.concat([action.action]),
       positions: state.positions.concat([state.position]),
       sides: state.sides.concat([state.side]),
+      scores: current_scores 
     });
   case SET_POSITION_AND_SIDE:
     return Object.assign({}, state, {
