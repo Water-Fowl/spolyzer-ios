@@ -17,7 +17,7 @@ export class Background extends React.Component {
   render() {
     return (
       <Image
-        source={require("../assets/img/background.png")}
+        source={require('../../../../assets/img/background.png')}
         style={styles.background}
       />
     );
@@ -35,7 +35,7 @@ export class NavBar extends React.Component {
         paddingBottom: 5,
       }}
       >
-        <Image source={require("../assets/img/spolyzer_header.png")} />
+        <Image source={require('../../../../assets/img/spolyzer_header.png')} />
       </View>
     );
   }
@@ -46,7 +46,7 @@ export class NavigateButton extends React.Component {
     return (
       <TouchableOpacity onPress={this.props.action} style={this.props.style}>
         <Image
-          source={require("../assets/img/navigate_button.png")}
+          source={require('../../../../assets/img/navigate_button.png')}
           style={styles.navigate_button}
         />
         <Text style={styles.navigate_text}>
@@ -64,7 +64,7 @@ export class TopBar extends React.Component {
         backgroundColor: "rgba(46, 167, 224, 0.5)",
       }}
       >
-        <Image source={require("../assets/img/spolyzer_header.png")} />
+        <Image source={require('../../../../assets/img/spolyzer_header.png')} />
       </View>
     );
   }
@@ -74,7 +74,7 @@ export class LandScapeBackground extends React.Component {
   render() {
     return (
       <Image
-        source={require("../assets/img/landscape_background.png")}
+        source={require('../../../../assets/img/landscape_background.png')}
         style={styles.landscape_background}
       />
     );
@@ -90,7 +90,7 @@ export class TopContentBar extends React.Component {
       <View style={styles.top_content_bar_container}>
         <Image
           style={styles.top_content_bar_img}
-          source={require("../assets/img/top_content_bar.png")}
+          source={require('../../../../assets/img/top_content_bar.png')}
         />
         <Text style={styles.top_content_bar_text}>{this.props.children}</Text>
       </View>
