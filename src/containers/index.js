@@ -6,8 +6,8 @@ import ProfileTop from "./profile/profile_top";
 import ProfileEdit from "./profile/profile_edit";
 import Login from "./authentication/login";
 import SignUp from "./authentication/sign_up";
-import AnalysisCreate from './analysis/analysis_create';
-import UserSearch from './shared/components/user_search';
+import AnalysisCreate from "./analysis/analysis_create";
+import UserSearch from "./shared/components/user_search";
 
 /* Reducersのimport  */
 import analysisReducer from "./analysis/reducer";
