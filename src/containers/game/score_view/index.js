@@ -26,7 +26,7 @@ import {
   OutFieldLength,
 } from "./components";
 
-import baseHigherOrderComponentEnhancer from "enhances";
+import baseEnhancer from "enhances";
 
 const data = [
   /* TODO カタカナ崩れの対策 */
@@ -195,7 +195,7 @@ class ScoreView extends React.Component {
   }
 }
 
-export default baseHigherOrderComponentEnhancer(ScoreView);
+export default baseEnhancer(ScoreView);
 
 const styles = StyleSheet.create({
   container: {

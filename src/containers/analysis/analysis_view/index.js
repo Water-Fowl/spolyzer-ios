@@ -27,7 +27,7 @@ import {
   OutArea,
 } from "./components";
 
-import baseHigherOrderComponentEnhancer from "enhances";
+import baseEnhancer from "enhances";
 
 const data = [
   { position: "A", counts: 1 },
@@ -218,7 +218,7 @@ class AnalysisView extends React.Component {
   }
 }
 
-export default baseHigherOrderComponentEnhancer(AnalysisView);
+export default baseEnhancer(AnalysisView);
 
 const styles = StyleSheet.create({
   container: {

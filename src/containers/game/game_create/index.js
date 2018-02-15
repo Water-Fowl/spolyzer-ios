@@ -13,9 +13,10 @@ import {
   NavigateButton,
   NavBar,
 } from "components";
-import baseHigherOrderComponentEnhancer from "enhances";
+import baseEnhancer from "enhances";
 import Orientation from "react-native-orientation";
 import { Actions } from "react-native-router-flux";
+import { NoSelectedUser } from "./components"
 
 class ScoreGameCreate extends React.Component {
   render() {
@@ -25,12 +26,12 @@ class ScoreGameCreate extends React.Component {
         <View style={styles.align_items_center} >
           <View style={styles.game_setting_border} >
             <View style={styles.game_setting_table}>
-              <Text style={styles.score_game_create_opponents}>対戦者</Text>
+              <Text style={styles.score_game_create_opponents}>対戦相手選択</Text>
               <View style={styles.game_setting_table_inner}>
                 <View style={styles.game_setting_table_inner_left}>
-                  <View style={styles.circle} />
+                  <NoSelectedUser />
                   <View style={styles.textbox} />
-                  <View style={styles.circle} />
+                  <NoSelectedUser />
                   <View style={styles.textbox} />
                 </View>
                 <View style={styles.game_setting_table_inner_center}>
@@ -40,9 +41,9 @@ class ScoreGameCreate extends React.Component {
                   />
                 </View>
                 <View style={styles.game_setting_inner_right} >
-                  <View style={styles.circle} />
+                  <NoSelectedUser />
                   <View style={styles.textbox} />
-                  <View style={styles.circle} />
+                  <NoSelectedUser />
                   <View style={styles.textbox} />
                 </View>
               </View>
@@ -54,7 +55,7 @@ class ScoreGameCreate extends React.Component {
     );
   }
 }
-export default baseHigherOrderComponentEnhancer(ScoreGameCreate);
+export default baseEnhancer(ScoreGameCreate);
 
 const styles = StyleSheet.create({
   container: {
@@ -132,8 +133,7 @@ const styles = StyleSheet.create({
     padding: 0,
     marginTop: 10,
     marginLeft: 20,
-    marginRight: 240,
-    fontSize: 20,
+    fontSize: 16,
     fontWeight: "bold",
     color: "white",
   },

@@ -16,7 +16,7 @@ import {
   NavigateButton,
 } from "components";
 import { SearchedUserAccountContainer } from "./components";
-import baseHigherOrderComponentEnhancer from "enhances";
+import baseEnhancer from "enhances";
 
 class UserSearch extends React.Component {
   constructor(props) {
@@ -48,7 +48,7 @@ class UserSearch extends React.Component {
   }
 }
 
-export default connect()(baseHigherOrderComponentEnhancer(UserSearch));
+export default connect()(baseEnhancer(UserSearch));
 
 const styles = StyleSheet.create({
   container: {
