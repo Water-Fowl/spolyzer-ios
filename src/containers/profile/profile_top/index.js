@@ -11,7 +11,7 @@ import { connect } from "react-redux";
 import {
   TopContentBar,
 } from "components";
-import baseHigherOrderComponentEnhancer from "enhances";
+import baseEnhancer from "enhances";
 import { Actions } from "react-native-router-flux";
 
 class ProfileTop extends React.Component {
@@ -34,7 +34,7 @@ class ProfileTop extends React.Component {
               source={require("../../../assets/img/my_page_center_design.png")}
             />
             <Text style={styles.my_name}>
-              ここにNAME
+              yoshikisex
             </Text>
             <View style={styles.game_setting_border}>
               <View style={styles.game_setting_table} />
@@ -46,7 +46,7 @@ class ProfileTop extends React.Component {
   }
 }
 
-export default connect()(baseHigherOrderComponentEnhancer(ProfileTop));
+export default connect()(baseEnhancer(ProfileTop));
 
 const styles = StyleSheet.create({
   container: {

@@ -3,6 +3,7 @@ import {
   Text,
   View,
   StyleSheet,
+  TouchableOpacity,
 } from "react-native";
 import { Actions } from "react-native-router-flux";
 import { connect } from "react-redux";
@@ -44,7 +45,9 @@ class AnalysisCreate extends React.Component {
           <Text style={styles.opponent_text}>
             対戦相手
           </Text>
-          <View style={styles.opponent_frame} />
+          <TouchableOpacity onPress={Actions.user_search}>
+            <View style={styles.opponent_frame} />
+          </TouchableOpacity>
           <View style={styles.opponent_frame} />
         </View>
         <View style={{ flexDirection: "row" }}>

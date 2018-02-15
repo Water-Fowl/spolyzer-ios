@@ -18,7 +18,7 @@ import {
   NavigateButton,
   TopContentBar,
 } from "components";
-import baseHigherOrderComponentEnhancer from "enhances";
+import baseEnhancer from "enhances";
 import { ProfileImage } from "./components";
 import SexPicker from "./components/sex_picker";
 
@@ -131,7 +131,7 @@ class ProfileEdit extends React.Component {
     );
   }
 }
-export default connect()(baseHigherOrderComponentEnhancer(ProfileEdit));
+export default connect()(baseEnhancer(ProfileEdit));
 
 const styles = StyleSheet.create({
   container: {
