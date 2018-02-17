@@ -1,16 +1,17 @@
 import React from "react";
-import {
-  Text,
-  View,
-  StyleSheet,
-  TouchableOpacity,
-} from "react-native";
 import { Actions } from "react-native-router-flux";
-import { connect } from "react-redux";
 import {
   NavigateButton,
   TopContentBar,
 } from "components";
+import {
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
+import { connect } from "react-redux";
+
 import enhancer from "./hoc";
 import {
   GameTypeButton,

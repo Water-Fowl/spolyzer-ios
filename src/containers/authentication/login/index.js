@@ -1,21 +1,20 @@
+import Orientation from "react-native-orientation";
 import React, { Component } from "react";
+import { Actions } from "react-native-router-flux";
+import { Background } from "components";
 import {
+  Dimensions,
+  Image,
   StyleSheet,
   Text,
+  TextInput,
   TouchableOpacity,
   View,
-  Image,
-  Dimensions,
-  TextInput,
 } from "react-native";
-import { Actions } from "react-native-router-flux";
-import Orientation from "react-native-orientation";
-import { Background } from "components";
-
 import { connect } from "react-redux";
-import { postUserLogin } from "../actions/login";
-import { enhancer } from "./hoc";
 
+import { enhancer } from "./hoc";
+import { postUserLogin } from "../actions/login";
 
 class Login extends React.Component {
   render() {

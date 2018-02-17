@@ -1,12 +1,13 @@
 import {
-  SET_POSITION_AND_SIDE,
-  SET_SHOT_TYPE,
-  SCORE_REQUEST,
-  SCORE_RECIEVED,
-} from "./action_types";
-import {
   getScoreByPositionAndSide
 } from "utils";
+
+import {
+  SCORE_RECIEVED,
+  SCORE_REQUEST,
+  SET_POSITION_AND_SIDE,
+  SET_SHOT_TYPE,
+} from "./action_types";
 
 const initialState = {
   positions: [],

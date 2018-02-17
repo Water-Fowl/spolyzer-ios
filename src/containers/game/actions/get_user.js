@@ -1,9 +1,8 @@
 import { SEARCH_USER_ENDPOINT } from "../../../config/api";
 import {
-  SEARCH_USER_REQUEST,
   SEARCH_USER_RECEIVED,
+  SEARCH_USER_REQUEST,
 } from "../action_types";
-
 
 export function getUserName(body) {
   return (dispatch) => {

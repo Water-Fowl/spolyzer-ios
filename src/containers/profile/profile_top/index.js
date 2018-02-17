@@ -1,18 +1,17 @@
 import React from "react";
+import baseEnhancer from "enhances";
+import { Actions } from "react-native-router-flux";
 import {
-  StyleSheet,
   Image,
+  StyleSheet,
   Text,
-  View,
   TouchableOpacity,
+  View,
 } from "react-native";
-import { connect } from "react-redux";
-
 import {
   TopContentBar,
 } from "components";
-import baseEnhancer from "enhances";
-import { Actions } from "react-native-router-flux";
+import { connect } from "react-redux";
 
 class ProfileTop extends React.Component {
   render() {

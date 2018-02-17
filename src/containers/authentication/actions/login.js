@@ -1,11 +1,11 @@
-import { CALL_API } from "redux-api-middleware";
 import { Actions } from "react-native-router-flux";
-import { SIGN_IN_ENDPOINT } from "../../../config/api";
-import {
-  LOGIN_REQUEST,
-  LOGIN_RECIEVED,
-} from "../action_type";
+import { CALL_API } from "redux-api-middleware";
 
+import {
+  LOGIN_RECIEVED,
+  LOGIN_REQUEST,
+} from "../action_type";
+import { SIGN_IN_ENDPOINT } from "../../../config/api";
 
 export function postUserLogin(body) {
   return (dispatch) => {

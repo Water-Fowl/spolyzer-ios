@@ -1,6 +1,7 @@
-import { postUserRegistration } from "../actions/registration";
-import { connect } from "react-redux";
 import Orientation from "react-native-orientation";
+import { connect } from "react-redux";
+
+import { postUserRegistration } from "../actions/registration";
 
 export default function enhancer(ComponentClass){
   return class SignUpHOC extends ComponentClass{

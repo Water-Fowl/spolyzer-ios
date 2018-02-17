@@ -1,5 +1,6 @@
-import { POST_SCORE_GAME_ENDPOINT } from "../../../config/api";
 import { Actions } from "react-native-router-flux";
+
+import { POST_SCORE_GAME_ENDPOINT } from "../../../config/api";
 
 export const ADD_SCORE = "ADD_SCORE";
 export const SET_MODAL = "SET_MODAL";

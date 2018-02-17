@@ -1,8 +1,8 @@
 import {
-  SET_SCORE_CREATE_MODAL,
   HIDE_SCORE_CREATE_MODAL,
-  IS_NOT_EMAIL_IN_SIGN_UP,
   IS_EMAIL_IN_SIGN_UP,
+  IS_NOT_EMAIL_IN_SIGN_UP,
+  SET_SCORE_CREATE_MODAL,
 } from "./action_types";
 
 export function setScoreCreateModal() {

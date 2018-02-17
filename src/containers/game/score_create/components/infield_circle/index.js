@@ -1,15 +1,15 @@
 import React from "react";
-import { connect } from "react-redux";
 import {
   Dimensions,
-  StyleSheet,
   Image,
+  StyleSheet,
   Text,
-  View,
   TouchableHighlight,
+  View,
 } from "react-native";
-import { fieldButtonEnhancer } from "../shared/hoc";
+import { connect } from "react-redux";
 
+import { fieldButtonEnhancer } from "../shared/hoc";
 
 class InFieldCircle extends React.Component {
   render() {

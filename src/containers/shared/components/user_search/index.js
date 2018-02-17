@@ -1,22 +1,23 @@
 import React from "react";
+import baseEnhancer from "enhances";
 import {
-  StyleSheet,
-  Image,
-  Text,
-  View,
-  TextInput,
-} from "react-native";
-import { connect } from "react-redux";
-import { 
-  Actions,
   ActionConst,
+  Actions,
 } from "react-native-router-flux";
 import {
-  TopContentBar,
+  Image,
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+} from "react-native";
+import {
   NavigateButton,
+  TopContentBar,
 } from "components";
+import { connect } from "react-redux";
+
 import { SearchedUserAccountContainer } from "./components";
-import baseEnhancer from "enhances";
 
 class UserSearch extends React.Component {
   constructor(props) {

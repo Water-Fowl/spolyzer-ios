@@ -1,11 +1,10 @@
 import React from "react";
 import {
-  Text,
   Image,
   StyleSheet,
+  Text,
   TouchableOpacity,
 } from "react-native";
-
 
 export default class NavigateButton extends React.Component {
   render() {

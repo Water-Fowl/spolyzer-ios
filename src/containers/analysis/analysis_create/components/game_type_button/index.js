@@ -2,9 +2,10 @@ import React from "react";
 import {
   StyleSheet,
   Text,
-  View,
   TouchableHighlight,
+  View,
 } from "react-native";
+
 import Button from "./components/button";
 
 export default class GameTypeButton extends React.Component {

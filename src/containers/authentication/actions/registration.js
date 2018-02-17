@@ -1,11 +1,11 @@
 import { Actions } from "react-native-router-flux";
-import { REGISTRATION_ENDPOINT } from "../../../config/api";
+
 import {
+  EMAIL_VALIDATION,
   REGISTRATION_RECEIVED,
   REGISTRATION_REQUEST,
-  EMAIL_VALIDATION,
 } from "../action_type";
-
+import { REGISTRATION_ENDPOINT } from "../../../config/api";
 
 export function postUserRegistration(body) {
   return (dispatch) => {

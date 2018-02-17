@@ -1,33 +1,33 @@
 import React from "react";
+import baseEnhancer from "enhances";
+import { ActionConst, Actions } from "react-native-router-flux";
 import {
-  Text,
   Image,
-  View,
-  TouchableOpacity,
-  StyleSheet,
   ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
 } from "react-native";
-import {
-  VictoryBar,
-  VictoryChart,
-  VictoryTheme,
-  VictoryAxis,
-} from "victory-native";
-import { Actions, ActionConst } from "react-native-router-flux";
 import {
   TopContentBar,
 } from "components";
 import {
+  VictoryAxis,
+  VictoryBar,
+  VictoryChart,
+  VictoryTheme,
+} from "victory-native";
+
+import {
+  InArea,
   InFieldCircle,
   InFieldLength,
   InFieldSide,
-  InArea,
-  OutFieldSide,
-  OutFieldLength,
   OutArea,
+  OutFieldLength,
+  OutFieldSide,
 } from "./components";
-
-import baseEnhancer from "enhances";
 
 const data = [
   { position: "A", counts: 1 },

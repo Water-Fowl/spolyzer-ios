@@ -1,11 +1,12 @@
 import React from "react";
 import {
-  Text,
   StyleSheet,
+  Text,
   TouchableHighlight,
 } from "react-native";
-import { scoreCreateShotTypeButtonEnhancer } from "./hoc";
 import { connect } from "react-redux";
+
+import { scoreCreateShotTypeButtonEnhancer } from "./hoc";
 
 class ScoreCreateShotTypeButton extends React.Component {
   render() {

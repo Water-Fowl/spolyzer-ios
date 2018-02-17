@@ -1,27 +1,28 @@
+import Orientation from "react-native-orientation";
 import React, { Component } from "react";
+import { Actions } from "react-native-router-flux";
+import { Background } from "components";
 import {
+  Dimensions,
+  Image,
   StyleSheet,
   Text,
+  TextInput,
   TouchableOpacity,
   View,
-  Image,
-  Dimensions,
-  TextInput,
 } from "react-native";
-import { Actions } from "react-native-router-flux";
-import Orientation from "react-native-orientation";
-import { Background } from "components";
-import { 
-  postUserRegistration, 
-  emailValidation 
-} from "../actions/registration";
-import { 
-  isNotEmailInSignUp, 
-  isEmailInSignUp 
-} from "../../shared/redux/view/actions";
 import { connect } from "react-redux";
 import { emailReg } from "const";
+
 import EmailErrorMessage from "./components/email_error_message";
+import {
+  emailValidation,
+  postUserRegistration
+} from "../actions/registration";
+import {
+  isEmailInSignUp,
+  isNotEmailInSignUp
+} from "../../shared/redux/view/actions";
 
 const registrationUser = {
   name: "takumimuggle",

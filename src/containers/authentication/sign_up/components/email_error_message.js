@@ -1,7 +1,7 @@
 import React from "react";
 import {
-  Text,
   StyleSheet,
+  Text,
 } from "react-native";
 
 export default class EmailErrorMessage extends React.Component{

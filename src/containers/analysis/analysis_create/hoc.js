@@ -1,4 +1,5 @@
 import baseEnhancer from "enhances";
+
 import { getAnalysisGames } from "../actions/get_games";
 
 export default function enhancer(ComponentClass) {

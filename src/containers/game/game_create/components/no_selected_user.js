@@ -1,8 +1,8 @@
 import React from "react";
 import {
-  View,
-  Text,
   StyleSheet,
+  Text,
+  View,
 } from "react-native";
 
 export default class NoSelectedUser extends React.Component{

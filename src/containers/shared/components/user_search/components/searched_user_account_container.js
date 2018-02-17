@@ -1,11 +1,11 @@
 import React from "react";
 import {
-  View,
   ScrollView,
   StyleSheet,
+  View,
 } from "react-native";
-import SearchedUserAccount from "./searched_user_account";
 
+import SearchedUserAccount from "./searched_user_account";
 
 export default class SearchedUserAccountContainer extends React.Component{
   render(){

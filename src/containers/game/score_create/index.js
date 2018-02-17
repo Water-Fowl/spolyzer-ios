@@ -1,33 +1,33 @@
-import React from "react";
-import {
-  Text,
-  Image,
-  View,
-  Dimensions,
-  TouchableHighlight,
-  BackgroundImage,
-  StyleSheet,
-  TriangleCorner,
-} from "react-native";
-import {
-  connect,
-} from "react-redux";
-import { Actions } from "react-native-router-flux";
 import Orientation from "react-native-orientation";
+import React from "react";
+import { Actions } from "react-native-router-flux";
 import {
-  InFieldLength,
-  InFieldSide,
-  InFieldCircle,
-  OutFieldLength,
-  OutFieldSide,
-  Modal,
-} from "./components";
+  BackgroundImage,
+  Dimensions,
+  Image,
+  StyleSheet,
+  Text,
+  TouchableHighlight,
+  TriangleCorner,
+  View,
+} from "react-native";
 import {
   LandScapeBackground,
   TopContentBar,
 } from "components";
-import enhancer from "./hoc";
+import {
+  connect,
+} from "react-redux";
 
+import enhancer from "./hoc";
+import {
+  InFieldCircle,
+  InFieldLength,
+  InFieldSide,
+  Modal,
+  OutFieldLength,
+  OutFieldSide,
+} from "./components";
 
 class ScoreCreate extends React.Component {
   render() {

@@ -2,11 +2,11 @@ import React from "react";
 import {
   StyleSheet,
   Text,
-  View,
   TouchableHighlight,
+  View,
 } from "react-native";
-import Button from "./components/button";
 
+import Button from "./components/button";
 
 export default class ShotTypeButton extends React.Component {
   render() {

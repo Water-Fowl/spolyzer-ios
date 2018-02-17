@@ -1,11 +1,12 @@
-import React from "react";
 import PropTypes from "prop-types";
+import React from "react";
 import {
-  TouchableHighlight,
-  Text,
   StyleSheet,
+  Text,
+  TouchableHighlight,
 } from "react-native";
 import { connect } from "react-redux";
+
 import { setShotType } from "../../../../actions/set_query";
 
 class Button extends React.Component {

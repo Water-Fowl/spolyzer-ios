@@ -1,9 +1,10 @@
-import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
-import { combineReducers, createStore, applyMiddleware, compose } from "redux";
 import thunkMiddleware from "redux-thunk";
+import { applyMiddleware, combineReducers, compose, createStore } from "redux";
 import { createLogger } from "redux-logger";
-import { analysisReducer, gameReducer, authenticationReducer, viewReducer } from "../containers";
+import { persistReducer, persistStore } from "redux-persist";
+
+import { analysisReducer, authenticationReducer, gameReducer, viewReducer } from "../containers";
 
 const authenticationConfig = {
   key: "authentication",

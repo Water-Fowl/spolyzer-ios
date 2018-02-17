@@ -1,21 +1,23 @@
+import Orientation from "react-native-orientation";
 import React from "react";
-import {
-  Dimensions,
-  StyleSheet,
-  Image,
-  Text,
-  TouchableHighlight,
-  View } from "react-native";
+import baseEnhancer from "enhances";
+import { Actions } from "react-native-router-flux";
 import {
   Background,
+  NavBar,
+  NavigateButton,
   TopBar,
   TopContentBar,
-  NavigateButton,
-  NavBar,
 } from "components";
-import baseEnhancer from "enhances";
-import Orientation from "react-native-orientation";
-import { Actions } from "react-native-router-flux";
+import {
+  Dimensions,
+  Image,
+  StyleSheet,
+  Text,
+  TouchableHighlight,
+  View
+} from "react-native";
+
 import { NoSelectedUser } from "./components";
 
 class ScoreGameCreate extends React.Component {

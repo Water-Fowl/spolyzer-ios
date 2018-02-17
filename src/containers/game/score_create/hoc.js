@@ -1,8 +1,9 @@
+import Orientation from "react-native-orientation";
 import React from "react";
 import {
   Dimensions,
 } from "react-native";
-import Orientation from "react-native-orientation";
+
 import { postGame } from "../actions/post_game";
 
 export default function enhancer(ComponentClass) {

@@ -1,8 +1,8 @@
 import {
   GAME_TYPE_SETTING,
+  OPPONENT_USER_SETTING,
   SHOT_TYPE_SETTING,
   TERM_SETTING,
-  OPPONENT_USER_SETTING,
 } from "../action_type";
 
 export function setGameType(game_type_id) {

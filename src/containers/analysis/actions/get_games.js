@@ -1,10 +1,11 @@
-import { CALL_API } from "redux-api-middleware";
 import { Actions } from "react-native-router-flux";
-import { GET_GAMES_ENDPOINT } from "../../../config/api";
+import { CALL_API } from "redux-api-middleware";
+
 import {
-  GAME_INFORMATION_REQUEST,
   GAME_INFORMATION_RECEIVED,
+  GAME_INFORMATION_REQUEST,
 } from "../action_type";
+import { GET_GAMES_ENDPOINT } from "../../../config/api";
 
 export function getAnalysisGames(information_body) {
   return (dispatch) => {

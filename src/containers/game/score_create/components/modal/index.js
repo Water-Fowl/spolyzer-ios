@@ -1,13 +1,14 @@
 import React from "react";
 import {
-  View,
-  Text,
   StyleSheet,
+  Text,
+  View,
 } from "react-native";
+
+import ScoreCreateShotTypeButton from "../shot_type_button";
 import {
   scoreCreateModalEnhancer,
 } from "./hoc";
-import ScoreCreateShotTypeButton from "../shot_type_button";
 
 class Modal extends React.Component {
   render() {

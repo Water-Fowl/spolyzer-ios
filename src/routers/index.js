@@ -1,29 +1,30 @@
 import React from "react";
+import { Actions } from "react-native-router-flux";
 import {
   Image,
   StyleSheet,
 } from "react-native";
-import { createStore, applyMiddleware, compose } from "redux";
 import { Provider, connect } from "react-redux";
 import {
-  Scene,
   Router,
+  Scene,
   Tabs,
 } from "react-native-router-flux";
-import { Actions } from "react-native-router-flux";
+import { applyMiddleware, compose, createStore } from "redux";
+
+import configureStore from "../stores";
 import {
+  AnalysisCreate,
+  AnalysisView,
+  GameCreate,
+  Login,
+  ProfileEdit,
   ProfileTop,
   ScoreCreate,
-  GameCreate,
   ScoreView,
-  AnalysisView,
-  AnalysisCreate,
-  Login,
   SignUp,
   UserSearch,
-  ProfileEdit,
 } from "../containers";
-import configureStore from "../stores";
 
 const RouterWithRedux = connect()(Router);
 const { persistor, store } = configureStore();

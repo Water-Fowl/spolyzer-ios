@@ -1,8 +1,8 @@
 import React from "react";
 import {
-  View,
   Image,
   StyleSheet,
+  View,
 } from "react-native";
 
 export default class TopBar extends React.Component {

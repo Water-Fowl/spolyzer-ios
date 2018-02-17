@@ -1,9 +1,9 @@
 import React from "react";
 import {
-  View,
-  StyleSheet,
   Image,
+  StyleSheet,
   Text,
+  View,
 } from "react-native";
 
 export default class SearchedUserAccount extends React.Component{

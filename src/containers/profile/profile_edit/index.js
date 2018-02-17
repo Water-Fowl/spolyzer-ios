@@ -1,29 +1,29 @@
+import ImagePicker from "react-native-image-crop-picker";
 import React from "react";
+import baseEnhancer from "enhances";
 import {
-  Text,
-  View,
-  StyleSheet,
-  TouchableOpacity,
+  ActionConst,
+  Actions,
+} from "react-native-router-flux";
+import {
   Image,
   Picker,
+  StyleSheet,
+  Text,
   TextInput,
+  TouchableOpacity,
+  View,
 } from "react-native";
-import { 
-  Actions,
-  ActionConst,
-} from "react-native-router-flux";
-import { connect } from "react-redux";
-import ImagePicker from "react-native-image-crop-picker";
 import {
   NavigateButton,
   TopContentBar,
 } from "components";
-import baseEnhancer from "enhances";
-import { 
+import { connect } from "react-redux";
+
+import {
   ProfileImage,
   SexPicker,
 } from "./components";
-
 
 class ProfileEdit extends React.Component {
   constructor() {

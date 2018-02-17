@@ -1,11 +1,11 @@
 import React from "react";
-import { lightBlue } from "const";
 import {
-  View,
-  Text,
   Picker,
   StyleSheet,
+  Text,
+  View,
 } from "react-native";
+import { lightBlue } from "const";
 
 export default class SexPicker extends React.Component{
   render(){

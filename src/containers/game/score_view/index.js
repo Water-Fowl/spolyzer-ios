@@ -1,32 +1,32 @@
 import React from "react";
+import baseEnhancer from "enhances";
+import { ActionConst, Actions } from "react-native-router-flux";
 import {
-  Text,
   Image,
-  View,
-  TouchableOpacity,
-  StyleSheet,
   ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
 } from "react-native";
-import {
-  VictoryBar,
-  VictoryChart,
-  VictoryTheme,
-  VictoryAxis,
-  VictoryLabel,
-} from "victory-native";
-import { Actions, ActionConst } from "react-native-router-flux";
 import {
   TopContentBar,
 } from "components";
 import {
+  VictoryAxis,
+  VictoryBar,
+  VictoryChart,
+  VictoryLabel,
+  VictoryTheme,
+} from "victory-native";
+
+import {
   InFieldCircle,
   InFieldLength,
   InFieldSide,
-  OutFieldSide,
   OutFieldLength,
+  OutFieldSide,
 } from "./components";
-
-import baseEnhancer from "enhances";
 
 const data = [
   /* TODO カタカナ崩れの対策 */
