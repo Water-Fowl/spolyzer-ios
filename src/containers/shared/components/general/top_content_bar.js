@@ -37,4 +37,4 @@ const styles = StyleSheet.create({
   top_content_bar_container: {
     backgroundColor: "transparent",
   },
-})
+});

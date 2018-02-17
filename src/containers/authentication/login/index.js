@@ -51,7 +51,7 @@ class Login extends React.Component {
           {(() => {
             if (this.state.login_error) {
               return (
-                <View style={{ flexDirection: "row" }}>
+                <View style={styles.row_container}>
                   <Text style={styles.auto_login_text}>
                 メールアドレスかパスワードが間違っています。
                   </Text>
@@ -59,7 +59,7 @@ class Login extends React.Component {
               );
             }
           })()}
-          <View style={{ flexDirection: "row" }} />
+          <View style={styles.row_container} />
           <View style={styles.button}>
             <TouchableOpacity onPress={() => {
               Actions.tab();
@@ -108,6 +108,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
+  row_container: {
+    flexDirection: "row"
+  },
   form_container: {
     alignSelf: "center",
     width: "80%",
@@ -144,18 +147,6 @@ const styles = StyleSheet.create({
     marginTop: 80,
     marginBottom: 80,
     alignSelf: "center",
-  },
-  square: {
-    borderRightColor: "#28a8de",
-    borderTopColor: "#28a8de",
-    borderLeftColor: "#28a8de",
-    borderBottomColor: "#28a8de",
-    height: 19,
-    width: 19,
-    borderWidth: 1,
-    borderRadius: 3,
-    marginTop: 7,
-    marginBottom: 5,
   },
   text_field: {
     fontSize: 20,

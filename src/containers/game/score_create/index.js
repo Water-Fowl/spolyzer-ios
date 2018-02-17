@@ -33,6 +33,7 @@ class ScoreCreate extends React.Component {
   render() {
     return (
       <View style={{
+        /* eslint react-native/no-inline-styles: 0 */
         alignItems: "center",
         width: this.state.width,
         height: this.state.height,
@@ -72,11 +73,11 @@ class ScoreCreate extends React.Component {
           />
           <View style={styles.score_field_button_container}>
             <View style={styles.score_over_container}>
-              <View style={{ flex: 0.36, justifyContent: "space-around", flexDirection: "row" }}>
+              <View style={styles.score_out_field_side_container}>
                 <OutFieldSide position={5} side={0} />
                 <OutFieldSide position={6} side={0}/>
               </View>
-              <View style={{ flex: 0.36, justifyContent: "space-around", flexDirection: "row" }}>
+              <View style={styles.score_out_field_side_container}>
                 <OutFieldSide position={0} side={1}/>
                 <OutFieldSide position={1} side={1}/>
               </View>
@@ -126,11 +127,11 @@ class ScoreCreate extends React.Component {
               </View>
             </View>
             <View style={styles.score_under_container}>
-              <View style={{ flex: 0.36, justifyContent: "space-around", flexDirection: "row" }}>
+              <View style={styles.score_out_field_side_container}>
                 <OutFieldSide position={2} side={0} />
                 <OutFieldSide position={1} side={0}/>
               </View>
-              <View style={{ flex: 0.36, justifyContent: "space-around", flexDirection: "row" }}>
+              <View style={styles.score_out_field_side_container}>
                 <OutFieldSide position={6} side={1}/>
                 <OutFieldSide position={5} side={1}/>
               </View>
@@ -174,9 +175,6 @@ const styles = StyleSheet.create({
     paddingLeft: 8,
     paddingRight: 8,
     color: "white",
-  },
-  container: {
-    alignItems: "center",
   },
   score_information_bar: {
     flexDirection: "row",
@@ -274,6 +272,11 @@ const styles = StyleSheet.create({
     marginRight: 8,
     flexDirection: "column",
     justifyContent: "space-between",
+  },
+  score_out_field_side_container:{
+    flexDirection: "row",
+    flex: 0.36,
+    justifyContent: "space-around",
   },
   score_in_field_container: {
     flexDirection: "row",

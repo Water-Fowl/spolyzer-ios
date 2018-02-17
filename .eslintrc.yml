@@ -17,6 +17,7 @@ plugins:
   - import
   - jsx-a11y
 rules:
+  react-native/no-color-literals: 0 
   indent:
     - error
     - 2 

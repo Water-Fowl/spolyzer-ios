@@ -47,13 +47,4 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     flexDirection: "row",
   },
-  shot_type: {
-    fontSize: 30,
-    alignSelf: "center",
-    textAlign: "center",
-    padding: 5,
-    margin: 5,
-    color: "white",
-    backgroundColor: "#2EA7E0",
-  },
 });

@@ -157,7 +157,6 @@ class ScoreView extends React.Component {
               />
               <VictoryAxis	/* X軸 */
                 style={{
-                  color: "white",
                   grid: { stroke: "transparent" },
                   axis: {
                     stroke: "#2EA7E0",
@@ -274,35 +273,6 @@ const styles = StyleSheet.create({
     backfaceVisibility: "hidden",
     zIndex: 3,
     resizeMode: "contain",
-  },
-  in_field_area_container: {
-    width: 330,
-    position: "absolute",
-    flexDirection: "row",
-    justifyContent: "space-around",
-    paddingLeft: 10,
-    paddingRight: 10,
-  },
-  in_field_area: {
-    flex: 0.4,
-    alignSelf: "center",
-    backgroundColor: "black",
-    height: 138,
-    marginTop: 16,
-    marginBottom: 16,
-  },
-  out_field_area_container: {
-    width: 330,
-    position: "absolute",
-    flexDirection: "row",
-    justifyContent: "space-between",
-  },
-  out_field_area: {
-    alignSelf: "center",
-    flex: 0.45,
-    backgroundColor: "#FAEE00",
-    opacity: 0.3,
-    height: 170,
   },
   over_container: {
     flexDirection: "row",

@@ -52,18 +52,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  subtitle_text: {
-    color: "#ffffff",
-    fontSize: 22,
-    alignSelf: "center",
-    backgroundColor: "transparent",
-    fontWeight: "bold",
-    marginTop: 5,
-  },
-  subtitle: {
-    alignSelf: "center",
-    position: "absolute",
-  },
   user_icon: {
     margin: 15,
     opacity: 0.3,

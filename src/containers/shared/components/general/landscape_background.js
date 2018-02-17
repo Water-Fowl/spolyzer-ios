@@ -24,4 +24,4 @@ const styles = StyleSheet.create({
     backgroundColor: "rgb(30, 55, 80)",
     position: "absolute",
   },
-})
+});
