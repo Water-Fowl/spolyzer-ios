@@ -1,6 +1,11 @@
 import PropTypes from "prop-types";
 import React from "react";
 import {
+  $spolyzerDarkBlue,
+  $transparent,
+  $white,
+} from "const";
+import {
   StyleSheet,
   Text,
   TouchableHighlight,
@@ -60,21 +65,21 @@ export default connect(mapStateToProps)(Button);
 
 const styles = StyleSheet.create({
   text_pressed: {
-    color: "#ffffff",
+    color: $white,
     fontSize: 15,
-    backgroundColor: "transparent",
+    backgroundColor: $transparent,
     fontWeight: "bold",
   },
 
   text: {
-    color: "#ffffff",
+    color: $white,
     fontSize: 15,
-    backgroundColor: "transparent",
+    backgroundColor: $transparent,
     fontWeight: "bold",
   },
 
   button_pressed: {
-    backgroundColor: "#0a2444",
+    backgroundColor: $spolyzerDarkBlue,
     height: 28,
     width: 90,
     marginRight: 3,
@@ -87,7 +92,7 @@ const styles = StyleSheet.create({
   },
 
   button: {
-    backgroundColor: "transparent",
+    backgroundColor: $transparent,
     height: 28,
     width: 90,
     marginRight: 3,

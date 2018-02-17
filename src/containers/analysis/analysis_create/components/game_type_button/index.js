@@ -1,5 +1,9 @@
 import React from "react";
 import {
+  $spolyzerDarkBlue,
+  $transparent,
+} from "const";
+import {
   StyleSheet,
   Text,
   TouchableHighlight,
@@ -21,11 +25,11 @@ export default class GameTypeButton extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
-    backgroundColor: "transparent",
-    borderRightColor: "#0a2444",
-    borderTopColor: "#0a2444",
-    borderLeftColor: "#0a2444",
-    borderBottomColor: "#0a2444",
+    backgroundColor: $transparent,
+    borderRightColor: $spolyzerDarkBlue,
+    borderTopColor: $spolyzerDarkBlue,
+    borderLeftColor: $spolyzerDarkBlue,
+    borderBottomColor: $spolyzerDarkBlue,
     height: 34,
     width: 222,
     borderWidth: 1.5,
