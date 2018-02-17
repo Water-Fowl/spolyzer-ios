@@ -104,6 +104,9 @@ function mapStateToProps(state, props) {
 export default connect(mapStateToProps)(enhancer(Login));
 
 const styles = StyleSheet.create({
+  sample: {
+    flex: 1,
+  },
   container: {
     flex: 1,
   },
