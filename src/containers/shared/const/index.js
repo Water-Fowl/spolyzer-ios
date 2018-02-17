@@ -4,7 +4,7 @@
 import {
   $black,
   $spolyzerBlue,
-  $spolyzerB
+  $spolyzerDarkBlue,
   $white,
 } from "./color";
 import {
