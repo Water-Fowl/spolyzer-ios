@@ -2,15 +2,19 @@
  * @providesModule const 
  */
 import {
-  deep_blue,
-  light_blue,
+  $black,
+  $spolyzerBlue,
+  $spolyzerB
+  $white,
 } from "./color";
 import {
   emailReg
 } from "./regular_expression";
 
 export {
-  deep_blue,
-  light_blue,
+  $black,
+  $spolyzerBlue,
+  $spolyzerDarkBlue,
+  $white,
   emailReg
 };
