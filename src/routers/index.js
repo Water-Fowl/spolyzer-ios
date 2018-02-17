@@ -61,13 +61,12 @@ const styles = StyleSheet.create({
     margin: 10,
   },
   tab_style: {
-    backgroundColor: "rgba(58, 130, 169, 0.6)",
-    color: "rgb(58, 130, 169)",
+    backgroundColor: "#134A65",
   },
   label: {
-    color: "rgb(58, 130, 169)",
+    color: "white",
   },
   tab_bar_style: {
-    backgroundColor: "rgb(58, 130, 169)",
+    backgroundColor: "#00769E",
   },
 });

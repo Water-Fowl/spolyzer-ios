@@ -19,8 +19,10 @@ import {
   TopContentBar,
 } from "components";
 import baseEnhancer from "enhances";
-import { ProfileImage } from "./components";
-import SexPicker from "./components/sex_picker";
+import { 
+  ProfileImage,
+  SexPicker,
+} from "./components";
 
 
 class ProfileEdit extends React.Component {
