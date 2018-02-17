@@ -44,13 +44,13 @@ class AnalysisView extends React.Component {
       <View style={styles.container}>
         <TopContentBar>複合分析結果</TopContentBar>
         <ScrollView>
-          <View style={{ flexDirection: "row" }}>
-            <Text style={styles.analysis_view_vs}>vs</Text>
+          <View style={styles.analysis_information_continer}>
+            <Text style={styles.vs_text}>vs</Text>
             <View style={styles.name_outside_container}>
               <View style={styles.name_inside_container}>
                 <Image
                   source={require("../../../assets/img/score_create_person.png")}
-                  style={styles.person}
+                  style={styles.person_image}
                 />
                 <Text style={styles.opponent_name}>
                   池田社長
@@ -177,7 +177,6 @@ class AnalysisView extends React.Component {
               />
               <VictoryAxis
                 style={{
-                  color: "white",
                   grid: { stroke: "transparent" },
                   axis: {
                     stroke: "#2EA7E0",
@@ -224,15 +223,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  subtitle_text: {
-    color: "#ffffff",
-    fontSize: 19,
-    alignSelf: "center",
-    marginTop: -28,
-    backgroundColor: "transparent",
-    fontWeight: "bold",
-  },
-  analysis_view_vs: {
+  vs_text: {
     fontWeight: "bold",
     color: "skyblue",
     fontSize: 26,
@@ -240,6 +231,9 @@ const styles = StyleSheet.create({
     marginTop: 16,
     marginLeft: 206,
     backgroundColor: "transparent",
+  },
+  analysis_information_continer: {
+    flexDirection: "row",
   },
   name_outside_container: {
     borderRightColor: "#0a2444",
@@ -266,7 +260,7 @@ const styles = StyleSheet.create({
     borderRadius: 2,
     flexDirection: "row",
   },
-  person: {
+  person_image: {
     marginTop: 2,
     marginLeft: 8,
     height: 20,
@@ -324,35 +318,6 @@ const styles = StyleSheet.create({
     backfaceVisibility: "hidden",
     zIndex: 3,
     resizeMode: "contain",
-  },
-  in_field_area_container: {
-    width: 330,
-    position: "absolute",
-    flexDirection: "row",
-    justifyContent: "space-around",
-    paddingLeft: 10,
-    paddingRight: 10,
-  },
-  in_field_area: {
-    flex: 0.4,
-    alignSelf: "center",
-    backgroundColor: "black",
-    height: 138,
-    marginTop: 16,
-    marginBottom: 16,
-  },
-  out_field_area_container: {
-    width: 330,
-    position: "absolute",
-    flexDirection: "row",
-    justifyContent: "space-between",
-  },
-  out_field_area: {
-    alignSelf: "center",
-    flex: 0.45,
-    backgroundColor: "#FAEE00",
-    opacity: 0.3,
-    height: 170,
   },
   over_container: {
     flexDirection: "row",

@@ -16,7 +16,7 @@ import {
 import baseEnhancer from "enhances";
 import Orientation from "react-native-orientation";
 import { Actions } from "react-native-router-flux";
-import { NoSelectedUser } from "./components"
+import { NoSelectedUser } from "./components";
 
 class ScoreGameCreate extends React.Component {
   render() {

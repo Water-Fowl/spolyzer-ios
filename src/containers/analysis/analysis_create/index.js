@@ -23,25 +23,25 @@ class AnalysisCreate extends React.Component {
     return (
       <View style={styles.container}>
         <TopContentBar>検索条件</TopContentBar>
-        <View style={{ flexDirection: "row" }}>
+        <View style={styles.row_container}>
           <Text style={styles.game_style_text}>
             試合形式
           </Text>
           <GameTypeButton />
         </View>
-        <View style={{ flexDirection: "row" }}>
+        <View style={styles.row_container}>
           <Text style={styles.shot_type_text}>
             球種
           </Text>
           <ShotTypeButton />
         </View>
-        <View style={{ flexDirection: "row" }}>
+        <View style={styles.row_container}>
           <Text style={styles.term_text}>
             期間
           </Text>
           <TermButton />
         </View>
-        <View style={{ flexDirection: "row" }}>
+        <View style={styles.row_container}>
           <Text style={styles.opponent_text}>
             対戦相手
           </Text>
@@ -50,7 +50,7 @@ class AnalysisCreate extends React.Component {
           </TouchableOpacity>
           <View style={styles.opponent_frame} />
         </View>
-        <View style={{ flexDirection: "row" }}>
+        <View style={styles.row_container}>
           <Text style={styles.game_select_text}>
             試合選択
           </Text>
@@ -67,13 +67,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  subtitle_text: {
-    color: "#ffffff",
-    fontSize: 22,
-    alignSelf: "center",
-    marginTop: -28,
-    backgroundColor: "transparent",
-    fontWeight: "bold",
+  row_container: {
+    flexDirection: "row",
   },
   game_style_text: {
     color: "#ffffff",

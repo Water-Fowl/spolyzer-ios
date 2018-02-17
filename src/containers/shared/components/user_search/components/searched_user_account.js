@@ -23,7 +23,7 @@ export default class SearchedUserAccount extends React.Component{
           <Text style={styles.user_status_text}>{ this.props.user_status }</Text>
         </View>
       </View>
-    )
+    );
   }
 }
 const styles = StyleSheet.create({
@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
     borderRadius: 3,
     backgroundColor: "rgba(23,82,155,0.3)",
     flexDirection: "row",
-    alignSelf: 'center',
+    alignSelf: "center",
   },
   user_image: {
     width: "20%",
@@ -65,4 +65,4 @@ const styles = StyleSheet.create({
     fontSize: 18,
     color: "white",
   },
-})
+});

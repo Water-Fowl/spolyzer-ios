@@ -12,7 +12,7 @@ export default class NoSelectedUser extends React.Component{
         <Text style={styles.text}>not</Text>
         <Text style={styles.text}>selected</Text>
       </View>
-    )
+    );
   }
 }
 
@@ -34,4 +34,4 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     textAlign: "center",
   },
-})
+});

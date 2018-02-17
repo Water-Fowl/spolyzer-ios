@@ -30,9 +30,6 @@ class InFieldCircle extends React.Component {
 export default connect()(fieldButtonEnhancer(InFieldCircle));
 
 const styles = StyleSheet.create({
-  container: {
-    justifyContent: "space-between",
-  },
   blue_circle: {
     borderColor: "#2EA7E0",
     backgroundColor: "#2EA7E0",

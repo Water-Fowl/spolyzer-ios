@@ -42,7 +42,7 @@ class UserSearch extends React.Component {
           />
         </View>
         <SearchedUserAccountContainer />
-        <NavigateButton action={() =>{Actions.popTo('analysis_create') }} style={styles.navigate_button} text="選択" />
+        <NavigateButton action={() =>{Actions.popTo("analysis_create"); }} style={styles.navigate_button} text="選択" />
       </View>
     );
   }
@@ -53,7 +53,7 @@ export default connect()(baseEnhancer(UserSearch));
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
+    alignItems: "center",
   },
   form: {
     borderRightColor: "#28a8de",
