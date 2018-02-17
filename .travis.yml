@@ -1,4 +1,6 @@
 language: node_js
+notifications:
+  slack: suports-waterfowl:onYZSkAwuJWIjho1RWuBxQv2
 node_js:
 - '9.5.0'
 install:
