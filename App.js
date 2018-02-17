@@ -11,6 +11,7 @@ import {
   Text,
   View,
 } from "react-native";
+
 import Route from "./src/routers";
 
 export default Route;

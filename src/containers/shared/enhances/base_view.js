@@ -1,7 +1,6 @@
 /**
  * @providesModule enhances
  */
-
 import Orientation from "react-native-orientation";
 import React from "react";
 import {

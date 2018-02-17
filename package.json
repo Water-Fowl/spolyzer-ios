@@ -23,7 +23,7 @@
     "react-native-orientation": "^3.1.0",
     "react-native-pathjs-charts": "0.0.33",
     "react-native-router-flux": "^4.0.0-beta.24",
-    "react-native-svg": "^6.0.1-rc.1",
+    "react-native-svg": "^5.5.1",
     "react-native-svg-charts": "^2.2.2",
     "react-native-svg-image": "^2.0.1",
     "react-redux": "^5.0.6",
@@ -48,6 +48,11 @@
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.6.1",
     "eslint-plugin-react-native": "^3.2.1",
+    "import-sort-cli": "^4.2.0",
+    "import-sort-parser-babylon": "^4.2.0",
+    "import-sort-parser-typescript": "^4.2.0",
+    "import-sort-style-eslint": "^4.2.0",
+    "import-sort-style-renke": "^4.2.0",
     "jest": "21.2.1",
     "react-test-renderer": "16.0.0"
   },
@@ -66,5 +71,11 @@
   },
   "jest": {
     "preset": "react-native"
+  },
+  "importSort": {
+    ".js, .jsx, .es6, .es": {
+      "parser": "babylon",
+      "style": "renke"
+    }
   }
 }
