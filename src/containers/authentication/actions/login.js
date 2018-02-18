@@ -2,12 +2,12 @@ import { Actions } from "react-native-router-flux";
 import { CALL_API } from "redux-api-middleware";
 
 import {
-  LOGIN_RECIEVED,
-  LOGIN_REQUEST,
+  POST_LOGIN_RECIEVED,
+  POST_LOGIN_REQUEST,
 } from "../action_type";
 import { SIGN_IN_ENDPOINT } from "../../../config/api";
 
-export function postUserLogin(body) {
+export function postLogin(body) {
   return (dispatch) => {
     dispatch(requestLogin());
     return fetch(SIGN_IN_ENDPOINT, {
@@ -29,7 +29,7 @@ export function postUserLogin(body) {
 
 function requestLogin() {
   return {
-    type: LOGIN_REQUEST,
+    type: POST_LOGIN_REQUEST,
   };
 }
 
@@ -37,7 +37,7 @@ function receivedLogin(errors) {
   if (errors == null) {
     Actions.tab();
     return {
-      type: LOGIN_RECIEVED,
+      type: POST_LOGIN_RECIEVED,
       is_authenticated: true,
       error: false,
     };

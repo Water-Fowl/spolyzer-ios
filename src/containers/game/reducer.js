@@ -3,8 +3,8 @@ import {
 } from "utils";
 
 import {
-  SCORE_RECIEVED,
-  SCORE_REQUEST,
+  POST_GAME_RECIEVED,
+  POST_GAME_REQUEST,
   SET_POSITION_AND_SIDE,
   SET_SHOT_TYPE,
 } from "./action_types";
@@ -33,9 +33,9 @@ export default function gameReducer(state = initialState, action = {}) {
       position: action.position,
       side: action.side,
     });
-  case SCORE_REQUEST:
+  case POST_GAME_REQUEST:
     return state;
-  case SCORE_RECIEVED:
+    case POST_GAME_RECIEVED:
     return Object.assign({}, state, {
       current_score_game_id: action.current_score_game_id,
     });
