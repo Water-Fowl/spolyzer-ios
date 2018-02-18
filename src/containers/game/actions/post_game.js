@@ -1,13 +1,10 @@
 import { Actions } from "react-native-router-flux";
 
 import { POST_SCORE_GAME_ENDPOINT } from "../../../config/api";
-
-export const ADD_SCORE = "ADD_SCORE";
-export const SET_MODAL = "SET_MODAL";
-export const HIDE_MODAL = "HIDE_MODAL";
-export const SCORE_REQUEST = "SCORE_REQUEST";
-export const SCORE_RECIEVED = "SCORE_RECIEVED";
-
+import {
+  SCORE_RECIEVED,
+  SCORE_REQUEST,
+} from "../action_types.js";
 
 export function postGame(body) {
   return (dispatch) => {
