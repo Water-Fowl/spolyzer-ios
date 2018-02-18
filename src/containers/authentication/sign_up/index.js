@@ -17,20 +17,13 @@ import { emailReg } from "const";
 import EmailErrorMessage from "./components/email_error_message";
 import {
   emailValidation,
-  postUserRegistration
+  postRegistration
 } from "../actions/registration";
 import {
   isEmailInSignUp,
   isNotEmailInSignUp
 } from "../../shared/redux/view/actions";
 
-const registrationUser = {
-  name: "takumimuggle",
-  email: "taumime@gmail.com",
-  password: "takumimuggle",
-  password_confirmation: "takumimuggle",
-  confirm_success_url: "api.water-fowl.co.jp",
-};
 class SignUp extends React.Component {
   constructor(props) {
     super(props);
@@ -46,12 +39,12 @@ class SignUp extends React.Component {
     if (isEmail){
       dispatch(isEmailInSignUp());
       /*
-      const registration_body = { email: this.state.email,
+      const registration_form = { email: this.state.email,
         password: this.state.password,
         password_confirmation: this.state.password_confirmation,
         confirm_success_url: "api.water-fowl.co.jp",
       };
-      dispatch(postUserRegistration(registration_body));
+      dispatch(postRegistration(registration_form));
       */
       Actions.tab();
     }

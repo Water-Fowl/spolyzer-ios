@@ -25,7 +25,7 @@ export default class GameTypeButton extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
-    backgroundColor: $transparent,
+    backgroundColor: "transparent",
     borderRightColor: $spolyzerDarkBlue,
     borderTopColor: $spolyzerDarkBlue,
     borderLeftColor: $spolyzerDarkBlue,

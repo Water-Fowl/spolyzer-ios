@@ -14,7 +14,6 @@ import {
 import { connect } from "react-redux";
 
 import { enhancer } from "./hoc";
-import { postUserLogin } from "../actions/login";
 
 class Login extends React.Component {
   render() {
@@ -64,7 +63,7 @@ class Login extends React.Component {
               Actions.tab();
               /*
                * Rails環境なしでもログインできるようにここはコメントアウト
-               * this.postLoginInformation()
+               * this.postLoginEvent()
                */
             }}
             >

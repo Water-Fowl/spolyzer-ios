@@ -35,7 +35,7 @@ export default function gameReducer(state = initialState, action = {}) {
     });
   case POST_GAME_REQUEST:
     return state;
-    case POST_GAME_RECIEVED:
+  case POST_GAME_RECIEVED:
     return Object.assign({}, state, {
       current_score_game_id: action.current_score_game_id,
     });

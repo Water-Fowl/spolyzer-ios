@@ -1,9 +1,9 @@
 import {
   EMAIL_VALIDATION,
-  LOGIN_RECIEVED,
-  LOGIN_REQUEST,
-  REGISTRATION_RECEIVED,
-  REGISTRATION_REQUEST,
+  POST_LOGIN_RECIEVED,
+  POST_LOGIN_REQUEST,
+  POST_REGISTRATION_RECEIVED,
+  POST_REGISTRATION_REQUEST,
 } from "./action_type";
 
 const initialState = {
@@ -14,16 +14,16 @@ const initialState = {
 
 export default function authenticationReducer(state = initialState, action = {}) {
   switch (action.type) {
-  case LOGIN_REQUEST:
+  case POST_LOGIN_REQUEST:
     return state;
-  case LOGIN_RECIEVED:
+  case POST_LOGIN_RECIEVED:
     return Object.assign({}, state, {
       is_authenticated: action.is_authenticated,
       login_error: action.error,
     });
-  case REGISTRATION_REQUEST:
+  case POST_REGISTRATION_REQUEST:
     return state;
-  case REGISTRATION_RECEIVED:
+  case POST_REGISTRATION_RECEIVED:
     return Object.assign({}, state, {
       is_authenticated: action.is_authenticated,
       registration_error: action.error,

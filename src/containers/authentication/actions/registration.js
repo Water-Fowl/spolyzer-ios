@@ -2,12 +2,12 @@ import { Actions } from "react-native-router-flux";
 
 import {
   EMAIL_VALIDATION,
-  REGISTRATION_RECEIVED,
-  REGISTRATION_REQUEST,
+  POST_REGISTRATION_RECEIVED,
+  POST_REGISTRATION_REQUEST,
 } from "../action_type";
 import { REGISTRATION_ENDPOINT } from "../../../config/api";
 
-export function postUserRegistration(body) {
+export function postRegistration(body) {
   return (dispatch) => {
     dispatch(requestRegistration());
     return fetch(REGISTRATION_ENDPOINT, {
@@ -36,7 +36,7 @@ export function emailValidation(is_email){
 
 function requestRegistration() {
   return {
-    type: REGISTRATION_REQUEST,
+    type: POST_REGISTRATION_REQUEST,
   };
 }
 
@@ -44,14 +44,14 @@ function receivedRegistration(errors) {
   if (errors == null) {
     Actions.tab();
     return {
-      type: REGISTRATION_RECEIVED,
+      type: POST_REGISTRATION_RECEIVED,
       is_authenticated: true,
       error: false,
     };
   }
 
   return {
-    type: REGISTRATION_RECEIVED,
+    type: POST_REGISTRATION_RECEIVED,
     is_authenticated: false,
     error: true,
   };
