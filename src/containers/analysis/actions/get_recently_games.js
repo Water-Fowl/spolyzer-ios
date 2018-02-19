@@ -1,7 +1,7 @@
 import {
   GET_RECENTLY_GAMES_RECEIVED,
   GET_RECENTLY_GAMES_REQUEST
-} from "../action_type";
+} from "../action_types";
 
 export function getRecentlyGames(body) {
   return (dispatch) => {
