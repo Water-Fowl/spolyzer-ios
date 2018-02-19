@@ -23,13 +23,13 @@ export function getRecentlyGames(body) {
 
 function GetRecentlyGamesRequest() {
   return {
-    type: GET_RECENTLY_GAMES_REQUEST 
+    type: GET_RECENTLY_GAMES_REQUEST
   };
 }
 
 function GetRecentlyGamesReceived() {
   return {
     type: GET_RECENTLY_GAMES_RECEIVED
-  }
+  };
 }
 
