@@ -5,5 +5,5 @@ import TermButton from "./term_button";
 export {
   GameTypeButton,
   ShotTypeButton,
-  TermButton,
+  TermButton
 };

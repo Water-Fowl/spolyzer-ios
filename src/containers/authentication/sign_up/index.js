@@ -9,7 +9,7 @@ import {
   Text,
   TextInput,
   TouchableOpacity,
-  View,
+  View
 } from "react-native";
 import { connect } from "react-redux";
 import { emailReg } from "const";
@@ -17,20 +17,13 @@ import { emailReg } from "const";
 import EmailErrorMessage from "./components/email_error_message";
 import {
   emailValidation,
-  postUserRegistration
+  postRegistration
 } from "../actions/registration";
 import {
   isEmailInSignUp,
   isNotEmailInSignUp
 } from "../../shared/redux/view/actions";
 
-const registrationUser = {
-  name: "takumimuggle",
-  email: "taumime@gmail.com",
-  password: "takumimuggle",
-  password_confirmation: "takumimuggle",
-  confirm_success_url: "api.water-fowl.co.jp",
-};
 class SignUp extends React.Component {
   constructor(props) {
     super(props);
@@ -46,12 +39,12 @@ class SignUp extends React.Component {
     if (isEmail){
       dispatch(isEmailInSignUp());
       /*
-      const registration_body = { email: this.state.email,
+      const registration_form = { email: this.state.email,
         password: this.state.password,
         password_confirmation: this.state.password_confirmation,
         confirm_success_url: "api.water-fowl.co.jp",
       };
-      dispatch(postUserRegistration(registration_body));
+      dispatch(postRegistration(registration_form));
       */
       Actions.tab();
     }
@@ -122,7 +115,7 @@ function mapStateToProps(state, props){
   const {
     sign_up_email_error: sign_up_email_error
   } = view || {
-    sign_up_email_error: false,
+    sign_up_email_error: false
   };
   return{
     sign_up_email_error
@@ -134,12 +127,12 @@ export default connect(mapStateToProps)(SignUp);
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center",
+    alignItems: "center"
   },
   logo: {
     marginTop: 80,
     marginBottom: 80,
-    alignSelf: "center",
+    alignSelf: "center"
   },
   form: {
     borderRightColor: "#28a8de",
@@ -151,7 +144,7 @@ const styles = StyleSheet.create({
     borderWidth: 1.3,
     borderRadius: 5,
     marginTop: 9,
-    marginBottom: 9,
+    marginBottom: 9
   },
   text_field: {
     fontSize: 20,
@@ -159,7 +152,7 @@ const styles = StyleSheet.create({
     paddingTop: 8,
     paddingLeft: 12,
     paddingBottom: 8,
-    letterSpacing: 0,
+    letterSpacing: 0
   },
   registration_form: {
     borderRightColor: "#28a8de",
@@ -171,7 +164,7 @@ const styles = StyleSheet.create({
     borderWidth: 1.3,
     borderRadius: 5,
     marginTop: 120,
-    marginBottom: 9,
+    marginBottom: 9
   },
   registration_button_text: {
     color: "#28a8de",
@@ -181,6 +174,6 @@ const styles = StyleSheet.create({
     paddingTop: 8,
     paddingBottom: 8,
     marginBottom: 1,
-    backgroundColor: "transparent",
-  },
+    backgroundColor: "transparent"
+  }
 });

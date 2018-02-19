@@ -2,14 +2,14 @@ import React from "react";
 import {
   ScrollView,
   StyleSheet,
-  View,
+  View
 } from "react-native";
 
 import SearchedUserAccount from "./searched_user_account";
 
 export default class SearchedUserAccountContainer extends React.Component{
   render(){
-    const users = [{id: 1, name: "yoshiki", status: "Active"}, {id: 2, name: "yusuke", status: "Active"}]; 
+    const users = [{id: 1, name: "yoshiki", status: "Active"}, {id: 2, name: "yusuke", status: "Active"}];
     const users_component = [];
     for (let i = 0; i < users.length; i++) {
       users_component.push(
@@ -38,6 +38,6 @@ const styles=StyleSheet.create({
     padding: 5,
     width: "85%",
     borderWidth: 1,
-    borderRadius: 2,
-  },
+    borderRadius: 2
+  }
 });

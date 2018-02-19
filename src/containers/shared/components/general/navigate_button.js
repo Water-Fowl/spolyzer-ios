@@ -3,7 +3,7 @@ import {
   Image,
   StyleSheet,
   Text,
-  TouchableOpacity,
+  TouchableOpacity
 } from "react-native";
 
 export default class NavigateButton extends React.Component {
@@ -26,13 +26,13 @@ const styles = StyleSheet.create({
   navigate_button: {
     marginTop: 0,
     alignSelf: "center",
-    position: "absolute",
+    position: "absolute"
   },
   navigate_text: {
     top: 15,
     fontSize: 20,
     backgroundColor: "transparent",
     color: "#ffffff",
-    alignSelf: "center",
-  },
+    alignSelf: "center"
+  }
 });

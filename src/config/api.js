@@ -5,4 +5,5 @@ export const SIGN_IN_ENDPOINT = `${LOCAL_URL}/auth/sign_in/`;
 export const REGISTRATION_ENDPOINT = `${LOCAL_URL}/auth/`;
 export const POST_SCORE_GAME_ENDPOINT = `${LOCAL_URL}/games/`;
 export const GET_SCORES_ENDPOINT = `${LOCAL_URL}/scores/`;
-export const GET_GAMES_ENDPOINT = `${LOCAL_URL}/show_by_status/`;
+export const GET_GAMES_ENDPOINT = `${LOCAL_URL}/show/`;
+export const POST_USER_UPDATE_ENDPOINT = `${LOCAL_URL}/user/update`;

@@ -1,16 +1,16 @@
 import Orientation from "react-native-orientation";
 
-import { postUserLogin } from "../actions/login";
+import { postLogin } from "../actions/login";
 
 export function enhancer(ComponentClass) {
   return class LoginHOC extends ComponentClass {
     constructor(props) {
       super(props);
-      this.postLoginInformation.bind(this);
+      this.postLoginEvent.bind(this);
       this.state = {
         email: "",
         password: "",
-        login_error: false,
+        login_error: false
       };
     }
 
@@ -23,13 +23,13 @@ export function enhancer(ComponentClass) {
       this.setState({ login_error });
     }
 
-    postLoginInformation() {
+    postLoginEvent() {
       const { dispatch } = this.props;
-      formLoginInformation = {
+      const loginForm = {
         email: this.state.email,
-        password: this.state.password,
+        password: this.state.password
       };
-      dispatch(postUserLogin(formLoginInformation));
+      dispatch(postLogin(loginForm));
     }
 
     render() {

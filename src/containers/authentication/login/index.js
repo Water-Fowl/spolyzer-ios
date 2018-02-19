@@ -9,12 +9,11 @@ import {
   Text,
   TextInput,
   TouchableOpacity,
-  View,
+  View
 } from "react-native";
 import { connect } from "react-redux";
 
 import { enhancer } from "./hoc";
-import { postUserLogin } from "../actions/login";
 
 class Login extends React.Component {
   render() {
@@ -64,7 +63,7 @@ class Login extends React.Component {
               Actions.tab();
               /*
                * Rails環境なしでもログインできるようにここはコメントアウト
-               * this.postLoginInformation()
+               * this.postLoginEvent()
                */
             }}
             >
@@ -92,12 +91,12 @@ class Login extends React.Component {
 function mapStateToProps(state, props) {
   const { authentication } = state;
   const {
-    login_error,
+    login_error
   } = authentication || {
-    login_error: false,
+    login_error: false
   };
   return {
-    login_error,
+    login_error
   };
 }
 
@@ -105,14 +104,14 @@ export default connect(mapStateToProps)(enhancer(Login));
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 1
   },
   row_container: {
     flexDirection: "row"
   },
   form_container: {
     alignSelf: "center",
-    width: "80%",
+    width: "80%"
   },
   form: {
     borderRightColor: "#28a8de",
@@ -126,7 +125,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     borderRadius: 5,
     marginTop: 9,
-    marginBottom: 9,
+    marginBottom: 9
   },
   button: {
     borderRightColor: "#28a8de",
@@ -140,18 +139,18 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     marginTop: 9,
     marginBottom: 9,
-    justifyContent: "center",
+    justifyContent: "center"
   },
   logo: {
     marginTop: 80,
     marginBottom: 80,
-    alignSelf: "center",
+    alignSelf: "center"
   },
   text_field: {
     fontSize: 20,
     color: "#ffffff",
     paddingLeft: 12,
-    letterSpacing: 0,
+    letterSpacing: 0
   },
 
   auto_login_text: {
@@ -160,7 +159,7 @@ const styles = StyleSheet.create({
     fontSize: 15,
     marginLeft: 6,
     marginBottom: 16,
-    backgroundColor: "transparent",
+    backgroundColor: "transparent"
   },
 
   forget_password_text: {
@@ -170,7 +169,7 @@ const styles = StyleSheet.create({
     marginBottom: 35,
     marginTop: 8,
     fontSize: 16,
-    backgroundColor: "transparent",
+    backgroundColor: "transparent"
   },
   button_text: {
     color: "#28a8de",
@@ -178,6 +177,6 @@ const styles = StyleSheet.create({
     fontSize: 19,
     marginTop: 1,
     marginBottom: 1,
-    backgroundColor: "transparent",
-  },
+    backgroundColor: "transparent"
+  }
 });

@@ -2,7 +2,7 @@ import React from "react";
 import {
   StyleSheet,
   Text,
-  View,
+  View
 } from "react-native";
 
 export default class NoSelectedUser extends React.Component{
@@ -26,12 +26,12 @@ const styles = StyleSheet.create({
     borderRadius: 100,
     alignSelf: "center",
     margin: 7,
-    justifyContent: "center",
+    justifyContent: "center"
   },
   text: {
     backgroundColor: "transparent",
     color: "white",
     alignSelf: "center",
-    textAlign: "center",
-  },
+    textAlign: "center"
+  }
 });

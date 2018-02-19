@@ -2,18 +2,18 @@ import React from "react";
 import baseEnhancer from "enhances";
 import {
   ActionConst,
-  Actions,
+  Actions
 } from "react-native-router-flux";
 import {
   Image,
   StyleSheet,
   Text,
   TextInput,
-  View,
+  View
 } from "react-native";
 import {
   NavigateButton,
-  TopContentBar,
+  TopContentBar
 } from "components";
 import { connect } from "react-redux";
 
@@ -23,7 +23,7 @@ class UserSearch extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      search_user_name: "",
+      search_user_name: ""
     };
   }
   render() {
@@ -54,7 +54,7 @@ export default connect()(baseEnhancer(UserSearch));
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center",
+    alignItems: "center"
   },
   form: {
     borderRightColor: "#28a8de",
@@ -68,17 +68,17 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     borderRadius: 5,
     marginTop: 12,
-    marginBottom: 12,
+    marginBottom: 12
   },
   text_field: {
     fontSize: 20,
     fontWeight: "bold",
     color: "#ffffff",
     paddingLeft: 20,
-    letterSpacing: 0,
+    letterSpacing: 0
   },
   navigate_button: {
     alignSelf: "center",
-    marginTop: 11,
-  },
+    marginTop: 11
+  }
 });

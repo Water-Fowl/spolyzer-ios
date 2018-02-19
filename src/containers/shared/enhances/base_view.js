@@ -5,11 +5,11 @@ import Orientation from "react-native-orientation";
 import React from "react";
 import {
   Background,
-  NavBar,
+  NavBar
 } from "components";
 import {
   StyleSheet,
-  View,
+  View
 } from "react-native";
 
 export default function baseEnhancer(ComponentClass) {
@@ -31,6 +31,6 @@ export default function baseEnhancer(ComponentClass) {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-  },
+    flex: 1
+  }
 });

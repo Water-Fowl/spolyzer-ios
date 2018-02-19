@@ -1,7 +1,7 @@
 import React from "react";
 import {
   Image,
-  StyleSheet,
+  StyleSheet
 } from "react-native";
 
 export default class ProfileImage extends React.Component {
@@ -26,6 +26,6 @@ const styles = StyleSheet.create({
     opacity: 0.5,
     width: 100,
     height: 100,
-    borderRadius: 50,
-  },
+    borderRadius: 50
+  }
 });

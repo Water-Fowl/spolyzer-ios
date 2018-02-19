@@ -2,7 +2,7 @@ import React from "react";
 import {
   StyleSheet,
   Text,
-  TouchableHighlight,
+  TouchableHighlight
 } from "react-native";
 import { connect } from "react-redux";
 
@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
     padding: 5,
     margin: 5,
     color: "white",
-    backgroundColor: "#2EA7E0",
-  },
+    backgroundColor: "#2EA7E0"
+  }
 });
 

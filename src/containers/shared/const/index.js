@@ -1,11 +1,11 @@
 /**
- * @providesModule const 
+ * @providesModule const
  */
 import {
   $black,
   $spolyzerBlue,
   $spolyzerDarkBlue,
-  $white,
+  $white
 } from "./color";
 import {
   emailReg

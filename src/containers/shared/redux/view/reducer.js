@@ -2,21 +2,21 @@ import {
   HIDE_SCORE_CREATE_MODAL,
   IS_EMAIL_IN_SIGN_UP,
   IS_NOT_EMAIL_IN_SIGN_UP,
-  SET_SCORE_CREATE_MODAL,
+  SET_SCORE_CREATE_MODAL
 } from "./action_types";
 
 const initialState = {
-  score_create_modal: false,
+  score_create_modal: false
 };
 export default function viewReducer(state = initialState, action = {}) {
   switch (action.type) {
   case SET_SCORE_CREATE_MODAL:
     return Object.assign({}, state, {
-      score_create_modal: true,
+      score_create_modal: true
     });
   case HIDE_SCORE_CREATE_MODAL:
     return Object.assign({}, state, {
-      score_create_modal: false,
+      score_create_modal: false
     });
   case IS_NOT_EMAIL_IN_SIGN_UP:
     return Object.assign({}, state,{

@@ -2,13 +2,13 @@ import React from "react";
 import { Actions } from "react-native-router-flux";
 import {
   NavigateButton,
-  TopContentBar,
+  TopContentBar
 } from "components";
 import {
   StyleSheet,
   Text,
   TouchableOpacity,
-  View,
+  View
 } from "react-native";
 import { connect } from "react-redux";
 
@@ -16,7 +16,7 @@ import enhancer from "./hoc";
 import {
   GameTypeButton,
   ShotTypeButton,
-  TermButton,
+  TermButton
 } from "./components";
 
 class AnalysisCreate extends React.Component {
@@ -66,10 +66,10 @@ export default connect()(enhancer(AnalysisCreate));
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 1
   },
   row_container: {
-    flexDirection: "row",
+    flexDirection: "row"
   },
   game_style_text: {
     color: "#ffffff",
@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
     marginLeft: 40,
     backgroundColor: "transparent",
     fontWeight: "bold",
-    alignSelf: "flex-start",
+    alignSelf: "flex-start"
   },
   shot_type_text: {
     color: "#ffffff",
@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
     marginLeft: 40,
     backgroundColor: "transparent",
     fontWeight: "bold",
-    alignSelf: "flex-start",
+    alignSelf: "flex-start"
   },
   term_text: {
     color: "#ffffff",
@@ -96,7 +96,7 @@ const styles = StyleSheet.create({
     marginLeft: 40,
     backgroundColor: "transparent",
     fontWeight: "bold",
-    alignSelf: "flex-start",
+    alignSelf: "flex-start"
   },
   opponent_text: {
     color: "#ffffff",
@@ -106,7 +106,7 @@ const styles = StyleSheet.create({
     backgroundColor: "transparent",
     fontWeight: "bold",
     alignSelf: "flex-start",
-    marginRight: 22,
+    marginRight: 22
   },
   opponent_frame: {
     flexDirection: "row",
@@ -120,7 +120,7 @@ const styles = StyleSheet.create({
     borderWidth: 1.5,
     marginLeft: 6,
     borderRadius: 3,
-    marginTop: 25,
+    marginTop: 25
   },
   game_select_text: {
     color: "#ffffff",
@@ -129,7 +129,7 @@ const styles = StyleSheet.create({
     marginLeft: 40,
     backgroundColor: "transparent",
     fontWeight: "bold",
-    alignSelf: "flex-start",
+    alignSelf: "flex-start"
   },
   game_select_frame: {
     flexDirection: "row",
@@ -143,10 +143,10 @@ const styles = StyleSheet.create({
     borderWidth: 1.5,
     marginLeft: 28,
     borderRadius: 3,
-    marginTop: 25,
+    marginTop: 25
   },
   analyze: {
     alignSelf: "center",
-    marginTop: 48,
-  },
+    marginTop: 48
+  }
 });

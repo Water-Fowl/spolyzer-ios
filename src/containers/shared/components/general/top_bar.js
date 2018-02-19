@@ -2,7 +2,7 @@ import React from "react";
 import {
   Image,
   StyleSheet,
-  View,
+  View
 } from "react-native";
 
 export default class TopBar extends React.Component {
@@ -17,6 +17,6 @@ export default class TopBar extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "rgba(46, 167, 224, 0.5)",
+    backgroundColor: "rgba(46, 167, 224, 0.5)"
   }
 });

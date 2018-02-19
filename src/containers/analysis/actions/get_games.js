@@ -1,13 +1,13 @@
 import { Actions } from "react-native-router-flux";
 import { CALL_API } from "redux-api-middleware";
 
-import {
-  GAME_INFORMATION_RECEIVED,
-  GAME_INFORMATION_REQUEST,
-} from "../action_type";
 import { GET_GAMES_ENDPOINT } from "../../../config/api";
+import {
+  GET_GAME_RECEIVED,
+  GET_GAME_RRQUEST
+} from "../action_type";
 
-export function getAnalysisGames(information_body) {
+export function getGames(information_body) {
   return (dispatch) => {
     console.log(JSON.stringify(information_body));
     dispatch(requestGameInformation());
@@ -15,12 +15,12 @@ export function getAnalysisGames(information_body) {
       method: "GET",
       headers: {
         Accept: "application/json",
-        "Content-Type": "application/json",
+        "Content-Type": "application/json"
       },
-      body: JSON.stringify(information_body),
+      body: JSON.stringify(information_body)
     })
       .then(response => response.json())
-      .then(json => dispatch(receivedGameInformation(json.score_game_ids)))
+      .then(json => dispatch(receivedGetGame(json.score_game_ids)))
       .then(Actions.analysis_view())
       .catch((error) => {
         console.log(error);
@@ -28,16 +28,16 @@ export function getAnalysisGames(information_body) {
   };
 }
 
-function requestGameInformation() {
+function getGamesRequest() {
   return {
-    type: GAME_INFORMATION_REQUEST,
+    type: GET_GAMES_RRQUEST
   };
 }
 
-function receivedGameInformation(score_game_ids) {
+function getGamesReceived(score_game_ids) {
   console.log(score_game_ids);
   return {
-    type: GAME_INFORMATION_RECEIVED,
-    score_game_ids,
+    type: GET_GAMES_RECEIVED,
+    score_game_ids
   };
 }

@@ -1,13 +1,13 @@
 import React from "react";
 import {
   $spolyzerDarkBlue,
-  $transparent,
+  $transparent
 } from "const";
 import {
   StyleSheet,
   Text,
   TouchableHighlight,
-  View,
+  View
 } from "react-native";
 
 import Button from "./components/button";
@@ -25,7 +25,7 @@ export default class GameTypeButton extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
-    backgroundColor: $transparent,
+    backgroundColor: "transparent",
     borderRightColor: $spolyzerDarkBlue,
     borderTopColor: $spolyzerDarkBlue,
     borderLeftColor: $spolyzerDarkBlue,
@@ -36,6 +36,6 @@ const styles = StyleSheet.create({
     marginLeft: 30,
     borderRadius: 3,
     marginTop: 37,
-    justifyContent: "center",
-  },
+    justifyContent: "center"
+  }
 });

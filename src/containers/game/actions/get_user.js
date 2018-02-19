@@ -1,7 +1,7 @@
 import { SEARCH_USER_ENDPOINT } from "../../../config/api";
 import {
   SEARCH_USER_RECEIVED,
-  SEARCH_USER_REQUEST,
+  SEARCH_USER_REQUEST
 } from "../action_types";
 
 export function getUserName(body) {
@@ -11,9 +11,9 @@ export function getUserName(body) {
       method: "GET",
       headers: {
         Accept: "application/json",
-        "Content-Type": "application/json",
+        "Content-Type": "application/json"
       },
-      body: JSON.stringify(body),
+      body: JSON.stringify(body)
     })
       .then(response => response.json())
       .catch((error) => {
@@ -24,13 +24,13 @@ export function getUserName(body) {
 
 function requestUserName() {
   return {
-    type: SEARCH_USER_REQUEST,
+    type: SEARCH_USER_REQUEST
   };
 }
 
 function receivedUserName() {
   return {
-    type: SEARCH_USER_RECEIVED,
+    type: SEARCH_USER_RECEIVED
   };
 }
 

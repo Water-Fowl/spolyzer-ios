@@ -1,7 +1,7 @@
 import Orientation from "react-native-orientation";
 import React from "react";
 import {
-  Dimensions,
+  Dimensions
 } from "react-native";
 
 import { postGame } from "../actions/post_game";
@@ -12,7 +12,7 @@ export default function enhancer(ComponentClass) {
       super(props);
       this.state = {
         height: Dimensions.get("window").width,
-        width: Dimensions.get("window").height,
+        width: Dimensions.get("window").height
       };
     }
     componentDidMount() {

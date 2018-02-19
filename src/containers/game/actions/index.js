@@ -7,5 +7,5 @@ export {
   getUserName,
   postGame,
   setPositionAndSide,
-  setAction,
+  setAction
 };

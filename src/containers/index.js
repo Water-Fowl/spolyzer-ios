@@ -30,5 +30,5 @@ export {
   analysisReducer,
   gameReducer,
   authenticationReducer,
-  viewReducer,
+  viewReducer
 };

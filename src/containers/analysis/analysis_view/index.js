@@ -7,16 +7,16 @@ import {
   StyleSheet,
   Text,
   TouchableOpacity,
-  View,
+  View
 } from "react-native";
 import {
-  TopContentBar,
+  TopContentBar
 } from "components";
 import {
   VictoryAxis,
   VictoryBar,
   VictoryChart,
-  VictoryTheme,
+  VictoryTheme
 } from "victory-native";
 
 import {
@@ -26,7 +26,7 @@ import {
   InFieldSide,
   OutArea,
   OutFieldLength,
-  OutFieldSide,
+  OutFieldSide
 } from "./components";
 
 const data = [
@@ -35,7 +35,7 @@ const data = [
   { position: "C", counts: 3 },
   { position: "D", counts: 4 },
   { position: "E", counts: 5 },
-  { position: "F", counts: 6 },
+  { position: "F", counts: 6 }
 ];
 
 class AnalysisView extends React.Component {
@@ -151,7 +151,7 @@ class AnalysisView extends React.Component {
               height={240}
               theme={VictoryTheme.material}
               padding={{
-                left: 25, right: 30, top: 20, bottom: 40,
+                left: 25, right: 30, top: 20, bottom: 40
               }}
               domainPadding={{ x: [20, 0] }}
             >
@@ -159,15 +159,15 @@ class AnalysisView extends React.Component {
                 dependentAxis
                 style={{
                   grid: {
-                    stroke: "#035f89",
+                    stroke: "#035f89"
                   },
                   axis: {
-                    stroke: "transparent",
+                    stroke: "transparent"
                   },
                   tickLabels: {
                     fontSize: 10,
-                    fill: "white",
-                  },
+                    fill: "white"
+                  }
                 }}
                 /* 整数目盛りのみを表示 */
                 tickFormat={(tick) => {
@@ -179,20 +179,20 @@ class AnalysisView extends React.Component {
                 style={{
                   grid: { stroke: "transparent" },
                   axis: {
-                    stroke: "#2EA7E0",
+                    stroke: "#2EA7E0"
                   },
-                  tickLabels: { fontSize: 10, fill: "white" },
+                  tickLabels: { fontSize: 10, fill: "white" }
                 }}
               />
               <VictoryBar
                 style={{
                   data: {
-                    fill: "#2EA7E0",
-                  },
+                    fill: "#2EA7E0"
+                  }
                 }}
                 animate={{
                   duration: 400,
-                  onLoad: { duration: 300 },
+                  onLoad: { duration: 300 }
                 }}
                 data={data}
                 alignment="start"
@@ -221,7 +221,7 @@ export default baseEnhancer(AnalysisView);
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 1
   },
   vs_text: {
     fontWeight: "bold",
@@ -230,10 +230,10 @@ const styles = StyleSheet.create({
     alignSelf: "flex-start",
     marginTop: 16,
     marginLeft: 206,
-    backgroundColor: "transparent",
+    backgroundColor: "transparent"
   },
   analysis_information_continer: {
-    flexDirection: "row",
+    flexDirection: "row"
   },
   name_outside_container: {
     borderRightColor: "#0a2444",
@@ -247,7 +247,7 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     marginTop: 20,
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "center"
   },
   name_inside_container: {
     borderRightColor: "#0a2444",
@@ -258,14 +258,14 @@ const styles = StyleSheet.create({
     width: 100,
     borderWidth: 1,
     borderRadius: 2,
-    flexDirection: "row",
+    flexDirection: "row"
   },
   person_image: {
     marginTop: 2,
     marginLeft: 8,
     height: 20,
     width: 20,
-    opacity: 0.5,
+    opacity: 0.5
   },
   opponent_name: {
     backgroundColor: "transparent",
@@ -273,14 +273,14 @@ const styles = StyleSheet.create({
     marginTop: 7,
     marginLeft: 7,
     fontWeight: "bold",
-    fontSize: 12,
+    fontSize: 12
   },
   option_container: {
     flexDirection: "row",
     justifyContent: "space-between",
     alignSelf: "center",
     width: 310,
-    marginTop: 4,
+    marginTop: 4
   },
   option_text_container: {
     borderRightColor: "#0a2444",
@@ -292,7 +292,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 4,
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "center"
   },
   option_text: {
     backgroundColor: "#0a2444",
@@ -303,13 +303,13 @@ const styles = StyleSheet.create({
     width: 90,
     borderRadius: 4,
     textAlign: "center",
-    paddingTop: 5,
+    paddingTop: 5
   },
   field: {
     alignSelf: "center",
     width: 330,
     height: 170,
-    marginTop: 26,
+    marginTop: 26
   },
   field_line: {
     position: "absolute",
@@ -317,59 +317,59 @@ const styles = StyleSheet.create({
     height: 170,
     backfaceVisibility: "hidden",
     zIndex: 3,
-    resizeMode: "contain",
+    resizeMode: "contain"
   },
   over_container: {
     flexDirection: "row",
     flex: 1,
-    justifyContent: "space-between",
+    justifyContent: "space-between"
   },
   over_out_field_side_container: {
     alignSelf: "flex-start",
     flex: 0.5,
     justifyContent: "space-around",
-    flexDirection: "row",
+    flexDirection: "row"
   },
   middle_container: {
     flexDirection: "row",
     flex: 3,
-    justifyContent: "space-between",
+    justifyContent: "space-between"
   },
   under_container: {
     flexDirection: "row",
     flex: 1,
-    justifyContent: "space-between",
+    justifyContent: "space-between"
   },
   out_field_length_container: {
     marginLeft: 4,
     marginRight: 4,
     flexDirection: "column",
-    justifyContent: "space-between",
+    justifyContent: "space-between"
   },
   in_field_container: {
     flexDirection: "row",
     marginLeft: 10,
-    marginRight: 10,
+    marginRight: 10
   },
   in_field_length_container: {
     marginLeft: 8,
     marginRight: 8,
     justifyContent: "space-between",
-    alignItems: "center",
+    alignItems: "center"
   },
   in_field_circle_container: {
-    justifyContent: "space-between",
+    justifyContent: "space-between"
   },
   in_field_side_container: {
     marginLeft: 6,
     marginRight: 6,
-    justifyContent: "space-between",
+    justifyContent: "space-between"
   },
   under_out_field_side_container: {
     alignSelf: "flex-end",
     flex: 0.5,
     justifyContent: "space-around",
-    flexDirection: "row",
+    flexDirection: "row"
   },
   graph_container: {
     borderRightColor: "#28a8de",
@@ -381,7 +381,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 4,
     alignSelf: "center",
-    marginTop: 20,
+    marginTop: 20
   },
   back_button_container: {
     borderRightColor: "#28a8de",
@@ -393,7 +393,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 4,
     marginLeft: 190,
-    marginTop: 8,
+    marginTop: 8
   },
   back_button_text: {
     backgroundColor: "transparent",
@@ -403,6 +403,6 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     textAlign: "center",
     paddingTop: 7,
-    paddingLeft: 20,
-  },
+    paddingLeft: 20
+  }
 });

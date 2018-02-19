@@ -3,7 +3,7 @@ import {
   Image,
   StyleSheet,
   Text,
-  View,
+  View
 } from "react-native";
 
 export default class TopContentBar extends React.Component {
@@ -28,13 +28,13 @@ const styles = StyleSheet.create({
     backgroundColor: "transparent",
     fontWeight: "bold",
     marginTop: 5,
-    marginBottom: 7,
+    marginBottom: 7
   },
   top_content_bar_img: {
     alignSelf: "center",
-    position: "absolute",
+    position: "absolute"
   },
   top_content_bar_container: {
-    backgroundColor: "transparent",
-  },
+    backgroundColor: "transparent"
+  }
 });

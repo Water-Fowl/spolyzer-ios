@@ -7,17 +7,17 @@ import {
   StyleSheet,
   Text,
   TouchableOpacity,
-  View,
+  View
 } from "react-native";
 import {
-  TopContentBar,
+  TopContentBar
 } from "components";
 import {
   VictoryAxis,
   VictoryBar,
   VictoryChart,
   VictoryLabel,
-  VictoryTheme,
+  VictoryTheme
 } from "victory-native";
 
 import {
@@ -25,7 +25,7 @@ import {
   InFieldLength,
   InFieldSide,
   OutFieldLength,
-  OutFieldSide,
+  OutFieldSide
 } from "./components";
 
 const data = [
@@ -35,7 +35,7 @@ const data = [
   { shot_type: "ネットイン", counts: 3 },
   { shot_type: "クリアー", counts: 4 },
   { shot_type: "ヘアピン", counts: 5 },
-  { shot_type: "ドライブ", counts: 6 },
+  { shot_type: "ドライブ", counts: 6 }
 ];
 
 class ScoreView extends React.Component {
@@ -132,7 +132,7 @@ class ScoreView extends React.Component {
               height={240}
               theme={VictoryTheme.material}
               padding={{
-                left: 25, right: 30, top: 20, bottom: 40,
+                left: 25, right: 30, top: 20, bottom: 40
               }}
               domainPadding={{ x: [20, 0] }}
             >
@@ -140,15 +140,15 @@ class ScoreView extends React.Component {
                 dependentAxis	/* Y軸 */
                 style={{
                   grid: {
-                    stroke: "#035f89",
+                    stroke: "#035f89"
                   },
                   axis: {
-                    stroke: "transparent",
+                    stroke: "transparent"
                   },
                   tickLabels: {
                     fontSize: 10,
-                    fill: "white",
-                  },
+                    fill: "white"
+                  }
                 }}
                 tickFormat={(tick) => { /* 整数目盛のみ表示 */
                   if (tick === Math.round(tick)) return String(tick);
@@ -159,20 +159,20 @@ class ScoreView extends React.Component {
                 style={{
                   grid: { stroke: "transparent" },
                   axis: {
-                    stroke: "#2EA7E0",
+                    stroke: "#2EA7E0"
                   },
-                  tickLabels: { fontSize: 10, fill: "white" },
+                  tickLabels: { fontSize: 10, fill: "white" }
                 }}
               />
               <VictoryBar
                 style={{
                   data: {
-                    fill: "#2EA7E0",
-                  },
+                    fill: "#2EA7E0"
+                  }
                 }}
                 animate={{	/* 表示のアニメーション */
                   duration: 400,
-                  onLoad: { duration: 300 },
+                  onLoad: { duration: 300 }
                 }}
                 data={data}
                 alignment="start"
@@ -198,14 +198,14 @@ export default baseEnhancer(ScoreView);
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 1
   },
   user_name_container: {
     flexDirection: "row",
     justifyContent: "space-between",
     paddingLeft: 20,
     paddingRight: 20,
-    marginTop: 20,
+    marginTop: 20
   },
   user_name_text: {
     color: "white",
@@ -218,24 +218,24 @@ const styles = StyleSheet.create({
     backgroundColor: "transparent",
     borderColor: "#28a8de",
     borderRadius: 3,
-    borderWidth: 1,
+    borderWidth: 1
   },
   game_information_text_container: {
     flexDirection: "row",
     paddingLeft: 20,
-    paddingRight: 20,
+    paddingRight: 20
   },
   game_informations_contaier: {
     flexDirection: "row",
     justifyContent: "space-around",
-    marginTop: 8,
+    marginTop: 8
   },
   game_information_text_container: {
     flex: 0.4,
     justifyContent: "space-between",
     paddingLeft: 50,
     paddingRight: 50,
-    flexDirection: "row",
+    flexDirection: "row"
   },
   score_text: {
     color: "white",
@@ -245,7 +245,7 @@ const styles = StyleSheet.create({
     borderRadius: 3,
     borderWidth: 1,
     fontSize: 30,
-    padding: 3,
+    padding: 3
   },
   win_loss_text: {
     alignSelf: "flex-end",
@@ -258,13 +258,13 @@ const styles = StyleSheet.create({
     fontSize: 10,
     padding: 3,
     marginLeft: 5,
-    marginRight: 5,
+    marginRight: 5
   },
   field: {
     alignSelf: "center",
     width: 330,
     height: 170,
-    marginTop: 26,
+    marginTop: 26
   },
   field_line: {
     position: "absolute",
@@ -272,59 +272,59 @@ const styles = StyleSheet.create({
     height: 170,
     backfaceVisibility: "hidden",
     zIndex: 3,
-    resizeMode: "contain",
+    resizeMode: "contain"
   },
   over_container: {
     flexDirection: "row",
     flex: 1,
-    justifyContent: "space-between",
+    justifyContent: "space-between"
   },
   over_out_field_side_container: {
     alignSelf: "flex-start",
     flex: 0.5,
     justifyContent: "space-around",
-    flexDirection: "row",
+    flexDirection: "row"
   },
   middle_container: {
     flexDirection: "row",
     flex: 3,
-    justifyContent: "space-between",
+    justifyContent: "space-between"
   },
   under_container: {
     flexDirection: "row",
     flex: 1,
-    justifyContent: "space-between",
+    justifyContent: "space-between"
   },
   out_field_length_container: {
     marginLeft: 4,
     marginRight: 4,
     flexDirection: "column",
-    justifyContent: "space-between",
+    justifyContent: "space-between"
   },
   in_field_container: {
     flexDirection: "row",
     marginLeft: 10,
-    marginRight: 10,
+    marginRight: 10
   },
   in_field_length_container: {
     marginLeft: 8,
     marginRight: 8,
     justifyContent: "space-between",
-    alignItems: "center",
+    alignItems: "center"
   },
   in_field_circle_container: {
-    justifyContent: "space-between",
+    justifyContent: "space-between"
   },
   in_field_side_container: {
     marginLeft: 6,
     marginRight: 6,
-    justifyContent: "space-between",
+    justifyContent: "space-between"
   },
   under_out_field_side_container: {
     alignSelf: "flex-end",
     flex: 0.5,
     justifyContent: "space-around",
-    flexDirection: "row",
+    flexDirection: "row"
   },
   graph_container: {
     borderRightColor: "#28a8de",
@@ -336,7 +336,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 4,
     alignSelf: "center",
-    marginTop: 20,
+    marginTop: 20
   },
   back_button_container: {
     borderRightColor: "#28a8de",
@@ -348,7 +348,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 4,
     marginLeft: 190,
-    marginTop: 8,
+    marginTop: 8
   },
   back_button_text: {
     backgroundColor: "transparent",
@@ -358,6 +358,6 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     textAlign: "center",
     paddingTop: 7,
-    paddingLeft: 20,
-  },
+    paddingLeft: 20
+  }
 });

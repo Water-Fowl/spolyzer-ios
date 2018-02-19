@@ -8,7 +8,7 @@ import { analysisReducer, authenticationReducer, gameReducer, viewReducer } from
 
 const authenticationConfig = {
   key: "authentication",
-  storage,
+  storage
 };
 
 const loggerMiddleware = createLogger();
@@ -20,7 +20,7 @@ const reducers = combineReducers({
   */
   authentication: authenticationReducer,
   analysis: analysisReducer,
-  view: viewReducer,
+  view: viewReducer
 });
 
 export default function configureStore() {

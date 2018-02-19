@@ -7,7 +7,7 @@ import {
   NavBar,
   NavigateButton,
   TopBar,
-  TopContentBar,
+  TopContentBar
 } from "components";
 import {
   Dimensions,
@@ -61,24 +61,24 @@ export default baseEnhancer(ScoreGameCreate);
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 1
   },
   align_items_center: {
-    alignItems: "center",
+    alignItems: "center"
   },
   game_setting_border: {
     padding: 5,
     backgroundColor: "rgba(0, 0, 0, 0)",
     borderWidth: 2.5,
     marginTop: 30,
-    borderColor: "rgb(20, 35, 70)",
+    borderColor: "rgb(20, 35, 70)"
   },
   game_setting_table: {
     width: 320,
     height: 270,
     backgroundColor: "rgb(20, 35, 70)",
     justifyContent: "center",
-    opacity: 0.7,
+    opacity: 0.7
   },
   game_setting_table_inner: {
     flexDirection: "row",
@@ -86,20 +86,20 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     alignItems: "center",
     width: 280,
-    height: 240,
+    height: 240
   },
   game_setting_table_inner_left: {
     flex: 1,
     width: 70,
     height: 220,
     justifyContent: "center",
-    alignItems: "center",
+    alignItems: "center"
   },
   game_setting_table_inner_center: {
     flex: 1,
     width: 30,
     height: 220,
-    alignItems: "center",
+    alignItems: "center"
   },
   score_game_create_opponents: {
     padding: 0,
@@ -107,10 +107,10 @@ const styles = StyleSheet.create({
     marginLeft: 20,
     fontSize: 16,
     fontWeight: "bold",
-    color: "white",
+    color: "white"
   },
   button_style: {
-    marginTop: 80,
+    marginTop: 80
   },
   textbox: {
     borderColor: "#2EA7E0",
@@ -119,11 +119,11 @@ const styles = StyleSheet.create({
     borderWidth: 1.5,
     borderRadius: 5,
     opacity: 0.5,
-    alignSelf: "center",
+    alignSelf: "center"
   },
   vs_position: {
     height: 27,
     width: 35,
-    marginTop: 100,
-  },
+    marginTop: 100
+  }
 });

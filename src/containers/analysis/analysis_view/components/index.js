@@ -13,5 +13,5 @@ export {
   InArea,
   OutFieldSide,
   OutFieldLength,
-  OutArea,
+  OutArea
 };
