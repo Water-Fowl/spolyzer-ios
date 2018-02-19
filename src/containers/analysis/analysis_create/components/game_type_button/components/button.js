@@ -3,12 +3,12 @@ import React from "react";
 import {
   $spolyzerDarkBlue,
   $transparent,
-  $white,
+  $white
 } from "const";
 import {
   StyleSheet,
   Text,
-  TouchableHighlight,
+  TouchableHighlight
 } from "react-native";
 import { connect } from "react-redux";
 
@@ -53,12 +53,12 @@ class Button extends React.Component {
 function mapStateToProps(state, props) {
   const { analysis } = state;
   const {
-    game_type_id,
+    game_type_id
   } = analysis || {
-    game_type_id: null,
+    game_type_id: null
   };
   return {
-    game_type_id,
+    game_type_id
   };
 }
 export default connect(mapStateToProps)(Button);
@@ -68,14 +68,14 @@ const styles = StyleSheet.create({
     color: $white,
     fontSize: 15,
     backgroundColor: $transparent,
-    fontWeight: "bold",
+    fontWeight: "bold"
   },
 
   text: {
     color: $white,
     fontSize: 15,
     backgroundColor: $transparent,
-    fontWeight: "bold",
+    fontWeight: "bold"
   },
 
   button_pressed: {
@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
     marginBottom: 3,
     alignItems: "center",
     justifyContent: "center",
-    borderRadius: 3,
+    borderRadius: 3
   },
 
   button: {
@@ -101,6 +101,6 @@ const styles = StyleSheet.create({
     marginBottom: 3,
     alignItems: "center",
     justifyContent: "center",
-    borderRadius: 3,
-  },
+    borderRadius: 3
+  }
 });

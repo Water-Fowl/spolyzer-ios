@@ -2,13 +2,13 @@ import React from "react";
 import { Actions } from "react-native-router-flux";
 import {
   Image,
-  StyleSheet,
+  StyleSheet
 } from "react-native";
 import { Provider, connect } from "react-redux";
 import {
   Router,
   Scene,
-  Tabs,
+  Tabs
 } from "react-native-router-flux";
 import { applyMiddleware, compose, createStore } from "redux";
 
@@ -23,7 +23,7 @@ import {
   ScoreCreate,
   ScoreView,
   SignUp,
-  UserSearch,
+  UserSearch
 } from "../containers";
 
 const RouterWithRedux = connect()(Router);
@@ -59,15 +59,15 @@ export default Route;
 
 const styles = StyleSheet.create({
   icon: {
-    margin: 10,
+    margin: 10
   },
   tab_style: {
-    backgroundColor: "#134A65",
+    backgroundColor: "#134A65"
   },
   label: {
-    color: "white",
+    color: "white"
   },
   tab_bar_style: {
-    backgroundColor: "#00769E",
-  },
+    backgroundColor: "#00769E"
+  }
 });

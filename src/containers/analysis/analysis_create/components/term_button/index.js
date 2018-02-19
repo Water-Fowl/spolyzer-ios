@@ -3,7 +3,7 @@ import {
   StyleSheet,
   Text,
   TouchableHighlight,
-  View,
+  View
 } from "react-native";
 
 import Button from "./components/button";
@@ -46,6 +46,6 @@ const styles = StyleSheet.create({
     marginLeft: 57,
     borderRadius: 3,
     marginTop: 25,
-    justifyContent: "center",
-  },
+    justifyContent: "center"
+  }
 });

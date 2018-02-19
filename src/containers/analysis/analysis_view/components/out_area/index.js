@@ -1,7 +1,7 @@
 import React from "react";
 import {
   StyleSheet,
-  View,
+  View
 } from "react-native";
 
 export default class OutArea extends React.Component {
@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-around",
     paddingLeft: 20,
-    paddingRight: 20,
+    paddingRight: 20
   },
   in_field_area: {
     flex: 0.35,
@@ -30,6 +30,6 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(46, 167, 224, 0.8)",
     height: 120,
     marginTop: 25,
-    marginBottom: 25,
-  },
+    marginBottom: 25
+  }
 });

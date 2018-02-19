@@ -9,7 +9,7 @@ import {
   Text,
   TextInput,
   TouchableOpacity,
-  View,
+  View
 } from "react-native";
 import { connect } from "react-redux";
 import { emailReg } from "const";
@@ -115,7 +115,7 @@ function mapStateToProps(state, props){
   const {
     sign_up_email_error: sign_up_email_error
   } = view || {
-    sign_up_email_error: false,
+    sign_up_email_error: false
   };
   return{
     sign_up_email_error
@@ -127,12 +127,12 @@ export default connect(mapStateToProps)(SignUp);
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center",
+    alignItems: "center"
   },
   logo: {
     marginTop: 80,
     marginBottom: 80,
-    alignSelf: "center",
+    alignSelf: "center"
   },
   form: {
     borderRightColor: "#28a8de",
@@ -144,7 +144,7 @@ const styles = StyleSheet.create({
     borderWidth: 1.3,
     borderRadius: 5,
     marginTop: 9,
-    marginBottom: 9,
+    marginBottom: 9
   },
   text_field: {
     fontSize: 20,
@@ -152,7 +152,7 @@ const styles = StyleSheet.create({
     paddingTop: 8,
     paddingLeft: 12,
     paddingBottom: 8,
-    letterSpacing: 0,
+    letterSpacing: 0
   },
   registration_form: {
     borderRightColor: "#28a8de",
@@ -164,7 +164,7 @@ const styles = StyleSheet.create({
     borderWidth: 1.3,
     borderRadius: 5,
     marginTop: 120,
-    marginBottom: 9,
+    marginBottom: 9
   },
   registration_button_text: {
     color: "#28a8de",
@@ -174,6 +174,6 @@ const styles = StyleSheet.create({
     paddingTop: 8,
     paddingBottom: 8,
     marginBottom: 1,
-    backgroundColor: "transparent",
-  },
+    backgroundColor: "transparent"
+  }
 });

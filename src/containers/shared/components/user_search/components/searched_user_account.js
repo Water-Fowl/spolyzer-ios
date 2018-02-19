@@ -3,7 +3,7 @@ import {
   Image,
   StyleSheet,
   Text,
-  View,
+  View
 } from "react-native";
 
 export default class SearchedUserAccount extends React.Component{
@@ -32,37 +32,37 @@ const styles = StyleSheet.create({
     borderRadius: 3,
     backgroundColor: "rgba(23,82,155,0.3)",
     flexDirection: "row",
-    alignSelf: "center",
+    alignSelf: "center"
   },
   user_image: {
     width: "20%",
-    backgroundColor: "transparent",
+    backgroundColor: "transparent"
   },
   person: {
     marginTop: 5,
     marginLeft: 10,
     height: 36,
-    width: 36,
+    width: 36
   },
   user_name: {
     width: "50%",
     backgroundColor: "transparent",
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "center"
   },
   user_name_text: {
     fontWeight: "bold",
     fontSize: 18,
-    color: "white",
+    color: "white"
   },
   user_status: {
     width: "30%",
     backgroundColor: "transparent",
-    justifyContent: "center",
+    justifyContent: "center"
   },
   user_status_text: {
     fontWeight: "bold",
     fontSize: 18,
-    color: "white",
-  },
+    color: "white"
+  }
 });

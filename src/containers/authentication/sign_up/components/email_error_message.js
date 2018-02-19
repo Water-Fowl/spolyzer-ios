@@ -1,7 +1,7 @@
 import React from "react";
 import {
   StyleSheet,
-  Text,
+  Text
 } from "react-native";
 
 export default class EmailErrorMessage extends React.Component{
@@ -30,6 +30,6 @@ export default class EmailErrorMessage extends React.Component{
 const styles = StyleSheet.create({
   error_message_text:{
     color: "red",
-    backgroundColor: "transparent",
-  },
+    backgroundColor: "transparent"
+  }
 });

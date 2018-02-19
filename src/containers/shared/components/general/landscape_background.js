@@ -1,7 +1,7 @@
 import React from "react";
 import {
   Image,
-  StyleSheet,
+  StyleSheet
 } from "react-native";
 
 export default class LandScapeBackground extends React.Component {
@@ -22,6 +22,6 @@ const styles = StyleSheet.create({
     width: "100%",
     height: "100%",
     backgroundColor: "rgb(30, 55, 80)",
-    position: "absolute",
-  },
+    position: "absolute"
+  }
 });

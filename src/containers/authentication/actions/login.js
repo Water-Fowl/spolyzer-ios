@@ -3,7 +3,7 @@ import { CALL_API } from "redux-api-middleware";
 
 import {
   POST_LOGIN_RECIEVED,
-  POST_LOGIN_REQUEST,
+  POST_LOGIN_REQUEST
 } from "../action_type";
 import { SIGN_IN_ENDPOINT } from "../../../config/api";
 
@@ -14,9 +14,9 @@ export function postLogin(body) {
       method: "POST",
       headers: {
         Accept: "application/json",
-        "Content-Type": "application/json",
+        "Content-Type": "application/json"
       },
-      body: JSON.stringify(body),
+      body: JSON.stringify(body)
     })
       .then(response => response.json())
       .then(json => json.errors)
@@ -29,7 +29,7 @@ export function postLogin(body) {
 
 function requestLogin() {
   return {
-    type: POST_LOGIN_REQUEST,
+    type: POST_LOGIN_REQUEST
   };
 }
 
@@ -39,13 +39,13 @@ function receivedLogin(errors) {
     return {
       type: POST_LOGIN_RECIEVED,
       is_authenticated: true,
-      error: false,
+      error: false
     };
   }
 
   return {
     type: LOGIN_RECIEVED,
     is_authenticated: false,
-    error: true,
+    error: true
   };
 }

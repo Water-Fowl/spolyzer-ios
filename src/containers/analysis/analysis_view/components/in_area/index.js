@@ -1,7 +1,7 @@
 import React from "react";
 import {
   StyleSheet,
-  View,
+  View
 } from "react-native";
 
 export default class InArea extends React.Component {
@@ -25,14 +25,14 @@ const styles = StyleSheet.create({
     width: 330,
     position: "absolute",
     flexDirection: "row",
-    justifyContent: "space-between",
+    justifyContent: "space-between"
   },
   out_field_area: {
     alignSelf: "center",
     flex: 0.45,
     backgroundColor: "#FAEE00",
     opacity: 0.3,
-    height: 170,
+    height: 170
   },
   in_field_area_container: {
     width: 330,
@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-around",
     paddingLeft: 10,
-    paddingRight: 10,
+    paddingRight: 10
   },
   in_field_area: {
     flex: 0.4,
@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
     backgroundColor: "black",
     height: 138,
     marginTop: 16,
-    marginBottom: 16,
-  },
+    marginBottom: 16
+  }
 });
 

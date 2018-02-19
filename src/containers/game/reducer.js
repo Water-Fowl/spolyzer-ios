@@ -6,7 +6,7 @@ import {
   POST_GAME_RECIEVED,
   POST_GAME_REQUEST,
   SET_POSITION_AND_SIDE,
-  SET_SHOT_TYPE,
+  SET_SHOT_TYPE
 } from "./action_types";
 
 const initialState = {
@@ -26,18 +26,18 @@ export default function gameReducer(state = initialState, action = {}) {
       actions: state.actions.concat([action.action]),
       positions: state.positions.concat([state.position]),
       sides: state.sides.concat([state.side]),
-      scores: current_scores 
+      scores: current_scores
     });
   case SET_POSITION_AND_SIDE:
     return Object.assign({}, state, {
       position: action.position,
-      side: action.side,
+      side: action.side
     });
   case POST_GAME_REQUEST:
     return state;
   case POST_GAME_RECIEVED:
     return Object.assign({}, state, {
-      current_score_game_id: action.current_score_game_id,
+      current_score_game_id: action.current_score_game_id
     });
   default:
     return state;

@@ -8,7 +8,7 @@ export default function enhancer(ComponentClass){
     constructor(props) {
       super(props);
       this.state = {
-        text: "",
+        text: ""
       };
       this.postRegistrationForm.bind(this);
     }
@@ -23,7 +23,7 @@ export default function enhancer(ComponentClass){
         email: this.state.email,
         password: this.state.password,
         password_confirmation: this.state.password_confirmation,
-        confirm_success_url: "api.water-fowl.co.jp",
+        confirm_success_url: "api.water-fowl.co.jp"
       };
       dispatch(postUserRegistration(registration_body));
     }

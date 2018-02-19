@@ -13,6 +13,6 @@ export {
   OutFieldSide,
   OutFieldLength,
   Modal,
-  ShotTypeButton,
+  ShotTypeButton
 };
 

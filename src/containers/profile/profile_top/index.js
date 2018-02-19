@@ -6,10 +6,10 @@ import {
   StyleSheet,
   Text,
   TouchableOpacity,
-  View,
+  View
 } from "react-native";
 import {
-  TopContentBar,
+  TopContentBar
 } from "components";
 import { connect } from "react-redux";
 
@@ -49,11 +49,11 @@ export default connect()(baseEnhancer(ProfileTop));
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 1
   },
   user_icon: {
     margin: 15,
-    opacity: 0.3,
+    opacity: 0.3
   },
   game_setting_border: {
     marginTop: 10,
@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(0, 0, 0, 0)",
     borderWidth: 1.5,
     borderColor: "rgb(20, 35, 70)",
-    borderRadius: 3,
+    borderRadius: 3
   },
   game_setting_table: {
     width: 320,
@@ -69,17 +69,17 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     borderWidth: 1.5,
     borderColor: "rgb(20, 35, 70)",
-    borderRadius: 3,
+    borderRadius: 3
   },
   my_name: {
     position: "absolute",
     marginTop: 220,
     backgroundColor: "transparent",
     color: "#ffffff",
-    fontSize: 20,
+    fontSize: 20
   },
   align_items_center: {
-    alignItems: "center",
-  },
+    alignItems: "center"
+  }
 
 });

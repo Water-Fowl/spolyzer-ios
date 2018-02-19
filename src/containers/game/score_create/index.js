@@ -9,14 +9,14 @@ import {
   Text,
   TouchableHighlight,
   TriangleCorner,
-  View,
+  View
 } from "react-native";
 import {
   LandScapeBackground,
-  TopContentBar,
+  TopContentBar
 } from "components";
 import {
-  connect,
+  connect
 } from "react-redux";
 
 import enhancer from "./hoc";
@@ -26,7 +26,7 @@ import {
   InFieldSide,
   Modal,
   OutFieldLength,
-  OutFieldSide,
+  OutFieldSide
 } from "./components";
 
 class ScoreCreate extends React.Component {
@@ -36,7 +36,7 @@ class ScoreCreate extends React.Component {
         /* eslint react-native/no-inline-styles: 0 */
         alignItems: "center",
         width: this.state.width,
-        height: this.state.height,
+        height: this.state.height
       }}
       >
         <Modal visible={this.props.score_create_modal} />
@@ -146,13 +146,13 @@ class ScoreCreate extends React.Component {
 function mapStateToProps(state, props) {
   const { game, view } = state;
   const {
-    score_create_modal,
+    score_create_modal
   } = view || {
-    score_create_modal: false,
+    score_create_modal: false
   };
   const { scores } = game;
   return {
-    score_create_modal, scores 
+    score_create_modal, scores
   };
 }
 export default connect(mapStateToProps)(enhancer(ScoreCreate));
@@ -164,7 +164,7 @@ const styles = StyleSheet.create({
     height: 40,
     right: 10,
     top: 8,
-    alignSelf: "flex-end",
+    alignSelf: "flex-end"
   },
   analysis_navigate_text: {
     borderColor: "#00A0E9",
@@ -174,22 +174,22 @@ const styles = StyleSheet.create({
     padding: 5,
     paddingLeft: 8,
     paddingRight: 8,
-    color: "white",
+    color: "white"
   },
   score_information_bar: {
     flexDirection: "row",
     justifyContent: "space-between",
     height: 40,
-    marginTop: -20,
+    marginTop: -20
   },
   score_information_back: {
     marginTop: 25,
     marginLeft: 20,
-    marginRight: 20,
+    marginRight: 20
   },
   score_information_user_name_container: {
     flex: 2,
-    justifyContent: "flex-end",
+    justifyContent: "flex-end"
   },
   score_information_user_name: {
     paddingTop: 8,
@@ -204,10 +204,10 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(0, 0, 0, 0)",
     borderWidth: 0.5,
     borderRadius: 4,
-    borderColor: "#2EA7E0",
+    borderColor: "#2EA7E0"
   },
   score_information_point_container: {
-    justifyContent: "flex-end",
+    justifyContent: "flex-end"
   },
   score_information_point: {
     justifyContent: "center",
@@ -219,7 +219,7 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(0, 0, 0, 0)",
     borderWidth: 0.5,
     borderRadius: 4,
-    borderColor: "#2EA7E0",
+    borderColor: "#2EA7E0"
   },
   score_information_game_point: {
     marginLeft: 10,
@@ -232,69 +232,69 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(0, 0, 0, 0)",
     borderWidth: 0.5,
     borderRadius: 4,
-    borderColor: "#2EA7E0",
+    borderColor: "#2EA7E0"
   },
   score_information_container: {
     flexDirection: "row",
-    flex: 0.4,
+    flex: 0.4
   },
   score_field_container: {
     alignItems: "center",
     justifyContent: "center",
-    marginBottom: 20,
+    marginBottom: 20
   },
   score_field_button_container: {
     flex: 1,
     alignItems: "center",
     flexDirection: "column",
-    justifyContent: "space-between",
+    justifyContent: "space-between"
   },
   score_field_line: {
-    position: "absolute",
+    position: "absolute"
   },
   score_over_container: {
     flexDirection: "row",
     flex: 1,
-    justifyContent: "space-between",
+    justifyContent: "space-between"
   },
   score_middle_container: {
     flexDirection: "row",
     flex: 2,
-    justifyContent: "space-between",
+    justifyContent: "space-between"
   },
   score_under_container: {
     flexDirection: "row",
     flex: 1,
-    justifyContent: "space-between",
+    justifyContent: "space-between"
   },
   score_out_field_length_container: {
     marginLeft: 8,
     marginRight: 8,
     flexDirection: "column",
-    justifyContent: "space-between",
+    justifyContent: "space-between"
   },
   score_out_field_side_container:{
     flexDirection: "row",
     flex: 0.36,
-    justifyContent: "space-around",
+    justifyContent: "space-around"
   },
   score_in_field_container: {
     flexDirection: "row",
     marginLeft: 30,
-    marginRight: 30,
+    marginRight: 30
   },
   score_in_field_length_container: {
     marginLeft: 12,
     marginRight: 12,
     justifyContent: "space-between",
-    alignItems: "center",
+    alignItems: "center"
   },
   score_in_field_circle_container: {
-    justifyContent: "space-between",
+    justifyContent: "space-between"
   },
   score_in_field_side_container: {
     marginLeft: 8,
     marginRight: 8,
-    justifyContent: "space-between",
-  },
+    justifyContent: "space-between"
+  }
 });

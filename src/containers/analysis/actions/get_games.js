@@ -4,7 +4,7 @@ import { CALL_API } from "redux-api-middleware";
 import { GET_GAMES_ENDPOINT } from "../../../config/api";
 import {
   GET_GAME_RECEIVED,
-  GET_GAME_RRQUEST,
+  GET_GAME_RRQUEST
 } from "../action_type";
 
 export function getGames(information_body) {
@@ -15,9 +15,9 @@ export function getGames(information_body) {
       method: "GET",
       headers: {
         Accept: "application/json",
-        "Content-Type": "application/json",
+        "Content-Type": "application/json"
       },
-      body: JSON.stringify(information_body),
+      body: JSON.stringify(information_body)
     })
       .then(response => response.json())
       .then(json => dispatch(receivedGetGame(json.score_game_ids)))
@@ -30,7 +30,7 @@ export function getGames(information_body) {
 
 function getGamesRequest() {
   return {
-    type: GET_GAMES_RRQUEST,
+    type: GET_GAMES_RRQUEST
   };
 }
 
@@ -38,6 +38,6 @@ function getGamesReceived(score_game_ids) {
   console.log(score_game_ids);
   return {
     type: GET_GAMES_RECEIVED,
-    score_game_ids,
+    score_game_ids
   };
 }

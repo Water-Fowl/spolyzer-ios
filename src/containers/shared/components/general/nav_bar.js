@@ -2,7 +2,7 @@ import React from "react";
 import {
   Image,
   StyleSheet,
-  View,
+  View
 } from "react-native";
 
 export default class NavBar extends React.Component {
@@ -21,6 +21,6 @@ const styles = StyleSheet.create({
     height: 70,
     justifyContent: "flex-end",
     paddingLeft: 20,
-    paddingBottom: 5,
+    paddingBottom: 5
   }
 });

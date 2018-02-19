@@ -1,7 +1,7 @@
 import React from "react";
 import {
   Image,
-  StyleSheet,
+  StyleSheet
 } from "react-native";
 
 export default class Background extends React.Component {
@@ -19,6 +19,6 @@ const styles = StyleSheet.create({
   background: {
     position: "absolute",
     width: "100%",
-    height: "100%",
-  },
+    height: "100%"
+  }
 });

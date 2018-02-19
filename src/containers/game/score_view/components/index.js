@@ -9,5 +9,5 @@ export {
   InFieldLength,
   InFieldSide,
   OutFieldSide,
-  OutFieldLength,
+  OutFieldLength
 };

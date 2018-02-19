@@ -3,7 +3,7 @@ import React from "react";
 import baseEnhancer from "enhances";
 import {
   ActionConst,
-  Actions,
+  Actions
 } from "react-native-router-flux";
 import {
   Image,
@@ -12,17 +12,17 @@ import {
   Text,
   TextInput,
   TouchableOpacity,
-  View,
+  View
 } from "react-native";
 import {
   NavigateButton,
-  TopContentBar,
+  TopContentBar
 } from "components";
 import { connect } from "react-redux";
 
 import {
   ProfileImage,
-  SexPicker,
+  SexPicker
 } from "./components";
 
 class ProfileEdit extends React.Component {
@@ -36,13 +36,13 @@ class ProfileEdit extends React.Component {
       sex: "男性",
       email: "yohiki@gmail.com",
       user_name: "yohikisex",
-      is_picker_visible: false,
+      is_picker_visible: false
     };
   }
   _selectPhotoTapped() {
     ImagePicker.openPicker({
       width: 200,
-      height: 200,
+      height: 200
     }).then((image) => {
       this._openCropper(image.path);
     });
@@ -52,10 +52,10 @@ class ProfileEdit extends React.Component {
       path,
       width: 200,
       height: 200,
-      cropperCircleOverlay: true,
+      cropperCircleOverlay: true
     }).then((image) => {
       this.setState({
-        profileImageSource: image.path,
+        profileImageSource: image.path
       });
     });
   }
@@ -137,27 +137,27 @@ export default connect()(baseEnhancer(ProfileEdit));
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 1
   },
   most_out: {
     flex: 5,
-    paddingTop: 40,
+    paddingTop: 40
   },
   row_direcition: {
-    flexDirection: "row",
+    flexDirection: "row"
   },
   left_side: {
     flex: 3,
     alignItems: "center",
-    backgroundColor: "transparent",
+    backgroundColor: "transparent"
   },
   right_side: {
     flex: 7,
     alignItems: "center",
-    paddingTop: 30,
+    paddingTop: 30
   },
   top_bar: {
-    fontSize: 16,
+    fontSize: 16
   },
   frame_name: {
     borderColor: "#0a2444",
@@ -166,13 +166,13 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderRadius: 4,
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "center"
   },
   plate_name: {
     backgroundColor: "#0a2444",
     height: 30,
     width: 220,
-    opacity: 0.7,
+    opacity: 0.7
   },
   frame_profile: {
     marginTop: 8,
@@ -182,39 +182,39 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderRadius: 4,
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "center"
   },
   plate_profile: {
     backgroundColor: "#0a2444",
     height: 120,
     width: 220,
-    opacity: 0.7,
+    opacity: 0.7
   },
   profile_title: {
     color: "white",
     fontWeight: "bold",
-    marginTop: 10,
+    marginTop: 10
   },
   profile_underline: {
     borderWidth: 0.5,
     borderColor: "#4780c6",
-    marginRight: 20,
+    marginRight: 20
   },
   complete: {
-    alignSelf: "center",
+    alignSelf: "center"
   },
   user_name: {
     fontSize: 23,
     color: "white",
-    textAlign: "center",
+    textAlign: "center"
   },
   paddingtop40: {
-    paddingTop: 40,
+    paddingTop: 40
   },
   paddingtop22: {
-    paddingTop: 22,
+    paddingTop: 22
   },
   paddingleft20: {
-    paddingLeft: 20,
-  },
+    paddingLeft: 20
+  }
 });

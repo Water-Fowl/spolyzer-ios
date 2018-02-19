@@ -3,7 +3,7 @@ import {
   Picker,
   StyleSheet,
   Text,
-  View,
+  View
 } from "react-native";
 import { lightBlue } from "const";
 
@@ -37,20 +37,20 @@ const styles = StyleSheet.create({
   picker_text_container:{
     flexDirection: "row",
     justifyContent: "flex-end",
-    backgroundColor: "white",
+    backgroundColor: "white"
   },
   picker_container: {
     position: "absolute",
     bottom: 0,
-    width: "100%",
+    width: "100%"
   },
   picker_text: {
     fontSize: 18,
     color: lightBlue,
     padding: 10,
-    backgroundColor: "white",
+    backgroundColor: "white"
   },
   picker: {
-    backgroundColor: "white",
-  },
+    backgroundColor: "white"
+  }
 });

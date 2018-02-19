@@ -3,5 +3,5 @@ import SexPicker from "./sex_picker";
 
 export {
   ProfileImage,
-  SexPicker,
+  SexPicker
 };

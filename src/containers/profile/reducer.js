@@ -1,6 +1,6 @@
 import {
   POST_USER_UPDATE_RECEIVED,
-  POST_USER_UPDATE_REQUEST,
+  POST_USER_UPDATE_REQUEST
 } from "./action_types";
 
 export default function profileReducer(state=initialState, action={}){
@@ -9,7 +9,7 @@ export default function profileReducer(state=initialState, action={}){
     return Object.assign({}, state, {
       user_name: action.user_name,
       email: action.email,
-      image: action.image,
+      image: action.image
     });
   case POST_USER_UPDATE_REQUEST:
     return Object.assign({}, state, {

@@ -15,8 +15,8 @@ export default function enhancer(ComponentClass) {
         data: {
           user_id: 2,
           opponent_user: 1,
-          victory: 1,
-        },
+          victory: 1
+        }
       };
       dispatch(getAnalysisGames(sampleData));
     }

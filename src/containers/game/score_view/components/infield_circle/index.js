@@ -5,7 +5,7 @@ import {
   StyleSheet,
   Text,
   TouchableHighlight,
-  View,
+  View
 } from "react-native";
 import { connect } from "react-redux";
 
@@ -38,6 +38,6 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 100,
     opacity: 0.3,
-    alignSelf: "center",
-  },
+    alignSelf: "center"
+  }
 });

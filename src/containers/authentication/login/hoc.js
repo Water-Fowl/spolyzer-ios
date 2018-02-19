@@ -10,7 +10,7 @@ export function enhancer(ComponentClass) {
       this.state = {
         email: "",
         password: "",
-        login_error: false,
+        login_error: false
       };
     }
 
@@ -27,7 +27,7 @@ export function enhancer(ComponentClass) {
       const { dispatch } = this.props;
       const loginForm = {
         email: this.state.email,
-        password: this.state.password,
+        password: this.state.password
       };
       dispatch(postLogin(loginForm));
     }
