@@ -1,9 +1,9 @@
 import {
-  GAME_SETTING_RECEIVED,
-  GAME_SETTING_REQUEST
+  GET_RECENTLY_GAMES_RECEIVED,
+  GET_RECENTLY_GAMES_REQUEST
 } from "../action_type";
 
-export function getGames(body) {
+export function getRecentlyGames(body) {
   return (dispatch) => {
     dispatch(requestGetGames());
     return fetch(GAME_SETTING_REQUEST, {
@@ -21,15 +21,15 @@ export function getGames(body) {
   };
 }
 
-function requestGetGames() {
+function GetRecentlyGamesRequest() {
   return {
-    type: GAME_SETTING_REQUEST
+    type: GET_RECENTLY_GAMES_REQUEST 
   };
 }
 
-function receivedGetGames() {
+function GetRecentlyGamesReceived() {
   return {
-    type: GAME_SETTING_RECEIVED
-  };
+    type: GET_RECENTLY_GAMES_RECEIVED
+  }
 }
 

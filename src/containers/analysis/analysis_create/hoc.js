@@ -1,6 +1,6 @@
 import baseEnhancer from "enhances";
 
-import { getAnalysisGames } from "../actions/get_games";
+import { getGames } from "../actions/get_games";
 
 export default function enhancer(ComponentClass) {
   const BaseHOComponentClass = baseEnhancer(ComponentClass);
@@ -18,7 +18,7 @@ export default function enhancer(ComponentClass) {
           victory: 1
         }
       };
-      dispatch(getAnalysisGames(sampleData));
+      dispatch(getGames(sampleData));
     }
     render() {
       return (
