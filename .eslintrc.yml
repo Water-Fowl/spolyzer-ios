@@ -1,8 +1,8 @@
 parser: "babel-eslint"
 env:
-  browser: false 
-  commonjs: false 
-  react-native/react-native: true 
+  browser: false
+  commonjs: false
+  react-native/react-native: true
   es6: true
 extends: "plugin:react-native/all"
 parserOptions:
@@ -11,18 +11,19 @@ parserOptions:
     modules: true
 plugins:
   - react
-  - react-native    
+  - react-native
   - import
   - jsx-a11y
 rules:
-  react-native/no-color-literals: 0 
+  react-native/no-color-literals: 0
   no-trailing-spaces: 2
+  camelcase: 2
   comma-dangle: 2
-  no-console: 1 
+  no-console: 1
   constructor-super: 2
   indent:
     - error
-    - 2 
+    - 2
   linebreak-style:
     - error
     - unix
