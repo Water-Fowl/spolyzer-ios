@@ -4,7 +4,7 @@ import {
   SEARCH_USER_REQUEST
 } from "../action_types";
 
-export function getUserName(body) {
+export function getUser(body) {
   return (dispatch) => {
     dispatch(requestUserName());
     return fetch(SEARCH_USER_ENDPOINT, {
@@ -22,13 +22,13 @@ export function getUserName(body) {
   };
 }
 
-function requestUserName() {
+function requestUser() {
   return {
     type: SEARCH_USER_REQUEST
   };
 }
 
-function receivedUserName() {
+function receivedUser() {
   return {
     type: SEARCH_USER_RECEIVED
   };
