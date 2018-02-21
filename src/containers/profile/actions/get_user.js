@@ -1,7 +1,7 @@
 import { GET_USER_ENDPOINT } from "../../../config/api";
 import {
   RECEIVED_GET_USER,
-  REQUEST_GET_USER,
+  REQUEST_GET_USER
 } from "../action_types";
 
 export function getUser(body){
@@ -31,9 +31,9 @@ export function requestGetUser() {
 
 export function receivedGetUser(user_name, email_address, image) {
   return {
-    type: RECEIVED_GET_USER
+    type: RECEIVED_GET_USER,
     user_name,
     email_address,
-    image,
+    image
   };
 }
