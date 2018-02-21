@@ -11,7 +11,7 @@ import {
 } from "./action_type";
 
 const initialState = {
-  score_game_ids: []
+  scoreGameIds: []
 };
 
 export default function analysisReducer(state = initialState, action = {}) {
@@ -20,31 +20,31 @@ export default function analysisReducer(state = initialState, action = {}) {
     return state;
   case GAME_INFORMATION_RECEIVED:
     return Object.assign({}, state, {
-      score_game_ids: action.score_game_ids
+      scoreGameIds: action.scoreGameIds
     });
   case GAME_TYPE_SETTING:
     return Object.assign({}, state, {
-      game_type_id: action.game_type_id
+      gameTypeId: action.gameTypeId
     });
   case SHOT_TYPE_SETTING:
     return Object.assign({}, state, {
-      shot_type_id: action.shot_type_id
+      shotTypeId: action.shotTypeId
     });
   case TERM_SETTING:
     return Object.assign({}, state, {
-      term_id: action.term_id
+      termId: action.termId
     });
   case GAME_SETTING_REQUEST:
     return state;
   case GAME_SETTING_RECEIVED:
     return Object.assign({}, state, {
-      score_game_ids: action.score_game_ids
+      scoreGameIds: action.scoreGameIds
     });
   case SEARCH_USER_REQUEST:
     return state;
   case SEARCH_USER_RECEIVED:
     return Object.assign({}, state, {
-      opponent_user_id: action.user_id
+      opponentUserId: action.userId
     });
   default:
     return state;

@@ -10,7 +10,7 @@ export function enhancer(ComponentClass) {
       this.state = {
         email: "",
         password: "",
-        login_error: false
+        loginError: false
       };
     }
 
@@ -19,8 +19,8 @@ export function enhancer(ComponentClass) {
     }
 
     componentWillReceiveProps(nextProps) {
-      const { login_error } = nextProps;
-      this.setState({ login_error });
+      const { loginError } = nextProps;
+      this.setState({ loginError });
     }
 
     postLoginEvent() {
@@ -39,4 +39,3 @@ export function enhancer(ComponentClass) {
     }
   };
 }
-

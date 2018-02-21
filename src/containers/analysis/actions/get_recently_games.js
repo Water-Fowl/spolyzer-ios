@@ -16,7 +16,6 @@ export function getGames(body) {
     })
       .then(response => response.json())
       .catch((error) => {
-        console.log(error.message);
       });
   };
 }
@@ -32,4 +31,3 @@ function receivedGetGames() {
     type: GAME_SETTING_RECEIVED
   };
 }
-

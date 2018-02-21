@@ -8,33 +8,33 @@ export default class InArea extends React.Component {
   render() {
     return (
       <View>
-        <View style={styles.out_field_area_container}>
-          <View style={styles.out_field_area} />
-          <View style={styles.out_field_area} />
+        <View style={styles.outFieldAreaContainer}>
+          <View style={styles.outFieldArea} />
+          <View style={styles.outFieldArea} />
         </View>
-        <View style={styles.in_field_area_container}>
-          <View style={styles.in_field_area} />
-          <View style={styles.in_field_area} />
+        <View style={styles.inFieldAreaContainer}>
+          <View style={styles.inFieldArea} />
+          <View style={styles.inFieldArea} />
         </View>
       </View>
     );
   }
 }
 const styles = StyleSheet.create({
-  out_field_area_container: {
+  outFieldAreaContainer: {
     width: 330,
     position: "absolute",
     flexDirection: "row",
     justifyContent: "space-between"
   },
-  out_field_area: {
+  outFieldArea: {
     alignSelf: "center",
     flex: 0.45,
     backgroundColor: "#FAEE00",
     opacity: 0.3,
     height: 170
   },
-  in_field_area_container: {
+  inFieldAreaContainer: {
     width: 330,
     position: "absolute",
     flexDirection: "row",
@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
     paddingRight: 10
   },
-  in_field_area: {
+  inFieldArea: {
     flex: 0.4,
     alignSelf: "center",
     backgroundColor: "black",
@@ -51,4 +51,3 @@ const styles = StyleSheet.create({
     marginBottom: 16
   }
 });
-

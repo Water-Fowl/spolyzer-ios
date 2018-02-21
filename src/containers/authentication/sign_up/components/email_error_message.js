@@ -6,13 +6,12 @@ import {
 
 export default class EmailErrorMessage extends React.Component{
   componentWillReceiveProps(nextProps){
-    console.log(nextProps.isVisible);
     this.forceUpdate();
   }
   render(){
     if(this.props.isVisible){
       return(
-        <Text style={styles.error_message_text}>
+        <Text style={styles.errorMessageText}>
           メールアドレスを入力してください
         </Text>
       );
@@ -28,7 +27,7 @@ export default class EmailErrorMessage extends React.Component{
 }
 
 const styles = StyleSheet.create({
-  error_message_text:{
+  errorMessageText:{
     color: "red",
     backgroundColor: "transparent"
   }

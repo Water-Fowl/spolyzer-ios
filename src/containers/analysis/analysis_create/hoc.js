@@ -13,8 +13,8 @@ export default function enhancer(ComponentClass) {
       const { dispatch } = this.props;
       const sampleData = {
         data: {
-          user_id: 2,
-          opponent_user: 1,
+          userId: 2,
+          opponentUser: 1,
           victory: 1
         }
       };
@@ -27,4 +27,3 @@ export default function enhancer(ComponentClass) {
     }
   };
 }
-

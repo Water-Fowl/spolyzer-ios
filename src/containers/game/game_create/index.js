@@ -25,24 +25,24 @@ class ScoreGameCreate extends React.Component {
     return (
       <View style={styles.container}>
         <TopContentBar>試合設定</TopContentBar>
-        <View style={styles.align_items_center} >
-          <View style={styles.game_setting_border} >
-            <View style={styles.game_setting_table}>
-              <Text style={styles.score_game_create_opponents}>対戦相手選択</Text>
-              <View style={styles.game_setting_table_inner}>
-                <View style={styles.game_setting_table_inner_left}>
+        <View style={styles.alignItemsCenter} >
+          <View style={styles.gameSettingBorder} >
+            <View style={styles.gameSettingTable}>
+              <Text style={styles.scoreGameCreateOpponents}>対戦相手選択</Text>
+              <View style={styles.gameSettingTableInner}>
+                <View style={styles.gameSettingTableInnerLeft}>
                   <NoSelectedUser />
                   <View style={styles.textbox} />
                   <NoSelectedUser />
                   <View style={styles.textbox} />
                 </View>
-                <View style={styles.game_setting_table_inner_center}>
+                <View style={styles.gameSettingTableInnerCenter}>
                   <Image
                     source={require("../../../assets/img/game_create_vs.png")}
-                    style={styles.vs_position}
+                    style={styles.vsPosition}
                   />
                 </View>
-                <View style={styles.game_setting_inner_right} >
+                <View style={styles.gameSettingInnerRight} >
                   <NoSelectedUser />
                   <View style={styles.textbox} />
                   <NoSelectedUser />
@@ -51,7 +51,7 @@ class ScoreGameCreate extends React.Component {
               </View>
             </View>
           </View>
-          <NavigateButton action={Actions.score_create} style={styles.button_style} text="試合開始" />
+          <NavigateButton action={Actions.scoreCreate} style={styles.buttonStyle} text="試合開始" />
         </View>
       </View>
     );
@@ -63,24 +63,24 @@ const styles = StyleSheet.create({
   container: {
     flex: 1
   },
-  align_items_center: {
+  alignItemsCenter: {
     alignItems: "center"
   },
-  game_setting_border: {
+  gameSettingBorder: {
     padding: 5,
     backgroundColor: "rgba(0, 0, 0, 0)",
     borderWidth: 2.5,
     marginTop: 30,
     borderColor: "rgb(20, 35, 70)"
   },
-  game_setting_table: {
+  gameSettingTable: {
     width: 320,
     height: 270,
     backgroundColor: "rgb(20, 35, 70)",
     justifyContent: "center",
     opacity: 0.7
   },
-  game_setting_table_inner: {
+  gameSettingTableInner: {
     flexDirection: "row",
     justifyContent: "center",
     alignSelf: "center",
@@ -88,20 +88,20 @@ const styles = StyleSheet.create({
     width: 280,
     height: 240
   },
-  game_setting_table_inner_left: {
+  gameSettingTableInnerLeft: {
     flex: 1,
     width: 70,
     height: 220,
     justifyContent: "center",
     alignItems: "center"
   },
-  game_setting_table_inner_center: {
+  gameSettingTableInnerCenter: {
     flex: 1,
     width: 30,
     height: 220,
     alignItems: "center"
   },
-  score_game_create_opponents: {
+  scoreGameCreateOpponents: {
     padding: 0,
     marginTop: 10,
     marginLeft: 20,
@@ -109,7 +109,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: "white"
   },
-  button_style: {
+  buttonStyle: {
     marginTop: 80
   },
   textbox: {
@@ -121,7 +121,7 @@ const styles = StyleSheet.create({
     opacity: 0.5,
     alignSelf: "center"
   },
-  vs_position: {
+  vsPosition: {
     height: 27,
     width: 35,
     marginTop: 100

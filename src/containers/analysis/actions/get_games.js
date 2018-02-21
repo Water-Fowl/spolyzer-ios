@@ -7,9 +7,8 @@ import {
   GET_GAME_RRQUEST
 } from "../action_type";
 
-export function getGames(information_body) {
+export function getGames(informationBody) {
   return (dispatch) => {
-    console.log(JSON.stringify(information_body));
     dispatch(requestGameInformation());
     return fetch(GET_GAMES_ENDPOINT, {
       method: "GET",
@@ -21,9 +20,8 @@ export function getGames(information_body) {
     })
       .then(response => response.json())
       .then(json => dispatch(receivedGetGame(json.score_game_ids)))
-      .then(Actions.analysis_view())
+      .then(Actions.analysisView())
       .catch((error) => {
-        console.log(error);
       });
   };
 }
@@ -34,10 +32,9 @@ function getGamesRequest() {
   };
 }
 
-function getGamesReceived(score_game_ids) {
-  console.log(score_game_ids);
+function getGamesReceived(scoreGameIds) {
   return {
     type: GET_GAMES_RECEIVED,
-    score_game_ids
+    scoreGameIds
   };
 }

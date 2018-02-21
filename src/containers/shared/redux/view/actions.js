@@ -8,27 +8,27 @@ import {
 export function setScoreCreateModal() {
   return {
     type: SET_SCORE_CREATE_MODAL,
-    score_create_modal: true
+    scoreCreateModal: true
   };
 }
 
 export function hideScoreCreateModal() {
   return {
     type: HIDE_SCORE_CREATE_MODAL,
-    score_create_modal: false
+    scoreCreateModal: false
   };
 }
 
 export function isNotEmailInSignUp(){
   return {
     type: IS_NOT_EMAIL_IN_SIGN_UP,
-    sign_up_email_error_message: true
+    signUpEmailErrorMessage: true
   };
 }
 
 export function isEmailInSignUp(){
   return {
     type: IS_EMAIL_IN_SIGN_UP,
-    sign_up_email_error_message: false
+    signUpWmailErrorMessage: false
   };
 }

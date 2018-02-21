@@ -24,40 +24,40 @@ class AnalysisCreate extends React.Component {
     return (
       <View style={styles.container}>
         <TopContentBar>検索条件</TopContentBar>
-        <View style={styles.row_container}>
-          <Text style={styles.game_style_text}>
+        <View style={styles.rowContainer}>
+          <Text style={styles.gameStyleText}>
             試合形式
           </Text>
           <GameTypeButton />
         </View>
-        <View style={styles.row_container}>
-          <Text style={styles.shot_type_text}>
+        <View style={styles.rowContainer}>
+          <Text style={styles.shotTypeText}>
             球種
           </Text>
           <ShotTypeButton />
         </View>
-        <View style={styles.row_container}>
-          <Text style={styles.term_text}>
+        <View style={styles.rowContainer}>
+          <Text style={styles.termText}>
             期間
           </Text>
           <TermButton />
         </View>
-        <View style={styles.row_container}>
-          <Text style={styles.opponent_text}>
+        <View style={styles.rowContainer}>
+          <Text style={styles.opponentText}>
             対戦相手
           </Text>
-          <TouchableOpacity onPress={Actions.user_search}>
-            <View style={styles.opponent_frame} />
+          <TouchableOpacity onPress={Actions.userSearch}>
+            <View style={styles.opponentFrame} />
           </TouchableOpacity>
-          <View style={styles.opponent_frame} />
+          <View style={styles.opponentFrame} />
         </View>
-        <View style={styles.row_container}>
-          <Text style={styles.game_select_text}>
+        <View style={styles.rowContainer}>
+          <Text style={styles.gameSelectText}>
             試合選択
           </Text>
-          <View style={styles.game_select_frame} />
+          <View style={styles.gameSelectFrame} />
         </View>
-        <NavigateButton action={Actions.analysis_view} style={styles.analyze} text="分析" />
+        <NavigateButton action={Actions.analysisView} style={styles.analyze} text="分析" />
       </View>
     );
   }
@@ -68,10 +68,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1
   },
-  row_container: {
+  rowContainer: {
     flexDirection: "row"
   },
-  game_style_text: {
+  gameStyleText: {
     color: "#ffffff",
     fontSize: 15,
     marginTop: 45,
@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     alignSelf: "flex-start"
   },
-  shot_type_text: {
+  shotTypeText: {
     color: "#ffffff",
     fontSize: 15,
     marginTop: 68,
@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     alignSelf: "flex-start"
   },
-  term_text: {
+  termText: {
     color: "#ffffff",
     fontSize: 15,
     marginTop: 30,
@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     alignSelf: "flex-start"
   },
-  opponent_text: {
+  opponentText: {
     color: "#ffffff",
     fontSize: 15,
     marginTop: 32,
@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
     alignSelf: "flex-start",
     marginRight: 22
   },
-  opponent_frame: {
+  opponentFrame: {
     flexDirection: "row",
     backgroundColor: "transparent",
     borderRightColor: "#0a2444",
@@ -122,7 +122,7 @@ const styles = StyleSheet.create({
     borderRadius: 3,
     marginTop: 25
   },
-  game_select_text: {
+  gameSelectText: {
     color: "#ffffff",
     fontSize: 15,
     marginTop: 36,
@@ -131,7 +131,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     alignSelf: "flex-start"
   },
-  game_select_frame: {
+  gameSelectFrame: {
     flexDirection: "row",
     backgroundColor: "transparent",
     borderRightColor: "#0a2444",

@@ -12,18 +12,18 @@ class ScoreCreateShotTypeButton extends React.Component {
   render() {
     return (
       <TouchableHighlight onPress={() => {
-        this.setShotTypeEvent(this.props.shot_type_id);
+        this.setShotTypeEvent(this.props.shotTypeId);
         this.hideModalEvent();
       }}
       >
-        <Text style={styles.shot_type}>{ this.props.children }</Text>
+        <Text style={styles.shotType}>{ this.props.children }</Text>
       </TouchableHighlight>
     );
   }
 }
 export default connect()(scoreCreateShotTypeButtonEnhancer(ScoreCreateShotTypeButton));
 const styles = StyleSheet.create({
-  shot_type: {
+  shotType: {
     fontSize: 30,
     alignSelf: "center",
     textAlign: "center",
@@ -33,4 +33,3 @@ const styles = StyleSheet.create({
     backgroundColor: "#2EA7E0"
   }
 });
-

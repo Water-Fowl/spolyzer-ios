@@ -9,32 +9,32 @@ import {
 export default class SearchedUserAccount extends React.Component{
   render(){
     return(
-      <View style={styles.user_account}>
-        <View style={styles.user_image}>
+      <View style={styles.userAccount}>
+        <View style={styles.userImage}>
           <Image
             source={require("../../../../../assets/img/score_create_person.png")}
             style={styles.person}
           />
         </View>
-        <View style={styles.user_name}>
-          <Text style={styles.user_name_text}>{ this.props.user_name }</Text>
+        <View style={styles.userName}>
+          <Text style={styles.userNameText}>{ this.props.userName }</Text>
         </View>
-        <View style={styles.user_status}>
-          <Text style={styles.user_status_text}>{ this.props.user_status }</Text>
+        <View style={styles.userStatus}>
+          <Text style={styles.userStatusText}>{ this.props.userStatus }</Text>
         </View>
       </View>
     );
   }
 }
 const styles = StyleSheet.create({
-  user_account: {
+  userAccount: {
     height: 45,
     borderRadius: 3,
     backgroundColor: "rgba(23,82,155,0.3)",
     flexDirection: "row",
     alignSelf: "center"
   },
-  user_image: {
+  userImage: {
     width: "20%",
     backgroundColor: "transparent"
   },
@@ -44,23 +44,23 @@ const styles = StyleSheet.create({
     height: 36,
     width: 36
   },
-  user_name: {
+  userName: {
     width: "50%",
     backgroundColor: "transparent",
     alignItems: "center",
     justifyContent: "center"
   },
-  user_name_text: {
+  userNameText: {
     fontWeight: "bold",
     fontSize: 18,
     color: "white"
   },
-  user_status: {
+  userStatus: {
     width: "30%",
     backgroundColor: "transparent",
     justifyContent: "center"
   },
-  user_status_text: {
+  userStatusText: {
     fontWeight: "bold",
     fontSize: 18,
     color: "white"

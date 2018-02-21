@@ -9,14 +9,14 @@ export default class LandScapeBackground extends React.Component {
     return (
       <Image
         source={require("../../../../assets/img/landscape_background.png")}
-        style={styles.landscape_background}
+        style={styles.landscapeBackground}
       />
     );
   }
 }
 
 const styles = StyleSheet.create({
-  landscape_background: {
+  landscapeBackground: {
     zIndex: 0,
     resizeMode: "stretch",
     width: "100%",

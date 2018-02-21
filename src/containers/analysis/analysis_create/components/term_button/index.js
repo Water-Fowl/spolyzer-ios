@@ -9,31 +9,19 @@ import {
 import Button from "./components/button";
 
 export default class TermButton extends React.Component {
-  constructor(props) {
-    super(props);
-    const termPressed = [true, false, false];
-    this.state = { termPressed };
-  }
-
-  termOnPressButton(id) {
-    const termPressed = [false, false, false];
-    termPressed[id] = true;
-    this.setState({ termPressed });
-  }
-
   render() {
     return (
-      <View style={styles.term_frame}>
-        <Button current_term_id={0}>Day</Button>
-        <Button current_term_id={1}>Week</Button>
-        <Button current_term_id={2}>Month</Button>
+      <View style={styles.termFrame}>
+        <Button currentTermId={0}>Day</Button>
+        <Button currentTermId={1}>Week</Button>
+        <Button currentTermId={2}>Month</Button>
       </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  term_frame: {
+  termFrame: {
     flexDirection: "row",
     backgroundColor: "transparent",
     borderRightColor: "#0a2444",

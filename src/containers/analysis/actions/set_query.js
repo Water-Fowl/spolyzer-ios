@@ -5,23 +5,23 @@ import {
   TERM_SETTING
 } from "../action_type";
 
-export function setGameType(game_type_id) {
+export function setGameType(gameTypeId) {
   return {
     type: GAME_TYPE_SETTING,
-    game_type_id
+    gameTypeId
   };
 }
 
-export function setShotType(shot_type_id) {
+export function setShotType(shotTypeId) {
   return {
     type: SHOT_TYPE_SETTING,
-    shot_type_id
+    shotTypeId
   };
 }
 
-export function setTerm(term_id) {
+export function setTerm(termId) {
   return {
     type: TERM_SETTING,
-    term_id
+    termId
   };
 }

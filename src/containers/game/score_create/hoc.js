@@ -28,7 +28,7 @@ export default function enhancer(ComponentClass) {
     navigateEvent(){
       const { dispatch } = this.props;
       dispatch(postGame());
-      Action.score_view();
+      Action.scoreView();
     }
     render() {
       return (
@@ -37,4 +37,3 @@ export default function enhancer(ComponentClass) {
     }
   };
 }
-

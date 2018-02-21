@@ -9,19 +9,19 @@ import {
 export default class TopContentBar extends React.Component {
   render() {
     return (
-      <View style={styles.top_content_bar_container}>
+      <View style={styles.topContentBarContainer}>
         <Image
-          style={styles.top_content_bar_img}
+          style={styles.topContentBarImg}
           source={require("../../../../assets/img/top_content_bar.png")}
         />
-        <Text style={styles.top_content_bar_text}>{this.props.children}</Text>
+        <Text style={styles.topContentBarText}>{this.props.children}</Text>
       </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  top_content_bar_text: {
+  topContentBarText: {
     color: "#ffffff",
     fontSize: 18,
     alignSelf: "center",
@@ -30,11 +30,11 @@ const styles = StyleSheet.create({
     marginTop: 5,
     marginBottom: 7
   },
-  top_content_bar_img: {
+  topContentBarImg: {
     alignSelf: "center",
     position: "absolute"
   },
-  top_content_bar_container: {
+  topContentBarContainer: {
     backgroundColor: "transparent"
   }
 });

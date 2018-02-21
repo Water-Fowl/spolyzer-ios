@@ -17,7 +17,6 @@ export function getUserName(body) {
     })
       .then(response => response.json())
       .catch((error) => {
-        console.log(error.message);
       });
   };
 }
@@ -33,4 +32,3 @@ function receivedUserName() {
     type: SEARCH_USER_RECEIVED
   };
 }
-

@@ -15,7 +15,7 @@ export class OutFieldLength extends React.Component {
   render() {
     return (
       <TouchableHighlight
-        style={styles.vartical_yellow_bar_left}
+        style={styles.varticalYellowBarLeft}
         onPress={() => {
           this.postPositionEvent();
         }
@@ -29,7 +29,7 @@ export class OutFieldLength extends React.Component {
 export default connect()(fieldButtonEnhancer(OutFieldLength));
 
 const styles = StyleSheet.create({
-  vartical_yellow_bar_left: {
+  varticalYellowBarLeft: {
     borderColor: "#A29A67",
     backgroundColor: "#A29A67",
     width: 10,

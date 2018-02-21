@@ -22,12 +22,12 @@ class Button extends React.Component {
     this.state = { pressed };
   }
   componentWillReceiveProps(nextProps) {
-    const pressed = this.props.current_game_type_id == nextProps.game_type_id;
+    const pressed = this.props.currentGameTypeId == nextProps.gameTypeId;
     this.setState({ pressed });
   }
-  pressButtonEvent(game_type_id) {
+  pressButtonEvent(gameTypeId) {
     const { dispatch } = this.props;
-    dispatch(setGameType(game_type_id));
+    dispatch(setGameType(gameTypeId));
     const pressed = !this.state.pressed;
     this.setState({ pressed });
   }
@@ -37,12 +37,12 @@ class Button extends React.Component {
       <TouchableHighlight
         activeOpacity={0.6}
         underlayColor="transparent"
-        style={this.state.pressed ? styles.button_pressed : styles.button}
+        style={this.state.pressed ? styles.buttonPressed : styles.button}
         onPress={() => {
-          this.pressButtonEvent(this.props.current_game_type_id);
+          this.pressButtonEvent(this.props.currentGameTypeId);
         }}
       >
-        <Text style={this.state.pressed ? styles.text_pressed : styles.text}>
+        <Text style={this.state.pressed ? styles.textPressed : styles.text}>
           {this.props.children}
         </Text>
       </TouchableHighlight>
@@ -53,18 +53,18 @@ class Button extends React.Component {
 function mapStateToProps(state, props) {
   const { analysis } = state;
   const {
-    game_type_id
+    gameTypeId
   } = analysis || {
-    game_type_id: null
+    gameTypeId: null
   };
   return {
-    game_type_id
+    gameTypeId
   };
 }
 export default connect(mapStateToProps)(Button);
 
 const styles = StyleSheet.create({
-  text_pressed: {
+  textPressed: {
     color: $white,
     fontSize: 15,
     backgroundColor: $transparent,
@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold"
   },
 
-  button_pressed: {
+  buttonPressed: {
     backgroundColor: $spolyzerDarkBlue,
     height: 28,
     width: 90,

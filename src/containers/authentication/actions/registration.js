@@ -22,15 +22,14 @@ export function postRegistration(body) {
       .then(json => json.errors)
       .then(errors => dispatch(receivedRegistration(errors)))
       .catch((error) => {
-        console.log(error.message);
       });
   };
 }
 
-export function emailValidation(is_email){
+export function emailValidation(isEmail){
   return{
     type: EMAIL_VALIDATION,
-    is_email: is_email
+    isEmail: isEmail
   };
 }
 
@@ -45,14 +44,14 @@ function receivedRegistration(errors) {
     Actions.tab();
     return {
       type: POST_REGISTRATION_RECEIVED,
-      is_authenticated: true,
+      isAuthenticated: true,
       error: false
     };
   }
 
   return {
     type: POST_REGISTRATION_RECEIVED,
-    is_authenticated: false,
+    isAuthenticated: false,
     error: true
   };
 }

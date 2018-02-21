@@ -18,7 +18,6 @@ export function postUserUpdate(body) {
       .then(response => response.json())
       .then(json => dispatch(receivedPostUserUpdate()))
       .catch((error) => {
-        console.log(error);
       });
   };
 }

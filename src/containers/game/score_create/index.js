@@ -39,99 +39,99 @@ class ScoreCreate extends React.Component {
         height: this.state.height
       }}
       >
-        <Modal visible={this.props.score_create_modal} />
+        <Modal visible={this.props.scoreCreateModal} />
         <LandScapeBackground />
         <TopContentBar>スコアシート</TopContentBar>
-        <View style={styles.score_information_bar}>
-          <View style={styles.score_information_container}>
-            <View style={styles.score_information_user_name_container}>
-              <Text style={styles.score_information_user_name}>Name</Text>
+        <View style={styles.scoreInformationBar}>
+          <View style={styles.scoreInformationContainer}>
+            <View style={styles.scoreInformationUserNameContainer}>
+              <Text style={styles.scoreInformationUserName}>Name</Text>
             </View>
-            <View style={styles.score_information_point_container}>
-              <Text style={styles.score_information_point}>{this.props.scores[0]}</Text>
+            <View style={styles.scoreInformationPointContainer}>
+              <Text style={styles.scoreInformationPoint}>{this.props.scores[0]}</Text>
             </View>
-            <Text style={styles.score_information_game_point}>0</Text>
+            <Text style={styles.scoreInformationGamePoint}>0</Text>
           </View>
-          <Image style={styles.score_information_back} source={require("../../../assets/img/score_create_back.png")} />
-          <View style={styles.score_information_container}>
-            <Text style={styles.score_information_game_point}>0</Text>
-            <View style={styles.score_information_point_container}>
-              <Text style={styles.score_information_point}>{this.props.scores[1]}</Text>
+          <Image style={styles.scoreInformationBack} source={require("../../../assets/img/score_create_back.png")} />
+          <View style={styles.scoreInformationContainer}>
+            <Text style={styles.scoreInformationGamePoint}>0</Text>
+            <View style={styles.scoreInformationPointContainer}>
+              <Text style={styles.scoreInformationPoint}>{this.props.scores[1]}</Text>
             </View>
-            <View style={styles.score_information_user_name_container}>
-              <Text style={styles.score_information_user_name}>Name</Text>
+            <View style={styles.scoreInformationUserNameContainer}>
+              <Text style={styles.scoreInformationUserName}>Name</Text>
             </View>
           </View>
         </View>
-        <TouchableHighlight onPress={Actions.score_view} style={styles.analysis_navigate}>
-          <Text style={styles.analysis_navigate_text}>分析</Text>
+        <TouchableHighlight onPress={Actions.scoreView} style={styles.analysisNavigate}>
+          <Text style={styles.analysisNavigateText}>分析</Text>
         </TouchableHighlight>
-        <View style={styles.score_field_container}>
+        <View style={styles.scoreFieldContainer}>
           <Image
             source={require("../../../assets/img/field-line.png")}
-            style={styles.score_field_line}
+            style={styles.scoreFieldLine}
           />
-          <View style={styles.score_field_button_container}>
-            <View style={styles.score_over_container}>
-              <View style={styles.score_out_field_side_container}>
+          <View style={styles.scoreFieldButtonContainer}>
+            <View style={styles.scoreOverContainer}>
+              <View style={styles.scoreOutFieldSideContainer}>
                 <OutFieldSide position={5} side={0} />
                 <OutFieldSide position={6} side={0}/>
               </View>
-              <View style={styles.score_out_field_side_container}>
+              <View style={styles.score_outFieldSideContainer}>
                 <OutFieldSide position={0} side={1}/>
                 <OutFieldSide position={1} side={1}/>
               </View>
             </View>
-            <View style={styles.score_middle_container}>
-              <View style={styles.score_out_field_length_container}>
+            <View style={styles.scoreMiddleContainer}>
+              <View style={styles.scoreOutFieldLengthContainer}>
                 <OutFieldLength position={4} side={0}/>
                 <OutFieldLength position={3} side={0}/>
               </View>
-              <View style={styles.score_in_field_container}>
-                <View style={styles.score_in_field_length_container}>
+              <View style={styles.scoreInFieldContainer}>
+                <View style={styles.scoreInFieldLengthContainer}>
                   <InFieldLength position={11} side={0}/>
                   <InFieldLength position={10} side={0}/>
                 </View>
-                <View style={styles.score_in_field_side_container}>
+                <View style={styles.scoreInFieldSideContainer}>
                   <InFieldSide position={12} side={0}/>
-                  <View style={styles.score_in_field_circle_container}>
+                  <View style={styles.scoreInFieldCircleContainer}>
                     <InFieldCircle position={7} side={0}/>
                   </View>
                   <InFieldSide position={9} side={0}/>
                 </View>
-                <View style={styles.score_in_field_length_container}>
+                <View style={styles.scoreInFieldLengthContainer}>
                   <InFieldLength position={13} side={0}/>
                   <InFieldLength position={8} side={0}/>
                 </View>
               </View>
-              <View style={styles.score_in_field_container}>
-                <View style={styles.score_in_field_length_container}>
+              <View style={styles.scoreInFieldContainer}>
+                <View style={styles.scoreInFieldLengthContainer}>
                   <InFieldLength position={8} side={1}/>
                   <InFieldLength position={13} side={1}/>
                 </View>
-                <View style={styles.score_in_field_side_container}>
+                <View style={styles.scoreInFieldSideContainer}>
                   <InFieldSide position={9} side={1}/>
-                  <View style={styles.score_in_field_circle_container}>
+                  <View style={styles.scoreInFieldCircleContainer}>
                     <InFieldCircle position={7} side={1}/>
                   </View>
                   <InFieldSide position={12} side={1}/>
                 </View>
-                <View style={styles.score_in_field_length_container}>
+                <View style={styles.scoreInFieldLengthContainer}>
                   <InFieldLength position={10} side={1}/>
                   <InFieldLength position={11} side={1}/>
                 </View>
               </View>
-              <View style={styles.score_out_field_length_container}>
+              <View style={styles.scoreOutFieldLengthContainer}>
                 <OutFieldLength position={3} side={1}/>
                 <OutFieldLength position={4} side={1}/>
               </View>
             </View>
-            <View style={styles.score_under_container}>
-              <View style={styles.score_out_field_side_container}>
+            <View style={styles.scoreUnderContainer}>
+              <View style={styles.scoreOutFieldSideContainer}>
                 <OutFieldSide position={2} side={0} />
                 <OutFieldSide position={1} side={0}/>
               </View>
-              <View style={styles.score_out_field_side_container}>
+              <View style={styles.scoreOutFieldSideContainer}>
                 <OutFieldSide position={6} side={1}/>
                 <OutFieldSide position={5} side={1}/>
               </View>
@@ -146,19 +146,19 @@ class ScoreCreate extends React.Component {
 function mapStateToProps(state, props) {
   const { game, view } = state;
   const {
-    score_create_modal
+    scoreCreateModal
   } = view || {
-    score_create_modal: false
+    scoreCreateModal: false
   };
   const { scores } = game;
   return {
-    score_create_modal, scores
+    scoreCreateModal, scores
   };
 }
 export default connect(mapStateToProps)(enhancer(ScoreCreate));
 
 const styles = StyleSheet.create({
-  analysis_navigate: {
+  analysisNavigate: {
     position: "absolute",
     backgroundColor: "transparent",
     height: 40,
@@ -166,7 +166,7 @@ const styles = StyleSheet.create({
     top: 8,
     alignSelf: "flex-end"
   },
-  analysis_navigate_text: {
+  analysisNavigateText: {
     borderColor: "#00A0E9",
     backgroundColor: "#00A0E9",
     borderWidth: 1.0,
@@ -176,22 +176,22 @@ const styles = StyleSheet.create({
     paddingRight: 8,
     color: "white"
   },
-  score_information_bar: {
+  scoreInformationBar: {
     flexDirection: "row",
     justifyContent: "space-between",
     height: 40,
     marginTop: -20
   },
-  score_information_back: {
+  scoreInformationBack: {
     marginTop: 25,
     marginLeft: 20,
     marginRight: 20
   },
-  score_information_user_name_container: {
+  scoreInformationUserNameContainer: {
     flex: 2,
     justifyContent: "flex-end"
   },
-  score_information_user_name: {
+  scoreInformationUserName: {
     paddingTop: 8,
     paddingBottom: 8,
     justifyContent: "center",
@@ -206,10 +206,10 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     borderColor: "#2EA7E0"
   },
-  score_information_point_container: {
+  scoreInformationPointContainer: {
     justifyContent: "flex-end"
   },
-  score_information_point: {
+  scoreInformationPoint: {
     justifyContent: "center",
     width: 40,
     height: 40,
@@ -221,7 +221,7 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     borderColor: "#2EA7E0"
   },
-  score_information_game_point: {
+  scoreInformationGamePoint: {
     marginLeft: 10,
     marginRight: 10,
     alignSelf: "flex-end",
@@ -234,65 +234,65 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     borderColor: "#2EA7E0"
   },
-  score_information_container: {
+  scoreInformationContainer: {
     flexDirection: "row",
     flex: 0.4
   },
-  score_field_container: {
+  scoreFieldContainer: {
     alignItems: "center",
     justifyContent: "center",
     marginBottom: 20
   },
-  score_field_button_container: {
+  scoreFieldButtonContainer: {
     flex: 1,
     alignItems: "center",
     flexDirection: "column",
     justifyContent: "space-between"
   },
-  score_field_line: {
+  scoreFieldLine: {
     position: "absolute"
   },
-  score_over_container: {
+  scoreOverContainer: {
     flexDirection: "row",
     flex: 1,
     justifyContent: "space-between"
   },
-  score_middle_container: {
+  scoreMiddleContainer: {
     flexDirection: "row",
     flex: 2,
     justifyContent: "space-between"
   },
-  score_under_container: {
+  scoreUnderContainer: {
     flexDirection: "row",
     flex: 1,
     justifyContent: "space-between"
   },
-  score_out_field_length_container: {
+  scoreOutFieldLengthContainer: {
     marginLeft: 8,
     marginRight: 8,
     flexDirection: "column",
     justifyContent: "space-between"
   },
-  score_out_field_side_container:{
+  scoreOutFieldSideContainer:{
     flexDirection: "row",
     flex: 0.36,
     justifyContent: "space-around"
   },
-  score_in_field_container: {
+  scoreInFieldContainer: {
     flexDirection: "row",
     marginLeft: 30,
     marginRight: 30
   },
-  score_in_field_length_container: {
+  scoreInFieldLengthContainer: {
     marginLeft: 12,
     marginRight: 12,
     justifyContent: "space-between",
     alignItems: "center"
   },
-  score_in_field_circle_container: {
+  scoreInFieldCircleContainer: {
     justifyContent: "space-between"
   },
-  score_in_field_side_container: {
+  scoreInFieldSideContainer: {
     marginLeft: 8,
     marginRight: 8,
     justifyContent: "space-between"

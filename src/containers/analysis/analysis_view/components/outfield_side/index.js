@@ -15,7 +15,7 @@ class OutFieldSide extends React.Component {
   render() {
     return (
       <TouchableHighlight
-        style={styles.horizontal_yellow_bar_left}
+        style={styles.horizontalYellowBarLeft}
         onPress={() => {
           this.postPositionEvent();
         }
@@ -30,7 +30,7 @@ class OutFieldSide extends React.Component {
 export default connect()(fieldButtonEnhancer(OutFieldSide));
 
 const styles = StyleSheet.create({
-  horizontal_yellow_bar_left: {
+  horizontalYellowBarLeft: {
     borderColor: "#A29A67",
     backgroundColor: "#A29A67",
     borderWidth: 1.3,

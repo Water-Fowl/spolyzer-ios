@@ -35,8 +35,8 @@ class ProfileEdit extends React.Component {
       profileImageSource: null,
       sex: "男性",
       email: "yohiki@gmail.com",
-      user_name: "yohikisex",
-      is_picker_visible: false
+      userName: "yohikisex",
+      isPickerVisible: false
     };
   }
   _selectPhotoTapped() {
@@ -60,36 +60,36 @@ class ProfileEdit extends React.Component {
     });
   }
   _setPicker(){
-    this.setState({is_picker_visible: true});
+    this.setState({isPickerVisible: true});
   }
   _hidePicker(){
-    this.setState({is_picker_visible: false});
+    this.setState({isPickerVisible: false});
   }
   render() {
     return (
       <View style={styles.container}>
-        <TopContentBar><Text style={styles.top_bar}>マイデータ編集</Text></TopContentBar>
-        <View style={styles.most_out}>
-          <View style={styles.row_direcition}>
-            <View style={styles.left_side}>
+        <TopContentBar><Text style={styles.topBar}>マイデータ編集</Text></TopContentBar>
+        <View style={styles.mostOut}>
+          <View style={styles.rowDirecition}>
+            <View style={styles.leftSide}>
               <TouchableOpacity
                 onPress={this._selectPhotoTapped}
               >
                 <ProfileImage profileImageSource={this.state.profileImageSource} />
               </TouchableOpacity>
               <View style={styles.paddingtop22}>
-                <Text style={styles.profile_title}>性別</Text>
-                <Text style={styles.profile_title}>メールアドレス</Text>
+                <Text style={styles.profileTitle}>性別</Text>
+                <Text style={styles.profileTitle}>メールアドレス</Text>
               </View>
             </View>
-            <View style={styles.right_side}>
-              <View style={styles.frame_name}>
-                <View style={styles.plate_name}>
+            <View style={styles.rightSide}>
+              <View style={styles.frameName}>
+                <View style={styles.plateName}>
                   <TextInput
                     ref="email"
-                    style={styles.user_name}
-                    onChangeText={user_name => this.setState({ user_name })}
-                    value={this.state.user_name}
+                    style={styles.userName}
+                    onChangeText={userName => this.setState({ userName })}
+                    value={this.state.userName}
                     placeholder="ユーザーネーム"
                     keyboardType="email-address"
                     returnKeyType="done"
@@ -97,21 +97,21 @@ class ProfileEdit extends React.Component {
                 </View>
               </View>
               <View style={styles.paddingtop40}>
-                <View style={styles.frame_profile}>
-                  <View style={styles.plate_profile}>
+                <View style={styles.frameProfile}>
+                  <View style={styles.plateProfile}>
                     <View style={styles.paddingleft20}>
-                      <Text onPress={this._setPicker} style={styles.profile_title}>{this.state.sex}</Text>
-                      <View style={styles.profile_underline} />
+                      <Text onPress={this._setPicker} style={styles.profileTitle}>{this.state.sex}</Text>
+                      <View style={styles.profileUnderline} />
                       <TextInput
                         ref="email"
-                        style={styles.profile_title}
+                        style={styles.profileTitle}
                         onChangeText={email => this.setState({ email })}
                         value={this.state.email}
                         placeholder="メールアドレス"
                         keyboardType="email-address"
                         returnKeyType="done"
                       />
-                      <View style={styles.profile_underline} />
+                      <View style={styles.profileUnderline} />
                     </View>
                   </View>
                 </View>
@@ -120,11 +120,11 @@ class ProfileEdit extends React.Component {
           </View>
         </View>
         <View style={styles.container}>
-          <NavigateButton action={() => {Actions.profile_top({ type: ActionConst.BACK_ACTION});}} style={styles.complete} text="完了" />
+          <NavigateButton action={() => {Actions.profileTop({ type: ActionConst.BACK_ACTION});}} style={styles.complete} text="完了" />
         </View>
         <SexPicker
           _hidePicker={this._hidePicker}
-          isVisible={this.state.is_picker_visible}
+          isVisible={this.state.isPickerVisible}
           selectedValue={this.state.sex}
           enabled={false}
           onValueChange={(itemValue, itemIndex) => this.setState({sex: itemValue})}
@@ -139,27 +139,27 @@ const styles = StyleSheet.create({
   container: {
     flex: 1
   },
-  most_out: {
+  mostOut: {
     flex: 5,
     paddingTop: 40
   },
-  row_direcition: {
+  rowDirecition: {
     flexDirection: "row"
   },
-  left_side: {
+  leftSide: {
     flex: 3,
     alignItems: "center",
     backgroundColor: "transparent"
   },
-  right_side: {
+  rightSide: {
     flex: 7,
     alignItems: "center",
     paddingTop: 30
   },
-  top_bar: {
+  topBar: {
     fontSize: 16
   },
-  frame_name: {
+  frameName: {
     borderColor: "#0a2444",
     height: 40,
     width: 230,
@@ -168,13 +168,13 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center"
   },
-  plate_name: {
+  plateName: {
     backgroundColor: "#0a2444",
     height: 30,
     width: 220,
     opacity: 0.7
   },
-  frame_profile: {
+  frameProfile: {
     marginTop: 8,
     borderColor: "#0a2444",
     height: 130,
@@ -184,18 +184,18 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center"
   },
-  plate_profile: {
+  plateProfile: {
     backgroundColor: "#0a2444",
     height: 120,
     width: 220,
     opacity: 0.7
   },
-  profile_title: {
+  profileTitle: {
     color: "white",
     fontWeight: "bold",
     marginTop: 10
   },
-  profile_underline: {
+  profileUnderline: {
     borderWidth: 0.5,
     borderColor: "#4780c6",
     marginRight: 20
@@ -203,7 +203,7 @@ const styles = StyleSheet.create({
   complete: {
     alignSelf: "center"
   },
-  user_name: {
+  userName: {
     fontSize: 23,
     color: "white",
     textAlign: "center"

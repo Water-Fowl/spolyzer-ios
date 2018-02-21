@@ -21,7 +21,6 @@ export function postGame(body) {
       .then(json => dispatch(receivedScoreGame(json.score_game_id)))
       .then(Actions.score_view())
       .catch((error) => {
-        console.log(error);
       });
   };
 }
@@ -32,9 +31,9 @@ function requestScoreGame() {
   };
 }
 
-function receivedScoreGame(score_game_id) {
+function receivedScoreGame(scoreGameId) {
   return {
     type: POST_GAME_RECIEVED,
-    current_score_game_id: score_game_id
+    currentScoreGameId: scoreGameId
   };
 }

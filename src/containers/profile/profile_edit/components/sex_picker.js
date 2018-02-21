@@ -11,9 +11,9 @@ export default class SexPicker extends React.Component{
   render(){
     if (this.props.isVisible){
       return(
-        <View style={styles.picker_container}>
-          <View style={styles.picker_text_container}>
-            <Text onPress={this.props._hidePicker} style={styles.picker_text}>完了</Text>
+        <View style={styles.pickerContainer}>
+          <View style={styles.pickerTextContainer}>
+            <Text onPress={this.props._hidePicker} style={styles.pickerText}>完了</Text>
           </View>
           <Picker
             {...this.props}
@@ -34,17 +34,17 @@ export default class SexPicker extends React.Component{
 }
 
 const styles = StyleSheet.create({
-  picker_text_container:{
+  pickerTextContainer:{
     flexDirection: "row",
     justifyContent: "flex-end",
     backgroundColor: "white"
   },
-  picker_container: {
+  pickerContainer: {
     position: "absolute",
     bottom: 0,
     width: "100%"
   },
-  picker_text: {
+  pickerText: {
     fontSize: 18,
     color: lightBlue,
     padding: 10,

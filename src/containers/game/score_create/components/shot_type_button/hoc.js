@@ -3,7 +3,7 @@ import { setShotType } from "../../../actions/set_score";
 
 export function scoreCreateShotTypeButtonEnhancer(ComponentClass) {
   return class HOComponent extends ComponentClass {
-    setShotTypeEvent(shot_type_id) {
+    setShotTypeEvent(shotTypeId) {
       const { dispatch } = this.props;
       dispatch(setShotType(shot_type_id));
     }

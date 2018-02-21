@@ -24,13 +24,13 @@ class Login extends React.Component {
           style={styles.logo}
           source={require("../../../assets/img/spolyzer_top.png")}
         />
-        <View style={styles.form_container}>
+        <View style={styles.formContainer}>
           <View style={styles.form}>
             <TextInput
               onChangeText={email => this.setState({ email })}
               placeholder="メールアドレス"
               placeholderTextColor="#666677"
-              style={styles.text_field}
+              style={styles.textField}
               keyboardType="email-address"
               returnKeyType="done"
             />
@@ -40,24 +40,24 @@ class Login extends React.Component {
               onChangeText={password => this.setState({ password })}
               placeholder="パスワード"
               placeholderTextColor="#666677"
-              style={styles.text_field}
+              style={styles.textField}
               keyboardType="email-address"
               returnKeyType="done"
               secureTextEntry
             />
           </View>
           {(() => {
-            if (this.state.login_error) {
+            if (this.state.loginError) {
               return (
-                <View style={styles.row_container}>
-                  <Text style={styles.auto_login_text}>
+                <View style={styles.rowContainer}>
+                  <Text style={styles.autoLoginText}>
                 メールアドレスかパスワードが間違っています。
                   </Text>
                 </View>
               );
             }
           })()}
-          <View style={styles.row_container} />
+          <View style={styles.rowContainer} />
           <View style={styles.button}>
             <TouchableOpacity onPress={() => {
               Actions.tab();
@@ -67,17 +67,17 @@ class Login extends React.Component {
                */
             }}
             >
-              <Text style={styles.button_text}>
+              <Text style={styles.buttonText}>
                 ログイン
               </Text>
             </TouchableOpacity>
           </View>
-          <Text style={styles.forget_password_text}>
+          <Text style={styles.forgetPasswordText}>
             パスワードをお忘れの方
           </Text>
           <View style={styles.button}>
-            <TouchableOpacity onPress={Actions.sign_up}>
-              <Text style={styles.button_text}>
+            <TouchableOpacity onPress={Actions.signUp}>
+              <Text style={styles.buttonText}>
                 新規登録(無料)
               </Text>
             </TouchableOpacity>
@@ -91,12 +91,12 @@ class Login extends React.Component {
 function mapStateToProps(state, props) {
   const { authentication } = state;
   const {
-    login_error
+    loginError
   } = authentication || {
-    login_error: false
+    loginError: false
   };
   return {
-    login_error
+    loginError
   };
 }
 
@@ -106,10 +106,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1
   },
-  row_container: {
+  rowContainer: {
     flexDirection: "row"
   },
-  form_container: {
+  formContainer: {
     alignSelf: "center",
     width: "80%"
   },
@@ -146,14 +146,14 @@ const styles = StyleSheet.create({
     marginBottom: 80,
     alignSelf: "center"
   },
-  text_field: {
+  textField: {
     fontSize: 20,
     color: "#ffffff",
     paddingLeft: 12,
     letterSpacing: 0
   },
 
-  auto_login_text: {
+  autoLoginText: {
     color: "#ffffff",
     marginTop: 10,
     fontSize: 15,
@@ -162,7 +162,7 @@ const styles = StyleSheet.create({
     backgroundColor: "transparent"
   },
 
-  forget_password_text: {
+  forgetPasswordText: {
     color: "#28a8de",
     textDecorationLine: "underline",
     textDecorationColor: "#28a8de",
@@ -171,7 +171,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     backgroundColor: "transparent"
   },
-  button_text: {
+  buttonText: {
     color: "#28a8de",
     textAlign: "center",
     fontSize: 19,

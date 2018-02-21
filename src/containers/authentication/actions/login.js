@@ -22,7 +22,6 @@ export function postLogin(body) {
       .then(json => json.errors)
       .then(errors => dispatch(receivedLogin(errors)))
       .catch((error) => {
-        console.log(error.message);
       });
   };
 }
@@ -38,14 +37,14 @@ function receivedLogin(errors) {
     Actions.tab();
     return {
       type: POST_LOGIN_RECIEVED,
-      is_authenticated: true,
+      isAuthenticated: true,
       error: false
     };
   }
 
   return {
     type: LOGIN_RECIEVED,
-    is_authenticated: false,
+    isAuthenticated: false,
     error: true
   };
 }

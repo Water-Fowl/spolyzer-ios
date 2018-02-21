@@ -44,108 +44,108 @@ class AnalysisView extends React.Component {
       <View style={styles.container}>
         <TopContentBar>複合分析結果</TopContentBar>
         <ScrollView>
-          <View style={styles.analysis_information_continer}>
-            <Text style={styles.vs_text}>vs</Text>
-            <View style={styles.name_outside_container}>
-              <View style={styles.name_inside_container}>
+          <View style={styles.analysisInformationContiner}>
+            <Text style={styles.vsText}>vs</Text>
+            <View style={styles.nameOutsideContainer}>
+              <View style={styles.nameInsideContainer}>
                 <Image
                   source={require("../../../assets/img/score_create_person.png")}
-                  style={styles.person_image}
+                  style={styles.personImage}
                 />
-                <Text style={styles.opponent_name}>
+                <Text style={styles.opponentName}>
                   池田社長
                 </Text>
               </View>
             </View>
           </View>
-          <View style={styles.option_container}>
-            <View style={styles.option_text_container}>
-              <Text style={styles.option_text}>
+          <View style={styles.optionContainer}>
+            <View style={styles.option_textContainer}>
+              <Text style={styles.optionText}>
                 １日トータル
               </Text>
             </View>
-            <View style={styles.option_text_container}>
-              <Text style={styles.option_text}>
+            <View style={styles.optionTextContainer}>
+              <Text style={styles.optionText}>
                 球種
               </Text>
             </View>
-            <View style={styles.option_text_container}>
-              <Text style={styles.option_text}>
+            <View style={styles.option_textContainer}>
+              <Text style={styles.optionText}>
                 負け試合
               </Text>
             </View>
           </View>
           <View style={styles.field}>
-            <Image style={styles.field_line} source={require("../../../assets/img/field-line.png")} />
+            <Image style={styles.fieldLine} source={require("../../../assets/img/field-line.png")} />
             <InArea />
             <OutArea />
-            <View style={styles.over_container}>
-              <View style={styles.over_out_field_side_container}>
+            <View style={styles.overContainer}>
+              <View style={styles.overOutFieldSideContainer}>
                 <OutFieldSide position={1} side={1} />
                 <OutFieldSide />
 
               </View>
-              <View style={styles.over_out_field_side_container}>
+              <View style={styles.overOutFieldSideContainer}>
                 <OutFieldSide />
                 <OutFieldSide />
               </View>
             </View>
-            <View style={styles.middle_container}>
-              <View style={styles.out_field_length_container}>
+            <View style={styles.middleContainer}>
+              <View style={styles.outFieldLengthContainer}>
                 <OutFieldLength />
                 <OutFieldLength />
               </View>
-              <View style={styles.in_field_container}>
-                <View style={styles.in_field_length_container}>
+              <View style={styles.inFieldContainer}>
+                <View style={styles.inFieldLengthContainer}>
                   <InFieldLength />
                   <InFieldLength />
                 </View>
-                <View style={styles.in_field_side_container}>
+                <View style={styles.inFieldSideContainer}>
                   <InFieldSide />
-                  <View style={styles.in_field_circle_container}>
+                  <View style={styles.inFieldCircleContainer}>
                     <InFieldCircle />
                   </View>
                   <InFieldSide />
                 </View>
-                <View style={styles.in_field_length_container}>
+                <View style={styles.inFieldLengthContainer}>
                   <InFieldLength />
                   <InFieldLength />
                 </View>
               </View>
-              <View style={styles.in_field_container}>
-                <View style={styles.in_field_length_container}>
+              <View style={styles.inFieldContainer}>
+                <View style={styles.inFieldLengthContainer}>
                   <InFieldLength />
                   <InFieldLength />
                 </View>
-                <View style={styles.in_field_side_container}>
+                <View style={styles.inFieldSideContainer}>
                   <InFieldSide />
-                  <View style={styles.in_field_circle_container}>
+                  <View style={styles.inFieldCircleContainer}>
                     <InFieldCircle />
                   </View>
                   <InFieldSide />
                 </View>
-                <View style={styles.in_field_length_container}>
+                <View style={styles.inFieldLengthContainer}>
                   <InFieldLength />
                   <InFieldLength />
                 </View>
               </View>
-              <View style={styles.out_field_length_container}>
+              <View style={styles.outFieldLengthContainer}>
                 <OutFieldLength />
                 <OutFieldLength />
               </View>
             </View>
-            <View style={styles.under_container}>
-              <View style={styles.under_out_field_side_container}>
+            <View style={styles.underContainer}>
+              <View style={styles.underOutFieldSideContainer}>
                 <OutFieldSide position={1} side={1} />
                 <OutFieldSide />
               </View>
-              <View style={styles.under_out_field_side_container}>
+              <View style={styles.underOutFieldSideContainer}>
                 <OutFieldSide />
                 <OutFieldSide />
               </View>
             </View>
           </View>
-          <View style={styles.graph_container}>
+          <View style={styles.graphContainer}>
             <VictoryChart
               width={320}
               height={240}
@@ -201,12 +201,12 @@ class AnalysisView extends React.Component {
               />
             </VictoryChart>
           </View>
-          <View style={styles.back_button_container}>
+          <View style={styles.backButtonContainer}>
             <TouchableOpacity onPress={() => {
-              Actions.analysis_create({ type: ActionConst.BACK_ACTION });
+              Actions.analysisCreate({ type: ActionConst.BACK_ACTION });
             }}
             >
-              <Text style={styles.back_button_text}>
+              <Text style={styles.backButtonText}>
                 検索条件に戻る
               </Text>
             </TouchableOpacity>
@@ -223,7 +223,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1
   },
-  vs_text: {
+  vsText: {
     fontWeight: "bold",
     color: "skyblue",
     fontSize: 26,
@@ -232,10 +232,10 @@ const styles = StyleSheet.create({
     marginLeft: 206,
     backgroundColor: "transparent"
   },
-  analysis_information_continer: {
+  analysisInformationContiner: {
     flexDirection: "row"
   },
-  name_outside_container: {
+  nameOutsideContainer: {
     borderRightColor: "#0a2444",
     borderTopColor: "#0a2444",
     borderLeftColor: "#0a2444",
@@ -249,7 +249,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center"
   },
-  name_inside_container: {
+  nameInsideContainer: {
     borderRightColor: "#0a2444",
     borderTopColor: "#0a2444",
     borderLeftColor: "#0a2444",
@@ -260,14 +260,14 @@ const styles = StyleSheet.create({
     borderRadius: 2,
     flexDirection: "row"
   },
-  person_image: {
+  personImage: {
     marginTop: 2,
     marginLeft: 8,
     height: 20,
     width: 20,
     opacity: 0.5
   },
-  opponent_name: {
+  opponentName: {
     backgroundColor: "transparent",
     color: "#ffffff",
     marginTop: 7,
@@ -275,14 +275,14 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 12
   },
-  option_container: {
+  optionContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
     alignSelf: "center",
     width: 310,
     marginTop: 4
   },
-  option_text_container: {
+  optionTextContainer: {
     borderRightColor: "#0a2444",
     borderTopColor: "#0a2444",
     borderLeftColor: "#0a2444",
@@ -294,7 +294,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center"
   },
-  option_text: {
+  optionText: {
     backgroundColor: "#0a2444",
     color: "#ffffff",
     fontSize: 14,
@@ -311,7 +311,7 @@ const styles = StyleSheet.create({
     height: 170,
     marginTop: 26
   },
-  field_line: {
+  fieldLine: {
     position: "absolute",
     alignSelf: "center",
     height: 170,
@@ -319,59 +319,59 @@ const styles = StyleSheet.create({
     zIndex: 3,
     resizeMode: "contain"
   },
-  over_container: {
+  overContainer: {
     flexDirection: "row",
     flex: 1,
     justifyContent: "space-between"
   },
-  over_out_field_side_container: {
+  overOutFieldSideContainer: {
     alignSelf: "flex-start",
     flex: 0.5,
     justifyContent: "space-around",
     flexDirection: "row"
   },
-  middle_container: {
+  middleContainer: {
     flexDirection: "row",
     flex: 3,
     justifyContent: "space-between"
   },
-  under_container: {
+  underContainer: {
     flexDirection: "row",
     flex: 1,
     justifyContent: "space-between"
   },
-  out_field_length_container: {
+  outFieldLengthContainer: {
     marginLeft: 4,
     marginRight: 4,
     flexDirection: "column",
     justifyContent: "space-between"
   },
-  in_field_container: {
+  inFieldContainer: {
     flexDirection: "row",
     marginLeft: 10,
     marginRight: 10
   },
-  in_field_length_container: {
+  inFieldLengthContainer: {
     marginLeft: 8,
     marginRight: 8,
     justifyContent: "space-between",
     alignItems: "center"
   },
-  in_field_circle_container: {
+  inFieldCircleContainer: {
     justifyContent: "space-between"
   },
-  in_field_side_container: {
+  inFieldSideContainer: {
     marginLeft: 6,
     marginRight: 6,
     justifyContent: "space-between"
   },
-  under_out_field_side_container: {
+  underOutFieldSideContainer: {
     alignSelf: "flex-end",
     flex: 0.5,
     justifyContent: "space-around",
     flexDirection: "row"
   },
-  graph_container: {
+  graphContainer: {
     borderRightColor: "#28a8de",
     borderTopColor: "#28a8de",
     borderLeftColor: "#28a8de",
@@ -383,7 +383,7 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     marginTop: 20
   },
-  back_button_container: {
+  backButtonContainer: {
     borderRightColor: "#28a8de",
     borderTopColor: "#28a8de",
     borderLeftColor: "#28a8de",
@@ -395,7 +395,7 @@ const styles = StyleSheet.create({
     marginLeft: 190,
     marginTop: 8
   },
-  back_button_text: {
+  backButtonText: {
     backgroundColor: "transparent",
     color: "#ffffff",
     fontSize: 16,
