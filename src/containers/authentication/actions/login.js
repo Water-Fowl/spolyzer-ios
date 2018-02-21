@@ -13,14 +13,13 @@ export function postLogin(body) {
     return fetch(SIGN_IN_ENDPOINT, {
       method: "POST",
       headers: {
-        Accept: "application/json",
+        "Accept": "application/json",
         "Content-Type": "application/json"
       },
       body: JSON.stringify(body)
     })
       .then(response => response.json())
-      .then(json => json.errors)
-      .then(errors => dispatch(receivedLogin(errors)))
+      .then(json => dispatch(receivedLogin(json.errors, json.user_id)))
       .catch((error) => {
       });
   };
@@ -32,12 +31,15 @@ function requestLogin() {
   };
 }
 
-function receivedLogin(errors) {
+function receivedLogin(errors, image, userName, emailAddress) {
   if (errors == null) {
     Actions.tab();
     return {
       type: POST_LOGIN_RECIEVED,
       isAuthenticated: true,
+      image: image,
+      userName: userName,
+      emailAddress: emailAddress,
       error: false
     };
   }

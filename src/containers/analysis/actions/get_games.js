@@ -5,11 +5,11 @@ import { GET_GAMES_ENDPOINT } from "../../../config/api";
 import {
   GET_GAME_RECEIVED,
   GET_GAME_RRQUEST
-} from "../action_type";
+} from "../action_types";
 
 export function getGames(informationBody) {
   return (dispatch) => {
-    dispatch(requestGameInformation());
+    dispatch(getGamesRequest());
     return fetch(GET_GAMES_ENDPOINT, {
       method: "GET",
       headers: {

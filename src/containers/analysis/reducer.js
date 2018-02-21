@@ -8,7 +8,7 @@ import {
   SEARCH_USER_REQUEST,
   SHOT_TYPE_SETTING,
   TERM_SETTING
-} from "./action_type";
+} from "./action_types";
 
 const initialState = {
   scoreGameIds: []

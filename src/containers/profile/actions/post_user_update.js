@@ -1,7 +1,7 @@
 import{ POST_USER_UPDATE_ENDPOINT } from "../../../config/api";
 import {
-  POST_USER_UPDATE_RECEIVED,
-  POST_USER_UPDATE_REQUEST
+  RECEIVED_POST_USER_UPDATE,
+  REQUEST_POST_USER_UPDATE
 } from "../action_types";
 
 export function postUserUpdate(body) {
@@ -19,5 +19,17 @@ export function postUserUpdate(body) {
       .then(json => dispatch(receivedPostUserUpdate()))
       .catch((error) => {
       });
+  };
+}
+
+export function requestPostUserUpdate() {
+  return{
+    type: REQUEST_POST_USER_UPDATE
+  };
+}
+
+export function receivedPostUserUpdate(){
+  return {
+    type: RECEIVED_POST_USER_UPDATE
   };
 }

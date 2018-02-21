@@ -39,13 +39,14 @@ function requestRegistration() {
   };
 }
 
-function receivedRegistration(errors) {
+function receivedRegistration(errors, userId) {
   if (errors == null) {
     Actions.tab();
     return {
       type: POST_REGISTRATION_RECEIVED,
       isAuthenticated: true,
       error: false
+      userId
     };
   }
 
