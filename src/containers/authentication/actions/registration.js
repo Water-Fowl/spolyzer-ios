@@ -45,7 +45,7 @@ function receivedRegistration(errors, userId) {
     return {
       type: POST_REGISTRATION_RECEIVED,
       isAuthenticated: true,
-      error: false
+      error: false,
       userId
     };
   }
