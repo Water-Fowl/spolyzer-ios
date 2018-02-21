@@ -19,7 +19,7 @@ export function postGame(body) {
     })
       .then(response => response.json())
       .then(json => dispatch(receivedScoreGame(json.score_game_id)))
-      .then(Actions.score_view())
+      .then(Actions.scoreView())
       .catch((error) => {
       });
   };
