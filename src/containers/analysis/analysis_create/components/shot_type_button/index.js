@@ -12,12 +12,12 @@ export default class ShotTypeButton extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Button current_shot_type_id={0}>スマッシュ</Button>
-        <Button current_shot_type_id={1}>ドロップ</Button>
-        <Button current_shot_type_id={2}>ヘアピン</Button>
-        <Button current_shot_type_id={3}>クリア</Button>
-        <Button current_shot_type_id={4}>プッシュ</Button>
-        <Button current_shot_type_id={5}>ドライブ</Button>
+        <Button currentShotTypeId={0}>スマッシュ</Button>
+        <Button currentShotTypeId={1}>ドロップ</Button>
+        <Button currentShotTypeId={2}>ヘアピン</Button>
+        <Button currentShotTypeId={3}>クリア</Button>
+        <Button currentShotTypeId={4}>プッシュ</Button>
+        <Button currentShotTypeId={5}>ドライブ</Button>
       </View>
     );
   }

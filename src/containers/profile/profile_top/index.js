@@ -17,14 +17,14 @@ class ProfileTop extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <View style={styles.main_container}>
+        <View style={styles.mainContainer}>
           <TopContentBar>マイページ</TopContentBar>
-          <View style={styles.align_items_center}>
+          <View style={styles.alignItemsCenter}>
             <Image
               source={require("../../../assets/img/my_page_user_icon.png")}
-              style={styles.user_icon}
+              style={styles.userIcon}
             />
-            <TouchableOpacity onPress={Actions.profile_edit}>
+            <TouchableOpacity onPress={Actions.profileEdit}>
               <Text>
                    Edit
               </Text>
@@ -32,11 +32,11 @@ class ProfileTop extends React.Component {
             <Image
               source={require("../../../assets/img/my_page_center_design.png")}
             />
-            <Text style={styles.my_name}>
+            <Text style={styles.myName}>
               yoshikisex
             </Text>
-            <View style={styles.game_setting_border}>
-              <View style={styles.game_setting_table} />
+            <View style={styles.gameSettingBorder}>
+              <View style={styles.gameSettingTable} />
             </View>
           </View>
         </View>
@@ -51,11 +51,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1
   },
-  user_icon: {
+  userIcon: {
     margin: 15,
     opacity: 0.3
   },
-  game_setting_border: {
+  gameSettingBorder: {
     marginTop: 10,
     padding: 5,
     backgroundColor: "rgba(0, 0, 0, 0)",
@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
     borderColor: "rgb(20, 35, 70)",
     borderRadius: 3
   },
-  game_setting_table: {
+  gameSettingTable: {
     width: 320,
     height: 245,
     justifyContent: "center",
@@ -71,14 +71,14 @@ const styles = StyleSheet.create({
     borderColor: "rgb(20, 35, 70)",
     borderRadius: 3
   },
-  my_name: {
+  myName: {
     position: "absolute",
     marginTop: 220,
     backgroundColor: "transparent",
     color: "#ffffff",
     fontSize: 20
   },
-  align_items_center: {
+  alignItemsCenter: {
     alignItems: "center"
   }
 

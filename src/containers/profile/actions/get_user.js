@@ -18,7 +18,6 @@ export function getUser(body){
       .then(response => response.json())
       .then(json => dispatch(receivedGetUser()))
       .catch((error) => {
-        console.log(error);
       });
   };
 }
@@ -29,11 +28,11 @@ export function requestGetUser() {
   };
 }
 
-export function receivedGetUser(user_name, email_address, image) {
+export function receivedGetUser(userName, emailAddress, image) {
   return {
     type: RECEIVED_GET_USER,
-    user_name,
-    email_address,
+    userName,
+    emailAddress,
     image
   };
 }

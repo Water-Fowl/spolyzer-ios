@@ -15,7 +15,7 @@ export class InFieldSide extends React.Component {
   render() {
     return (
       <TouchableHighlight
-        style={styles.horizontal_blue_bar}
+        style={styles.horizontalBlueBar}
         onPress={() => {
           this.setModalEvent(this.props.position, this.props.side);
         }
@@ -30,7 +30,7 @@ export class InFieldSide extends React.Component {
 export default connect()(fieldButtonEnhancer(InFieldSide));
 
 const styles = StyleSheet.create({
-  horizontal_blue_bar: {
+  horizontalBlueBar: {
     borderColor: "#2EA7E0",
     backgroundColor: "#2EA7E0",
     height: 20,

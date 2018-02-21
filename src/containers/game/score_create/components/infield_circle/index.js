@@ -15,7 +15,7 @@ class InFieldCircle extends React.Component {
   render() {
     return (
       <TouchableHighlight
-        style={styles.blue_circle}
+        style={styles.blueCircle}
         onPress={() => {
           this.setModalEvent(this.props.position, this.props.side);
         }
@@ -30,7 +30,7 @@ class InFieldCircle extends React.Component {
 export default connect()(fieldButtonEnhancer(InFieldCircle));
 
 const styles = StyleSheet.create({
-  blue_circle: {
+  blueCircle: {
     borderColor: "#2EA7E0",
     backgroundColor: "#2EA7E0",
     height: 70,

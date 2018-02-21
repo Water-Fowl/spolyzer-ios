@@ -21,7 +21,6 @@ export function postLogin(body) {
       .then(response => response.json())
       .then(json => dispatch(receivedLogin(json.errors, json.user_id)))
       .catch((error) => {
-        console.log(error.message);
       });
   };
 }
@@ -32,22 +31,22 @@ function requestLogin() {
   };
 }
 
-function receivedLogin(errors, image, user_name, email_address) {
+function receivedLogin(errors, image, userName, emailAddress) {
   if (errors == null) {
     Actions.tab();
     return {
       type: POST_LOGIN_RECIEVED,
+      isAuthenticated: true,
       image: image,
-      user_name: user_name,
-      email_address: email_address,
-      is_authenticated: true,
+      userName: userName,
+      emailAddress: emailAddress,
       error: false
     };
   }
 
   return {
     type: LOGIN_RECIEVED,
-    is_authenticated: false,
+    isAuthenticated: false,
     error: true
   };
 }

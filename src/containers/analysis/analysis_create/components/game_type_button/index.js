@@ -16,8 +16,8 @@ export default class GameTypeButton extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Button current_game_type_id={0}>シングルス</Button>
-        <Button current_game_type_id={1}>ダブルス</Button>
+        <Button currentGameTypeId={0}>シングルス</Button>
+        <Button currentGameTypeId={1}>ダブルス</Button>
       </View>
     );
   }

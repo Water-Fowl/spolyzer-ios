@@ -66,7 +66,7 @@ class SignUp extends React.Component {
             onChangeText={email => this.setState({ email })}
             placeholder="メールアドレス"
             placeholderTextColor="#666677"
-            style={styles.text_field}
+            style={styles.textField}
             keyboardType="email-address"
             returnKeyType="done"
           />
@@ -77,7 +77,7 @@ class SignUp extends React.Component {
             onChangeText={password => this.setState({ password })}
             placeholder="パスワード"
             placeholderTextColor="#666677"
-            style={styles.text_field}
+            style={styles.textField}
             keyboardType="email-address"
             returnKeyType="done"
             secureTextEntry
@@ -85,22 +85,22 @@ class SignUp extends React.Component {
         </View>
         <View style={styles.form}>
           <TextInput
-            onChangeText={password_confirmation => this.setState({ password_confirmation })}
+            onChangeText={passwordConfirmation => this.setState({ passwordConfirmation })}
             placeholder="パスワード（確認用）"
             placeholderTextColor="#666677"
-            style={styles.text_field}
+            style={styles.textField}
             keyboardType="email-address"
             returnKeyType="done"
             secureTextEntry
           />
         </View>
-        <EmailErrorMessage isVisible={this.props.sign_up_email_error} />
-        <View style={styles.registration_form}>
+        <EmailErrorMessage isVisible={this.props.signUpEmailError} />
+        <View style={styles.registrationForm}>
           <TouchableOpacity onPress={() => {
             this.postRegistrationForm();
           }}
           >
-            <Text style={styles.registration_button_text}>
+            <Text style={styles.registrationButtonText}>
               登録
             </Text>
           </TouchableOpacity>
@@ -113,12 +113,12 @@ class SignUp extends React.Component {
 function mapStateToProps(state, props){
   const { view } = state;
   const {
-    sign_up_email_error: sign_up_email_error
+    signUpEmailError: signUpEmailError
   } = view || {
-    sign_up_email_error: false
+    signUpEmailError: false
   };
   return{
-    sign_up_email_error
+    signUpEmailError
   };
 }
 
@@ -146,7 +146,7 @@ const styles = StyleSheet.create({
     marginTop: 9,
     marginBottom: 9
   },
-  text_field: {
+  textField: {
     fontSize: 20,
     color: "#ffffff",
     paddingTop: 8,
@@ -154,7 +154,7 @@ const styles = StyleSheet.create({
     paddingBottom: 8,
     letterSpacing: 0
   },
-  registration_form: {
+  registrationForm: {
     borderRightColor: "#28a8de",
     borderTopColor: "#28a8de",
     borderLeftColor: "#28a8de",
@@ -166,7 +166,7 @@ const styles = StyleSheet.create({
     marginTop: 120,
     marginBottom: 9
   },
-  registration_button_text: {
+  registrationButtonText: {
     color: "#28a8de",
     textAlign: "center",
     fontSize: 20,

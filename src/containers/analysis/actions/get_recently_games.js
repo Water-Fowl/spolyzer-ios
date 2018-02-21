@@ -16,7 +16,6 @@ export function getRecentlyGames(body) {
     })
       .then(response => response.json())
       .catch((error) => {
-        console.log(error.message);
       });
   };
 }
@@ -32,4 +31,3 @@ function GetRecentlyGamesReceived() {
     type: GET_RECENTLY_GAMES_RECEIVED
   };
 }
-

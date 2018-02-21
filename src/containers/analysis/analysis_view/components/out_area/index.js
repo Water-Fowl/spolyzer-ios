@@ -8,8 +8,8 @@ export default class OutArea extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <View style={styles.in_field_area} />
-        <View style={styles.in_field_area} />
+        <View style={styles.inFieldArea} />
+        <View style={styles.inFieldArea} />
       </View>
     );
   }
@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
     paddingLeft: 20,
     paddingRight: 20
   },
-  in_field_area: {
+  inFieldArea: {
     flex: 0.35,
     alignSelf: "center",
     backgroundColor: "rgba(46, 167, 224, 0.8)",

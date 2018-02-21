@@ -15,7 +15,7 @@ class InFieldLength extends React.Component {
   render() {
     return (
       <TouchableHighlight
-        style={styles.vartical_blue_bar}
+        style={styles.varticalBlueBar}
         onPress={() => {
           this.setModalEvent(this.props.position, this.props.side);
         }
@@ -30,7 +30,7 @@ class InFieldLength extends React.Component {
 export default connect()(fieldButtonEnhancer(InFieldLength));
 
 const styles = StyleSheet.create({
-  vartical_blue_bar: {
+  varticalBlueBar: {
     borderColor: "#2EA7E0",
     backgroundColor: "#2EA7E0",
     flex: 0.4,

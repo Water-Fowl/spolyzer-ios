@@ -7,7 +7,7 @@ export default function profileReducer(state=initialState, action={}){
   switch (action.type){
   case SET_USER:
     return Object.assign({}, state, {
-      user_name: action.user_name,
+      userName: action.userName,
       email: action.email,
       image: action.image
     });

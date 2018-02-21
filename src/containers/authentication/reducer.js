@@ -7,9 +7,9 @@ import {
 } from "./action_type";
 
 const initialState = {
-  is_authenticated: false,
-  login_error: false,
-  registration_error: false
+  isAuthenticated: false,
+  loginError: false,
+  registrationError: false
 };
 
 export default function authenticationReducer(state = initialState, action = {}) {
@@ -18,19 +18,19 @@ export default function authenticationReducer(state = initialState, action = {})
     return state;
   case POST_LOGIN_RECIEVED:
     return Object.assign({}, state, {
-      is_authenticated: action.is_authenticated,
-      login_error: action.error
+      isAuthenticated: action.isAuthenticated,
+      loginError: action.error
     });
   case POST_REGISTRATION_REQUEST:
     return state;
   case POST_REGISTRATION_RECEIVED:
     return Object.assign({}, state, {
-      is_authenticated: action.is_authenticated,
-      registration_error: action.error
+      isAuthenticated: action.isAuthenticated,
+      registrationError: action.error
     });
   case EMAIL_VALIDATION:
     return Object.assign({}, state, {
-      is_email: action.is_email
+      isEmail: action.isEmail
     });
   default:
     return state;

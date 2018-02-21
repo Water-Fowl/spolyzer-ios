@@ -17,12 +17,12 @@ class Button extends React.Component {
     this.state = { pressed };
   }
   componentWillReceiveProps(nextProps) {
-    const pressed = this.props.current_term_id == nextProps.term_id;
+    const pressed = this.props.currentTermId == nextProps.termId;
     this.setState({ pressed });
   }
-  pressButtonEvent(term_id) {
+  pressButtonEvent(termId) {
     const { dispatch } = this.props;
-    dispatch(setTerm(term_id));
+    dispatch(setTerm(termId));
     const pressed = !this.state.pressed;
     this.setState({ pressed });
   }
@@ -32,12 +32,12 @@ class Button extends React.Component {
       <TouchableHighlight
         activeOpacity={0.6}
         underlayColor="transparent"
-        style={this.state.pressed ? styles.button_pressed : styles.button}
+        style={this.state.pressed ? styles.buttonPressed : styles.button}
         onPress={() => {
-          this.pressButtonEvent(this.props.current_term_id);
+          this.pressButtonEvent(this.props.currentTermId);
         }}
       >
-        <Text style={this.state.pressed ? styles.text_pressed : styles.text}>
+        <Text style={this.state.pressed ? styles.textPressed : styles.text}>
           {this.props.children}
         </Text>
       </TouchableHighlight>
@@ -48,18 +48,18 @@ class Button extends React.Component {
 function mapStateToProps(state, props) {
   const { analysis } = state;
   const {
-    term_id
+    termId
   } = analysis || {
-    term_id: null
+    termId: null
   };
   return {
-    term_id
+    termId
   };
 }
 export default connect(mapStateToProps)(Button);
 
 const styles = StyleSheet.create({
-  text_pressed: {
+  textPressed: {
     color: "#ffffff",
     fontSize: 15,
     backgroundColor: "transparent",
@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold"
   },
 
-  button_pressed: {
+  buttonPressed: {
     backgroundColor: "#0a2444",
     height: 28,
     width: 60,

@@ -23,7 +23,7 @@ class UserSearch extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      search_user_name: ""
+      searchUserName: ""
     };
   }
   render() {
@@ -34,16 +34,16 @@ class UserSearch extends React.Component {
         </TopContentBar>
         <View style={styles.form}>
           <TextInput
-            onChangeText={search_user_name => this.setState({ search_user_name })}
+            onChangeText={searchUserName => this.setState({ searchUserName })}
             placeholder="名前入力"
             placeholderTextColor="#666677"
-            style={styles.text_field}
+            style={styles.textField}
             keyboardType="email-address"
             returnKeyType="done"
           />
         </View>
         <SearchedUserAccountContainer />
-        <NavigateButton action={() =>{Actions.popTo("analysis_create"); }} style={styles.navigate_button} text="選択" />
+        <NavigateButton action={() =>{Actions.popTo("analysisCreate"); }} style={styles.navigateButton} text="選択" />
       </View>
     );
   }
@@ -70,14 +70,14 @@ const styles = StyleSheet.create({
     marginTop: 12,
     marginBottom: 12
   },
-  text_field: {
+  textField: {
     fontSize: 20,
     fontWeight: "bold",
     color: "#ffffff",
     paddingLeft: 20,
     letterSpacing: 0
   },
-  navigate_button: {
+  navigateButton: {
     alignSelf: "center",
     marginTop: 11
   }

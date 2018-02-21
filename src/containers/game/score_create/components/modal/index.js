@@ -14,16 +14,16 @@ class Modal extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <View style={styles.shot_type_container}>
-          <View style={styles.shot_type_half_container}>
-            <ScoreCreateShotTypeButton shot_type_id={0}> スマッシュ</ScoreCreateShotTypeButton>
-            <ScoreCreateShotTypeButton shot_type_id={1}> スマッシュ</ScoreCreateShotTypeButton>
-            <ScoreCreateShotTypeButton shot_type_id={2}> スマッシュ</ScoreCreateShotTypeButton>
+        <View style={styles.shotTypeContainer}>
+          <View style={styles.shotTypeHalfContainer}>
+            <ScoreCreateShotTypeButton shotTypeId={0}> スマッシュ</ScoreCreateShotTypeButton>
+            <ScoreCreateShotTypeButton shotTypeId={1}> スマッシュ</ScoreCreateShotTypeButton>
+            <ScoreCreateShotTypeButton shotTypeId={2}> スマッシュ</ScoreCreateShotTypeButton>
           </View>
-          <View style={styles.shot_type_half_container}>
-            <ScoreCreateShotTypeButton shot_type_id={3}> スマッシュ</ScoreCreateShotTypeButton>
-            <ScoreCreateShotTypeButton shot_type_id={4}> スマッシュ</ScoreCreateShotTypeButton>
-            <ScoreCreateShotTypeButton shot_type_id={5}> スマッシュ</ScoreCreateShotTypeButton>
+          <View style={styles.shotTypeHalfContainer}>
+            <ScoreCreateShotTypeButton shotTypeId={3}> スマッシュ</ScoreCreateShotTypeButton>
+            <ScoreCreateShotTypeButton shotTypeId={4}> スマッシュ</ScoreCreateShotTypeButton>
+            <ScoreCreateShotTypeButton shotTypeId={5}> スマッシュ</ScoreCreateShotTypeButton>
           </View>
         </View>
       </View>
@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center"
   },
-  shot_type_container: {
+  shotTypeContainer: {
     padding: 10,
     borderColor: "#2EA7E0",
     borderWidth: 1,

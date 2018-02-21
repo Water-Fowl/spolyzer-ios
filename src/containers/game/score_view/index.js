@@ -30,12 +30,12 @@ import {
 
 const data = [
   /* TODO カタカナ崩れの対策 */
-  { shot_type: "スマッシュ", counts: 1 },
-  { shot_type: "ドロップ", counts: 2 },
-  { shot_type: "ネットイン", counts: 3 },
-  { shot_type: "クリアー", counts: 4 },
-  { shot_type: "ヘアピン", counts: 5 },
-  { shot_type: "ドライブ", counts: 6 }
+  { shotType: "スマッシュ", counts: 1 },
+  { shotType: "ドロップ", counts: 2 },
+  { shotType: "ネットイン", counts: 3 },
+  { shotType: "クリアー", counts: 4 },
+  { shotType: "ヘアピン", counts: 5 },
+  { shotType: "ドライブ", counts: 6 }
 ];
 
 class ScoreView extends React.Component {
@@ -44,89 +44,89 @@ class ScoreView extends React.Component {
       <View style={styles.container}>
         <TopContentBar>単分析結果</TopContentBar>
         <ScrollView>
-          <View style={styles.user_name_container}>
-            <Text style={styles.user_name_text}>Name</Text>
-            <Text style={styles.user_name_text}>Name</Text>
+          <View style={styles.userNameContainer}>
+            <Text style={styles.userNameText}>Name</Text>
+            <Text style={styles.userNameText}>Name</Text>
           </View>
-          <View style={styles.game_informations_contaier}>
-            <View style={styles.game_information_text_container}>
-              <Text style={styles.win_loss_text}>Win</Text>
-              <Text style={styles.score_text}>20</Text>
+          <View style={styles.gameInformationsContaier}>
+            <View style={styles.gameInformationTextContainer}>
+              <Text style={styles.winLossText}>Win</Text>
+              <Text style={styles.scoreText}>20</Text>
             </View>
-            <View style={styles.game_information_text_container}>
-              <Text style={styles.score_text}>15</Text>
-              <Text style={styles.win_loss_text}>Lose</Text>
+            <View style={styles.gameInformationTextContainer}>
+              <Text style={styles.scoreText}>15</Text>
+              <Text style={styles.winLossText}>Lose</Text>
             </View>
           </View>
           <View style={styles.field}>
-            <Image style={styles.field_line} source={require("../../../assets/img/field-line.png")} />
-            <View style={styles.over_container}>
-              <View style={styles.over_out_field_side_container}>
+            <Image style={styles.fieldLine} source={require("../../../assets/img/field-line.png")} />
+            <View style={styles.overContainer}>
+              <View style={styles.overOutFieldSideContainer}>
                 <OutFieldSide position={1} side={1} />
                 <OutFieldSide />
 
               </View>
-              <View style={styles.over_out_field_side_container}>
+              <View style={styles.overOutFieldSideContainer}>
                 <OutFieldSide />
                 <OutFieldSide />
               </View>
             </View>
-            <View style={styles.middle_container}>
-              <View style={styles.out_field_length_container}>
+            <View style={styles.middleContainer}>
+              <View style={styles.outFieldLengthContainer}>
                 <OutFieldLength />
                 <OutFieldLength />
               </View>
-              <View style={styles.in_field_container}>
-                <View style={styles.in_field_length_container}>
+              <View style={styles.inFieldContainer}>
+                <View style={styles.inFieldLengthContainer}>
                   <InFieldLength />
                   <InFieldLength />
                 </View>
-                <View style={styles.in_field_side_container}>
+                <View style={styles.inFieldSideContainer}>
                   <InFieldSide />
-                  <View style={styles.in_field_circle_container}>
+                  <View style={styles.inFieldCircleContainer}>
                     <InFieldCircle />
                   </View>
                   <InFieldSide />
                 </View>
-                <View style={styles.in_field_length_container}>
+                <View style={styles.inFieldLengthContainer}>
                   <InFieldLength />
                   <InFieldLength />
                 </View>
               </View>
-              <View style={styles.in_field_container}>
-                <View style={styles.in_field_length_container}>
+              <View style={styles.inFieldContainer}>
+                <View style={styles.inFieldLengthContainer}>
                   <InFieldLength />
                   <InFieldLength />
                 </View>
-                <View style={styles.in_field_side_container}>
+                <View style={styles.inFieldSideContainer}>
                   <InFieldSide />
-                  <View style={styles.in_field_circle_container}>
+                  <View style={styles.inFieldCircleContainer}>
                     <InFieldCircle />
                   </View>
                   <InFieldSide />
                 </View>
-                <View style={styles.in_field_length_container}>
+                <View style={styles.inFieldLengthContainer}>
                   <InFieldLength />
                   <InFieldLength />
                 </View>
               </View>
-              <View style={styles.out_field_length_container}>
+              <View style={styles.outFieldLengthContainer}>
                 <OutFieldLength />
                 <OutFieldLength />
               </View>
             </View>
-            <View style={styles.under_container}>
-              <View style={styles.under_out_field_side_container}>
+            <View style={styles.underContainer}>
+              <View style={styles.underOutFieldSideContainer}>
                 <OutFieldSide position={1} side={1} />
                 <OutFieldSide />
               </View>
-              <View style={styles.under_out_field_side_container}>
+              <View style={styles.underOutFieldSideContainer}>
                 <OutFieldSide />
                 <OutFieldSide />
               </View>
             </View>
           </View>
-          <View style={styles.graph_container}>
+          <View style={styles.graphContainer}>
             <VictoryChart
               width={320}
               height={240}
@@ -176,14 +176,14 @@ class ScoreView extends React.Component {
                 }}
                 data={data}
                 alignment="start"
-                x="shot_type"
+                x="shotType"
                 y="counts"
               />
             </VictoryChart>
           </View>
-          <View style={styles.back_button_container}>
-            <TouchableOpacity onPress={() => { Actions.popTo("game_create"); }}>
-              <Text style={styles.back_button_text}>
+          <View style={styles.backButtonContainer}>
+            <TouchableOpacity onPress={() => { Actions.popTo("gameCreate"); }}>
+              <Text style={styles.backButtonText}>
                 保存して終了
               </Text>
             </TouchableOpacity>
@@ -200,14 +200,14 @@ const styles = StyleSheet.create({
   container: {
     flex: 1
   },
-  user_name_container: {
+  userNameContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
     paddingLeft: 20,
     paddingRight: 20,
     marginTop: 20
   },
-  user_name_text: {
+  userNameText: {
     color: "white",
     alignSelf: "center",
     textAlign: "center",
@@ -220,24 +220,24 @@ const styles = StyleSheet.create({
     borderRadius: 3,
     borderWidth: 1
   },
-  game_information_text_container: {
+  gameInformationTextContainer: {
     flexDirection: "row",
     paddingLeft: 20,
     paddingRight: 20
   },
-  game_informations_contaier: {
+  gameInformationsContaier: {
     flexDirection: "row",
     justifyContent: "space-around",
     marginTop: 8
   },
-  game_information_text_container: {
+  gameInformationTextContainer: {
     flex: 0.4,
     justifyContent: "space-between",
     paddingLeft: 50,
     paddingRight: 50,
     flexDirection: "row"
   },
-  score_text: {
+  scoreText: {
     color: "white",
     textAlign: "center",
     backgroundColor: "transparent",
@@ -247,7 +247,7 @@ const styles = StyleSheet.create({
     fontSize: 30,
     padding: 3
   },
-  win_loss_text: {
+  winLossText: {
     alignSelf: "flex-end",
     color: "white",
     textAlign: "center",
@@ -266,7 +266,7 @@ const styles = StyleSheet.create({
     height: 170,
     marginTop: 26
   },
-  field_line: {
+  fieldLine: {
     position: "absolute",
     alignSelf: "center",
     height: 170,
@@ -274,59 +274,59 @@ const styles = StyleSheet.create({
     zIndex: 3,
     resizeMode: "contain"
   },
-  over_container: {
+  overContainer: {
     flexDirection: "row",
     flex: 1,
     justifyContent: "space-between"
   },
-  over_out_field_side_container: {
+  overOutFieldSideContainer: {
     alignSelf: "flex-start",
     flex: 0.5,
     justifyContent: "space-around",
     flexDirection: "row"
   },
-  middle_container: {
+  middleContainer: {
     flexDirection: "row",
     flex: 3,
     justifyContent: "space-between"
   },
-  under_container: {
+  underContainer: {
     flexDirection: "row",
     flex: 1,
     justifyContent: "space-between"
   },
-  out_field_length_container: {
+  outFieldLengthContainer: {
     marginLeft: 4,
     marginRight: 4,
     flexDirection: "column",
     justifyContent: "space-between"
   },
-  in_field_container: {
+  inFieldContainer: {
     flexDirection: "row",
     marginLeft: 10,
     marginRight: 10
   },
-  in_field_length_container: {
+  inFieldLengthContainer: {
     marginLeft: 8,
     marginRight: 8,
     justifyContent: "space-between",
     alignItems: "center"
   },
-  in_field_circle_container: {
+  inFieldCircleContainer: {
     justifyContent: "space-between"
   },
-  in_field_side_container: {
+  inFieldSideContainer: {
     marginLeft: 6,
     marginRight: 6,
     justifyContent: "space-between"
   },
-  under_out_field_side_container: {
+  underOutFieldSideContainer: {
     alignSelf: "flex-end",
     flex: 0.5,
     justifyContent: "space-around",
     flexDirection: "row"
   },
-  graph_container: {
+  graphContainer: {
     borderRightColor: "#28a8de",
     borderTopColor: "#28a8de",
     borderLeftColor: "#28a8de",
@@ -338,7 +338,7 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     marginTop: 20
   },
-  back_button_container: {
+  backButtonContainer: {
     borderRightColor: "#28a8de",
     borderTopColor: "#28a8de",
     borderLeftColor: "#28a8de",
@@ -350,7 +350,7 @@ const styles = StyleSheet.create({
     marginLeft: 190,
     marginTop: 8
   },
-  back_button_text: {
+  backButtonText: {
     backgroundColor: "transparent",
     color: "#ffffff",
     fontSize: 16,
