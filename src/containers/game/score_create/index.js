@@ -77,7 +77,7 @@ class ScoreCreate extends React.Component {
                 <OutFieldSide position={5} side={0} />
                 <OutFieldSide position={6} side={0}/>
               </View>
-              <View style={styles.score_outFieldSideContainer}>
+              <View style={styles.scoreOutFieldSideContainer}>
                 <OutFieldSide position={0} side={1}/>
                 <OutFieldSide position={1} side={1}/>
               </View>

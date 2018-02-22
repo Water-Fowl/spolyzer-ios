@@ -5,7 +5,7 @@ import {
   View
 } from "react-native";
 
-export default class NoSelectedUser extends React.Component{
+export default class NoSelectedUserIcon extends React.Component{
   render(){
     return(
       <View style={styles.container}>

@@ -1,4 +1,5 @@
-import NoSelectedUser from "./no_selected_user";
+import UserIcon from "./user_icon";
+
 export {
-  NoSelectedUser
+  UserIcon
 };
