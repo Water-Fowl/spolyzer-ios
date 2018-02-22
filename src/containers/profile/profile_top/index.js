@@ -20,14 +20,11 @@ class ProfileTop extends React.Component {
         <View style={styles.mainContainer}>
           <TopContentBar>マイページ</TopContentBar>
           <View style={styles.alignItemsCenter}>
-            <Image
-              source={require("../../../assets/img/my_page_user_icon.png")}
-              style={styles.userIcon}
-            />
             <TouchableOpacity onPress={Actions.profileEdit}>
-              <Text>
-                   Edit
-              </Text>
+              <Image
+                source={require("../../../assets/img/my_page_user_icon.png")}
+                style={styles.userIcon}
+              />
             </TouchableOpacity>
             <Image
               source={require("../../../assets/img/my_page_center_design.png")}
