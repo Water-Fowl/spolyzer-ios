@@ -5,7 +5,7 @@ export function scoreCreateShotTypeButtonEnhancer(ComponentClass) {
   return class HOComponent extends ComponentClass {
     setShotTypeEvent(shotTypeId) {
       const { dispatch } = this.props;
-      dispatch(setShotType(shot_type_id));
+      dispatch(setShotType(shotTypeId));
     }
     hideModalEvent() {
       const { dispatch } = this.props;

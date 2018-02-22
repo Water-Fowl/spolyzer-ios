@@ -7,16 +7,15 @@ import {
   GET_GAME_RRQUEST
 } from "../action_types";
 
-export function getGames(informationBody) {
+export function getGames(params) {
   return (dispatch) => {
     dispatch(getGamesRequest());
-    return fetch(GET_GAMES_ENDPOINT, {
+    return fetch(GET_GAMES_ENDPOINT + params, {
       method: "GET",
       headers: {
-        Accept: "application/json",
+        "Accept": "application/json",
         "Content-Type": "application/json"
-      },
-      body: JSON.stringify(information_body)
+      }
     })
       .then(response => response.json())
       .then(json => dispatch(receivedGetGame(json.score_game_ids)))

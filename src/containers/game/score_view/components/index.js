@@ -1,3 +1,4 @@
+import Graph from "./graph";
 import InFieldCircle from "./infield_circle";
 import InFieldLength from "./infield_length";
 import InFieldSide from "./infield_side";
@@ -9,5 +10,6 @@ export {
   InFieldLength,
   InFieldSide,
   OutFieldSide,
+  Graph,
   OutFieldLength
 };

@@ -18,7 +18,7 @@ import {
   View
 } from "react-native";
 
-import { NoSelectedUser } from "./components";
+import { UserIcon } from "./components";
 
 class ScoreGameCreate extends React.Component {
   render() {
@@ -31,9 +31,9 @@ class ScoreGameCreate extends React.Component {
               <Text style={styles.scoreGameCreateOpponents}>対戦相手選択</Text>
               <View style={styles.gameSettingTableInner}>
                 <View style={styles.gameSettingTableInnerLeft}>
-                  <NoSelectedUser />
+                  <UserIcon />
                   <View style={styles.textbox} />
-                  <NoSelectedUser />
+                  <UserIcon />
                   <View style={styles.textbox} />
                 </View>
                 <View style={styles.gameSettingTableInnerCenter}>
@@ -43,9 +43,9 @@ class ScoreGameCreate extends React.Component {
                   />
                 </View>
                 <View style={styles.gameSettingInnerRight} >
-                  <NoSelectedUser />
+                  <UserIcon />
                   <View style={styles.textbox} />
-                  <NoSelectedUser />
+                  <UserIcon />
                   <View style={styles.textbox} />
                 </View>
               </View>

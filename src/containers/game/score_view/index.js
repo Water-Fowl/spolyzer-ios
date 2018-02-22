@@ -12,15 +12,9 @@ import {
 import {
   TopContentBar
 } from "components";
-import {
-  VictoryAxis,
-  VictoryBar,
-  VictoryChart,
-  VictoryLabel,
-  VictoryTheme
-} from "victory-native";
 
 import {
+  Graph,
   InFieldCircle,
   InFieldLength,
   InFieldSide,
@@ -30,12 +24,18 @@ import {
 
 const data = [
   /* TODO カタカナ崩れの対策 */
+  { shotType: "クリアー", counts: 4 },
+  { shotType: "ヘアピン", counts: 5 },
   { shotType: "スマッシュ", counts: 1 },
   { shotType: "ドロップ", counts: 2 },
   { shotType: "ネットイン", counts: 3 },
-  { shotType: "クリアー", counts: 4 },
-  { shotType: "ヘアピン", counts: 5 },
-  { shotType: "ドライブ", counts: 6 }
+  { shotType: "ドライブ", counts: 6 },
+  { shotType: "スマッシュ2", counts: 1 },
+  { shotType: "ドロップ2", counts: 2 },
+  { shotType: "ネットイン2", counts: 3 },
+  { shotType: "クリアー2", counts: 4 },
+  { shotType: "ヘアピン2", counts: 5 },
+  { shotType: "ドライブ2", counts: 6 }
 ];
 
 class ScoreView extends React.Component {
@@ -64,7 +64,6 @@ class ScoreView extends React.Component {
               <View style={styles.overOutFieldSideContainer}>
                 <OutFieldSide position={1} side={1} />
                 <OutFieldSide />
-
               </View>
               <View style={styles.overOutFieldSideContainer}>
                 <OutFieldSide />
@@ -126,61 +125,7 @@ class ScoreView extends React.Component {
               </View>
             </View>
           </View>
-          <View style={styles.graphContainer}>
-            <VictoryChart
-              width={320}
-              height={240}
-              theme={VictoryTheme.material}
-              padding={{
-                left: 25, right: 30, top: 20, bottom: 40
-              }}
-              domainPadding={{ x: [20, 0] }}
-            >
-              <VictoryAxis
-                dependentAxis	/* Y軸 */
-                style={{
-                  grid: {
-                    stroke: "#035f89"
-                  },
-                  axis: {
-                    stroke: "transparent"
-                  },
-                  tickLabels: {
-                    fontSize: 10,
-                    fill: "white"
-                  }
-                }}
-                tickFormat={(tick) => { /* 整数目盛のみ表示 */
-                  if (tick === Math.round(tick)) return String(tick);
-                  return "";
-                }}
-              />
-              <VictoryAxis	/* X軸 */
-                style={{
-                  grid: { stroke: "transparent" },
-                  axis: {
-                    stroke: "#2EA7E0"
-                  },
-                  tickLabels: { fontSize: 10, fill: "white" }
-                }}
-              />
-              <VictoryBar
-                style={{
-                  data: {
-                    fill: "#2EA7E0"
-                  }
-                }}
-                animate={{	/* 表示のアニメーション */
-                  duration: 400,
-                  onLoad: { duration: 300 }
-                }}
-                data={data}
-                alignment="start"
-                x="shotType"
-                y="counts"
-              />
-            </VictoryChart>
-          </View>
+          <Graph data={data}/>
           <View style={styles.backButtonContainer}>
             <TouchableOpacity onPress={() => { Actions.popTo("gameCreate"); }}>
               <Text style={styles.backButtonText}>
@@ -325,18 +270,6 @@ const styles = StyleSheet.create({
     flex: 0.5,
     justifyContent: "space-around",
     flexDirection: "row"
-  },
-  graphContainer: {
-    borderRightColor: "#28a8de",
-    borderTopColor: "#28a8de",
-    borderLeftColor: "#28a8de",
-    borderBottomColor: "#28a8de",
-    height: 240,
-    width: 320,
-    borderWidth: 1,
-    borderRadius: 4,
-    alignSelf: "center",
-    marginTop: 20
   },
   backButtonContainer: {
     borderRightColor: "#28a8de",
