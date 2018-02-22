@@ -7,7 +7,6 @@ import {
 export function getUser(params){
   return (dispatch) => {
     dispatch(getUserRequest());
-    console.log(GET_USER_ENDPOINT + params)
     return fetch(GET_USER_ENDPOINT + params, {
       method: "GET",
       headers: {
@@ -18,7 +17,6 @@ export function getUser(params){
       .then(response => response.json())
       .then(json => dispatch(getUserReceived(json.user.name, json.user.email)))
       .catch((error) => {
-        console.log(error);
       });
   };
 }
