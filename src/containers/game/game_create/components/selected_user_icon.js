@@ -10,6 +10,6 @@ export default class SelectedUserIcon extends React.Component{
       <View style={styles.cotainer}>
         <Image source={require("../../../../assets/img/my_page_user_icon.png")} />
       </View>
-    )
+    );
   }
 }

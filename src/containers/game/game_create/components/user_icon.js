@@ -7,6 +7,6 @@ export default class UserIcon extends React.Component{
   render(){
     return(
       <NoSelectedUserIcon />
-    )
+    );
   }
 }
