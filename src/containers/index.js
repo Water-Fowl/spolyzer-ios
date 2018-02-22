@@ -12,6 +12,7 @@ import UserSearch from "./shared/components/user_search";
 import analysisReducer from "./analysis/reducer";
 import authenticationReducer from "./authentication/reducer";
 import gameReducer from "./game/reducer";
+import profileReducer from "./profile/reducer";
 import viewReducer from "./shared/redux/view/reducer";
 
 export {
@@ -29,6 +30,7 @@ export {
   /* Reducersのexport */
   analysisReducer,
   gameReducer,
+  profileReducer,
   authenticationReducer,
   viewReducer
 };
