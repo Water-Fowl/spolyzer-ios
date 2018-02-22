@@ -1,9 +1,9 @@
 import {
-  GAME_INFORMATION_RECEIVED,
-  GAME_INFORMATION_REQUEST,
   GAME_SETTING_RECEIVED,
   GAME_SETTING_REQUEST,
   GAME_TYPE_SETTING,
+  GET_GAMES_RECEIVED,
+  GET_GAMES_REQUEST,
   SEARCH_USER_RECEIVED,
   SEARCH_USER_REQUEST,
   SHOT_TYPE_SETTING,
@@ -11,16 +11,15 @@ import {
 } from "./action_types";
 
 const initialState = {
-  scoreGameIds: []
 };
 
 export default function analysisReducer(state = initialState, action = {}) {
   switch (action.type) {
-  case GAME_INFORMATION_REQUEST:
+  case GET_GAMES_REQUEST:
     return state;
-  case GAME_INFORMATION_RECEIVED:
+  case GET_GAMES_RECEIVED:
     return Object.assign({}, state, {
-      scoreGameIds: action.scoreGameIds
+      gameId: action.gameId
     });
   case GAME_TYPE_SETTING:
     return Object.assign({}, state, {
