@@ -35,7 +35,7 @@ const data = [
   { shotType: "ネットイン2", counts: 3 },
   { shotType: "クリアー2", counts: 4 },
   { shotType: "ヘアピン2", counts: 5 },
-  { shotType: "ドライブ2", counts: 6 },
+  { shotType: "ドライブ2", counts: 6 }
 ];
 
 class ScoreView extends React.Component {

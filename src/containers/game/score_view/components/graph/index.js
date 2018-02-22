@@ -23,10 +23,10 @@ export default class Graph extends React.Component{
           height={240}
           theme={VictoryTheme.material}
           containerComponent={<VictoryZoomContainer
-              allowZoom={false}
-              zoomDimension={'x'}
-              zoomDomain={{x: [10, 20]}}
-            />
+            allowZoom={false}
+            zoomDimension={"x"}
+            zoomDomain={{x: [10, 20]}}
+          />
           }
           padding={{
             left: 30, right: 40, top: 20, bottom: 40
@@ -37,9 +37,9 @@ export default class Graph extends React.Component{
             style={{
               grid: {
                 stroke: "#035f89",
-                axis: { stroke: "transparent"},
+                axis: { stroke: "transparent"}
               },
-              tickLabels: { fontSize: 7, fill: "white", }
+              tickLabels: { fontSize: 7, fill: "white" }
             }}
             tickFormat={(tick) => { /* 整数目盛のみ表示 */
               if (tick === Math.round(tick)) return String(tick);
@@ -57,10 +57,10 @@ export default class Graph extends React.Component{
             barRatio={0.5}
             style={{
               data: {
-                fill: "#2EA7E0",
+                fill: "#2EA7E0"
               }
             }}
-            animate={{	
+            animate={{
               duration: 400,
               onLoad: { duration: 300 }
             }}
@@ -70,12 +70,12 @@ export default class Graph extends React.Component{
           />
         </VictoryChart>
       </ScrollView>
-    )
+    );
   }
 }
 
 const styles = StyleSheet.create({
-    graphContainer: {
+  graphContainer: {
     borderRightColor: "#28a8de",
     borderTopColor: "#28a8de",
     borderLeftColor: "#28a8de",
@@ -87,4 +87,4 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     marginTop: 20
   }
-})
+});
