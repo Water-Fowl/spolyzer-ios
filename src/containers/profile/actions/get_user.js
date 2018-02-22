@@ -1,38 +1,38 @@
 import { GET_USER_ENDPOINT } from "../../../config/api";
 import {
-  RECEIVED_GET_USER,
-  REQUEST_GET_USER
+  GET_USER_RECEIVED,
+  GET_USER_REQUEST
 } from "../action_types";
 
-export function getUser(body){
+export function getUser(params){
   return (dispatch) => {
-    dispatch(requestGetUser());
-    return fetch(GET_USER_ENDPOINT, {
+    dispatch(getUserRequest());
+    console.log(GET_USER_ENDPOINT + params)
+    return fetch(GET_USER_ENDPOINT + params, {
       method: "GET",
       headers: {
         "Accept": "application/json",
         "Content-Type": "application/json"
-      },
-      body: JSON.stringify(body)
+      }
     })
       .then(response => response.json())
-      .then(json => dispatch(receivedGetUser()))
+      .then(json => dispatch(getUserReceived(json.user.name, json.user.email)))
       .catch((error) => {
+        console.log(error);
       });
   };
 }
 
-export function requestGetUser() {
+function getUserRequest() {
   return {
-    type: REQUEST_GET_USER
+    type: GET_USER_REQUEST
   };
 }
 
-export function receivedGetUser(userName, emailAddress, image) {
+function getUserReceived(userName, userEmail) {
   return {
-    type: RECEIVED_GET_USER,
+    type: GET_USER_RECEIVED,
     userName,
-    emailAddress,
-    image
+    userEmail
   };
 }

@@ -34,8 +34,8 @@ class ProfileEdit extends React.Component {
     this.state = {
       profileImageSource: null,
       sex: "男性",
-      email: "yohiki@gmail.com",
-      userName: "yohikisex",
+      userEmail: "",
+      userName: "",
       isPickerVisible: false
     };
   }
@@ -89,7 +89,7 @@ class ProfileEdit extends React.Component {
                     ref="email"
                     style={styles.userName}
                     onChangeText={userName => this.setState({ userName })}
-                    value={this.state.userName}
+                    defaultValue={this.props.userName}
                     placeholder="ユーザーネーム"
                     keyboardType="email-address"
                     returnKeyType="done"
@@ -106,7 +106,7 @@ class ProfileEdit extends React.Component {
                         ref="email"
                         style={styles.profileTitle}
                         onChangeText={email => this.setState({ email })}
-                        value={this.state.email}
+                        defaultValue={this.props.userEmail}
                         placeholder="メールアドレス"
                         keyboardType="email-address"
                         returnKeyType="done"
@@ -133,7 +133,22 @@ class ProfileEdit extends React.Component {
     );
   }
 }
-export default connect()(baseEnhancer(ProfileEdit));
+export default connect(mapStateToProps)(baseEnhancer(ProfileEdit));
+
+function mapStateToProps(state, props){
+  const { profile } = state;
+  const {
+    userName,
+    userEmail,
+  } = profile || {
+    userName: "",
+    userEmail: ""
+  }
+  return {
+    userName,
+    userEmail
+  }
+}
 
 const styles = StyleSheet.create({
   container: {
