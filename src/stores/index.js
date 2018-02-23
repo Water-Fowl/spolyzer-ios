@@ -15,11 +15,8 @@ const loggerMiddleware = createLogger();
 const middleware = [thunkMiddleware, loggerMiddleware];
 const reducers = combineReducers({
   game: gameReducer,
-  /*
   authentication: persistReducer(authenticationConfig, authenticationReducer),
-  */
   profile: profileReducer,
-  authentication: authenticationReducer,
   analysis: analysisReducer,
   view: viewReducer
 });
