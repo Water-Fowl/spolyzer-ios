@@ -18,7 +18,7 @@ import {
   ShotTypeButton,
   TermButton
 } from "./components";
-import { getGames } from "../actions/get_games";
+import { getPositionsCounts } from "../actions/get_positions_counts";
 
 class AnalysisCreate extends React.Component {
   constructor(props) {
@@ -27,8 +27,8 @@ class AnalysisCreate extends React.Component {
   }
   getGameEvent() {
     const { dispatch } = this.props;
-    const sampleParams = "1";
-    dispatch(getGames(sampleParams));
+    const sampleParams = "name=1";
+    dispatch(getPositionsCounts(sampleParams));
   }
   render() {
     return (

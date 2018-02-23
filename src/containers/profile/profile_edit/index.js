@@ -139,15 +139,15 @@ function mapStateToProps(state, props){
   const { profile } = state;
   const {
     userName,
-    userEmail,
+    userEmail
   } = profile || {
     userName: "",
     userEmail: ""
-  }
+  };
   return {
     userName,
     userEmail
-  }
+  };
 }
 
 const styles = StyleSheet.create({

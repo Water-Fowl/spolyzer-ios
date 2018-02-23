@@ -21,6 +21,7 @@ export function postGame(body) {
       .then(json => dispatch(receivedScoreGame(json.score_game_id)))
       .then(Actions.scoreView())
       .catch((error) => {
+        console.log(error)
       });
   };
 }
