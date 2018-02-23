@@ -28,8 +28,13 @@ import {
   OutFieldLength,
   OutFieldSide
 } from "./components";
+import { postGame } from "../actions/post_game";
 
 class ScoreCreate extends React.Component {
+  navigationEvent(body){
+    const { dispatch } = this.props;
+    dispatch(postGame(body));
+  }
   render() {
     return (
       <View style={{
@@ -63,7 +68,7 @@ class ScoreCreate extends React.Component {
             </View>
           </View>
         </View>
-        <TouchableHighlight onPress={Actions.scoreView} style={styles.analysisNavigate}>
+        <TouchableHighlight onPress={() => {this.navigationEvent();}} style={styles.analysisNavigate}>
           <Text style={styles.analysisNavigateText}>分析</Text>
         </TouchableHighlight>
         <View style={styles.scoreFieldContainer}>

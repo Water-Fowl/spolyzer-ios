@@ -17,7 +17,6 @@ plugins:
 rules:
   react-native/no-color-literals: 0
   no-trailing-spaces: 2
-  camelcase: 2
   comma-dangle: 2
   no-console: 1
   constructor-super: 2

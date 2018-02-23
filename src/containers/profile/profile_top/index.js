@@ -11,9 +11,20 @@ import {
 import {
   TopContentBar
 } from "components";
-import { connect } from "react-redux";
+import {
+  connect
+} from "react-redux";
+
+import {
+  getUser
+} from "../actions/get_user";
 
 class ProfileTop extends React.Component {
+  componentDidMount(){
+    const sampleParams = "1";
+    const { dispatch } = this.props;
+    dispatch(getUser(sampleParams));
+  }
   render() {
     return (
       <View style={styles.container}>
@@ -29,9 +40,7 @@ class ProfileTop extends React.Component {
             <Image
               source={require("../../../assets/img/my_page_center_design.png")}
             />
-            <Text style={styles.myName}>
-              yoshikisex
-            </Text>
+            <Text style={styles.myName}>{this.props.userName}</Text>
             <View style={styles.gameSettingBorder}>
               <View style={styles.gameSettingTable} />
             </View>
@@ -42,7 +51,22 @@ class ProfileTop extends React.Component {
   }
 }
 
-export default connect()(baseEnhancer(ProfileTop));
+export default connect(mapToStateProps)(baseEnhancer(ProfileTop));
+
+function mapToStateProps(state, props){
+  const { profile } = state;
+  const {
+    userName,
+    userEmail
+  } = profile || {
+    userName: "",
+    userEmail: ""
+  };
+  return {
+    userName,
+    userEmail
+  };
+}
 
 const styles = StyleSheet.create({
   container: {

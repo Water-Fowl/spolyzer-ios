@@ -3,8 +3,8 @@ import { CALL_API } from "redux-api-middleware";
 
 import { GET_GAMES_ENDPOINT } from "../../../config/api";
 import {
-  GET_GAME_RECEIVED,
-  GET_GAME_RRQUEST
+  GET_GAMES_RECEIVED,
+  GET_GAMES_REQUEST
 } from "../action_types";
 
 export function getGames(params) {
@@ -18,7 +18,7 @@ export function getGames(params) {
       }
     })
       .then(response => response.json())
-      .then(json => dispatch(receivedGetGame(json.score_game_ids)))
+      .then(json => dispatch(getGamesReceived(json.game.id)))
       .then(Actions.analysisView())
       .catch((error) => {
       });
@@ -27,13 +27,13 @@ export function getGames(params) {
 
 function getGamesRequest() {
   return {
-    type: GET_GAMES_RRQUEST
+    type: GET_GAMES_REQUEST
   };
 }
 
-function getGamesReceived(scoreGameIds) {
+function getGamesReceived(gameId) {
   return {
     type: GET_GAMES_RECEIVED,
-    scoreGameIds
+    gameId
   };
 }

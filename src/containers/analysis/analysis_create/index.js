@@ -18,8 +18,18 @@ import {
   ShotTypeButton,
   TermButton
 } from "./components";
+import { getPositionsCounts } from "../actions/get_positions_counts";
 
 class AnalysisCreate extends React.Component {
+  constructor(props) {
+    super(props);
+    this.getGameEvent.bind(this);
+  }
+  getGameEvent() {
+    const { dispatch } = this.props;
+    const sampleParams = "name=1";
+    dispatch(getPositionsCounts(sampleParams));
+  }
   render() {
     return (
       <View style={styles.container}>
@@ -57,7 +67,7 @@ class AnalysisCreate extends React.Component {
           </Text>
           <View style={styles.gameSelectFrame} />
         </View>
-        <NavigateButton action={Actions.analysisView} style={styles.analyze} text="分析" />
+        <NavigateButton action={() => {this.getGameEvent();}} style={styles.analyze} text="分析" />
       </View>
     );
   }

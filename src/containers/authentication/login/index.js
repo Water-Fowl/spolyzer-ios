@@ -60,11 +60,7 @@ class Login extends React.Component {
           <View style={styles.rowContainer} />
           <View style={styles.button}>
             <TouchableOpacity onPress={() => {
-              Actions.tab();
-              /*
-               * Rails環境なしでもログインできるようにここはコメントアウト
-               * this.postLoginEvent()
-               */
+              this.postLoginEvent();
             }}
             >
               <Text style={styles.buttonText}>

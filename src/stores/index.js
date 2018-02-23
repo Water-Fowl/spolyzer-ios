@@ -4,7 +4,7 @@ import { applyMiddleware, combineReducers, compose, createStore } from "redux";
 import { createLogger } from "redux-logger";
 import { persistReducer, persistStore } from "redux-persist";
 
-import { analysisReducer, authenticationReducer, gameReducer, viewReducer } from "../containers";
+import { analysisReducer, authenticationReducer, gameReducer, profileReducer, viewReducer } from "../containers";
 
 const authenticationConfig = {
   key: "authentication",
@@ -18,6 +18,7 @@ const reducers = combineReducers({
   /*
   authentication: persistReducer(authenticationConfig, authenticationReducer),
   */
+  profile: profileReducer,
   authentication: authenticationReducer,
   analysis: analysisReducer,
   view: viewReducer
