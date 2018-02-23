@@ -20,20 +20,19 @@ export function getPositionsCounts(params) {
       .then(json => dispatch(getPositionsCountsReceived()))
       .then(Actions.analysisView())
       .catch((error) => {
-        console.log(error)
       });
-  }
+  };
 }
 
 function getPositionsCountsRequest(){
   return{
-    type: GET_POSITIONS_COUNTS_REQUEST,
-  }
+    type: GET_POSITIONS_COUNTS_REQUEST
+  };
 }
 
 function getPositionsCountsReceived(){
   return{
-    type: GET_POSITIONS_COUNTS_RECEIVED,
-  }
+    type: GET_POSITIONS_COUNTS_RECEIVED
+  };
 }
 

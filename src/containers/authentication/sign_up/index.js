@@ -27,6 +27,7 @@ import {
 class SignUp extends React.Component {
   constructor(props) {
     super(props);
+    this.state = { email: "", password: ""};
     this.postRegistrationForm.bind(this);
   }
   componentWillMount() {
@@ -38,14 +39,12 @@ class SignUp extends React.Component {
     dispatch(emailValidation(isEmail));
     if (isEmail){
       dispatch(isEmailInSignUp());
-      /*
       const registration_form = { email: this.state.email,
         password: this.state.password,
         password_confirmation: this.state.password_confirmation,
-        confirm_success_url: "api.water-fowl.co.jp",
+        confirm_success_url: "api.water-fowl.co.jp"
       };
       dispatch(postRegistration(registration_form));
-      */
       Actions.tab();
     }
     else{
