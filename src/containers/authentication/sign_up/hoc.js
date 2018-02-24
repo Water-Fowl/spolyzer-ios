@@ -20,10 +20,11 @@ export default function enhancer(ComponentClass){
     postRegistrationForm() {
       const { dispatch } = this.props;
       const registrationBody = {
+        name: this.state.name,
         email: this.state.email,
         password: this.state.password,
-        passwordConfirmation: this.state.passwordConfirmation,
-        confirmSuccessUrl: "api.water-fowl.co.jp"
+        password_confirmation: this.state.passwordConfirmation,
+        confirm_success_url: "api.water-fowl.co.jp"
       };
       dispatch(postUserRegistration(registrationBody));
     }

@@ -21,9 +21,12 @@ import {
 
 class ProfileTop extends React.Component {
   componentDidMount(){
-    const sampleParams = "1";
     const { dispatch } = this.props;
+    const sampleParams = "1";
     dispatch(getUser(sampleParams));
+  }
+  componentWillReceivedProps(nextProps){
+    this.forceUpdate();
   }
   render() {
     return (
@@ -102,5 +105,4 @@ const styles = StyleSheet.create({
   alignItemsCenter: {
     alignItems: "center"
   }
-
 });

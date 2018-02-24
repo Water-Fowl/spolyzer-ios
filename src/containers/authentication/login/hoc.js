@@ -8,6 +8,7 @@ export function enhancer(ComponentClass) {
       super(props);
       this.postLoginEvent.bind(this);
       this.state = {
+        name: "",
         email: "",
         password: "",
         loginError: false
@@ -26,6 +27,7 @@ export function enhancer(ComponentClass) {
     postLoginEvent() {
       const { dispatch } = this.props;
       const loginForm = {
+        name: this.state.name,
         email: this.state.email,
         password: this.state.password
       };

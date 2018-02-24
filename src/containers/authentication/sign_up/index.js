@@ -15,6 +15,7 @@ import { connect } from "react-redux";
 import { emailReg } from "const";
 
 import EmailErrorMessage from "./components/email_error_message";
+import { GET_USER_ENDPOINT } from "../../../config/api";
 import {
   emailValidation,
   postRegistration
@@ -27,7 +28,11 @@ import {
 class SignUp extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { email: "", password: ""};
+    this.state = {
+      name: "",
+      email: "",
+      password: ""
+    };
     this.postRegistrationForm.bind(this);
   }
   componentWillMount() {
@@ -39,13 +44,14 @@ class SignUp extends React.Component {
     dispatch(emailValidation(isEmail));
     if (isEmail){
       dispatch(isEmailInSignUp());
-      const registration_form = { email: this.state.email,
+      const registration_form = {
+        name: this.state.name,
+        email: this.state.email,
         password: this.state.password,
         password_confirmation: this.state.password_confirmation,
-        confirm_success_url: "api.water-fowl.co.jp"
+        confirm_success_url: GET_USER_ENDPOINT
       };
       dispatch(postRegistration(registration_form));
-      Actions.tab();
     }
     else{
       dispatch(isNotEmailInSignUp());
@@ -59,6 +65,17 @@ class SignUp extends React.Component {
           style={styles.logo}
           source={require("../../../assets/img/spolyzer_top.png")}
         />
+        <View style={styles.form}>
+          <TextInput
+            ref="name"
+            onChangeText={name => this.setState({ name })}
+            placeholder="名前"
+            placeholderTextColor="#666677"
+            style={styles.textField}
+            keyboardType="email-address"
+            returnKeyType="done"
+          />
+        </View>
         <View style={styles.form}>
           <TextInput
             ref="email"
@@ -84,7 +101,7 @@ class SignUp extends React.Component {
         </View>
         <View style={styles.form}>
           <TextInput
-            onChangeText={passwordConfirmation => this.setState({ passwordConfirmation })}
+            onChangeText={password_confirmation => this.setState({ password_confirmation })}
             placeholder="パスワード（確認用）"
             placeholderTextColor="#666677"
             style={styles.textField}

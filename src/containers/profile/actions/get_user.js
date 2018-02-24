@@ -1,13 +1,13 @@
-import { GET_USER_ENDPOINT } from "../../../config/api";
 import {
   GET_USER_RECEIVED,
   GET_USER_REQUEST
 } from "../action_types";
+import { USER_ENDPOINT } from "../../../config/api";
 
 export function getUser(params){
   return (dispatch) => {
     dispatch(getUserRequest());
-    return fetch(GET_USER_ENDPOINT + params, {
+    return fetch(USER_ENDPOINT + params, {
       method: "GET",
       headers: {
         "Accept": "application/json",

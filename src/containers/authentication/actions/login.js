@@ -6,6 +6,7 @@ import {
   POST_LOGIN_REQUEST
 } from "../action_type";
 import { SIGN_IN_ENDPOINT } from "../../../config/api";
+import { getUser } from "../../profile/actions/get_user";
 
 export function postLogin(body) {
   return (dispatch) => {
@@ -20,6 +21,8 @@ export function postLogin(body) {
     })
       .then(response => response.json())
       .then(json => dispatch(receivedLogin(json.errors, json.user_id)))
+      /*TODO 受け取ったuser idに変更する*/
+      .then(json => dispatch(getUser(1)))
       .catch((error) => {
       });
   };

@@ -1,8 +1,8 @@
 import {
   GET_USER_RECEIVED,
   GET_USER_REQUEST,
-  POST_USER_UPDATE_RECEIVED,
-  POST_USER_UPDATE_REQUEST,
+  RECEIVED_POST_USER_UPDATE,
+  REQUEST_POST_USER_UPDATE,
   SET_USER
 } from "./action_types";
 
@@ -19,11 +19,13 @@ export default function profileReducer(state=initialState, action={}){
       userName: action.userName,
       userEmail: action.userEmail
     });
-  case POST_USER_UPDATE_REQUEST:
+  case REQUEST_POST_USER_UPDATE:
     return Object.assign({}, state, {
     });
-  case POST_USER_UPDATE_RECEIVED:
+  case RECEIVED_POST_USER_UPDATE:
     return Object.assign({}, state, {
+      userName: action.userName,
+      userEmail: action.userEmail
     });
   default:
     return state;

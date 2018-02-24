@@ -24,6 +24,7 @@ import {
   ProfileImage,
   SexPicker
 } from "./components";
+import { postUserUpdate } from "../actions/post_user_update";
 
 class ProfileEdit extends React.Component {
   constructor() {
@@ -64,6 +65,17 @@ class ProfileEdit extends React.Component {
   }
   _hidePicker(){
     this.setState({isPickerVisible: false});
+  }
+  completeButtonEvent(){
+    const { dispatch } = this.props;
+    const body = {
+      name: this.state.userName,
+      mail: this.state.userEmail
+    }
+    const params = {
+      id: 1,
+    }
+    dispatch(postUserUpdate(body, params));
   }
   render() {
     return (
@@ -120,7 +132,7 @@ class ProfileEdit extends React.Component {
           </View>
         </View>
         <View style={styles.container}>
-          <NavigateButton action={() => {Actions.profileTop({ type: ActionConst.BACK_ACTION});}} style={styles.complete} text="完了" />
+          <NavigateButton action={() => {this.completeButtonEvent()}} style={styles.complete} text="完了" />
         </View>
         <SexPicker
           _hidePicker={this._hidePicker}

@@ -10,18 +10,29 @@ import { REGISTRATION_ENDPOINT } from "../../../config/api";
 export function postRegistration(body) {
   return (dispatch) => {
     dispatch(requestRegistration());
+    console.log(body);
     return fetch(REGISTRATION_ENDPOINT, {
       method: "POST",
       headers: {
-        Accept: "application/json",
+        "Accept": "application/json",
         "Content-Type": "application/json"
       },
       body: JSON.stringify(body)
     })
-      .then(response => response.json())
-      .then(json => json.errors)
-      .then(errors => dispatch(receivedRegistration(errors)))
+      .then(function(response){
+        console.log(response);
+        return response.json()
+      })
+      .then(function(json){
+        console.log(json);
+        return json.data, json.errors
+      })
+      .then(function(json_data, json_errors){
+        console.log(json_data);
+        dispatch(receivedRegistration(json_errors, json_data.id))
+      })
       .catch((error) => {
+        console.log(error)
       });
   };
 }
@@ -49,7 +60,6 @@ function receivedRegistration(errors, userId) {
       userId
     };
   }
-
   return {
     type: POST_REGISTRATION_RECEIVED,
     isAuthenticated: false,
