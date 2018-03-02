@@ -2,12 +2,14 @@ import React from "react";
 import { Actions } from "react-native-router-flux";
 import {
   Image,
-  StyleSheet
+  StyleSheet,
+  View
 } from "react-native";
 import { Provider, connect } from "react-redux";
 import {
   Router,
   Scene,
+  Drawer,
   Tabs
 } from "react-native-router-flux";
 import { applyMiddleware, compose, createStore } from "redux";
@@ -23,33 +25,54 @@ import {
   ScoreCreate,
   ScoreView,
   SignUp,
-  UserSearch
+  UserSearch,
+  DrawerContent
 } from "../containers";
 
 const RouterWithRedux = connect()(Router);
 const { persistor, store } = configureStore();
+const AppLogo = () => {
+  return (
+    <View style={styles.container}>
+      <Image source={require("../assets/img/spolyzer_header.png")} />
+    </View>
+  );
+};
 const Route = () => (
   <Provider store={store}>
     <RouterWithRedux>
-      <Scene key="root">
+      <Scene key="root" renderTitle={() => { return <AppLogo />; }}　navigationBarStyle={styles.navBarStyle}>
         <Scene key="login" component={Login} initial hideNavBar />
         <Scene key="signUp" component={SignUp} hideNavBar />
-        <Tabs key="tab" labelStyle={styles.label} tabBarStyle={styles.tabBarStyle} tabStyle={styles.tabStyle}>
-          <Scene key="Mypage" tabBarLabel="マイページ" icon={() => (<Image style={styles.icon} source={require("../assets/img/tabs_home.png")} />)} headerMode="none">
-            <Scene key="profileTop" initial component={ProfileTop} title="マイページ" hideNavBar />
-            <Scene key="profileEdit" component={ProfileEdit} title="マイデータ編集" hideNavBar />
-          </Scene>
-          <Scene key="Score" tabBarLabel="スコアシート" icon={() => (<Image style={styles.icon} source={require("../assets/img/tabs_score.png")} />)} headerMode="none">
-            <Scene key="gameCreate" initial component={GameCreate} title="単分析" hideNavBar />
-            <Scene key="scoreCreate" hideTabBar component={ScoreCreate} title="スコアシート" hideNavBar />
-            <Scene key="scoreView" component={ScoreView} title="結果" hideNavBar />
-          </Scene>
-          <Scene key="Analysis" tabBarLabel="分析" icon={() => (<Image style={styles.icon} source={require("../assets/img/tabs_analysis.png")} />)} headerMode="none">
-            <Scene key="analysisCreate" initial component={AnalysisCreate} title="複合分析" hideNavBar />
-            <Scene key="userSearch" component={UserSearch} title="ユーザー検索" hideNavBar />
-            <Scene key="analysisView" component={AnalysisView} title="単分析" hideNavBar />
-          </Scene>
-        </Tabs>
+        <Drawer
+          key="drawer"
+          drawerImage={require("../assets/img/hamburger.png")} // デフォルトのハンバーガーメニューを差し替える
+          // drawerIcon={() => (<Icon/>)} // デフォルトのハンバーガーメニューを差し替える
+          hideNavBar
+          drawerWidth={ 280 }
+          contentComponent={DrawerContent}
+          drawerOpenRoute="DrawerOpen"
+          drawerCloseRoute="DrawerClose"
+          drawerToggleRoute="DrawerToggle"
+        >
+          <Tabs key="tab" labelStyle={styles.label} tabBarStyle={styles.tabBarStyle} tabStyle={styles.tabStyle} >
+            <Scene key="Mypage" tabBarLabel="マイページ" icon={() => (<Image style={styles.icon} source={require("../assets/img/tabs_home.png")} />)} >
+              <Scene key="profileTop" initial component={ProfileTop} title="マイデータ"  />
+              <Scene key="profileEdit" component={ProfileEdit} title="マイデータ編集"  />
+            </Scene>
+            <Scene key="Score" tabBarLabel="スコアシート" icon={() => (<Image style={styles.icon} source={require("../assets/img/tabs_score.png")} />)} >
+              <Scene key="gameCreate" initial component={GameCreate} title="単分析"  />
+              <Scene key="scoreCreate" hideTabBar component={ScoreCreate} title="スコアシート" />
+              <Scene key="scoreView" component={ScoreView} title="結果" />
+            </Scene>
+            <Scene key="Analysis" tabBarLabel="分析" icon={() => (<Image style={styles.icon} source={require("../assets/img/tabs_analysis.png")} />)} >
+              <Scene key="analysisCreate" initial component={AnalysisCreate} title="複合分析" />
+              <Scene key="userSearch" component={UserSearch} title="ユーザー検索" />
+              <Scene key="analysisView" component={AnalysisView} title="単分析" />
+            </Scene>
+          </Tabs>
+        </Drawer>
+
       </Scene>
     </RouterWithRedux>
   </Provider>
@@ -69,5 +92,11 @@ const styles = StyleSheet.create({
   },
   tabBarStyle: {
     backgroundColor: "#00769E"
+  },
+  container: {
+    marginLeft: "-44%"
+  },
+  navBarStyle: {
+    backgroundColor: "#134A65"
   }
 });
