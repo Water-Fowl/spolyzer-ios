@@ -8,6 +8,7 @@ import ScoreCreate from "./game/score_create";
 import ScoreView from "./game/score_view";
 import SignUp from "./authentication/sign_up";
 import UserSearch from "./shared/components/user_search";
+import DrawerContent from "./shared/components/drawer_content";
 /* Reducersのimport  */
 import analysisReducer from "./analysis/reducer";
 import authenticationReducer from "./authentication/reducer";
@@ -27,6 +28,7 @@ export {
   SignUp,
   Login,
   UserSearch,
+  DrawerContent,
   /* Reducersのexport */
   analysisReducer,
   gameReducer,
