@@ -4,13 +4,21 @@ import {
   GAME_TYPE_SETTING,
   GET_GAMES_RECEIVED,
   GET_GAMES_REQUEST,
+  GET_RECENTLY_GAMES_RECEIVED,
+  GET_RECENTLY_GAMES_REQUEST,
+  GET_SEARCH_USER_RECEIVED,
+  GET_SEARCH_USER_REQUEST,
   SEARCH_USER_RECEIVED,
   SEARCH_USER_REQUEST,
+  SET_SELECTED_USER_INDEX,
+  SET_USER,
   SHOT_TYPE_SETTING,
   TERM_SETTING
 } from "./action_types";
 
 const initialState = {
+  users: "",
+  analysisUsers: {}
 };
 
 export default function analysisReducer(state = initialState, action = {}) {
@@ -39,11 +47,20 @@ export default function analysisReducer(state = initialState, action = {}) {
     return Object.assign({}, state, {
       scoreGameIds: action.scoreGameIds
     });
-  case SEARCH_USER_REQUEST:
+  case GET_SEARCH_USER_REQUEST:
     return state;
-  case SEARCH_USER_RECEIVED:
+  case GET_SEARCH_USER_RECEIVED:
     return Object.assign({}, state, {
-      opponentUserId: action.userId
+      users: action.users
+    });
+  case SET_USER:
+    state.analysisUsers[action.selectedUserIndex] = action.user;
+    return Object.assign({}, state, {
+      analysisUsers: state.analysisUsers
+    });
+  case SET_SELECTED_USER_INDEX:
+    return Object.assign({}, state, {
+      selectedUserIndex: action.selectedUserIndex
     });
   default:
     return state;

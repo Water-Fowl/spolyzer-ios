@@ -13,8 +13,12 @@ import {
 import { connect } from "react-redux";
 
 import enhancer from "./hoc";
+import setUserIndex from "../actions/set_user_index";
 import {
   GameTypeButton,
+  OpponentUserName,
+  RecentlyGame,
+  RecentlyGamePicker,
   ShotTypeButton,
   TermButton
 } from "./components";
@@ -24,11 +28,27 @@ class AnalysisCreate extends React.Component {
   constructor(props) {
     super(props);
     this.getGameEvent.bind(this);
+    this.state = {
+      isPickerVisible: false
+    };
+    this.setPicker.bind(this);
+    this.hidePicker.bind(this);
   }
   getGameEvent() {
     const { dispatch } = this.props;
     const sampleParams = "name=1";
     dispatch(getPositionsCounts(sampleParams));
+  }
+  pushAnalysisSearchEvent(selectedUserIndex) {
+    const { dispatch } = this.props;
+    dispatch(setUserIndex(selectedUserIndex));
+    Actions.analysisSearchUser();
+  }
+  setPicker(){
+    this.setState({isPickerVisible: true});
+  }
+  hidePicker(){
+    this.setState({isPickerVisible: false});
   }
   render() {
     return (
@@ -56,23 +76,40 @@ class AnalysisCreate extends React.Component {
           <Text style={styles.opponentText}>
             対戦相手
           </Text>
-          <TouchableOpacity onPress={Actions.userSearch}>
-            <View style={styles.opponentFrame} />
+          <TouchableOpacity onPress={() => {this.pushAnalysisSearchEvent(0);}}>
+            <OpponentUserName index={0}/>
           </TouchableOpacity>
-          <View style={styles.opponentFrame} />
+          <TouchableOpacity onPress={() => {this.pushAnalysisSearchEvent(1);}}>
+            <OpponentUserName index={1}/>
+          </TouchableOpacity>
         </View>
         <View style={styles.rowContainer}>
           <Text style={styles.gameSelectText}>
             試合選択
           </Text>
-          <View style={styles.gameSelectFrame} />
+          <TouchableOpacity onPress={()=>{this.setPicker();}}>
+            <RecentlyGame/>
+          </TouchableOpacity>
         </View>
         <NavigateButton action={() => {this.getGameEvent();}} style={styles.analyze} text="分析" />
+        <RecentlyGamePicker isVisible={this.state.isPickerVisible} hidePicker={()=> {this.hidePicker();}}/>
       </View>
     );
   }
 }
-export default connect()(enhancer(AnalysisCreate));
+export default connect(mapStateToProps)(enhancer(AnalysisCreate));
+
+function mapStateToProps(state, props){
+  const { analysis } = state;
+  const{
+    analysisUsers
+  } = analysis || {
+    analysisUsers: ""
+  };
+  return {
+    analysisUsers
+  };
+}
 
 const styles = StyleSheet.create({
   container: {
