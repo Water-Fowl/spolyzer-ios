@@ -21,18 +21,18 @@ export function postRegistration(body) {
     })
       .then(function(response){
         console.log(response);
-        return response.json()
+        return response.json();
       })
       .then(function(json){
         console.log(json);
-        return json.data, json.errors
+        return json.data, json.errors;
       })
       .then(function(json_data, json_errors){
         console.log(json_data);
-        dispatch(receivedRegistration(json_errors, json_data.id))
+        dispatch(receivedRegistration(json_errors, json_data.id));
       })
       .catch((error) => {
-        console.log(error)
+        console.log(error);
       });
   };
 }

@@ -60,7 +60,7 @@ class Login extends React.Component {
           <View style={styles.rowContainer} />
           <View style={styles.button}>
             <TouchableOpacity onPress={() => {
-              Actions.tab()
+              Actions.tab();
               /*
               this.postLoginEvent();
               */
