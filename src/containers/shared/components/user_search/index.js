@@ -5,36 +5,38 @@ import {
   Actions
 } from "react-native-router-flux";
 import {
+  Background,
+  NavBar,
+  NavigateButton,
+  TopContentBar
+} from "components";
+import {
   Image,
   StyleSheet,
   Text,
   TextInput,
   View
 } from "react-native";
-import {
-  NavigateButton,
-  TopContentBar
-} from "components";
 import { connect } from "react-redux";
 
 import { SearchedUserAccountContainer } from "./components";
 
-class UserSearch extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      searchUserName: ""
-    };
-  }
+export default class UserSearch extends React.Component {
   render() {
     return (
     	<View style={styles.container}>
+        <Background />
+        <NavBar />
         <TopContentBar>
           名前検索
         </TopContentBar>
         <View style={styles.form}>
           <TextInput
-            onChangeText={searchUserName => this.setState({ searchUserName })}
+            onChangeText={(name) => {
+              this.setState({ name });
+              this.searchUserEvent(name);
+            }}
+            value={this.state.name}
             placeholder="名前入力"
             placeholderTextColor="#666677"
             style={styles.textField}
@@ -42,19 +44,16 @@ class UserSearch extends React.Component {
             returnKeyType="done"
           />
         </View>
-        <SearchedUserAccountContainer />
+        <SearchedUserAccountContainer AccountPressEvent={this.AccountPressEvent} users={this.state.users}/>
         <NavigateButton action={() =>{Actions.popTo("analysisCreate"); }} style={styles.navigateButton} text="選択" />
       </View>
     );
   }
 }
 
-export default connect()(baseEnhancer(UserSearch));
-
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    alignItems: "center"
+    flex: 1
   },
   form: {
     borderRightColor: "#28a8de",

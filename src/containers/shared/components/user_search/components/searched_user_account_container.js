@@ -2,18 +2,31 @@ import React from "react";
 import {
   ScrollView,
   StyleSheet,
+  TouchableOpacity,
   View
 } from "react-native";
+import { connect } from "react-redux";
 
 import SearchedUserAccount from "./searched_user_account";
 
 export default class SearchedUserAccountContainer extends React.Component{
+  constructor(props){
+    super(props);
+  }
+  componentWillReceiveProps(nextProps){
+    this.forceUpdate();
+  }
   render(){
-    const users = [{id: 1, name: "yoshiki", status: "Active"}, {id: 2, name: "yusuke", status: "Active"}];
+    const { users, AccountPressEvent } = this.props;
+    if( users == ""){
+      return null;
+    }
     const usersComponent = [];
     for (let i = 0; i < users.length; i++) {
       usersComponent.push(
-        <SearchedUserAccount userName={users[i]["name"]} userStatus={users[i]["status"]} />
+        <TouchableOpacity onPress={() => {AccountPressEvent(this.props.selectedIndex, users[i].user.id);}}>
+          <SearchedUserAccount key={i} userName={users[i].user.name} />
+        </TouchableOpacity>
       );
     }
     return(
@@ -25,9 +38,11 @@ export default class SearchedUserAccountContainer extends React.Component{
     );
   }
 }
+
 const styles=StyleSheet.create({
   container: {
-    height: "60%"
+    height: "60%",
+    alignSelf: "center"
   },
   scrollContainer: {
     backgroundColor: "transparent",
