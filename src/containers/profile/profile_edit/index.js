@@ -27,16 +27,16 @@ import {
 import { postUserUpdate } from "../actions/post_user_update";
 
 class ProfileEdit extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this._selectPhotoTapped = this._selectPhotoTapped.bind(this);
     this._setPicker = this._setPicker.bind(this);
     this._hidePicker = this._hidePicker.bind(this);
     this.state = {
       profileImageSource: null,
       sex: "男性",
-      userEmail: "",
-      userName: "",
+      userEmail: this.props.userEmail,
+      userName: this.props.userName,
       isPickerVisible: false
     };
   }
@@ -70,11 +70,11 @@ class ProfileEdit extends React.Component {
     const { dispatch } = this.props;
     const body = {
       name: this.state.userName,
-      mail: this.state.userEmail
-    }
+      email: this.state.userEmail
+    };
     const params = {
-      id: 1,
-    }
+      id: 1
+    };
     dispatch(postUserUpdate(body, params));
   }
   render() {
@@ -117,7 +117,7 @@ class ProfileEdit extends React.Component {
                       <TextInput
                         ref="email"
                         style={styles.profileTitle}
-                        onChangeText={email => this.setState({ email })}
+                        onChangeText={userEmail => this.setState({ userEmail })}
                         defaultValue={this.props.userEmail}
                         placeholder="メールアドレス"
                         keyboardType="email-address"
@@ -132,7 +132,7 @@ class ProfileEdit extends React.Component {
           </View>
         </View>
         <View style={styles.container}>
-          <NavigateButton action={() => {this.completeButtonEvent()}} style={styles.complete} text="完了" />
+          <NavigateButton action={() => {this.completeButtonEvent();}} style={styles.complete} text="完了" />
         </View>
         <SexPicker
           _hidePicker={this._hidePicker}

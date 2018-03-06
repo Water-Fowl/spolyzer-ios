@@ -1,6 +1,6 @@
 import {
   ActionConst,
-  Actions,
+  Actions
 } from "react-native-router-flux";
 
 import {
@@ -14,6 +14,7 @@ import {
 
 export function postUserUpdate(body, params) {
   return (dispatch) => {
+    console.log(body);
     dispatch(requestPostUserUpdate());
     return fetch(USER_ENDPOINT + params.id, {
       method: "PATCH",
@@ -39,9 +40,11 @@ export function requestPostUserUpdate() {
 }
 
 export function receivedPostUserUpdate(name, email){
+  console.log(name);
+  console.log(email);
   return {
     type: RECEIVED_POST_USER_UPDATE,
     userName: name,
-    userEmail: email,
+    userEmail: email
   };
 }
