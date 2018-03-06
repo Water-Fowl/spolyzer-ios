@@ -15,15 +15,16 @@ import { applyMiddleware, compose, createStore } from "redux";
 import configureStore from "../stores";
 import {
   AnalysisCreate,
+  AnalysisSearchUser,
   AnalysisView,
   GameCreate,
+  GameSearchUser,
   Login,
   ProfileEdit,
   ProfileTop,
   ScoreCreate,
   ScoreView,
-  SignUp,
-  UserSearch
+  SignUp
 } from "../containers";
 
 const RouterWithRedux = connect()(Router);
@@ -41,12 +42,13 @@ const Route = () => (
           </Scene>
           <Scene key="Score" tabBarLabel="スコアシート" icon={() => (<Image style={styles.icon} source={require("../assets/img/tabs_score.png")} />)} headerMode="none">
             <Scene key="gameCreate" initial component={GameCreate} title="単分析" hideNavBar />
+            <Scene key="gameSearchUser" component={GameSearchUser} title="ユーザー検索" hideNavBar />
             <Scene key="scoreCreate" hideTabBar component={ScoreCreate} title="スコアシート" hideNavBar />
             <Scene key="scoreView" component={ScoreView} title="結果" hideNavBar />
           </Scene>
           <Scene key="Analysis" tabBarLabel="分析" icon={() => (<Image style={styles.icon} source={require("../assets/img/tabs_analysis.png")} />)} headerMode="none">
             <Scene key="analysisCreate" initial component={AnalysisCreate} title="複合分析" hideNavBar />
-            <Scene key="userSearch" component={UserSearch} title="ユーザー検索" hideNavBar />
+            <Scene key="analysisSearchUser" component={AnalysisSearchUser} title="ユーザー検索" hideNavBar />
             <Scene key="analysisView" component={AnalysisView} title="単分析" hideNavBar />
           </Scene>
         </Tabs>
