@@ -17,7 +17,7 @@ export class OutFieldLength extends React.Component {
       <TouchableHighlight
         style={styles.varticalYellowBarLeft}
         onPress={() => {
-          this.postPositionEvent();
+          this.setShotTypeCountsEvent();
         }
         }
       >

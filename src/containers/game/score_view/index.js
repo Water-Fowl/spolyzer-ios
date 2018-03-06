@@ -12,7 +12,9 @@ import {
 import {
   TopContentBar
 } from "components";
+import { connect } from "react-redux";
 
+import getShotTypeCounts from "../actions/get_shot_type_counts";
 import {
   Graph,
   InFieldCircle,
@@ -62,66 +64,66 @@ class ScoreView extends React.Component {
             <Image style={styles.fieldLine} source={require("../../../assets/img/field-line.png")} />
             <View style={styles.overContainer}>
               <View style={styles.overOutFieldSideContainer}>
-                <OutFieldSide position={1} side={1} />
-                <OutFieldSide />
+                <OutFieldSide position={5} side={6} />
+                <OutFieldSide position={6} side={0}/>
               </View>
               <View style={styles.overOutFieldSideContainer}>
-                <OutFieldSide />
-                <OutFieldSide />
+                <OutFieldSide position={0} side={1}/>
+                <OutFieldSide position={1} side={1}/>
               </View>
             </View>
             <View style={styles.middleContainer}>
               <View style={styles.outFieldLengthContainer}>
-                <OutFieldLength />
-                <OutFieldLength />
+                <OutFieldLength position={4} side={0}/>
+                <OutFieldLength position={3} side={0}/>
               </View>
               <View style={styles.inFieldContainer}>
                 <View style={styles.inFieldLengthContainer}>
-                  <InFieldLength />
-                  <InFieldLength />
+                  <InFieldLength position={11} side={0}/>
+                  <InFieldLength position={10} side={0}/>
                 </View>
                 <View style={styles.inFieldSideContainer}>
-                  <InFieldSide />
+                  <InFieldSide position={12} side={0}/>
                   <View style={styles.inFieldCircleContainer}>
-                    <InFieldCircle />
+                    <InFieldCircle position={7} side={0}/>
                   </View>
-                  <InFieldSide />
+                  <InFieldSide position={9} side={0}/>
                 </View>
                 <View style={styles.inFieldLengthContainer}>
-                  <InFieldLength />
-                  <InFieldLength />
+                  <InFieldLength position={13} side={0}/>
+                  <InFieldLength position={8} side={0}/>
                 </View>
               </View>
               <View style={styles.inFieldContainer}>
                 <View style={styles.inFieldLengthContainer}>
-                  <InFieldLength />
-                  <InFieldLength />
+                  <InFieldLength position={8} side={1} />
+                  <InFieldLength position={13} side={1}/>
                 </View>
                 <View style={styles.inFieldSideContainer}>
-                  <InFieldSide />
+                  <InFieldSide position={9} side={1}/>
                   <View style={styles.inFieldCircleContainer}>
-                    <InFieldCircle />
+                    <InFieldCircle position={7} side={1}/>
                   </View>
-                  <InFieldSide />
+                  <InFieldSide position={12} side={1}/>
                 </View>
                 <View style={styles.inFieldLengthContainer}>
-                  <InFieldLength />
-                  <InFieldLength />
+                  <InFieldLength position={10} side={1}/>
+                  <InFieldLength position={11} side={1}/>
                 </View>
               </View>
               <View style={styles.outFieldLengthContainer}>
-                <OutFieldLength />
-                <OutFieldLength />
+                <OutFieldLength position={3} side={1}/>
+                <OutFieldLength position={4} side={1}/>
               </View>
             </View>
             <View style={styles.underContainer}>
               <View style={styles.underOutFieldSideContainer}>
-                <OutFieldSide position={1} side={1} />
-                <OutFieldSide />
+                <OutFieldSide position={2} side={0} />
+                <OutFieldSide position={1} side={0}/>
               </View>
               <View style={styles.underOutFieldSideContainer}>
-                <OutFieldSide />
-                <OutFieldSide />
+                <OutFieldSide position={6} side={1}/>
+                <OutFieldSide position={5} side={1}/>
               </View>
             </View>
           </View>
@@ -139,7 +141,7 @@ class ScoreView extends React.Component {
   }
 }
 
-export default baseEnhancer(ScoreView);
+export default connect()(baseEnhancer(ScoreView));
 
 const styles = StyleSheet.create({
   container: {
@@ -216,12 +218,12 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     height: 170,
     backfaceVisibility: "hidden",
-    zIndex: 3,
     resizeMode: "contain"
   },
   overContainer: {
     flexDirection: "row",
     flex: 1,
+    zIndex: 2,
     justifyContent: "space-between"
   },
   overOutFieldSideContainer: {

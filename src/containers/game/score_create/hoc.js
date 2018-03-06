@@ -12,7 +12,8 @@ export default function enhancer(ComponentClass) {
       super(props);
       this.state = {
         height: Dimensions.get("window").width,
-        width: Dimensions.get("window").height
+        width: Dimensions.get("window").height,
+        scores: ""
       };
     }
     componentDidMount() {
@@ -23,12 +24,12 @@ export default function enhancer(ComponentClass) {
       Orientation.lockToPortrait();
     }
     componentWillReceiveProps(nextProps){
+      this.setState({ scores:nextProps.scores });
       this.forceUpdate();
     }
     navigateEvent(){
       const { dispatch } = this.props;
-      dispatch(postGame());
-      Action.scoreView();
+      dispatch(postGame(this.state.scores));
     }
     render() {
       return (

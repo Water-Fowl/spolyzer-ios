@@ -15,12 +15,27 @@ import {
   StyleSheet,
   Text,
   TouchableHighlight,
+  TouchableOpacity,
   View
 } from "react-native";
+import { connect } from "react-redux";
 
+import getShotTypes from "../actions/get_shot_types";
+import setUserIndex from "../actions/set_user_index";
 import { UserIcon } from "./components";
 
 class ScoreGameCreate extends React.Component {
+  componentWillMount(){
+    const { dispatch } = this.props;
+      /* バドミントンのIDは1*/
+    const sport_id = 1
+    dispatch(getShotTypes(sport_id));
+  }
+  setUserIndexEvent(selectedUnitIndex, selectedUserIndex){
+    const { dispatch } = this.props;
+    dispatch(setUserIndex(selectedUnitIndex, selectedUserIndex));
+    Actions.gameSearchUser();
+  }
   render() {
     return (
       <View style={styles.container}>
@@ -31,10 +46,12 @@ class ScoreGameCreate extends React.Component {
               <Text style={styles.scoreGameCreateOpponents}>対戦相手選択</Text>
               <View style={styles.gameSettingTableInner}>
                 <View style={styles.gameSettingTableInnerLeft}>
-                  <UserIcon />
-                  <View style={styles.textbox} />
-                  <UserIcon />
-                  <View style={styles.textbox} />
+                  <TouchableOpacity onPress={() =>{this.setUserIndexEvent(0, 0);}}>
+                    <UserIcon unitIndex={0} userIndex={0}/>
+                  </TouchableOpacity>
+                  <TouchableOpacity onPress={() => {this.setUserIndexEvent(0, 1);}}>
+                    <UserIcon unitIndex={0} userIndex={1}/>
+                  </TouchableOpacity>
                 </View>
                 <View style={styles.gameSettingTableInnerCenter}>
                   <Image
@@ -43,10 +60,12 @@ class ScoreGameCreate extends React.Component {
                   />
                 </View>
                 <View style={styles.gameSettingInnerRight} >
-                  <UserIcon />
-                  <View style={styles.textbox} />
-                  <UserIcon />
-                  <View style={styles.textbox} />
+                  <TouchableOpacity onPress={() => {this.setUserIndexEvent(1, 0);}}>
+                    <UserIcon unitIndex={1} userIndex={0}/>
+                  </TouchableOpacity>
+                  <TouchableOpacity onPress={() => {this.setUserIndexEvent(1, 1);}}>
+                    <UserIcon unitIndex={1} userIndex={1}/>
+                  </TouchableOpacity>
                 </View>
               </View>
             </View>
@@ -57,7 +76,7 @@ class ScoreGameCreate extends React.Component {
     );
   }
 }
-export default baseEnhancer(ScoreGameCreate);
+export default connect()(baseEnhancer(ScoreGameCreate));
 
 const styles = StyleSheet.create({
   container: {

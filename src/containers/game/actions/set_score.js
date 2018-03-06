@@ -11,9 +11,9 @@ export function setPositionAndSide(position, side) {
   };
 }
 
-export function setShotType(action) {
+export function setShotType(shot_type) {
   return {
     type: SET_SHOT_TYPE,
-    action
+    shot_type
   };
 }

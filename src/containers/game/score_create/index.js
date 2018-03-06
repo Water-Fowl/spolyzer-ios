@@ -31,8 +31,17 @@ import {
 import { postGame } from "../actions/post_game";
 
 class ScoreCreate extends React.Component {
-  navigationEvent(body){
+  navigationEvent(users, scores){
     const { dispatch } = this.props;
+    const body = {
+      users,
+      scores,
+      game: {
+        name: "トレーニングマッチ",
+        sport_name: "バドミントン"
+      }
+    };
+    console.log(body);
     dispatch(postGame(body));
   }
   render() {
@@ -53,7 +62,7 @@ class ScoreCreate extends React.Component {
               <Text style={styles.scoreInformationUserName}>Name</Text>
             </View>
             <View style={styles.scoreInformationPointContainer}>
-              <Text style={styles.scoreInformationPoint}>{this.props.scores[0]}</Text>
+              <Text style={styles.scoreInformationPoint}>{this.props.scoreCounts[0]}</Text>
             </View>
             <Text style={styles.scoreInformationGamePoint}>0</Text>
           </View>
@@ -61,14 +70,14 @@ class ScoreCreate extends React.Component {
           <View style={styles.scoreInformationContainer}>
             <Text style={styles.scoreInformationGamePoint}>0</Text>
             <View style={styles.scoreInformationPointContainer}>
-              <Text style={styles.scoreInformationPoint}>{this.props.scores[1]}</Text>
+              <Text style={styles.scoreInformationPoint}>{this.props.scoreCounts[1]}</Text>
             </View>
             <View style={styles.scoreInformationUserNameContainer}>
               <Text style={styles.scoreInformationUserName}>Name</Text>
             </View>
           </View>
         </View>
-        <TouchableHighlight onPress={() => {this.navigationEvent();}} style={styles.analysisNavigate}>
+        <TouchableHighlight onPress={() => {this.navigationEvent(this.props.gameUsers, this.props.scores);}} style={styles.analysisNavigate}>
           <Text style={styles.analysisNavigateText}>分析</Text>
         </TouchableHighlight>
         <View style={styles.scoreFieldContainer}>
@@ -155,12 +164,22 @@ function mapStateToProps(state, props) {
   } = view || {
     scoreCreateModal: false
   };
-  const { scores } = game;
+  const {
+    scoreCounts,
+    gameUsers,
+    scores,
+    shotTypes
+  } = game;
   return {
-    scoreCreateModal, scores
+    scoreCreateModal,
+    scoreCounts,
+    gameUsers,
+    scores,
+    shotTypes
   };
 }
 export default connect(mapStateToProps)(enhancer(ScoreCreate));
+
 
 const styles = StyleSheet.create({
   analysisNavigate: {

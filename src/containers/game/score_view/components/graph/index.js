@@ -12,25 +12,43 @@ import {
   VictoryTheme,
   VictoryZoomContainer
 } from "victory-native";
+import { connect } from "react-redux";
+import { reshapeShotTypeCounts } from "utils";
 
-export default class Graph extends React.Component{
+class Graph extends React.Component{
+  constructor(){
+    super();
+    this.state = {};
+  }
+  componentWillReceiveProps(nextProps){
+    this.forceUpdate();
+  }
+  getZoomDomain(length){
+    if (length < 4){
+      return [0, length]
+    }
+    else{
+      return [2, length + 3]
+    }
+  }
+
   render(){
     return(
       <ScrollView style={styles.graphContainer}>
         <VictoryChart
-          domainPadding={{ x: 50 }}
           width={400}
           height={240}
           theme={VictoryTheme.material}
-          containerComponent={<VictoryZoomContainer
-            allowZoom={false}
-            zoomDimension={"x"}
-            zoomDomain={{x: [10, 20]}}
-          />
-          }
           padding={{
-            left: 30, right: 40, top: 20, bottom: 40
+            left: 15, right: 15, top: 20, bottom: 40
           }}
+          containerComponent={
+            <VictoryZoomContainer
+              zoomDomain={{x: this.getZoomDomain(this.props.data.length) }}
+              allowZoom={false}
+              zoomDimension={"x"}
+            />
+          }
         >
           <VictoryAxis
             dependentAxis	/* Y軸 */
@@ -39,7 +57,7 @@ export default class Graph extends React.Component{
                 stroke: "#035f89",
                 axis: { stroke: "transparent"}
               },
-              tickLabels: { fontSize: 7, fill: "white" }
+              tickLabels: { fontSize: 15, fill: "white" }
             }}
             tickFormat={(tick) => { /* 整数目盛のみ表示 */
               if (tick === Math.round(tick)) return String(tick);
@@ -48,9 +66,11 @@ export default class Graph extends React.Component{
           />
           <VictoryAxis	/* X軸 */
             style={{
-              grid: { stroke: "transparent" },
-              axis: { stroke: "#2EA7E0"},
-              tickLabels: { fontSize: 7, fill: "white" }
+              grid: {
+                stroke: "transparent" ,
+                axis: { stroke: "#2EA7E0"},
+              },
+              tickLabels: { fontSize: 10, fill: "white", angle: 30 }
             }}
           />
           <VictoryBar
@@ -67,11 +87,33 @@ export default class Graph extends React.Component{
             data={this.props.data}
             x="shotType"
             y="counts"
+            labelComponent={
+              <VictoryLabel
+                angle={45}
+                textAnchor="start"
+              />
+            }
           />
         </VictoryChart>
       </ScrollView>
     );
   }
+}
+
+export default connect(mapStateToProps)(Graph)
+
+function mapStateToProps(state, props){
+  const { game } = state;
+  const {
+    selectedShotTypeCounts,
+    shotTypes
+  } = game || {
+    selectedShotTypeCounts: {},
+    shotTypes: {}
+  };
+  return {
+    data: reshapeShotTypeCounts(selectedShotTypeCounts, shotTypes),
+  };
 }
 
 const styles = StyleSheet.create({

@@ -17,7 +17,7 @@ class InFieldLength extends React.Component {
       <TouchableHighlight
         style={styles.varticalBlueBar}
         onPress={() => {
-          this.postPositionEvent();
+          this.setShotTypeCountsEent();
         }
         }
       >

@@ -5,6 +5,7 @@ import {
   StyleSheet,
   Text,
   TouchableHighlight,
+  TouchableOpacity,
   View
 } from "react-native";
 import { connect } from "react-redux";
@@ -14,15 +15,15 @@ import { fieldButtonEnhancer } from "../shared/hoc";
 class InFieldCircle extends React.Component {
   render() {
     return (
-      <TouchableHighlight
+      <TouchableOpacity
         style={styles.blueCircle}
         onPress={() => {
-          this.postPositionEvent();
+          this.setShotTypeCountsEvent();
         }
         }
       >
         <View />
-      </TouchableHighlight>
+      </TouchableOpacity>
     );
   }
 }

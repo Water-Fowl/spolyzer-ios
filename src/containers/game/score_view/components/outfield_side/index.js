@@ -17,7 +17,7 @@ class OutFieldSide extends React.Component {
       <TouchableHighlight
         style={styles.horizontalYellowBarLeft}
         onPress={() => {
-          this.postPositionEvent();
+          this.setShotTypeCountsEvent();
         }
         }
       >

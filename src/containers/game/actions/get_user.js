@@ -1,34 +1,42 @@
-import { SEARCH_USER_ENDPOINT } from "../../../config/api";
-import {
-  SEARCH_USER_RECEIVED,
-  SEARCH_USER_REQUEST
-} from "../action_types";
+import { Actions } from "react-native-router-flux";
 
-export function getUser(body) {
+import {
+  GET_SEARCH_USER_RECEIVED,
+  GET_SEARCH_USER_REQUEST
+} from "../action_types";
+import { SEARCH_USER_ENDPOINT } from "../../../config/api";
+
+export default function getSearchUser(params) {
   return (dispatch) => {
-    dispatch(requestUserName());
-    return fetch(SEARCH_USER_ENDPOINT, {
+    dispatch(getSearchUserRequest());
+    return fetch( SEARCH_USER_ENDPOINT + params, {
       method: "GET",
       headers: {
-        Accept: "application/json",
+        "Accept": "application/json",
         "Content-Type": "application/json"
-      },
-      body: JSON.stringify(body)
+      }
     })
       .then(response => response.json())
+      .then(function(json){
+        console.log(json);
+        dispatch(getSearchUserReceived(json.users));
+      })
       .catch((error) => {
+        console.log(error);
       });
   };
 }
 
-function requestUser() {
+function getSearchUserRequest() {
   return {
-    type: SEARCH_USER_REQUEST
+    type: GET_SEARCH_USER_REQUEST
   };
 }
 
-function receivedUser() {
+function getSearchUserReceived(users) {
+  console.log(users);
   return {
-    type: SEARCH_USER_RECEIVED
+    type: GET_SEARCH_USER_RECEIVED,
+    users
   };
 }

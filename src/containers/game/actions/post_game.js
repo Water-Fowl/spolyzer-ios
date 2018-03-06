@@ -1,6 +1,7 @@
 import { Actions } from "react-native-router-flux";
 
-import { POST_GAME_ENDPOINT } from "../../../config/api";
+import getShotTypeCounts from "./get_shot_type_counts";
+import { GAMES_ENDPOINT } from "../../../config/api";
 import {
   POST_GAME_RECIEVED,
   POST_GAME_REQUEST
@@ -9,7 +10,7 @@ import {
 export function postGame(body) {
   return (dispatch) => {
     dispatch(requestScoreGame());
-    return fetch(POST_GAME_ENDPOINT, {
+    return fetch(GAMES_ENDPOINT, {
       method: "POST",
       headers: {
         "Accept": "application/json",
@@ -18,9 +19,9 @@ export function postGame(body) {
       body: JSON.stringify(body)
     })
       .then(response => response.json())
-      .then(json => dispatch(receivedScoreGame(json.score_game_id)))
-      .then(Actions.scoreView())
+      .then(json => dispatch(getShotTypeCounts(json.game.id)))
       .catch((error) => {
+        console.log(error);
       });
   };
 }
@@ -31,9 +32,9 @@ function requestScoreGame() {
   };
 }
 
-function receivedScoreGame(scoreGameId) {
+function receivedScoreGame(gameId) {
   return {
     type: POST_GAME_RECIEVED,
-    currentScoreGameId: scoreGameId
+    gameId: gameId
   };
 }

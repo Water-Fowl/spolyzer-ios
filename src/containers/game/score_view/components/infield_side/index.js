@@ -17,7 +17,7 @@ export class InFieldSide extends React.Component {
       <TouchableHighlight
         style={styles.horizontalBlueBar}
         onPress={() => {
-          this.postPositionEvent();
+          this.setShotTypeCountsEvent();
         }
         }
       >

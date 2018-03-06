@@ -14,18 +14,7 @@ class Modal extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <View style={styles.shotTypeContainer}>
-          <View style={styles.shotTypeHalfContainer}>
-            <ScoreCreateShotTypeButton shotTypeId={0}> スマッシュ</ScoreCreateShotTypeButton>
-            <ScoreCreateShotTypeButton shotTypeId={1}> スマッシュ</ScoreCreateShotTypeButton>
-            <ScoreCreateShotTypeButton shotTypeId={2}> スマッシュ</ScoreCreateShotTypeButton>
-          </View>
-          <View style={styles.shotTypeHalfContainer}>
-            <ScoreCreateShotTypeButton shotTypeId={3}> スマッシュ</ScoreCreateShotTypeButton>
-            <ScoreCreateShotTypeButton shotTypeId={4}> スマッシュ</ScoreCreateShotTypeButton>
-            <ScoreCreateShotTypeButton shotTypeId={5}> スマッシュ</ScoreCreateShotTypeButton>
-          </View>
-        </View>
+        <ScoreCreateShotTypeButton/>
       </View>
     );
   }
