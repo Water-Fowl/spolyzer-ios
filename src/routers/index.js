@@ -42,7 +42,7 @@ const Route = () => (
   <Provider store={store}>
     <RouterWithRedux>
       <Scene key="root" renderTitle={() => { return <AppLogo />; }}　navigationBarStyle={styles.navBarStyle}>
-        <Scene key="login" component={Login} initial hideNavBar />
+        <Scene key="login" type="reset" component={Login} initial hideNavBar />
         <Scene key="signUp" component={SignUp} hideNavBar />
         <Drawer
           key="drawer"
