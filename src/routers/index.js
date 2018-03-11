@@ -62,7 +62,7 @@ const Route = () => (
             </Scene>
             <Scene key="Score" tabBarLabel="スコアシート" icon={() => (<Image style={styles.icon} source={require("../assets/img/tabs_score.png")} />)} >
               <Scene key="gameCreate" initial component={GameCreate} title="単分析"  />
-              <Scene key="scoreCreate" hideTabBar component={ScoreCreate} title="スコアシート" />
+              <Scene key="scoreCreate" hideTabBar hideNavBar component={ScoreCreate} title="スコアシート" />
               <Scene key="scoreView" component={ScoreView} title="結果" />
             </Scene>
             <Scene key="Analysis" tabBarLabel="分析" icon={() => (<Image style={styles.icon} source={require("../assets/img/tabs_analysis.png")} />)} >
@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#00769E"
   },
   container: {
-    marginLeft: "-44%"
+
   },
   navBarStyle: {
     backgroundColor: "#134A65"
