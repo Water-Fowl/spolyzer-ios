@@ -4,8 +4,10 @@ import {
   StyleSheet,
   Text,
   TextInput,
-  View
+  View,
+  TouchableOpacity
 } from "react-native";
+import { Actions } from "react-native-router-flux";
 
 export default class DrawerContent extends React.Component {
 
@@ -46,9 +48,11 @@ export default class DrawerContent extends React.Component {
             source={require("../../../../assets/img/logout.png")}
             style={styles.logoutImage}
           />
-          <Text style={styles.logoutText}>
-            ログアウト
-          </Text>
+          <TouchableOpacity onPress={Actions.login}>
+            <Text style={styles.logoutText}>
+              ログアウト
+            </Text>
+          </TouchableOpacity>
         </View>
       </View>
     );
@@ -117,7 +121,7 @@ const styles = StyleSheet.create({
   },
   contactImage: {
     width: 22,
-    height: 16,
+    height: 17,
     marginTop: 22,
     marginLeft: 8
   },
