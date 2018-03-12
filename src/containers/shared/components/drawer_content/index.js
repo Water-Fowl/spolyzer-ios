@@ -34,15 +34,6 @@ export default class DrawerContent extends React.Component {
             バドミントン
           </Text>
         </View>
-        <View style={styles.contactContainer}>
-          <Image
-            source={require("../../../../assets/img/contact.png")}
-            style={styles.contactImage}
-          />
-          <Text style={styles.contactText}>
-            お問い合わせ
-          </Text>
-        </View>
         <View style={styles.logoutContainer}>
           <Image
             source={require("../../../../assets/img/logout.png")}
@@ -113,24 +104,6 @@ const styles = StyleSheet.create({
     color: "white",
     fontSize: 20,
     marginBottom: 4
-  },
-  contactContainer: {
-    borderBottomColor: "#2EA7E0",
-    borderWidth: 1,
-    flexDirection: "row"
-  },
-  contactImage: {
-    width: 22,
-    height: 17,
-    marginTop: 22,
-    marginLeft: 8
-  },
-  contactText: {
-    marginTop: 20,
-    marginLeft: 6,
-    color: "white",
-    fontSize: 21,
-    marginBottom: 2
   },
   logoutContainer: {
     borderBottomColor: "#2EA7E0",
