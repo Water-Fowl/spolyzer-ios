@@ -7,7 +7,7 @@ import { SHOT_TYPES_ENDPOINT } from "../../../config/api";
 export default function getShotTypes(params) {
   return (dispatch) => {
     dispatch(getShotTypesRequest());
-    console.log(SHOT_TYPES_ENDPOINT + "?sport_id=" +  params)
+    console.log(SHOT_TYPES_ENDPOINT + "?sport_id=" +  params);
     return fetch( SHOT_TYPES_ENDPOINT + "?sport_id=" +  params, {
       method: "GET",
       headers: {

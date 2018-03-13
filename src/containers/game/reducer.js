@@ -22,7 +22,16 @@ const initialState = {
   scores: [],
   scoreCounts: [0, 0],
   users: "",
-  gameUsers: {0:{}, 1:{}}
+  gameUsers: {
+    0:{
+      users: [],
+      count: 0
+    },
+    1:{
+      users: [],
+      count: 0
+    }
+  }
 };
 
 export default function gameReducer(state = initialState, action = {}) {
@@ -32,8 +41,7 @@ export default function gameReducer(state = initialState, action = {}) {
     const currentScore = getScoreByPositionAndSide(state.position, state.side);
     const currentScores = [state.scoreCounts[0] + currentScore[0], state.scoreCounts[1] + currentScore[1]];
     return Object.assign({}, state, {
-      /* TODO 誰が決めたかを入力する */
-      scores: state.scores.concat({user: state.gameUsers[state.side * 2], dropped_at: state.position, shot_type: action.shot_type, side: state.side}),
+      scores: state.scores.concat({unit: state.side, dropped_at: state.position, shot_type: action.shotType, miss_type: action.missType, side: state.side}),
       scoreCounts: currentScores
     });
   case SET_POSITION_AND_SIDE:
@@ -55,13 +63,14 @@ export default function gameReducer(state = initialState, action = {}) {
       users: action.users
     });
   case GET_SHOT_TYPE_COUNTS_REQUEST:
-      return state;
+    return state;
   case GET_SHOT_TYPE_COUNTS_RECEIVED:
     return Object.assign({}, state, {
       shotTypeCounts: action.shotTypeCounts
     });
   case SET_USER:
-    state.gameUsers[action.selectedUnitIndex][action.selectedUserIndex] = action.user
+    state.gameUsers[action.selectedUnitIndex].users.push(action.user);
+    state.gameUsers[action.selectedUnitIndex].count = state.gameUsers[action.selectedUnitIndex].users.length;
     return Object.assign({}, state, {
       gameUsers: state.gameUsers
     });
@@ -75,11 +84,11 @@ export default function gameReducer(state = initialState, action = {}) {
       selectedShotTypeCounts: state.shotTypeCounts[action.side][action.position]
     });
   case GET_SHOT_TYPES_REQUEST:
-    return state
+    return state;
   case GET_SHOT_TYPES_RECEIVED:
     return Object.assign({}, state, {
       shotTypes: action.shotTypes
-    })
+    });
   default:
     return state;
   }
