@@ -13,9 +13,38 @@ import {
 } from "react-native";
 import { connect } from "react-redux";
 
-import { enhancer } from "./hoc";
+import { postLogin } from "../actions/login";
 
 class Login extends React.Component {
+  constructor(props) {
+    super(props);
+    this.postLoginEvent.bind(this);
+    this.state = {
+      name: "yamad07",
+      email: "",
+      password: "",
+      loginError: false
+    };
+  }
+
+  componentWillMount() {
+    Orientation.lockToPortrait();
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const { loginError } = nextProps;
+    this.setState({ loginError });
+  }
+
+  postLoginEvent() {
+    const { dispatch } = this.props;
+    const loginForm = {
+      name: this.state.name,
+      email: this.state.email,
+      password: this.state.password
+    };
+    dispatch(postLogin(loginForm));
+  }
   render() {
     return (
       <View style={styles.container}>
@@ -60,10 +89,7 @@ class Login extends React.Component {
           <View style={styles.rowContainer} />
           <View style={styles.button}>
             <TouchableOpacity onPress={() => {
-              Actions.tab();
-              /*
               this.postLoginEvent();
-              */
             }}
             >
               <Text style={styles.buttonText}>
@@ -99,7 +125,7 @@ function mapStateToProps(state, props) {
   };
 }
 
-export default connect(mapStateToProps)(enhancer(Login));
+export default connect(mapStateToProps)(Login);
 
 const styles = StyleSheet.create({
   container: {

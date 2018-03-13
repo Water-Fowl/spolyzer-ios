@@ -3,7 +3,8 @@ import {
   POST_LOGIN_RECIEVED,
   POST_LOGIN_REQUEST,
   POST_REGISTRATION_RECEIVED,
-  POST_REGISTRATION_REQUEST
+  POST_REGISTRATION_REQUEST,
+  SET_TOKEN
 } from "./action_type";
 
 const initialState = {
@@ -31,6 +32,10 @@ export default function authenticationReducer(state = initialState, action = {})
   case EMAIL_VALIDATION:
     return Object.assign({}, state, {
       isEmail: action.isEmail
+    });
+  case SET_TOKEN:
+    return Object.assign({}, state, {
+      token: action.token
     });
   default:
     return state;

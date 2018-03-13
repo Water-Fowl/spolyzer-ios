@@ -3,14 +3,14 @@ import { Actions } from "react-native-router-flux";
 import {
   EMAIL_VALIDATION,
   POST_REGISTRATION_RECEIVED,
-  POST_REGISTRATION_REQUEST
+  POST_REGISTRATION_REQUEST,
+  SET_TOKEN
 } from "../action_type";
 import { REGISTRATION_ENDPOINT } from "../../../config/api";
 
 export function postRegistration(body) {
   return (dispatch) => {
     dispatch(requestRegistration());
-    console.log(body);
     return fetch(REGISTRATION_ENDPOINT, {
       method: "POST",
       headers: {
@@ -20,16 +20,12 @@ export function postRegistration(body) {
       body: JSON.stringify(body)
     })
       .then(function(response){
-        console.log(response);
-        return response.json();
+        dispatch(setToken(response.headers))
+        return response.json()
       })
       .then(function(json){
-        console.log(json);
-        return json.data, json.errors;
-      })
-      .then(function(json_data, json_errors){
-        console.log(json_data);
-        dispatch(receivedRegistration(json_errors, json_data.id));
+        console.log(json)
+        dispatch(receivedRegistration(json.user.uid));
       })
       .catch((error) => {
         console.log(error);
@@ -65,4 +61,13 @@ function receivedRegistration(errors, userId) {
     isAuthenticated: false,
     error: true
   };
+}
+
+function setToken(header){
+  token = "d"
+  console.log(header)
+  return{
+    type: SET_TOKEN,
+    token
+  }
 }

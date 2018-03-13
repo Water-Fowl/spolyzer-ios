@@ -14,7 +14,7 @@ import {
 import { connect } from "react-redux";
 import { emailReg } from "const";
 
-import EmailErrorMessage from "./components/email_error_message";
+import { EmailErrorMessage } from "./components";
 import { GET_USER_ENDPOINT } from "../../../config/api";
 import {
   emailValidation,
@@ -31,7 +31,8 @@ class SignUp extends React.Component {
     this.state = {
       name: "",
       email: "",
-      password: ""
+      password: "",
+      isErrorVisible: false
     };
     this.postRegistrationForm.bind(this);
   }
@@ -41,7 +42,7 @@ class SignUp extends React.Component {
   postRegistrationForm() {
     const { dispatch } = this.props;
     const isEmail = emailReg.test(this.state.email);
-    dispatch(emailValidation(isEmail));
+    console.log(isEmail)
     if (isEmail){
       dispatch(isEmailInSignUp());
       const registration_form = {
@@ -54,7 +55,7 @@ class SignUp extends React.Component {
       dispatch(postRegistration(registration_form));
     }
     else{
-      dispatch(isNotEmailInSignUp());
+      this.setState({isErrorVisible: true})
     }
   }
   render() {
@@ -110,7 +111,7 @@ class SignUp extends React.Component {
             secureTextEntry
           />
         </View>
-        <EmailErrorMessage isVisible={this.props.signUpEmailError} />
+        <EmailErrorMessage isVisible={this.state.isErrorVisible} />
         <View style={styles.registrationForm}>
           <TouchableOpacity onPress={() => {
             this.postRegistrationForm();
@@ -126,19 +127,8 @@ class SignUp extends React.Component {
   }
 }
 
-function mapStateToProps(state, props){
-  const { view } = state;
-  const {
-    signUpEmailError: signUpEmailError
-  } = view || {
-    signUpEmailError: false
-  };
-  return{
-    signUpEmailError
-  };
-}
 
-export default connect(mapStateToProps)(SignUp);
+export default connect()(SignUp);
 
 const styles = StyleSheet.create({
   container: {
