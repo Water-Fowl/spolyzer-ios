@@ -25,6 +25,7 @@ import {
   SexPicker
 } from "./components";
 import { postUserUpdate } from "../actions/post_user_update";
+import { mapStateToProps } from "utils";
 
 class ProfileEdit extends React.Component {
   constructor(props) {
@@ -35,8 +36,8 @@ class ProfileEdit extends React.Component {
     this.state = {
       profileImageSource: null,
       sex: "男性",
-      userEmail: this.props.userEmail,
-      userName: this.props.userName,
+      userEmail: this.props.profile.userEmail,
+      userName: this.props.profile.userName,
       isPickerVisible: false
     };
   }
@@ -73,9 +74,9 @@ class ProfileEdit extends React.Component {
       email: this.state.userEmail
     };
     const params = {
-      id: 1
+      id: this.props.authentication.userId
     };
-    dispatch(postUserUpdate(body, params));
+    dispatch(postUserUpdate(body, params, this.props.authentication.header));
   }
   render() {
     return (
@@ -101,7 +102,7 @@ class ProfileEdit extends React.Component {
                     ref="email"
                     style={styles.userName}
                     onChangeText={userName => this.setState({ userName })}
-                    defaultValue={this.props.userName}
+                    defaultValue={this.props.profile.userName}
                     placeholder="ユーザーネーム"
                     keyboardType="email-address"
                     returnKeyType="done"
@@ -118,7 +119,7 @@ class ProfileEdit extends React.Component {
                         ref="email"
                         style={styles.profileTitle}
                         onChangeText={userEmail => this.setState({ userEmail })}
-                        defaultValue={this.props.userEmail}
+                        defaultValue={this.props.profile.userEmail}
                         placeholder="メールアドレス"
                         keyboardType="email-address"
                         returnKeyType="done"
@@ -147,20 +148,6 @@ class ProfileEdit extends React.Component {
 }
 export default connect(mapStateToProps)(baseEnhancer(ProfileEdit));
 
-function mapStateToProps(state, props){
-  const { profile } = state;
-  const {
-    userName,
-    userEmail
-  } = profile || {
-    userName: "",
-    userEmail: ""
-  };
-  return {
-    userName,
-    userEmail
-  };
-}
 
 const styles = StyleSheet.create({
   container: {

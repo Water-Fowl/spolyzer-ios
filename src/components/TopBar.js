@@ -9,7 +9,7 @@ export default class TopBar extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Image source={require("../../../../assets/img/spolyzer_header.png")} />
+        <Image source={require("../assets/img/spolyzer_header.png")} />
       </View>
     );
   }

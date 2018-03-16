@@ -2,21 +2,26 @@ import {
   GET_USER_RECEIVED,
   GET_USER_REQUEST
 } from "../action_types";
-import { USER_ENDPOINT } from "../../../config/api";
+import { USERS_ENDPOINT } from "../../../config/api";
 
-export function getUser(params){
+export function getUser(authHeaders){
+  console.log(authHeaders)
   return (dispatch) => {
     dispatch(getUserRequest());
-    return fetch(USER_ENDPOINT + params, {
+    return fetch(USERS_ENDPOINT, {
       method: "GET",
       headers: {
         "Accept": "application/json",
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        ...authHeaders
       }
     })
       .then(response => response.json())
-      .then(json => dispatch(getUserReceived(json.user.name, json.user.email)))
+      .then((json) => {
+        dispatch(getUserReceived(json.user.name, json.user.email))
+      })
       .catch((error) => {
+        console.log(error)
       });
   };
 }
@@ -27,7 +32,7 @@ function getUserRequest() {
   };
 }
 
-function getUserReceived(userName, userEmail) {
+export function getUserReceived(userName, userEmail) {
   return {
     type: GET_USER_RECEIVED,
     userName,

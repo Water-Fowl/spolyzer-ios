@@ -7,20 +7,21 @@ import {
   RECEIVED_POST_USER_UPDATE,
   REQUEST_POST_USER_UPDATE
 } from "../action_types";
-import{ USER_ENDPOINT } from "../../../config/api";
+import{ USERS_ENDPOINT } from "../../../config/api";
 import {
   getUser
 } from "./get_user";
 
-export function postUserUpdate(body, params) {
+export function postUserUpdate(body, params, authHeaders) {
   return (dispatch) => {
     console.log(body);
     dispatch(requestPostUserUpdate());
-    return fetch(USER_ENDPOINT + params.id, {
+    return fetch(USERS_ENDPOINT + params.id, {
       method: "PATCH",
       headers: {
         "Accept": "application/json",
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        ...authHeaders
       },
       body: JSON.stringify(body)
     })

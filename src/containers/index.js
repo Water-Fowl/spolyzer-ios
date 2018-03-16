@@ -14,7 +14,6 @@ import analysisReducer from "./analysis/reducer";
 import authenticationReducer from "./authentication/reducer";
 import gameReducer from "./game/reducer";
 import profileReducer from "./profile/reducer";
-import viewReducer from "./shared/redux/view/reducer";
 
 export {
   /* Componentのexport */
@@ -34,5 +33,4 @@ export {
   gameReducer,
   profileReducer,
   authenticationReducer,
-  viewReducer
 };

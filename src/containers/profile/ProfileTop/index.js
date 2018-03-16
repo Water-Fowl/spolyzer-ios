@@ -14,6 +14,9 @@ import {
 import {
   connect
 } from "react-redux";
+import {
+  mapStateToProps
+} from "utils";
 
 import {
   getUser
@@ -21,9 +24,6 @@ import {
 
 class ProfileTop extends React.Component {
   componentDidMount(){
-    const { dispatch } = this.props;
-    const sampleParams = "1";
-    dispatch(getUser(sampleParams));
   }
   componentWillReceivedProps(nextProps){
     this.forceUpdate();
@@ -43,7 +43,7 @@ class ProfileTop extends React.Component {
             <Image
               source={require("../../../assets/img/my_page_center_design.png")}
             />
-            <Text style={styles.myName}>{this.props.userName}</Text>
+            <Text style={styles.myName}>{this.props.authentication.userName}</Text>
             <View style={styles.gameSettingBorder}>
               <View style={styles.gameSettingTable} />
             </View>
@@ -54,22 +54,7 @@ class ProfileTop extends React.Component {
   }
 }
 
-export default connect(mapToStateProps)(baseEnhancer(ProfileTop));
-
-function mapToStateProps(state, props){
-  const { profile } = state;
-  const {
-    userName,
-    userEmail
-  } = profile || {
-    userName: "",
-    userEmail: ""
-  };
-  return {
-    userName,
-    userEmail
-  };
-}
+export default connect(mapStateToProps)(baseEnhancer(ProfileTop));
 
 const styles = StyleSheet.create({
   container: {
