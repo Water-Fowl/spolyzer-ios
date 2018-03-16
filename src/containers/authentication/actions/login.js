@@ -4,10 +4,10 @@ import { CALL_API } from "redux-api-middleware";
 import {
   POST_LOGIN_RECIEVED,
   POST_LOGIN_REQUEST,
-  SET_TOKEN
+  SET_TOKEN,
 } from "../action_type";
 import { SIGN_IN_ENDPOINT } from "../../../config/api";
-import { getUser } from "../../profile/actions/get_user";
+import { getUserReceived } from "../../profile/actions/get_user";
 
 export function postLogin(body) {
   return (dispatch) => {
@@ -25,10 +25,14 @@ export function postLogin(body) {
         return response.json()
       })
       .then(function(json){
-        dispatch(receivedLogin(json.errors, json.user_id))
-        dispatch(getUser(json.user_id))
+        console.log(json)
+        dispatch((getUserReceived(json.data.name, json.data.email)))
+      })
+      .then(() =>{
+        Actions.tab()
       })
       .catch((error) => {
+        console.log(error)
       });
   };
 }
@@ -39,16 +43,13 @@ function requestLogin() {
   };
 }
 
-function receivedLogin(errors, image, userName, emailAddress) {
+function receivedLogin(errors, userId) {
   if (errors == null) {
-    Actions.tab();
     return {
       type: POST_LOGIN_RECIEVED,
       isAuthenticated: true,
-      image: image,
-      userName: userName,
-      emailAddress: emailAddress,
-      error: false
+      error: false,
+      userId
     };
   }
   return {
@@ -62,6 +63,13 @@ function setToken(header){
   const token = header.get("access-token")
   return{
     type: SET_TOKEN,
-    token
+    header:{
+      "access-token": header.get("access-token"),
+      "expiry": header.get("expiry"),
+      "uid": header.get("uid"),
+      "client": header.get("client"),
+      "token-type": header.get("token-type")
+    }
   }
 }
+

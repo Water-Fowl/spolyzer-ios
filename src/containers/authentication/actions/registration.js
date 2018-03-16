@@ -64,10 +64,9 @@ function receivedRegistration(errors, userId) {
 }
 
 function setToken(header){
-  token = "d"
   console.log(header)
   return{
     type: SET_TOKEN,
-    token
+    ...headers
   }
 }

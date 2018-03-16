@@ -20,6 +20,7 @@ export default function authenticationReducer(state = initialState, action = {})
   case POST_LOGIN_RECIEVED:
     return Object.assign({}, state, {
       isAuthenticated: action.isAuthenticated,
+      userId: action.userId,
       loginError: action.error
     });
   case POST_REGISTRATION_REQUEST:
@@ -35,7 +36,7 @@ export default function authenticationReducer(state = initialState, action = {})
     });
   case SET_TOKEN:
     return Object.assign({}, state, {
-      token: action.token
+      header: action.header
     });
   default:
     return state;

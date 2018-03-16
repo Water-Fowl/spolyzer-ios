@@ -20,10 +20,6 @@ import {
   emailValidation,
   postRegistration
 } from "../actions/registration";
-import {
-  isEmailInSignUp,
-  isNotEmailInSignUp
-} from "../../shared/redux/view/actions";
 
 class SignUp extends React.Component {
   constructor(props) {
@@ -44,7 +40,6 @@ class SignUp extends React.Component {
     const isEmail = emailReg.test(this.state.email);
     console.log(isEmail)
     if (isEmail){
-      dispatch(isEmailInSignUp());
       const registration_form = {
         name: this.state.name,
         email: this.state.email,
