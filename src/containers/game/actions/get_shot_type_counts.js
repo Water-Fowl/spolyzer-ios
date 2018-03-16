@@ -6,14 +6,15 @@ import {
 } from "../action_types";
 import { SHOT_TYPE_COUNTS_ENDPOINT } from "../../../config/api";
 
-export default function getShotTypeCounts(params) {
+export default function getShotTypeCounts(params, authHeaders) {
   return (dispatch) => {
     dispatch(getShotTypeCountsRequest());
     return fetch( SHOT_TYPE_COUNTS_ENDPOINT + `?id=${params}`, {
       method: "GET",
       headers: {
         "Accept": "application/json",
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        ...authHeaders
       }
     })
       .then(response => response.json())

@@ -21,24 +21,26 @@ import { connect } from "react-redux";
 
 import getSearchUser from "../actions/get_user";
 import { SearchedUserAccountContainer } from "./components";
+import { mapStateToProps } from "utils";
 
 class UserSearch extends React.Component {
   constructor(props){
     super(props);
     this.state = {
       name: "",
-      users: this.props.users
+      users: this.props.game.users
     };
     this.searchUserEvent.bind(this);
   }
   componentWillReceiveProps(nextProps){
-    console.log(nextProps.users);
-    this.setState({ users: nextProps.users });
+    if(nextProps.game.users){
+      this.setState({ users: nextProps.game.users });
+    }
   }
   searchUserEvent(name){
     const { dispatch } = this.props;
     const params = "?name=" + name;
-    dispatch(getSearchUser(params));
+    dispatch(getSearchUser(params, this.props.authentication.header));
     this.setState({ users: this.props.users });
   }
   render() {
@@ -71,18 +73,6 @@ class UserSearch extends React.Component {
 }
 
 export default connect(mapStateToProps)(UserSearch);
-
-function mapStateToProps(state, props){
-  const { game } = state;
-  const {
-    users
-  } = game || {
-    users: ""
-  };
-  return {
-    users
-  };
-}
 
 const styles = StyleSheet.create({
   container: {

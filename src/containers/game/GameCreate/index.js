@@ -23,13 +23,14 @@ import { connect } from "react-redux";
 import getShotTypes from "../actions/get_shot_types";
 import setUserIndex from "../actions/set_user_index";
 import { UserIcon } from "./components";
+import { mapStateToProps } from "utils";
 
 class GameCreate extends React.Component {
   componentWillMount(){
     const { dispatch } = this.props;
     /* バドミントンのIDは1*/
     const sport_id = 1;
-    dispatch(getShotTypes(sport_id));
+    dispatch(getShotTypes(sport_id, this.props.authentication.header));
   }
   setUserIndexEvent(selectedUnitIndex, selectedUserIndex){
     const { dispatch } = this.props;
@@ -76,7 +77,7 @@ class GameCreate extends React.Component {
     );
   }
 }
-export default connect()(baseEnhancer(GameCreate));
+export default connect(mapStateToProps)(baseEnhancer(GameCreate));
 
 const styles = StyleSheet.create({
   container: {

@@ -3,6 +3,20 @@ import {
   SET_SHOT_TYPE
 } from "../action_types";
 
+
+export function setScoreCreateModal() {
+  return {
+    type: SET_SCORE_CREATE_MODAL,
+    scoreCreateModal: true
+  };
+}
+
+export function hideScoreCreateModal() {
+  return {
+    type: HIDE_SCORE_CREATE_MODAL,
+    scoreCreateModal: false
+  };
+}
 export function setPositionAndSide(position, side, missType) {
   return {
     type: SET_POSITION_AND_SIDE,

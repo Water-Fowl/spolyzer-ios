@@ -10,6 +10,7 @@ import { connect } from "react-redux";
 
 import SearchedUserAccount from "./SearchedUserAccount";
 import setUser from "../../actions/set_user";
+import { mapStateToProps } from "utils";
 
 class SearchedUserAccountContainer extends React.Component{
   constructor(props){
@@ -27,13 +28,13 @@ class SearchedUserAccountContainer extends React.Component{
 
   render(){
     const { users } = this.props;
-    if( users == ""){
+    if(!users){
       return null;
     }
     const usersComponent = [];
     for (let i = 0; i < users.length; i++) {
       usersComponent.push(
-        <TouchableOpacity onPress={() => {this.AccountPressEvent(this.props.selectedUnitIndex, this.props.selectedUserIndex, users[i].user);}}>
+        <TouchableOpacity onPress={() => {this.AccountPressEvent(this.props.game.selectedUnitIndex, this.props.game.selectedUserIndex, users[i].user);}}>
           <SearchedUserAccount key={i} userName={users[i].user.name} />
         </TouchableOpacity>
       );
@@ -49,22 +50,6 @@ class SearchedUserAccountContainer extends React.Component{
 }
 
 export default connect(mapStateToProps)(SearchedUserAccountContainer);
-
-function mapStateToProps(state, props){
-  const { game } = state;
-  const{
-    selectedUnitIndex,
-    selectedUserIndex
-  } = game || {
-    selectedUnitIndex: "",
-    selectedUserIndex: ""
-  };
-  return {
-    selectedUnitIndex,
-    selectedUserIndex
-  };
-}
-
 
 const styles=StyleSheet.create({
   container: {

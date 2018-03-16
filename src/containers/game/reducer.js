@@ -15,7 +15,9 @@ import {
   SET_SELECTED_USER_INDEX,
   SET_SHOT_TYPE,
   SET_SHOT_TYPE_COUNTS,
-  SET_USER
+  SET_USER,
+  HIDE_SCORE_CREATE_MODAL,
+  SET_SCORE_CREATE_MODAL
 } from "./action_types";
 
 const initialState = {
@@ -36,6 +38,14 @@ const initialState = {
 
 export default function gameReducer(state = initialState, action = {}) {
   switch (action.type) {
+  case SET_SCORE_CREATE_MODAL:
+    return Object.assign({}, state, {
+      scoreCreateModal: true
+    });
+  case HIDE_SCORE_CREATE_MODAL:
+    return Object.assign({}, state, {
+      scoreCreateModal: false
+    });
   case SET_SHOT_TYPE:
     /* 今回得られたスコアを取得し、配列に格納する */
     const currentScore = getScoreByPositionAndSide(state.position, state.side);

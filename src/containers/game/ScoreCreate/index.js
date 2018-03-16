@@ -28,6 +28,7 @@ import {
   OutFieldSide
 } from "./components";
 import { postGame } from "../actions/post_game";
+import { mapStateToProps } from "utils";
 
 class ScoreCreate extends React.Component {
   constructor(props) {
@@ -50,7 +51,6 @@ class ScoreCreate extends React.Component {
     this.forceUpdate();
   }
   navigationEvent(users, scores){
-    const { dispatch } = this.props;
     const body = {
       users,
       scores,
@@ -60,7 +60,7 @@ class ScoreCreate extends React.Component {
       }
     };
     console.log(body);
-    dispatch(postGame(body));
+    this.props.dispatch(postGame(body, this.props.authentication.header));
   }
   render() {
     return (
@@ -71,7 +71,7 @@ class ScoreCreate extends React.Component {
         height: this.state.height
       }}
       >
-        <Modal visible={this.props.scoreCreateModal} />
+        <Modal visible={this.props.game.scoreCreateModal} />
         <LandScapeBackground />
         <TopContentBar>スコアシート</TopContentBar>
         <View style={styles.scoreInformationBar}>
@@ -80,7 +80,7 @@ class ScoreCreate extends React.Component {
               <Text style={styles.scoreInformationUserName}>Name</Text>
             </View>
             <View style={styles.scoreInformationPointContainer}>
-              <Text style={styles.scoreInformationPoint}>{this.props.scoreCounts[0]}</Text>
+              <Text style={styles.scoreInformationPoint}>{this.props.game.scoreCounts[0]}</Text>
             </View>
             <Text style={styles.scoreInformationGamePoint}>0</Text>
           </View>
@@ -88,14 +88,14 @@ class ScoreCreate extends React.Component {
           <View style={styles.scoreInformationContainer}>
             <Text style={styles.scoreInformationGamePoint}>0</Text>
             <View style={styles.scoreInformationPointContainer}>
-              <Text style={styles.scoreInformationPoint}>{this.props.scoreCounts[1]}</Text>
+              <Text style={styles.scoreInformationPoint}>{this.props.game.scoreCounts[1]}</Text>
             </View>
             <View style={styles.scoreInformationUserNameContainer}>
               <Text style={styles.scoreInformationUserName}>Name</Text>
             </View>
           </View>
         </View>
-        <TouchableHighlight onPress={() => {this.navigationEvent(this.props.gameUsers, this.props.scores);}} style={styles.analysisNavigate}>
+        <TouchableHighlight onPress={() => {this.navigationEvent(this.props.game.gameUsers, this.props.game.scores);}} style={styles.analysisNavigate}>
           <Text style={styles.analysisNavigateText}>分析</Text>
         </TouchableHighlight>
         <View style={styles.scoreFieldContainer}>
@@ -175,27 +175,6 @@ class ScoreCreate extends React.Component {
   }
 }
 
-function mapStateToProps(state, props) {
-  const { game, view } = state;
-  const {
-    scoreCreateModal
-  } = view || {
-    scoreCreateModal: false
-  };
-  const {
-    scoreCounts,
-    gameUsers,
-    scores,
-    shotTypes
-  } = game;
-  return {
-    scoreCreateModal,
-    scoreCounts,
-    gameUsers,
-    scores,
-    shotTypes
-  };
-}
 export default connect(mapStateToProps)(ScoreCreate);
 
 

@@ -8,15 +8,27 @@ import {
 import { connect } from "react-redux";
 import { listToQueryParams } from "utils";
 
-import { scoreCreateShotTypeButtonEnhancer } from "./hoc";
+import { mapStateToProps } from "utils";
+
+import {
+  setShotType
+} from "../../../actions/set_score";
+import {
+  hideScoreCreateModal
+} from "../../../actions/set_modal";
+
 
 class ScoreCreateShotTypeButton extends React.Component {
+  setShotTypeEvent(shotTypeId, missType=0) {
+    this.props.dispatch(setShotType(shotTypeId, missType));
+  }
+  hideModalEvent() {
+    this.props.dispatch(hideScoreCreateModal());
+  }
   render() {
-    const { shotTypes } = this.props;
-
     const shotTypesLeftComponent = [];
     const shotTypesRightComponent = [];
-    const shotTypesLength = shotTypes.length;
+    const shotTypesLength = this.props.game.shotTypes.length;
 
     for (let i = 0; i < shotTypesLength; i++){
       shotTypesLeftComponent.push(
@@ -26,7 +38,7 @@ class ScoreCreateShotTypeButton extends React.Component {
             this.hideModalEvent();
           }}
         >
-          <Text style={styles.shotType}>{shotTypes[i].name_ja}</Text>
+          <Text style={styles.shotType}>{this.props.game.shotTypes[i].name_ja}</Text>
         </TouchableHighlight>
       );
     }
@@ -39,7 +51,7 @@ class ScoreCreateShotTypeButton extends React.Component {
             this.hideModalEvent();
           }}
         >
-          <Text style={styles.missShotType}>{shotTypes[i].name_ja}</Text>
+          <Text style={styles.missShotType}>{this.props.game.shotTypes[i].name_ja}</Text>
         </TouchableHighlight>
       );
     }
@@ -56,17 +68,8 @@ class ScoreCreateShotTypeButton extends React.Component {
     );
   }
 }
-export default connect(mapStateToProps)(scoreCreateShotTypeButtonEnhancer(ScoreCreateShotTypeButton));
+export default connect(mapStateToProps)(ScoreCreateShotTypeButton);
 
-function mapStateToProps(state, props) {
-  const { game } = state;
-  const {
-    shotTypes
-  } = game;
-  return {
-    shotTypes
-  };
-}
 const styles = StyleSheet.create({
   shotType: {
     fontSize: 25,

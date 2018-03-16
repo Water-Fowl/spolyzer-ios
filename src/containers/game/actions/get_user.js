@@ -6,14 +6,15 @@ import {
 } from "../action_types";
 import { SEARCH_USER_ENDPOINT } from "../../../config/api";
 
-export default function getSearchUser(params) {
+export default function getSearchUser(params, authHeaders) {
   return (dispatch) => {
     dispatch(getSearchUserRequest());
     return fetch( SEARCH_USER_ENDPOINT + params, {
       method: "GET",
       headers: {
         "Accept": "application/json",
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        ...authHeaders
       }
     })
       .then(response => response.json())

@@ -7,14 +7,15 @@ import {
   POST_GAME_REQUEST
 } from "../action_types.js";
 
-export function postGame(body) {
+export function postGame(body, authHeaders) {
   return (dispatch) => {
     dispatch(requestScoreGame());
     return fetch(GAMES_ENDPOINT, {
       method: "POST",
       headers: {
         "Accept": "application/json",
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        ...authHeaders
       },
       body: JSON.stringify(body)
     })
