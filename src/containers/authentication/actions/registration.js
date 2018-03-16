@@ -20,11 +20,10 @@ export function postRegistration(body) {
       body: JSON.stringify(body)
     })
       .then(function(response){
-        dispatch(setToken(response.headers))
-        return response.json()
+        dispatch(setToken(response.headers));
+        return response.json();
       })
       .then(function(json){
-        console.log(json)
         dispatch(receivedRegistration(json.user.uid));
       })
       .catch((error) => {
@@ -64,9 +63,8 @@ function receivedRegistration(errors, userId) {
 }
 
 function setToken(header){
-  console.log(header)
   return{
     type: SET_TOKEN,
     ...headers
-  }
+  };
 }

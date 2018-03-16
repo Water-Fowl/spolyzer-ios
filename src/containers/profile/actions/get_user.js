@@ -5,7 +5,6 @@ import {
 import { USERS_ENDPOINT } from "../../../config/api";
 
 export function getUser(authHeaders){
-  console.log(authHeaders)
   return (dispatch) => {
     dispatch(getUserRequest());
     return fetch(USERS_ENDPOINT, {
@@ -18,10 +17,10 @@ export function getUser(authHeaders){
     })
       .then(response => response.json())
       .then((json) => {
-        dispatch(getUserReceived(json.user.name, json.user.email))
+        dispatch(getUserReceived(json.user.name, json.user.email));
       })
       .catch((error) => {
-        console.log(error)
+        console.log(error);
       });
   };
 }

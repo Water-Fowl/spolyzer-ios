@@ -9,7 +9,7 @@ import {
 } from "./reshape_json";
 import {
   mapStateToProps
-} from "./redux"
+} from "./redux";
 export {
   reshapeShotTypeCounts,
   reshapePositionsCount,

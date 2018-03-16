@@ -17,7 +17,7 @@ const reducers = combineReducers({
   game: gameReducer,
   authentication: persistReducer(authenticationConfig, authenticationReducer),
   profile: profileReducer,
-  analysis: analysisReducer,
+  analysis: analysisReducer
 });
 
 export default function configureStore() {

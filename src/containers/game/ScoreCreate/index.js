@@ -59,7 +59,6 @@ class ScoreCreate extends React.Component {
         sport_name: "バドミントン"
       }
     };
-    console.log(body);
     this.props.dispatch(postGame(body, this.props.authentication.header));
   }
   render() {

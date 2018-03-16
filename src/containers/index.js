@@ -32,5 +32,5 @@ export {
   analysisReducer,
   gameReducer,
   profileReducer,
-  authenticationReducer,
+  authenticationReducer
 };

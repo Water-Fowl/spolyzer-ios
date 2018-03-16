@@ -23,7 +23,7 @@ class Graph extends React.Component{
   }
   componentWillReceiveProps(nextProps){
     if(nextProps.selectedPositionsCount){
-      this.setState({data: nextProps.selectedPositionsCount})
+      this.setState({data: nextProps.selectedPositionsCount});
     }
   }
 
@@ -73,30 +73,30 @@ class Graph extends React.Component{
             }}
             labels={function(shot){
               if(shot.positionString){
-                return shot.positionString
+                return shot.positionString;
               }
               else{
-                return ""
+                return "";
               }
             }
             }
           >
-          <VictoryBar
-            barRatio={0.4}
-            style={{
-              data: {
-                fill: "#2EA7E0"
-              }
-            }}
-            animate={{
-              duration: 400,
-              onLoad: { duration: 300 }
-            }}
-            data={this.state.data}
-            x="positionString"
-            y="counts"
-            alignment="middle"
-          />
+            <VictoryBar
+              barRatio={0.4}
+              style={{
+                data: {
+                  fill: "#2EA7E0"
+                }
+              }}
+              animate={{
+                duration: 400,
+                onLoad: { duration: 300 }
+              }}
+              data={this.state.data}
+              x="positionString"
+              y="counts"
+              alignment="middle"
+            />
           </VictoryStack>
         </VictoryChart>
       </View>
@@ -109,12 +109,12 @@ export default connect(mapStateToProps)(Graph);
 function mapStateToProps(state, props){
   const { analysis } = state;
   const {
-    selectedPositionsCount,
+    selectedPositionsCount
   } = analysis || {
-    selectedPositionsCount: {},
+    selectedPositionsCount: {}
   };
   return {
-    selectedPositionsCount,
+    selectedPositionsCount
   };
 }
 

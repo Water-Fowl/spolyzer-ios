@@ -19,26 +19,25 @@ export function reshapePositionsCount(counts, side, minPosition, maxPosition){
   const missPositionsCountList = [];
   var i = 0;
   for (var position=minPosition;position <= maxPosition; position++){
+    if(counts[side][position]){
+      var positionString = alphabet[i];
+      i ++;
       if(counts[side][position]){
-        console.log(alphabet);
-        var positionString = alphabet[i];
-        i ++;
-        if(counts[side][position]){
-          positionsCountList.push({
-            positionString: positionString,
-            counts: counts[side][position]
-          });
-        }
-        else{
-          positionsCountList.push({
-            positionString: positionString,
-            counts: 0
-          });
-        }
+        positionsCountList.push({
+          positionString: positionString,
+          counts: counts[side][position]
+        });
       }
+      else{
+        positionsCountList.push({
+          positionString: positionString,
+          counts: 0
+        });
+      }
+    }
   }
   return {
-    positionsCountList,
+    positionsCountList
   };
 }
 
@@ -75,7 +74,6 @@ export function reshapeShotTypeCounts(counts, shotTypes){
       });
     }
   }
-  console.log(shotTypesList);
   return {
     shotTypeCountsList,
     missShotTypeCountsList,

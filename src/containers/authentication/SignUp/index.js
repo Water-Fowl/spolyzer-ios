@@ -38,7 +38,6 @@ class SignUp extends React.Component {
   postRegistrationForm() {
     const { dispatch } = this.props;
     const isEmail = emailReg.test(this.state.email);
-    console.log(isEmail)
     if (isEmail){
       const registration_form = {
         name: this.state.name,
@@ -50,7 +49,7 @@ class SignUp extends React.Component {
       dispatch(postRegistration(registration_form));
     }
     else{
-      this.setState({isErrorVisible: true})
+      this.setState({isErrorVisible: true});
     }
   }
   render() {

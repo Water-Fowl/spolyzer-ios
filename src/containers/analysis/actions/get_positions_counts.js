@@ -18,7 +18,6 @@ export function getPositionsCounts(params) {
     })
       .then(response => response.json())
       .then(function(json){
-        console.log(json.counts);
         dispatch(getPositionsCountsReceived(json.counts));
       })
       .then(Actions.analysisView())

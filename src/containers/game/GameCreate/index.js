@@ -132,15 +132,6 @@ const styles = StyleSheet.create({
   buttonStyle: {
     marginTop: 80
   },
-  textbox: {
-    borderColor: "#2EA7E0",
-    height: 20,
-    width: 88,
-    borderWidth: 1.5,
-    borderRadius: 5,
-    opacity: 0.5,
-    alignSelf: "center"
-  },
   vsPosition: {
     height: 27,
     width: 35,

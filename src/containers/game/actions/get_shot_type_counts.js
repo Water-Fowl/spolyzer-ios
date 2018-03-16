@@ -19,7 +19,6 @@ export default function getShotTypeCounts(params, authHeaders) {
     })
       .then(response => response.json())
       .then(function(json){
-        console.log(json.counts);
         dispatch(getShotTypeCountsReceived(json.counts));
       })
       .then(Actions.scoreView())

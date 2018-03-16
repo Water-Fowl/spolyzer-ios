@@ -126,8 +126,6 @@ function mapStateToProps(state, props){
     missShotTypeCountsList,
     shotTypesList
   } = reshapeShotTypeCounts(selectedShotTypeCounts, shotTypes);
-  console.log(shotTypeCountsList);
-  console.log(missShotTypeCountsList);
   return {
     shotTypeCountsList,
     missShotTypeCountsList,

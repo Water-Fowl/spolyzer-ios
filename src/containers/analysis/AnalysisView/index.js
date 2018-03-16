@@ -306,18 +306,6 @@ const styles = StyleSheet.create({
     justifyContent: "space-around",
     flexDirection: "row"
   },
-  graphContainer: {
-    borderRightColor: "#28a8de",
-    borderTopColor: "#28a8de",
-    borderLeftColor: "#28a8de",
-    borderBottomColor: "#28a8de",
-    height: 240,
-    width: 320,
-    borderWidth: 1,
-    borderRadius: 4,
-    alignSelf: "center",
-    marginTop: 20
-  },
   backButtonContainer: {
     borderRightColor: "#28a8de",
     borderTopColor: "#28a8de",

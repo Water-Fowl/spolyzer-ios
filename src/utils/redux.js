@@ -4,11 +4,11 @@ export function mapStateToProps(state, props){
     profile,
     game,
     analysis
-  } = state
+  } = state;
   return {
     authentication,
     profile,
     game,
     analysis
-  }
+  };
 }

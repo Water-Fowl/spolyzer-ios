@@ -60,7 +60,7 @@ export default function analysisReducer(state = initialState, action = {}) {
     });
   case actionTypes.SET_POSITIONS_COUNTS:
     const {
-      positionsCountList,
+      positionsCountList
     } = reshapePositionsCount(
       state.positionCounts,
       action.side,
@@ -68,7 +68,7 @@ export default function analysisReducer(state = initialState, action = {}) {
       action.maxPosition
     );
     return Object.assign({}, state, {
-      selectedPositionsCount: positionsCountList,
+      selectedPositionsCount: positionsCountList
     });
   default:
     return state;

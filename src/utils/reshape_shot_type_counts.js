@@ -31,7 +31,6 @@ export default function reshapeShotTypeCounts(counts, shotTypes){
       });
     }
   }
-  console.log(shotTypesList);
   return {
     shotTypeCountsList,
     missShotTypeCountsList,

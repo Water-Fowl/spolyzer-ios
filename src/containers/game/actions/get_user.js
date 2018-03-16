@@ -19,7 +19,6 @@ export default function getSearchUser(params, authHeaders) {
     })
       .then(response => response.json())
       .then(function(json){
-        console.log(json);
         dispatch(getSearchUserReceived(json.users));
       })
       .catch((error) => {
@@ -35,7 +34,6 @@ function getSearchUserRequest() {
 }
 
 function getSearchUserReceived(users) {
-  console.log(users);
   return {
     type: GET_SEARCH_USER_RECEIVED,
     users

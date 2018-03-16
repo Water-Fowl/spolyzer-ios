@@ -36,9 +36,6 @@ class AnalysisCreate extends React.Component {
       isPickerVisible: false
     };
   }
-  componentWillReceiveProps(nextProps){
-    console.log(nextProps);
-  }
   getGamesEvent() {
     const { dispatch } = this.props;
     var userIds = [];
@@ -46,7 +43,6 @@ class AnalysisCreate extends React.Component {
       let user = this.props.analysisUsers[key];
       userIds.push(user.id);
     }
-    console.log(userIds);
     const params = {
       user_ids: userIds,
       shot_type_id: this.props.shotTypeId,
@@ -180,20 +176,6 @@ const styles = StyleSheet.create({
     alignSelf: "flex-start",
     marginRight: 22
   },
-  opponentFrame: {
-    flexDirection: "row",
-    backgroundColor: "transparent",
-    borderRightColor: "#0a2444",
-    borderTopColor: "#0a2444",
-    borderLeftColor: "#0a2444",
-    borderBottomColor: "#0a2444",
-    height: 34,
-    width: 108,
-    borderWidth: 1.5,
-    marginLeft: 6,
-    borderRadius: 3,
-    marginTop: 25
-  },
   gameSelectText: {
     color: "#ffffff",
     fontSize: 15,
@@ -202,23 +184,5 @@ const styles = StyleSheet.create({
     backgroundColor: "transparent",
     fontWeight: "bold",
     alignSelf: "flex-start"
-  },
-  gameSelectFrame: {
-    flexDirection: "row",
-    backgroundColor: "transparent",
-    borderRightColor: "#0a2444",
-    borderTopColor: "#0a2444",
-    borderLeftColor: "#0a2444",
-    borderBottomColor: "#0a2444",
-    height: 34,
-    width: 222,
-    borderWidth: 1.5,
-    marginLeft: 28,
-    borderRadius: 3,
-    marginTop: 25
-  },
-  analyze: {
-    alignSelf: "center",
-    marginTop: 48
   }
 });

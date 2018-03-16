@@ -32,7 +32,6 @@ class UserSearch extends React.Component {
     this.searchUserEvent.bind(this);
   }
   componentWillReceiveProps(nextProps){
-    console.log(nextProps);
     this.setState({ users: nextProps.users });
   }
   searchUserEvent(name){

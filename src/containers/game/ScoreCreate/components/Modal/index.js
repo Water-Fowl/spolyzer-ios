@@ -30,11 +30,5 @@ const styles = StyleSheet.create({
     height: "100%",
     justifyContent: "center",
     alignItems: "center"
-  },
-  shotTypeContainer: {
-    padding: 10,
-    borderColor: "#2EA7E0",
-    borderWidth: 1,
-    flexDirection: "row"
   }
 });

@@ -14,7 +14,6 @@ import {
 
 export function postUserUpdate(body, params, authHeaders) {
   return (dispatch) => {
-    console.log(body);
     dispatch(requestPostUserUpdate());
     return fetch(USERS_ENDPOINT + params.id, {
       method: "PATCH",
@@ -41,8 +40,6 @@ export function requestPostUserUpdate() {
 }
 
 export function receivedPostUserUpdate(name, email){
-  console.log(name);
-  console.log(email);
   return {
     type: RECEIVED_POST_USER_UPDATE,
     userName: name,

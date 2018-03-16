@@ -7,7 +7,6 @@ import { SHOT_TYPES_ENDPOINT } from "../../../config/api";
 export default function getShotTypes(params, authHeaders) {
   return (dispatch) => {
     dispatch(getShotTypesRequest());
-    console.log(SHOT_TYPES_ENDPOINT + "?sport_id=" +  params);
     return fetch( SHOT_TYPES_ENDPOINT + "?sport_id=" +  params, {
       method: "GET",
       headers: {
@@ -18,7 +17,6 @@ export default function getShotTypes(params, authHeaders) {
     })
       .then(response => response.json())
       .then(function(json){
-        console.log(json);
         dispatch(getShotTypesReceived(json.shot_types));
       })
       .catch((error) => {
