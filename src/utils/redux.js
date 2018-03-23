@@ -3,12 +3,14 @@ export function mapStateToProps(state, props){
     authentication,
     profile,
     game,
-    analysis
+    analysis,
+    sport
   } = state;
   return {
     authentication,
     profile,
     game,
-    analysis
+    analysis,
+    sport
   };
 }

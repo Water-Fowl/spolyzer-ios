@@ -7,6 +7,7 @@ import NavBar from "./NavBar";
 import NavigateButton from "./NavigateButton";
 import TopBar from "./TopBar";
 import TopContentBar from "./TopContentBar";
+import ProfileImage from "./ProfileImage";
 
 export {
   Background,
@@ -14,5 +15,6 @@ export {
   NavBar,
   NavigateButton,
   TopBar,
-  TopContentBar
+  TopContentBar,
+  ProfileImage
 };

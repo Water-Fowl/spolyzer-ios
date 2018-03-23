@@ -5,6 +5,7 @@ import { createLogger } from "redux-logger";
 import { persistReducer, persistStore } from "redux-persist";
 
 import { analysisReducer, authenticationReducer, gameReducer, profileReducer } from "../containers";
+import sportReducer from "../reducer/sport";
 
 const authenticationConfig = {
   key: "authentication",
@@ -17,7 +18,8 @@ const reducers = combineReducers({
   game: gameReducer,
   authentication: persistReducer(authenticationConfig, authenticationReducer),
   profile: profileReducer,
-  analysis: analysisReducer
+  analysis: analysisReducer,
+  sport: sportReducer
 });
 
 export default function configureStore() {

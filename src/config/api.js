@@ -10,3 +10,4 @@ export const POSITIONS_COUNTS_ENDPOINT =`${LOCAL_URL}/positions/counts`;
 export const SCORES_ENDPOINT = `${LOCAL_URL}/scores/`;
 export const SHOT_TYPE_COUNTS_ENDPOINT = `${LOCAL_URL}/shot_types/counts`;
 export const SHOT_TYPES_ENDPOINT = `${LOCAL_URL}/shot_types`;
+export const VALIDATE_TOKEN_ENDPOINT = `${LOCAL_URL}/auth/validate_token/`;
