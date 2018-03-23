@@ -25,6 +25,7 @@ import {
   TermButton
 } from "./components";
 import { getPositionsCounts } from "../actions/get_positions_counts";
+import { mapStateToProps } from "utils"
 
 class AnalysisCreate extends React.Component {
   constructor(props) {
@@ -37,23 +38,21 @@ class AnalysisCreate extends React.Component {
     };
   }
   getGamesEvent() {
-    const { dispatch } = this.props;
     var userIds = [];
-    for (key in this.props.analysisUsers){
-      let user = this.props.analysisUsers[key];
+    for (key in this.props.analysis.analysisUsers){
+      let user = this.props.analysis.analysisUsers[key];
       userIds.push(user.id);
     }
     const params = {
       user_ids: userIds,
-      shot_type_id: this.props.shotTypeId,
-      game_type_id: this.props.gameTypeId,
-      term_id: this.props.termId
+      shot_type_id: this.props.analysis.shotTypeId,
+      game_user_count: this.props.analysis.gameUserCount,
+      term: this.props.analysis.term
     };
-    dispatch(getPositionsCounts(listToQueryParams(params)));
+    this.props.dispatch(getPositionsCounts(listToQueryParams(params), this.props.authentication.header));
   }
   pushAnalysisSearchEvent(selectedUserIndex) {
-    const { dispatch } = this.props;
-    dispatch(setUserIndex(selectedUserIndex));
+    this.props.dispatch(setUserIndex(selectedUserIndex));
     Actions.analysisSearchUser();
   }
   setPicker(){
@@ -95,42 +94,13 @@ class AnalysisCreate extends React.Component {
             <OpponentUserName index={1}/>
           </TouchableOpacity>
         </View>
-        <View style={styles.rowContainer}>
-          <Text style={styles.gameSelectText}>
-            試合選択
-          </Text>
-          <TouchableOpacity onPress={()=>{this.setPicker();}}>
-            <RecentlyGame/>
-          </TouchableOpacity>
-        </View>
-        <NavigateButton action={() => {this.getGamesEvent();}} style={styles.analyze} text="分析" />
+        <NavigateButton action={() => {this.getGamesEvent();}} style={styles.navigateButton} text="分析" />
         <RecentlyGamesPicker isVisible={this.state.isPickerVisible} hidePicker={()=> {this.hidePicker();}}/>
       </View>
     );
   }
 }
 export default connect(mapStateToProps)(baseEnhancer(AnalysisCreate));
-
-function mapStateToProps(state, props){
-  const { analysis } = state;
-  const{
-    analysisUsers,
-    gameTypeId,
-    shotTypeId,
-    termId
-  } = analysis || {
-    analysisUsers: {},
-    gameTypeId,
-    shotTypeId,
-    termId
-  };
-  return {
-    analysisUsers,
-    gameTypeId,
-    shotTypeId,
-    termId
-  };
-}
 
 const styles = StyleSheet.create({
   container: {
@@ -184,5 +154,8 @@ const styles = StyleSheet.create({
     backgroundColor: "transparent",
     fontWeight: "bold",
     alignSelf: "flex-start"
+  },
+  navigateButton: {
+    marginTop: 50
   }
 });

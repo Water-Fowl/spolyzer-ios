@@ -17,10 +17,6 @@ import { connect } from "react-redux";
 import { reshapeShotTypeCounts } from "utils";
 
 class Graph extends React.Component{
-  constructor(){
-    super();
-    this.state = {};
-  }
   componentWillReceiveProps(nextProps){
     this.forceUpdate();
   }
@@ -116,16 +112,14 @@ function mapStateToProps(state, props){
   const { game } = state;
   const {
     selectedShotTypeCounts,
-    shotTypes
   } = game || {
     selectedShotTypeCounts: {},
-    shotTypes: {}
   };
   const {
     shotTypeCountsList,
     missShotTypeCountsList,
     shotTypesList
-  } = reshapeShotTypeCounts(selectedShotTypeCounts, shotTypes);
+  } = reshapeShotTypeCounts(selectedShotTypeCounts, state.sport.shotTypes);
   return {
     shotTypeCountsList,
     missShotTypeCountsList,

@@ -13,6 +13,7 @@ import {
 import { connect } from "react-redux";
 
 import { setGameType } from "../../../../actions/set_query";
+import { mapStateToProps } from "utils";
 
 class Button extends React.Component {
   constructor(props) {
@@ -22,12 +23,12 @@ class Button extends React.Component {
     this.state = { pressed };
   }
   componentWillReceiveProps(nextProps) {
-    const pressed = this.props.currentGameTypeId == nextProps.gameTypeId;
+    const pressed = this.props.gameUserCount == nextProps.analysis.gameUserCount;
     this.setState({ pressed });
   }
-  pressButtonEvent(gameTypeId) {
+  pressButtonEvent(gameUserCount) {
     const { dispatch } = this.props;
-    dispatch(setGameType(gameTypeId));
+    dispatch(setGameType(gameUserCount));
     const pressed = !this.state.pressed;
     this.setState({ pressed });
   }
@@ -39,7 +40,7 @@ class Button extends React.Component {
         underlayColor="transparent"
         style={this.state.pressed ? styles.buttonPressed : styles.button}
         onPress={() => {
-          this.pressButtonEvent(this.props.currentGameTypeId);
+          this.pressButtonEvent(this.props.gameUserCount);
         }}
       >
         <Text style={this.state.pressed ? styles.textPressed : styles.text}>
@@ -50,17 +51,6 @@ class Button extends React.Component {
   }
 }
 
-function mapStateToProps(state, props) {
-  const { analysis } = state;
-  const {
-    gameTypeId
-  } = analysis || {
-    gameTypeId: null
-  };
-  return {
-    gameTypeId
-  };
-}
 export default connect(mapStateToProps)(Button);
 
 const styles = StyleSheet.create({

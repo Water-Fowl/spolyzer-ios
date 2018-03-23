@@ -20,7 +20,7 @@ import {
 } from "react-native";
 import { connect } from "react-redux";
 
-import getShotTypes from "../actions/get_shot_types";
+import getShotTypes from "../../../reducer/sport/actions/get_shot_types";
 import setUserIndex from "../actions/set_user_index";
 import { UserIcon } from "./components";
 import { mapStateToProps } from "utils";

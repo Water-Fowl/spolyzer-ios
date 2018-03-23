@@ -23,6 +23,8 @@ import {
   OutFieldLength,
   OutFieldSide
 } from "./components";
+import { mapStateToProps } from "utils"
+import resetState from "../actions/reset_state";
 
 class ScoreView extends React.Component {
   render() {
@@ -37,10 +39,10 @@ class ScoreView extends React.Component {
           <View style={styles.gameInformationsContaier}>
             <View style={styles.gameInformationTextContainer}>
               <Text style={styles.winLossText}>Win</Text>
-              <Text style={styles.scoreText}>20</Text>
+              <Text style={styles.scoreText}>{this.props.game.scoreCounts[0]}</Text>
             </View>
             <View style={styles.gameInformationTextContainer}>
-              <Text style={styles.scoreText}>15</Text>
+              <Text style={styles.scoreText}>{this.props.game.scoreCounts[1]}</Text>
               <Text style={styles.winLossText}>Lose</Text>
             </View>
           </View>
@@ -48,7 +50,7 @@ class ScoreView extends React.Component {
             <Image style={styles.fieldLine} source={require("../../../assets/img/field-line.png")} />
             <View style={styles.overContainer}>
               <View style={styles.overOutFieldSideContainer}>
-                <OutFieldSide position={5} side={6} />
+                <OutFieldSide position={5} side={0} />
                 <OutFieldSide position={6} side={0}/>
               </View>
               <View style={styles.overOutFieldSideContainer}>
@@ -113,7 +115,10 @@ class ScoreView extends React.Component {
           </View>
           <Graph/>
           <View style={styles.backButtonContainer}>
-            <TouchableOpacity onPress={() => { Actions.popTo("gameCreate"); }}>
+            <TouchableOpacity onPress={() => {
+              this.props.dispatch(resetState());
+              Actions.popTo("gameCreate");
+            }}>
               <Text style={styles.backButtonText}>
                 保存して終了
               </Text>
@@ -125,7 +130,7 @@ class ScoreView extends React.Component {
   }
 }
 
-export default connect()(baseEnhancer(ScoreView));
+export default connect(mapStateToProps)(baseEnhancer(ScoreView));
 
 const styles = StyleSheet.create({
   container: {

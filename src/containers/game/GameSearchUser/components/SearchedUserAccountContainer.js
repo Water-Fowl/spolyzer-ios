@@ -18,7 +18,9 @@ class SearchedUserAccountContainer extends React.Component{
     this.AccountPressEvent.bind(this);
   }
   componentWillReceiveProps(nextProps){
-    this.forceUpdate();
+    if (nextProps.users){
+      this.forceUpdate();
+    }
   }
   AccountPressEvent(selectedUnitIndex, selectedUserIndex, user){
     const { dispatch } = this.props;

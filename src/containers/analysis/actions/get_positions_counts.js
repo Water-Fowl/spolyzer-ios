@@ -6,14 +6,15 @@ import {
 } from "../action_types";
 import { POSITIONS_COUNTS_ENDPOINT } from "../../../config/api";
 
-export function getPositionsCounts(params) {
+export function getPositionsCounts(params, authHeaders) {
   return (dispatch) => {
     dispatch(getPositionsCountsRequest());
     return fetch(POSITIONS_COUNTS_ENDPOINT + params, {
       method: "GET",
       headers: {
         "Accept": "application/json",
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        ...authHeaders
       }
     })
       .then(response => response.json())

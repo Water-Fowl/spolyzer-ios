@@ -5,9 +5,6 @@ import {
 } from "react-native";
 
 export default class EmailErrorMessage extends React.Component{
-  componentWillReceiveProps(nextProps){
-    this.forceUpdate();
-  }
   render(){
     if(this.props.isVisible){
       return(

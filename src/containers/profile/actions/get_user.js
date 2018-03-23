@@ -17,7 +17,8 @@ export function getUser(authHeaders){
     })
       .then(response => response.json())
       .then((json) => {
-        dispatch(getUserReceived(json.user.name, json.user.email));
+        console.log(json)
+        dispatch(getUserReceived(json.user));
       })
       .catch((error) => {
         console.log(error);
@@ -31,10 +32,12 @@ function getUserRequest() {
   };
 }
 
-export function getUserReceived(userName, userEmail) {
+export function getUserReceived(data) {
+  console.log(data)
   return {
     type: GET_USER_RECEIVED,
-    userName,
-    userEmail
+    userName: data.name,
+    userImageSource: data.image.url,
+    userEmail: data.email
   };
 }

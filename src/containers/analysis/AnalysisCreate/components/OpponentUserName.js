@@ -4,12 +4,13 @@ import {
   Text
 } from "react-native";
 import { connect } from "react-redux";
+import { mapStateToProps } from "utils";
 
 class OpponentUserName extends React.Component{
   render(){
-    if (this.props.index in this.props.analysisUsers) {
+    if (this.props.analysis.analysisUsers[this.props.index]) {
       return(
-        <Text style={styles.container}>{this.props.analysisUsers[this.props.index].name}</Text>
+        <Text style={styles.container}>{this.props.analysis.analysisUsers[this.props.index].name}</Text>
       );
     }
     else {
@@ -21,18 +22,6 @@ class OpponentUserName extends React.Component{
 }
 
 export default connect(mapStateToProps)(OpponentUserName);
-
-function mapStateToProps(state, props){
-  const { analysis } = state;
-  const{
-    analysisUsers
-  } = analysis || {
-    analysisUsers: {}
-  };
-  return {
-    analysisUsers
-  };
-}
 
 const styles = StyleSheet.create({
   container: {

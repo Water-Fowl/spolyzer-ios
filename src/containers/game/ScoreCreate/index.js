@@ -47,12 +47,13 @@ class ScoreCreate extends React.Component {
     Orientation.lockToPortrait();
   }
   componentWillReceiveProps(nextProps){
-    this.setState({ scores:nextProps.scores });
-    this.forceUpdate();
+    if (nextProps.scores){
+      this.setState({ scores:nextProps.scores });
+    }
   }
   navigationEvent(users, scores){
     const body = {
-      users,
+      units:  users,
       scores,
       game: {
         name: "トレーニングマッチ",
@@ -94,7 +95,7 @@ class ScoreCreate extends React.Component {
             </View>
           </View>
         </View>
-        <TouchableHighlight onPress={() => {this.navigationEvent(this.props.game.gameUsers, this.props.game.scores);}} style={styles.analysisNavigate}>
+        <TouchableHighlight onPress={() => {this.navigationEvent(this.props.game.gameUnits, this.props.game.scores);}} style={styles.analysisNavigate}>
           <Text style={styles.analysisNavigateText}>分析</Text>
         </TouchableHighlight>
         <View style={styles.scoreFieldContainer}>

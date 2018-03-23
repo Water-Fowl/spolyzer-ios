@@ -14,10 +14,12 @@ import {
 import { connect } from "react-redux";
 
 import { postLogin } from "../actions/login";
+import { mapStateToProps } from "utils";
 
 class Login extends React.Component {
   constructor(props) {
     super(props);
+    console.log(props)
     this.postLoginEvent.bind(this);
     this.state = {
       name: "yamad07",
@@ -29,11 +31,6 @@ class Login extends React.Component {
 
   componentWillMount() {
     Orientation.lockToPortrait();
-  }
-
-  componentWillReceiveProps(nextProps) {
-    const { loginError } = nextProps;
-    this.setState({ loginError });
   }
 
   postLoginEvent() {
@@ -113,17 +110,6 @@ class Login extends React.Component {
   }
 }
 
-function mapStateToProps(state, props) {
-  const { authentication } = state;
-  const {
-    loginError
-  } = authentication || {
-    loginError: false
-  };
-  return {
-    loginError
-  };
-}
 
 export default connect(mapStateToProps)(Login);
 

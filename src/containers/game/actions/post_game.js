@@ -20,7 +20,7 @@ export function postGame(body, authHeaders) {
       body: JSON.stringify(body)
     })
       .then(response => response.json())
-      .then(json => dispatch(getShotTypeCounts(json.game.id)))
+      .then(json => dispatch(getShotTypeCounts(json.game.id, authHeaders)))
       .catch((error) => {
         console.log(error);
       });

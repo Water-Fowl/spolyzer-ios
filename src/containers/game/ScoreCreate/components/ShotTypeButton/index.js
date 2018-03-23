@@ -28,17 +28,17 @@ class ScoreCreateShotTypeButton extends React.Component {
   render() {
     const shotTypesLeftComponent = [];
     const shotTypesRightComponent = [];
-    const shotTypesLength = this.props.game.shotTypes.length;
+    const shotTypesLength = this.props.sport.shotTypes.length;
 
     for (let i = 0; i < shotTypesLength; i++){
       shotTypesLeftComponent.push(
         <TouchableHighlight
           onPress={() => {
-            this.setShotTypeEvent(i);
+            this.setShotTypeEvent(this.props.sport.shotTypes[i].id);
             this.hideModalEvent();
           }}
         >
-          <Text style={styles.shotType}>{this.props.game.shotTypes[i].name_ja}</Text>
+          <Text style={styles.shotType}>{this.props.sport.shotTypes[i].name_ja}</Text>
         </TouchableHighlight>
       );
     }
@@ -47,11 +47,11 @@ class ScoreCreateShotTypeButton extends React.Component {
       shotTypesRightComponent.push(
         <TouchableHighlight
           onPress={() => {
-            this.setShotTypeEvent(i, missType=1);
+            this.setShotTypeEvent(this.props.sport.shotTypes[i].id, missType=1);
             this.hideModalEvent();
           }}
         >
-          <Text style={styles.missShotType}>{this.props.game.shotTypes[i].name_ja}</Text>
+          <Text style={styles.missShotType}>{this.props.sport.shotTypes[i].name_ja}</Text>
         </TouchableHighlight>
       );
     }

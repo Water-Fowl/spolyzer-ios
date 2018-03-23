@@ -12,9 +12,9 @@ export default class TermButton extends React.Component {
   render() {
     return (
       <View style={styles.termFrame}>
-        <Button currentTermId={0}>Day</Button>
-        <Button currentTermId={1}>Week</Button>
-        <Button currentTermId={2}>Month</Button>
+        <Button term={0}>Day</Button>
+        <Button term={1}>Week</Button>
+        <Button term={2}>Month</Button>
       </View>
     );
   }

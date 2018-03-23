@@ -21,24 +21,26 @@ import { connect } from "react-redux";
 
 import getSearchUser from "../actions/get_user";
 import { SearchedUserAccountContainer } from "./components";
+import {
+  mapStateToProps
+} from "utils";
 
 class UserSearch extends React.Component {
   constructor(props){
     super(props);
     this.state = {
       name: "",
-      users: this.props.users
+      users: this.props.analysis.users
     };
     this.searchUserEvent.bind(this);
   }
   componentWillReceiveProps(nextProps){
-    this.setState({ users: nextProps.users });
+    this.setState({ users: nextProps.analysis.users });
   }
   searchUserEvent(name){
-    const { dispatch } = this.props;
     const params = "?name=" + name;
-    dispatch(getSearchUser(params));
-    this.setState({ users: this.props.users });
+    this.props.dispatch(getSearchUser(params, this.props.authentication.header));
+    this.setState({ users: this.props.analysis.users });
   }
   render() {
     return (
@@ -63,7 +65,7 @@ class UserSearch extends React.Component {
           />
         </View>
         <SearchedUserAccountContainer users={this.state.users}/>
-        <NavigateButton action={() =>{Actions.popTo("analysisCreate"); }} style={styles.navigateButton} text="選択" />
+        <NavigateButton action={() =>{Actions.popTo("analysisCreate"); }} style={styles.navigateButton} text="戻る" />
       </View>
     );
   }
@@ -71,17 +73,6 @@ class UserSearch extends React.Component {
 
 export default connect(mapStateToProps)(UserSearch);
 
-function mapStateToProps(state, props){
-  const { analysis } = state;
-  const {
-    users
-  } = analysis || {
-    users: ""
-  };
-  return {
-    users
-  };
-}
 const styles = StyleSheet.create({
   container: {
     flex: 1

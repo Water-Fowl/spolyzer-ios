@@ -9,12 +9,15 @@ import { connect } from "react-redux";
 
 import NoSelectedUserIcon from "./NoSelectedUserIcon";
 import SelectedUserIcon from "./SelectedUserIcon";
+import {
+  mapStateToProps
+} from "utils";
 
 class UserIcon extends React.Component{
   render(){
-    if(this.props.gameUsers[this.props.unitIndex].users[this.props.userIndex]){
+    if(this.props.game.gameUnits[this.props.unitIndex].users[this.props.userIndex]){
       return(
-        <SelectedUserIcon user={this.props.gameUsers[this.props.unitIndex].users[this.props.userIndex]}/>
+        <SelectedUserIcon user={this.props.game.gameUnits[this.props.unitIndex].users[this.props.userIndex]}/>
       );
     }
     else {
@@ -26,15 +29,3 @@ class UserIcon extends React.Component{
 }
 
 export default connect(mapStateToProps)(UserIcon);
-
-function mapStateToProps(state, props){
-  const { game } = state;
-  const {
-    gameUsers
-  } = game || {
-    gameUsers: {}
-  };
-  return {
-    gameUsers
-  };
-}

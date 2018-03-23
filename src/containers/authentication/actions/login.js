@@ -20,15 +20,21 @@ export function postLogin(body) {
       },
       body: JSON.stringify(body)
     })
-      .then(function(response){
+      .then(async function(response){
+        if(!response.ok){
+          return false
+        }
         dispatch(setToken(response.headers));
-        return response.json();
+
+        const json = await response.json();
+        dispatch(receivedLogin());
+        dispatch(getUserReceived(json.data));
+        return true
       })
-      .then(function(json){
-        dispatch((getUserReceived(json.data.name, json.data.email)));
-      })
-      .then(() =>{
-        Actions.tab();
+      .then(function(authentication){
+        if(authentication){
+          Actions.tab();
+        }
       })
       .catch((error) => {
         console.log(error);
@@ -42,19 +48,10 @@ function requestLogin() {
   };
 }
 
-function receivedLogin(errors, userId) {
-  if (errors == null) {
-    return {
-      type: POST_LOGIN_RECIEVED,
-      isAuthenticated: true,
-      error: false,
-      userId
-    };
-  }
+function receivedLogin() {
   return {
-    type: LOGIN_RECIEVED,
-    isAuthenticated: false,
-    error: true
+    type: POST_LOGIN_RECIEVED,
+    isAuthenticated: true,
   };
 }
 
@@ -68,7 +65,8 @@ function setToken(header){
       "uid": header.get("uid"),
       "client": header.get("client"),
       "token-type": header.get("token-type")
-    }
+    },
+    isValidToken: true
   };
 }
 

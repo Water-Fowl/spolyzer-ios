@@ -6,12 +6,15 @@ import {
 
 export default class ProfileImage extends React.Component {
   componentWillReceiveProps(nextProps) {
-    this.forceUpdate();
+    if(nextProps.imageSource){
+      this.forceUpdate();
+    }
   }
   render() {
-    if (this.props.profileImageSource != null) {
+    console.log(this.props.imageSource)
+    if (this.props.imageSource != null) {
       return (
-        <Image style={styles.imageStyle} source={{ uri: this.props.profileImageSource }} />
+        <Image style={styles.imageStyle} source={{ uri: this.props.imageSource }} />
       );
     }
     return (

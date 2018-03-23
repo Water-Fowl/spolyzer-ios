@@ -34,15 +34,17 @@ class ProfileEdit extends React.Component {
     this._setPicker = this._setPicker.bind(this);
     this._hidePicker = this._hidePicker.bind(this);
     this.state = {
-      profileImageSource: null,
-      sex: "男性",
+      imageSource: null,
       userEmail: this.props.profile.userEmail,
+      userImageSource: this.props.profile.userImageSource,
       userName: this.props.profile.userName,
+      sex: "男性",
       isPickerVisible: false
     };
   }
   _selectPhotoTapped() {
     ImagePicker.openPicker({
+      includeBase64: true,
       width: 200,
       height: 200
     }).then((image) => {
@@ -52,12 +54,16 @@ class ProfileEdit extends React.Component {
   _openCropper(path) {
     ImagePicker.openCropper({
       path,
+      includeBase64: true,
+      includeExif: true,
       width: 200,
       height: 200,
       cropperCircleOverlay: true
     }).then((image) => {
+      console.log(image);
       this.setState({
-        profileImageSource: image.path
+        userImageSource: image.path,
+        imageData: image.data
       });
     });
   }
@@ -71,11 +77,13 @@ class ProfileEdit extends React.Component {
     const { dispatch } = this.props;
     const body = {
       name: this.state.userName,
-      email: this.state.userEmail
+      email: this.state.userEmail,
+      image: `data:image/png;base64, ${this.state.imageData}`,
     };
     const params = {
       id: this.props.authentication.userId
     };
+    console.log(body.image)
     dispatch(postUserUpdate(body, params, this.props.authentication.header));
   }
   render() {
@@ -88,7 +96,7 @@ class ProfileEdit extends React.Component {
               <TouchableOpacity
                 onPress={this._selectPhotoTapped}
               >
-                <ProfileImage profileImageSource={this.state.profileImageSource} />
+                <ProfileImage imageSource={this.state.userImageSource} />
               </TouchableOpacity>
               <View style={styles.paddingtop22}>
                 <Text style={styles.profileTitle}>性別</Text>

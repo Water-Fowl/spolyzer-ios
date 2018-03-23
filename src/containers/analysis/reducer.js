@@ -3,10 +3,9 @@ import { reshapePositionsCount } from "utils";
 import * as actionTypes from "./action_types";
 
 const initialState = {
-  users: "",
-  gameTypeId: 0,
-  shotTypeId: 0,
-  TermId: 0,
+  gameUserCount: 1,
+  shotTypeId: 1,
+  term: 1,
   analysisUsers: {}
 };
 
@@ -20,7 +19,7 @@ export default function analysisReducer(state = initialState, action = {}) {
     });
   case actionTypes.GAME_TYPE_SETTING:
     return Object.assign({}, state, {
-      gameTypeId: action.gameTypeId
+      gameUserCount: action.gameUserCount
     });
   case actionTypes.SHOT_TYPE_SETTING:
     return Object.assign({}, state, {
@@ -28,7 +27,7 @@ export default function analysisReducer(state = initialState, action = {}) {
     });
   case actionTypes.TERM_SETTING:
     return Object.assign({}, state, {
-      termId: action.termId
+      term: action.term
     });
   case actionTypes.GAME_SETTING_REQUEST:
     return state;
@@ -48,6 +47,11 @@ export default function analysisReducer(state = initialState, action = {}) {
   case actionTypes.GET_POSITIONS_COUNTS_RECEIVED:
     return Object.assign({}, state, {
       positionCounts: action.positionCounts
+    });
+  case actionTypes.REMOVE_USER:
+    state.analysisUsers[action.selectedUserIndex] = null;
+    return Object.assign({}, state, {
+      analysisUsers: state.analysisUsers
     });
   case actionTypes.SET_USER:
     state.analysisUsers[action.selectedUserIndex] = action.user;

@@ -10,35 +10,46 @@ import { connect } from "react-redux";
 
 import SearchedUserAccount from "./SearchedUserAccount";
 import setUser from "../../actions/set_user";
+import removeUser from "../../actions/remove_user";
+import {
+  mapStateToProps
+} from "utils";
 
 class SearchedUserAccountContainer extends React.Component{
   constructor(props){
     super(props);
   }
   componentWillReceiveProps(nextProps){
-    this.forceUpdate();
+    if (nextProps.users){
+      this.forceUpdate();
+    }
   }
   AccountPressEvent(selectedIndex, user){
-    const { dispatch } = this.props;
-    dispatch(setUser(selectedIndex, user));
+    this.props.dispatch(setUser(selectedIndex, user));
     Actions.popTo("analysisCreate");
   }
+  NoSelectPressEvent(selectedIndex){
+    this.props.dispatch(removeUser(selectedIndex));
+  }
   render(){
-    const { users, AccountPressEvent } = this.props;
-    if( users == ""){
+    console.log(this.props.users)
+    if(!this.props.users){
       return null;
     }
     const usersComponent = [];
-    for (let i = 0; i < users.length; i++) {
+    for (let i = 0; i < this.props.users.length; i++) {
       usersComponent.push(
-        <TouchableOpacity onPress={() => {this.AccountPressEvent(this.props.selectedUserIndex, users[i].user);}}>
-          <SearchedUserAccount key={i} userName={users[i].user.name} />
+        <TouchableOpacity onPress={() => {this.AccountPressEvent(this.props.analysis.selectedUserIndex, this.props.users[i].user);}}>
+          <SearchedUserAccount key={i} userName={this.props.users[i].user.name} />
         </TouchableOpacity>
       );
     }
     return(
       <View style={styles.container}>
         <ScrollView style={styles.scrollContainer}>
+          <TouchableOpacity onPress={() => {this.AccountPressEvent(this.props.analysis.selectedUserIndex);}}>
+            <SearchedUserAccount userName="選択なし" />
+          </TouchableOpacity>
           { usersComponent }
         </ScrollView>
       </View>
@@ -47,19 +58,6 @@ class SearchedUserAccountContainer extends React.Component{
 }
 
 export default connect(mapStateToProps)(SearchedUserAccountContainer);
-
-function mapStateToProps(state, props){
-  const { analysis } = state;
-  const{
-    selectedUserIndex
-  } = analysis || {
-    selectedUserIndex: ""
-  };
-  return {
-    selectedUserIndex
-  };
-}
-
 
 
 const styles=StyleSheet.create({

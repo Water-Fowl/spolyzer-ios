@@ -20,11 +20,12 @@ export function postRegistration(body) {
       body: JSON.stringify(body)
     })
       .then(function(response){
-        dispatch(setToken(response.headers));
         return response.json();
       })
       .then(function(json){
-        dispatch(receivedRegistration(json.user.uid));
+        dispatch(receivedRegistration());
+      })
+      .then(function(json){
       })
       .catch((error) => {
         console.log(error);
@@ -45,20 +46,11 @@ function requestRegistration() {
   };
 }
 
-function receivedRegistration(errors, userId) {
-  if (errors == null) {
-    Actions.tab();
-    return {
-      type: POST_REGISTRATION_RECEIVED,
-      isAuthenticated: true,
-      error: false,
-      userId
-    };
-  }
+function receivedRegistration() {
+  Actions.login();
   return {
     type: POST_REGISTRATION_RECEIVED,
-    isAuthenticated: false,
-    error: true
+    error: false,
   };
 }
 

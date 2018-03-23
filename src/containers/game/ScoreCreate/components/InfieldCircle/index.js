@@ -18,8 +18,7 @@ class InFieldCircle extends React.Component {
         style={styles.blueCircle}
         onPress={() => {
           this.setModalEvent(this.props.position, this.props.side);
-        }
-        }
+        }}
       >
         <View />
       </TouchableHighlight>

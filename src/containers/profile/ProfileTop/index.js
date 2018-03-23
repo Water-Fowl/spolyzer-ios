@@ -9,7 +9,8 @@ import {
   View
 } from "react-native";
 import {
-  TopContentBar
+  TopContentBar,
+  ProfileImage
 } from "components";
 import {
   connect
@@ -25,9 +26,6 @@ import {
 class ProfileTop extends React.Component {
   componentDidMount(){
   }
-  componentWillReceivedProps(nextProps){
-    this.forceUpdate();
-  }
   render() {
     return (
       <View style={styles.container}>
@@ -35,15 +33,12 @@ class ProfileTop extends React.Component {
           <TopContentBar>マイページ</TopContentBar>
           <View style={styles.alignItemsCenter}>
             <TouchableOpacity onPress={Actions.profileEdit}>
-              <Image
-                source={require("../../../assets/img/my_page_user_icon.png")}
-                style={styles.userIcon}
-              />
+              <ProfileImage style={styles.profileImage} imageSource={this.props.profile.userImageSource} size={100}/>
             </TouchableOpacity>
             <Image
               source={require("../../../assets/img/my_page_center_design.png")}
             />
-            <Text style={styles.myName}>{this.props.authentication.userName}</Text>
+            <Text style={styles.myName}>{this.props.profile.userName}</Text>
             <View style={styles.gameSettingBorder}>
               <View style={styles.gameSettingTable} />
             </View>
@@ -89,5 +84,10 @@ const styles = StyleSheet.create({
   },
   alignItemsCenter: {
     alignItems: "center"
+  },
+  profileImage:{
+    marginTop:30,
+    marginBottom: 30,
   }
+
 });

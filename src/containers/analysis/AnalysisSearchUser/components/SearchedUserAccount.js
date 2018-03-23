@@ -19,9 +19,6 @@ export default class SearchedUserAccount extends React.Component{
         <View style={styles.userName}>
           <Text style={styles.userNameText}>{ this.props.userName }</Text>
         </View>
-        <View style={styles.userStatus}>
-          <Text style={styles.userStatusText}>{ this.props.userStatus }</Text>
-        </View>
       </View>
     );
   }
@@ -30,6 +27,7 @@ const styles = StyleSheet.create({
   userAccount: {
     height: 45,
     borderRadius: 3,
+    width: 330,
     backgroundColor: "rgba(23,82,155,0.3)",
     flexDirection: "row",
     alignSelf: "center"

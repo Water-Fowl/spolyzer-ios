@@ -8,6 +8,7 @@ import {
 import { connect } from "react-redux";
 
 import { setShotType } from "../../../../actions/set_query";
+import { mapStateToProps } from "utils";
 
 class Button extends React.Component {
   constructor(props) {
@@ -17,7 +18,7 @@ class Button extends React.Component {
     this.state = { pressed };
   }
   componentWillReceiveProps(nextProps) {
-    const pressed = this.props.currentShotTypeId == nextProps.shotTypeId;
+    const pressed = this.props.currentShotTypeId == nextProps.analysis.shotTypeId;
     this.setState({ pressed });
   }
   pressButtonEvent(shotTypeId) {
@@ -43,18 +44,6 @@ class Button extends React.Component {
       </TouchableHighlight>
     );
   }
-}
-
-function mapStateToProps(state, props) {
-  const { analysis } = state;
-  const {
-    shotTypeId
-  } = analysis || {
-    shotTypeId: null
-  };
-  return {
-    shotTypeId
-  };
 }
 export default connect(mapStateToProps)(Button);
 

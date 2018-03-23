@@ -5,23 +5,38 @@ import {
   TouchableHighlight,
   View
 } from "react-native";
+import { connect } from "react-redux";
 
 import Button from "./components/Button";
+import { mapStateToProps } from "utils";
 
-export default class ShotTypeButton extends React.Component {
+class ShotTypeButton extends React.Component {
+
+  componentWillReceiveProps(nextProps){
+    console.log(nextProps);
+    if(nextProps.sport.shotTypes){
+      this.forceUpdate();
+    }
+  }
+
   render() {
+    const shotTypesButtonsComponent = [];
+    if(this.props.sport.shotTypes){
+      for (let i = 0; i < this.props.sport.shotTypes.length; i++){
+        shotTypesButtonsComponent.push(
+          <Button currentShotTypeId={this.props.sport.shotTypes[i].id}>{ this.props.sport.shotTypes[i].name_ja }</Button>
+        );
+      }
+    }
     return (
       <View style={styles.container}>
-        <Button currentShotTypeId={0}>スマッシュ</Button>
-        <Button currentShotTypeId={1}>ドロップ</Button>
-        <Button currentShotTypeId={2}>ヘアピン</Button>
-        <Button currentShotTypeId={3}>クリア</Button>
-        <Button currentShotTypeId={4}>プッシュ</Button>
-        <Button currentShotTypeId={5}>ドライブ</Button>
+        { shotTypesButtonsComponent }
       </View>
     );
   }
 }
+
+export default connect(mapStateToProps)(ShotTypeButton)
 
 const styles = StyleSheet.create({
   container: {
@@ -30,7 +45,7 @@ const styles = StyleSheet.create({
     borderTopColor: "#0a2444",
     borderLeftColor: "#0a2444",
     borderBottomColor: "#0a2444",
-    height: 108,
+    height: 150,
     width: 222,
     borderWidth: 1.5,
     marginLeft: 58,
