@@ -8,6 +8,7 @@
 tags
 # Xcode
 #
+target/
 build/
 *.pbxuser
 !default.pbxuser
