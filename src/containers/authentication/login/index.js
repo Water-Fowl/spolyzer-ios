@@ -14,12 +14,13 @@ import {
 import { connect } from "react-redux";
 
 import { postLogin } from "../actions/login";
+import getShotTypes from "../../../reducer/sport/actions/get_shot_types";
 import { mapStateToProps } from "utils";
 
 class Login extends React.Component {
   constructor(props) {
     super(props);
-    console.log(props)
+    console.log(props);
     this.postLoginEvent.bind(this);
     this.state = {
       name: "yamad07",
@@ -34,13 +35,24 @@ class Login extends React.Component {
   }
 
   postLoginEvent() {
-    const { dispatch } = this.props;
+    const sportId = 1
     const loginForm = {
       name: this.state.name,
       email: this.state.email,
       password: this.state.password
     };
-    dispatch(postLogin(loginForm));
+    this.props.dispatch(postLogin(loginForm))
+      .then((header) => {
+        if( header ){
+          this.props.dispatch(getShotTypes(sportId, header));
+        }
+        else {
+          Promise.reject()
+        }
+      })
+      .then(() => {
+        Actions.tab();
+      })
   }
   render() {
     return (

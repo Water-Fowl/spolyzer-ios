@@ -7,6 +7,9 @@ import {
   SET_TOKEN
 } from "../action_type";
 import { REGISTRATION_ENDPOINT } from "../../../config/api";
+import {
+  Alert
+} from "react-native";
 
 export function postRegistration(body) {
   return (dispatch) => {
@@ -19,13 +22,18 @@ export function postRegistration(body) {
       },
       body: JSON.stringify(body)
     })
-      .then(function(response){
-        return response.json();
-      })
-      .then(function(json){
-        dispatch(receivedRegistration());
-      })
-      .then(function(json){
+      .then(async function(response){
+        dispatch(receivedRegistration(response.ok))
+        if(response.ok){
+          Actions.confirmation();
+        }
+        else{
+          let json = await response.json()
+          let messages = json.errors.full_messages.join("\n")
+          return new Promise((resolve) => {
+            Alert.alert("エラー", messages, [{ text: "了解", onPress: () => { resolve(false) } }])
+          })
+        }
       })
       .catch((error) => {
         console.log(error);
@@ -46,11 +54,10 @@ function requestRegistration() {
   };
 }
 
-function receivedRegistration() {
-  Actions.login();
+function receivedRegistration(response_ok) {
   return {
     type: POST_REGISTRATION_RECEIVED,
-    error: false,
+    error: response_ok
   };
 }
 

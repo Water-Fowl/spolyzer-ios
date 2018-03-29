@@ -36,7 +36,7 @@ class SignUp extends React.Component {
     Orientation.lockToPortrait();
   }
   postRegistrationForm() {
-    const { dispatch } = this.props;
+
     const isEmail = emailReg.test(this.state.email);
     if (isEmail){
       const registration_form = {
@@ -44,9 +44,8 @@ class SignUp extends React.Component {
         email: this.state.email,
         password: this.state.password,
         password_confirmation: this.state.password_confirmation,
-        confirm_success_url: GET_USER_ENDPOINT
       };
-      dispatch(postRegistration(registration_form));
+      this.props.dispatch(postRegistration(registration_form))
     }
     else{
       this.setState({isErrorVisible: true});
