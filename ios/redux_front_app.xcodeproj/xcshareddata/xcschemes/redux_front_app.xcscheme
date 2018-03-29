@@ -29,7 +29,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-               BuildableName = "redux_front_app.app"
+               BuildableName = "spolyzer.app"
                BlueprintName = "redux_front_app"
                ReferencedContainer = "container:redux_front_app.xcodeproj">
             </BuildableReference>
@@ -54,6 +54,7 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      language = ""
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
          <TestableReference
@@ -71,7 +72,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "redux_front_app.app"
+            BuildableName = "spolyzer.app"
             BlueprintName = "redux_front_app"
             ReferencedContainer = "container:redux_front_app.xcodeproj">
          </BuildableReference>
@@ -83,6 +84,7 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      language = ""
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
       ignoresPersistentStateOnLaunch = "NO"
@@ -94,7 +96,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "redux_front_app.app"
+            BuildableName = "spolyzer.app"
             BlueprintName = "redux_front_app"
             ReferencedContainer = "container:redux_front_app.xcodeproj">
          </BuildableReference>
@@ -113,7 +115,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "redux_front_app.app"
+            BuildableName = "spolyzer.app"
             BlueprintName = "redux_front_app"
             ReferencedContainer = "container:redux_front_app.xcodeproj">
          </BuildableReference>
@@ -123,7 +125,7 @@
       buildConfiguration = "Debug">
    </AnalyzeAction>
    <ArchiveAction
-      buildConfiguration = "Release"
+      buildConfiguration = "Debug"
       revealArchiveInOrganizer = "YES">
    </ArchiveAction>
 </Scheme>
