@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>ApplicationProperties</key>
+	<dict>
+		<key>ApplicationPath</key>
+		<string>Applications/spolyzer.app</string>
+		<key>CFBundleIdentifier</key>
+		<string>com.waterfowl.spolyzer</string>
+		<key>CFBundleShortVersionString</key>
+		<string>1.0.0</string>
+		<key>CFBundleVersion</key>
+		<string>1.0.0</string>
+		<key>SigningIdentity</key>
+		<string>iPhone Distribution: WaterFowl Inc. (4JFLJM8MPM)</string>
+	</dict>
+	<key>ArchiveVersion</key>
+	<integer>2</integer>
+	<key>CreationDate</key>
+	<date>2018-03-29T08:38:57Z</date>
+	<key>Name</key>
+	<string>redux_front_app</string>
+	<key>SchemeName</key>
+	<string>redux_front_app</string>
+</dict>
+</plist>
