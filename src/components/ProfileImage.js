@@ -5,10 +5,8 @@ import {
 } from "react-native";
 
 export default class ProfileImage extends React.Component {
-  componentWillReceiveProps(nextProps) {
-    if(nextProps.imageSource){
-      this.forceUpdate();
-    }
+  componentWillReceiveProps(nextProps){
+    this.forceUpdate();
   }
   render() {
     if (this.props.imageSource != null) {
@@ -18,9 +16,13 @@ export default class ProfileImage extends React.Component {
             opacity: 0.5,
             width: this.props.size,
             height: this.props.size,
-            borderRadius: 50,
+            borderRadius: this.props.size / 2
           }}
-          source={{ uri: this.props.imageSource }} />
+          source={{
+            uri: this.props.imageSource,
+            cache: 'reload'
+          }}
+        />
       );
     }
     return (
@@ -29,21 +31,11 @@ export default class ProfileImage extends React.Component {
           opacity: 0.5,
           width: this.props.size,
           height: this.props.size,
-          borderRadius: 50,
+          borderRadius: this.props.size / 2
         }}
         source={require("../assets/img/score_create_person.png")}
-        />
+      />
     );
   }
 }
-
-const styles = StyleSheet.create({
-  imageStyle: {
-    marginLeft: 10,
-    opacity: 0.5,
-    width: 100,
-    height: 100,
-    borderRadius: 50
-  }
-});
 
