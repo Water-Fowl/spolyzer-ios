@@ -26,7 +26,8 @@ export default function profileReducer(state=initialState, action={}){
   case RECEIVED_POST_USER_UPDATE:
     return Object.assign({}, state, {
       userName: action.userName,
-      userEmail: action.userEmail
+      userEmail: action.userEmail,
+      userImageSource: action.userImageSource
     });
   default:
     return state;

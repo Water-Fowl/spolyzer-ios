@@ -63,7 +63,7 @@ class ProfileEdit extends React.Component {
       console.log(image);
       this.setState({
         userImageSource: image.path,
-        imageData: image.data
+        imageData: `data:image/png;base64, ${image.data}`
       });
     });
   }
@@ -78,13 +78,17 @@ class ProfileEdit extends React.Component {
     const body = {
       name: this.state.userName,
       email: this.state.userEmail,
-      image: `data:image/png;base64, ${this.state.imageData}`,
     };
+    if(this.state.imageData){
+      body['image'] = this.state.imageData
+    }
     const params = {
       id: this.props.authentication.userId
     };
-    console.log(body.image)
-    dispatch(postUserUpdate(body, params, this.props.authentication.header));
+    console.log(body.image);
+    dispatch(postUserUpdate(body, params, this.props.authentication.header)).then(() => {
+      Actions.profileTop();
+    });
   }
   render() {
     return (

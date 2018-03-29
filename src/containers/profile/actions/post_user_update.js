@@ -25,8 +25,7 @@ export function postUserUpdate(body, params, authHeaders) {
       body: JSON.stringify(body)
     })
       .then(response => response.json())
-      .then(json => dispatch(receivedPostUserUpdate(json.user.name, json.user.email)))
-      .then(Actions.profileTop({ type: ActionConst.BACK_ACTION }))
+      .then(json => dispatch(receivedPostUserUpdate(json.user.name, json.user.email, json.user.image.url)))
       .catch((error) => {
         console.log(error);
       });
@@ -39,10 +38,11 @@ export function requestPostUserUpdate() {
   };
 }
 
-export function receivedPostUserUpdate(name, email){
+export function receivedPostUserUpdate(name, email, image){
   return {
     type: RECEIVED_POST_USER_UPDATE,
     userName: name,
-    userEmail: email
+    userEmail: email,
+    userImageSource: image,
   };
 }

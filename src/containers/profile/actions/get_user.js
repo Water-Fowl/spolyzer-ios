@@ -17,7 +17,7 @@ export function getUser(authHeaders){
     })
       .then(response => response.json())
       .then((json) => {
-        console.log(json)
+        console.log(json);
         dispatch(getUserReceived(json.user));
       })
       .catch((error) => {
@@ -33,7 +33,7 @@ function getUserRequest() {
 }
 
 export function getUserReceived(data) {
-  console.log(data)
+  console.log(data);
   return {
     type: GET_USER_RECEIVED,
     userName: data.name,

@@ -24,8 +24,6 @@ import {
 } from "../actions/get_user";
 
 class ProfileTop extends React.Component {
-  componentDidMount(){
-  }
   render() {
     return (
       <View style={styles.container}>
@@ -87,7 +85,7 @@ const styles = StyleSheet.create({
   },
   profileImage:{
     marginTop:30,
-    marginBottom: 30,
+    marginBottom: 30
   }
 
 });

@@ -11,7 +11,7 @@ export default class ProfileImage extends React.Component {
     }
   }
   render() {
-    console.log(this.props.imageSource)
+    console.log(this.props.imageSource);
     if (this.props.imageSource != null) {
       return (
         <Image style={styles.imageStyle} source={{ uri: this.props.imageSource }} />
