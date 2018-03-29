@@ -65,7 +65,7 @@ class Graph extends React.Component{
                 fontWeight: "bold"
               }
             }}
-            labels={(shot) => shot.shotType}
+            labels={(shot) => shot.label}
           >
             <VictoryBar
               barRatio={0.4}
@@ -79,8 +79,8 @@ class Graph extends React.Component{
                 onLoad: { duration: 300 }
               }}
               data={this.props.shotTypeCountsList}
-              x="shotType"
-              y="counts"
+              x="label"
+              y="value"
               alignment="middle"
             />
             <VictoryBar
@@ -95,8 +95,8 @@ class Graph extends React.Component{
                 onLoad: { duration: 300 }
               }}
               data={this.props.missShotTypeCountsList}
-              x="shotType"
-              y="counts"
+              x="label"
+              y="value"
               alignment="middle"
             />
           </VictoryStack>
@@ -111,9 +111,9 @@ export default connect(mapStateToProps)(Graph);
 function mapStateToProps(state, props){
   const { game } = state;
   const {
-    selectedShotTypeCounts,
+    selectedShotTypeCounts
   } = game || {
-    selectedShotTypeCounts: {},
+    selectedShotTypeCounts: {}
   };
   const {
     shotTypeCountsList,

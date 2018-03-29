@@ -27,6 +27,7 @@ export function setPositionAndSide(position, side, missType) {
 }
 
 export function setShotType(shotType, missType) {
+  console.log(shotType)
   return {
     type: SET_SHOT_TYPE,
     shotType,

@@ -62,6 +62,42 @@ class ScoreCreate extends React.Component {
     };
     this.props.dispatch(postGame(body, this.props.authentication.header));
   }
+  renderInFieldCircle(){
+    return (
+      <TouchableHighlight
+        style={styles.blueCircle}
+        onPress={() => {
+          this.setModalEvent(this.props.position, this.props.side);
+        }}
+      >
+        <View/>
+      </TouchableHighlight>
+    );
+  }
+  renderInFieldLength(){
+    return (
+      <TouchableHighlight
+        style={styles.varticalBlueBar}
+        onPress={() => {
+          this.setModalEvent(this.props.position, this.props.side);
+        }}
+      >
+        <View/>
+      </TouchableHighlight>
+    );
+  }
+  renderInFieldSide() {
+    return (
+      <TouchableHighlight
+        style={styles.horizontalBlueBar}
+        onPress={() => {
+          this.setModalEvent(this.props.position, this.props.side);
+        }}
+      >
+        <View/>
+      </TouchableHighlight>
+    );
+  }
   render() {
     return (
       <View style={{
@@ -317,5 +353,25 @@ const styles = StyleSheet.create({
     marginLeft: 8,
     marginRight: 8,
     justifyContent: "space-between"
+  },
+  blueCircle: {
+    borderColor: "#2EA7E0",
+    backgroundColor: "#2EA7E0",
+    height: 70,
+    width: 70,
+    borderWidth: 1,
+    borderRadius: 100,
+    opacity: 0.3,
+    alignSelf: "center"
+  },
+  horizontalBlueBar: {
+    borderColor: "#2EA7E0",
+    backgroundColor: "#2EA7E0",
+    height: 20,
+    width: 80,
+    borderWidth: 1.3,
+    borderRadius: 3,
+    opacity: 0.3,
+    alignSelf: "center"
   }
 });

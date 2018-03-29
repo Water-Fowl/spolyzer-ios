@@ -7,7 +7,8 @@ import {
   NavBar,
   NavigateButton,
   TopBar,
-  TopContentBar
+  TopContentBar,
+  ProfileImage
 } from "components";
 import {
   Dimensions,
@@ -26,17 +27,50 @@ import { UserIcon } from "./components";
 import { mapStateToProps } from "utils";
 
 class GameCreate extends React.Component {
-  componentWillMount(){
-    const { dispatch } = this.props;
-    /* バドミントンのIDは1*/
-    const sport_id = 1;
-    dispatch(getShotTypes(sport_id, this.props.authentication.header));
-  }
   setUserIndexEvent(selectedUnitIndex, selectedUserIndex){
     const { dispatch } = this.props;
     dispatch(setUserIndex(selectedUnitIndex, selectedUserIndex));
     Actions.gameSearchUser();
   }
+
+  renderNoSelectedUserIcon() {
+    return(
+      <View>
+        <View style={styles.noSelectedContainer}>
+          <Text style={styles.noSelectedText}>not</Text>
+          <Text style={styles.noSelectedText}>selected</Text>
+        </View>
+        <Text style={styles.nameText}> ユーザを選択 </Text>
+      </View>
+    );
+  }
+
+  renderSelectedUserIcon(user) {
+    return (
+      <View style={styles.alignItemsCenter}>
+        <ProfileImage size={80} imageSource={user.image.url}/>
+        <Text style={styles.nameText}> {user.name} </Text>
+      </View>
+    )
+  }
+
+  renderUserIcon(unitIndex, userIndex){
+    if(this.props.game.gameUnits[unitIndex].users[userIndex]){
+      return (
+        <TouchableOpacity onPress={() =>{this.setUserIndexEvent(unitIndex, userIndex);}}>
+          { this.renderSelectedUserIcon(this.props.game.gameUnits[unitIndex].users[userIndex]) }
+        </TouchableOpacity>
+      );
+    }
+    else {
+      return (
+        <TouchableOpacity onPress={() =>{this.setUserIndexEvent(unitIndex, userIndex);}}>
+          { this.renderNoSelectedUserIcon() }
+        </TouchableOpacity>
+      );
+    }
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -47,9 +81,7 @@ class GameCreate extends React.Component {
               <Text style={styles.scoreGameCreateOpponents}>対戦相手選択</Text>
               <View style={styles.gameSettingTableInner}>
                 <View style={styles.gameSettingTableInnerLeft}>
-                  <TouchableOpacity onPress={() =>{this.setUserIndexEvent(0, 0);}}>
-                    <UserIcon unitIndex={0} userIndex={0}/>
-                  </TouchableOpacity>
+                  { this.renderUserIcon(0, 0) }
                   <TouchableOpacity onPress={() => {this.setUserIndexEvent(0, 1);}}>
                     <UserIcon unitIndex={0} userIndex={1}/>
                   </TouchableOpacity>
@@ -136,5 +168,35 @@ const styles = StyleSheet.create({
     height: 27,
     width: 35,
     marginTop: 100
+  },
+  noSelectedContainer: {
+    borderColor: "rgba(46, 167, 224, 0.4)",
+    backgroundColor: "rgba(46, 167, 224, 0.4)",
+    height: 75,
+    width: 75,
+    borderWidth: 2,
+    borderRadius: 100,
+    alignSelf: "center",
+    margin: 7,
+    justifyContent: "center"
+  },
+  noSelectedText: {
+    backgroundColor: "transparent",
+    color: "white",
+    alignSelf: "center",
+    textAlign: "center"
+  },
+  nameText: {
+    paddingTop: 2,
+    paddingBottom: 2,
+    fontSize: 12,
+    color: "white",
+    marginTop: 10,
+    textAlign: "center",
+    borderColor: "#2EA7E0",
+    width: 100,
+    borderWidth: 1.5,
+    borderRadius: 5,
+    alignSelf: "center"
   }
 });

@@ -5,6 +5,9 @@ import {
   Text,
   View
 } from "react-native";
+import {
+  ProfileImage
+} from "components";
 
 export default class SelectedUserIcon extends React.Component{
   constructor(props){
@@ -17,8 +20,8 @@ export default class SelectedUserIcon extends React.Component{
   }
   render(){
     return(
-      <View style={styles.cotainer}>
-        <Image style={styles.imageStyle} source={require("../../../../assets/img/my_page_user_icon.png")} />
+      <View style={styles.container}>
+        <ProfileImage size={80} imageSource={this.props.user.image.url}/>
         <Text style={styles.nameText}> {this.props.user.name} </Text>
       </View>
     );
@@ -26,12 +29,8 @@ export default class SelectedUserIcon extends React.Component{
 }
 
 const styles = StyleSheet.create({
-  imageStyle: {
-    alignSelf: "center",
-    opacity: 0.5,
-    width: 80,
-    height: 80,
-    borderRadius:40
+  container:{
+    alignItems: "center",
   },
   nameText: {
     color: "white",

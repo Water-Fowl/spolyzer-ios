@@ -10,20 +10,20 @@ import {
   View
 } from "react-native";
 import {
-  TopContentBar
+  TopContentBar,
 } from "components";
 import { connect } from "react-redux";
 
 import getShotTypeCounts from "../actions/get_shot_type_counts";
 import {
-  Graph,
   InFieldCircle,
   InFieldLength,
   InFieldSide,
   OutFieldLength,
-  OutFieldSide
+  OutFieldSide,
+  Graph
 } from "./components";
-import { mapStateToProps } from "utils"
+import { mapStateToProps } from "utils";
 import resetState from "../actions/reset_state";
 
 class ScoreView extends React.Component {
@@ -113,7 +113,7 @@ class ScoreView extends React.Component {
               </View>
             </View>
           </View>
-          <Graph/>
+          <Graph />
           <View style={styles.backButtonContainer}>
             <TouchableOpacity onPress={() => {
               this.props.dispatch(resetState());

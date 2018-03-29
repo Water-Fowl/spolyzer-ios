@@ -16,54 +16,68 @@ import {
 import {
   hideScoreCreateModal
 } from "../../../actions/set_modal";
+const NET_MIN_POSITION = 8
+const NET_MAX_POSITION = 13
 
 
 class ScoreCreateShotTypeButton extends React.Component {
   setShotTypeEvent(shotTypeId, missType=0) {
+    console.log(shotTypeId)
     this.props.dispatch(setShotType(shotTypeId, missType));
   }
   hideModalEvent() {
     this.props.dispatch(hideScoreCreateModal());
   }
-  render() {
+  renderLeftButtons(){
     const shotTypesLeftComponent = [];
-    const shotTypesRightComponent = [];
-    const shotTypesLength = this.props.sport.shotTypes.length;
-
-    for (let i = 0; i < shotTypesLength; i++){
+    for (let shotTypeId in this.props.sport.shotTypes){
       shotTypesLeftComponent.push(
         <TouchableHighlight
           onPress={() => {
-            this.setShotTypeEvent(this.props.sport.shotTypes[i].id);
+            this.setShotTypeEvent(shotTypeId);
             this.hideModalEvent();
           }}
         >
-          <Text style={styles.shotType}>{this.props.sport.shotTypes[i].name_ja}</Text>
+          <Text style={styles.shotType}>{this.props.sport.shotTypes[shotTypeId]}</Text>
         </TouchableHighlight>
       );
     }
-
-    for (let i = 0; i < shotTypesLength; i ++){
-      shotTypesRightComponent.push(
-        <TouchableHighlight
-          onPress={() => {
-            this.setShotTypeEvent(this.props.sport.shotTypes[i].id, missType=1);
-            this.hideModalEvent();
-          }}
-        >
-          <Text style={styles.missShotType}>{this.props.sport.shotTypes[i].name_ja}</Text>
-        </TouchableHighlight>
-      );
-    }
-
     return (
-      <View style={styles.shotTypeContainer}>
-        <View>
-          { shotTypesLeftComponent }
-        </View>
+      <View>
+        { shotTypesLeftComponent }
+      </View>
+    )
+  }
+  renderRightButtons(){
+    if (this.props.game.position == NET_MAX_POSITION || this.props.game.position == NET_MIN_POSITION ){
+      const shotTypesRightComponent = [];
+      for (let shotTypeId in this.props.sport.shotTypes){
+        shotTypesRightComponent.push(
+          <TouchableHighlight
+            onPress={() => {
+              this.setShotTypeEvent(shotTypeId, 1);
+              this.hideModalEvent();
+            }}
+          >
+            <Text style={styles.missShotType}>{this.props.sport.shotTypes[shotTypeId]}</Text>
+          </TouchableHighlight>
+        );
+      }
+      return (
         <View>
           { shotTypesRightComponent }
         </View>
+      )
+    }
+    return (
+      null
+    )
+  }
+  render() {
+    return (
+      <View style={styles.shotTypeContainer}>
+        { this.renderLeftButtons() }
+        { this.renderRightButtons() }
       </View>
     );
   }
@@ -72,7 +86,7 @@ export default connect(mapStateToProps)(ScoreCreateShotTypeButton);
 
 const styles = StyleSheet.create({
   shotType: {
-    fontSize: 25,
+    fontSize: 17,
     width: 220,
     alignSelf: "center",
     textAlign: "center",
@@ -82,7 +96,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#2EA7E0"
   },
   missShotType: {
-    fontSize: 25,
+    fontSize: 17,
     width: 220,
     alignSelf: "center",
     textAlign: "center",
