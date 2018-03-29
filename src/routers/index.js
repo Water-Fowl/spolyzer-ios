@@ -29,7 +29,7 @@ import {
 import {
   mapStateToProps
 } from "utils";
-import { PersistGate } from 'redux-persist/integration/react'
+import { PersistGate } from "redux-persist/integration/react";
 
 const { persistor, store } = configureStore();
 import Route from "./routes";
@@ -39,10 +39,10 @@ export default class ReduxRoute extends React.Component{
     return(
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
-          <Route/>
+          <Route />
         </PersistGate>
       </Provider>
-    )
+    );
   }
 }
 
@@ -50,5 +50,5 @@ export default class ReduxRoute extends React.Component{
 const styles = StyleSheet.create({
   icon: {
     margin: 10
-  },
+  }
 });

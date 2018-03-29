@@ -1,7 +1,10 @@
 import React from "react";
 import {
   Image,
-  StyleSheet
+  StyleSheet,
+  View,
+  Text,
+  Alert
 } from "react-native";
 import { connect } from "react-redux";
 import {
@@ -20,25 +23,66 @@ import {
   ProfileTop,
   ScoreCreate,
   ScoreView,
-  SignUp
+  SignUp,
+  Confirmation
 } from "../containers";
 import { validateToken } from "../containers/authentication/actions/validate_token";
-const RouterWithRedux = connect()(Router)
+import getShotTypes from "../reducer/sport/actions/get_shot_types";
+import { getUser } from "../containers/profile/actions/get_user";
+const RouterWithRedux = connect()(Router);
 
 class Route extends React.Component{
   constructor(props){
     super(props);
+    this.state = {
+      isValidToken: false,
+      loading: true
+    }
+    this.componentWillMountValidToken.bind(this);
+    this.networkError.bind(this);
   }
-  async componentWillMount(){
-    await this.props.dispatch(validateToken(this.props.header))
+  networkError(){
+    return new Promise((resolve) => {
+      Alert.alert("ネットワークエラー", "インターネットの接続を確認して下さい", [{text: "再接続", onPress: () => { this.componentWillMountValidToken() } }])
+    })
+  }
+  componentWillMountValidToken(){
+    /* バドミントンのIDは1*/
+    const sport_id = 1;
+    console.log(this.props.header)
+
+    this.props.dispatch(validateToken(this.props.header))
+      .then(() => {
+        if(this.props.errorMsg){
+          this.networkError();
+        }
+      })
+      .then(() => {
+        this.setState({
+          isValidToken: this.props.isValidToken,
+          loading: false
+        })
+      })
+      .then(() => {
+        this.props.dispatch(getShotTypes(sport_id, this.props.header));
+      })
+  }
+  componentWillMount(){
+    this.componentWillMountValidToken()
   }
   render(){
+    if(this.state.loading){
+      return(
+        <View />
+      )
+    }
     return (
       <RouterWithRedux>
         <Scene key="root">
-          <Scene key="login" component={Login} initial={!this.props.isValidToken}  hideNavBar />
+          <Scene key="login" component={Login} initial={!this.state.isValidToken}  hideNavBar />
           <Scene key="signUp" component={SignUp} hideNavBar />
-          <Tabs key="tab" initial={this.props.isValidToken} labelStyle={styles.label} tabBarStyle={styles.tabBarStyle} tabStyle={styles.tabStyle}>
+          <Scene key="confirmation" component={Confirmation} hideNavBar />
+          <Tabs key="tab" initial={this.state.isValidToken} labelStyle={styles.label} tabBarStyle={styles.tabBarStyle} tabStyle={styles.tabStyle}>
             <Scene key="Mypage" tabBarLabel="マイページ" icon={() => (<Image style={styles.icon} source={require("../assets/img/tabs_home.png")} />)} headerMode="none">
               <Scene key="profileTop" initial component={ProfileTop} title="マイページ" hideNavBar />
               <Scene key="profileEdit" component={ProfileEdit} title="マイデータ編集" hideNavBar />
@@ -60,14 +104,16 @@ class Route extends React.Component{
     );
   }
 }
+
 function mapStateToProps(state, props){
   return {
     header: state.authentication.header,
-    isValidToken: state.authentication.isValidToken
-  }
+    isValidToken: state.authentication.isValidToken,
+    errorMsg: state.authentication.errorMsg
+  };
 }
 
-export default connect(mapStateToProps)(Route)
+export default connect(mapStateToProps)(Route);
 
 
 const styles = StyleSheet.create({

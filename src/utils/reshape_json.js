@@ -3,42 +3,40 @@ import { alphabet } from "const";
 function pushPositionCount(list, count, positionString){
   if(count[0]){
     list.push({
-      counts: count[0],
-      positionString: positionString
+      label: positionString,
+      value: count[0],
     });
   }
   else{
     list.push({
-      counts: 0,
-      positionString: positionString
+      valuep: 0,
+      label: positionString
     });
   }
 }
 export function reshapePositionsCount(counts, side, minPosition, maxPosition){
   const positionsCountList = [];
   const missPositionsCountList = [];
-  var i = 0;
   for (var position=minPosition; position <= maxPosition; position++){
     if(counts[side]){
       if(counts[side][position]){
-        var positionString = alphabet[i];
-        i ++;
+        var positionString = alphabet[position - minPosition];
         if(counts[side][position]){
           positionsCountList.push({
-            positionString: positionString,
-            counts: counts[side][position]
+            label: positionString,
+            value: counts[side][position]
           });
         }
         else{
           positionsCountList.push({
-            positionString: positionString,
-            counts: 0
+            label: positionString,
+            value: 0
           });
         }
       }
     }
     else{
-      counts[side] = []
+      counts[side] = [];
     }
   }
   return {
@@ -47,35 +45,36 @@ export function reshapePositionsCount(counts, side, minPosition, maxPosition){
 }
 
 export function reshapeShotTypeCounts(counts, shotTypes){
+  console.log(counts)
   shotTypeCountsList = [];
   missShotTypeCountsList = [];
   shotTypesList = [];
   for (key in counts){
-    shotTypesList.push(shotTypes[key].name_ja);
+    shotTypesList.push(shotTypes[key]);
     if (counts[key][0]) {
       shotTypeCountsList.push({
-        shotType: shotTypes[key].name_ja,
-        counts: counts[key][0]
+        label: shotTypes[key],
+        value: counts[key][0]
       });
     }
     else{
       shotTypeCountsList.push({
-        shotType: shotTypes[key].name_ja,
-        counts: 0
+        label: shotTypes[key],
+        value: 0
       });
     }
   }
   for (key in counts){
     if (counts[key][1]) {
       missShotTypeCountsList.push({
-        shotType: shotTypes[key].name_ja,
-        counts: counts[key][1]
+        label: shotTypes[key],
+        value: counts[key][1]
       });
     }
     else{
       missShotTypeCountsList.push({
-        shotType: shotTypes[key].name_ja,
-        counts: 0
+        label: shotTypes[key],
+        value: 0
       });
     }
   }

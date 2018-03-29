@@ -9,6 +9,7 @@ import ProfileTop from "./profile/ProfileTop";
 import ScoreCreate from "./game/ScoreCreate";
 import ScoreView from "./game/ScoreView";
 import SignUp from "./authentication/SignUp";
+import Confirmation from "./authentication/Confirmation";
 /* Reducersのimport  */
 import analysisReducer from "./analysis/reducer";
 import authenticationReducer from "./authentication/reducer";
@@ -28,6 +29,7 @@ export {
   ProfileEdit,
   SignUp,
   Login,
+  Confirmation,
   /* Reducersのexport */
   analysisReducer,
   gameReducer,
