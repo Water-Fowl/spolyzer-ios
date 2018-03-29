@@ -22,9 +22,9 @@ class ShotTypeButton extends React.Component {
   render() {
     const shotTypesButtonsComponent = [];
     if(this.props.sport.shotTypes){
-      for (let i = 0; i < this.props.sport.shotTypes.length; i++){
+      for (shotTypeId in this.props.sport.shotTypes){
         shotTypesButtonsComponent.push(
-          <Button currentShotTypeId={this.props.sport.shotTypes[i].id}>{ this.props.sport.shotTypes[i].name_ja }</Button>
+          <Button currentShotTypeId={shotTypeId}>{ this.props.sport.shotTypes[shotTypeId] }</Button>
         );
       }
     }
@@ -36,7 +36,7 @@ class ShotTypeButton extends React.Component {
   }
 }
 
-export default connect(mapStateToProps)(ShotTypeButton)
+export default connect(mapStateToProps)(ShotTypeButton);
 
 const styles = StyleSheet.create({
   container: {

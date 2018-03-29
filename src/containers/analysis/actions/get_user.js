@@ -15,7 +15,7 @@ export default function getSearchUser(params, authHeaders) {
         "Accept": "application/json",
         "Content-Type": "application/json",
         ...authHeaders
-      },
+      }
     })
       .then(response => response.json())
       .then(function(json){

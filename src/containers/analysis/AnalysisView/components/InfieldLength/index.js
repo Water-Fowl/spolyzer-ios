@@ -25,10 +25,9 @@ class InFieldLength extends React.Component {
         style={styles.varticalBlueBar}
         onPress={() => {
           this.setPositionEvent();
-        }
-        }
+        }}
       >
-        <View />
+        <Text style={styles.text}>{this.props.droppedAtId}</Text>
       </TouchableHighlight>
     );
   }
@@ -44,6 +43,11 @@ const styles = StyleSheet.create({
     width: 10,
     borderWidth: 1.3,
     borderRadius: 3,
-    opacity: 0.3
+    opacity: 0.3,
+    justifyContent: "center",
+  },
+  text:{
+    textAlign: "center",
+    alignSelf: "center",
   }
 });

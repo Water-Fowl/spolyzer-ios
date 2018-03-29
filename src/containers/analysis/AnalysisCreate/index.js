@@ -25,7 +25,7 @@ import {
   TermButton
 } from "./components";
 import { getPositionsCounts } from "../actions/get_positions_counts";
-import { mapStateToProps } from "utils"
+import { mapStateToProps } from "utils";
 
 class AnalysisCreate extends React.Component {
   constructor(props) {
@@ -41,7 +41,9 @@ class AnalysisCreate extends React.Component {
     var userIds = [];
     for (key in this.props.analysis.analysisUsers){
       let user = this.props.analysis.analysisUsers[key];
-      userIds.push(user.id);
+      if(user.id){
+        userIds.push(user.id);
+      }
     }
     const params = {
       user_ids: userIds,
