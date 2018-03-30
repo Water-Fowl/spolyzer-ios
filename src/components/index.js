@@ -9,6 +9,7 @@ import TopBar from "./TopBar";
 import TopContentBar from "./TopContentBar";
 import ProfileImage from "./ProfileImage";
 import Graph from "./Graph";
+import DrawerContent from "./DrawerContent";
 
 export {
   Background,
@@ -18,5 +19,6 @@ export {
   TopBar,
   TopContentBar,
   ProfileImage,
-  Graph
+  Graph,
+  DrawerContent
 };

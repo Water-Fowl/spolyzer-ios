@@ -46,7 +46,6 @@ class UserSearch extends React.Component {
     return (
     	<View style={styles.container}>
         <Background />
-        <NavBar />
         <TopContentBar>
           名前検索
         </TopContentBar>

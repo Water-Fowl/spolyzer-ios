@@ -4,8 +4,7 @@
 import Orientation from "react-native-orientation";
 import React from "react";
 import {
-  Background,
-  NavBar
+  Background
 } from "components";
 import {
   StyleSheet,
@@ -21,7 +20,6 @@ export default function baseEnhancer(ComponentClass) {
       return (
         <View style={styles.container}>
           <Background />
-          <NavBar />
           <ComponentClass {...this.props} />
         </View>
       );

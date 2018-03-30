@@ -183,15 +183,17 @@ class AnalysisView extends React.Component {
   _renderOpponentUserNames(users){
     const opponentUserNameComponentList = [];
     for (let userIdx in users){
-      opponentUserNameComponentList.push(
-        <View style={styles.flexDirectionRow}>
-          <ProfileImage
-            imageSource={users[userIdx].image.url}
-            size={20}
-          />
-          <Text style={styles.opponentName}>{users[userIdx].name}</Text>
-        </View>
-      );
+      if( users[userIdx]){
+        opponentUserNameComponentList.push(
+          <View style={styles.flexDirectionRow}>
+            <ProfileImage
+              imageSource={users[userIdx].image.url}
+              size={20}
+            />
+            <Text style={styles.opponentName}>{users[userIdx].name}</Text>
+          </View>
+        );
+      }
     }
     return(
       <View style={styles.opponentUserNameContainer}>
