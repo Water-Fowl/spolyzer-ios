@@ -25,9 +25,17 @@ import {
 } from "./components";
 import { mapStateToProps } from "utils";
 import resetState from "../actions/reset_state";
+import { Field } from "organisms";
+
 
 class ScoreView extends React.Component {
-
+  constructor(props) {
+    super(props);
+    this.shotTypeCounts = this.setShotTypeCounts.bind(this);
+  }
+  setShotTypeCounts(missType=0) {
+    this.props.dispatch(setShotTypeCounts(this.props.game.position, this.props.game.side, missType));
+  }
   renderUnitUsersName(users){
     const unitUserNameComponentList = [];
     for (let user of users){
@@ -79,73 +87,7 @@ class ScoreView extends React.Component {
               { this.renderWinLossText(side=1) }
             </View>
           </View>
-          <View style={styles.field}>
-            <Image style={styles.fieldLine} source={require("../../../assets/img/field-line.png")} />
-            <View style={styles.overContainer}>
-              <View style={styles.overOutFieldSideContainer}>
-                <OutFieldSide position={5} side={0} />
-                <OutFieldSide position={6} side={0}/>
-              </View>
-              <View style={styles.overOutFieldSideContainer}>
-                <OutFieldSide position={0} side={1}/>
-                <OutFieldSide position={1} side={1}/>
-              </View>
-            </View>
-            <View style={styles.middleContainer}>
-              <View style={styles.outFieldLengthContainer}>
-                <OutFieldLength position={4} side={0}/>
-                <OutFieldLength position={3} side={0}/>
-              </View>
-              <View style={styles.inFieldContainer}>
-                <View style={styles.inFieldLengthContainer}>
-                  <InFieldLength position={11} side={0}/>
-                  <InFieldLength position={10} side={0}/>
-                </View>
-                <View style={styles.inFieldSideContainer}>
-                  <InFieldSide position={12} side={0}/>
-                  <View style={styles.inFieldCircleContainer}>
-                    <InFieldCircle position={7} side={0}/>
-                  </View>
-                  <InFieldSide position={9} side={0}/>
-                </View>
-                <View style={styles.inFieldLengthContainer}>
-                  <InFieldLength position={13} side={0}/>
-                  <InFieldLength position={8} side={0}/>
-                </View>
-              </View>
-              <View style={styles.inFieldContainer}>
-                <View style={styles.inFieldLengthContainer}>
-                  <InFieldLength position={8} side={1} />
-                  <InFieldLength position={13} side={1}/>
-                </View>
-                <View style={styles.inFieldSideContainer}>
-                  <InFieldSide position={9} side={1}/>
-                  <View style={styles.inFieldCircleContainer}>
-                    <InFieldCircle position={7} side={1}/>
-                  </View>
-                  <InFieldSide position={12} side={1}/>
-                </View>
-                <View style={styles.inFieldLengthContainer}>
-                  <InFieldLength position={10} side={1}/>
-                  <InFieldLength position={11} side={1}/>
-                </View>
-              </View>
-              <View style={styles.outFieldLengthContainer}>
-                <OutFieldLength position={3} side={1}/>
-                <OutFieldLength position={4} side={1}/>
-              </View>
-            </View>
-            <View style={styles.underContainer}>
-              <View style={styles.underOutFieldSideContainer}>
-                <OutFieldSide position={2} side={0} />
-                <OutFieldSide position={1} side={0}/>
-              </View>
-              <View style={styles.underOutFieldSideContainer}>
-                <OutFieldSide position={6} side={1}/>
-                <OutFieldSide position={5} side={1}/>
-              </View>
-            </View>
-          </View>
+          <Field callback={this.setShotTypeCounts} />
           <Graph />
           <View style={styles.backButtonContainer}>
             <TouchableOpacity onPress={() => {

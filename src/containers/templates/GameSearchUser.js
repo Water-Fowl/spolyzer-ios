@@ -20,7 +20,7 @@ import {
 import { connect } from "react-redux";
 
 import getSearchUser from "../actions/get_user";
-import { SearchedUserAccountContainer } from "./components";
+import { UserList } from "molecules";
 import { mapStateToProps } from "utils";
 
 class UserSearch extends React.Component {
@@ -64,7 +64,7 @@ class UserSearch extends React.Component {
             returnKeyType="done"
           />
         </View>
-        <SearchedUserAccountContainer users={this.state.users}/>
+        <UserList users={this.state.users}/>
         <NavigateButton action={() =>{Actions.popTo("gameCreate"); }} style={styles.navigateButton} text="選択" />
       </View>
     );

@@ -29,10 +29,12 @@ import {
 } from "../containers";
 import {
   DrawerContent
-} from "../components";
+} from "components";
 import { validateToken } from "../containers/authentication/actions/validate_token";
-import getShotTypes from "../reducer/sport/actions/get_shot_types";
+import { getShotTypesReceived, getShotTypesRequest } from "../modules/sport";
 import { getUser } from "../containers/profile/actions/get_user";
+import { getApiRequest } from "../modules/request";
+import { SHOT_TYPES_ENDPOINT } from "../config/api";
 const RouterWithRedux = connect()(Router);
 const AppLogo = () => {
   return (
@@ -59,7 +61,9 @@ class Route extends React.Component{
   }
   componentWillMountValidToken(){
     /* バドミントンのIDは1*/
-    const sport_id = 1;
+    let params = {
+      sport_id: 1
+    }
 
     this.props.dispatch(validateToken(this.props.header))
       .then(() => {
@@ -74,7 +78,19 @@ class Route extends React.Component{
         });
       })
       .then(() => {
-        this.props.dispatch(getShotTypes(sport_id, this.props.header));
+        this.props.dispatch(
+          getApiRequest(
+            endpoint=SHOT_TYPES_ENDPOINT,
+            params=params,
+            headers=this.props.header,
+            requestCallback=getShotTypesRequest,
+            receivedCallback=getShotTypesReceived
+          )
+        )
+         // this.props.dispatch(getShotTypes(sport_id, this.props.header));
+      })
+      .catch((error) => {
+        console.log(error);
       });
   }
   async componentWillMount(){
