@@ -3,9 +3,13 @@ import { Actions } from "react-native-router-flux";
 import {
   EMAIL_VALIDATION,
   POST_REGISTRATION_RECEIVED,
-  POST_REGISTRATION_REQUEST
+  POST_REGISTRATION_REQUEST,
+  SET_TOKEN
 } from "../action_type";
 import { REGISTRATION_ENDPOINT } from "../../../config/api";
+import {
+  Alert
+} from "react-native";
 
 export function postRegistration(body) {
   return (dispatch) => {
@@ -13,15 +17,26 @@ export function postRegistration(body) {
     return fetch(REGISTRATION_ENDPOINT, {
       method: "POST",
       headers: {
-        Accept: "application/json",
+        "Accept": "application/json",
         "Content-Type": "application/json"
       },
       body: JSON.stringify(body)
     })
-      .then(response => response.json())
-      .then(json => json.errors)
-      .then(errors => dispatch(receivedRegistration(errors)))
+      .then(async function(response){
+        dispatch(receivedRegistration(response.ok));
+        if(response.ok){
+          Actions.confirmation();
+        }
+        else{
+          let json = await response.json();
+          let messages = json.errors.full_messages.join("\n");
+          return new Promise((resolve) => {
+            Alert.alert("エラー", messages, [{ text: "了解", onPress: () => { resolve(false); } }]);
+          });
+        }
+      })
       .catch((error) => {
+        console.log(error);
       });
   };
 }
@@ -39,20 +54,16 @@ function requestRegistration() {
   };
 }
 
-function receivedRegistration(errors, userId) {
-  if (errors == null) {
-    Actions.tab();
-    return {
-      type: POST_REGISTRATION_RECEIVED,
-      isAuthenticated: true,
-      error: false,
-      userId
-    };
-  }
-
+function receivedRegistration(response_ok) {
   return {
     type: POST_REGISTRATION_RECEIVED,
-    isAuthenticated: false,
-    error: true
+    error: response_ok
+  };
+}
+
+function setToken(header){
+  return{
+    type: SET_TOKEN,
+    ...headers
   };
 }

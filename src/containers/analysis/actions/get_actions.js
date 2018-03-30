@@ -1,7 +1,7 @@
 import { GET_ACTIONS_ENDPOIN } from "../../../config/api";
 import {
-  GET_ACTIONS_RECEIVED,
-  GET_ACTIONS_REQUEST
+  GET_ACTIONS_REQUEST,
+  GET_SHOT_TYPE_RECEIVED
 } from "../action_types";
 
 export function getActions(informationBody){

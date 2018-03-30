@@ -13,9 +13,46 @@ import {
 } from "react-native";
 import { connect } from "react-redux";
 
-import { enhancer } from "./hoc";
+import { postLogin } from "../actions/login";
+import getShotTypes from "../../../reducer/sport/actions/get_shot_types";
+import { mapStateToProps } from "utils";
 
 class Login extends React.Component {
+  constructor(props) {
+    super(props);
+    this.postLoginEvent.bind(this);
+    this.state = {
+      name: "yamad07",
+      email: "",
+      password: "",
+      loginError: false
+    };
+  }
+
+  componentWillMount() {
+    Orientation.lockToPortrait();
+  }
+
+  postLoginEvent() {
+    const sportId = 1;
+    const loginForm = {
+      name: this.state.name,
+      email: this.state.email,
+      password: this.state.password
+    };
+    this.props.dispatch(postLogin(loginForm))
+      .then((header) => {
+        if( header ){
+          this.props.dispatch(getShotTypes(sportId, header));
+        }
+        else {
+          Promise.reject();
+        }
+      })
+      .then(() => {
+        Actions.tab();
+      });
+  }
   render() {
     return (
       <View style={styles.container}>
@@ -84,19 +121,8 @@ class Login extends React.Component {
   }
 }
 
-function mapStateToProps(state, props) {
-  const { authentication } = state;
-  const {
-    loginError
-  } = authentication || {
-    loginError: false
-  };
-  return {
-    loginError
-  };
-}
 
-export default connect(mapStateToProps)(enhancer(Login));
+export default connect(mapStateToProps)(Login);
 
 const styles = StyleSheet.create({
   container: {

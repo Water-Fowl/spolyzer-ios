@@ -40,6 +40,10 @@
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
 		C08EC8AC1DE2478687E261A6 /* libRNImagePicker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7533BEB5445C46EAAF9EB491 /* libRNImagePicker.a */; };
 		DE23DAC820271C6A00132CA5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE23DAC720271C6A00132CA5 /* Images.xcassets */; };
+		DE6B4EA1206CDB8F0039293C /* QBImagePicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE6B4EA0206CDB8F0039293C /* QBImagePicker.framework */; };
+		DE6B4EA2206CDB8F0039293C /* QBImagePicker.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DE6B4EA0206CDB8F0039293C /* QBImagePicker.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		DE6B4ECD206CDB940039293C /* RSKImageCropper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE6B4ECC206CDB940039293C /* RSKImageCropper.framework */; };
+		DE6B4ECE206CDB940039293C /* RSKImageCropper.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DE6B4ECC206CDB940039293C /* RSKImageCropper.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		DEF2405A2009A1860011D6B2 /* libRNSVG.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DEF240532009A1340011D6B2 /* libRNSVG.a */; };
 		DEFCA42D1FE7B92300E0124A /* libRCTOrientation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DE9C31F91FE2A41600B982A1 /* libRCTOrientation.a */; };
 /* End PBXBuildFile section */
@@ -341,6 +345,21 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		DE6B4ECB206CDB8F0039293C /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				DE6B4EA2206CDB8F0039293C /* QBImagePicker.framework in Embed Frameworks */,
+				DE6B4ECE206CDB940039293C /* RSKImageCropper.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		008F07F21AC5B25A0029DE68 /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
 		00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTActionSheet.xcodeproj; path = "../node_modules/react-native/Libraries/ActionSheetIOS/RCTActionSheet.xcodeproj"; sourceTree = "<group>"; };
@@ -353,7 +372,7 @@
 		00E356F21AD99517003FC87E /* redux_front_appTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = redux_front_appTests.m; sourceTree = "<group>"; };
 		139105B61AF99BAD00B5F7CC /* RCTSettings.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTSettings.xcodeproj; path = "../node_modules/react-native/Libraries/Settings/RCTSettings.xcodeproj"; sourceTree = "<group>"; };
 		139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTWebSocket.xcodeproj; path = "../node_modules/react-native/Libraries/WebSocket/RCTWebSocket.xcodeproj"; sourceTree = "<group>"; };
-		13B07F961A680F5B00A75B9A /* redux_front_app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = redux_front_app.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07F961A680F5B00A75B9A /* spolyzer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = spolyzer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = redux_front_app/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = redux_front_app/AppDelegate.m; sourceTree = "<group>"; };
 		13B07FB21A68108700A75B9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -372,6 +391,8 @@
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
 		D0FE173E9CC3476EA766FF29 /* RNImagePicker.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNImagePicker.xcodeproj; path = "../node_modules/react-native-image-picker/ios/RNImagePicker.xcodeproj"; sourceTree = "<group>"; };
 		DE23DAC720271C6A00132CA5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		DE6B4EA0206CDB8F0039293C /* QBImagePicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = QBImagePicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DE6B4ECC206CDB940039293C /* RSKImageCropper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RSKImageCropper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEF240272009A1340011D6B2 /* RNSVG.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNSVG.xcodeproj; path = "../node_modules/react-native-svg/ios/RNSVG.xcodeproj"; sourceTree = "<group>"; };
 		FE38AC9AE140472E8D5FA597 /* imageCropPicker.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = imageCropPicker.xcodeproj; path = "../node_modules/react-native-image-crop-picker/ios/imageCropPicker.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -397,6 +418,7 @@
 				5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */,
 				00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */,
 				00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */,
+				DE6B4ECD206CDB940039293C /* RSKImageCropper.framework in Frameworks */,
 				00C302E81ABCBA2D00DB3ED1 /* libRCTImage.a in Frameworks */,
 				133E29F31AD74F7200F7D852 /* libRCTLinking.a in Frameworks */,
 				00C302E91ABCBA2D00DB3ED1 /* libRCTNetwork.a in Frameworks */,
@@ -406,6 +428,7 @@
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
 				C08EC8AC1DE2478687E261A6 /* libRNImagePicker.a in Frameworks */,
 				9B779FB679E94983B64C5534 /* libimageCropPicker.a in Frameworks */,
+				DE6B4EA1206CDB8F0039293C /* QBImagePicker.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -601,6 +624,8 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				DE6B4ECC206CDB940039293C /* RSKImageCropper.framework */,
+				DE6B4EA0206CDB8F0039293C /* QBImagePicker.framework */,
 				DE23DAC720271C6A00132CA5 /* Images.xcassets */,
 				13B07FAE1A68108700A75B9A /* redux_front_app */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
@@ -617,7 +642,7 @@
 		83CBBA001A601CBA00E9B192 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				13B07F961A680F5B00A75B9A /* redux_front_app.app */,
+				13B07F961A680F5B00A75B9A /* spolyzer.app */,
 				00E356EE1AD99517003FC87E /* redux_front_appTests.xctest */,
 				2D02E47B1E0B4A5D006451C7 /* redux_front_app-tvOS.app */,
 				2D02E4901E0B4A5D006451C7 /* redux_front_app-tvOSTests.xctest */,
@@ -712,6 +737,7 @@
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
+				DE6B4ECB206CDB8F0039293C /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -719,7 +745,7 @@
 			);
 			name = redux_front_app;
 			productName = "Hello World";
-			productReference = 13B07F961A680F5B00A75B9A /* redux_front_app.app */;
+			productReference = 13B07F961A680F5B00A75B9A /* spolyzer.app */;
 			productType = "com.apple.product-type.application";
 		};
 		2D02E47A1E0B4A5D006451C7 /* redux_front_app-tvOS */ = {
@@ -770,6 +796,10 @@
 					00E356ED1AD99517003FC87E = {
 						CreatedOnToolsVersion = 6.2;
 						TestTargetID = 13B07F861A680F5B00A75B9A;
+					};
+					13B07F861A680F5B00A75B9A = {
+						DevelopmentTeam = 4JFLJM8MPM;
+						ProvisioningStyle = Manual;
 					};
 					2D02E47A1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -1344,8 +1374,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
+				DEVELOPMENT_TEAM = 4JFLJM8MPM;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-orientation/iOS/RCTOrientation/**",
@@ -1363,7 +1396,10 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_NAME = redux_front_app;
+				PRODUCT_BUNDLE_IDENTIFIER = com.waterfowl.spolyzer;
+				PRODUCT_NAME = spolyzer;
+				PROVISIONING_PROFILE = "bfe13a7a-d789-4557-9338-38fda00dffd8";
+				PROVISIONING_PROFILE_SPECIFIER = spolyzer_deploy_gate;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -1372,7 +1408,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4JFLJM8MPM;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-orientation/iOS/RCTOrientation/**",
@@ -1390,7 +1429,10 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_NAME = redux_front_app;
+				PRODUCT_BUNDLE_IDENTIFIER = com.waterfowl.spolyzer;
+				PRODUCT_NAME = spolyzer;
+				PROVISIONING_PROFILE = "bfe13a7a-d789-4557-9338-38fda00dffd8";
+				PROVISIONING_PROFILE_SPECIFIER = spolyzer_deploy_gate;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;

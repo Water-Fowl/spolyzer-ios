@@ -1,7 +1,6 @@
 import { Actions } from "react-native-router-flux";
-import { CALL_API } from "redux-api-middleware";
 
-import { GET_GAMES_ENDPOINT } from "../../../config/api";
+import { GAMES_ENDPOINT } from "../../../config/api";
 import {
   GET_GAMES_RECEIVED,
   GET_GAMES_REQUEST
