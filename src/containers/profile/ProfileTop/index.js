@@ -53,10 +53,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1
   },
-  userIcon: {
-    margin: 15,
-    opacity: 0.3
-  },
   gameSettingBorder: {
     marginTop: 10,
     padding: 5,

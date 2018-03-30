@@ -32,11 +32,10 @@ function getShotTypesRequest() {
 }
 
 function getShotTypesReceived(shotTypes) {
-  const reshapedShotTypes = {}
+  const reshapedShotTypes = {};
   for (shotType in shotTypes){
-    reshapedShotTypes[shotType.id] = shotType.name_ja
+    reshapedShotTypes[shotType.id] = shotType.name_ja;
   }
-  console.log(reshapedShotTypes)
   return {
     type: GET_SHOT_TYPES_RECEIVED,
     shotTypes: reshapedShotTypes

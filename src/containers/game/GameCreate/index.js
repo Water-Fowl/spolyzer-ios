@@ -51,7 +51,7 @@ class GameCreate extends React.Component {
         <ProfileImage size={80} imageSource={user.image.url}/>
         <Text style={styles.nameText}> {user.name} </Text>
       </View>
-    )
+    );
   }
 
   renderUserIcon(unitIndex, userIndex){

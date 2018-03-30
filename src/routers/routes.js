@@ -37,19 +37,18 @@ class Route extends React.Component{
     this.state = {
       isValidToken: false,
       loading: true
-    }
+    };
     this.componentWillMountValidToken.bind(this);
     this.networkError.bind(this);
   }
   networkError(){
     return new Promise((resolve) => {
-      Alert.alert("ネットワークエラー", "インターネットの接続を確認して下さい", [{text: "再接続", onPress: () => { this.componentWillMountValidToken() } }])
-    })
+      Alert.alert("ネットワークエラー", "インターネットの接続を確認して下さい", [{text: "再接続", onPress: () => { this.componentWillMountValidToken(); } }]);
+    });
   }
   componentWillMountValidToken(){
     /* バドミントンのIDは1*/
     const sport_id = 1;
-    console.log(this.props.header)
 
     this.props.dispatch(validateToken(this.props.header))
       .then(() => {
@@ -61,20 +60,20 @@ class Route extends React.Component{
         this.setState({
           isValidToken: this.props.isValidToken,
           loading: false
-        })
+        });
       })
       .then(() => {
         this.props.dispatch(getShotTypes(sport_id, this.props.header));
-      })
+      });
   }
   componentWillMount(){
-    this.componentWillMountValidToken()
+    this.componentWillMountValidToken();
   }
   render(){
     if(this.state.loading){
       return(
         <View />
-      )
+      );
     }
     return (
       <RouterWithRedux>

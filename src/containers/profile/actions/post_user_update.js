@@ -43,6 +43,6 @@ export function receivedPostUserUpdate(name, email, image){
     type: RECEIVED_POST_USER_UPDATE,
     userName: name,
     userEmail: email,
-    userImageSource: image,
+    userImageSource: image
   };
 }

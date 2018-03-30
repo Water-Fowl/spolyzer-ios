@@ -30,7 +30,7 @@ export default class SelectedUserIcon extends React.Component{
 
 const styles = StyleSheet.create({
   container:{
-    alignItems: "center",
+    alignItems: "center"
   },
   nameText: {
     color: "white",

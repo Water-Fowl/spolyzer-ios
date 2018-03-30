@@ -32,7 +32,6 @@ class SearchedUserAccountContainer extends React.Component{
     this.props.dispatch(removeUser(selectedIndex));
   }
   render(){
-    console.log(this.props.users);
     if(!this.props.users){
       return null;
     }

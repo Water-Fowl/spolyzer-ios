@@ -20,7 +20,7 @@ export default class ProfileImage extends React.Component {
           }}
           source={{
             uri: this.props.imageSource,
-            cache: 'reload'
+            cache: "reload"
           }}
         />
       );

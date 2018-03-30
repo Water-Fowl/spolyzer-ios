@@ -52,15 +52,5 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 18,
     color: "white"
-  },
-  userStatus: {
-    width: "30%",
-    backgroundColor: "transparent",
-    justifyContent: "center"
-  },
-  userStatusText: {
-    fontWeight: "bold",
-    fontSize: 18,
-    color: "white"
   }
 });

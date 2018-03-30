@@ -148,15 +148,6 @@ const styles = StyleSheet.create({
     alignSelf: "flex-start",
     marginRight: 22
   },
-  gameSelectText: {
-    color: "#ffffff",
-    fontSize: 15,
-    marginTop: 36,
-    marginLeft: 40,
-    backgroundColor: "transparent",
-    fontWeight: "bold",
-    alignSelf: "flex-start"
-  },
   navigateButton: {
     marginTop: 50
   }

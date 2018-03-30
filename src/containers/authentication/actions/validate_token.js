@@ -16,7 +16,6 @@ export function validateToken(authHeaders, callback) {
         "Content-Type": "application/json"
       }
     }).then(function(response){
-      console.log(response);
       if(response.ok){
         dispatch(getValidTokenReceived(true));
         dispatch(getUser(authHeaders));
@@ -26,9 +25,9 @@ export function validateToken(authHeaders, callback) {
       }
 
     })
-    .catch(function(err){
-      dispatch(networkError("ネットワークの接続"))
-    })
+      .catch(function(err){
+        dispatch(networkError("ネットワークの接続"));
+      });
   };
 }
 
@@ -49,5 +48,5 @@ function networkError(msg){
   return {
     type: actionType.NETWORK_ERROR,
     msg
-  }
+  };
 }

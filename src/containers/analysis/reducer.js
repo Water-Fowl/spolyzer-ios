@@ -71,7 +71,6 @@ export default function analysisReducer(state = initialState, action = {}) {
       action.minPosition,
       action.maxPosition
     );
-    console.log(positionsCountList)
     return Object.assign({}, state, {
       selectedPositionsCount: positionsCountList
     });

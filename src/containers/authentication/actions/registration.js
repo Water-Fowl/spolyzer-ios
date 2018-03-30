@@ -23,16 +23,16 @@ export function postRegistration(body) {
       body: JSON.stringify(body)
     })
       .then(async function(response){
-        dispatch(receivedRegistration(response.ok))
+        dispatch(receivedRegistration(response.ok));
         if(response.ok){
           Actions.confirmation();
         }
         else{
-          let json = await response.json()
-          let messages = json.errors.full_messages.join("\n")
+          let json = await response.json();
+          let messages = json.errors.full_messages.join("\n");
           return new Promise((resolve) => {
-            Alert.alert("エラー", messages, [{ text: "了解", onPress: () => { resolve(false) } }])
-          })
+            Alert.alert("エラー", messages, [{ text: "了解", onPress: () => { resolve(false); } }]);
+          });
         }
       })
       .catch((error) => {

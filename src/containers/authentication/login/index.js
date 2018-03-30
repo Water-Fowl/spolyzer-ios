@@ -20,7 +20,6 @@ import { mapStateToProps } from "utils";
 class Login extends React.Component {
   constructor(props) {
     super(props);
-    console.log(props);
     this.postLoginEvent.bind(this);
     this.state = {
       name: "yamad07",
@@ -35,7 +34,7 @@ class Login extends React.Component {
   }
 
   postLoginEvent() {
-    const sportId = 1
+    const sportId = 1;
     const loginForm = {
       name: this.state.name,
       email: this.state.email,
@@ -47,12 +46,12 @@ class Login extends React.Component {
           this.props.dispatch(getShotTypes(sportId, header));
         }
         else {
-          Promise.reject()
+          Promise.reject();
         }
       })
       .then(() => {
         Actions.tab();
-      })
+      });
   }
   render() {
     return (

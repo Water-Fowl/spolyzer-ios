@@ -1,9 +1,5 @@
 import React from "react";
 import { Actions } from "react-native-router-flux";
-import {
-  Image,
-  StyleSheet
-} from "react-native";
 import { Provider, connect } from "react-redux";
 import {
   Router,
@@ -45,10 +41,3 @@ export default class ReduxRoute extends React.Component{
     );
   }
 }
-
-
-const styles = StyleSheet.create({
-  icon: {
-    margin: 10
-  }
-});

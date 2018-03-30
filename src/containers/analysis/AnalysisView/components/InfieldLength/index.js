@@ -44,10 +44,10 @@ const styles = StyleSheet.create({
     borderWidth: 1.3,
     borderRadius: 3,
     opacity: 0.3,
-    justifyContent: "center",
+    justifyContent: "center"
   },
   text:{
     textAlign: "center",
-    alignSelf: "center",
+    alignSelf: "center"
   }
 });

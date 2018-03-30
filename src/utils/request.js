@@ -11,10 +11,10 @@ export function postApiRequest(endPoint, body, headers={}, requestCallback, rece
       body: JSON.stringify(body)
     })
       .then((response) => {
-        dispatch(receivedCallback())
-        return response
-      })
-  }
+        dispatch(receivedCallback());
+        return response;
+      });
+  };
 }
 
 export function getApiRequest(endPoint, params, headers={}, requestCallback, receivedCallback){
@@ -30,8 +30,8 @@ export function getApiRequest(endPoint, params, headers={}, requestCallback, rec
       body: JSON.stringify(body)
     })
       .then((response) => {
-        dispatch(receivedCallback())
-        return response
-      })
-  }
+        dispatch(receivedCallback());
+        return response;
+      });
+  };
 }

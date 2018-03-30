@@ -13,7 +13,6 @@ import { mapStateToProps } from "utils";
 class ShotTypeButton extends React.Component {
 
   componentWillReceiveProps(nextProps){
-    console.log(nextProps);
     if(nextProps.sport.shotTypes){
       this.forceUpdate();
     }

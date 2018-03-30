@@ -43,9 +43,9 @@ class SignUp extends React.Component {
         name: this.state.name,
         email: this.state.email,
         password: this.state.password,
-        password_confirmation: this.state.password_confirmation,
+        password_confirmation: this.state.password_confirmation
       };
-      this.props.dispatch(postRegistration(registration_form))
+      this.props.dispatch(postRegistration(registration_form));
     }
     else{
       this.setState({isErrorVisible: true});

@@ -60,7 +60,6 @@ class ProfileEdit extends React.Component {
       height: 200,
       cropperCircleOverlay: true
     }).then((image) => {
-      console.log(image);
       this.setState({
         userImageSource: image.path,
         imageData: `data:image/png;base64, ${image.data}`
@@ -77,15 +76,14 @@ class ProfileEdit extends React.Component {
     const { dispatch } = this.props;
     const body = {
       name: this.state.userName,
-      email: this.state.userEmail,
+      email: this.state.userEmail
     };
     if(this.state.imageData){
-      body['image'] = this.state.imageData
+      body["image"] = this.state.imageData;
     }
     const params = {
       id: this.props.authentication.userId
     };
-    console.log(body.image);
     dispatch(postUserUpdate(body, params, this.props.authentication.header)).then(() => {
       Actions.profileTop();
     });

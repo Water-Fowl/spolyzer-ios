@@ -25,7 +25,7 @@ class InFieldCircle extends React.Component {
         style={styles.blueCircle}
         onPress={() => {
           this.setPositionEvent();
-          }
+        }
         }
       >
         <Text style={styles.text}>{this.props.droppedAtId}</Text>
@@ -46,10 +46,10 @@ const styles = StyleSheet.create({
     borderRadius: 100,
     opacity: 0.3,
     alignSelf: "center",
-    justifyContent: "center",
+    justifyContent: "center"
   },
   text:{
     textAlign: "center",
-    alignSelf: "center",
+    alignSelf: "center"
   }
 });

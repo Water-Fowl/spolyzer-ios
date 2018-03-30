@@ -32,14 +32,14 @@ import {
 } from "./components";
 import setPositionsCount from "../actions/set_positions_count";
 import { mapStateToProps } from "utils";
-const IN_MIN_POSITION = 7
-const IN_MAX_POSITION = 13
-const OUT_MIN_POSITION = 1
-const OUT_MAX_POSITION = 6
-const OUT = 0
-const IN = 1
-const LEFT = 0
-const RIGHT = 1
+const IN_MIN_POSITION = 7;
+const IN_MAX_POSITION = 13;
+const OUT_MIN_POSITION = 1;
+const OUT_MAX_POSITION = 6;
+const OUT = 0;
+const IN = 1;
+const LEFT = 0;
+const RIGHT = 1;
 
 class AnalysisView extends React.Component {
   constructor(props){
@@ -48,8 +48,8 @@ class AnalysisView extends React.Component {
       /* Out = 0, In = 1 */
       /* Left = 0, Right = 1 */
       onPressOut: OUT,
-      onPressSide: LEFT,
-    }
+      onPressSide: LEFT
+    };
   }
 
   setPositionEvent(minPosition, maxPosition, side) {
@@ -64,12 +64,12 @@ class AnalysisView extends React.Component {
     if(this.state.onPressSide == side && this.state.onPressOut == out){
       return(
         <Text style={styles.droppedIdText}>{droppedAtId}</Text>
-      )
+      );
     }
     else{
       return(
-      <View/>
-      )
+        <View/>
+      );
     }
   }
   _renderInFieldLength(side, droppedAtId){
@@ -78,7 +78,7 @@ class AnalysisView extends React.Component {
         style={styles.varticalBlueBar}
         onPress={() => {
           this.setPositionEvent(IN_MIN_POSITION, IN_MAX_POSITION, side);
-          this.setState({ onPressOut: IN, onPressSide: side })
+          this.setState({ onPressOut: IN, onPressSide: side });
         }}
       >
         {this._renderFieldButtonText(side, IN, droppedAtId)}
@@ -136,12 +136,12 @@ class AnalysisView extends React.Component {
         onPress={() => {
           this.setPositionEvent(IN_MIN_POSITION, IN_MAX_POSITION, side);
           this.setState({ onPressOut: IN, onPressSide: side });
-          }
+        }
         }
       >
         {this._renderFieldButtonText(side, IN, droppedAtId)}
       </TouchableHighlight>
-    )
+    );
   }
 
   _renderOutArea(){
@@ -244,8 +244,8 @@ class AnalysisView extends React.Component {
               </View>
               <View style={styles.inFieldContainer}>
                 <View style={styles.inFieldLengthContainer}>
-                { this._renderInFieldLength(0, "E") }
-                { this._renderInFieldLength(0, "D") }
+                  { this._renderInFieldLength(0, "E") }
+                  { this._renderInFieldLength(0, "D") }
                 </View>
                 <View style={styles.inFieldSideContainer}>
                   { this._renderInFieldSide(0, "F") }
@@ -333,7 +333,7 @@ const styles = StyleSheet.create({
     borderRadius: 3,
     opacity: 0.3,
     alignSelf: "center",
-    justifyContent: "center",
+    justifyContent: "center"
   },
   varticalBlueBar: {
     borderColor: "#2EA7E0",
@@ -343,7 +343,7 @@ const styles = StyleSheet.create({
     borderWidth: 1.3,
     borderRadius: 3,
     opacity: 0.3,
-    justifyContent: "center",
+    justifyContent: "center"
   },
   blueCircle: {
     borderColor: "#2EA7E0",
@@ -354,7 +354,7 @@ const styles = StyleSheet.create({
     borderRadius: 100,
     opacity: 0.3,
     alignSelf: "center",
-    justifyContent: "center",
+    justifyContent: "center"
   },
   varticalYellowBarLeft: {
     borderColor: "#A29A67",
@@ -363,7 +363,7 @@ const styles = StyleSheet.create({
     height: 40,
     borderWidth: 1.3,
     borderRadius: 3,
-    justifyContent: "center",
+    justifyContent: "center"
   },
   horizontalYellowBarLeft: {
     borderColor: "#A29A67",
@@ -373,12 +373,12 @@ const styles = StyleSheet.create({
     width: 40,
     height: 10,
     alignSelf: "center",
-    justifyContent: "center",
+    justifyContent: "center"
   },
   droppedIdText:{
     backgroundColor: "transparent",
     textAlign: "center",
-    alignSelf: "center",
+    alignSelf: "center"
   },
   analysisInformationContiner: {
     flexDirection: "row"

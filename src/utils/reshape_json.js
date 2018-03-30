@@ -4,7 +4,7 @@ function pushPositionCount(list, count, positionString){
   if(count[0]){
     list.push({
       label: positionString,
-      value: count[0],
+      value: count[0]
     });
   }
   else{
@@ -45,7 +45,6 @@ export function reshapePositionsCount(counts, side, minPosition, maxPosition){
 }
 
 export function reshapeShotTypeCounts(counts, shotTypes){
-  console.log(counts)
   shotTypeCountsList = [];
   missShotTypeCountsList = [];
   shotTypesList = [];

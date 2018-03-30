@@ -28,17 +28,17 @@ export function postLogin(body) {
         let json = await response.json();
 
         if(!response.ok){
-          let messages = json.errors.join("\n")
+          let messages = json.errors.join("\n");
           return new Promise((resolve) => {
-            Alert.alert("エラー", messages, [{ text: "了解", onPress: () => { resolve(false) } }])
-          })
+            Alert.alert("エラー", messages, [{ text: "了解", onPress: () => { resolve(false); } }]);
+          });
           return false;
         }
         dispatch(receivedLogin());
         dispatch(getUserReceived(json.data));
 
-        const responseHeader = await response.headers
-        const header = responseToHeader(responseHeader)
+        const responseHeader = await response.headers;
+        const header = responseToHeader(responseHeader);
         dispatch(setToken(header));
 
         return header;
@@ -69,8 +69,8 @@ function responseToHeader(responseHeader){
     "uid": responseHeader.get("uid"),
     "client": responseHeader.get("client"),
     "token-type": responseHeader.get("token-type")
-  }
-  return header
+  };
+  return header;
 }
 
 function setToken(header){

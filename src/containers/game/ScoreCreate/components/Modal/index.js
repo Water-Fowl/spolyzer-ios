@@ -33,7 +33,7 @@ class Modal extends React.Component {
     return (
       <View style={styles.container}>
         <ScoreCreateShotTypeButton/>
-        <TouchableHighlight style={styles.touchableContainer} onPress={() => {this.hideModalEvent()}} >
+        <TouchableHighlight style={styles.touchableContainer} onPress={() => {this.hideModalEvent();}} >
           <Text style={styles.close}>戻る</Text>
         </TouchableHighlight>
       </View>
@@ -56,6 +56,6 @@ const styles = StyleSheet.create({
     marginTop: 10
   },
   close: {
-    color: "white",
+    color: "white"
   }
 });

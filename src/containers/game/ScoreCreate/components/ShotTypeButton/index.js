@@ -16,13 +16,12 @@ import {
 import {
   hideScoreCreateModal
 } from "../../../actions/set_modal";
-const NET_MIN_POSITION = 8
-const NET_MAX_POSITION = 13
+const NET_MIN_POSITION = 8;
+const NET_MAX_POSITION = 13;
 
 
 class ScoreCreateShotTypeButton extends React.Component {
   setShotTypeEvent(shotTypeId, missType=0) {
-    console.log(shotTypeId)
     this.props.dispatch(setShotType(shotTypeId, missType));
   }
   hideModalEvent() {
@@ -46,7 +45,7 @@ class ScoreCreateShotTypeButton extends React.Component {
       <View>
         { shotTypesLeftComponent }
       </View>
-    )
+    );
   }
   renderRightButtons(){
     if (this.props.game.position == NET_MAX_POSITION || this.props.game.position == NET_MIN_POSITION ){
@@ -67,11 +66,11 @@ class ScoreCreateShotTypeButton extends React.Component {
         <View>
           { shotTypesRightComponent }
         </View>
-      )
+      );
     }
     return (
       null
-    )
+    );
   }
   render() {
     return (
