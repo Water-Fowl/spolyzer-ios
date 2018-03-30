@@ -7,6 +7,9 @@ import {
   View,
   TouchableOpacity
 } from "react-native";
+import {
+  ProfileImage
+} from "components";
 import { Actions } from "react-native-router-flux";
 
 export default class DrawerContent extends React.Component {
@@ -15,13 +18,8 @@ export default class DrawerContent extends React.Component {
     return (
     	<View style={styles.drawerContainer}>
         <View style={styles.userContainer}>
-          <Image
-            source={require("../assets/img/my_page_user_icon.png")}
-            style={styles.userIcon}
-          />
-          <Text　style={styles.userName}>
-            Ikeda Yoshiki
-          </Text>
+          <ProfileImage size={30} imageSource={this.props.imageSource}/>
+          <Text style={styles.userName}>{this.props.name}</Text>
         </View>
         <View style={styles.sportContainer}>
           <View style={styles.kyugiContainer}>
@@ -58,6 +56,7 @@ const styles = StyleSheet.create({
   userContainer: {
     borderBottomColor: "#2EA7E0",
     borderWidth: 3,
+    marginTop: 20,
     flexDirection: "row"
   },
   userIcon: {
@@ -68,8 +67,6 @@ const styles = StyleSheet.create({
     height: 50
   },
   userName: {
-    marginTop: 38,
-    marginLeft: 8,
     color: "white",
     fontSize: 20
   },
