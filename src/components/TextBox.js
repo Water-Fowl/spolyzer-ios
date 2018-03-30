@@ -10,7 +10,7 @@ export default class TextBox extends React.Component {
     if (this.props.content){
       return(
         <Text style={styles.textBox}></Text>
-      )
+      );
     }
   }
 }
@@ -28,6 +28,6 @@ const styles = StyleSheet.create({
     borderColor: "#28a8de",
     borderRadius: 3,
     borderWidth: 1
-  },
+  }
 
-})
+});

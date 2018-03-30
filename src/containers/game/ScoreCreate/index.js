@@ -103,18 +103,18 @@ class ScoreCreate extends React.Component {
   }
 
   renderUnitUsersName(users){
-    const unitUserNameComponentList = []
+    const unitUserNameComponentList = [];
     for (let user of users){
-      console.log(user)
+      console.log(user);
       unitUserNameComponentList.push(
         <Text style={styles.scoreInformationUserName}>{user.name}</Text>
-      )
+      );
     }
     return (
       <View style={styles.scoreInformationUserNameContainer}>
         { unitUserNameComponentList }
       </View>
-    )
+    );
   }
 
   render() {

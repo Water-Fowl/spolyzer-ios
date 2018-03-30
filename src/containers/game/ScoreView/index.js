@@ -29,35 +29,34 @@ import resetState from "../actions/reset_state";
 class ScoreView extends React.Component {
 
   renderUnitUsersName(users){
-    const unitUserNameComponentList = []
+    const unitUserNameComponentList = [];
     for (let user of users){
-      console.log(user)
       unitUserNameComponentList.push(
         <Text style={styles.userNameText}> {user.name} </Text>
-      )
+      );
     }
     return (
       <View style={styles.gameInformationTextContainer}>
         { unitUserNameComponentList }
       </View>
-    )
+    );
   }
 
   renderWinLossText(side){
     if( this.props.game.scoreCounts[side] > this.props.game.scoreCounts[Number(!side)]){
       return(
         <Text style={styles.winLossText}>Win</Text>
-      )
+      );
     }
     else if( this.props.game.scoreCounts[side] < this.props.game.scoreCounts[Number(!side)]){
       return(
         <Text style={styles.winLossText}>Loss</Text>
-      )
+      );
     }
     else {
       return(
         <Text style={styles.winLossText}>Draw</Text>
-      )
+      );
     }
   }
 
@@ -174,9 +173,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     marginTop: 20
-  },
-  unitContainer: {
-    flex: 1,
   },
   userNameText: {
     color: "white",

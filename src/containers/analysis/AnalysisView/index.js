@@ -32,7 +32,7 @@ const OUT = 0;
 const IN = 1;
 const LEFT = 0;
 const RIGHT = 1;
-const TERM_LIST = ["Day", "Week", "Month"]
+const TERM_LIST = ["Day", "Week", "Month"];
 
 class AnalysisView extends React.Component {
   constructor(props){
@@ -181,7 +181,7 @@ class AnalysisView extends React.Component {
   }
 
   _renderOpponentUserNames(users){
-    const opponentUserNameComponentList = []
+    const opponentUserNameComponentList = [];
     for (let userIdx in users){
       opponentUserNameComponentList.push(
         <View style={styles.flexDirectionRow}>
@@ -191,13 +191,13 @@ class AnalysisView extends React.Component {
           />
           <Text style={styles.opponentName}>{users[userIdx].name}</Text>
         </View>
-      )
+      );
     }
     return(
       <View style={styles.opponentUserNameContainer}>
         { opponentUserNameComponentList }
       </View>
-    )
+    );
   }
 
   render() {
@@ -319,7 +319,7 @@ const styles = StyleSheet.create({
     fontSize: 26,
     alignSelf: "center",
     marginTop: 16,
-    backgroundColor: "transparent",
+    backgroundColor: "transparent"
 
   },
   horizontalBlueBar: {
@@ -405,13 +405,6 @@ const styles = StyleSheet.create({
     borderRadius: 2,
     flexDirection: "row"
   },
-  personImage: {
-    marginTop: 2,
-    marginLeft: 8,
-    height: 20,
-    width: 20,
-    opacity: 0.5
-  },
   opponentName: {
     backgroundColor: "transparent",
     color: "#ffffff",
@@ -419,10 +412,10 @@ const styles = StyleSheet.create({
     fontSize: 12,
     alignSelf: "center",
     paddingLeft: 4,
-    paddingRight: 4,
+    paddingRight: 4
   },
   flexDirectionRow: {
-    flexDirection: "row",
+    flexDirection: "row"
   },
   optionContainer: {
     flexDirection: "row",
