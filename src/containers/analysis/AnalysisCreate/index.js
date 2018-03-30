@@ -30,14 +30,14 @@ import { mapStateToProps } from "utils";
 class AnalysisCreate extends React.Component {
   constructor(props) {
     super(props);
-    this.getGamesEvent.bind(this);
+    this.getPositionsCountsEvent.bind(this);
     this.setPicker.bind(this);
     this.hidePicker.bind(this);
     this.state = {
       isPickerVisible: false
     };
   }
-  getGamesEvent() {
+  getPositionsCountsEvent() {
     var userIds = [];
     for (key in this.props.analysis.analysisUsers){
       let user = this.props.analysis.analysisUsers[key];
@@ -96,7 +96,7 @@ class AnalysisCreate extends React.Component {
             <OpponentUserName index={1}/>
           </TouchableOpacity>
         </View>
-        <NavigateButton action={() => {this.getGamesEvent();}} style={styles.navigateButton} text="分析" />
+        <NavigateButton action={() => {this.getPositionsCountsEvent();}} style={styles.navigateButton} text="分析" />
         <RecentlyGamesPicker isVisible={this.state.isPickerVisible} hidePicker={()=> {this.hidePicker();}}/>
       </View>
     );
