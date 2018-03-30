@@ -1,23 +1,15 @@
 import React from "react-native";
 
 export default class Button extends React.Component {
-  constructor(props) {
-    super(props);
-    const pressed = false;
-    this.pressButtonEvent.bind(this);
-    this.state = { pressed };
-  }
   render() {
     return (
       <TouchableHighlight
         activeOpacity={0.6}
         underlayColor="transparent"
-        style={this.state.pressed ? styles.buttonPressed : styles.button}
-        onPress={() => {
-          this.pressButtonEvent(this.props.currentShotTypeId);
-        }}
+        style={this.props.isPressed ? styles.buttonPressed : styles.button}
+        onPress={this.props.onPress}
       >
-        <Text style={this.state.pressed ? styles.textPressed : styles.text}>
+        <Text style={styles.text}>
           {this.props.children}
         </Text>
       </TouchableHighlight>
@@ -26,20 +18,6 @@ export default class Button extends React.Component {
 }
 
 const styles = StyleSheet.create({
-  textPressed: {
-    color: "#ffffff",
-    fontSize: 15,
-    backgroundColor: "transparent",
-    fontWeight: "bold"
-  },
-
-  text: {
-    color: "#ffffff",
-    fontSize: 15,
-    backgroundColor: "transparent",
-    fontWeight: "bold"
-  },
-
   buttonPressed: {
     backgroundColor: "#0a2444",
     height: 28,
