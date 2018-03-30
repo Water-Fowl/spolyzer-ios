@@ -11,7 +11,7 @@ import {
   Router,
   Scene,
   Tabs,
-  Drawer,
+  Drawer
 } from "react-native-router-flux";
 import {
   AnalysisCreate,
@@ -25,7 +25,7 @@ import {
   ScoreCreate,
   ScoreView,
   SignUp,
-  Confirmation,
+  Confirmation
 } from "../containers";
 import {
   DrawerContent
