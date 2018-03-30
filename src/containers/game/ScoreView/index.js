@@ -27,23 +27,57 @@ import { mapStateToProps } from "utils";
 import resetState from "../actions/reset_state";
 
 class ScoreView extends React.Component {
+
+  renderUnitUsersName(users){
+    const unitUserNameComponentList = []
+    for (let user of users){
+      console.log(user)
+      unitUserNameComponentList.push(
+        <Text style={styles.userNameText}> {user.name} </Text>
+      )
+    }
+    return (
+      <View style={styles.gameInformationTextContainer}>
+        { unitUserNameComponentList }
+      </View>
+    )
+  }
+
+  renderWinLossText(side){
+    if( this.props.game.scoreCounts[side] > this.props.game.scoreCounts[Number(!side)]){
+      return(
+        <Text style={styles.winLossText}>Win</Text>
+      )
+    }
+    else if( this.props.game.scoreCounts[side] < this.props.game.scoreCounts[Number(!side)]){
+      return(
+        <Text style={styles.winLossText}>Loss</Text>
+      )
+    }
+    else {
+      return(
+        <Text style={styles.winLossText}>Draw</Text>
+      )
+    }
+  }
+
   render() {
     return (
-      <View style={styles.container}>
+      <ScrollView style={styles.container}>
         <TopContentBar>単分析結果</TopContentBar>
         <View>
           <View style={styles.userNameContainer}>
-            <Text style={styles.userNameText}>Name</Text>
-            <Text style={styles.userNameText}>Name</Text>
+            { this.renderUnitUsersName(this.props.game.gameUnits[0].users) }
+            { this.renderUnitUsersName(this.props.game.gameUnits[1].users) }
           </View>
           <View style={styles.gameInformationsContaier}>
             <View style={styles.gameInformationTextContainer}>
-              <Text style={styles.winLossText}>Win</Text>
+              { this.renderWinLossText(side=0) }
               <Text style={styles.scoreText}>{this.props.game.scoreCounts[0]}</Text>
             </View>
             <View style={styles.gameInformationTextContainer}>
               <Text style={styles.scoreText}>{this.props.game.scoreCounts[1]}</Text>
-              <Text style={styles.winLossText}>Lose</Text>
+              { this.renderWinLossText(side=1) }
             </View>
           </View>
           <View style={styles.field}>
@@ -125,7 +159,7 @@ class ScoreView extends React.Component {
             </TouchableOpacity>
           </View>
         </View>
-      </View>
+      </ScrollView>
     );
   }
 }
@@ -139,9 +173,10 @@ const styles = StyleSheet.create({
   userNameContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
-    paddingLeft: 20,
-    paddingRight: 20,
     marginTop: 20
+  },
+  unitContainer: {
+    flex: 1,
   },
   userNameText: {
     color: "white",
@@ -149,17 +184,13 @@ const styles = StyleSheet.create({
     textAlign: "center",
     paddingTop: 5,
     paddingBottom: 5,
-    flex: 0.4,
-    fontSize: 20,
+    fontSize: 15,
+    paddingLeft: 14,
+    paddingRight: 14,
     backgroundColor: "transparent",
     borderColor: "#28a8de",
     borderRadius: 3,
     borderWidth: 1
-  },
-  gameInformationTextContainer: {
-    flexDirection: "row",
-    paddingLeft: 20,
-    paddingRight: 20
   },
   gameInformationsContaier: {
     flexDirection: "row",
@@ -167,7 +198,7 @@ const styles = StyleSheet.create({
     marginTop: 8
   },
   gameInformationTextContainer: {
-    flex: 0.4,
+    flex: 1,
     justifyContent: "space-between",
     paddingLeft: 50,
     paddingRight: 50,

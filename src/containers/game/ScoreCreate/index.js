@@ -62,6 +62,7 @@ class ScoreCreate extends React.Component {
     };
     this.props.dispatch(postGame(body, this.props.authentication.header));
   }
+
   renderInFieldCircle(){
     return (
       <TouchableHighlight
@@ -74,6 +75,7 @@ class ScoreCreate extends React.Component {
       </TouchableHighlight>
     );
   }
+
   renderInFieldLength(){
     return (
       <TouchableHighlight
@@ -86,6 +88,7 @@ class ScoreCreate extends React.Component {
       </TouchableHighlight>
     );
   }
+
   renderInFieldSide() {
     return (
       <TouchableHighlight
@@ -98,6 +101,22 @@ class ScoreCreate extends React.Component {
       </TouchableHighlight>
     );
   }
+
+  renderUnitUsersName(users){
+    const unitUserNameComponentList = []
+    for (let user of users){
+      console.log(user)
+      unitUserNameComponentList.push(
+        <Text style={styles.scoreInformationUserName}>{user.name}</Text>
+      )
+    }
+    return (
+      <View style={styles.scoreInformationUserNameContainer}>
+        { unitUserNameComponentList }
+      </View>
+    )
+  }
+
   render() {
     return (
       <View style={{
@@ -112,9 +131,7 @@ class ScoreCreate extends React.Component {
         <TopContentBar>スコアシート</TopContentBar>
         <View style={styles.scoreInformationBar}>
           <View style={styles.scoreInformationContainer}>
-            <View style={styles.scoreInformationUserNameContainer}>
-              <Text style={styles.scoreInformationUserName}>Name</Text>
-            </View>
+            { this.renderUnitUsersName(this.props.game.gameUnits[0].users) }
             <View style={styles.scoreInformationPointContainer}>
               <Text style={styles.scoreInformationPoint}>{this.props.game.scoreCounts[0]}</Text>
             </View>
@@ -126,9 +143,7 @@ class ScoreCreate extends React.Component {
             <View style={styles.scoreInformationPointContainer}>
               <Text style={styles.scoreInformationPoint}>{this.props.game.scoreCounts[1]}</Text>
             </View>
-            <View style={styles.scoreInformationUserNameContainer}>
-              <Text style={styles.scoreInformationUserName}>Name</Text>
-            </View>
+            { this.renderUnitUsersName(this.props.game.gameUnits[1].users) }
           </View>
         </View>
         <TouchableHighlight onPress={() => {this.navigationEvent(this.props.game.gameUnits, this.props.game.scores);}} style={styles.analysisNavigate}>
@@ -249,13 +264,12 @@ const styles = StyleSheet.create({
     justifyContent: "flex-end"
   },
   scoreInformationUserName: {
-    paddingTop: 8,
-    paddingBottom: 8,
+    paddingTop: 4,
+    paddingBottom: 4,
     justifyContent: "center",
     color: "white",
     textAlign: "center",
-    fontSize: 23,
-    height: 40,
+    fontSize: 15,
     width: 130,
     alignSelf: "center",
     backgroundColor: "rgba(0, 0, 0, 0)",

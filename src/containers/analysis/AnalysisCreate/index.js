@@ -41,7 +41,7 @@ class AnalysisCreate extends React.Component {
     var userIds = [];
     for (key in this.props.analysis.analysisUsers){
       let user = this.props.analysis.analysisUsers[key];
-      if(user.id){
+      if(user){
         userIds.push(user.id);
       }
     }

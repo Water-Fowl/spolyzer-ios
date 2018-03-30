@@ -12,7 +12,8 @@ import {
 } from "react-native";
 import {
   Graph,
-  TopContentBar
+  TopContentBar,
+  ProfileImage
 } from "components";
 import {
   VictoryAxis,
@@ -21,15 +22,6 @@ import {
   VictoryTheme
 } from "victory-native";
 import { connect } from "react-redux";
-import {
-  InArea,
-  InFieldCircle,
-  InFieldLength,
-  InFieldSide,
-  OutArea,
-  OutFieldLength,
-  OutFieldSide
-} from "./components";
 import setPositionsCount from "../actions/set_positions_count";
 import { mapStateToProps } from "utils";
 const IN_MIN_POSITION = 7;
@@ -40,6 +32,7 @@ const OUT = 0;
 const IN = 1;
 const LEFT = 0;
 const RIGHT = 1;
+const TERM_LIST = ["Day", "Week", "Month"]
 
 class AnalysisView extends React.Component {
   constructor(props){
@@ -136,8 +129,7 @@ class AnalysisView extends React.Component {
         onPress={() => {
           this.setPositionEvent(IN_MIN_POSITION, IN_MAX_POSITION, side);
           this.setState({ onPressOut: IN, onPressSide: side });
-        }
-        }
+        }}
       >
         {this._renderFieldButtonText(side, IN, droppedAtId)}
       </TouchableHighlight>
@@ -187,6 +179,27 @@ class AnalysisView extends React.Component {
       </View>
     );
   }
+
+  _renderOpponentUserNames(users){
+    const opponentUserNameComponentList = []
+    for (let userIdx in users){
+      opponentUserNameComponentList.push(
+        <View style={styles.flexDirectionRow}>
+          <ProfileImage
+            imageSource={users[userIdx].image.url}
+            size={20}
+          />
+          <Text style={styles.opponentName}>{users[userIdx].name}</Text>
+        </View>
+      )
+    }
+    return(
+      <View style={styles.opponentUserNameContainer}>
+        { opponentUserNameComponentList }
+      </View>
+    )
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -196,31 +209,16 @@ class AnalysisView extends React.Component {
             <Text style={styles.vsText}>vs</Text>
             <View style={styles.nameOutsideContainer}>
               <View style={styles.nameInsideContainer}>
-                <Image
-                  source={require("../../../assets/img/score_create_person.png")}
-                  style={styles.personImage}
-                />
-                <Text style={styles.opponentName}>
-                  池田社長
-                </Text>
+                { this._renderOpponentUserNames(this.props.analysis.analysisUsers) }
               </View>
             </View>
           </View>
           <View style={styles.optionContainer}>
-            <View style={styles.option_textContainer}>
-              <Text style={styles.optionText}>
-                １日トータル
-              </Text>
+            <View style={styles.optionTextContainer}>
+              <Text style={styles.optionText}>{TERM_LIST[this.props.analysis.term]}</Text>
             </View>
             <View style={styles.optionTextContainer}>
-              <Text style={styles.optionText}>
-                球種
-              </Text>
-            </View>
-            <View style={styles.option_textContainer}>
-              <Text style={styles.optionText}>
-                負け試合
-              </Text>
+              <Text style={styles.optionText}>{this.props.sport.shotTypes[this.props.analysis.shotTypeId]}</Text>
             </View>
           </View>
           <View style={styles.field}>
@@ -319,10 +317,10 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: "skyblue",
     fontSize: 26,
-    alignSelf: "flex-start",
+    alignSelf: "center",
     marginTop: 16,
-    marginLeft: 206,
-    backgroundColor: "transparent"
+    backgroundColor: "transparent",
+
   },
   horizontalBlueBar: {
     borderColor: "#2EA7E0",
@@ -381,14 +379,14 @@ const styles = StyleSheet.create({
     alignSelf: "center"
   },
   analysisInformationContiner: {
-    flexDirection: "row"
+    flexDirection: "row",
+    alignSelf: "center"
   },
   nameOutsideContainer: {
     borderRightColor: "#0a2444",
     borderTopColor: "#0a2444",
     borderLeftColor: "#0a2444",
     borderBottomColor: "#0a2444",
-    height: 30,
     width: 104,
     borderWidth: 1,
     marginLeft: 6,
@@ -402,7 +400,6 @@ const styles = StyleSheet.create({
     borderTopColor: "#0a2444",
     borderLeftColor: "#0a2444",
     borderBottomColor: "#0a2444",
-    height: 26,
     width: 100,
     borderWidth: 1,
     borderRadius: 2,
@@ -418,10 +415,14 @@ const styles = StyleSheet.create({
   opponentName: {
     backgroundColor: "transparent",
     color: "#ffffff",
-    marginTop: 7,
-    marginLeft: 7,
     fontWeight: "bold",
-    fontSize: 12
+    fontSize: 12,
+    alignSelf: "center",
+    paddingLeft: 4,
+    paddingRight: 4,
+  },
+  flexDirectionRow: {
+    flexDirection: "row",
   },
   optionContainer: {
     flexDirection: "row",
