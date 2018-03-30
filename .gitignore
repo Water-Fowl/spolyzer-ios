@@ -2,8 +2,14 @@
 #
 .DS_Store
 
+# Vim
+#
+
+tags
 # Xcode
 #
+
+target/
 build/
 *.pbxuser
 !default.pbxuser
@@ -19,6 +25,7 @@ xcuserdata
 DerivedData
 *.hmap
 *.ipa
+
 *.xcuserstate
 project.xcworkspace
 

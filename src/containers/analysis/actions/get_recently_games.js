@@ -6,7 +6,7 @@ import {
 export function getRecentlyGames(body) {
   return (dispatch) => {
     dispatch(requestGetGames());
-    return fetch(GAME_SETTING_REQUEST, {
+    return fetch(RECENTLY_GAMES_ENDPOINT, {
       method: "GET",
       headers: {
         Accept: "application/json",

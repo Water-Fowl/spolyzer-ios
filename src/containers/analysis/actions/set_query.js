@@ -4,10 +4,10 @@ import {
   TERM_SETTING
 } from "../action_types";
 
-export function setGameType(gameTypeId) {
+export function setGameType(gameUserCount) {
   return {
     type: GAME_TYPE_SETTING,
-    gameTypeId
+    gameUserCount
   };
 }
 
@@ -18,9 +18,9 @@ export function setShotType(shotTypeId) {
   };
 }
 
-export function setTerm(termId) {
+export function setTerm(term) {
   return {
     type: TERM_SETTING,
-    termId
+    term
   };
 }

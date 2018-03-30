@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>redux_front_app.ipa</key>
+	<array>
+		<dict>
+			<key>architectures</key>
+			<array>
+				<string>armv7</string>
+				<string>arm64</string>
+			</array>
+			<key>certificate</key>
+			<dict>
+				<key>SHA1</key>
+				<string>E4BFA7D167AE2138E13FB85A11839CBA61EA9B9E</string>
+				<key>dateExpires</key>
+				<string>2019/03/29</string>
+				<key>type</key>
+				<string>iOS Distribution</string>
+			</dict>
+			<key>embeddedBinaries</key>
+			<array>
+				<dict>
+					<key>architectures</key>
+					<array>
+						<string>armv7</string>
+						<string>arm64</string>
+					</array>
+					<key>certificate</key>
+					<dict>
+						<key>SHA1</key>
+						<string>E4BFA7D167AE2138E13FB85A11839CBA61EA9B9E</string>
+						<key>dateExpires</key>
+						<string>2019/03/29</string>
+						<key>type</key>
+						<string>iOS Distribution</string>
+					</dict>
+					<key>name</key>
+					<string>QBImagePicker.framework</string>
+					<key>team</key>
+					<dict>
+						<key>id</key>
+						<string>4JFLJM8MPM</string>
+						<key>name</key>
+						<string>WaterFowl Inc.</string>
+					</dict>
+				</dict>
+				<dict>
+					<key>architectures</key>
+					<array>
+						<string>armv7</string>
+						<string>arm64</string>
+					</array>
+					<key>certificate</key>
+					<dict>
+						<key>SHA1</key>
+						<string>E4BFA7D167AE2138E13FB85A11839CBA61EA9B9E</string>
+						<key>dateExpires</key>
+						<string>2019/03/29</string>
+						<key>type</key>
+						<string>iOS Distribution</string>
+					</dict>
+					<key>name</key>
+					<string>RSKImageCropper.framework</string>
+					<key>team</key>
+					<dict>
+						<key>id</key>
+						<string>4JFLJM8MPM</string>
+						<key>name</key>
+						<string>WaterFowl Inc.</string>
+					</dict>
+				</dict>
+			</array>
+			<key>entitlements</key>
+			<dict>
+				<key>application-identifier</key>
+				<string>4JFLJM8MPM.com.waterfowl.spolyzer</string>
+				<key>com.apple.developer.team-identifier</key>
+				<string>4JFLJM8MPM</string>
+				<key>get-task-allow</key>
+				<false/>
+				<key>keychain-access-groups</key>
+				<array>
+					<string>4JFLJM8MPM.com.waterfowl.spolyzer</string>
+				</array>
+			</dict>
+			<key>name</key>
+			<string>spolyzer.app</string>
+			<key>profile</key>
+			<dict>
+				<key>UUID</key>
+				<string>39f650e3-8882-4a5a-b094-06b708c0ed89</string>
+				<key>name</key>
+				<string>spolyzer_deploy_gate</string>
+			</dict>
+			<key>team</key>
+			<dict>
+				<key>id</key>
+				<string>4JFLJM8MPM</string>
+				<key>name</key>
+				<string>WaterFowl Inc.</string>
+			</dict>
+		</dict>
+	</array>
+</dict>
+</plist>

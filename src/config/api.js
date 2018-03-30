@@ -1,11 +1,16 @@
-export const BASE_URL = "http://52.198.150.98/api/v1";
+export const BASE_URL = "http://128.199.68.200/api/v1";
 export const LOCAL_URL = "http://localhost:3000/api/v1";
+export const SCHEME = BASE_URL;
 
-export const SIGN_IN_ENDPOINT = `${LOCAL_URL}/auth/sign_in/`;
-export const GET_USER_ENDPOINT = `${LOCAL_URL}/users/`;
-export const REGISTRATION_ENDPOINT = `${LOCAL_URL}/auth/`;
-export const POST_GAME_ENDPOINT = `${LOCAL_URL}/games/`;
-export const GET_POSITIONS_COUNTS_ENDPOINT =`${LOCAL_URL}/positions/counts`;
-export const GET_SCORES_ENDPOINT = `${LOCAL_URL}/scores/`;
-export const GET_GAMES_ENDPOINT = `${LOCAL_URL}/games/`;
-export const POST_USER_UPDATE_ENDPOINT = `${LOCAL_URL}/user/update`;
+export const SIGN_IN_ENDPOINT = `${SCHEME}/auth/sign_in/`;
+export const REGISTRATION_ENDPOINT = `${SCHEME}/auth/`;
+export const USERS_ENDPOINT = `${SCHEME}/users/`;
+export const SEARCH_USER_ENDPOINT = `${SCHEME}/users/search`;
+export const GAMES_ENDPOINT = `${SCHEME}/games/`;
+export const RECENTLY_GAMES_ENDPOINT = `${SCHEME}/games/recently`;
+export const POSITIONS_COUNTS_ENDPOINT =`${SCHEME}/positions/counts`;
+export const SCORES_ENDPOINT = `${SCHEME}/scores/`;
+export const SHOT_TYPE_COUNTS_ENDPOINT = `${SCHEME}/shot_types/counts`;
+export const SHOT_TYPES_ENDPOINT = `${SCHEME}/shot_types`;
+export const VALIDATE_TOKEN_ENDPOINT = `${SCHEME}/auth/validate_token/`;
+export const CONFIRMATION_ENDPOINT = `${SCHEME}/api/v1/auth/confirmation/`;

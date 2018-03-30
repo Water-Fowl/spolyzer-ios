@@ -1,23 +1,26 @@
 import { Actions } from "react-native-router-flux";
 
-import { GET_POSITIONS_COUNTS_ENDPOINT } from "../../../config/api";
 import {
   GET_POSITIONS_COUNTS_RECEIVED,
   GET_POSITIONS_COUNTS_REQUEST
 } from "../action_types";
+import { POSITIONS_COUNTS_ENDPOINT } from "../../../config/api";
 
-export function getPositionsCounts(params) {
+export function getPositionsCounts(params, authHeaders) {
   return (dispatch) => {
     dispatch(getPositionsCountsRequest());
-    return fetch(GET_POSITIONS_COUNTS_ENDPOINT + "?" + params, {
+    return fetch(POSITIONS_COUNTS_ENDPOINT + params, {
       method: "GET",
       headers: {
         "Accept": "application/json",
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        ...authHeaders
       }
     })
       .then(response => response.json())
-      .then(json => dispatch(getPositionsCountsReceived()))
+      .then(function(json){
+        dispatch(getPositionsCountsReceived(json.counts));
+      })
       .then(Actions.analysisView())
       .catch((error) => {
       });
@@ -30,8 +33,9 @@ function getPositionsCountsRequest(){
   };
 }
 
-function getPositionsCountsReceived(){
+function getPositionsCountsReceived(positionCounts){
   return{
+    positionCounts,
     type: GET_POSITIONS_COUNTS_RECEIVED
   };
 }
