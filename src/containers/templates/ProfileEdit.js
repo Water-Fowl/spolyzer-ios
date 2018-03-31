@@ -16,14 +16,12 @@ import {
 } from "react-native";
 import {
   NavigateButton,
-  TopContentBar
+  TopContentBar,
+  ProfileImage
 } from "components";
+import { SexPicker } from "molecules";
 import { connect } from "react-redux";
 
-import {
-  ProfileImage,
-  SexPicker
-} from "./components";
 import { postUserUpdate } from "../actions/post_user_update";
 import { mapStateToProps } from "utils";
 

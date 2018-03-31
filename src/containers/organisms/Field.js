@@ -2,6 +2,7 @@ import React from "react";
 import {
   View,
   Image,
+  StyleSheet
 } from "react-native";
 
 import {
@@ -16,72 +17,256 @@ export default class Field extends React.Component {
   render(){
     return (
       <View style={styles.field}>
-        <Image style={styles.fieldLine} source={require("../../../assets/img/field-line.png")} />
+        { this.props.renderInField() }
+        <Image style={styles.fieldLine} source={require("../../assets/img/field-line.png")} />
         <View style={styles.overContainer}>
           <View style={styles.overOutFieldSideContainer}>
-            <OutFieldSide callback={this.props.callback} position={5} side={0} />
-            <OutFieldSide callback={this.props.callback} position={6} side={0}/>
+            <OutFieldSide
+              renderInButton={this.props.renderInButton}
+              horizontal={this.props.horizontal}
+              callback={this.props.callback}
+              position={5}
+              side={0}
+            />
+            <OutFieldSide
+              renderInButton={this.props.renderInButton}
+              horizontal={this.props.horizontal}
+              callback={this.props.callback}
+              position={6}
+              side={0}
+            />
           </View>
           <View style={styles.overOutFieldSideContainer}>
-            <OutFieldSide callback={this.props.callback} position={0} side={1}/>
-            <OutFieldSide callback={this.props.callback} position={1} side={1}/>
+            <OutFieldSide
+              renderInButton={this.props.renderInButton}
+              horizontal={this.props.horizontal}
+              callback={this.props.callback}
+              position={0}
+              side={1}
+            />
+            <OutFieldSide
+              renderInButton={this.props.renderInButton}
+              horizontal={this.props.horizontal}
+              callback={this.props.callback}
+              position={1}
+              side={1}
+            />
           </View>
         </View>
         <View style={styles.middleContainer}>
           <View style={styles.outFieldLengthContainer}>
-            <OutFieldLength callback={this.props.callback} position={4} side={0}/>
-            <OutFieldLength callback={this.props.callback} position={3} side={0}/>
+            <OutFieldLength
+              renderInButton={this.props.renderInButton}
+              horizontal={this.props.horizontal}
+              callback={this.props.callback}
+              position={4}
+              side={0}
+            />
+            <OutFieldLength
+              renderInButton={this.props.renderInButton}
+              horizontal={this.props.horizontal}
+              callback={this.props.callback}
+              position={3}
+              side={0}
+            />
           </View>
           <View style={styles.inFieldContainer}>
             <View style={styles.inFieldLengthContainer}>
-              <InFieldLength callback={this.props.callback} position={11} side={0}/>
-              <InFieldLength callback={this.props.callback} position={10} side={0}/>
+              <InFieldLength
+                renderInButton={this.props.renderInButton}
+                horizontal={this.props.horizontal}
+                callback={this.props.callback}
+                position={11}
+                side={0}
+              />
+              <InFieldLength
+                renderInButton={this.props.renderInButton}
+                horizontal={this.props.horizontal}
+                callback={this.props.callback}
+                position={10}
+                side={0}
+              />
             </View>
             <View style={styles.inFieldSideContainer}>
-              <InFieldSide callback={this.props.callback} position={12} side={0}/>
+              <InFieldSide
+                renderInButton={this.props.renderInButton}
+                horizontal={this.props.horizontal}
+                callback={this.props.callback}
+                position={12}
+                side={0}
+              />
               <View style={styles.inFieldCircleContainer}>
-                <InFieldCircle callback={this.props.callback} position={7} side={0}/>
+                <InFieldCircle
+                  renderInButton={this.props.renderInButton}
+                  horizontal={this.props.horizontal}
+                  callback={this.props.callback}
+                  position={7}
+                  side={0}
+                />
               </View>
-              <InFieldSide callback={this.props.callback} position={9} side={0}/>
+              <InFieldSide
+                renderInButton={this.props.renderInButton}
+                horizontal={this.props.horizontal}
+                callback={this.props.callback}
+                position={9}
+                side={0}
+              />
             </View>
             <View style={styles.inFieldLengthContainer}>
-              <InFieldLength callback={this.props.callback} position={13} side={0}/>
-              <InFieldLength callback={this.props.callback} position={8} side={0}/>
+              <InFieldLength
+                renderInButton={this.props.renderInButton}
+                horizontal={this.props.horizontal}
+                callback={this.props.callback}
+                position={13}
+                side={0}
+              />
+              <InFieldLength
+                renderInButton={this.props.renderInButton}
+                horizontal={this.props.horizontal}
+                callback={this.props.callback}
+                position={8}
+                side={0}
+              />
             </View>
           </View>
           <View style={styles.inFieldContainer}>
             <View style={styles.inFieldLengthContainer}>
-              <InFieldLength callback={this.props.callback} position={8} side={1} />
-              <InFieldLength callback={this.props.callback} position={13} side={1}/>
+              <InFieldLength
+                renderInButton={this.props.renderInButton}
+                horizontal={this.props.horizontal}
+                callback={this.props.callback}
+                position={8}
+                side={1}
+              />
+              <InFieldLength
+                renderInButton={this.props.renderInButton}
+                horizontal={this.props.horizontal}
+                callback={this.props.callback}
+                position={13}
+                side={1}
+              />
             </View>
             <View style={styles.inFieldSideContainer}>
-              <InFieldSide callback={this.props.callback} position={9} side={1}/>
+              <InFieldSide
+                renderInButton={this.props.renderInButton}
+                horizontal={this.props.horizontal}
+                callback={this.props.callback}
+                position={9}
+                side={1}
+              />
               <View style={styles.inFieldCircleContainer}>
-                <InFieldCircle callback={this.props.callback} position={7} side={1}/>
+                <InFieldCircle
+                  renderInButton={this.props.renderInButton}
+                  horizontal={this.props.horizontal}
+                  callback={this.props.callback}
+                  position={7}
+                  side={1}
+                />
               </View>
-              <InFieldSide callback={this.props.callback} position={12} side={1}/>
+              <InFieldSide
+                renderInButton={this.props.renderInButton}
+                horizontal={this.props.horizontal}
+                callback={this.props.callback}
+                position={12}
+                side={1}
+              />
             </View>
             <View style={styles.inFieldLengthContainer}>
-              <InFieldLength callback={this.props.callback} position={10} side={1}/>
-              <InFieldLength callback={this.props.callback} position={11} side={1}/>
+              <InFieldLength
+                renderInButton={this.props.renderInButton}
+                horizontal={this.props.horizontal}
+                callback={this.props.callback}
+                position={10}
+                side={1}
+              />
+              <InFieldLength renderInButton={this.props.renderInButton} horizontal={this.props.horizontal} callback={this.props.callback} position={11} side={1}/>
             </View>
           </View>
           <View style={styles.outFieldLengthContainer}>
-            <OutFieldLength callback={this.props.callback} position={3} side={1}/>
-            <OutFieldLength callback={this.props.callback} position={4} side={1}/>
+            <OutFieldLength renderInButton={this.props.renderInButton} horizontal={this.props.horizontal} callback={this.props.callback} position={3} side={1}/>
+            <OutFieldLength renderInButton={this.props.renderInButton} horizontal={this.props.horizontal} callback={this.props.callback} position={4} side={1}/>
           </View>
         </View>
         <View style={styles.underContainer}>
           <View style={styles.underOutFieldSideContainer}>
-            <OutFieldSide callback={this.props.callback} position={2} side={0} />
-            <OutFieldSide callback={this.props.callback} position={1} side={0}/>
+            <OutFieldSide renderInButton={this.props.renderInButton} horizontal={this.props.horizontal} callback={this.props.callback} position={2} side={0} />
+            <OutFieldSide renderInButton={this.props.renderInButton} horizontal={this.props.horizontal} callback={this.props.callback} position={1} side={0}/>
           </View>
           <View style={styles.underOutFieldSideContainer}>
-            <OutFieldSide callback={this.props.callback} position={6} side={1}/>
-            <OutFieldSide callback={this.props.callback} position={5} side={1}/>
+            <OutFieldSide renderInButton={this.props.renderInButton} horizontal={this.props.horizontal} callback={this.props.callback} position={6} side={1}/>
+            <OutFieldSide renderInButton={this.props.renderInButton} horizontal={this.props.horizontal} callback={this.props.callback} position={5} side={1}/>
           </View>
         </View>
       </View>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  field: {
+    alignSelf: "center",
+    width: 330,
+    height: 170,
+    marginTop: 26
+  },
+  fieldLine: {
+    position: "absolute",
+    alignSelf: "center",
+    height: 170,
+    backfaceVisibility: "hidden",
+    resizeMode: "contain"
+  },
+  overContainer: {
+    flexDirection: "row",
+    flex: 1,
+    zIndex: 2,
+    justifyContent: "space-between"
+  },
+  overOutFieldSideContainer: {
+    alignSelf: "flex-start",
+    flex: 0.5,
+    justifyContent: "space-around",
+    flexDirection: "row"
+  },
+  middleContainer: {
+    flexDirection: "row",
+    flex: 3,
+    justifyContent: "space-between"
+  },
+  underContainer: {
+    flexDirection: "row",
+    flex: 1,
+    justifyContent: "space-between"
+  },
+  outFieldLengthContainer: {
+    marginLeft: 4,
+    marginRight: 4,
+    flexDirection: "column",
+    justifyContent: "space-between"
+  },
+  inFieldContainer: {
+    flexDirection: "row",
+    marginLeft: 10,
+    marginRight: 10
+  },
+  inFieldLengthContainer: {
+    marginLeft: 8,
+    marginRight: 8,
+    justifyContent: "space-between",
+    alignItems: "center"
+  },
+  inFieldCircleContainer: {
+    justifyContent: "space-between"
+  },
+  inFieldSideContainer: {
+    marginLeft: 6,
+    marginRight: 6,
+    justifyContent: "space-between"
+  },
+  underOutFieldSideContainer: {
+    alignSelf: "flex-end",
+    flex: 0.5,
+    justifyContent: "space-around",
+    flexDirection: "row"
+  },
+})

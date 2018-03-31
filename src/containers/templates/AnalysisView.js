@@ -22,8 +22,10 @@ import {
   VictoryTheme
 } from "victory-native";
 import { connect } from "react-redux";
-import setPositionsCount from "../actions/set_positions_count";
+import setPositionsCount from "../analysis/actions/set_positions_count";
 import { mapStateToProps } from "utils";
+import { Field } from "organisms";
+
 const IN_MIN_POSITION = 7;
 const IN_MAX_POSITION = 13;
 const OUT_MIN_POSITION = 1;
@@ -43,20 +45,43 @@ class AnalysisView extends React.Component {
       onPressOut: OUT,
       onPressSide: LEFT
     };
+    this.setPositionEvent = this.setPositionEvent.bind(this);
+    this._renderFieldButtonText = this._renderFieldButtonText.bind(this);
   }
 
-  setPositionEvent(minPosition, maxPosition, side) {
-    this.props.dispatch(setPositionsCount(minPosition, maxPosition, side));
+  setPositionEvent(position, side) {
+    if(position < 7){
+      min = OUT_MIN_POSITION
+      max = OUT_MAX_POSITION
+      field = OUT
+    }
+    else {
+      min = IN_MIN_POSITION
+      max = IN_MAX_POSITION
+      field = IN
+    }
+    this.props.dispatch(setPositionsCount(min, max, side));
+    this.setState({ onPressOut: field, onPressSide: side });
+
   }
 
   onPressArea(minPosition, maxPosition, side, is_out){
     this.props.dispatch(setPositionsCount(side, minPosition, maxPosition));
   }
 
-  _renderFieldButtonText(side, out, droppedAtId){
-    if(this.state.onPressSide == side && this.state.onPressOut == out){
+  _renderFieldButtonText(position, side){
+    if(position < 7){
+      positionString = alphabet[position]
+      field = OUT
+    }
+    else {
+      positionString = alphabet[position - 6]
+      field = IN
+    }
+
+    if(this.state.onPressSide == side && this.state.onPressOut == field){
       return(
-        <Text style={styles.droppedIdText}>{droppedAtId}</Text>
+        <Text style={styles.droppedIdText}>{positionString}</Text>
       );
     }
     else{
@@ -179,6 +204,24 @@ class AnalysisView extends React.Component {
       </View>
     );
   }
+  renderInField(){
+    return(
+      <View>
+        <View style={styles.outAreaContainer}>
+          <TouchableOpacity style={styles.outFieldArea} />
+          <TouchableOpacity style={styles.outFieldArea} />
+        </View>
+        <View style={styles.blankContainer}>
+          <View style={styles.blankArea} />
+          <View style={styles.blankArea} />
+        </View>
+        <View style={styles.inAreaContainer}>
+          <TouchableOpacity style={styles.inArea} />
+          <TouchableOpacity style={styles.inArea} />
+        </View>
+      </View>
+    )
+  }
 
   _renderOpponentUserNames(users){
     const opponentUserNameComponentList = [];
@@ -223,75 +266,8 @@ class AnalysisView extends React.Component {
               <Text style={styles.optionText}>{this.props.sport.shotTypes[this.props.analysis.shotTypeId]}</Text>
             </View>
           </View>
-          <View style={styles.field}>
-            { this._renderOutArea() }
-            { this._renderInArea() }
-            <Image style={styles.fieldLine} source={require("../../../assets/img/field-line.png")} />
-            <View style={styles.overContainer}>
-              <View style={styles.overOutFieldSideContainer}>
-                { this._renderOutFieldSide(0, "E") }
-                { this._renderOutFieldSide(0, "F") }
-              </View>
-              <View style={styles.overOutFieldSideContainer}>
-                { this._renderOutFieldSide(1, "A") }
-                { this._renderOutFieldSide(1, "B") }
-              </View>
-            </View>
-            <View style={styles.middleContainer}>
-              <View style={styles.outFieldLengthContainer}>
-                { this._renderOutFieldLength(0, "D") }
-                { this._renderOutFieldLength(0, "C") }
-              </View>
-              <View style={styles.inFieldContainer}>
-                <View style={styles.inFieldLengthContainer}>
-                  { this._renderInFieldLength(0, "E") }
-                  { this._renderInFieldLength(0, "D") }
-                </View>
-                <View style={styles.inFieldSideContainer}>
-                  { this._renderInFieldSide(0, "F") }
-                  <View style={styles.inFieldCircleContainer}>
-                    { this._renderInFieldCircle(0, "A") }
-                  </View>
-                  { this._renderInFieldSide(0, "C") }
-                </View>
-                <View style={styles.inFieldLengthContainer}>
-                  { this._renderInFieldLength(0, "G") }
-                  { this._renderInFieldLength(0, "B") }
-                </View>
-              </View>
-              <View style={styles.inFieldContainer}>
-                <View style={styles.inFieldLengthContainer}>
-                  { this._renderInFieldLength(1, "B") }
-                  { this._renderInFieldLength(1, "G") }
-                </View>
-                <View style={styles.inFieldSideContainer}>
-                  { this._renderInFieldSide(1, "C") }
-                  <View style={styles.inFieldCircleContainer}>
-                    { this._renderInFieldCircle(1, "A") }
-                  </View>
-                  { this._renderInFieldSide(1, "F") }
-                </View>
-                <View style={styles.inFieldLengthContainer}>
-                  { this._renderInFieldLength(1, "D") }
-                  { this._renderInFieldLength(1, "E") }
-                </View>
-              </View>
-              <View style={styles.outFieldLengthContainer}>
-                { this._renderOutFieldLength(1, "C") }
-                { this._renderOutFieldLength(1, "D") }
-              </View>
-            </View>
-            <View style={styles.underContainer}>
-              <View style={styles.underOutFieldSideContainer}>
-                { this._renderOutFieldSide(0, "B") }
-                { this._renderOutFieldSide(0, "A") }
-              </View>
-              <View style={styles.underOutFieldSideContainer}>
-                { this._renderOutFieldSide(1, "F") }
-                { this._renderOutFieldSide(1, "E") }
-              </View>
-            </View>
-          </View>
+
+          <Field horizontal callback={this.setPositionEvent} renderInField={this.renderInField} renderInButton={this._renderFieldButtonText}/>
           <Graph data={this.props.analysis.selectedPositionsCount} />
           <View style={styles.backButtonContainer}>
             <TouchableOpacity onPress={() => {
@@ -376,9 +352,11 @@ const styles = StyleSheet.create({
     justifyContent: "center"
   },
   droppedIdText:{
+    fontSize: 15,
+    color: "white",
     backgroundColor: "transparent",
     textAlign: "center",
-    alignSelf: "center"
+    alignSelf: "center",
   },
   analysisInformationContiner: {
     flexDirection: "row",

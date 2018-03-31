@@ -6,29 +6,18 @@ import {
   TouchableOpacity,
   View
 } from "react-native";
-import { connect } from "react-redux";
 
-import SearchedUserAccount from "./SearchedUserAccount";
-import setUser from "../../actions/set_user";
-import { mapStateToProps } from "utils";
 import { UserListItem } from "molecules";
 
-class UserList extends React.Component{
+export default class UserList extends React.Component{
   constructor(props){
     super(props);
-    this.AccountPressEvent.bind(this);
   }
   componentWillReceiveProps(nextProps){
     if (nextProps.users){
       this.forceUpdate();
     }
   }
-  onPressUserItemEvent(selectedUnitIndex, selectedUserIndex, user){
-    const { dispatch } = this.props;
-    dispatch(setUser(selectedUnitIndex, selectedUserIndex, user));
-    Actions.gameCreate();
-  }
-
   render(){
     const { users } = this.props;
     if(!users){
@@ -37,7 +26,7 @@ class UserList extends React.Component{
     const usersComponent = [];
     for (let i = 0; i < users.length; i++) {
       usersComponent.push(
-        <TouchableOpacity onPress={() => {this.AccountPressEvent(this.props.game.selectedUnitIndex, this.props.game.selectedUserIndex, users[i].user);}}>
+        <TouchableOpacity onPress={() => {this.props.callback()}}>
           <UserListItem key={i} userName={users[i].user.name} />
         </TouchableOpacity>
       );
@@ -52,7 +41,6 @@ class UserList extends React.Component{
   }
 }
 
-export default connect(mapStateToProps)(SearchedUserAccountContainer);
 
 const styles=StyleSheet.create({
   container: {

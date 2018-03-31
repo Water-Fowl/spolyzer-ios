@@ -6,15 +6,27 @@ import {
 } from "react-native";
 
 export default class InFieldLength extends React.Component {
+  constructor(props){
+    super(props);
+  }
   render() {
+    const sizeMagnification = this.props.horizontal? 1 : 2
     return (
       <TouchableHighlight
-        style={styles.container}
+        style={{
+          borderColor: "#2EA7E0",
+          backgroundColor: "#2EA7E0",
+          flex: 0.4,
+          width: 10 * sizeMagnification,
+          borderWidth: 1.3,
+          borderRadius: 3,
+          opacity: 0.3
+        }}
         onPress={() => {
-          this.props.callback()
+          this.props.callback(this.props.position, this.props.side)
         }}
       >
-        <View />
+        {this.props.renderInButton(this.props.position, this.props.side)}
       </TouchableHighlight>
     );
   }
@@ -25,7 +37,7 @@ const styles = StyleSheet.create({
     borderColor: "#2EA7E0",
     backgroundColor: "#2EA7E0",
     flex: 0.4,
-    width: 20,
+    width: 10,
     borderWidth: 1.3,
     borderRadius: 3,
     opacity: 0.3

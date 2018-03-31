@@ -1,13 +1,13 @@
 import AnalysisCreate from "./analysis/AnalysisCreate";
 import AnalysisSearchUser from "./analysis/AnalysisSearchUser";
-import AnalysisView from "./analysis/AnalysisView";
+import AnalysisView from "./templates/AnalysisView";
 import GameCreate from "./game/GameCreate";
 import GameSearchUser from "./game/GameSearchUser";
 import Login from "./authentication/Login";
 import ProfileEdit from "./profile/ProfileEdit";
 import ProfileTop from "./profile/ProfileTop";
 import ScoreCreate from "./game/ScoreCreate";
-import ScoreView from "./game/ScoreView";
+import ScoreView from "./templates/ScoreView";
 import SignUp from "./authentication/SignUp";
 import Confirmation from "./authentication/Confirmation";
 /* Reducersのimport  */

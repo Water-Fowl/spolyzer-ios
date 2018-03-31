@@ -14,27 +14,23 @@ import {
 } from "components";
 import { connect } from "react-redux";
 
-import getShotTypeCounts from "../actions/get_shot_type_counts";
-import {
-  InFieldCircle,
-  InFieldLength,
-  InFieldSide,
-  OutFieldLength,
-  OutFieldSide,
-  Graph
-} from "./components";
+import getShotTypeCounts from "../game/actions/get_shot_type_counts";
+import setShotTypeCounts from "../game/actions/set_shot_type_counts";
 import { mapStateToProps } from "utils";
-import resetState from "../actions/reset_state";
-import { Field } from "organisms";
+import resetState from "../game/actions/reset_state";
+import {
+  Field,
+  Graph
+} from "organisms";
 
 
 class ScoreView extends React.Component {
   constructor(props) {
     super(props);
-    this.shotTypeCounts = this.setShotTypeCounts.bind(this);
+    this.setShotTypeCounts = this.setShotTypeCounts.bind(this);
   }
-  setShotTypeCounts(missType=0) {
-    this.props.dispatch(setShotTypeCounts(this.props.game.position, this.props.game.side, missType));
+  setShotTypeCounts(position, side, missType=0) {
+    this.props.dispatch(setShotTypeCounts(position, side));
   }
   renderUnitUsersName(users){
     const unitUserNameComponentList = [];
@@ -87,7 +83,7 @@ class ScoreView extends React.Component {
               { this.renderWinLossText(side=1) }
             </View>
           </View>
-          <Field callback={this.setShotTypeCounts} />
+          <Field horizontal callback={this.setShotTypeCounts} />
           <Graph />
           <View style={styles.backButtonContainer}>
             <TouchableOpacity onPress={() => {
