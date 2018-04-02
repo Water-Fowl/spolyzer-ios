@@ -19,8 +19,17 @@ import {
 } from "react-native";
 import { connect } from "react-redux";
 
-import getSearchUser from "../analysis/actions/get_user";
-import setUser from "../analysis/actions/set_user";
+import {
+  getSearchUserRequest,
+  getSearchUserReceived,
+  setUser
+} from "../../modules/analysis";
+import {
+  getApiRequest
+} from "../../modules/request";
+import {
+  SEARCH_USER_ENDPOINT
+} from "../../config/api";
 import { UserList } from "organisms";
 import {
   mapStateToProps
@@ -33,19 +42,22 @@ class AnalysisSearchUser extends React.Component {
       name: "",
       users: this.props.analysis.users
     };
-    this.searchUserEvent = this.searchUserEvent.bind(this);
+    this.getUser = this.getUser.bind(this);
     this.setUser = this.setUser.bind(this);
   }
   componentWillReceiveProps(nextProps){
     this.setState({ users: nextProps.analysis.users });
   }
-  searchUserEvent(name){
-    const params = "?name=" + name;
-    this.props.dispatch(getSearchUser(params, this.props.authentication.header));
+  getUser(name){
+    const params = {
+      name: name
+    }
+    console.log(name)
+    this.props.dispatch(getApiRequest(SEARCH_USER_ENDPOINT, params, this.props.authentication.header, getSearchUserRequest, getSearchUserReceived))
     this.setState({ users: this.props.analysis.users });
   }
   setUser(selectedIndex){
-    this.props.dispatch(setUser(this.props.analysis.analysisUsers[selectedIndex].user));
+    this.props.dispatch(setUser(this.props.analysis.selectedUserIndex, this.props.analysis.users[selectedIndex].user));
     Actions.popTo("analysisCreate");
   }
   render() {
@@ -59,7 +71,7 @@ class AnalysisSearchUser extends React.Component {
           <TextInput
             onChangeText={(name) => {
               this.setState({ name });
-              this.searchUserEvent(name);
+              this.getUser(name);
             }}
             value={this.state.name}
             placeholder="名前入力"

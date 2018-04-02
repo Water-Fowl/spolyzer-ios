@@ -14,7 +14,7 @@ import {
 import { connect } from "react-redux";
 import { listToQueryParams } from "utils";
 
-import setUserIndex from "../analysis/actions/set_user_index";
+import { setUserIndex } from "../../modules/analysis";
 
 import {
   GameTypeButtonList,

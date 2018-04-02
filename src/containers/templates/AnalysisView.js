@@ -24,7 +24,7 @@ import {
   VictoryTheme
 } from "victory-native";
 import { connect } from "react-redux";
-import setPositionsCount from "../analysis/actions/set_positions_count";
+import { setPositionsCount } from "../../modules/analysis";
 import { mapStateToProps } from "utils";
 import { Field } from "organisms";
 
