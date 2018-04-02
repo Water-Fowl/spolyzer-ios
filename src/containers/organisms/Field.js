@@ -14,11 +14,46 @@ import {
 } from "atoms";
 
 export default class Field extends React.Component {
+  constructor(props){
+    super(props);
+  }
+
+  renderInField(){
+    if(this.props.renderInField) {
+      return (
+         this.props.renderInField()
+      )
+    }
+    else {
+      return (
+        null
+      );
+    }
+  }
+
   render(){
+    const sizeMagnification = this.props.horizontal? 1 : 2
     return (
-      <View style={styles.field}>
-        { this.props.renderInField() }
-        <Image style={styles.fieldLine} source={require("../../assets/img/field-line.png")} />
+      <View
+        style={{
+          alignSelf: "center",
+          justifyContent: "center",
+          flex: 0.9,
+          height: 170 * sizeMagnification,
+          width: 300 * sizeMagnification,
+          marginTop: 26,
+        }}
+      >
+      <Image
+        style={{
+          position: "absolute",
+          alignSelf: "center",
+          height: 170 * sizeMagnification,
+          backfaceVisibility: "hidden",
+          resizeMode: "contain"
+        }}
+        source={require("../../assets/img/field-line.png")}
+      />
         <View style={styles.overContainer}>
           <View style={styles.overOutFieldSideContainer}>
             <OutFieldSide

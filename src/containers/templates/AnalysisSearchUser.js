@@ -19,20 +19,22 @@ import {
 } from "react-native";
 import { connect } from "react-redux";
 
-import getSearchUser from "../actions/get_user";
-import { SearchedUserAccountContainer } from "./components";
+import getSearchUser from "../analysis/actions/get_user";
+import setUser from "../analysis/actions/set_user";
+import { UserList } from "organisms";
 import {
   mapStateToProps
 } from "utils";
 
-class UserSearch extends React.Component {
+class AnalysisSearchUser extends React.Component {
   constructor(props){
     super(props);
     this.state = {
       name: "",
       users: this.props.analysis.users
     };
-    this.searchUserEvent.bind(this);
+    this.searchUserEvent = this.searchUserEvent.bind(this);
+    this.setUser = this.setUser.bind(this);
   }
   componentWillReceiveProps(nextProps){
     this.setState({ users: nextProps.analysis.users });
@@ -41,6 +43,10 @@ class UserSearch extends React.Component {
     const params = "?name=" + name;
     this.props.dispatch(getSearchUser(params, this.props.authentication.header));
     this.setState({ users: this.props.analysis.users });
+  }
+  setUser(selectedIndex){
+    this.props.dispatch(setUser(this.props.analysis.analysisUsers[selectedIndex].user));
+    Actions.popTo("analysisCreate");
   }
   render() {
     return (
@@ -63,14 +69,14 @@ class UserSearch extends React.Component {
             returnKeyType="done"
           />
         </View>
-        <SearchedUserAccountContainer users={this.state.users}/>
+        <UserList callback={this.setUser} users={this.state.users} />
         <NavigateButton action={() =>{Actions.popTo("analysisCreate"); }} style={styles.navigateButton} text="戻る" />
       </View>
     );
   }
 }
 
-export default connect(mapStateToProps)(UserSearch);
+export default connect(mapStateToProps)(AnalysisSearchUser);
 
 const styles = StyleSheet.create({
   container: {

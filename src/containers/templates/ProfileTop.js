@@ -10,8 +10,10 @@ import {
 } from "react-native";
 import {
   TopContentBar,
-  ProfileImage
 } from "components";
+import {
+  ProfileImage
+} from "atoms";
 import {
   connect
 } from "react-redux";
@@ -21,7 +23,7 @@ import {
 
 import {
   getUser
-} from "../actions/get_user";
+} from "../profile/actions/get_user";
 
 class ProfileTop extends React.Component {
   render() {
@@ -34,7 +36,7 @@ class ProfileTop extends React.Component {
               <ProfileImage style={styles.profileImage} imageSource={this.props.profile.userImageSource} size={100}/>
             </TouchableOpacity>
             <Image
-              source={require("../../../assets/img/my_page_center_design.png")}
+              source={require("../../assets/img/my_page_center_design.png")}
             />
             <Text style={styles.myName}>{this.props.profile.userName}</Text>
             <View style={styles.gameSettingBorder}>

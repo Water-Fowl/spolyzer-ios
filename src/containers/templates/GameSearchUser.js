@@ -19,11 +19,12 @@ import {
 } from "react-native";
 import { connect } from "react-redux";
 
-import getSearchUser from "../actions/get_user";
-import { UserList } from "molecules";
+import getSearchUser from "../game/actions/get_user";
+import setUser from "../game/actions/set_user";
+import { UserList } from "organisms";
 import { mapStateToProps } from "utils";
 
-class UserSearch extends React.Component {
+class GameSearchUser extends React.Component {
   constructor(props){
     super(props);
     this.state = {
@@ -31,6 +32,7 @@ class UserSearch extends React.Component {
       users: this.props.game.users
     };
     this.searchUserEvent.bind(this);
+    this.setUser = this.setUser.bind(this);
   }
   componentWillReceiveProps(nextProps){
     if(nextProps.game.users){
@@ -38,10 +40,13 @@ class UserSearch extends React.Component {
     }
   }
   searchUserEvent(name){
-    const { dispatch } = this.props;
     const params = "?name=" + name;
-    dispatch(getSearchUser(params, this.props.authentication.header));
+    this.props.dispatch(getSearchUser(params, this.props.authentication.header));
     this.setState({ users: this.props.users });
+  }
+  setUser(selectedSearchUserIndex){
+    this.props.dispatch(setUser(this.props.game.selectedUnitIndex, this.props.selectedUserIndex, this.props.game.users[selectedSearchUserIndex]));
+    Actions.gameCreate();
   }
   render() {
     return (
@@ -64,14 +69,14 @@ class UserSearch extends React.Component {
             returnKeyType="done"
           />
         </View>
-        <UserList users={this.state.users}/>
+        <UserList callback={this.setUser} users={this.state.users}/>
         <NavigateButton action={() =>{Actions.popTo("gameCreate"); }} style={styles.navigateButton} text="選択" />
       </View>
     );
   }
 }
 
-export default connect(mapStateToProps)(UserSearch);
+export default connect(mapStateToProps)(GameSearchUser);
 
 const styles = StyleSheet.create({
   container: {

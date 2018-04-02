@@ -26,7 +26,7 @@ export default class UserList extends React.Component{
     const usersComponent = [];
     for (let i = 0; i < users.length; i++) {
       usersComponent.push(
-        <TouchableOpacity onPress={() => {this.props.callback()}}>
+        <TouchableOpacity onPress={() => {this.props.callback(i)}}>
           <UserListItem key={i} userName={users[i].user.name} />
         </TouchableOpacity>
       );

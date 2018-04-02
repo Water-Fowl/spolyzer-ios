@@ -14,17 +14,17 @@ import {
 import { connect } from "react-redux";
 import { listToQueryParams } from "utils";
 
-import enhancer from "./hoc";
-import setUserIndex from "../actions/set_user_index";
+import setUserIndex from "../analysis/actions/set_user_index";
+
 import {
-  GameTypeButton,
-  OpponentUserName,
-  RecentlyGame,
-  RecentlyGamesPicker,
-  ShotTypeButton,
-  TermButton
-} from "./components";
-import { getPositionsCounts } from "../actions/get_positions_counts";
+  GameTypeButtonList,
+  TermButtonList,
+  ShotTypeButtonList,
+} from "organisms";
+import {
+  SelectedUserName
+} from "atoms";
+import { getPositionsCounts } from "../analysis/actions/get_positions_counts";
 import { mapStateToProps } from "utils";
 
 class AnalysisCreate extends React.Component {
@@ -71,33 +71,32 @@ class AnalysisCreate extends React.Component {
           <Text style={styles.gameStyleText}>
             試合形式
           </Text>
-          <GameTypeButton />
+          <GameTypeButtonList />
         </View>
         <View style={styles.rowContainer}>
           <Text style={styles.shotTypeText}>
             球種
           </Text>
-          <ShotTypeButton />
+          <ShotTypeButtonList />
         </View>
         <View style={styles.rowContainer}>
           <Text style={styles.termText}>
             期間
           </Text>
-          <TermButton />
+          <TermButtonList />
         </View>
         <View style={styles.rowContainer}>
           <Text style={styles.opponentText}>
             対戦相手
           </Text>
           <TouchableOpacity onPress={() => {this.pushAnalysisSearchEvent(0);}}>
-            <OpponentUserName index={0}/>
+            <SelectedUserName user={this.props.analysis.analysisUsers[0]}/>
           </TouchableOpacity>
           <TouchableOpacity onPress={() => {this.pushAnalysisSearchEvent(1);}}>
-            <OpponentUserName index={1}/>
+            <SelectedUserName user={this.props.analysis.analysisUsers[1]}/>
           </TouchableOpacity>
         </View>
         <NavigateButton action={() => {this.getPositionsCountsEvent();}} style={styles.navigateButton} text="分析" />
-        <RecentlyGamesPicker isVisible={this.state.isPickerVisible} hidePicker={()=> {this.hidePicker();}}/>
       </View>
     );
   }

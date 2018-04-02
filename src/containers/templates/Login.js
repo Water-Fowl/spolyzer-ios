@@ -13,8 +13,8 @@ import {
 } from "react-native";
 import { connect } from "react-redux";
 
-import { postLogin } from "../actions/login";
-import getShotTypes from "../../../reducer/sport/actions/get_shot_types";
+import { postLogin } from "../authentication/actions/login";
+import getShotTypes from "../../reducer/sport/actions/get_shot_types";
 import { mapStateToProps } from "utils";
 
 class Login extends React.Component {
@@ -59,7 +59,7 @@ class Login extends React.Component {
         <Background />
         <Image
           style={styles.logo}
-          source={require("../../../assets/img/spolyzer_top.png")}
+          source={require("../../assets/img/spolyzer_top.png")}
         />
         <View style={styles.formContainer}>
           <View style={styles.form}>

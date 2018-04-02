@@ -13,13 +13,15 @@ import {
 } from "react-native";
 import { connect } from "react-redux";
 import { emailReg } from "const";
+import {
+  ErrorText
+} from "atoms";
 
-import { EmailErrorMessage } from "./components";
-import { GET_USER_ENDPOINT } from "../../../config/api";
+import { GET_USER_ENDPOINT } from "../../config/api";
 import {
   emailValidation,
   postRegistration
-} from "../actions/registration";
+} from "../authentication/actions/registration";
 
 class SignUp extends React.Component {
   constructor(props) {
@@ -57,7 +59,7 @@ class SignUp extends React.Component {
         <Background />
         <Image
           style={styles.logo}
-          source={require("../../../assets/img/spolyzer_top.png")}
+          source={require("../../assets/img/spolyzer_top.png")}
         />
         <View style={styles.form}>
           <TextInput
@@ -104,7 +106,7 @@ class SignUp extends React.Component {
             secureTextEntry
           />
         </View>
-        <EmailErrorMessage isVisible={this.state.isErrorVisible} />
+        <ErrorMessage isVisible={this.state.isErrorVisible}>メールアドレスを入力してください</ErrorMessage>
         <View style={styles.registrationForm}>
           <TouchableOpacity onPress={() => {
             this.postRegistrationForm();

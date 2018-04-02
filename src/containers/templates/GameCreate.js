@@ -8,8 +8,11 @@ import {
   NavigateButton,
   TopBar,
   TopContentBar,
-  ProfileImage
 } from "components";
+import {
+  ProfileImage
+} from "atoms";
+
 import {
   Dimensions,
   Image,
@@ -21,14 +24,13 @@ import {
 } from "react-native";
 import { connect } from "react-redux";
 
-import getShotTypes from "../../../reducer/sport/actions/get_shot_types";
-import setUserIndex from "../actions/set_user_index";
+import getShotTypes from "../../reducer/sport/actions/get_shot_types";
+import setUserIndex from "../game/actions/set_user_index";
 import { mapStateToProps } from "utils";
 
 class GameCreate extends React.Component {
   setUserIndexEvent(selectedUnitIndex, selectedUserIndex){
-    const { dispatch } = this.props;
-    dispatch(setUserIndex(selectedUnitIndex, selectedUserIndex));
+    this.props.dispatch(setUserIndex(selectedUnitIndex, selectedUserIndex));
     Actions.gameSearchUser();
   }
 
@@ -85,7 +87,7 @@ class GameCreate extends React.Component {
                 </View>
                 <View style={styles.gameSettingTableInnerCenter}>
                   <Image
-                    source={require("../../../assets/img/game_create_vs.png")}
+                    source={require("../../assets/img/game_create_vs.png")}
                     style={styles.vsPosition}
                   />
                 </View>

@@ -13,8 +13,10 @@ import {
 import {
   Graph,
   TopContentBar,
-  ProfileImage
 } from "components";
+import {
+  ProfileImage
+} from "atoms";
 import {
   VictoryAxis,
   VictoryBar,
@@ -62,7 +64,6 @@ class AnalysisView extends React.Component {
     }
     this.props.dispatch(setPositionsCount(min, max, side));
     this.setState({ onPressOut: field, onPressSide: side });
-
   }
 
   onPressArea(minPosition, maxPosition, side, is_out){

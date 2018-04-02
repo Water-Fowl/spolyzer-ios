@@ -15,19 +15,13 @@ import {
   LandScapeBackground,
   TopContentBar
 } from "components";
+import { ShotTypeModal } from "molecules";
+import { Field } from "organisms";
 import {
   connect
 } from "react-redux";
-
-import {
-  InFieldCircle,
-  InFieldLength,
-  InFieldSide,
-  Modal,
-  OutFieldLength,
-  OutFieldSide
-} from "./components";
-import { postGame } from "../actions/post_game";
+import { postGame } from "../game/actions/post_game";
+import { setPositionAndSide, setShotType } from "../game/actions/set_score";
 import { mapStateToProps } from "utils";
 
 class ScoreCreate extends React.Component {
@@ -36,8 +30,12 @@ class ScoreCreate extends React.Component {
     this.state = {
       height: Dimensions.get("window").width,
       width: Dimensions.get("window").height,
-      scores: ""
+      scores: "",
+      modalIsVisible: false
     };
+    this.hideModal = this.hideModal.bind(this);
+    this.setShotType = this.setShotType.bind(this);
+    this.showModal = this.showModal.bind(this);
   }
   componentDidMount() {
     Orientation.lockToLandscape();
@@ -51,6 +49,20 @@ class ScoreCreate extends React.Component {
       this.setState({ scores:nextProps.scores });
     }
   }
+
+  showModal(position, side) {
+    this.setState({ modalIsVisible: true })
+    this.props.dispatch(setPositionAndSide(position, side));
+  }
+
+  hideModal() {
+    this.setState({ modalIsVisible: false })
+  }
+
+  setShotType(shotTypeId, missType=0) {
+    this.props.dispatch(setShotType(shotTypeId, missType));
+  }
+
   navigationEvent(users, scores){
     const body = {
       units:  users,
@@ -63,49 +75,9 @@ class ScoreCreate extends React.Component {
     this.props.dispatch(postGame(body, this.props.authentication.header));
   }
 
-  renderInFieldCircle(){
-    return (
-      <TouchableHighlight
-        style={styles.blueCircle}
-        onPress={() => {
-          this.setModalEvent(this.props.position, this.props.side);
-        }}
-      >
-        <View/>
-      </TouchableHighlight>
-    );
-  }
-
-  renderInFieldLength(){
-    return (
-      <TouchableHighlight
-        style={styles.varticalBlueBar}
-        onPress={() => {
-          this.setModalEvent(this.props.position, this.props.side);
-        }}
-      >
-        <View/>
-      </TouchableHighlight>
-    );
-  }
-
-  renderInFieldSide() {
-    return (
-      <TouchableHighlight
-        style={styles.horizontalBlueBar}
-        onPress={() => {
-          this.setModalEvent(this.props.position, this.props.side);
-        }}
-      >
-        <View/>
-      </TouchableHighlight>
-    );
-  }
-
   renderUnitUsersName(users){
     const unitUserNameComponentList = [];
     for (let user of users){
-      console.log(user);
       unitUserNameComponentList.push(
         <Text style={styles.scoreInformationUserName}>{user.name}</Text>
       );
@@ -126,7 +98,13 @@ class ScoreCreate extends React.Component {
         height: this.state.height
       }}
       >
-        <Modal visible={this.props.game.scoreCreateModal} />
+        <ShotTypeModal
+          shotTypes={this.props.sport.shotTypes}
+          position={this.props.game.position}
+          isVisible={this.state.modalIsVisible}
+          hideModal={this.hideModal}
+          callback={this.setShotType}
+        />
         <LandScapeBackground />
         <TopContentBar>スコアシート</TopContentBar>
         <View style={styles.scoreInformationBar}>
@@ -137,7 +115,7 @@ class ScoreCreate extends React.Component {
             </View>
             <Text style={styles.scoreInformationGamePoint}>0</Text>
           </View>
-          <Image style={styles.scoreInformationBack} source={require("../../../assets/img/score_create_back.png")} />
+          <Image style={styles.scoreInformationBack} source={require("../../assets/img/score_create_back.png")} />
           <View style={styles.scoreInformationContainer}>
             <Text style={styles.scoreInformationGamePoint}>0</Text>
             <View style={styles.scoreInformationPointContainer}>
@@ -149,78 +127,7 @@ class ScoreCreate extends React.Component {
         <TouchableHighlight onPress={() => {this.navigationEvent(this.props.game.gameUnits, this.props.game.scores);}} style={styles.analysisNavigate}>
           <Text style={styles.analysisNavigateText}>分析</Text>
         </TouchableHighlight>
-        <View style={styles.scoreFieldContainer}>
-          <Image
-            source={require("../../../assets/img/field-line.png")}
-            style={styles.scoreFieldLine}
-          />
-          <View style={styles.scoreFieldButtonContainer}>
-            <View style={styles.scoreOverContainer}>
-              <View style={styles.scoreOutFieldSideContainer}>
-                <OutFieldSide position={5} side={0} />
-                <OutFieldSide position={6} side={0}/>
-              </View>
-              <View style={styles.scoreOutFieldSideContainer}>
-                <OutFieldSide position={0} side={1}/>
-                <OutFieldSide position={1} side={1}/>
-              </View>
-            </View>
-            <View style={styles.scoreMiddleContainer}>
-              <View style={styles.scoreOutFieldLengthContainer}>
-                <OutFieldLength position={4} side={0}/>
-                <OutFieldLength position={3} side={0}/>
-              </View>
-              <View style={styles.scoreInFieldContainer}>
-                <View style={styles.scoreInFieldLengthContainer}>
-                  <InFieldLength position={11} side={0}/>
-                  <InFieldLength position={10} side={0}/>
-                </View>
-                <View style={styles.scoreInFieldSideContainer}>
-                  <InFieldSide position={12} side={0}/>
-                  <View style={styles.scoreInFieldCircleContainer}>
-                    <InFieldCircle position={7} side={0}/>
-                  </View>
-                  <InFieldSide position={9} side={0}/>
-                </View>
-                <View style={styles.scoreInFieldLengthContainer}>
-                  <InFieldLength position={13} side={0}/>
-                  <InFieldLength position={8} side={0}/>
-                </View>
-              </View>
-              <View style={styles.scoreInFieldContainer}>
-                <View style={styles.scoreInFieldLengthContainer}>
-                  <InFieldLength position={8} side={1}/>
-                  <InFieldLength position={13} side={1}/>
-                </View>
-                <View style={styles.scoreInFieldSideContainer}>
-                  <InFieldSide position={9} side={1}/>
-                  <View style={styles.scoreInFieldCircleContainer}>
-                    <InFieldCircle position={7} side={1}/>
-                  </View>
-                  <InFieldSide position={12} side={1}/>
-                </View>
-                <View style={styles.scoreInFieldLengthContainer}>
-                  <InFieldLength position={10} side={1}/>
-                  <InFieldLength position={11} side={1}/>
-                </View>
-              </View>
-              <View style={styles.scoreOutFieldLengthContainer}>
-                <OutFieldLength position={3} side={1}/>
-                <OutFieldLength position={4} side={1}/>
-              </View>
-            </View>
-            <View style={styles.scoreUnderContainer}>
-              <View style={styles.scoreOutFieldSideContainer}>
-                <OutFieldSide position={2} side={0} />
-                <OutFieldSide position={1} side={0}/>
-              </View>
-              <View style={styles.scoreOutFieldSideContainer}>
-                <OutFieldSide position={6} side={1}/>
-                <OutFieldSide position={5} side={1}/>
-              </View>
-            </View>
-          </View>
-        </View>
+        <Field horizontal={false} callback={this.showModal} />
       </View>
     );
   }

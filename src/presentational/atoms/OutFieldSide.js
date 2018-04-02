@@ -7,6 +7,18 @@ import {
 import { connect } from "react-redux";
 
 export default class OutFieldSide extends React.Component {
+  renderInButton(position, side){
+    if(this.props.renderInButton) {
+      return (
+         this.props.renderInButton(position, side)
+      )
+    }
+    else {
+      return (
+        <View />
+      );
+    }
+  }
   render() {
     const sizeMagnification = this.props.horizontal? 1 : 2
     return (
@@ -24,7 +36,7 @@ export default class OutFieldSide extends React.Component {
           this.props.callback(this.props.position, this.props.side)
         }}
       >
-        {this.props.renderInButton(this.props.position, this.props.side)}
+        {this.renderInButton(this.props.position, this.props.side)}
       </TouchableHighlight>
     );
   }

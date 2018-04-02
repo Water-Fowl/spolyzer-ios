@@ -5,13 +5,14 @@ import {
   Text,
   View
 } from "react-native";
+import { ProfileImage } from "atoms";
 
 export default class UserListItem extends React.Component{
   render(){
     return(
       <View style={styles.userAccount}>
         <View style={styles.userImage}>
-          <ProfileImage size={30} imageSource={ this.props.userImageSource}/>
+          <ProfileImage size={30} imageSource={ this.props.userImageSource }/>
         </View>
         <View style={styles.userName}>
           <Text style={styles.userNameText}>{ this.props.userName }</Text>

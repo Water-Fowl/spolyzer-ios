@@ -19,14 +19,7 @@ import {
   connect
 } from "react-redux";
 
-import {
-  InFieldCircle,
-  InFieldLength,
-  InFieldSide,
-  Modal,
-  OutFieldLength,
-  OutFieldSide
-} from "./components";
+import { ShotTypeModal } from "molecules";
 import { postGame } from "../actions/post_game";
 import { mapStateToProps } from "utils";
 
@@ -126,7 +119,7 @@ class ScoreCreate extends React.Component {
         height: this.state.height
       }}
       >
-        <Modal visible={this.props.game.scoreCreateModal} />
+        <ShotTypeModal visible={this.props.game.scoreCreateModal} />
         <LandScapeBackground />
         <TopContentBar>スコアシート</TopContentBar>
         <View style={styles.scoreInformationBar}>
