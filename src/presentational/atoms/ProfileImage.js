@@ -6,7 +6,9 @@ import {
 
 export default class ProfileImage extends React.Component {
   componentWillReceiveProps(nextProps){
-    this.forceUpdate();
+    if(nextProps.imageSource){
+      this.forceUpdate();
+    }
   }
   render() {
     if (this.props.imageSource != null) {
@@ -33,7 +35,7 @@ export default class ProfileImage extends React.Component {
           height: this.props.size,
           borderRadius: this.props.size / 2
         }}
-        source={require("../assets/img/score_create_person.png")}
+        source={require("../../assets/img/score_create_person.png")}
       />
     );
   }

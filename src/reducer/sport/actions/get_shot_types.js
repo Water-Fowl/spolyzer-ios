@@ -4,7 +4,7 @@ import {
 } from "../action_types";
 import { SHOT_TYPES_ENDPOINT } from "../../../config/api";
 
-export default function getShotTypes(params, authHeaders) {
+export function getShotTypes(params, authHeaders) {
   return (dispatch) => {
     dispatch(getShotTypesRequest());
     return fetch( SHOT_TYPES_ENDPOINT + "?sport_id=" +  params, {
