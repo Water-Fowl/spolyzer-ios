@@ -50,12 +50,12 @@ class ShotTypeButtonList extends React.Component {
     );
   }
 }
-export default connect(mapStateToProps)(ShotTypeButtonList)
+export default connect(mapStateToProps)(ShotTypeButtonList);
 
 const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
-    flexWrap: 'wrap',
+    flexWrap: "wrap",
     backgroundColor: "transparent",
     borderRightColor: "#0a2444",
     borderTopColor: "#0a2444",

@@ -53,13 +53,6 @@ export function receivedRegistration(response_ok) {
   };
 }
 
-export function setToken(header){
-  return{
-    type: SET_TOKEN,
-    ...headers
-  };
-}
-
 export function getValidTokenRequest() {
   return {
     type: actionType.GET_VALIDATE_TOKEN_REQUEST

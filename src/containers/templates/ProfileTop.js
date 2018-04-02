@@ -9,7 +9,7 @@ import {
   View
 } from "react-native";
 import {
-  TopContentBar,
+  TopContentBar
 } from "components";
 import {
   ProfileImage

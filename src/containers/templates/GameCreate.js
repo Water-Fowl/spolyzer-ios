@@ -7,7 +7,7 @@ import {
   NavBar,
   NavigateButton,
   TopBar,
-  TopContentBar,
+  TopContentBar
 } from "components";
 import {
   ProfileImage

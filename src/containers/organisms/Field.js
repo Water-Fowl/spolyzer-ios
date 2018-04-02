@@ -17,8 +17,8 @@ export default class Field extends React.Component {
   renderInField(){
     if(this.props.renderInField) {
       return (
-         this.props.renderInField()
-      )
+        this.props.renderInField()
+      );
     }
     else {
       return (
@@ -28,7 +28,7 @@ export default class Field extends React.Component {
   }
 
   render(){
-    const sizeMagnification = this.props.horizontal? 1 : 2
+    const sizeMagnification = this.props.horizontal? 1 : 2;
     return (
       <View
         style={{
@@ -37,19 +37,19 @@ export default class Field extends React.Component {
           flex: 0.9,
           height: 170 * sizeMagnification,
           width: 300 * sizeMagnification,
-          marginTop: 26,
+          marginTop: 26
         }}
       >
-      <Image
-        style={{
-          position: "absolute",
-          alignSelf: "center",
-          height: 170 * sizeMagnification,
-          backfaceVisibility: "hidden",
-          resizeMode: "contain"
-        }}
-        source={require("../../assets/img/field-line.png")}
-      />
+        <Image
+          style={{
+            position: "absolute",
+            alignSelf: "center",
+            height: 170 * sizeMagnification,
+            backfaceVisibility: "hidden",
+            resizeMode: "contain"
+          }}
+          source={require("../../assets/img/field-line.png")}
+        />
         <View style={styles.overContainer}>
           <View style={styles.overOutFieldSideContainer}>
             <OutFieldSide
@@ -234,19 +234,6 @@ export default class Field extends React.Component {
 }
 
 const styles = StyleSheet.create({
-  field: {
-    alignSelf: "center",
-    width: 330,
-    height: 170,
-    marginTop: 26
-  },
-  fieldLine: {
-    position: "absolute",
-    alignSelf: "center",
-    height: 170,
-    backfaceVisibility: "hidden",
-    resizeMode: "contain"
-  },
   overContainer: {
     flexDirection: "row",
     flex: 1,
@@ -299,5 +286,5 @@ const styles = StyleSheet.create({
     flex: 0.5,
     justifyContent: "space-around",
     flexDirection: "row"
-  },
-})
+  }
+});

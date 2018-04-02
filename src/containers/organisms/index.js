@@ -15,4 +15,4 @@ export {
   TermButtonList,
   GameTypeButtonList,
   ShotTypeButtonList
-}
+};

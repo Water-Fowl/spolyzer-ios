@@ -19,7 +19,7 @@ import setUserIndex from "../analysis/actions/set_user_index";
 import {
   GameTypeButtonList,
   TermButtonList,
-  ShotTypeButtonList,
+  ShotTypeButtonList
 } from "organisms";
 import {
   SelectedUserName

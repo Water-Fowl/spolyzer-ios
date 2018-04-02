@@ -51,12 +51,12 @@ class ScoreCreate extends React.Component {
   }
 
   showModal(position, side) {
-    this.setState({ modalIsVisible: true })
+    this.setState({ modalIsVisible: true });
     this.props.dispatch(setPositionAndSide(position, side));
   }
 
   hideModal() {
-    this.setState({ modalIsVisible: false })
+    this.setState({ modalIsVisible: false });
   }
 
   setShotType(shotTypeId, missType=0) {
@@ -215,84 +215,5 @@ const styles = StyleSheet.create({
   scoreInformationContainer: {
     flexDirection: "row",
     flex: 0.4
-  },
-  scoreFieldContainer: {
-    alignItems: "center",
-    justifyContent: "center",
-    marginBottom: 20
-  },
-  scoreFieldButtonContainer: {
-    flex: 1,
-    alignItems: "center",
-    flexDirection: "column",
-    justifyContent: "space-between"
-  },
-  scoreFieldLine: {
-    position: "absolute"
-  },
-  scoreOverContainer: {
-    flexDirection: "row",
-    flex: 1,
-    justifyContent: "space-between"
-  },
-  scoreMiddleContainer: {
-    flexDirection: "row",
-    flex: 2,
-    justifyContent: "space-between"
-  },
-  scoreUnderContainer: {
-    flexDirection: "row",
-    flex: 1,
-    justifyContent: "space-between"
-  },
-  scoreOutFieldLengthContainer: {
-    marginLeft: 8,
-    marginRight: 8,
-    flexDirection: "column",
-    justifyContent: "space-between"
-  },
-  scoreOutFieldSideContainer:{
-    flexDirection: "row",
-    flex: 0.36,
-    justifyContent: "space-around"
-  },
-  scoreInFieldContainer: {
-    flexDirection: "row",
-    marginLeft: 30,
-    marginRight: 30
-  },
-  scoreInFieldLengthContainer: {
-    marginLeft: 12,
-    marginRight: 12,
-    justifyContent: "space-between",
-    alignItems: "center"
-  },
-  scoreInFieldCircleContainer: {
-    justifyContent: "space-between"
-  },
-  scoreInFieldSideContainer: {
-    marginLeft: 8,
-    marginRight: 8,
-    justifyContent: "space-between"
-  },
-  blueCircle: {
-    borderColor: "#2EA7E0",
-    backgroundColor: "#2EA7E0",
-    height: 70,
-    width: 70,
-    borderWidth: 1,
-    borderRadius: 100,
-    opacity: 0.3,
-    alignSelf: "center"
-  },
-  horizontalBlueBar: {
-    borderColor: "#2EA7E0",
-    backgroundColor: "#2EA7E0",
-    height: 20,
-    width: 80,
-    borderWidth: 1.3,
-    borderRadius: 3,
-    opacity: 0.3,
-    alignSelf: "center"
   }
 });

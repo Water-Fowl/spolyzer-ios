@@ -9,8 +9,8 @@ export default class OutFieldLength extends React.Component {
   renderInButton(position, side){
     if(this.props.renderInButton) {
       return (
-         this.props.renderInButton(position, side)
-      )
+        this.props.renderInButton(position, side)
+      );
     }
     else {
       return (
@@ -19,7 +19,7 @@ export default class OutFieldLength extends React.Component {
     }
   }
   render() {
-    const sizeMagnification = this.props.horizontal? 1 : 2
+    const sizeMagnification = this.props.horizontal? 1 : 2;
     return (
       <TouchableHighlight
         style={{
@@ -31,7 +31,7 @@ export default class OutFieldLength extends React.Component {
           borderRadius: 3
         }}
         onPress={() => {
-          this.props.callback(this.props.position, this.props.side)
+          this.props.callback(this.props.position, this.props.side);
         }}
       >
         {this.renderInButton(this.props.position, this.props.side)}
@@ -40,13 +40,3 @@ export default class OutFieldLength extends React.Component {
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    borderColor: "#A29A67",
-    backgroundColor: "#A29A67",
-    width: 20,
-    height: 80,
-    borderWidth: 1.3,
-    borderRadius: 3
-  }
-});

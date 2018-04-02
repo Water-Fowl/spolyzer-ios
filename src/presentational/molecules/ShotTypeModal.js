@@ -29,7 +29,7 @@ export default class ShotTypeModal extends React.Component {
     ){
       return (
         null
-      )
+      );
     }
     const buttonsComponentsList = [];
     for (let shotTypeId in this.props.shotTypes){

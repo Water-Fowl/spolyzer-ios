@@ -31,7 +31,7 @@ class TermButtonList extends React.Component {
   }
 }
 
-export default connect(mapStateToProps)(TermButtonList)
+export default connect(mapStateToProps)(TermButtonList);
 
 const styles = StyleSheet.create({
   container: {

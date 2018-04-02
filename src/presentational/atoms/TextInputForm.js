@@ -9,7 +9,7 @@ export default class TextInputForm extends React.Component{
         keyboardType="email-address"
         returnKeyType="done"
       />
-    )
+    );
   }
 }
 
@@ -19,5 +19,5 @@ const styles = StyleSheet.create({
     color: "#ffffff",
     paddingLeft: 12,
     letterSpacing: 0
-  },
-})
+  }
+});

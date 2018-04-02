@@ -63,7 +63,7 @@ class Route extends React.Component{
     /* バドミントンのIDは1*/
     let params = {
       sport_id: 1
-    }
+    };
 
     this.props.dispatch(validateToken(this.props.header))
       .then(() => {
@@ -86,8 +86,8 @@ class Route extends React.Component{
             requestCallback=getShotTypesRequest,
             receivedCallback=getShotTypesReceived
           )
-        )
-         // this.props.dispatch(getShotTypes(sport_id, this.props.header));
+        );
+        // this.props.dispatch(getShotTypes(sport_id, this.props.header));
       })
       .catch((error) => {
         console.log(error);

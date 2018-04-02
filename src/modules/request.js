@@ -21,8 +21,8 @@ export function postApiRequest(endPoint, body, headers={}, requestCallback, rece
       .then((response) => response.json())
       .then(function(json){
         dispatch(receivedCallback(json));
-        return json
-      })
+        return json;
+      });
   };
 }
 
@@ -36,16 +36,16 @@ export function getApiRequest(endpoint, params, header={}, requestCallback, rece
         "Accept": "application/json",
         "Content-Type": "application/json",
         ...header
-      },
+      }
     })
       .then((response) => response.json())
       .then(function(json){
         dispatch(receivedCallback(json));
-        return json
+        return json;
       })
       .catch((error) => {
         console.log(error);
       });
-  }
+  };
 }
 

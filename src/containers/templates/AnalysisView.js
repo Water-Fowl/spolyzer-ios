@@ -12,7 +12,7 @@ import {
 } from "react-native";
 import {
   Graph,
-  TopContentBar,
+  TopContentBar
 } from "components";
 import {
   ProfileImage
@@ -53,31 +53,26 @@ class AnalysisView extends React.Component {
 
   setPositionEvent(position, side) {
     if(position < 7){
-      min = OUT_MIN_POSITION
-      max = OUT_MAX_POSITION
-      field = OUT
+      min = OUT_MIN_POSITION;
+      max = OUT_MAX_POSITION;
+      field = OUT;
     }
     else {
-      min = IN_MIN_POSITION
-      max = IN_MAX_POSITION
-      field = IN
+      min = IN_MIN_POSITION;
+      max = IN_MAX_POSITION;
+      field = IN;
     }
     this.props.dispatch(setPositionsCount(min, max, side));
     this.setState({ onPressOut: field, onPressSide: side });
   }
-
-  onPressArea(minPosition, maxPosition, side, is_out){
-    this.props.dispatch(setPositionsCount(side, minPosition, maxPosition));
-  }
-
   _renderFieldButtonText(position, side){
     if(position < 7){
-      positionString = alphabet[position]
-      field = OUT
+      positionString = alphabet[position];
+      field = OUT;
     }
     else {
-      positionString = alphabet[position - 6]
-      field = IN
+      positionString = alphabet[position - 6];
+      field = IN;
     }
 
     if(this.state.onPressSide == side && this.state.onPressOut == field){
@@ -91,77 +86,6 @@ class AnalysisView extends React.Component {
       );
     }
   }
-  _renderInFieldLength(side, droppedAtId){
-    return (
-      <TouchableHighlight
-        style={styles.varticalBlueBar}
-        onPress={() => {
-          this.setPositionEvent(IN_MIN_POSITION, IN_MAX_POSITION, side);
-          this.setState({ onPressOut: IN, onPressSide: side });
-        }}
-      >
-        {this._renderFieldButtonText(side, IN, droppedAtId)}
-      </TouchableHighlight>
-    );
-  }
-
-  _renderOutFieldLength(side, droppedAtId){
-    return (
-      <TouchableHighlight
-        style={styles.varticalYellowBarLeft}
-        onPress={() => {
-          this.setPositionEvent(OUT_MIN_POSITION, OUT_MAX_POSITION, side);
-          this.setState({ onPressOut: OUT, onPressSide: side });
-        }}
-      >
-        {this._renderFieldButtonText(side, OUT, droppedAtId)}
-      </TouchableHighlight>
-    );
-  }
-
-  _renderInFieldSide(side, droppedAtId){
-    return (
-      <TouchableHighlight
-        style={styles.horizontalBlueBar}
-        onPress={() => {
-          this.setPositionEvent(IN_MIN_POSITION, IN_MAX_POSITION, side);
-          this.setState({ onPressOut: IN, onPressSide: side });
-        }}
-      >
-        {this._renderFieldButtonText(side, IN, droppedAtId)}
-      </TouchableHighlight>
-
-    );
-  }
-
-  _renderOutFieldSide(side, droppedAtId){
-    return (
-      <TouchableHighlight
-        style={styles.horizontalYellowBarLeft}
-        onPress={() => {
-          this.setPositionEvent(OUT_MIN_POSITION, OUT_MAX_POSITION, side);
-          this.setState({ onPressOut: OUT, onPressSide: side });
-        }}
-      >
-        {this._renderFieldButtonText(side, OUT, droppedAtId)}
-      </TouchableHighlight>
-    );
-  }
-
-  _renderInFieldCircle(side, droppedAtId){
-    return(
-      <TouchableHighlight
-        style={styles.blueCircle}
-        onPress={() => {
-          this.setPositionEvent(IN_MIN_POSITION, IN_MAX_POSITION, side);
-          this.setState({ onPressOut: IN, onPressSide: side });
-        }}
-      >
-        {this._renderFieldButtonText(side, IN, droppedAtId)}
-      </TouchableHighlight>
-    );
-  }
-
   _renderOutArea(){
     return (
       <View>
@@ -221,7 +145,7 @@ class AnalysisView extends React.Component {
           <TouchableOpacity style={styles.inArea} />
         </View>
       </View>
-    )
+    );
   }
 
   _renderOpponentUserNames(users){
@@ -301,63 +225,12 @@ const styles = StyleSheet.create({
     backgroundColor: "transparent"
 
   },
-  horizontalBlueBar: {
-    borderColor: "#2EA7E0",
-    backgroundColor: "#2EA7E0",
-    height: 10,
-    width: 40,
-    borderWidth: 1.3,
-    borderRadius: 3,
-    opacity: 0.3,
-    alignSelf: "center",
-    justifyContent: "center"
-  },
-  varticalBlueBar: {
-    borderColor: "#2EA7E0",
-    backgroundColor: "#2EA7E0",
-    flex: 0.4,
-    width: 10,
-    borderWidth: 1.3,
-    borderRadius: 3,
-    opacity: 0.3,
-    justifyContent: "center"
-  },
-  blueCircle: {
-    borderColor: "#2EA7E0",
-    backgroundColor: "#2EA7E0",
-    height: 30,
-    width: 30,
-    borderWidth: 1,
-    borderRadius: 100,
-    opacity: 0.3,
-    alignSelf: "center",
-    justifyContent: "center"
-  },
-  varticalYellowBarLeft: {
-    borderColor: "#A29A67",
-    backgroundColor: "#A29A67",
-    width: 10,
-    height: 40,
-    borderWidth: 1.3,
-    borderRadius: 3,
-    justifyContent: "center"
-  },
-  horizontalYellowBarLeft: {
-    borderColor: "#A29A67",
-    backgroundColor: "#A29A67",
-    borderWidth: 1.3,
-    borderRadius: 3,
-    width: 40,
-    height: 10,
-    alignSelf: "center",
-    justifyContent: "center"
-  },
   droppedIdText:{
     fontSize: 15,
     color: "white",
     backgroundColor: "transparent",
     textAlign: "center",
-    alignSelf: "center",
+    alignSelf: "center"
   },
   analysisInformationContiner: {
     flexDirection: "row",
@@ -427,71 +300,6 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     textAlign: "center",
     paddingTop: 5
-  },
-  field: {
-    alignSelf: "center",
-    width: 330,
-    height: 170,
-    marginTop: 26
-  },
-  fieldLine: {
-    position: "absolute",
-    alignSelf: "center",
-    height: 170,
-    backfaceVisibility: "hidden",
-    resizeMode: "contain"
-  },
-  overContainer: {
-    flexDirection: "row",
-    flex: 1,
-    justifyContent: "space-between"
-  },
-  overOutFieldSideContainer: {
-    alignSelf: "flex-start",
-    flex: 0.5,
-    justifyContent: "space-around",
-    flexDirection: "row"
-  },
-  middleContainer: {
-    flexDirection: "row",
-    flex: 3,
-    justifyContent: "space-between"
-  },
-  underContainer: {
-    flexDirection: "row",
-    flex: 1,
-    justifyContent: "space-between"
-  },
-  outFieldLengthContainer: {
-    marginLeft: 4,
-    marginRight: 4,
-    flexDirection: "column",
-    justifyContent: "space-between"
-  },
-  inFieldContainer: {
-    flexDirection: "row",
-    marginLeft: 10,
-    marginRight: 10
-  },
-  inFieldLengthContainer: {
-    marginLeft: 8,
-    marginRight: 8,
-    justifyContent: "space-between",
-    alignItems: "center"
-  },
-  inFieldCircleContainer: {
-    justifyContent: "space-between"
-  },
-  inFieldSideContainer: {
-    marginLeft: 6,
-    marginRight: 6,
-    justifyContent: "space-between"
-  },
-  underOutFieldSideContainer: {
-    alignSelf: "flex-end",
-    flex: 0.5,
-    justifyContent: "space-around",
-    flexDirection: "row"
   },
   backButtonContainer: {
     borderRightColor: "#28a8de",

@@ -48,7 +48,7 @@ class GameTypeButtonList extends React.Component {
   }
 }
 
-export default connect(mapStateToProps)(GameTypeButtonList)
+export default connect(mapStateToProps)(GameTypeButtonList);
 
 const styles = StyleSheet.create({
   container: {

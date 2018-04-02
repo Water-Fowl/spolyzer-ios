@@ -20,5 +20,5 @@ export {
   ErrorText,
   SelectedUserName,
   ParametricButton,
-  ProfileImage,
-}
+  ProfileImage
+};
