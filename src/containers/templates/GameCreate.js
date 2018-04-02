@@ -59,7 +59,7 @@ class GameCreate extends React.Component {
     if(this.props.game.gameUnits[unitIndex].users[userIndex]){
       return (
         <TouchableOpacity onPress={() =>{this.setUserIndexEvent(unitIndex, userIndex);}}>
-          { this.renderSelectedUserIcon(this.props.game.gameUnits[unitIndex].users[userIndex]) }
+          { this.renderSelectedUserIcon(this.props.game.gameUnits[unitIndex].users[userIndex].user) }
         </TouchableOpacity>
       );
     }

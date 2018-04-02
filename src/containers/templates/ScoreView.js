@@ -36,7 +36,7 @@ class ScoreView extends React.Component {
     const unitUserNameComponentList = [];
     for (let user of users){
       unitUserNameComponentList.push(
-        <Text style={styles.userNameText}> {user.name} </Text>
+        <Text style={styles.userNameText}> {user.user.name} </Text>
       );
     }
     return (

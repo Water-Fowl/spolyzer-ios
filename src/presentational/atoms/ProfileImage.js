@@ -6,7 +6,9 @@ import {
 
 export default class ProfileImage extends React.Component {
   componentWillReceiveProps(nextProps){
-    this.forceUpdate();
+    if(nextProps.imageSource){
+      this.forceUpdate();
+    }
   }
   render() {
     if (this.props.imageSource != null) {

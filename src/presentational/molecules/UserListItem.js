@@ -12,7 +12,7 @@ export default class UserListItem extends React.Component{
     return(
       <View style={styles.userAccount}>
         <View style={styles.userImage}>
-          <ProfileImage size={30} imageSource={ this.props.userImageSource }/>
+          <ProfileImage size={45} imageSource={ this.props.userImageSource }/>
         </View>
         <View style={styles.userName}>
           <Text style={styles.userNameText}>{ this.props.userName }</Text>
@@ -24,23 +24,18 @@ export default class UserListItem extends React.Component{
 const styles = StyleSheet.create({
   userAccount: {
     height: 45,
+    flex: 1,
     borderRadius: 3,
     backgroundColor: "rgba(23,82,155,0.3)",
     flexDirection: "row",
     alignSelf: "center"
   },
   userImage: {
-    width: "20%",
+    width: "10%",
     backgroundColor: "transparent"
   },
-  person: {
-    marginTop: 5,
-    marginLeft: 10,
-    height: 36,
-    width: 36
-  },
   userName: {
-    width: "50%",
+    width: "90%",
     backgroundColor: "transparent",
     alignItems: "center",
     justifyContent: "center"
@@ -48,7 +43,8 @@ const styles = StyleSheet.create({
   userNameText: {
     fontWeight: "bold",
     fontSize: 18,
-    color: "white"
+    color: "white",
+    textAlign: "center"
   },
 });
 

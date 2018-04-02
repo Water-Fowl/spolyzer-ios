@@ -14,10 +14,6 @@ import {
 } from "atoms";
 
 export default class Field extends React.Component {
-  constructor(props){
-    super(props);
-  }
-
   renderInField(){
     if(this.props.renderInField) {
       return (

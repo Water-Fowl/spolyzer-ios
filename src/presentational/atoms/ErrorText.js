@@ -18,8 +18,6 @@ export default class ErrorText extends React.Component{
         null
       );
     }
-
-
   }
 }
 

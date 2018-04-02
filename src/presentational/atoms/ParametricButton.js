@@ -11,9 +11,6 @@ import {
 } from "const";
 
 export default class ParametricButton extends React.Component {
-  constructor(props){
-    super(props);
-  }
   render() {
     return (
       <TouchableHighlight

@@ -21,11 +21,16 @@ const NET_MIN_POSITION = 8;
 const NET_MAX_POSITION = 13;
 
 export default class ShotTypeModal extends React.Component {
-  constructor(props){
-    super(props);
-  }
-
-  renderButtons(textStyles){
+  renderButtons(textStyles, isMiss){
+    if (
+      isMiss &&
+      this.props.position != NET_MAX_POSITION &&
+      this.props.position != NET_MIN_POSITION
+    ){
+      return (
+        null
+      )
+    }
     const buttonsComponentsList = [];
     for (let shotTypeId in this.props.shotTypes){
       buttonsComponentsList.push(
@@ -39,6 +44,7 @@ export default class ShotTypeModal extends React.Component {
         </TouchableHighlight>
       );
     }
+
     return (
       <View>
         { buttonsComponentsList }
@@ -51,8 +57,8 @@ export default class ShotTypeModal extends React.Component {
       return (
         <View style={styles.container}>
           <View style={styles.shotTypeContainer}>
-            { this.renderButtons(styles.shotType) }
-            { this.renderButtons(styles.missShotType) }
+            { this.renderButtons(styles.shotType, isMiss=false) }
+            { this.renderButtons(styles.missShotType, isMiss=true) }
           </View>
           <TouchableHighlight style={styles.touchableContainer} onPress={() => {this.props.hideModal();}} >
             <Text style={styles.close}>戻る</Text>

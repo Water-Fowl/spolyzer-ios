@@ -45,16 +45,21 @@ export default class UserList extends React.Component{
 const styles=StyleSheet.create({
   container: {
     height: "60%",
-    alignSelf: "center"
+    alignSelf: "center",
+    backgroundColor: "transparent",
+    borderRightColor: "#0a2444",
+    borderTopColor: "#0a2444",
+    borderLeftColor: "#0a2444",
+    borderBottomColor: "#0a2444",
   },
   scrollContainer: {
+    width: 300,
     backgroundColor: "transparent",
     borderRightColor: "#0a2444",
     borderTopColor: "#0a2444",
     borderLeftColor: "#0a2444",
     borderBottomColor: "#0a2444",
     padding: 5,
-    width: "85%",
     borderWidth: 1,
     borderRadius: 2
   }
