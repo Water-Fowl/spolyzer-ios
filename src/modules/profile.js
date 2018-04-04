@@ -10,27 +10,28 @@ export function getUserRequest() {
   };
 }
 
-export function getUserReceived(data) {
+export function getUserReceived(json) {
   return {
     type: GET_USER_RECEIVED,
-    userName: data.name,
-    userImageSource: data.image.url,
-    userEmail: data.email
+    userName: json.data.name,
+    userImageSource: json.data.image.url,
+    userEmail: json.data.email
   };
 }
 
-export function requestPostUserUpdate() {
+export function patchUserRequest() {
   return{
     type: REQUEST_POST_USER_UPDATE
   };
 }
 
-export function receivedPostUserUpdate(name, email, image){
+export function patchUserReceived(json){
+  console.log(json)
   return {
     type: RECEIVED_POST_USER_UPDATE,
-    userName: name,
-    userEmail: email,
-    userImageSource: image
+    userName: json.user.name,
+    userEmail: json.user.email,
+    userImageSource: json.user.image.url
   };
 }
 

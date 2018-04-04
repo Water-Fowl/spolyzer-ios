@@ -24,7 +24,17 @@ import {
 import {
   SelectedUserName
 } from "atoms";
-import { getPositionsCounts } from "../analysis/actions/get_positions_counts";
+import {
+  getPositionsCountsRequest,
+  getPositionsCountsReceived
+} from "../../modules/analysis";
+import {
+  getApiRequest
+} from "../../modules/request";
+import {
+  POSITIONS_COUNTS_ENDPOINT
+} from "../../config/api"
+
 import { mapStateToProps } from "utils";
 
 class AnalysisCreate extends React.Component {
@@ -51,7 +61,15 @@ class AnalysisCreate extends React.Component {
       game_user_count: this.props.analysis.gameUserCount,
       term: this.props.analysis.term
     };
-    this.props.dispatch(getPositionsCounts(listToQueryParams(params), this.props.authentication.header));
+    this.props.dispatch(getApiRequest(
+      POSITIONS_COUNTS_ENDPOINT,
+      params,
+      this.props.authentication.header,
+      getPositionsCountsRequest,
+      getPositionsCountsReceived
+    )).then(()=> {
+      Actions.analysisView()
+    })
   }
   pushAnalysisSearchEvent(selectedUserIndex) {
     this.props.dispatch(setUserIndex(selectedUserIndex));

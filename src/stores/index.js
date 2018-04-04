@@ -4,7 +4,9 @@ import { applyMiddleware, combineReducers, compose, createStore } from "redux";
 import { createLogger } from "redux-logger";
 import { persistReducer, persistStore } from "redux-persist";
 
-import { analysisReducer, authenticationReducer, gameReducer, profileReducer } from "../containers";
+import { profileReducer, authenticationReducer } from "../containers";
+import { analysisReducer } from "../modules/analysis";
+import { gameReducer } from "../modules/game";
 import { sportReducer } from "../modules/sport";
 
 const authenticationConfig = {

@@ -1,7 +1,7 @@
 function queryParmasGenerator(list){
   var params = "?";
   for (key in list){
-    params += `${key}=${list[key]}`;
+    params += `${key}=${list[key]}&`;
   }
   return params;
 }
@@ -20,6 +20,28 @@ export function postApiRequest(endPoint, body, headers={}, requestCallback, rece
     })
       .then((response) => response.json())
       .then(function(json){
+        console.log(json)
+        dispatch(receivedCallback(json));
+        return json;
+      });
+  };
+}
+
+export function patchApiRequest(endPoint, body, headers={}, requestCallback, receivedCallback){
+  return (dispatch) => {
+    dispatch(requestCallback());
+    return fetch(endPoint, {
+      method: "PATCH",
+      headers: {
+        "Accept": "application/json",
+        "Content-Type": "application/json",
+        ...headers
+      },
+      body: JSON.stringify(body)
+    })
+      .then((response) => response.json())
+      .then(function(json){
+        console.log(json)
         dispatch(receivedCallback(json));
         return json;
       });
@@ -28,6 +50,7 @@ export function postApiRequest(endPoint, body, headers={}, requestCallback, rece
 
 export function getApiRequest(endpoint, params, header={}, requestCallback, receivedCallback){
   let queryParams = queryParmasGenerator(params);
+  console.log(queryParams)
   return (dispatch) => {
     dispatch(requestCallback());
     return fetch(endpoint + queryParams, {

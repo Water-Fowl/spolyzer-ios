@@ -18,8 +18,16 @@ import {
   View
 } from "react-native";
 import { connect } from "react-redux";
-
-import getSearchUser from "../game/actions/get_user";
+import {
+  SEARCH_USER_ENDPOINT
+} from "../../config/api";
+import {
+  getSearchUserReceived,
+  getSearchUserRequest
+} from "../../modules/game";
+import {
+  getApiRequest
+} from "../../modules/request";
 import setUser from "../game/actions/set_user";
 import { UserList } from "organisms";
 import { mapStateToProps } from "utils";
@@ -40,8 +48,10 @@ class GameSearchUser extends React.Component {
     }
   }
   searchUserEvent(name){
-    const params = "?name=" + name;
-    this.props.dispatch(getSearchUser(params, this.props.authentication.header));
+    const params = {
+      name
+    }
+    this.props.dispatch(getApiRequest(SEARCH_USER_ENDPOINT, params, this.props.authentication.header, getSearchUserRequest, getSearchUserReceived))
     this.setState({ users: this.props.users });
   }
   setUser(selectedSearchUserIndex){

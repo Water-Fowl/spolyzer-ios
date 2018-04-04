@@ -58,9 +58,10 @@ export function getPositionsCountsRequest(){
   };
 }
 
-export function getPositionsCountsReceived(positionCounts){
+export function getPositionsCountsReceived(json){
+  console.log(json)
   return{
-    positionCounts,
+    positionCounts: json.counts,
     type: GET_POSITIONS_COUNTS_RECEIVED
   };
 }
@@ -131,7 +132,7 @@ export function setUserIndex(selectedUserIndex){
   };
 }
 
-export default function analysisReducer(state = initialState, action = {}) {
+export function analysisReducer(state = initialState, action = {}) {
   switch (action.type) {
   case GET_GAMES_REQUEST:
     return state;

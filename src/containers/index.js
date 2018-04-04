@@ -4,7 +4,7 @@ import AnalysisView from "./templates/AnalysisView";
 import GameCreate from "./templates/GameCreate";
 import GameSearchUser from "./templates/GameSearchUser";
 import Login from "./templates/Login";
-import ProfileEdit from "./profile/ProfileEdit";
+import ProfileEdit from "./templates/ProfileEdit";
 import ProfileTop from "./templates/ProfileTop";
 import ScoreCreate from "./templates/ScoreCreate";
 import ScoreView from "./templates/ScoreView";

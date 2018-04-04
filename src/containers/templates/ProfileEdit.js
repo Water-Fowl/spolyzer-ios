@@ -17,12 +17,23 @@ import {
 import {
   NavigateButton,
   TopContentBar,
-  ProfileImage
 } from "components";
+import {
+  ProfileImage
+} from "atoms";
 import { SexPicker } from "molecules";
 import { connect } from "react-redux";
 
-import { postUserUpdate } from "../actions/post_user_update";
+import {
+  patchUserReceived,
+  patchUserRequest
+} from "../../modules/profile";
+import {
+  patchApiRequest
+} from "../../modules/request";
+import {
+  USERS_ENDPOINT
+} from "../../config/api";
 import { mapStateToProps } from "utils";
 
 class ProfileEdit extends React.Component {
@@ -79,10 +90,13 @@ class ProfileEdit extends React.Component {
     if(this.state.imageData){
       body["image"] = this.state.imageData;
     }
-    const params = {
-      id: this.props.authentication.userId
-    };
-    dispatch(postUserUpdate(body, params, this.props.authentication.header)).then(() => {
+    this.props.dispatch(patchApiRequest(
+      USERS_ENDPOINT + this.props.authentication.userId,
+      body,
+      this.props.authentication.header,
+      patchUserRequest,
+      patchUserReceived
+    )).then(() => {
       Actions.profileTop();
     });
   }
@@ -96,7 +110,7 @@ class ProfileEdit extends React.Component {
               <TouchableOpacity
                 onPress={this._selectPhotoTapped}
               >
-                <ProfileImage imageSource={this.state.userImageSource} />
+                <ProfileImage size={80} imageSource={this.state.userImageSource} />
               </TouchableOpacity>
               <View style={styles.paddingtop22}>
                 <Text style={styles.profileTitle}>性別</Text>
