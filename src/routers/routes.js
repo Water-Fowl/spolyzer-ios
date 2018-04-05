@@ -30,7 +30,6 @@ import {
 import {
   DrawerContent
 } from "components";
-import { validateToken } from "../containers/authentication/actions/validate_token";
 import { getShotTypesReceived, getShotTypesRequest } from "../modules/sport";
 import { getValidTokenRequest, getValidTokenReceived } from "../modules/authentication";
 import { getUserRequest, getUserReceived } from "../modules/profile";
