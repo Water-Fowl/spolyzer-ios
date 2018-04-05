@@ -23,12 +23,12 @@ import {
 } from "../../config/api";
 import {
   getSearchUserReceived,
-  getSearchUserRequest
+  getSearchUserRequest,
+  setUser
 } from "../../modules/game";
 import {
   getApiRequest
 } from "../../modules/request";
-import setUser from "../game/actions/set_user";
 import { UserList } from "organisms";
 import { mapStateToProps } from "utils";
 

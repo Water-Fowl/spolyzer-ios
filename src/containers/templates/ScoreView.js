@@ -13,11 +13,11 @@ import {
   TopContentBar
 } from "components";
 import { connect } from "react-redux";
-
-import getShotTypeCounts from "../game/actions/get_shot_type_counts";
-import setShotTypeCounts from "../game/actions/set_shot_type_counts";
+import {
+  setShotTypeCounts,
+  resetState
+} from "../../modules/game";
 import { mapStateToProps } from "utils";
-import resetState from "../game/actions/reset_state";
 import {
   Field,
   Graph

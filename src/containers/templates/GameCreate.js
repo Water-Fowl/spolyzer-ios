@@ -25,7 +25,7 @@ import {
 import { connect } from "react-redux";
 
 import getShotTypes from "../../reducer/sport/actions/get_shot_types";
-import setUserIndex from "../game/actions/set_user_index";
+import { setUserIndex } from "../../modules/game";
 import { mapStateToProps } from "utils";
 
 class GameCreate extends React.Component {

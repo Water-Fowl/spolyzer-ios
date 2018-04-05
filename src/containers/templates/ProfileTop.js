@@ -21,10 +21,6 @@ import {
   mapStateToProps
 } from "utils";
 
-import {
-  getUser
-} from "../profile/actions/get_user";
-
 class ProfileTop extends React.Component {
   render() {
     return (
