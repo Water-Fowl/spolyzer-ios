@@ -68,7 +68,7 @@ class Route extends React.Component{
       this.props.header,
       getValidTokenRequest,
       getValidTokenReceived
-      )
+    )
     )
       .then(() => {
         if(this.props.errorMsg){
@@ -90,7 +90,7 @@ class Route extends React.Component{
             requestCallback=getUserRequest,
             receivedCallback=getUserReceived
           )
-        )
+        );
         this.props.dispatch(
           getApiRequest(
             endpoint=SHOT_TYPES_ENDPOINT,

@@ -33,7 +33,7 @@ import {
 } from "../../modules/request";
 import {
   POSITIONS_COUNTS_ENDPOINT
-} from "../../config/api"
+} from "../../config/api";
 
 import { mapStateToProps } from "utils";
 
@@ -68,8 +68,8 @@ class AnalysisCreate extends React.Component {
       getPositionsCountsRequest,
       getPositionsCountsReceived
     )).then(()=> {
-      Actions.analysisView()
-    })
+      Actions.analysisView();
+    });
   }
   pushAnalysisSearchEvent(selectedUserIndex) {
     this.props.dispatch(setUserIndex(selectedUserIndex));

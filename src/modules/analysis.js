@@ -59,7 +59,7 @@ export function getPositionsCountsRequest(){
 }
 
 export function getPositionsCountsReceived(json){
-  console.log(json)
+  console.log(json);
   return{
     positionCounts: json.counts,
     type: GET_POSITIONS_COUNTS_RECEIVED
@@ -73,7 +73,7 @@ export function getSearchUserRequest() {
 }
 
 export function getSearchUserReceived(json) {
-  console.log(json)
+  console.log(json);
   return {
     type: GET_SEARCH_USER_RECEIVED,
     users: json.users

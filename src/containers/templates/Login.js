@@ -79,7 +79,7 @@ class Login extends React.Component {
             requestCallback=getUserRequest,
             receivedCallback=getUserReceived
           )
-        )
+        );
         this.props.dispatch(
           getApiRequest(
             SHOT_TYPES_ENDPOINT,
@@ -88,12 +88,12 @@ class Login extends React.Component {
             getShotTypesRequest,
             getShotTypesReceived
           )
-        )
+        );
         Actions.tab();
       }
       else {
       }
-    })
+    });
   }
   render() {
     return (

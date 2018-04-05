@@ -16,7 +16,7 @@ import {
 } from "react-native";
 import {
   NavigateButton,
-  TopContentBar,
+  TopContentBar
 } from "components";
 import {
   ProfileImage

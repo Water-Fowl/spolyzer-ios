@@ -43,7 +43,7 @@ class DrawerContent extends React.Component {
           />
           <TouchableOpacity onPress={() => {
             Actions.login();
-            this.props.dispatch(resetToken())
+            this.props.dispatch(resetToken());
           }}>
             <Text style={styles.logoutText}>
               ログアウト
@@ -54,7 +54,7 @@ class DrawerContent extends React.Component {
     );
   }
 }
-export default connect()(DrawerContent)
+export default connect()(DrawerContent);
 
 const styles = StyleSheet.create({
   drawerContainer: {

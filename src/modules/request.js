@@ -1,5 +1,5 @@
 import {
-  Alert,
+  Alert
 } from "react-native";
 function queryParmasGenerator(list){
   var params = "?";
@@ -11,7 +11,7 @@ function queryParmasGenerator(list){
 
 function responseToHeader(responseHeader, status){
   if (status != 200){
-    return false
+    return false;
   }
   const header = {
     "access-token": responseHeader.get("access-token"),
@@ -36,10 +36,10 @@ export function postApiRequest(endPoint, body, headers={}, requestCallback, rece
       body: JSON.stringify(body)
     })
       .then(async function(response){
-        let json = await response.json()
+        let json = await response.json();
 
         if(returnHeader){
-          let header = await responseToHeader(response.headers, response.status)
+          let header = await responseToHeader(response.headers, response.status);
           if(!header){
             let messages = json.errors.join("\n");
             return new Promise((resolve) => {
@@ -70,7 +70,7 @@ export function patchApiRequest(endPoint, body, headers={}, requestCallback, rec
     })
       .then((response) => response.json())
       .then(function(json){
-        console.log(json)
+        console.log(json);
         dispatch(receivedCallback(json));
         return json;
       });
@@ -91,7 +91,7 @@ export function getApiRequest(endpoint, params, header={}, requestCallback, rece
     })
       .then((response) => response.json())
       .then(function(json){
-        console.log(json)
+        console.log(json);
         dispatch(receivedCallback(json));
         return json;
       })

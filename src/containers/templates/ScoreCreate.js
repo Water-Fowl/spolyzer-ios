@@ -93,9 +93,9 @@ class ScoreCreate extends React.Component {
         this.props.authentication.header,
         getShotTypeCountsRequest,
         getShotTypeCountsReceived
-      ))
+      ));
       Actions.scoreView();
-    })
+    });
   }
 
   renderUnitUsersName(users){

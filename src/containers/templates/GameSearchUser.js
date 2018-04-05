@@ -50,8 +50,8 @@ class GameSearchUser extends React.Component {
   searchUserEvent(name){
     const params = {
       name
-    }
-    this.props.dispatch(getApiRequest(SEARCH_USER_ENDPOINT, params, this.props.authentication.header, getSearchUserRequest, getSearchUserReceived))
+    };
+    this.props.dispatch(getApiRequest(SEARCH_USER_ENDPOINT, params, this.props.authentication.header, getSearchUserRequest, getSearchUserReceived));
     this.setState({ users: this.props.users });
   }
   setUser(selectedSearchUserIndex){

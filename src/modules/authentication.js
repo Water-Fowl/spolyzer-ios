@@ -11,7 +11,7 @@ const NETWORK_ERROR = "NETWORK_ERROR";
 const initialState = {
   header: {},
   isValidToken: false
-}
+};
 
 export function postLoginRequest() {
   return {
@@ -20,7 +20,7 @@ export function postLoginRequest() {
 }
 
 export function postLoginReceived(_, header) {
-  console.log(header)
+  console.log(header);
   return {
     type: POST_LOGIN_RECIEVED,
     isAuthenticated: true,
@@ -82,8 +82,8 @@ export function networkError(msg){
 
 export function resetToken(){
   return {
-    type: RESET_TOKEN,
-  }
+    type: RESET_TOKEN
+  };
 }
 
 export function authenticationReducer(state = initialState, action = {}) {

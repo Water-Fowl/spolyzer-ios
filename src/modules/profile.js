@@ -26,7 +26,7 @@ export function patchUserRequest() {
 }
 
 export function patchUserReceived(json){
-  console.log(json)
+  console.log(json);
   return {
     type: RECEIVED_POST_USER_UPDATE,
     userName: json.user.name,
