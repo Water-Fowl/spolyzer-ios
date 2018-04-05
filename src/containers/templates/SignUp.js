@@ -19,9 +19,23 @@ import {
 
 import { GET_USER_ENDPOINT } from "../../config/api";
 import {
-  emailValidation,
-  postRegistration
-} from "../authentication/actions/registration";
+  postRegistrationRequest,
+  postRegistrationReceived
+} from "../../modules/authentication";
+import {
+  postApiRequest
+} from "../../modules/request";
+import {
+  errorAlertCallback
+} from "utils";
+import {
+  REGISTRATION_ENDPOINT
+} from "../../config/api";
+
+function errorInstanceCallback(json){
+  console.log(json)
+  return new Error(json.errors.full_messages)
+}
 
 class SignUp extends React.Component {
   constructor(props) {
@@ -41,13 +55,24 @@ class SignUp extends React.Component {
 
     const isEmail = emailReg.test(this.state.email);
     if (isEmail){
-      const registration_form = {
+      const body = {
         name: this.state.name,
         email: this.state.email,
         password: this.state.password,
         password_confirmation: this.state.password_confirmation
       };
-      this.props.dispatch(postRegistration(registration_form));
+      this.props.dispatch(postApiRequest(
+        REGISTRATION_ENDPOINT,
+        body,
+        headers={},
+        requestCallback=postRegistrationRequest,
+        receivedCallback=postRegistrationReceived,
+        errorInstanceCallback=errorInstanceCallback,
+        errorCallback=errorAlertCallback,
+        returnHeader=false
+      ))
+        .then((isValid) => {if(isValid) {Actions.confirmation()}}
+        )
     }
     else{
       this.setState({isErrorVisible: true});

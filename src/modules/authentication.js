@@ -47,16 +47,15 @@ export function setToken(header){
   };
 }
 
-export function requestRegistration() {
+export function postRegistrationRequest() {
   return {
     type: POST_REGISTRATION_REQUEST
   };
 }
 
-export function receivedRegistration(response_ok) {
+export function postRegistrationReceived(_) {
   return {
     type: POST_REGISTRATION_RECEIVED,
-    error: response_ok
   };
 }
 

@@ -35,7 +35,15 @@ import {
   SHOT_TYPES_ENDPOINT
 } from "../../config/api";
 import getShotTypes from "../../reducer/sport/actions/get_shot_types";
-import { mapStateToProps } from "utils";
+import {
+  mapStateToProps,
+  errorAlertCallback
+} from "utils";
+
+function errorInstanceCallback(json){
+  console.log(json)
+  return new Error(json.errors)
+}
 
 class Login extends React.Component {
   constructor(props) {
@@ -67,7 +75,9 @@ class Login extends React.Component {
         headers={},
         postLoginRequest,
         postLoginReceived,
-        returnHeader=true
+        errorInstanceCallback=errorInstanceCallback,
+        errorCallback=errorAlertCallback,
+        returnHeader=true,
       )
     ).then((header) => {
       if(header){

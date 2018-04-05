@@ -10,10 +10,14 @@ import {
 import {
   mapStateToProps
 } from "./redux";
+import {
+  errorAlertCallback
+} from "./error";
 export {
   reshapeShotTypeCounts,
   reshapePositionsCount,
   getScoreByPositionAndSide,
   listToQueryParams,
-  mapStateToProps
+  mapStateToProps,
+  errorAlertCallback
 };

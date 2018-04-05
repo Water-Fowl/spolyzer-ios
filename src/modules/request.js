@@ -1,6 +1,7 @@
 import {
   Alert
 } from "react-native";
+
 function queryParmasGenerator(list){
   var params = "?";
   for (key in list){
@@ -9,10 +10,7 @@ function queryParmasGenerator(list){
   return params;
 }
 
-function responseToHeader(responseHeader, status){
-  if (status != 200){
-    return false;
-  }
+function responseToHeader(responseHeader){
   const header = {
     "access-token": responseHeader.get("access-token"),
     "expiry": responseHeader.get("expiry"),
@@ -23,7 +21,20 @@ function responseToHeader(responseHeader, status){
   return header;
 }
 
-export function postApiRequest(endPoint, body, headers={}, requestCallback, receivedCallback, returnHeader=false){
+function errorInstanceCallback(json){
+  return new Error(json.error.message)
+}
+
+export function postApiRequest(
+  endPoint,
+  body,
+  headers={},
+  requestCallback,
+  receivedCallback,
+  errorInstanceCallback=errorInstanceCallback,
+  errorCallback=console.log,
+  returnHeader=false
+){
   return (dispatch) => {
     dispatch(requestCallback());
     return fetch(endPoint, {
@@ -35,24 +46,28 @@ export function postApiRequest(endPoint, body, headers={}, requestCallback, rece
       },
       body: JSON.stringify(body)
     })
-      .then(async function(response){
+      .then(async (response) => {
         let json = await response.json();
 
+        /* status code が200でなかったときにエラー*/
+        if(response.status != 200){
+          throw errorInstanceCallback(json);
+        }
+
+        /* returnHeaderがtrueのときは、headerを変換したものをcallbackに渡す*/
         if(returnHeader){
-          let header = await responseToHeader(response.headers, response.status);
-          if(!header){
-            let messages = json.errors.join("\n");
-            return new Promise((resolve) => {
-              Alert.alert("エラー", messages, [{ text: "了解", onPress: () => { resolve(false); } }]);
-            });
-          }
+          let header = await responseToHeader(response.headers);
           dispatch(receivedCallback(json, header));
           return header;
         }
+
         dispatch(receivedCallback(json));
         return json;
-
-      });
+      })
+      .catch((error) => {
+        errorCallback(error.message)
+        return false
+      })
   };
 }
 
@@ -70,7 +85,6 @@ export function patchApiRequest(endPoint, body, headers={}, requestCallback, rec
     })
       .then((response) => response.json())
       .then(function(json){
-        console.log(json);
         dispatch(receivedCallback(json));
         return json;
       });
@@ -91,12 +105,10 @@ export function getApiRequest(endpoint, params, header={}, requestCallback, rece
     })
       .then((response) => response.json())
       .then(function(json){
-        console.log(json);
         dispatch(receivedCallback(json));
         return json;
       })
       .catch((error) => {
-        console.log(error);
       });
   };
 }
