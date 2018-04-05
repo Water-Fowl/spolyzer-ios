@@ -32,9 +32,10 @@ import {
 } from "components";
 import { validateToken } from "../containers/authentication/actions/validate_token";
 import { getShotTypesReceived, getShotTypesRequest } from "../modules/sport";
-import { getUser } from "../containers/profile/actions/get_user";
+import { getValidTokenRequest, getValidTokenReceived } from "../modules/authentication";
+import { getUserRequest, getUserReceived } from "../modules/profile";
 import { getApiRequest } from "../modules/request";
-import { SHOT_TYPES_ENDPOINT } from "../config/api";
+import { USERS_ENDPOINT, SHOT_TYPES_ENDPOINT, VALIDATE_TOKEN_ENDPOINT } from "../config/api";
 const RouterWithRedux = connect()(Router);
 const AppLogo = () => {
   return (
@@ -60,12 +61,15 @@ class Route extends React.Component{
     });
   }
   componentWillMountValidToken(){
-    /* バドミントンのIDは1*/
-    let params = {
-      sport_id: 1
-    };
 
-    this.props.dispatch(validateToken(this.props.header))
+    this.props.dispatch(getApiRequest(
+      VALIDATE_TOKEN_ENDPOINT,
+      params={},
+      this.props.header,
+      getValidTokenRequest,
+      getValidTokenReceived
+      )
+    )
       .then(() => {
         if(this.props.errorMsg){
           this.networkError();
@@ -80,8 +84,17 @@ class Route extends React.Component{
       .then(() => {
         this.props.dispatch(
           getApiRequest(
+            endpoint=USERS_ENDPOINT,
+            params={},
+            headers=this.props.header,
+            requestCallback=getUserRequest,
+            receivedCallback=getUserReceived
+          )
+        )
+        this.props.dispatch(
+          getApiRequest(
             endpoint=SHOT_TYPES_ENDPOINT,
-            params=params,
+            params={sport_id: 1},
             headers=this.props.header,
             requestCallback=getShotTypesRequest,
             receivedCallback=getShotTypesReceived
@@ -146,7 +159,7 @@ class Route extends React.Component{
 
 function mapStateToProps(state, props){
   return {
-    header: state.authentication.header,
+    header: state.authentication.header || {},
     isValidToken: state.authentication.isValidToken,
     errorMsg: state.authentication.errorMsg
   };

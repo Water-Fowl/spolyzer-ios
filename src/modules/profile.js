@@ -13,9 +13,9 @@ export function getUserRequest() {
 export function getUserReceived(json) {
   return {
     type: GET_USER_RECEIVED,
-    userName: json.data.name,
-    userImageSource: json.data.image.url,
-    userEmail: json.data.email
+    userName: json.user.name,
+    userImageSource: json.user.image.url,
+    userEmail: json.user.email
   };
 }
 

@@ -6,18 +6,25 @@ const GET_VALIDATE_TOKEN_RECEIVED = "GET_VALID_TOKEN_RECEIVED";
 const GET_VALIDATE_TOKEN_REQUEST = "GET_VALID_TOKEN_REQUEST";
 const EMAIL_VALIDATION = "EMAIL_VALIDATION";
 const SET_TOKEN = "SET_TOKEN";
+const RESET_TOKEN = "RESET_TOKEN";
 const NETWORK_ERROR = "NETWORK_ERROR";
+const initialState = {
+  header: {},
+  isValidToken: false
+}
 
-export function requestLogin() {
+export function postLoginRequest() {
   return {
     type: POST_LOGIN_REQUEST
   };
 }
 
-export function receivedLogin() {
+export function postLoginReceived(_, header) {
+  console.log(header)
   return {
     type: POST_LOGIN_RECIEVED,
-    isAuthenticated: true
+    isAuthenticated: true,
+    header
   };
 }
 
@@ -55,24 +62,29 @@ export function receivedRegistration(response_ok) {
 
 export function getValidTokenRequest() {
   return {
-    type: actionType.GET_VALIDATE_TOKEN_REQUEST
+    type: GET_VALIDATE_TOKEN_REQUEST
   };
 }
 
-export function getValidTokenReceived(isValidToken) {
+export function getValidTokenReceived(json) {
   return {
-    type: actionType.GET_VALIDATE_TOKEN_RECEIVED,
-    isValidToken
+    type: GET_VALIDATE_TOKEN_RECEIVED,
+    isValidToken: json.success
   };
 }
 
 export function networkError(msg){
   return {
-    type: actionType.NETWORK_ERROR,
+    type: NETWORK_ERROR,
     msg
   };
 }
 
+export function resetToken(){
+  return {
+    type: RESET_TOKEN,
+  }
+}
 
 export function authenticationReducer(state = initialState, action = {}) {
   switch (action.type) {
@@ -80,7 +92,8 @@ export function authenticationReducer(state = initialState, action = {}) {
     return state;
   case POST_LOGIN_RECIEVED:
     return Object.assign({}, state, {
-      isAuthenticated: action.isAuthenticated
+      isAuthenticated: action.isAuthenticated,
+      header: action.header
     });
   case POST_REGISTRATION_REQUEST:
     return state;
@@ -89,11 +102,6 @@ export function authenticationReducer(state = initialState, action = {}) {
     });
   case EMAIL_VALIDATION:
     return Object.assign({}, state, {
-    });
-  case SET_TOKEN:
-    return Object.assign({}, state, {
-      header: action.header,
-      isValidToken: action.isValidToken
     });
   case GET_VALIDATE_TOKEN_RECEIVED:
     return Object.assign({}, state, {
@@ -105,6 +113,11 @@ export function authenticationReducer(state = initialState, action = {}) {
   case NETWORK_ERROR:
     return Object.assign({}, state, {
       errorMsg: action.msg
+    });
+  case RESET_TOKEN:
+    return Object.assign({}, state, {
+      isValidToken: false,
+      header: {}
     });
   default:
     return state;

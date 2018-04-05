@@ -106,7 +106,7 @@ class SignUp extends React.Component {
             secureTextEntry
           />
         </View>
-        <ErrorMessage isVisible={this.state.isErrorVisible}>メールアドレスを入力してください</ErrorMessage>
+        <ErrorText isVisible={this.state.isErrorVisible}>メールアドレスを入力してください</ErrorText>
         <View style={styles.registrationForm}>
           <TouchableOpacity onPress={() => {
             this.postRegistrationForm();

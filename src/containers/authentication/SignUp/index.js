@@ -14,7 +14,7 @@ import {
 import { connect } from "react-redux";
 import { emailReg } from "const";
 
-import { EmailErrorMessage } from "./components";
+import { ErrorText } from "atoms";
 import { GET_USER_ENDPOINT } from "../../../config/api";
 import {
   emailValidation,
@@ -104,7 +104,7 @@ class SignUp extends React.Component {
             secureTextEntry
           />
         </View>
-        <EmailErrorMessage isVisible={this.state.isErrorVisible} />
+        <ErrorText isVisible={this.state.isErrorVisible}>メールアドレスを入力してください</ErrorText>
         <View style={styles.registrationForm}>
           <TouchableOpacity onPress={() => {
             this.postRegistrationForm();

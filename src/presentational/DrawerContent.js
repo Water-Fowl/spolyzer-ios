@@ -8,8 +8,10 @@ import {
   TouchableOpacity
 } from "react-native";
 import { Actions } from "react-native-router-flux";
+import { connect } from "react-redux";
+import { resetToken } from "../modules/authentication";
 
-export default class DrawerContent extends React.Component {
+class DrawerContent extends React.Component {
 
   render() {
     return (
@@ -39,7 +41,10 @@ export default class DrawerContent extends React.Component {
             source={require("../assets/img/logout.png")}
             style={styles.logoutImage}
           />
-          <TouchableOpacity onPress={Actions.login}>
+          <TouchableOpacity onPress={() => {
+            Actions.login();
+            this.props.dispatch(resetToken())
+          }}>
             <Text style={styles.logoutText}>
               ログアウト
             </Text>
@@ -49,6 +54,7 @@ export default class DrawerContent extends React.Component {
     );
   }
 }
+export default connect()(DrawerContent)
 
 const styles = StyleSheet.create({
   drawerContainer: {
