@@ -4,6 +4,9 @@ const GET_USER_RECEIVED = "GET_USER_RECEIVED";
 const GET_USER_REQUEST = "GET_USER_REQUEST";
 const SET_USER = "SET_USER";
 
+const initialState = {
+}
+
 export function getUserRequest() {
   return {
     type: GET_USER_REQUEST

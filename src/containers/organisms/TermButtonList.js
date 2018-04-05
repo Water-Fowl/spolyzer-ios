@@ -7,7 +7,7 @@ import {
 } from "react-native";
 
 import { ParametricButton } from "atoms";
-import { setTerm } from "../analysis/actions/set_query";
+import { setTerm } from "../../modules/analysis";
 import { mapStateToProps } from "utils";
 import { connect } from "react-redux";
 

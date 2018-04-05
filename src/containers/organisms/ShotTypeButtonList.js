@@ -9,7 +9,7 @@ import { connect } from "react-redux";
 
 import { ParametricButton } from "atoms";
 import { mapStateToProps } from "utils";
-import { setShotType } from "../analysis/actions/set_query";
+import { setShotType } from "../../modules/analysis";
 
 class ShotTypeButtonList extends React.Component {
   constructor(props) {

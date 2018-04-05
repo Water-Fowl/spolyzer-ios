@@ -10,12 +10,6 @@ import ScoreCreate from "./templates/ScoreCreate";
 import ScoreView from "./templates/ScoreView";
 import SignUp from "./templates/SignUp";
 import Confirmation from "./templates/Confirmation";
-/* Reducersのimport  */
-import analysisReducer from "./analysis/reducer";
-import authenticationReducer from "./authentication/reducer";
-import gameReducer from "./game/reducer";
-import profileReducer from "./profile/reducer";
-
 export {
   /* Componentのexport */
   AnalysisCreate,
@@ -30,9 +24,4 @@ export {
   SignUp,
   Login,
   Confirmation,
-  /* Reducersのexport */
-  analysisReducer,
-  gameReducer,
-  profileReducer,
-  authenticationReducer
 };

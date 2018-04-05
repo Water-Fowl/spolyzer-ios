@@ -4,7 +4,7 @@ import { applyMiddleware, combineReducers, compose, createStore } from "redux";
 import { createLogger } from "redux-logger";
 import { persistReducer, persistStore } from "redux-persist";
 
-import { profileReducer } from "../containers";
+import { profileReducer } from "../modules/profile";
 import { authenticationReducer } from "../modules/authentication";
 import { analysisReducer } from "../modules/analysis";
 import { gameReducer } from "../modules/game";
