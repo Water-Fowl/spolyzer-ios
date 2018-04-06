@@ -11,13 +11,13 @@ import {
 } from "react-native";
 import {
   TopContentBar
-} from "components";
+} from "atoms";
 import { connect } from "react-redux";
-
-import getShotTypeCounts from "../game/actions/get_shot_type_counts";
-import setShotTypeCounts from "../game/actions/set_shot_type_counts";
-import { mapStateToProps } from "utils";
-import resetState from "../game/actions/reset_state";
+import {
+  setShotTypeCounts,
+  resetState
+} from "../../modules/game";
+import { reshapeShotTypeCounts, mapStateToProps } from "utils";
 import {
   Field,
   Graph
@@ -28,15 +28,29 @@ class ScoreView extends React.Component {
   constructor(props) {
     super(props);
     this.setShotTypeCounts = this.setShotTypeCounts.bind(this);
+    this.state = {
+      data: [],
+      missData: [],
+      shotTypeList: []
+    };
   }
   setShotTypeCounts(position, side, missType=0) {
     this.props.dispatch(setShotTypeCounts(position, side));
+    const {
+      shotTypeCountsList,
+      missShotTypeCountsList,
+      shotTypesList
+    } = reshapeShotTypeCounts(this.props.game.selectedShotTypeCounts, this.props.sport.shotTypes);
+    this.setState({
+      data: shotTypeCountsList,
+      missData: missShotTypeCountsList
+    });
   }
   renderUnitUsersName(users){
     const unitUserNameComponentList = [];
     for (let user of users){
       unitUserNameComponentList.push(
-        <Text style={styles.userNameText}> {user.user.name} </Text>
+        <Text style={styles.userNameText}> { user.name } </Text>
       );
     }
     return (
@@ -84,7 +98,7 @@ class ScoreView extends React.Component {
             </View>
           </View>
           <Field horizontal callback={this.setShotTypeCounts} />
-          <Graph />
+          <Graph data={this.state.data} missData={this.state.missData} shotTypeList={this.state.shotTypeList}/>
           <View style={styles.backButtonContainer}>
             <TouchableOpacity onPress={() => {
               this.props.dispatch(resetState());

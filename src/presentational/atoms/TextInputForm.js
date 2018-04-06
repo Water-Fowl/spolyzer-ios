@@ -1,3 +1,9 @@
+import React from "react";
+import {
+  TextInput,
+  StyleSheet
+} from "react-native";
+
 export default class TextInputForm extends React.Component{
   render(){
     return (

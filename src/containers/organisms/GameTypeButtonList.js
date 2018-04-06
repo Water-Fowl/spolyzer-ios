@@ -13,7 +13,7 @@ import { connect } from "react-redux";
 
 import { ParametricButton } from "atoms";
 import { mapStateToProps } from "utils";
-import { setGameType } from "../analysis/actions/set_query";
+import { setGameType } from "../../modules/analysis";
 
 class GameTypeButtonList extends React.Component {
   constructor(props){

@@ -1,7 +1,7 @@
 import Orientation from "react-native-orientation";
 import React, { Component } from "react";
 import { Actions } from "react-native-router-flux";
-import { Background } from "components";
+import { Background } from "atoms";
 import {
   Dimensions,
   Image,
@@ -13,9 +13,36 @@ import {
 } from "react-native";
 import { connect } from "react-redux";
 
-import { postLogin } from "../authentication/actions/login";
-import getShotTypes from "../../reducer/sport/actions/get_shot_types";
-import { mapStateToProps } from "utils";
+import {
+  postLoginRequest,
+  postLoginReceived
+} from "../../modules/authentication";
+import {
+  getShotTypesRequest,
+  getShotTypesReceived
+} from "../../modules/sport";
+import {
+  getUserRequest,
+  getUserReceived
+} from "../../modules/profile";
+import {
+  postApiRequest,
+  getApiRequest
+} from "../../modules/request";
+import {
+  SIGN_IN_ENDPOINT,
+  USERS_ENDPOINT,
+  SHOT_TYPES_ENDPOINT
+} from "../../config/api";
+import {
+  mapStateToProps,
+  errorAlertCallback
+} from "utils";
+
+function errorInstanceCallback(json){
+  console.log(json);
+  return new Error(json.errors);
+}
 
 class Login extends React.Component {
   constructor(props) {
@@ -35,23 +62,47 @@ class Login extends React.Component {
 
   postLoginEvent() {
     const sportId = 1;
-    const loginForm = {
+    var body = {
       name: this.state.name,
       email: this.state.email,
       password: this.state.password
     };
-    this.props.dispatch(postLogin(loginForm))
-      .then((header) => {
-        if( header ){
-          this.props.dispatch(getShotTypes(sportId, header));
-        }
-        else {
-          Promise.reject();
-        }
-      })
-      .then(() => {
+    this.props.dispatch(
+      postApiRequest(
+        SIGN_IN_ENDPOINT,
+        body,
+        headers={},
+        postLoginRequest,
+        postLoginReceived,
+        errorInstanceCallback=errorInstanceCallback,
+        errorCallback=errorAlertCallback,
+        returnHeader=true,
+      )
+    ).then((header) => {
+      if(header){
+        this.props.dispatch(
+          getApiRequest(
+            endpoint=USERS_ENDPOINT,
+            params={},
+            headers=header,
+            requestCallback=getUserRequest,
+            receivedCallback=getUserReceived
+          )
+        );
+        this.props.dispatch(
+          getApiRequest(
+            SHOT_TYPES_ENDPOINT,
+            params={sport_id: 1},
+            header,
+            getShotTypesRequest,
+            getShotTypesReceived
+          )
+        );
         Actions.tab();
-      });
+      }
+      else {
+      }
+    });
   }
   render() {
     return (

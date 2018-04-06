@@ -2,14 +2,16 @@ import React from "react";
 import baseEnhancer from "enhances";
 import {
   ActionConst,
-  Actions
+  Actions,
+  TouchableOpacity
 } from "react-native-router-flux";
 import {
   Background,
   NavBar,
   NavigateButton,
-  TopContentBar
-} from "components";
+  TopContentBar,
+  TextBox
+} from "atoms";
 import {
   Image,
   StyleSheet,
@@ -18,9 +20,18 @@ import {
   View
 } from "react-native";
 import { connect } from "react-redux";
-
-import getSearchUser from "../game/actions/get_user";
-import setUser from "../game/actions/set_user";
+import {
+  SEARCH_USER_ENDPOINT
+} from "../../config/api";
+import {
+  getSearchUserReceived,
+  getSearchUserRequest,
+  setUser,
+  removeUser
+} from "../../modules/game";
+import {
+  getApiRequest
+} from "../../modules/request";
 import { UserList } from "organisms";
 import { mapStateToProps } from "utils";
 
@@ -33,6 +44,7 @@ class GameSearchUser extends React.Component {
     };
     this.searchUserEvent.bind(this);
     this.setUser = this.setUser.bind(this);
+    this.removeUser = this.removeUser.bind(this);
   }
   componentWillReceiveProps(nextProps){
     if(nextProps.game.users){
@@ -40,12 +52,19 @@ class GameSearchUser extends React.Component {
     }
   }
   searchUserEvent(name){
-    const params = "?name=" + name;
-    this.props.dispatch(getSearchUser(params, this.props.authentication.header));
+    const params = {
+      name
+    };
+    this.props.dispatch(getApiRequest(SEARCH_USER_ENDPOINT, params, this.props.authentication.header, getSearchUserRequest, getSearchUserReceived));
     this.setState({ users: this.props.users });
   }
   setUser(selectedSearchUserIndex){
-    this.props.dispatch(setUser(this.props.game.selectedUnitIndex, this.props.selectedUserIndex, this.props.game.users[selectedSearchUserIndex]));
+    this.props.dispatch(setUser(this.props.game.selectedUnitIndex, this.props.selectedUserIndex, this.props.game.users[selectedSearchUserIndex].user));
+    Actions.gameCreate();
+  }
+  removeUser(){
+    console.log("sss");
+    this.props.dispatch(removeUser());
     Actions.gameCreate();
   }
   render() {
@@ -69,6 +88,7 @@ class GameSearchUser extends React.Component {
             returnKeyType="done"
           />
         </View>
+        <TextBox callback={() => {this.removeUser();}}>選択なし</TextBox>
         <UserList callback={this.setUser} users={this.state.users}/>
         <NavigateButton action={() =>{Actions.popTo("gameCreate"); }} style={styles.navigateButton} text="選択" />
       </View>

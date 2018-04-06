@@ -5,7 +5,7 @@ import Orientation from "react-native-orientation";
 import React from "react";
 import {
   Background
-} from "components";
+} from "atoms";
 import {
   StyleSheet,
   View

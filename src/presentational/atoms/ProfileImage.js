@@ -15,7 +15,6 @@ export default class ProfileImage extends React.Component {
       return (
         <Image
           style={{
-            opacity: 0.5,
             width: this.props.size,
             height: this.props.size,
             borderRadius: this.props.size / 2

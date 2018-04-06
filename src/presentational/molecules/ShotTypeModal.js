@@ -9,10 +9,6 @@ import {
   NavigateButton
 } from "components";
 
-
-import {
-  hideScoreCreateModal
-} from "../../containers/game/actions/set_modal";
 import { connect } from "react-redux";
 import {
   mapStateToProps

@@ -5,12 +5,6 @@ import {
   Actions
 } from "react-native-router-flux";
 import {
-  Background,
-  NavBar,
-  NavigateButton,
-  TopContentBar
-} from "components";
-import {
   Image,
   StyleSheet,
   Text,
@@ -19,8 +13,25 @@ import {
 } from "react-native";
 import { connect } from "react-redux";
 
-import getSearchUser from "../analysis/actions/get_user";
-import setUser from "../analysis/actions/set_user";
+import {
+  getSearchUserRequest,
+  getSearchUserReceived,
+  setUser,
+  removeUser
+} from "../../modules/analysis";
+import {
+  getApiRequest
+} from "../../modules/request";
+import {
+  SEARCH_USER_ENDPOINT
+} from "../../config/api";
+import {
+  Background,
+  NavBar,
+  NavigateButton,
+  TopContentBar,
+  TextBox
+} from "atoms";
 import { UserList } from "organisms";
 import {
   mapStateToProps
@@ -33,19 +44,25 @@ class AnalysisSearchUser extends React.Component {
       name: "",
       users: this.props.analysis.users
     };
-    this.searchUserEvent = this.searchUserEvent.bind(this);
+    this.getUser = this.getUser.bind(this);
     this.setUser = this.setUser.bind(this);
   }
   componentWillReceiveProps(nextProps){
     this.setState({ users: nextProps.analysis.users });
   }
-  searchUserEvent(name){
-    const params = "?name=" + name;
-    this.props.dispatch(getSearchUser(params, this.props.authentication.header));
+  getUser(name){
+    const params = {
+      name: name
+    };
+    this.props.dispatch(getApiRequest(SEARCH_USER_ENDPOINT, params, this.props.authentication.header, getSearchUserRequest, getSearchUserReceived));
     this.setState({ users: this.props.analysis.users });
   }
   setUser(selectedIndex){
-    this.props.dispatch(setUser(this.props.analysis.analysisUsers[selectedIndex].user));
+    this.props.dispatch(setUser(this.props.analysis.selectedUserIndex, this.props.analysis.users[selectedIndex].user));
+    Actions.popTo("analysisCreate");
+  }
+  removeUser(){
+    this.props.dispatch(removeUser());
     Actions.popTo("analysisCreate");
   }
   render() {
@@ -59,7 +76,7 @@ class AnalysisSearchUser extends React.Component {
           <TextInput
             onChangeText={(name) => {
               this.setState({ name });
-              this.searchUserEvent(name);
+              this.getUser(name);
             }}
             value={this.state.name}
             placeholder="名前入力"
@@ -69,6 +86,7 @@ class AnalysisSearchUser extends React.Component {
             returnKeyType="done"
           />
         </View>
+        <TextBox callback={() => {this.removeUser();}}>選択なし</TextBox>
         <UserList callback={this.setUser} users={this.state.users} />
         <NavigateButton action={() =>{Actions.popTo("analysisCreate"); }} style={styles.navigateButton} text="戻る" />
       </View>

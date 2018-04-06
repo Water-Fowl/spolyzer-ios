@@ -9,10 +9,8 @@ import {
   View
 } from "react-native";
 import {
+  ProfileImage,
   TopContentBar
-} from "components";
-import {
-  ProfileImage
 } from "atoms";
 import {
   connect
@@ -20,10 +18,6 @@ import {
 import {
   mapStateToProps
 } from "utils";
-
-import {
-  getUser
-} from "../profile/actions/get_user";
 
 class ProfileTop extends React.Component {
   render() {

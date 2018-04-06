@@ -107,8 +107,6 @@ class Graph extends React.Component{
   }
 }
 
-Graph.defaultProps = {data: [], missData: []};
-
 export default connect(mapStateToProps)(Graph);
 
 function mapStateToProps(state, props){

@@ -29,12 +29,12 @@ import {
 } from "../containers";
 import {
   DrawerContent
-} from "components";
-import { validateToken } from "../containers/authentication/actions/validate_token";
+} from "organisms";
 import { getShotTypesReceived, getShotTypesRequest } from "../modules/sport";
-import { getUser } from "../containers/profile/actions/get_user";
+import { getValidTokenRequest, getValidTokenReceived } from "../modules/authentication";
+import { getUserRequest, getUserReceived } from "../modules/profile";
 import { getApiRequest } from "../modules/request";
-import { SHOT_TYPES_ENDPOINT } from "../config/api";
+import { USERS_ENDPOINT, SHOT_TYPES_ENDPOINT, VALIDATE_TOKEN_ENDPOINT } from "../config/api";
 const RouterWithRedux = connect()(Router);
 const AppLogo = () => {
   return (
@@ -59,39 +59,51 @@ class Route extends React.Component{
       Alert.alert("ネットワークエラー", "インターネットの接続を確認して下さい", [{text: "再接続", onPress: () => { this.componentWillMountValidToken(); } }]);
     });
   }
-  componentWillMountValidToken(){
-    /* バドミントンのIDは1*/
-    let params = {
-      sport_id: 1
-    };
+  async componentWillMountValidToken(){
+    try{
+      let isSuccess = await this.props.dispatch(getApiRequest(
+        VALIDATE_TOKEN_ENDPOINT,
+        params={},
+        this.props.header,
+        getValidTokenRequest,
+        getValidTokenReceived
+      )
+      );
 
-    this.props.dispatch(validateToken(this.props.header))
-      .then(() => {
-        if(this.props.errorMsg){
-          this.networkError();
-        }
-      })
-      .then(() => {
-        this.setState({
-          isValidToken: this.props.isValidToken,
-          loading: false
-        });
-      })
-      .then(() => {
-        this.props.dispatch(
+      if(!isSuccess){
+        throw new Error("Network request faild");
+      }
+
+      if(this.props.isValidToken) {
+        await this.props.dispatch(
+          getApiRequest(
+            endpoint=USERS_ENDPOINT,
+            params={},
+            headers=this.props.header,
+            requestCallback=getUserRequest,
+            receivedCallback=getUserReceived
+          )
+        );
+
+        await this.props.dispatch(
           getApiRequest(
             endpoint=SHOT_TYPES_ENDPOINT,
-            params=params,
+            params={sport_id: 1},
             headers=this.props.header,
             requestCallback=getShotTypesRequest,
             receivedCallback=getShotTypesReceived
           )
         );
-        // this.props.dispatch(getShotTypes(sport_id, this.props.header));
-      })
-      .catch((error) => {
-        console.log(error);
+      }
+
+      this.setState({
+        isValidToken: this.props.isValidToken,
+        loading: false
       });
+    }
+    catch(error){
+      this.networkError();
+    }
   }
   async componentWillMount(){
     await this.componentWillMountValidToken();
@@ -146,7 +158,7 @@ class Route extends React.Component{
 
 function mapStateToProps(state, props){
   return {
-    header: state.authentication.header,
+    header: state.authentication.header || {},
     isValidToken: state.authentication.isValidToken,
     errorMsg: state.authentication.errorMsg
   };

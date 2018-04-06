@@ -3,9 +3,10 @@ import {
   getScoreByPositionAndSide
 } from "utils";
 
-const GET_SEARCH_USER_REQUEST = "GET_SEARCH_USER_REQUEST_ON_GAME_REDUCER";
-const GET_SEARCH_USER_RECEIVED = "GET_SEARCH_USER_RECEIVED_ON_GAME_REDUCER";
+const GET_SEARCH_USER_REQUEST = "GET_SEARCH_USER_REQUEST_ON_GAME";
+const GET_SEARCH_USER_RECEIVED = "GET_SEARCH_USER_RECEIVED_ON_GAME";
 const SET_USER = "SET_USER";
+const REMOVE_USER = "REMOVE_USER_ON_GAME";
 const SET_SHOT_TYPE = "SET_SHOT_TYPE";
 const SET_POSITION_AND_SIDE = "SET_POSITION_AND_SIDE";
 const SET_SHOT_TYPE_COUNTS = "SET_SHOT_TYPE_COUNTS";
@@ -26,10 +27,10 @@ export function getShotTypeCountsRequest() {
   };
 }
 
-export function getShotTypeCountsReceived(counts) {
+export function getShotTypeCountsReceived(json) {
   return {
     type: GET_SHOT_TYPE_COUNTS_RECEIVED,
-    shotTypeCounts: counts
+    shotTypeCounts: json.counts
   };
 }
 
@@ -45,23 +46,23 @@ export function getSearchUserRequest() {
   };
 }
 
-export function requestScoreGame() {
+export function postGameRequest() {
   return {
     type: POST_GAME_REQUEST
   };
 }
 
-export function receivedScoreGame(gameId) {
+export function postGameReceived(json) {
   return {
     type: POST_GAME_RECIEVED,
-    gameId: gameId
+    gameId: json.game.id
   };
 }
 
-export function getSearchUserReceived(users) {
+export function getSearchUserReceived(json) {
   return {
     type: GET_SEARCH_USER_RECEIVED,
-    users
+    users: json.users
   };
 }
 
@@ -110,11 +111,23 @@ export function setUser(selectedUnitIndex, selectedUserIndex, user){
   };
 }
 
+export function removeUser(){
+  return {
+    type: REMOVE_USER
+  };
+}
+
 export function setUserIndex(selectedUnitIndex, selectedUserIndex){
   return {
     type: SET_SELECTED_USER_INDEX,
     selectedUnitIndex,
     selectedUserIndex
+  };
+}
+
+export function resetState(){
+  return {
+    type: RESET_STATE
   };
 }
 
@@ -161,7 +174,7 @@ export function gameReducer(state = initialState, action = {}) {
     return state;
   case POST_GAME_RECIEVED:
     return Object.assign({}, state, {
-      currentScoreGameId: action.currentScoreGameId
+      gameId: action.gameId
     });
   case GET_SEARCH_USER_REQUEST:
     return Object.assign({}, state, {
@@ -184,6 +197,11 @@ export function gameReducer(state = initialState, action = {}) {
       state.gameUnits[action.selectedUnitIndex].users.push(action.user);
     }
     state.gameUnits[action.selectedUnitIndex].count = state.gameUnits[action.selectedUnitIndex].users.length;
+    return Object.assign({}, state, {
+      gameUnits: state.gameUnits
+    });
+  case REMOVE_USER:
+    state.gameUnits[state.selectedUnitIndex].users.pop(state.selectedUserIndex, 1);
     return Object.assign({}, state, {
       gameUnits: state.gameUnits
     });

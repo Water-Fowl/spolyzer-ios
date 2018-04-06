@@ -14,14 +14,28 @@ import {
 import {
   LandScapeBackground,
   TopContentBar
-} from "components";
+} from "atoms";
 import { ShotTypeModal } from "molecules";
 import { Field } from "organisms";
 import {
   connect
 } from "react-redux";
-import { postGame } from "../game/actions/post_game";
-import { setPositionAndSide, setShotType } from "../game/actions/set_score";
+import {
+  postGameRequest,
+  postGameReceived,
+  getShotTypeCountsReceived,
+  getShotTypeCountsRequest,
+  setPositionAndSide,
+  setShotType
+} from "../../modules/game";
+import {
+  GAMES_ENDPOINT,
+  SHOT_TYPE_COUNTS_ENDPOINT
+} from "../../config/api";
+import {
+  postApiRequest,
+  getApiRequest
+} from "../../modules/request";
 import { mapStateToProps } from "utils";
 
 class ScoreCreate extends React.Component {
@@ -72,14 +86,23 @@ class ScoreCreate extends React.Component {
         sport_name: "バドミントン"
       }
     };
-    this.props.dispatch(postGame(body, this.props.authentication.header));
+    this.props.dispatch(postApiRequest(GAMES_ENDPOINT, body, this.props.authentication.header, postGameRequest, postGameReceived)).then(() => {
+      this.props.dispatch(getApiRequest(
+        SHOT_TYPE_COUNTS_ENDPOINT,
+        params={ id: this.props.game.gameId },
+        this.props.authentication.header,
+        getShotTypeCountsRequest,
+        getShotTypeCountsReceived
+      ));
+      Actions.scoreView();
+    });
   }
 
   renderUnitUsersName(users){
     const unitUserNameComponentList = [];
     for (let user of users){
       unitUserNameComponentList.push(
-        <Text style={styles.scoreInformationUserName}>{user.user.name}</Text>
+        <Text style={styles.scoreInformationUserName}>{user.name}</Text>
       );
     }
     return (

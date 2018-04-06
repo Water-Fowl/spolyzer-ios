@@ -17,7 +17,7 @@ import {
 import {
   NavigateButton,
   TopContentBar
-} from "components";
+} from "atoms";
 import { connect } from "react-redux";
 
 import {

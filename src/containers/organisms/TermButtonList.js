@@ -7,7 +7,7 @@ import {
 } from "react-native";
 
 import { ParametricButton } from "atoms";
-import { setTerm } from "../analysis/actions/set_query";
+import { setTerm } from "../../modules/analysis";
 import { mapStateToProps } from "utils";
 import { connect } from "react-redux";
 
@@ -23,9 +23,9 @@ class TermButtonList extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <ParametricButton width={60} selectedParams={this.props.analysis.term} callback={this.setTerm} params={1}>Day</ParametricButton>
-        <ParametricButton width={60} selectedParams={this.props.analysis.term} callback={this.setTerm} params={2}>Week</ParametricButton>
-        <ParametricButton width={60} selectedParams={this.props.analysis.term} callback={this.setTerm} params={3}>Month</ParametricButton>
+        <ParametricButton width={60} selectedParams={this.props.analysis.term} callback={this.setTerm} params={0}>Day</ParametricButton>
+        <ParametricButton width={60} selectedParams={this.props.analysis.term} callback={this.setTerm} params={1}>Week</ParametricButton>
+        <ParametricButton width={60} selectedParams={this.props.analysis.term} callback={this.setTerm} params={2}>Month</ParametricButton>
       </View>
     );
   }
