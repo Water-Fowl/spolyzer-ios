@@ -67,13 +67,6 @@ const styles = StyleSheet.create({
     borderWidth: 3,
     flexDirection: "row"
   },
-  userIcon: {
-    marginTop: 12,
-    marginLeft: 6,
-    marginBottom: 6,
-    width: 50,
-    height: 50
-  },
   userName: {
     marginTop: 38,
     marginLeft: 8,

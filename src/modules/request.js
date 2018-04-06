@@ -25,7 +25,7 @@ function responseToHeader(responseHeader){
 }
 
 function errorInstanceCallback(json){
-  return new Error(json.error.message)
+  return new Error(json.error.message);
 }
 
 export function postApiRequest(
@@ -68,9 +68,9 @@ export function postApiRequest(
         return json;
       })
       .catch((error) => {
-        errorCallback(error.message)
-        return false
-      })
+        errorCallback(error.message);
+        return false;
+      });
   };
 }
 
@@ -113,7 +113,7 @@ export function getApiRequest(endpoint, params, header={}, requestCallback, rece
         return json;
       })
       .catch((error) => {
-        console.log(error)
+        console.log(error);
         return false;
       });
   };

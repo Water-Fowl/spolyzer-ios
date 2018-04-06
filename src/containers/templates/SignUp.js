@@ -33,7 +33,7 @@ import {
 } from "../../config/api";
 
 function errorInstanceCallback(json){
-  return new Error(json.errors.full_messages)
+  return new Error(json.errors.full_messages);
 }
 
 class SignUp extends React.Component {
@@ -70,8 +70,8 @@ class SignUp extends React.Component {
         errorCallback=errorAlertCallback,
         returnHeader=false
       ))
-        .then((isValid) => {if(isValid) {Actions.confirmation()}}
-        )
+        .then((isValid) => {if(isValid) {Actions.confirmation();}}
+        );
     }
     else{
       this.setState({isErrorVisible: true});

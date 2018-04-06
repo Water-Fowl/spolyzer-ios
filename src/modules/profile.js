@@ -5,7 +5,7 @@ const GET_USER_REQUEST = "GET_USER_REQUEST";
 const SET_USER = "SET_USER";
 
 const initialState = {
-}
+};
 
 export function getUserRequest() {
   return {

@@ -32,7 +32,7 @@ class ScoreView extends React.Component {
       data: [],
       missData: [],
       shotTypeList: []
-    }
+    };
   }
   setShotTypeCounts(position, side, missType=0) {
     this.props.dispatch(setShotTypeCounts(position, side));
@@ -40,11 +40,11 @@ class ScoreView extends React.Component {
       shotTypeCountsList,
       missShotTypeCountsList,
       shotTypesList
-    } = reshapeShotTypeCounts(this.props.game.selectedShotTypeCounts, this.props.sport.shotTypes)
+    } = reshapeShotTypeCounts(this.props.game.selectedShotTypeCounts, this.props.sport.shotTypes);
     this.setState({
       data: shotTypeCountsList,
-      missData: missShotTypeCountsList,
-    })
+      missData: missShotTypeCountsList
+    });
   }
   renderUnitUsersName(users){
     const unitUserNameComponentList = [];

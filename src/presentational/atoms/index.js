@@ -36,5 +36,5 @@ export {
   NavBar,
   NavigateButton,
   TopBar,
-  TopContentBar,
+  TopContentBar
 };

@@ -55,7 +55,7 @@ export function postRegistrationRequest() {
 
 export function postRegistrationReceived(_) {
   return {
-    type: POST_REGISTRATION_RECEIVED,
+    type: POST_REGISTRATION_RECEIVED
   };
 }
 

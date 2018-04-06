@@ -67,11 +67,11 @@ class Route extends React.Component{
         this.props.header,
         getValidTokenRequest,
         getValidTokenReceived
-        )
       )
+      );
 
       if(!isSuccess){
-        throw new Error("Network request faild")
+        throw new Error("Network request faild");
       }
 
       if(this.props.isValidToken) {
@@ -102,7 +102,7 @@ class Route extends React.Component{
       });
     }
     catch(error){
-      this.networkError()
+      this.networkError();
     }
   }
   async componentWillMount(){

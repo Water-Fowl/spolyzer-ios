@@ -10,16 +10,16 @@ export function errorAlertCallback(message){
 
 export function networkErrorAlert(){
   return new Promise((resolve) => {
-    Alert.alert("エラー", "ネットワーク接続を確認してください", [{ text: "了解", onPress: () => { resolve(false)} }]);
+    Alert.alert("エラー", "ネットワーク接続を確認してください", [{ text: "了解", onPress: () => { resolve(false);} }]);
   });
 }
 
 export function errorMessage(message, defaultErrorCallback){
-  console.log(message)
+  console.log(message);
   switch (message) {
-    case "Network request failed":
-      networkErrorAlert();
-    default:
-      defaultErrorCallback();
+  case "Network request failed":
+    networkErrorAlert();
+  default:
+    defaultErrorCallback();
   }
 }

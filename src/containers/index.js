@@ -23,5 +23,5 @@ export {
   ProfileEdit,
   SignUp,
   Login,
-  Confirmation,
+  Confirmation
 };

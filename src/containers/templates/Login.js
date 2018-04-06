@@ -40,8 +40,8 @@ import {
 } from "utils";
 
 function errorInstanceCallback(json){
-  console.log(json)
-  return new Error(json.errors)
+  console.log(json);
+  return new Error(json.errors);
 }
 
 class Login extends React.Component {
