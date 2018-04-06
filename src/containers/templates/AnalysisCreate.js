@@ -2,10 +2,6 @@ import React from "react";
 import baseEnhancer from "enhances";
 import { Actions } from "react-native-router-flux";
 import {
-  NavigateButton,
-  TopContentBar
-} from "components";
-import {
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -22,7 +18,9 @@ import {
   ShotTypeButtonList
 } from "organisms";
 import {
-  SelectedUserName
+  SelectedUserName,
+  NavigateButton,
+  TopContentBar
 } from "atoms";
 import {
   getPositionsCountsRequest,

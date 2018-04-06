@@ -118,6 +118,12 @@ export function setUserIndex(selectedUnitIndex, selectedUserIndex){
   };
 }
 
+export function resetState(){
+  return {
+    type: RESET_STATE
+  };
+}
+
 const initialState = {
   scores: [],
   scoreCounts: [0, 0],

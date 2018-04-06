@@ -9,7 +9,11 @@ import {
 } from "react-native";
 import { Actions } from "react-native-router-flux";
 import { connect } from "react-redux";
-import { resetToken } from "../modules/authentication";
+import { resetToken } from "../../modules/authentication";
+import { mapStateToProps } from "utils";
+import {
+  ProfileImage
+} from "atoms";
 
 class DrawerContent extends React.Component {
 
@@ -17,12 +21,9 @@ class DrawerContent extends React.Component {
     return (
     	<View style={styles.drawerContainer}>
         <View style={styles.userContainer}>
-          <Image
-            source={require("../assets/img/my_page_user_icon.png")}
-            style={styles.userIcon}
-          />
+          <ProfileImage size={40} imageSource={this.props.profile.userimageSource} />
           <Text　style={styles.userName}>
-            Ikeda Yoshiki
+            { this.props.profile.userName }
           </Text>
         </View>
         <View style={styles.sportContainer}>
@@ -38,7 +39,7 @@ class DrawerContent extends React.Component {
         </View>
         <View style={styles.logoutContainer}>
           <Image
-            source={require("../assets/img/logout.png")}
+            source={require("../../assets/img/logout.png")}
             style={styles.logoutImage}
           />
           <TouchableOpacity onPress={() => {
@@ -54,7 +55,7 @@ class DrawerContent extends React.Component {
     );
   }
 }
-export default connect()(DrawerContent);
+export default connect(mapStateToProps)(DrawerContent);
 
 const styles = StyleSheet.create({
   drawerContainer: {

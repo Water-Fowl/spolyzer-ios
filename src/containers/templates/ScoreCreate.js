@@ -14,7 +14,7 @@ import {
 import {
   LandScapeBackground,
   TopContentBar
-} from "components";
+} from "atoms";
 import { ShotTypeModal } from "molecules";
 import { Field } from "organisms";
 import {
@@ -102,7 +102,7 @@ class ScoreCreate extends React.Component {
     const unitUserNameComponentList = [];
     for (let user of users){
       unitUserNameComponentList.push(
-        <Text style={styles.scoreInformationUserName}>{user.user.name}</Text>
+        <Text style={styles.scoreInformationUserName}>{user.name}</Text>
       );
     }
     return (

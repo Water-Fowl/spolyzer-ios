@@ -14,16 +14,12 @@ import {
   VictoryZoomContainer
 } from "victory-native";
 import { connect } from "react-redux";
+import { reshapeShotTypeCounts } from "utils";
 
-export default class Graph extends React.Component{
-  constructor(){
-    super();
-    this.state = {data: []};
-  }
+class Graph extends React.Component{
   componentWillReceiveProps(nextProps){
-    if(nextProps.data){
-      this.setState({data: nextProps.data});
-    }
+    console.log(nextProps);
+    this.forceUpdate();
   }
 
   render(){
@@ -47,14 +43,12 @@ export default class Graph extends React.Component{
               },
               tickLabels: { fontSize: 15, fill: "white" }
             }}
-            tickFormat={
-              function(tick){
-                if (tick === Math.round(tick)) return String(tick);
-                return "";
-              }
-            }
+            tickFormat={(tick) => { /* 整数目盛のみ表示 */
+              if (tick === Math.round(tick)) return String(tick);
+              return "";
+            }}
           />
-          <VictoryAxis
+          <VictoryAxis	/* X軸 */
             style={{
               grid: {
                 stroke: "transparent" ,
@@ -72,14 +66,7 @@ export default class Graph extends React.Component{
                 fontWeight: "bold"
               }
             }}
-            labels={function(data){
-              if(data.label){
-                return data.label;
-              }
-              else{
-                return "";
-              }
-            }}
+            labels={(shot) => shot.label}
           >
             <VictoryBar
               barRatio={0.4}
@@ -92,7 +79,23 @@ export default class Graph extends React.Component{
                 duration: 400,
                 onLoad: { duration: 300 }
               }}
-              data={this.state.data}
+              data={this.props.data}
+              x="label"
+              y="value"
+              alignment="middle"
+            />
+            <VictoryBar
+              barRatio={0.4}
+              style={{
+                data: {
+                  fill: "red"
+                }
+              }}
+              animate={{
+                duration: 400,
+                onLoad: { duration: 300 }
+              }}
+              data={this.props.missData}
               x="label"
               y="value"
               alignment="middle"
@@ -104,6 +107,26 @@ export default class Graph extends React.Component{
   }
 }
 
+export default connect(mapStateToProps)(Graph);
+
+function mapStateToProps(state, props){
+  const { game } = state;
+  const {
+    selectedShotTypeCounts
+  } = game || {
+    selectedShotTypeCounts: {}
+  };
+  const {
+    shotTypeCountsList,
+    missShotTypeCountsList,
+    shotTypesList
+  } = reshapeShotTypeCounts(selectedShotTypeCounts, state.sport.shotTypes);
+  return {
+    shotTypeCountsList,
+    missShotTypeCountsList,
+    shotTypesList
+  };
+}
 
 const styles = StyleSheet.create({
   graphContainer: {
@@ -119,3 +142,4 @@ const styles = StyleSheet.create({
     marginTop: 20
   }
 });
+

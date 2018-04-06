@@ -79,7 +79,7 @@ class Graph extends React.Component{
                 duration: 400,
                 onLoad: { duration: 300 }
               }}
-              data={this.props.shotTypeCountsList}
+              data={this.props.data}
               x="label"
               y="value"
               alignment="middle"
@@ -95,7 +95,7 @@ class Graph extends React.Component{
                 duration: 400,
                 onLoad: { duration: 300 }
               }}
-              data={this.props.missShotTypeCountsList}
+              data={this.props.missData}
               x="label"
               y="value"
               alignment="middle"
@@ -106,6 +106,8 @@ class Graph extends React.Component{
     );
   }
 }
+
+Graph.defaultProps = {data: [], missData: []};
 
 export default connect(mapStateToProps)(Graph);
 

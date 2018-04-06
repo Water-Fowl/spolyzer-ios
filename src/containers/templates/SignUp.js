@@ -1,7 +1,6 @@
 import Orientation from "react-native-orientation";
 import React, { Component } from "react";
 import { Actions } from "react-native-router-flux";
-import { Background } from "components";
 import {
   Dimensions,
   Image,
@@ -14,7 +13,8 @@ import {
 import { connect } from "react-redux";
 import { emailReg } from "const";
 import {
-  ErrorText
+  ErrorText,
+  Background
 } from "atoms";
 
 import { GET_USER_ENDPOINT } from "../../config/api";
@@ -33,7 +33,6 @@ import {
 } from "../../config/api";
 
 function errorInstanceCallback(json){
-  console.log(json)
   return new Error(json.errors.full_messages)
 }
 

@@ -11,7 +11,7 @@ export default class NavigateButton extends React.Component {
     return (
       <TouchableOpacity onPress={this.props.action} style={this.props.style}>
         <Image
-          source={require("../assets/img/navigate_button.png")}
+          source={require("../../assets/img/navigate_button.png")}
           style={styles.navigateButton}
         />
         <Text style={styles.navigateText}>

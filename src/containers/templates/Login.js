@@ -1,7 +1,7 @@
 import Orientation from "react-native-orientation";
 import React, { Component } from "react";
 import { Actions } from "react-native-router-flux";
-import { Background } from "components";
+import { Background } from "atoms";
 import {
   Dimensions,
   Image,
@@ -34,7 +34,6 @@ import {
   USERS_ENDPOINT,
   SHOT_TYPES_ENDPOINT
 } from "../../config/api";
-import getShotTypes from "../../reducer/sport/actions/get_shot_types";
 import {
   mapStateToProps,
   errorAlertCallback

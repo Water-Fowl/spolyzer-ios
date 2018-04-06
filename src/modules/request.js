@@ -1,6 +1,9 @@
 import {
   Alert
 } from "react-native";
+import {
+  errorMessage
+} from "utils";
 
 function queryParmasGenerator(list){
   var params = "?";
@@ -83,6 +86,7 @@ export function patchApiRequest(endPoint, body, headers={}, requestCallback, rec
       },
       body: JSON.stringify(body)
     })
+
       .then((response) => response.json())
       .then(function(json){
         dispatch(receivedCallback(json));
@@ -109,6 +113,8 @@ export function getApiRequest(endpoint, params, header={}, requestCallback, rece
         return json;
       })
       .catch((error) => {
+        console.log(error)
+        return false;
       });
   };
 }

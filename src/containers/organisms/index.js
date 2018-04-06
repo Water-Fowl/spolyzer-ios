@@ -7,6 +7,7 @@ import Graph from "./Graph";
 import TermButtonList from "./TermButtonList";
 import GameTypeButtonList from "./GameTypeButtonList";
 import ShotTypeButtonList from "./ShotTypeButtonList";
+import DrawerContent from "./DrawerContent";
 
 export {
   UserList,
@@ -14,5 +15,6 @@ export {
   Graph,
   TermButtonList,
   GameTypeButtonList,
-  ShotTypeButtonList
+  ShotTypeButtonList,
+  DrawerContent
 };

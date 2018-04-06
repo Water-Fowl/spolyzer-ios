@@ -5,12 +5,6 @@ import {
   Actions
 } from "react-native-router-flux";
 import {
-  Background,
-  NavBar,
-  NavigateButton,
-  TopContentBar
-} from "components";
-import {
   Image,
   StyleSheet,
   Text,
@@ -30,6 +24,12 @@ import {
 import {
   SEARCH_USER_ENDPOINT
 } from "../../config/api";
+import {
+  Background,
+  NavBar,
+  NavigateButton,
+  TopContentBar
+} from "atoms";
 import { UserList } from "organisms";
 import {
   mapStateToProps

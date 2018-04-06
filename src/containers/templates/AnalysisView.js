@@ -12,10 +12,11 @@ import {
 } from "react-native";
 import {
   Graph,
-  TopContentBar
-} from "components";
+  Field
+} from "organisms";
 import {
-  ProfileImage
+  ProfileImage,
+  TopContentBar
 } from "atoms";
 import {
   VictoryAxis,
@@ -26,7 +27,6 @@ import {
 import { connect } from "react-redux";
 import { setPositionsCount } from "../../modules/analysis";
 import { mapStateToProps } from "utils";
-import { Field } from "organisms";
 
 const IN_MIN_POSITION = 7;
 const IN_MAX_POSITION = 13;

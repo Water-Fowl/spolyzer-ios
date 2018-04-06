@@ -29,7 +29,7 @@ import {
 } from "../containers";
 import {
   DrawerContent
-} from "components";
+} from "organisms";
 import { getShotTypesReceived, getShotTypesRequest } from "../modules/sport";
 import { getValidTokenRequest, getValidTokenReceived } from "../modules/authentication";
 import { getUserRequest, getUserReceived } from "../modules/profile";
@@ -59,29 +59,23 @@ class Route extends React.Component{
       Alert.alert("ネットワークエラー", "インターネットの接続を確認して下さい", [{text: "再接続", onPress: () => { this.componentWillMountValidToken(); } }]);
     });
   }
-  componentWillMountValidToken(){
+  async componentWillMountValidToken(){
+    try{
+      let isSuccess = await this.props.dispatch(getApiRequest(
+        VALIDATE_TOKEN_ENDPOINT,
+        params={},
+        this.props.header,
+        getValidTokenRequest,
+        getValidTokenReceived
+        )
+      )
 
-    this.props.dispatch(getApiRequest(
-      VALIDATE_TOKEN_ENDPOINT,
-      params={},
-      this.props.header,
-      getValidTokenRequest,
-      getValidTokenReceived
-    )
-    )
-      .then(() => {
-        if(this.props.errorMsg){
-          this.networkError();
-        }
-      })
-      .then(() => {
-        this.setState({
-          isValidToken: this.props.isValidToken,
-          loading: false
-        });
-      })
-      .then(() => {
-        this.props.dispatch(
+      if(!isSuccess){
+        throw new Error("Network request faild")
+      }
+
+      if(this.props.isValidToken) {
+        await this.props.dispatch(
           getApiRequest(
             endpoint=USERS_ENDPOINT,
             params={},
@@ -90,7 +84,8 @@ class Route extends React.Component{
             receivedCallback=getUserReceived
           )
         );
-        this.props.dispatch(
+
+        await this.props.dispatch(
           getApiRequest(
             endpoint=SHOT_TYPES_ENDPOINT,
             params={sport_id: 1},
@@ -99,11 +94,16 @@ class Route extends React.Component{
             receivedCallback=getShotTypesReceived
           )
         );
-        // this.props.dispatch(getShotTypes(sport_id, this.props.header));
-      })
-      .catch((error) => {
-        console.log(error);
+      }
+
+      this.setState({
+        isValidToken: this.props.isValidToken,
+        loading: false
       });
+    }
+    catch(error){
+      this.networkError()
+    }
   }
   async componentWillMount(){
     await this.componentWillMountValidToken();

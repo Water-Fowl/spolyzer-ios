@@ -9,10 +9,8 @@ import {
   View
 } from "react-native";
 import {
+  ProfileImage,
   TopContentBar
-} from "components";
-import {
-  ProfileImage
 } from "atoms";
 import {
   connect

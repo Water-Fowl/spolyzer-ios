@@ -7,7 +7,7 @@ import {
 import {
   Background,
   NavigateButton
-} from "components";
+} from "atoms";
 import { Actions } from "react-native-router-flux";
 
 

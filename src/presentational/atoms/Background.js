@@ -8,7 +8,7 @@ export default class Background extends React.Component {
   render() {
     return (
       <Image
-        source={require("../assets/img/background.png")}
+        source={require("../../assets/img/background.png")}
         style={styles.background}
       />
     );

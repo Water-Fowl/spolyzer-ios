@@ -9,7 +9,7 @@ import {
   NavBar,
   NavigateButton,
   TopContentBar
-} from "components";
+} from "atoms";
 import {
   Image,
   StyleSheet,
@@ -55,7 +55,7 @@ class GameSearchUser extends React.Component {
     this.setState({ users: this.props.users });
   }
   setUser(selectedSearchUserIndex){
-    this.props.dispatch(setUser(this.props.game.selectedUnitIndex, this.props.selectedUserIndex, this.props.game.users[selectedSearchUserIndex]));
+    this.props.dispatch(setUser(this.props.game.selectedUnitIndex, this.props.selectedUserIndex, this.props.game.users[selectedSearchUserIndex].user));
     Actions.gameCreate();
   }
   render() {

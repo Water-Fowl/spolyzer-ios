@@ -3,14 +3,12 @@ import React from "react";
 import baseEnhancer from "enhances";
 import { Actions } from "react-native-router-flux";
 import {
+  ProfileImage,
   Background,
   NavBar,
   NavigateButton,
   TopBar,
   TopContentBar
-} from "components";
-import {
-  ProfileImage
 } from "atoms";
 
 import {
@@ -24,7 +22,7 @@ import {
 } from "react-native";
 import { connect } from "react-redux";
 
-import getShotTypes from "../../reducer/sport/actions/get_shot_types";
+import { getShotTypes } from "../../modules/sport";
 import { setUserIndex } from "../../modules/game";
 import { mapStateToProps } from "utils";
 
@@ -59,7 +57,7 @@ class GameCreate extends React.Component {
     if(this.props.game.gameUnits[unitIndex].users[userIndex]){
       return (
         <TouchableOpacity onPress={() =>{this.setUserIndexEvent(unitIndex, userIndex);}}>
-          { this.renderSelectedUserIcon(this.props.game.gameUnits[unitIndex].users[userIndex].user) }
+          { this.renderSelectedUserIcon(this.props.game.gameUnits[unitIndex].users[userIndex]) }
         </TouchableOpacity>
       );
     }

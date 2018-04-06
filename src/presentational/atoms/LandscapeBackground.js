@@ -8,7 +8,7 @@ export default class LandScapeBackground extends React.Component {
   render() {
     return (
       <Image
-        source={require("../assets/img/landscape_background.png")}
+        source={require("../../assets/img/landscape_background.png")}
         style={styles.landscapeBackground}
       />
     );
