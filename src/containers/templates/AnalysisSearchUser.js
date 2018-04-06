@@ -16,7 +16,8 @@ import { connect } from "react-redux";
 import {
   getSearchUserRequest,
   getSearchUserReceived,
-  setUser
+  setUser,
+  removeUser
 } from "../../modules/analysis";
 import {
   getApiRequest
@@ -28,7 +29,8 @@ import {
   Background,
   NavBar,
   NavigateButton,
-  TopContentBar
+  TopContentBar,
+  TextBox
 } from "atoms";
 import { UserList } from "organisms";
 import {
@@ -52,12 +54,15 @@ class AnalysisSearchUser extends React.Component {
     const params = {
       name: name
     };
-    console.log(name);
     this.props.dispatch(getApiRequest(SEARCH_USER_ENDPOINT, params, this.props.authentication.header, getSearchUserRequest, getSearchUserReceived));
     this.setState({ users: this.props.analysis.users });
   }
   setUser(selectedIndex){
     this.props.dispatch(setUser(this.props.analysis.selectedUserIndex, this.props.analysis.users[selectedIndex].user));
+    Actions.popTo("analysisCreate");
+  }
+  removeUser(){
+    this.props.dispatch(removeUser());
     Actions.popTo("analysisCreate");
   }
   render() {
@@ -81,6 +86,7 @@ class AnalysisSearchUser extends React.Component {
             returnKeyType="done"
           />
         </View>
+        <TextBox callback={() => {this.removeUser();}}>選択なし</TextBox>
         <UserList callback={this.setUser} users={this.state.users} />
         <NavigateButton action={() =>{Actions.popTo("analysisCreate"); }} style={styles.navigateButton} text="戻る" />
       </View>

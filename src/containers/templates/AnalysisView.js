@@ -86,49 +86,6 @@ class AnalysisView extends React.Component {
       );
     }
   }
-  _renderOutArea(){
-    return (
-      <View>
-        <View style={styles.outAreaContainer}>
-          <TouchableOpacity
-            onPress={()=>{
-              this.onPressArea(side=0, minPosition=OUT_MIN_POSITION, maxPosition=OUT_MAX_POSITION);
-            }}
-            style={styles.outFieldArea}
-          />
-          <TouchableOpacity
-            onPress={()=>{
-              this.onPressArea(side=1, minPosition=OUT_MIN_POSITION, maxPosition=OUT_MAX_POSITION);
-            }}
-            style={styles.outFieldArea}
-          />
-        </View>
-        <View style={styles.blankContainer}>
-          <View style={styles.blankArea} />
-          <View style={styles.blankArea} />
-        </View>
-      </View>
-    );
-  }
-
-  _renderInArea(){
-    return (
-      <View style={styles.inAreaContainer}>
-        <TouchableOpacity
-          style={styles.inArea}
-          onPress={() => {
-            this.onPressArea(side=0, minPosition=IN_MIN_POSITION, maxPosition=IN_MAX_POSITION);
-          }}
-        />
-        <TouchableOpacity
-          style={styles.inArea}
-          onPress={() => {
-            this.onPressArea(side=1, minPosition=IN_MIN_POSITION, maxPosition=IN_MAX_POSITION);
-          }}
-        />
-      </View>
-    );
-  }
   renderInField(){
     return(
       <View>
@@ -324,20 +281,21 @@ const styles = StyleSheet.create({
     paddingLeft: 20
   },
   outAreaContainer: {
-    width: 330,
+    width: 300,
     position: "absolute",
     flexDirection: "row",
     justifyContent: "space-between"
   },
   outFieldArea: {
     alignSelf: "center",
-    flex: 0.45,
+    flex: 0.4,
     backgroundColor: "#FAEE00",
     opacity: 0.3,
     height: 170
   },
   blankContainer: {
-    width: 330,
+    width: 320,
+    alignSelf: "center",
     position: "absolute",
     flexDirection: "row",
     justifyContent: "space-around",
@@ -353,12 +311,12 @@ const styles = StyleSheet.create({
     marginBottom: 16
   },
   inAreaContainer: {
-    width: 330,
+    width: 300,
     position: "absolute",
     flexDirection: "row",
     justifyContent: "space-around",
-    paddingLeft: 20,
-    paddingRight: 20
+    paddingLeft: 10,
+    paddingRight: 10
   },
   inArea: {
     flex: 0.35,

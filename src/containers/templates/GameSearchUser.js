@@ -2,13 +2,15 @@ import React from "react";
 import baseEnhancer from "enhances";
 import {
   ActionConst,
-  Actions
+  Actions,
+  TouchableOpacity
 } from "react-native-router-flux";
 import {
   Background,
   NavBar,
   NavigateButton,
-  TopContentBar
+  TopContentBar,
+  TextBox
 } from "atoms";
 import {
   Image,
@@ -24,7 +26,8 @@ import {
 import {
   getSearchUserReceived,
   getSearchUserRequest,
-  setUser
+  setUser,
+  removeUser
 } from "../../modules/game";
 import {
   getApiRequest
@@ -41,6 +44,7 @@ class GameSearchUser extends React.Component {
     };
     this.searchUserEvent.bind(this);
     this.setUser = this.setUser.bind(this);
+    this.removeUser = this.removeUser.bind(this);
   }
   componentWillReceiveProps(nextProps){
     if(nextProps.game.users){
@@ -56,6 +60,11 @@ class GameSearchUser extends React.Component {
   }
   setUser(selectedSearchUserIndex){
     this.props.dispatch(setUser(this.props.game.selectedUnitIndex, this.props.selectedUserIndex, this.props.game.users[selectedSearchUserIndex].user));
+    Actions.gameCreate();
+  }
+  removeUser(){
+    console.log("sss");
+    this.props.dispatch(removeUser());
     Actions.gameCreate();
   }
   render() {
@@ -79,6 +88,7 @@ class GameSearchUser extends React.Component {
             returnKeyType="done"
           />
         </View>
+        <TextBox callback={() => {this.removeUser();}}>選択なし</TextBox>
         <UserList callback={this.setUser} users={this.state.users}/>
         <NavigateButton action={() =>{Actions.popTo("gameCreate"); }} style={styles.navigateButton} text="選択" />
       </View>

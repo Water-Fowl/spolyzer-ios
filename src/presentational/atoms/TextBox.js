@@ -2,22 +2,25 @@ import React from "react";
 import {
   View,
   Text,
+  TouchableOpacity,
   StyleSheet
 } from "react-native";
 
 export default class TextBox extends React.Component {
   render(){
-    if (this.props.content){
-      return(
-        <Text style={styles.textBox}></Text>
-      );
-    }
+    return(
+      <TouchableOpacity onPress={this.props.callback}>
+        <Text style={styles.textBox}>{this.props.children}</Text>
+      </TouchableOpacity>
+    );
   }
 }
 
 const styles = StyleSheet.create({
   textBox: {
+    margin: 5,
     color: "white",
+    alignSelf: "center",
     textAlign: "center",
     paddingTop: 5,
     paddingBottom: 5,

@@ -22,7 +22,7 @@ const GET_ACTIONS_RECEIVED = "GET_ACTIONS_RECEIVED";
 const GET_POSITIONS_COUNTS_REQUEST = "GET_POSITIONS_COUNTS_REQUEST";
 const GET_POSITIONS_COUNTS_RECEIVED = "GET_POSITIONS_COUNTS_RECEIVED";
 const SET_USER = "SET_USER_ANALYSIS";
-const REMOVE_USER = "REMOVE_USER_ANALYSIS";
+const REMOVE_USER = "REMOVE_USER_ON_ANALYSIS";
 const SET_SELECTED_USER_INDEX = "SET_SELECTED_USER_INDEX";
 const SET_POSITIONS_COUNTS = "SET_POSITIONS_COUNTS";
 
@@ -80,10 +80,9 @@ export function getSearchUserReceived(json) {
   };
 }
 
-export function removeUser(selectedUserIndex){
+export function removeUser(){
   return {
-    type: REMOVE_USER,
-    selectedUserIndex
+    type: REMOVE_USER
   };
 }
 
@@ -166,7 +165,7 @@ export function analysisReducer(state = initialState, action = {}) {
       positionCounts: action.positionCounts
     });
   case REMOVE_USER:
-    state.analysisUsers[action.selectedUserIndex] = null;
+    state.analysisUsers[state.selectedUserIndex] = null;
     return Object.assign({}, state, {
       analysisUsers: state.analysisUsers
     });

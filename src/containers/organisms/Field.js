@@ -40,6 +40,7 @@ export default class Field extends React.Component {
           marginTop: 26
         }}
       >
+        { this.renderInField() }
         <Image
           style={{
             position: "absolute",
