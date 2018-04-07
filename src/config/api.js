@@ -17,22 +17,22 @@ export const VALIDATE_TOKEN_ENDPOINT = `${SCHEME}/auth/validate_token/`;
 export const CONFIRMATION_ENDPOINT = `${SCHEME}/api/v1/auth/confirmation/`;
 
 export function analysisEndpointGenerator(params){
-  var endpoint = SHOT_TYPES_ENDPOINT
-  endpoint += '/'
-  endpoint += params.shot_type_id
-  endpoint += '/counts'
+  var endpoint = SHOT_TYPES_ENDPOINT;
+  endpoint += "/";
+  endpoint += params.shot_type_id;
+  endpoint += "/counts";
   if(params.ids.length > 0){
-    endpoint += `/opponent_users/${params.ids}`
+    endpoint += `/opponent_users/${params.ids}`;
   }
-  console.log(endpoint)
-  return endpoint
+  console.log(endpoint);
+  return endpoint;
 }
 
 export function gameCountEndpointGenerator(params){
   var endpoint = GAMES_ENDPOINT;
   endpoint += params.game_id;
-  endpoint += '/counts/';
-  console.log(endpoint)
+  endpoint += "/counts/";
+  console.log(endpoint);
   return endpoint;
 }
 

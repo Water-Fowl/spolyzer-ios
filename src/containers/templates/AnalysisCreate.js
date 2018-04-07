@@ -56,10 +56,10 @@ class AnalysisCreate extends React.Component {
     }
     let params = {
       ids: userIds,
-      shot_type_id: this.props.analysis.shotTypeId,
+      shot_type_id: this.props.analysis.shotTypeId
     };
 
-    let endpoint = analysisEndpointGenerator(params)
+    let endpoint = analysisEndpointGenerator(params);
     this.props.dispatch(getApiRequest(
       endpoint=endpoint,
       params={game_user_count: this.props.analysis.gameUserCount},

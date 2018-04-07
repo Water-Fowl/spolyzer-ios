@@ -35,10 +35,10 @@ export default class ShotTypeModal extends React.Component {
       this.props.position > OUT_MAX_POSITION &&
       this.props.position < OUT_MAX_POSITION
     ){
-      var missType = 2
+      var missType = 2;
     }
     else {
-      var missType = isMiss? 1:0
+      var missType = isMiss? 1:0;
     }
 
     for (let shotTypeId in this.props.shotTypes){

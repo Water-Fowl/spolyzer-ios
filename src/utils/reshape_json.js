@@ -18,7 +18,7 @@ export function reshapePositionsCount(counts, side, minPosition, maxPosition){
   const positionsCountList = [];
   const missPositionsCountList = [];
   if (!counts){
-    return []
+    return [];
   }
   for (var position=minPosition; position <= maxPosition; position++){
     if(counts[side]){
