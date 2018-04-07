@@ -30,7 +30,8 @@ import {
 } from "../../modules/game";
 import {
   GAMES_ENDPOINT,
-  SHOT_TYPE_COUNTS_ENDPOINT
+  SHOT_TYPE_COUNTS_ENDPOINT,
+  gameCountEndpointGenerator
 } from "../../config/api";
 import {
   postApiRequest,
@@ -86,10 +87,11 @@ class ScoreCreate extends React.Component {
         sport_name: "バドミントン"
       }
     };
-    this.props.dispatch(postApiRequest(GAMES_ENDPOINT, body, this.props.authentication.header, postGameRequest, postGameReceived)).then(() => {
+    this.props.dispatch(postApiRequest(GAMES_ENDPOINT, body, this.props.authentication.header, postGameRequest, postGameReceived)).then((json) => {
+      let endpoint = gameCountEndpointGenerator({game_id: json.game.id});
       this.props.dispatch(getApiRequest(
-        SHOT_TYPE_COUNTS_ENDPOINT,
-        params={ id: this.props.game.gameId },
+        endpoint=endpoint,
+        params={},
         this.props.authentication.header,
         getShotTypeCountsRequest,
         getShotTypeCountsReceived
