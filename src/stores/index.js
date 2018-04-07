@@ -2,7 +2,7 @@ import storage from "redux-persist/lib/storage";
 import thunkMiddleware from "redux-thunk";
 import { applyMiddleware, combineReducers, compose, createStore } from "redux";
 import { createLogger } from "redux-logger";
-import { AsyncStorage } from 'react-native';
+import { AsyncStorage } from "react-native";
 import { persistReducer, persistStore } from "redux-persist";
 
 import { profileReducer } from "../modules/profile";

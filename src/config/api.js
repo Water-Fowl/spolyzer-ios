@@ -19,16 +19,33 @@ export const AGGREGATED_SCORES_ENDPOINT = `${SCHEME}/aggregated_scores/`;
 export const VALIDATE_TOKEN_ENDPOINT = `${SCHEME}/auth/validate_token/`;
 export const CONFIRMATION_ENDPOINT = `${SCHEME}/api/v1/auth/confirmation/`;
 
+<<<<<<< HEAD
 export function analysisEndpointGenerator(params) {
   var endpoint = SHOT_TYPES_ENDPOINT;
   endpoint += params.shot_type_id;
   endpoint += "/aggregated_scores/";
+=======
+export function analysisEndpointGenerator(params){
+  var endpoint = SHOT_TYPES_ENDPOINT;
+  endpoint += "/";
+  endpoint += params.shot_type_id;
+  endpoint += "/counts";
+  if(params.ids.length > 0){
+    endpoint += `/opponent_users/${params.ids}`;
+  }
+  console.log(endpoint);
+>>>>>>> ecbbdf7... [fix] eslint fix
   return endpoint;
 }
 
 export function gameCountEndpointGenerator(params) {
   var endpoint = GAMES_ENDPOINT;
   endpoint += params.game_id;
+<<<<<<< HEAD
   endpoint += "/aggregated_scores/";
+=======
+  endpoint += "/counts/";
+  console.log(endpoint);
+>>>>>>> ecbbdf7... [fix] eslint fix
   return endpoint;
 }

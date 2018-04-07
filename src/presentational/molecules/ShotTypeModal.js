@@ -30,6 +30,8 @@ export default class ShotTypeModal extends React.Component {
         null
       );
     }
+
+    const buttonsComponentsList = [];
     for (let shotTypeId in this.props.shotTypes){
       buttonsComponentsList.push(
         <TouchableHighlight
