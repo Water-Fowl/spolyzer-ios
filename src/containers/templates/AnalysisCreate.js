@@ -30,7 +30,8 @@ import {
   getApiRequest
 } from "../../modules/request";
 import {
-  POSITIONS_COUNTS_ENDPOINT
+  POSITIONS_COUNTS_ENDPOINT,
+  analysisEndpointGenerator
 } from "../../config/api";
 
 import { mapStateToProps } from "utils";
@@ -53,15 +54,15 @@ class AnalysisCreate extends React.Component {
         userIds.push(user.id);
       }
     }
-    const params = {
-      user_ids: userIds,
+    let params = {
+      ids: userIds,
       shot_type_id: this.props.analysis.shotTypeId,
-      game_user_count: this.props.analysis.gameUserCount,
-      term: this.props.analysis.term
     };
+
+    let endpoint = analysisEndpointGenerator(params)
     this.props.dispatch(getApiRequest(
-      POSITIONS_COUNTS_ENDPOINT,
-      params,
+      endpoint=endpoint,
+      params={game_user_count: this.props.analysis.gameUserCount},
       this.props.authentication.header,
       getPositionsCountsRequest,
       getPositionsCountsReceived
