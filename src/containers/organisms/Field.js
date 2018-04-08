@@ -26,7 +26,6 @@ export default class Field extends React.Component {
       );
     }
   }
-
   render(){
     const sizeMagnification = this.props.horizontal? 1 : 2;
     return (

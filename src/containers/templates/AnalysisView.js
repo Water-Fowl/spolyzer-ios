@@ -290,7 +290,7 @@ const styles = StyleSheet.create({
   },
   outFieldArea: {
     alignSelf: "center",
-    flex: 0.4,
+    flex: 0.45,
     backgroundColor: "#FAEE00",
     opacity: 0.3,
     height: 170
@@ -305,7 +305,7 @@ const styles = StyleSheet.create({
     paddingRight: 10
   },
   blankArea: {
-    flex: 0.4,
+    flex: 0.40,
     alignSelf: "center",
     backgroundColor: "black",
     height: 138,
