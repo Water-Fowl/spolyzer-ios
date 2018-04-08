@@ -38,7 +38,7 @@ import {
   mapStateToProps,
   errorAlertCallback
 } from "utils";
-import SplashScreen from 'react-native-splash-screen'
+import SplashScreen from "react-native-splash-screen";
 
 function errorInstanceCallback(json){
   console.log(json);
@@ -62,7 +62,7 @@ class Login extends React.Component {
   }
 
   componentDidMount(){
-      SplashScreen.hide();
+    SplashScreen.hide();
   }
 
   postLoginEvent() {

@@ -26,11 +26,11 @@ import { connect } from "react-redux";
 import { getShotTypes } from "../../modules/sport";
 import { setUserIndex } from "../../modules/game";
 import { mapStateToProps } from "utils";
-import SplashScreen from 'react-native-splash-screen'
+import SplashScreen from "react-native-splash-screen";
 
 class GameCreate extends React.Component {
   componentDidMount(){
-      SplashScreen.hide();
+    SplashScreen.hide();
   }
   setUserIndexEvent(selectedUnitIndex, selectedUserIndex){
     this.props.dispatch(setUserIndex(selectedUnitIndex, selectedUserIndex));
