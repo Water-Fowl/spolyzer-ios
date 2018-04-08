@@ -245,9 +245,6 @@ const styles = StyleSheet.create({
     color: "white",
     textAlign: "center"
   },
-  paddingtop30: {
-    paddingTop: 30
-  },
   marginTop40: {
     marginTop: 40
   },
