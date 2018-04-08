@@ -1,4 +1,4 @@
-package com.redux_front_app;
+package com.spolyzer;
 
 import com.facebook.react.ReactActivity;
 
@@ -10,6 +10,6 @@ public class MainActivity extends ReactActivity {
      */
     @Override
     protected String getMainComponentName() {
-        return "redux_front_app";
+        return "spolyzer";
     }
 }

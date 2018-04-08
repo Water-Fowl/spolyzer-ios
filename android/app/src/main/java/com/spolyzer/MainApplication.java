@@ -1,4 +1,4 @@
-package com.redux_front_app;
+package com.spolyzer;
 
 import android.app.Application;
 
