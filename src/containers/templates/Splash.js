@@ -10,6 +10,6 @@ export default class Splash extends React.Component {
       <View>
         <Text>SplashScrenn</Text>
       </View>
-    )
+    );
   }
 }
