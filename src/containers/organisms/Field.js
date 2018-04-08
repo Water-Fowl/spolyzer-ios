@@ -34,7 +34,8 @@ export default class Field extends React.Component {
         style={{
           alignSelf: "center",
           justifyContent: "center",
-          flex: 0.9,
+          flex: 1,
+          marginBottom: 5,
           height: 170 * sizeMagnification,
           width: 300 * sizeMagnification,
           marginTop: 26
@@ -73,14 +74,14 @@ export default class Field extends React.Component {
               renderInButton={this.props.renderInButton}
               horizontal={this.props.horizontal}
               callback={this.props.callback}
-              position={0}
+              position={1}
               side={1}
             />
             <OutFieldSide
               renderInButton={this.props.renderInButton}
               horizontal={this.props.horizontal}
               callback={this.props.callback}
-              position={1}
+              position={2}
               side={1}
             />
           </View>
@@ -249,7 +250,7 @@ const styles = StyleSheet.create({
   },
   middleContainer: {
     flexDirection: "row",
-    flex: 3,
+    flex: 4,
     justifyContent: "space-between"
   },
   underContainer: {

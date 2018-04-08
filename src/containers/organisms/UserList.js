@@ -8,8 +8,10 @@ import {
 } from "react-native";
 
 import { UserListItem } from "molecules";
+import { connect } from "react-redux";
+import { mapStateToProps } from "utils";
 
-export default class UserList extends React.Component{
+class UserList extends React.Component{
   constructor(props){
     super(props);
   }
@@ -25,11 +27,13 @@ export default class UserList extends React.Component{
     }
     const usersComponent = [];
     for (let i = 0; i < users.length; i++) {
-      usersComponent.push(
-        <TouchableOpacity onPress={() => {this.props.callback(i);}}>
-          <UserListItem key={i} userName={users[i].user.name} />
-        </TouchableOpacity>
-      );
+      if(this.props.game.gameUnits.ids.indexOf(users[i].user.id) == -1){
+        usersComponent.push(
+          <TouchableOpacity onPress={() => {this.props.callback(i);}}>
+            <UserListItem key={i} userName={users[i].user.name} />
+          </TouchableOpacity>
+        );
+      }
     }
     return(
       <View style={styles.container}>
@@ -41,6 +45,7 @@ export default class UserList extends React.Component{
   }
 }
 
+export default connect(mapStateToProps)(UserList)
 
 const styles=StyleSheet.create({
   container: {

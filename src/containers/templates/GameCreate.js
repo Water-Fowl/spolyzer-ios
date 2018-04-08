@@ -12,6 +12,7 @@ import {
 } from "atoms";
 
 import {
+  Alert,
   Dimensions,
   Image,
   StyleSheet,
@@ -30,6 +31,7 @@ class GameCreate extends React.Component {
   setUserIndexEvent(selectedUnitIndex, selectedUserIndex){
     this.props.dispatch(setUserIndex(selectedUnitIndex, selectedUserIndex));
     Actions.gameSearchUser();
+    this.navigateScoreCreate = this.navigateScoreCreate.bind(this)
   }
 
   renderNoSelectedUserIcon() {
@@ -69,6 +71,18 @@ class GameCreate extends React.Component {
       );
     }
   }
+  navigateScoreCreate(){
+    if (this.props.game.gameUnits[0].count != this.props.game.gameUnits[1].count){
+      return Alert.alert("エラー", "対戦人数を合わせてください。", [{ text: "了解"}], { cancelable: false });
+    }
+    else if (this.props.game.gameUnits[0].count == 0)
+    {
+      return Alert.alert("エラー", "ユーザーを選択してください。", [{ text: "了解"}], { cancelable: false });
+    }
+    else {
+      Actions.scoreCreate();
+    }
+  }
 
   render() {
     return (
@@ -96,7 +110,7 @@ class GameCreate extends React.Component {
               </View>
             </View>
           </View>
-          <NavigateButton action={Actions.scoreCreate} style={styles.buttonStyle} text="試合開始" />
+          <NavigateButton action={() => {this.navigateScoreCreate()}} style={styles.buttonStyle} text="試合開始" />
         </View>
       </View>
     );

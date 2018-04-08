@@ -2,6 +2,7 @@ import Orientation from "react-native-orientation";
 import React from "react";
 import { Actions } from "react-native-router-flux";
 import {
+  Alert,
   BackgroundImage,
   Dimensions,
   Image,
@@ -26,7 +27,8 @@ import {
   getShotTypeCountsReceived,
   getShotTypeCountsRequest,
   setPositionAndSide,
-  setShotType
+  setShotType,
+  removeScore
 } from "../../modules/game";
 import {
   GAMES_ENDPOINT,
@@ -79,6 +81,9 @@ class ScoreCreate extends React.Component {
   }
 
   navigationEvent(users, scores){
+    if (this.props.game.scores.length == 0){
+      return Alert.alert("エラー", "スコアを入力してください。", [{ text: "了解"}], { cancelable: false });
+    }
     const body = {
       units:  users,
       scores,
@@ -140,7 +145,9 @@ class ScoreCreate extends React.Component {
             </View>
             <Text style={styles.scoreInformationGamePoint}>0</Text>
           </View>
-          <Image style={styles.scoreInformationBack} source={require("../../assets/img/score_create_back.png")} />
+          <TouchableHighlight onPress={()=> {this.props.dispatch(removeScore())}}>
+            <Image style={styles.scoreInformationBack} source={require("../../assets/img/score_create_back.png")} />
+          </TouchableHighlight>
           <View style={styles.scoreInformationContainer}>
             <Text style={styles.scoreInformationGamePoint}>0</Text>
             <View style={styles.scoreInformationPointContainer}>

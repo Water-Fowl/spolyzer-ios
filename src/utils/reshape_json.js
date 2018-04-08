@@ -17,6 +17,7 @@ function pushPositionCount(list, count, positionString){
 export function reshapePositionsCount(counts, side, minPosition, maxPosition){
   const positionsCountList = [];
   const missPositionsCountList = [];
+  console.log(counts)
   if (!counts){
     return [];
   }
@@ -42,15 +43,15 @@ export function reshapePositionsCount(counts, side, minPosition, maxPosition){
       counts[side] = [];
     }
   }
-  return {
-    positionsCountList
-  };
+  return positionsCountList;
+
 }
 
 export function reshapeShotTypeCounts(counts, shotTypes){
   shotTypeCountsList = [];
   missShotTypeCountsList = [];
   shotTypesList = [];
+  console.log(counts)
   for (key in counts){
     shotTypesList.push(shotTypes[key]);
     if (counts[key][0]) {

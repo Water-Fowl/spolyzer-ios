@@ -1,6 +1,7 @@
 
 import {
-  getScoreByPositionAndSide
+  getScoreByPositionAndSide,
+  getScoreCounts
 } from "utils";
 
 const GET_SEARCH_USER_REQUEST = "GET_SEARCH_USER_REQUEST_ON_GAME";
@@ -20,6 +21,7 @@ const GET_SHOT_TYPES_REQUEST = "GET_SHOT_TYPES_REQUEST";
 const SET_SCORE_CREATE_MODAL = "SET_SCORE_CREATE_MODAL";
 const HIDE_SCORE_CREATE_MODAL = "HIDE_SCORE_CREATE_MODAL";
 const RESET_STATE = "RESET_STATE_OF_GAME_REDUCER";
+const REMOVE_SCORE = "REMOVE_SCORE";
 
 export function getShotTypeCountsRequest() {
   return {
@@ -102,11 +104,15 @@ export function setShotType(shotType, missType) {
   };
 }
 
-export function setUser(selectedUnitIndex, selectedUserIndex, user){
+export function removeScore(){
+  return {
+    type: REMOVE_SCORE
+  }
+}
+
+export function setUser(user){
   return {
     type: SET_USER,
-    selectedUnitIndex,
-    selectedUserIndex,
     user
   };
 }
@@ -134,7 +140,7 @@ export function resetState(){
 const initialState = {
   scores: [],
   scoreCounts: [0, 0],
-  users: "",
+  users: [],
   gameUnits: {
     0:{
       users: [],
@@ -143,7 +149,8 @@ const initialState = {
     1:{
       users: [],
       count: 0
-    }
+    },
+    ids: []
   }
 };
 
@@ -159,11 +166,18 @@ export function gameReducer(state = initialState, action = {}) {
     });
   case SET_SHOT_TYPE:
     /* 今回得られたスコアを取得し、配列に格納する */
-    const currentScore = getScoreByPositionAndSide(state.position, state.side);
-    const currentScores = [state.scoreCounts[0] + currentScore[0], state.scoreCounts[1] + currentScore[1]];
+    state.scores = state.scores.concat({unit: state.side, dropped_at: state.position, shot_type: action.shotType, miss_type: action.missType, side: state.side})
+    let currentScores = getScoreCounts(state.scores);
     return Object.assign({}, state, {
-      scores: state.scores.concat({unit: state.side, dropped_at: state.position, shot_type: action.shotType, miss_type: action.missType, side: state.side}),
+      scores: state.scores,
       scoreCounts: currentScores
+    });
+  case REMOVE_SCORE:
+    state.scores.pop()
+    let removedScores = getScoreCounts(state.scores);
+    return Object.assign({}, state, {
+      scores: state.scores,
+      scoreCounts: removedScores
     });
   case SET_POSITION_AND_SIDE:
     return Object.assign({}, state, {
@@ -190,18 +204,28 @@ export function gameReducer(state = initialState, action = {}) {
       shotTypeCounts: action.shotTypeCounts
     });
   case SET_USER:
-    if(state.gameUnits[action.selectedUnitIndex].users[action.selectedUserIndex]){
-      state.gameUnits[action.selectedUnitIndex].users[action.selectedUserIndex] = action.user;
+    if(state.gameUnits[state.selectedUnitIndex].users[state.selectedUserIndex]){
+      state.gameUnits[state.selectedUnitIndex].users[state.selectedUserIndex] = state.user;
     }
     else{
-      state.gameUnits[action.selectedUnitIndex].users.push(action.user);
+      state.gameUnits[state.selectedUnitIndex].users.push(action.user);
     }
-    state.gameUnits[action.selectedUnitIndex].count = state.gameUnits[action.selectedUnitIndex].users.length;
+    console.log(state.gameUnits[state.selectedUnitIndex])
+    state.gameUnits[state.selectedUnitIndex].count = state.gameUnits[state.selectedUnitIndex].users.length;
+    state.gameUnits.ids.push(action.user.id)
     return Object.assign({}, state, {
-      gameUnits: state.gameUnits
+      gameUnits: state.gameUnits,
+      users: []
     });
+
+
   case REMOVE_USER:
-    state.gameUnits[state.selectedUnitIndex].users.pop(state.selectedUserIndex, 1);
+    let selectedUser = state.gameUnits[state.selectedUnitIndex].users[state.selectedUserIndex]
+    if(selectedUser){
+      state.gameUnits[state.selectedUnitIndex].users.splice(state.selectedUserIndex, 1)
+      state.gameUnits.ids.splice(state.gameUnits.ids.indexOf(selectedUser.id), 1)
+    }
+    state.gameUnits[state.selectedUnitIndex].count = state.gameUnits[state.selectedUnitIndex].users.length;
     return Object.assign({}, state, {
       gameUnits: state.gameUnits
     });

@@ -55,15 +55,19 @@ class GameSearchUser extends React.Component {
     const params = {
       name
     };
-    this.props.dispatch(getApiRequest(SEARCH_USER_ENDPOINT, params, this.props.authentication.header, getSearchUserRequest, getSearchUserReceived));
-    this.setState({ users: this.props.users });
+    if( name != "" ){
+      this.props.dispatch(getApiRequest(SEARCH_USER_ENDPOINT, params, this.props.authentication.header, getSearchUserRequest, getSearchUserReceived));
+      this.setState({ users: this.props.game.users });
+    }
+    else {
+      this.setState({ users: [] })
+    }
   }
   setUser(selectedSearchUserIndex){
-    this.props.dispatch(setUser(this.props.game.selectedUnitIndex, this.props.selectedUserIndex, this.props.game.users[selectedSearchUserIndex].user));
+    this.props.dispatch(setUser(this.props.game.users[selectedSearchUserIndex].user));
     Actions.gameCreate();
   }
   removeUser(){
-    console.log("sss");
     this.props.dispatch(removeUser());
     Actions.gameCreate();
   }

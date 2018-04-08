@@ -132,12 +132,9 @@ class Route extends React.Component{
             drawerToggleRoute="DrawerToggle"
             initial={this.state.isValidToken}
           >
-            <Tabs key="tab" labelStyle={styles.label} tabBarStyle={styles.tabBarStyle} tabStyle={styles.tabStyle}>
-              <Scene key="Mypage" tabBarLabel="マイページ" icon={() => (<Image style={styles.icon} source={require("../assets/img/tabs_home.png")} />)}>
-                <Scene key="profileTop" initial component={ProfileTop} title="マイページ"/>
-                <Scene key="profileEdit" component={ProfileEdit} title="マイデータ編集"/>
-              </Scene>
-              <Scene key="Score" tabBarLabel="スコアシート" icon={() => (<Image style={styles.icon} source={require("../assets/img/tabs_score.png")} />)}>
+            <Scene key="profileEdit" component={ProfileEdit} title="マイデータ編集"/>
+            <Tabs initial key="tab" labelStyle={styles.label} tabBarStyle={styles.tabBarStyle} tabStyle={styles.tabStyle}>
+              <Scene key="Score" initial tabBarLabel="スコアシート" icon={() => (<Image style={styles.icon} source={require("../assets/img/tabs_score.png")} />)}>
                 <Scene key="gameCreate" initial component={GameCreate} title="単分析"/>
                 <Scene key="gameSearchUser" component={GameSearchUser} title="ユーザー検索"/>
                 <Scene key="scoreCreate" hideTabBar component={ScoreCreate} title="スコアシート" hideNavBar />

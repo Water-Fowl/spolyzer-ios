@@ -26,7 +26,7 @@ import {
 } from "victory-native";
 import { connect } from "react-redux";
 import { setPositionsCount } from "../../modules/analysis";
-import { mapStateToProps } from "utils";
+import { mapStateToProps, reshapePositionsCount } from "utils";
 
 const IN_MIN_POSITION = 7;
 const IN_MAX_POSITION = 13;
@@ -45,7 +45,8 @@ class AnalysisView extends React.Component {
       /* Out = 0, In = 1 */
       /* Left = 0, Right = 1 */
       onPressOut: OUT,
-      onPressSide: LEFT
+      onPressSide: LEFT,
+      selectedPositionsCount: []
     };
     this.setPositionEvent = this.setPositionEvent.bind(this);
     this._renderFieldButtonText = this._renderFieldButtonText.bind(this);
@@ -62,16 +63,17 @@ class AnalysisView extends React.Component {
       max = IN_MAX_POSITION;
       field = IN;
     }
-    this.props.dispatch(setPositionsCount(min, max, side));
-    this.setState({ onPressOut: field, onPressSide: side });
+    let selectedPositionsCount = reshapePositionsCount(this.props.analysis.positionCounts, side, min, max)
+    this.setState({ selectedPositionsCount, onPressOut: field, onPressSide: side });
   }
   _renderFieldButtonText(position, side){
+    /* positionは1から始まるが、indexは0からなので、1を引く */
     if(position < 7){
-      positionString = alphabet[position];
+      positionString = alphabet[position - 1];
       field = OUT;
     }
     else {
-      positionString = alphabet[position - 6];
+      positionString = alphabet[position - 6 - 1];
       field = IN;
     }
 
@@ -150,7 +152,7 @@ class AnalysisView extends React.Component {
           </View>
 
           <Field horizontal callback={this.setPositionEvent} renderInField={this.renderInField} renderInButton={this._renderFieldButtonText}/>
-          <Graph data={this.props.analysis.selectedPositionsCount} />
+          <Graph data={this.state.selectedPositionsCount} />
           <View style={styles.backButtonContainer}>
             <TouchableOpacity onPress={() => {
               Actions.analysisCreate({ type: ActionConst.BACK_ACTION });

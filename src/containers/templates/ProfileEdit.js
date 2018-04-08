@@ -6,6 +6,7 @@ import {
   Actions
 } from "react-native-router-flux";
 import {
+  Alert,
   Image,
   Picker,
   StyleSheet,
@@ -16,13 +17,12 @@ import {
 } from "react-native";
 import {
   NavigateButton,
-  TopContentBar
-} from "components";
-import {
+  TopContentBar,
   ProfileImage
 } from "atoms";
 import { SexPicker } from "molecules";
 import { connect } from "react-redux";
+import { emailReg } from "const";
 
 import {
   patchUserReceived,
@@ -83,6 +83,10 @@ class ProfileEdit extends React.Component {
   }
   completeButtonEvent(){
     const { dispatch } = this.props;
+    const isEmail = emailReg.test(this.state.userEmail);
+    if(!isEmail){
+      return Alert.alert("エラー", "メールアドレスを入力してください", [{ text: "了解"}], { cancelable: false });
+    }
     const body = {
       name: this.state.userName,
       email: this.state.userEmail
@@ -97,7 +101,7 @@ class ProfileEdit extends React.Component {
       patchUserRequest,
       patchUserReceived
     )).then(() => {
-      Actions.profileTop();
+      Actions.pop();
     });
   }
   render() {
@@ -112,8 +116,7 @@ class ProfileEdit extends React.Component {
               >
                 <ProfileImage size={80} imageSource={this.state.userImageSource} />
               </TouchableOpacity>
-              <View style={styles.paddingtop22}>
-                <Text style={styles.profileTitle}>性別</Text>
+              <View style={styles.marginTop40}>
                 <Text style={styles.profileTitle}>メールアドレス</Text>
               </View>
             </View>
@@ -135,8 +138,6 @@ class ProfileEdit extends React.Component {
                 <View style={styles.frameProfile}>
                   <View style={styles.plateProfile}>
                     <View style={styles.paddingleft20}>
-                      <Text onPress={this._setPicker} style={styles.profileTitle}>{this.state.sex}</Text>
-                      <View style={styles.profileUnderline} />
                       <TextInput
                         ref="email"
                         style={styles.profileTitle}
@@ -247,8 +248,11 @@ const styles = StyleSheet.create({
   paddingtop40: {
     paddingTop: 40
   },
-  paddingtop22: {
-    paddingTop: 22
+  paddingtop30: {
+    paddingTop: 30
+  },
+  marginTop40: {
+    marginTop: 40
   },
   paddingleft20: {
     paddingLeft: 20

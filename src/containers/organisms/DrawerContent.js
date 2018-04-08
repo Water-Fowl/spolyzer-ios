@@ -20,12 +20,12 @@ class DrawerContent extends React.Component {
   render() {
     return (
     	<View style={styles.drawerContainer}>
-        <View style={styles.userContainer}>
-          <ProfileImage size={40} imageSource={this.props.profile.userimageSource} />
-          <Text　style={styles.userName}>
+        <TouchableOpacity onPress={Actions.profileEdit} style={styles.userContainer}>
+          <ProfileImage size={40} imageSource={this.props.profile.userImageSource} />
+          <Text style={styles.userName}>
             { this.props.profile.userName }
           </Text>
-        </View>
+        </TouchableOpacity>
         <View style={styles.sportContainer}>
           <View style={styles.kyugiContainer}>
             <View style={styles.circle} />
@@ -63,15 +63,16 @@ const styles = StyleSheet.create({
     backgroundColor: "black"
   },
   userContainer: {
+    marginTop: 10,
     borderBottomColor: "#2EA7E0",
     borderWidth: 3,
     flexDirection: "row"
   },
   userName: {
-    marginTop: 38,
-    marginLeft: 8,
     color: "white",
-    fontSize: 20
+    fontSize: 20,
+    alignSelf: "center",
+    marginLeft: 3
   },
   sportContainer: {
     height: 270,
