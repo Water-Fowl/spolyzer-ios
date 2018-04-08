@@ -145,7 +145,7 @@ class ScoreCreate extends React.Component {
             </View>
             <Text style={styles.scoreInformationGamePoint}>0</Text>
           </View>
-          <TouchableHighlight onPress={()=> {this.props.dispatch(removeScore())}}>
+          <TouchableHighlight onPress={()=> {this.props.dispatch(removeScore());}}>
             <Image style={styles.scoreInformationBack} source={require("../../assets/img/score_create_back.png")} />
           </TouchableHighlight>
           <View style={styles.scoreInformationContainer}>

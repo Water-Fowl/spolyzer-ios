@@ -60,7 +60,7 @@ class GameSearchUser extends React.Component {
       this.setState({ users: this.props.game.users });
     }
     else {
-      this.setState({ users: [] })
+      this.setState({ users: [] });
     }
   }
   setUser(selectedSearchUserIndex){

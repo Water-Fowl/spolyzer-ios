@@ -63,7 +63,7 @@ class AnalysisView extends React.Component {
       max = IN_MAX_POSITION;
       field = IN;
     }
-    let selectedPositionsCount = reshapePositionsCount(this.props.analysis.positionCounts, side, min, max)
+    let selectedPositionsCount = reshapePositionsCount(this.props.analysis.positionCounts, side, min, max);
     this.setState({ selectedPositionsCount, onPressOut: field, onPressSide: side });
   }
   _renderFieldButtonText(position, side){

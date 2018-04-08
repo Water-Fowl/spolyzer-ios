@@ -31,7 +31,7 @@ class GameCreate extends React.Component {
   setUserIndexEvent(selectedUnitIndex, selectedUserIndex){
     this.props.dispatch(setUserIndex(selectedUnitIndex, selectedUserIndex));
     Actions.gameSearchUser();
-    this.navigateScoreCreate = this.navigateScoreCreate.bind(this)
+    this.navigateScoreCreate = this.navigateScoreCreate.bind(this);
   }
 
   renderNoSelectedUserIcon() {
@@ -110,7 +110,7 @@ class GameCreate extends React.Component {
               </View>
             </View>
           </View>
-          <NavigateButton action={() => {this.navigateScoreCreate()}} style={styles.buttonStyle} text="試合開始" />
+          <NavigateButton action={() => {this.navigateScoreCreate();}} style={styles.buttonStyle} text="試合開始" />
         </View>
       </View>
     );

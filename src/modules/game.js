@@ -107,7 +107,7 @@ export function setShotType(shotType, missType) {
 export function removeScore(){
   return {
     type: REMOVE_SCORE
-  }
+  };
 }
 
 export function setUser(user){
@@ -166,14 +166,14 @@ export function gameReducer(state = initialState, action = {}) {
     });
   case SET_SHOT_TYPE:
     /* 今回得られたスコアを取得し、配列に格納する */
-    state.scores = state.scores.concat({unit: state.side, dropped_at: state.position, shot_type: action.shotType, miss_type: action.missType, side: state.side})
+    state.scores = state.scores.concat({unit: state.side, dropped_at: state.position, shot_type: action.shotType, miss_type: action.missType, side: state.side});
     let currentScores = getScoreCounts(state.scores);
     return Object.assign({}, state, {
       scores: state.scores,
       scoreCounts: currentScores
     });
   case REMOVE_SCORE:
-    state.scores.pop()
+    state.scores.pop();
     let removedScores = getScoreCounts(state.scores);
     return Object.assign({}, state, {
       scores: state.scores,
@@ -210,9 +210,9 @@ export function gameReducer(state = initialState, action = {}) {
     else{
       state.gameUnits[state.selectedUnitIndex].users.push(action.user);
     }
-    console.log(state.gameUnits[state.selectedUnitIndex])
+    console.log(state.gameUnits[state.selectedUnitIndex]);
     state.gameUnits[state.selectedUnitIndex].count = state.gameUnits[state.selectedUnitIndex].users.length;
-    state.gameUnits.ids.push(action.user.id)
+    state.gameUnits.ids.push(action.user.id);
     return Object.assign({}, state, {
       gameUnits: state.gameUnits,
       users: []
@@ -220,10 +220,10 @@ export function gameReducer(state = initialState, action = {}) {
 
 
   case REMOVE_USER:
-    let selectedUser = state.gameUnits[state.selectedUnitIndex].users[state.selectedUserIndex]
+    let selectedUser = state.gameUnits[state.selectedUnitIndex].users[state.selectedUserIndex];
     if(selectedUser){
-      state.gameUnits[state.selectedUnitIndex].users.splice(state.selectedUserIndex, 1)
-      state.gameUnits.ids.splice(state.gameUnits.ids.indexOf(selectedUser.id), 1)
+      state.gameUnits[state.selectedUnitIndex].users.splice(state.selectedUserIndex, 1);
+      state.gameUnits.ids.splice(state.gameUnits.ids.indexOf(selectedUser.id), 1);
     }
     state.gameUnits[state.selectedUnitIndex].count = state.gameUnits[state.selectedUnitIndex].users.length;
     return Object.assign({}, state, {

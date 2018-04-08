@@ -8,10 +8,10 @@ export function getScoreByPositionAndSide(position, side){
 }
 
 export function getScoreCounts(scores){
-  var scoreCounts = [0, 0]
+  var scoreCounts = [0, 0];
   for (score of scores){
-    let scoredIndex = getScoreByPositionAndSide(score.dropped_at, score.side)
-    scoreCounts[scoredIndex] += 1
+    let scoredIndex = getScoreByPositionAndSide(score.dropped_at, score.side);
+    scoreCounts[scoredIndex] += 1;
   }
-  return scoreCounts
+  return scoreCounts;
 }

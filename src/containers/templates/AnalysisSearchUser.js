@@ -58,7 +58,7 @@ class AnalysisSearchUser extends React.Component {
       this.props.dispatch(getApiRequest(SEARCH_USER_ENDPOINT, params, this.props.authentication.header, getSearchUserRequest, getSearchUserReceived));
       this.setState({ users: this.props.analysis.users });
     }
-      this.setState({ users: [] });
+    this.setState({ users: [] });
   }
   setUser(selectedIndex){
     this.props.dispatch(setUser(this.props.analysis.selectedUserIndex, this.props.analysis.users[selectedIndex].user));

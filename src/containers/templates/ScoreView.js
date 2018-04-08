@@ -35,13 +35,13 @@ class ScoreView extends React.Component {
     };
   }
   setShotTypeCounts(position, side, missType=0) {
-    let selectedShotTypeCounts =  this.props.game.shotTypeCounts[side] || {}
+    let selectedShotTypeCounts =  this.props.game.shotTypeCounts[side] || {};
     const {
       shotTypeCountsList,
       missShotTypeCountsList,
       shotTypesList
     } = reshapeShotTypeCounts(selectedShotTypeCounts[position], this.props.sport.shotTypes);
-    console.log(shotTypeCountsList)
+    console.log(shotTypeCountsList);
     this.setState({
       data: shotTypeCountsList,
       missData: missShotTypeCountsList

@@ -45,7 +45,7 @@ class UserList extends React.Component{
   }
 }
 
-export default connect(mapStateToProps)(UserList)
+export default connect(mapStateToProps)(UserList);
 
 const styles=StyleSheet.create({
   container: {
