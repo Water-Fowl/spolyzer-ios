@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "spolyzer_header.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "spolyzer_header.png",
       "scale" : "2x"
     },
     {
