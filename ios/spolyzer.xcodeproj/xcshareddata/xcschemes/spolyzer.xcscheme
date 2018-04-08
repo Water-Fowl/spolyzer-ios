@@ -30,8 +30,8 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
                BuildableName = "spolyzer.app"
-               BlueprintName = "redux_front_app"
-               ReferencedContainer = "container:redux_front_app.xcodeproj">
+               BlueprintName = "spolyzer"
+               ReferencedContainer = "container:spolyzer.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -43,9 +43,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "redux_front_appTests.xctest"
-               BlueprintName = "redux_front_appTests"
-               ReferencedContainer = "container:redux_front_app.xcodeproj">
+               BuildableName = "spolyzerTests.xctest"
+               BlueprintName = "spolyzerTests"
+               ReferencedContainer = "container:spolyzer.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -62,9 +62,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "redux_front_appTests.xctest"
-               BlueprintName = "redux_front_appTests"
-               ReferencedContainer = "container:redux_front_app.xcodeproj">
+               BuildableName = "spolyzerTests.xctest"
+               BlueprintName = "spolyzerTests"
+               ReferencedContainer = "container:spolyzer.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -73,8 +73,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
             BuildableName = "spolyzer.app"
-            BlueprintName = "redux_front_app"
-            ReferencedContainer = "container:redux_front_app.xcodeproj">
+            BlueprintName = "spolyzer"
+            ReferencedContainer = "container:spolyzer.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -97,8 +97,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
             BuildableName = "spolyzer.app"
-            BlueprintName = "redux_front_app"
-            ReferencedContainer = "container:redux_front_app.xcodeproj">
+            BlueprintName = "spolyzer"
+            ReferencedContainer = "container:spolyzer.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -116,8 +116,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
             BuildableName = "spolyzer.app"
-            BlueprintName = "redux_front_app"
-            ReferencedContainer = "container:redux_front_app.xcodeproj">
+            BlueprintName = "spolyzer"
+            ReferencedContainer = "container:spolyzer.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
