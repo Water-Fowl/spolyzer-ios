@@ -86,7 +86,7 @@ class Login extends React.Component {
       )
     ).then(async (header) => {
       if(header){
-        await AsyncStorage.setItem('header', JSON.stringify(header));
+        await AsyncStorage.setItem("header", JSON.stringify(header));
         this.props.dispatch(
           getApiRequest(
             endpoint=USERS_ENDPOINT,

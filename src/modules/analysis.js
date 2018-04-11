@@ -168,7 +168,7 @@ export function analysisReducer(state = initialState, action = {}) {
     });
   case REMOVE_USER:
     let selectedUser = state.analysisUsers[state.selectedUserIndex];
-    console.log(selectedUser)
+    console.log(selectedUser);
     state.analysisUsers[state.selectedUserIndex] = null;
     state.analysisUsers.ids.splice(state.analysisUsers.ids.indexOf(selectedUser.id), 1);
     return Object.assign({}, state, {
@@ -176,7 +176,7 @@ export function analysisReducer(state = initialState, action = {}) {
     });
   case SET_USER:
     state.analysisUsers[action.selectedUserIndex] = action.user;
-    state.analysisUsers.ids.push(action.user.id)
+    state.analysisUsers.ids.push(action.user.id);
     return Object.assign({}, state, {
       analysisUsers: state.analysisUsers
     });

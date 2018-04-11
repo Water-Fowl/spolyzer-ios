@@ -62,7 +62,7 @@ class Route extends React.Component{
   }
   async componentWillMountValidToken(){
     try{
-      const rowHeader = await AsyncStorage.getItem('header');
+      const rowHeader = await AsyncStorage.getItem("header");
       if (!rowHeader) {
         this.setState({
           isValidToken: false,
@@ -112,7 +112,7 @@ class Route extends React.Component{
       });
     }
     catch(error){
-      console.log(error)
+      console.log(error);
       this.networkError();
     }
   }
