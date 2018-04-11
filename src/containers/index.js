@@ -1,7 +1,10 @@
 import AnalysisCreate from "./templates/AnalysisCreate";
 import AnalysisSearchUser from "./templates/AnalysisSearchUser";
-import AnalysisView from "./templates/AnalysisView";
 import GameCreate from "./templates/GameCreate";
+import GameAnalysisCreate from "./templates/GameAnalysisCreate";
+import GameAnalysisView from "./templates/GameAnalysisView";
+import MultipleAnalysisCreate from "./templates/MultipleAnalysisCreate";
+import MultipleAnalysisView from "./templates/MultipleAnalysisView";
 import GameSearchUser from "./templates/GameSearchUser";
 import Login from "./templates/Login";
 import ProfileEdit from "./templates/ProfileEdit";
@@ -14,9 +17,12 @@ export {
   /* Componentのexport */
   AnalysisCreate,
   AnalysisSearchUser,
-  AnalysisView,
   ScoreCreate,
   GameCreate,
+  GameAnalysisCreate,
+  GameAnalysisView,
+  MultipleAnalysisCreate,
+  MultipleAnalysisView,
   GameSearchUser,
   ScoreView,
   ProfileTop,
