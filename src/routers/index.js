@@ -7,15 +7,13 @@ import {
 } from "react-native";
 
 import Route from "./routes";
-const { persistor, store } = configureStore();
+const store = configureStore();
 
 export default class ReduxRoute extends React.Component{
   render(){
     return(
       <Provider store={store}>
-        <PersistGate loading={<Text>読み込み中</Text>} persistor={persistor}>
-          <Route />
-        </PersistGate>
+        <Route />
       </Provider>
     );
   }

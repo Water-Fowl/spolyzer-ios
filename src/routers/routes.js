@@ -4,7 +4,8 @@ import {
   StyleSheet,
   View,
   Text,
-  Alert
+  Alert,
+  AsyncStorage
 } from "react-native";
 import { connect } from "react-redux";
 import {
@@ -31,7 +32,7 @@ import {
   DrawerContent
 } from "organisms";
 import { getShotTypesReceived, getShotTypesRequest } from "../modules/sport";
-import { getValidTokenRequest, getValidTokenReceived } from "../modules/authentication";
+import { getValidTokenRequest, getValidTokenReceived, setToken } from "../modules/authentication";
 import { getUserRequest, getUserReceived } from "../modules/profile";
 import { getApiRequest } from "../modules/request";
 import { USERS_ENDPOINT, SHOT_TYPES_ENDPOINT, VALIDATE_TOKEN_ENDPOINT } from "../config/api";
@@ -61,25 +62,34 @@ class Route extends React.Component{
   }
   async componentWillMountValidToken(){
     try{
+      const rowHeader = await AsyncStorage.getItem('header');
+      if (!rowHeader) {
+        this.setState({
+          isValidToken: false,
+          loading: false
+        });
+        return false;
+      }
+      const header = await JSON.parse(rowHeader);
       let isSuccess = await this.props.dispatch(getApiRequest(
         VALIDATE_TOKEN_ENDPOINT,
         params={},
-        this.props.header,
+        header,
         getValidTokenRequest,
         getValidTokenReceived
-      )
-      );
+      ));
 
       if(!isSuccess){
         throw new Error("Network request faild");
       }
 
       if(this.props.isValidToken) {
+        await this.props.dispatch(setToken(header));
         await this.props.dispatch(
           getApiRequest(
             endpoint=USERS_ENDPOINT,
             params={},
-            headers=this.props.header,
+            headers=header,
             requestCallback=getUserRequest,
             receivedCallback=getUserReceived
           )
@@ -89,7 +99,7 @@ class Route extends React.Component{
           getApiRequest(
             endpoint=SHOT_TYPES_ENDPOINT,
             params={sport_id: 1},
-            headers=this.props.header,
+            headers=header,
             requestCallback=getShotTypesRequest,
             receivedCallback=getShotTypesReceived
           )
@@ -102,6 +112,7 @@ class Route extends React.Component{
       });
     }
     catch(error){
+      console.log(error)
       this.networkError();
     }
   }

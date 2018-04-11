@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import { Actions } from "react-native-router-flux";
 import { Background } from "atoms";
 import {
+  AsyncStorage,
   Dimensions,
   Image,
   StyleSheet,
@@ -83,8 +84,9 @@ class Login extends React.Component {
         errorCallback=errorAlertCallback,
         returnHeader=true,
       )
-    ).then((header) => {
+    ).then(async (header) => {
       if(header){
+        await AsyncStorage.setItem('header', JSON.stringify(header));
         this.props.dispatch(
           getApiRequest(
             endpoint=USERS_ENDPOINT,
