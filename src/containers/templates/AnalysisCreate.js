@@ -14,7 +14,7 @@ export default class AnalysisCreate extends React.Component {
       <View style={styles.container}>
         <TopContentBar>分析機能</TopContentBar>
         <View style={styles.buttonContainer}>
-          <TouchableOpacity onPress={() => {Actions.GameAnalysisCreate()}} style={styles.gameButton}>
+          <TouchableOpacity onPress={() => {Actions.GameAnalysisCreate();}} style={styles.gameButton}>
             <GameIcon size={50} />
             <Text>単分析</Text>
           </TouchableOpacity>
