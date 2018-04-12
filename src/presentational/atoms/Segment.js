@@ -13,6 +13,7 @@ export default class Segment extends React.Component {
             selectedIndex: index
           })
         }
+        tintColor={"#2ea7e0"}
         style={{ width: 222, alignSelf: "center" }}
       />
     );
