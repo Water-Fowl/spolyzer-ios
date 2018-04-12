@@ -7,10 +7,10 @@ export default class AnalysisIcon extends React.Component {
       <Image
         source={require("../../assets/img/analysis_icon.png")}
         style={{
-          width: this.props.size
+          width: this.props.size,
+          height: this.props.size * 0.64
         }}
       />
     );
   }
 }
-
