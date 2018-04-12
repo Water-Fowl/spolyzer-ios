@@ -14,13 +14,23 @@ export default class AnalysisCreate extends React.Component {
       <View style={styles.container}>
         <TopContentBar>分析機能</TopContentBar>
         <View style={styles.buttonContainer}>
-          <TouchableOpacity onPress={() => {Actions.GameAnalysisCreate();}} style={styles.gameButton}>
-            <GameIcon size={50} />
-            <Text>単分析</Text>
+          <TouchableOpacity
+            onPress={() => {
+              Actions.GameAnalysisCreate();
+            }}
+            style={styles.gameButton}
+          >
+            <GameIcon size={60} />
+            <Text style={styles.gameAnalysisText}>単分析</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.gameButton}>
-            <MultipleAnalysisIcon size={50} />
-            <Text>複合分析</Text>
+          <TouchableOpacity
+            onPress={() => {
+              Actions.MultipleAnalysisCreate();
+            }}
+            style={styles.gameButton}
+          >
+            <MultipleAnalysisIcon size={60} />
+            <Text style={styles.multipleAnalysisText}>複合分析</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -43,6 +53,18 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     backgroundColor: "rgba(46, 167, 224, 0.4)",
-    padding: 10
+    padding: 10,
+    paddingTop: 40,
+    height: 130
+  },
+  multipleAnalysisText: {
+    marginTop: 15,
+    color: "white",
+    fontSize: 18
+  },
+  gameAnalysisText: {
+    marginTop: 20,
+    color: "white",
+    fontSize: 18
   }
 });
