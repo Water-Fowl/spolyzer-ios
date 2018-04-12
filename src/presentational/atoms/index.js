@@ -18,6 +18,9 @@ import ProfileImage from "./ProfileImage";
 import SelectedUserName from "./SelectedUserName";
 import TextBox from "./TextBox";
 import TextInputForm from "./TextInputForm";
+import GameIcon from "./GameIcon";
+import AnalysisIcon from "./AnalysisIcon";
+import MultipleAnalysisIcon from "./MultipleAnalysisIcon";
 
 export {
   Background,
@@ -36,5 +39,8 @@ export {
   NavBar,
   NavigateButton,
   TopBar,
-  TopContentBar
+  TopContentBar,
+  GameIcon,
+  AnalysisIcon,
+  MultipleAnalysisIcon
 };

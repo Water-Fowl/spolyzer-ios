@@ -20,6 +20,7 @@ import {
   Confirmation
 } from "../containers";
 import { DrawerContent } from "organisms";
+import { GameIcon, AnalysisIcon } from "atoms";
 import { getShotTypesReceived, getShotTypesRequest } from "../modules/sport";
 import {
   getValidTokenRequest,
@@ -165,12 +166,7 @@ class Route extends React.Component {
                 key="Score"
                 initial
                 tabBarLabel="スコアシート"
-                icon={() => (
-                  <Image
-                    style={styles.icon}
-                    source={require("../assets/img/tabs_score.png")}
-                  />
-                )}
+                icon={() => <GameIcon size={50} />}
               >
                 <Scene
                   key="gameCreate"
@@ -195,12 +191,7 @@ class Route extends React.Component {
               <Scene
                 key="Analysis"
                 tabBarLabel="分析"
-                icon={() => (
-                  <Image
-                    style={styles.icon}
-                    source={require("../assets/img/tabs_analysis.png")}
-                  />
-                )}
+                icon={() => <AnalysisIcon size={50} />}
               >
                 <Scene
                   key="analysisCreate"
@@ -253,9 +244,6 @@ function mapStateToProps(state, props) {
 export default connect(mapStateToProps)(Route);
 
 const styles = StyleSheet.create({
-  icon: {
-    margin: 10
-  },
   tabStyle: {
     backgroundColor: "#134A65"
   },
