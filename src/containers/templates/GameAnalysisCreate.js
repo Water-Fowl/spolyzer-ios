@@ -8,6 +8,7 @@ import {
   TouchableOpacity
 } from "react-native";
 import { Segment, TopContentBar } from "atoms";
+import { Icon } from "react-native-ios-kit";
 
 export default class GameAnalysisCreate extends React.Component {
   render() {
@@ -104,6 +105,12 @@ export default class GameAnalysisCreate extends React.Component {
                   VS {item.opponentUserName}
                 </Text>
                 <Text style={styles.gameCreateTime}>{item.gameCreateTime}</Text>
+                <Icon
+                  name={"ios-arrow-forward"}
+                  size={40}
+                  color={"#28a8de"}
+                  style={styles.iconArrow}
+                />
               </TouchableOpacity>
             </View>
           )}
@@ -151,6 +158,11 @@ const styles = StyleSheet.create({
   gameCreateTime: {
     color: "white",
     fontSize: 14
+  },
+  iconArrow: {
+    position: "absolute",
+    paddingRight: 20,
+    alignSelf: "flex-end"
   },
   backButtonText: {
     backgroundColor: "transparent",
