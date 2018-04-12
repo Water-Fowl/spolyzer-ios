@@ -14,7 +14,9 @@ export default class GameAnalysisCreate extends React.Component {
     return (
       <View style={styles.container}>
         <TopContentBar>試合一覧</TopContentBar>
-        <Segment values={["シングルス", "ダブルス"]} selectedIndex={0} />
+        <View style={styles.segmentContainer}>
+          <Segment values={["シングルス", "ダブルス"]} selectedIndex={0} />
+        </View>
         <FlatList
           data={[
             {
@@ -125,6 +127,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "rgba(6, 6, 25, 1)"
+  },
+  segmentContainer: {
+    marginTop: 15,
+    marginBottom: 15
   },
   flatListConteiner: {
     width: "100%"
