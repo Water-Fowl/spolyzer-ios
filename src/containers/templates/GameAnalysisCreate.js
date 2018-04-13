@@ -7,7 +7,7 @@ import {
   Text,
   TouchableOpacity
 } from "react-native";
-import { Segment, TopContentBar } from "atoms";
+import { Segment, TopContentBar,TextBox } from "atoms";
 import { Icon } from "react-native-ios-kit";
 
 export default class GameAnalysisCreate extends React.Component {
@@ -117,13 +117,13 @@ export default class GameAnalysisCreate extends React.Component {
           style={styles.flatListConteiner}
         />
         <View style={styles.backButtonContainer}>
-          <TouchableOpacity
-            onPress={() => {
+          <TextBox
+            callback={() => {
               Actions.analysisCreate({ type: ActionConst.BACK_ACTION });
             }}
           >
-            <Text style={styles.backButtonText}>戻る</Text>
-          </TouchableOpacity>
+            戻る
+          </TextBox>
         </View>
       </View>
     );
@@ -164,21 +164,10 @@ const styles = StyleSheet.create({
     paddingRight: 20,
     alignSelf: "flex-end"
   },
-  backButtonText: {
-    backgroundColor: "transparent",
-    color: "#ffffff",
-    fontSize: 16,
-    fontWeight: "bold",
-    borderRadius: 4,
-    textAlign: "center"
-  },
   backButtonContainer: {
-    borderColor: "#28a8de",
     justifyContent: "center",
     height: 44,
     width: 90,
-    borderWidth: 1,
-    borderRadius: 4,
     marginTop: 10,
     marginBottom: 10,
     marginLeft: "auto",
