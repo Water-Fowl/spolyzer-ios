@@ -7,8 +7,8 @@ import {
   Text,
   TouchableOpacity
 } from "react-native";
-import { Segment, TopContentBar,TextBox } from "atoms";
-import { Icon } from "react-native-ios-kit";
+import { TopContentBar, TextBox } from "atoms";
+import { Icon, SegmentedControl } from "react-native-ios-kit";
 
 export default class GameAnalysisCreate extends React.Component {
   render() {
@@ -16,7 +16,18 @@ export default class GameAnalysisCreate extends React.Component {
       <View style={styles.container}>
         <TopContentBar>試合一覧</TopContentBar>
         <View style={styles.segmentContainer}>
-          <Segment values={["シングルス", "ダブルス"]} selectedIndex={0} />
+          <SegmentedControl
+            values={["シングルス", "ダブルス"]}
+            selectedIndex={0}
+            onValueChange={(value, index) =>
+              this.setState({
+                selectedValue: value,
+                selectedIndex: index
+              })
+            }
+            tintColor={"#2ea7e0"}
+            style={{ width: 222, alignSelf: "center" }}
+          />
         </View>
         <FlatList
           data={[

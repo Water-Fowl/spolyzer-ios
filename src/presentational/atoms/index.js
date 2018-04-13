@@ -21,7 +21,6 @@ import TextInputForm from "./TextInputForm";
 import GameIcon from "./GameIcon";
 import AnalysisIcon from "./AnalysisIcon";
 import MultipleAnalysisIcon from "./MultipleAnalysisIcon";
-import Segment from "./Segment";
 
 export {
   Background,
@@ -43,6 +42,5 @@ export {
   TopContentBar,
   GameIcon,
   AnalysisIcon,
-  MultipleAnalysisIcon,
-  Segment
+  MultipleAnalysisIcon
 };
