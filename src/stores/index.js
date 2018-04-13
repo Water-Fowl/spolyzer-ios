@@ -21,7 +21,7 @@ const loggerMiddleware = createLogger();
 const middleware = [thunkMiddleware, loggerMiddleware];
 const reducers = combineReducers({
   game: gameReducer,
-  authentication: persistReducer(authenticationConfig, authenticationReducer),
+  authentication: authenticationReducer,
   profile: profileReducer,
   analysis: analysisReducer,
   sport: sportReducer
@@ -33,7 +33,6 @@ export default function configureStore() {
     undefined,
     compose(applyMiddleware(...middleware)),
   );
-  const persistor = persistStore(store);
 
-  return { persistor, store };
+  return store;
 }

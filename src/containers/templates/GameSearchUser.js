@@ -93,7 +93,7 @@ class GameSearchUser extends React.Component {
           />
         </View>
         <TextBox callback={() => {this.removeUser();}}>選択なし</TextBox>
-        <UserList callback={this.setUser} users={this.state.users}/>
+        <UserList callback={this.setUser} users={this.state.users} selectedIds={this.props.game.gameUnits.ids}/>
         <NavigateButton action={() =>{Actions.popTo("gameCreate"); }} style={styles.navigateButton} text="選択" />
       </View>
     );

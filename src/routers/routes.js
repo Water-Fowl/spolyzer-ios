@@ -1,5 +1,12 @@
 import React from "react";
-import { Image, StyleSheet, View, Text, Alert } from "react-native";
+import {
+  Image,
+  StyleSheet,
+  View,
+  Text,
+  Alert,
+  AsyncStorage
+} from "react-native";
 import { connect } from "react-redux";
 import { Router, Scene, Tabs, Drawer } from "react-native-router-flux";
 import {
@@ -22,10 +29,8 @@ import {
 import { DrawerContent } from "organisms";
 import { GameIcon, AnalysisIcon } from "atoms";
 import { getShotTypesReceived, getShotTypesRequest } from "../modules/sport";
-import {
-  getValidTokenRequest,
-  getValidTokenReceived
-} from "../modules/authentication";
+
+import { getValidTokenRequest, getValidTokenReceived, setToken } from "../modules/authentication";
 import { getUserRequest, getUserReceived } from "../modules/profile";
 import { getApiRequest } from "../modules/request";
 import {
@@ -68,40 +73,48 @@ class Route extends React.Component {
       );
     });
   }
-  async componentWillMountValidToken() {
-    try {
-      let isSuccess = await this.props.dispatch(
-        getApiRequest(
-          VALIDATE_TOKEN_ENDPOINT,
-          (params = {}),
-          this.props.header,
-          getValidTokenRequest,
-          getValidTokenReceived
-        )
-      );
-
+  async componentWillMountValidToken(){
+    try{
+      const rowHeader = await AsyncStorage.getItem("header");
+      if (!rowHeader) {
+        this.setState({
+          isValidToken: false,
+          loading: false
+        });
+        return false;
+      }
+      const header = await JSON.parse(rowHeader);
+      let isSuccess = await this.props.dispatch(getApiRequest(
+        VALIDATE_TOKEN_ENDPOINT,
+        params={},
+        header,
+        getValidTokenRequest,
+        getValidTokenReceived
+      ));
       if (!isSuccess) {
         throw new Error("Network request faild");
       }
 
-      if (this.props.isValidToken) {
+
+      if(this.props.isValidToken) {
+        await this.props.dispatch(setToken(header));
         await this.props.dispatch(
           getApiRequest(
-            (endpoint = USERS_ENDPOINT),
-            (params = {}),
-            (headers = this.props.header),
-            (requestCallback = getUserRequest),
-            (receivedCallback = getUserReceived)
+            endpoint=USERS_ENDPOINT,
+            params={},
+            headers=header,
+            requestCallback=getUserRequest,
+            receivedCallback=getUserReceived
           )
         );
 
         await this.props.dispatch(
           getApiRequest(
-            (endpoint = SHOT_TYPES_ENDPOINT),
-            (params = { sport_id: 1 }),
-            (headers = this.props.header),
-            (requestCallback = getShotTypesRequest),
-            (receivedCallback = getShotTypesReceived)
+            endpoint=SHOT_TYPES_ENDPOINT,
+            params={sport_id: 1},
+            headers=header,
+            requestCallback=getShotTypesRequest,
+            receivedCallback=getShotTypesReceived
           )
         );
       }
@@ -110,7 +123,10 @@ class Route extends React.Component {
         isValidToken: this.props.isValidToken,
         loading: false
       });
-    } catch (error) {
+
+    }
+    catch(error){
+      console.log(error);
       this.networkError();
     }
   }
