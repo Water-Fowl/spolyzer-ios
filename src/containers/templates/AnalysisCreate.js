@@ -7,6 +7,35 @@ import {
   Background
 } from "atoms";
 import { Actions } from "react-native-router-flux";
+import {
+  getPositionsCountsRequest,
+  getPositionsCountsReceived
+} from "../../modules/analysis";
+import {
+  getApiRequest
+} from "../../modules/request";
+import {
+  POSITIONS_COUNTS_ENDPOINT,
+  analysisEndpointGenerator
+} from "../../config/api";
+
+import { mapStateToProps } from "utils";
+
+class AnalysisCreate extends React.Component {
+  constructor(props) {
+    super(props);
+    this.getPositionsCountsEvent.bind(this);
+    this.setPicker.bind(this);
+    this.hidePicker.bind(this);
+    this.state = {
+      isPickerVisible: false
+    };
+  }
+  getPositionsCountsEvent() {
+    let params = {
+      ids: this.props.analysis.analysisUsersIds,
+      shot_type_id: this.props.analysis.shotTypeId
+    };
 
 export default class AnalysisCreate extends React.Component {
   render() {
