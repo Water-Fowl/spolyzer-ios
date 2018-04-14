@@ -47,15 +47,8 @@ class AnalysisCreate extends React.Component {
     };
   }
   getPositionsCountsEvent() {
-    var userIds = [];
-    for (key in this.props.analysis.analysisUsers){
-      let user = this.props.analysis.analysisUsers[key];
-      if(user){
-        userIds.push(user.id);
-      }
-    }
     let params = {
-      ids: userIds,
+      ids: this.props.analysis.analysisUsersIds,
       shot_type_id: this.props.analysis.shotTypeId
     };
 

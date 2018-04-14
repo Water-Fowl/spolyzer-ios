@@ -1,6 +1,6 @@
 export const BASE_URL = "http://128.199.68.200/api/v1";
 export const LOCAL_URL = "http://localhost:3000/api/v1";
-export const SCHEME = BASE_URL;
+export const SCHEME = LOCAL_URL;
 
 export const SIGN_IN_ENDPOINT = `${SCHEME}/auth/sign_in/`;
 export const REGISTRATION_ENDPOINT = `${SCHEME}/auth/`;
