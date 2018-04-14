@@ -36,6 +36,8 @@ class AnalysisCreate extends React.Component {
       ids: this.props.analysis.analysisUsersIds,
       shot_type_id: this.props.analysis.shotTypeId
     };
+  }
+}
 
 export default class AnalysisCreate extends React.Component {
   render() {
