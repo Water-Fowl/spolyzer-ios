@@ -90,7 +90,7 @@ class AnalysisSearchUser extends React.Component {
           />
         </View>
         <TextBox callback={() => {this.removeUser();}}>選択なし</TextBox>
-        <UserList callback={this.setUser} users={this.state.users} selectedIds={this.props.analysis.analysisUsers.ids}/>
+        <UserList callback={this.setUser} users={this.state.users} selectedIds={this.props.analysis.analysisUsersIds}/>
         <NavigateButton action={() =>{Actions.popTo("analysisCreate"); }} style={styles.navigateButton} text="戻る" />
       </View>
     );
