@@ -205,12 +205,11 @@ export function gameReducer(state = initialState, action = {}) {
     });
   case SET_USER:
     if(state.gameUnits[state.selectedUnitIndex].users[state.selectedUserIndex]){
-      state.gameUnits[state.selectedUnitIndex].users[state.selectedUserIndex] = state.user;
+      state.gameUnits[state.selectedUnitIndex].users[state.selectedUserIndex] = action.user;
     }
     else{
       state.gameUnits[state.selectedUnitIndex].users.push(action.user);
     }
-    console.log(state.gameUnits[state.selectedUnitIndex]);
     state.gameUnits[state.selectedUnitIndex].count = state.gameUnits[state.selectedUnitIndex].users.length;
     state.gameUnits.ids.push(action.user.id);
     return Object.assign({}, state, {
