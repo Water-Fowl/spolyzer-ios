@@ -180,7 +180,7 @@ export function analysisReducer(state = initialState, action = {}) {
       state.analysisUsers[state.selectedUserIndex] = action.user;
     }
     else {
-      state.analysisUsers.push(action.user)
+      state.analysisUsers.push(action.user);
     }
     state.analysisUsersIds.push(action.user.id);
     return Object.assign({}, state, {
