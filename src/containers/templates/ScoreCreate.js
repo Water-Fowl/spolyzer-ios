@@ -76,8 +76,8 @@ class ScoreCreate extends React.Component {
     this.setState({ modalIsVisible: false });
   }
 
-  setShotType(shotTypeId, missType=0) {
-    this.props.dispatch(setShotType(shotTypeId, missType));
+  setShotType(shotTypeId, isNetMiss) {
+    this.props.dispatch(setShotType(shotTypeId, isNetMiss));
   }
 
   navigationEvent(users, scores){

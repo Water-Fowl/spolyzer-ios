@@ -34,7 +34,7 @@ class ScoreView extends React.Component {
       shotTypeList: []
     };
   }
-  setShotTypeCounts(position, side, missType=0) {
+  setShotTypeCounts(position, side, isNetMiss) {
     let selectedShotTypeCounts =  this.props.game.shotTypeCounts[side] || {};
     const {
       shotTypeCountsList,

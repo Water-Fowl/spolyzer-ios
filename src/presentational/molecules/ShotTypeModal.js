@@ -19,33 +19,13 @@ const OUT_MIN_POSITION = 1;
 const OUT_MAX_POSITION = 6;
 
 export default class ShotTypeModal extends React.Component {
-  renderButtons(textStyles, isMiss){
-    if (
-      isMiss &&
-      this.props.position != NET_MAX_POSITION &&
-      this.props.position != NET_MIN_POSITION
-    ){
-      return (
-        null
-      );
-    }
-    const buttonsComponentsList = [];
-    /* 外に出ているかどうかを判別する */
-    if (
-      this.props.position > OUT_MAX_POSITION &&
-      this.props.position < OUT_MAX_POSITION
-    ){
-      var missType = 2;
-    }
-    else {
-      var missType = isMiss? 1:0;
-    }
-
+  renderButtons(textStyles, isNetMiss){
+    buttonsComponentsList = []
     for (let shotTypeId in this.props.shotTypes){
       buttonsComponentsList.push(
         <TouchableHighlight
           onPress={() => {
-            this.props.callback(shotTypeId, missType);
+            this.props.callback(shotTypeId, isNetMiss);
             this.props.hideModal();
           }}
         >
@@ -66,8 +46,8 @@ export default class ShotTypeModal extends React.Component {
       return (
         <View style={styles.container}>
           <View style={styles.shotTypeContainer}>
-            { this.renderButtons(styles.shotType, isMiss=false) }
-            { this.renderButtons(styles.missShotType, isMiss=true) }
+            { this.renderButtons(styles.shotType, isNetMiss=false) }
+            { this.renderButtons(styles.missShotType, isNetMiss=true) }
           </View>
           <TouchableHighlight style={styles.touchableContainer} onPress={() => {this.props.hideModal();}} >
             <Text style={styles.close}>戻る</Text>
