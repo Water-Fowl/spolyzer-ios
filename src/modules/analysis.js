@@ -177,6 +177,8 @@ export function analysisReducer(state = initialState, action = {}) {
     });
   case SET_USER:
     if(state.analysisUsers[state.selectedUserIndex]){
+      let selectedUser = state.analysisUsers[state.selectedUserIndex];
+      state.analysisUsersIds.splice(state.analysisUsersIds.indexOf(selectedUser.id), 1);
       state.analysisUsers[state.selectedUserIndex] = action.user;
     }
     else {
