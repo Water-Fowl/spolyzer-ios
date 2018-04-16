@@ -118,6 +118,10 @@ export function authenticationReducer(state = initialState, action = {}) {
       isValidToken: false,
       header: {}
     });
+  case SET_TOKEN:
+    return Object.assign({}, state, {
+      header: action.header
+    });
   default:
     return state;
   }
