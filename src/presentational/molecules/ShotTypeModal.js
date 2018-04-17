@@ -20,7 +20,16 @@ const OUT_MAX_POSITION = 6;
 
 export default class ShotTypeModal extends React.Component {
   renderButtons(textStyles, isNetMiss){
+    console.log(this.props.position)
     buttonsComponentsList = [];
+    if (isNetMiss &&
+        NET_MIN_POSITION != this.props.position &&
+        NET_MAX_POSITION != this.props.position
+    ){
+      return (
+        null
+      );
+    }
     for (let shotTypeId in this.props.shotTypes){
       buttonsComponentsList.push(
         <TouchableHighlight
