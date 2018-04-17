@@ -20,7 +20,8 @@ import {
 } from "../../modules/authentication";
 import {
   getShotTypesRequest,
-  getShotTypesReceived
+  getShotTypesReceived,
+  setSport
 } from "../../modules/sport";
 import {
   getUserRequest,
@@ -67,7 +68,6 @@ class Login extends React.Component {
   }
 
   postLoginEvent() {
-    const sportId = 1;
     var body = {
       name: this.state.name,
       email: this.state.email,
@@ -96,6 +96,7 @@ class Login extends React.Component {
             receivedCallback=getUserReceived
           )
         );
+        this.props.dispatch(setSport(1))
         this.props.dispatch(
           getApiRequest(
             SHOT_TYPES_ENDPOINT,
