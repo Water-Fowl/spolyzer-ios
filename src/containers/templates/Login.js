@@ -96,11 +96,11 @@ class Login extends React.Component {
             receivedCallback=getUserReceived
           )
         );
-        this.props.dispatch(setSport(1))
+        this.props.dispatch(setSport(2))
         this.props.dispatch(
           getApiRequest(
             SHOT_TYPES_ENDPOINT,
-            params={sport_id: 1},
+            params={sport_id: 2},
             header,
             getShotTypesRequest,
             getShotTypesReceived
