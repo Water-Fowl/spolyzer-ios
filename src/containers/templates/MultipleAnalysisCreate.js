@@ -88,12 +88,12 @@ class AnalysisCreate extends React.Component {
           <SegmentedControl
             values={["シングルス", "ダブルス"]}
             selectedIndex={0}
-            onValueChange={(value, index) =>
+            onValueChange={(value, index) => {
               this.setState({
                 selectedValue: value,
                 selectedIndex: index
-              })
-            }
+              });
+            }}
             tintColor={"#2ea7e0"}
             style={{ width: 222, alignSelf: "center" }}
           />
@@ -119,13 +119,20 @@ class AnalysisCreate extends React.Component {
           >
             <SelectedUserName user={this.props.analysis.analysisUsers[0]} />
           </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => {
-              this.pushAnalysisSearchEvent(1);
-            }}
-          >
-            <SelectedUserName user={this.props.analysis.analysisUsers[1]} />
-          </TouchableOpacity>
+          {(() => {
+            if (this.state.selectedIndex)
+              return (
+                <TouchableOpacity
+                  onPress={() => {
+                    this.pushAnalysisSearchEvent(1);
+                  }}
+                >
+                  <SelectedUserName
+                    user={this.props.analysis.analysisUsers[1]}
+                  />
+                </TouchableOpacity>
+              );
+          })()}
         </View>
         <NavigateButton
           action={() => {
