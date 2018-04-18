@@ -4,14 +4,15 @@ const initialState = {
   gameUserCount: 1,
   shotTypeId: 1,
   term: 1,
-  analysisUsers: {
-  },
+  result: 0,
+  analysisUsers: {},
   analysisUsersIds: []
 };
 
 const GAME_TYPE_SETTING = "GAME_TYPE_SETTING";
 const SHOT_TYPE_SETTING = "SHOT_TYPE_SETTING";
 const TERM_SETTING = "TERM_SETTING";
+const RESULT_SETTING = "RESULT_SETTING";
 const OPPONENT_USER_SETTING = "OPPONENT_USER_SETTING";
 const GET_GAMES_REQUEST = "GET_GAMES_REQUEST";
 const GET_GAMES_RECEIVED = "GET_GAMES_RRQUEST";
@@ -28,13 +29,13 @@ const REMOVE_USER = "REMOVE_USER_ON_ANALYSIS";
 const SET_SELECTED_USER_INDEX = "SET_SELECTED_USER_INDEX";
 const SET_POSITIONS_COUNTS = "SET_POSITIONS_COUNTS";
 
-export function requestGetActions(){
-  return{
+export function requestGetActions() {
+  return {
     type: GET_ACTIONS_REQUEST
   };
 }
 
-export function reveivedGetActions(actions){
+export function reveivedGetActions(actions) {
   return {
     type: GET_ACTIONS_RECEIVED,
     actions: actions
@@ -54,15 +55,15 @@ export function getGamesReceived(gameId) {
   };
 }
 
-export function getPositionsCountsRequest(){
-  return{
+export function getPositionsCountsRequest() {
+  return {
     type: GET_POSITIONS_COUNTS_REQUEST
   };
 }
 
-export function getPositionsCountsReceived(json){
+export function getPositionsCountsReceived(json) {
   console.log(json);
-  return{
+  return {
     positionCounts: json.counts,
     type: GET_POSITIONS_COUNTS_RECEIVED
   };
@@ -82,13 +83,13 @@ export function getSearchUserReceived(json) {
   };
 }
 
-export function removeUser(){
+export function removeUser() {
   return {
     type: REMOVE_USER
   };
 }
 
-export function setPositionsCount(minPosition, maxPosition, side){
+export function setPositionsCount(minPosition, maxPosition, side) {
   return {
     type: SET_POSITIONS_COUNTS,
     minPosition,
@@ -118,7 +119,14 @@ export function setTerm(term) {
   };
 }
 
-export function setUser(selectedUserIndex, user){
+export function setGameResult(result) {
+  return {
+    type: RESULT_SETTING,
+    result
+  };
+}
+
+export function setUser(selectedUserIndex, user) {
   return {
     type: SET_USER,
     selectedUserIndex,
@@ -126,7 +134,7 @@ export function setUser(selectedUserIndex, user){
   };
 }
 
-export function setUserIndex(selectedUserIndex){
+export function setUserIndex(selectedUserIndex) {
   return {
     type: SET_SELECTED_USER_INDEX,
     selectedUserIndex
@@ -153,6 +161,10 @@ export function analysisReducer(state = initialState, action = {}) {
     return Object.assign({}, state, {
       term: action.term
     });
+  case RESULT_SETTING:
+    return Object.assign({}, state, {
+      result: action.result
+    });
   case GET_SEARCH_USER_REQUEST:
     return state;
   case GET_SEARCH_USER_RECEIVED:
@@ -160,8 +172,7 @@ export function analysisReducer(state = initialState, action = {}) {
       users: action.users
     });
   case GET_POSITIONS_COUNTS_REQUEST:
-    return Object.assign({}, state, {
-    });
+    return Object.assign({}, state, {});
   case GET_POSITIONS_COUNTS_RECEIVED:
     return Object.assign({}, state, {
       positionCounts: action.positionCounts
@@ -169,8 +180,11 @@ export function analysisReducer(state = initialState, action = {}) {
   case REMOVE_USER:
     let selectedUser = state.analysisUsers[state.selectedUserIndex];
     state.analysisUsers[state.selectedUserIndex] = null;
-    if(selectedUser){
-      state.analysisUsersIds.splice(state.analysisUsersIds.indexOf(selectedUser.id), 1);
+    if (selectedUser) {
+      state.analysisUsersIds.splice(
+        state.analysisUsersIds.indexOf(selectedUser.id),
+        1
+      );
     }
     return Object.assign({}, state, {
       analysisUsers: state.analysisUsers,
@@ -188,9 +202,7 @@ export function analysisReducer(state = initialState, action = {}) {
       selectedUserIndex: action.selectedUserIndex
     });
   case SET_POSITIONS_COUNTS:
-    const {
-      positionsCountList
-    } = reshapePositionsCount(
+    const { positionsCountList } = reshapePositionsCount(
       state.positionCounts,
       action.side,
       action.minPosition,
