@@ -1,12 +1,7 @@
 import React from "react";
 import baseEnhancer from "enhances";
-import { Actions } from "react-native-router-flux";
-import {
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View
-} from "react-native";
+import { Actions, ActionConst } from "react-native-router-flux";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { connect } from "react-redux";
 import { listToQueryParams } from "utils";
 
@@ -20,15 +15,14 @@ import {
 import {
   SelectedUserName,
   NavigateButton,
-  TopContentBar
+  TopContentBar,
+  TextBox
 } from "atoms";
 import {
   getPositionsCountsRequest,
   getPositionsCountsReceived
 } from "../../modules/analysis";
-import {
-  getApiRequest
-} from "../../modules/request";
+import { getApiRequest } from "../../modules/request";
 import {
   POSITIONS_COUNTS_ENDPOINT,
   analysisEndpointGenerator
@@ -48,9 +42,9 @@ class AnalysisCreate extends React.Component {
   }
   getPositionsCountsEvent() {
     var userIds = [];
-    for (key in this.props.analysis.analysisUsers){
+    for (key in this.props.analysis.analysisUsers) {
       let user = this.props.analysis.analysisUsers[key];
-      if(user){
+      if (user) {
         userIds.push(user.id);
       }
     }
@@ -60,60 +54,79 @@ class AnalysisCreate extends React.Component {
     };
 
     let endpoint = analysisEndpointGenerator(params);
-    this.props.dispatch(getApiRequest(
-      endpoint=endpoint,
-      params={game_user_count: this.props.analysis.gameUserCount},
-      this.props.authentication.header,
-      getPositionsCountsRequest,
-      getPositionsCountsReceived
-    )).then(()=> {
-      Actions.analysisView();
-    });
+    this.props
+      .dispatch(
+        getApiRequest(
+          (endpoint = endpoint),
+          (params = { game_user_count: this.props.analysis.gameUserCount }),
+          this.props.authentication.header,
+          getPositionsCountsRequest,
+          getPositionsCountsReceived
+        )
+      )
+      .then(() => {
+        Actions.analysisView();
+      });
   }
   pushAnalysisSearchEvent(selectedUserIndex) {
     this.props.dispatch(setUserIndex(selectedUserIndex));
     Actions.analysisSearchUser();
   }
-  setPicker(){
-    this.setState({isPickerVisible: true});
+  setPicker() {
+    this.setState({ isPickerVisible: true });
   }
-  hidePicker(){
-    this.setState({isPickerVisible: false});
+  hidePicker() {
+    this.setState({ isPickerVisible: false });
   }
   render() {
     return (
       <View style={styles.container}>
         <TopContentBar>検索条件</TopContentBar>
         <View style={styles.rowContainer}>
-          <Text style={styles.gameStyleText}>
-            試合形式
-          </Text>
+          <Text style={styles.gameStyleText}>試合形式</Text>
           <GameTypeButtonList />
         </View>
         <View style={styles.rowContainer}>
-          <Text style={styles.shotTypeText}>
-            球種
-          </Text>
+          <Text style={styles.shotTypeText}>球種</Text>
           <ShotTypeButtonList />
         </View>
         <View style={styles.rowContainer}>
-          <Text style={styles.termText}>
-            期間
-          </Text>
+          <Text style={styles.termText}>期間</Text>
           <TermButtonList />
         </View>
         <View style={styles.rowContainer}>
-          <Text style={styles.opponentText}>
-            対戦相手
-          </Text>
-          <TouchableOpacity onPress={() => {this.pushAnalysisSearchEvent(0);}}>
-            <SelectedUserName user={this.props.analysis.analysisUsers[0]}/>
+          <Text style={styles.opponentText}>対戦相手</Text>
+          <TouchableOpacity
+            onPress={() => {
+              this.pushAnalysisSearchEvent(0);
+            }}
+          >
+            <SelectedUserName user={this.props.analysis.analysisUsers[0]} />
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => {this.pushAnalysisSearchEvent(1);}}>
-            <SelectedUserName user={this.props.analysis.analysisUsers[1]}/>
+          <TouchableOpacity
+            onPress={() => {
+              this.pushAnalysisSearchEvent(1);
+            }}
+          >
+            <SelectedUserName user={this.props.analysis.analysisUsers[1]} />
           </TouchableOpacity>
         </View>
-        <NavigateButton action={() => {this.getPositionsCountsEvent();}} style={styles.navigateButton} text="分析" />
+        <NavigateButton
+          action={() => {
+            this.getPositionsCountsEvent();
+          }}
+          style={styles.navigateButton}
+          text="分析"
+        />
+        <View style={styles.backButtonContainer}>
+          <TextBox
+            callback={() => {
+              Actions.analysisCreate({ type: ActionConst.BACK_ACTION });
+            }}
+          >
+            戻る
+          </TextBox>
+        </View>
       </View>
     );
   }
@@ -166,5 +179,15 @@ const styles = StyleSheet.create({
   },
   navigateButton: {
     marginTop: 50
+  },
+  backButtonContainer: {
+    justifyContent: "flex-end",
+    flex: 1,
+    height: 44,
+    width: 90,
+    marginTop: 10,
+    marginBottom: 10,
+    marginLeft: "auto",
+    marginRight: 50
   }
 });
