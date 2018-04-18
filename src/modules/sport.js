@@ -15,7 +15,7 @@ export function setSport(sportId){
   return {
     type: SET_SPORT,
     sportId: sportId
-  }
+  };
 }
 
 export function getShotTypesReceived(json) {
@@ -26,7 +26,7 @@ export function getShotTypesReceived(json) {
   }
   return {
     type: GET_SHOT_TYPES_RECEIVED,
-    shotTypes: reshapedShotTypes,
+    shotTypes: reshapedShotTypes
   };
 }
 
@@ -43,7 +43,7 @@ export function sportReducer(state = initialState, action={}){
     return {
       ...state,
       id: action.sportId
-    }
+    };
   default:
     return state;
   }
