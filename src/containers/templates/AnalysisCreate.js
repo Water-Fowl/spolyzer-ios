@@ -11,9 +11,7 @@ import {
   getPositionsCountsRequest,
   getPositionsCountsReceived
 } from "../../modules/analysis";
-import {
-  getApiRequest
-} from "../../modules/request";
+import { getApiRequest } from "../../modules/request";
 import {
   POSITIONS_COUNTS_ENDPOINT,
   analysisEndpointGenerator
@@ -21,23 +19,23 @@ import {
 
 import { mapStateToProps } from "utils";
 
-class AnalysisCreate extends React.Component {
-  constructor(props) {
-    super(props);
-    this.getPositionsCountsEvent.bind(this);
-    this.setPicker.bind(this);
-    this.hidePicker.bind(this);
-    this.state = {
-      isPickerVisible: false
-    };
-  }
-  getPositionsCountsEvent() {
-    let params = {
-      ids: this.props.analysis.analysisUsersIds,
-      shot_type_id: this.props.analysis.shotTypeId
-    };
-  }
-}
+// class AnalysisCreate extends React.Component {
+//   constructor(props) {
+//     super(props);
+//     this.getPositionsCountsEvent.bind(this);
+//     this.setPicker.bind(this);
+//     this.hidePicker.bind(this);
+//     this.state = {
+//       isPickerVisible: false
+//     };
+//   }
+//   getPositionsCountsEvent() {
+//     let params = {
+//       ids: this.props.analysis.analysisUsersIds,
+//       shot_type_id: this.props.analysis.shotTypeId
+//     };
+//   }
+// }
 
 export default class AnalysisCreate extends React.Component {
   render() {
@@ -49,7 +47,7 @@ export default class AnalysisCreate extends React.Component {
             onPress={() => {
               Actions.GameAnalysisCreate();
             }}
-            style={styles.gameButton}
+            style={styles.leftGameButton}
           >
             <GameIcon size={60} />
             <Text style={styles.gameAnalysisText}>単分析</Text>
@@ -58,7 +56,7 @@ export default class AnalysisCreate extends React.Component {
             onPress={() => {
               Actions.MultipleAnalysisCreate();
             }}
-            style={styles.gameButton}
+            style={styles.rightGameButton}
           >
             <MultipleAnalysisIcon size={60} />
             <Text style={styles.multipleAnalysisText}>複合分析</Text>
@@ -78,10 +76,22 @@ const styles = StyleSheet.create({
   buttonContainer: {
     flexDirection: "row"
   },
-  gameButton: {
+  leftGameButton: {
     marginTop: "50%",
-    margin: 5,
+    marginLeft: 15,
+    marginRight: 5,
     flex: 1,
+    alignItems: "center",
+    backgroundColor: "rgba(46, 167, 224, 0.4)",
+    padding: 10,
+    paddingTop: 40,
+    height: 130
+  },
+  rightGameButton: {
+    marginTop: "50%",
+    marginRight: 15,
+    marginLeft: 5,
+    flex : 1,
     alignItems: "center",
     backgroundColor: "rgba(46, 167, 224, 0.4)",
     padding: 10,
