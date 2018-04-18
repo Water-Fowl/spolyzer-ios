@@ -1,16 +1,7 @@
 import React from "react";
 import baseEnhancer from "enhances";
-import {
-  ActionConst,
-  Actions
-} from "react-native-router-flux";
-import {
-  Image,
-  StyleSheet,
-  Text,
-  TextInput,
-  View
-} from "react-native";
+import { ActionConst, Actions } from "react-native-router-flux";
+import { Image, StyleSheet, Text, TextInput, View } from "react-native";
 import { connect } from "react-redux";
 
 import {
@@ -19,12 +10,8 @@ import {
   setUser,
   removeUser
 } from "../../modules/analysis";
-import {
-  getApiRequest
-} from "../../modules/request";
-import {
-  SEARCH_USER_ENDPOINT
-} from "../../config/api";
+import { getApiRequest } from "../../modules/request";
+import { SEARCH_USER_ENDPOINT } from "../../config/api";
 import {
   Background,
   NavBar,
@@ -33,12 +20,10 @@ import {
   TextBox
 } from "atoms";
 import { UserList } from "organisms";
-import {
-  mapStateToProps
-} from "utils";
+import { mapStateToProps } from "utils";
 
 class AnalysisSearchUser extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
       name: "",
@@ -47,37 +32,48 @@ class AnalysisSearchUser extends React.Component {
     this.getUser = this.getUser.bind(this);
     this.setUser = this.setUser.bind(this);
   }
-  componentWillReceiveProps(nextProps){
+  componentWillReceiveProps(nextProps) {
     this.setState({ users: nextProps.analysis.users });
   }
-  getUser(name){
+  getUser(name) {
     const params = {
       name: name
     };
-    if (name != ""){
-      this.props.dispatch(getApiRequest(SEARCH_USER_ENDPOINT, params, this.props.authentication.header, getSearchUserRequest, getSearchUserReceived));
+    if (name != "") {
+      this.props.dispatch(
+        getApiRequest(
+          SEARCH_USER_ENDPOINT,
+          params,
+          this.props.authentication.header,
+          getSearchUserRequest,
+          getSearchUserReceived
+        )
+      );
       this.setState({ users: this.props.analysis.users });
     }
     this.setState({ users: [] });
   }
-  setUser(selectedIndex){
-    this.props.dispatch(setUser(this.props.analysis.selectedUserIndex, this.props.analysis.users[selectedIndex].user));
-    Actions.popTo("analysisCreate");
+  setUser(selectedIndex) {
+    this.props.dispatch(
+      setUser(
+        this.props.analysis.selectedUserIndex,
+        this.props.analysis.users[selectedIndex].user
+      )
+    );
+    Actions.popTo("MultipleAnalysisCreate");
   }
-  removeUser(){
+  removeUser() {
     this.props.dispatch(removeUser());
-    Actions.popTo("analysisCreate");
+    Actions.popTo("MultipleAnalysisCreate");
   }
   render() {
     return (
-    	<View style={styles.container}>
+      <View style={styles.container}>
         <Background />
-        <TopContentBar>
-          名前検索
-        </TopContentBar>
+        <TopContentBar>名前検索</TopContentBar>
         <View style={styles.form}>
           <TextInput
-            onChangeText={(name) => {
+            onChangeText={name => {
               this.setState({ name });
               this.getUser(name);
             }}
@@ -89,9 +85,25 @@ class AnalysisSearchUser extends React.Component {
             returnKeyType="done"
           />
         </View>
-        <TextBox callback={() => {this.removeUser();}}>選択なし</TextBox>
-        <UserList callback={this.setUser} users={this.state.users} selectedIds={this.props.analysis.analysisUsersIds}/>
-        <NavigateButton action={() =>{Actions.popTo("analysisCreate"); }} style={styles.navigateButton} text="戻る" />
+        <TextBox
+          callback={() => {
+            this.removeUser();
+          }}
+        >
+          選択なし
+        </TextBox>
+        <UserList
+          callback={this.setUser}
+          users={this.state.users}
+          selectedIds={this.props.analysis.analysisUsersIds}
+        />
+        <NavigateButton
+          action={() => {
+            Actions.popTo("MultipleAnalysisCreate");
+          }}
+          style={styles.navigateButton}
+          text="戻る"
+        />
       </View>
     );
   }
