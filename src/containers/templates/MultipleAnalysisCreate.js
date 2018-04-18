@@ -4,6 +4,7 @@ import { Actions, ActionConst } from "react-native-router-flux";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { connect } from "react-redux";
 import { listToQueryParams } from "utils";
+import { SegmentedControl } from "react-native-ios-kit";
 
 import { setUserIndex } from "../../modules/analysis";
 
@@ -83,9 +84,19 @@ class AnalysisCreate extends React.Component {
     return (
       <View style={styles.container}>
         <TopContentBar>検索条件</TopContentBar>
-        <View style={styles.rowContainer}>
-          <Text style={styles.gameStyleText}>試合形式</Text>
-          <GameTypeButtonList />
+        <View style={styles.segmentContainer}>
+          <SegmentedControl
+            values={["シングルス", "ダブルス"]}
+            selectedIndex={0}
+            onValueChange={(value, index) =>
+              this.setState({
+                selectedValue: value,
+                selectedIndex: index
+              })
+            }
+            tintColor={"#2ea7e0"}
+            style={{ width: 222, alignSelf: "center" }}
+          />
         </View>
         <View style={styles.rowContainer}>
           <Text style={styles.shotTypeText}>球種</Text>
@@ -145,14 +156,8 @@ const styles = StyleSheet.create({
   rowContainer: {
     flexDirection: "row"
   },
-  gameStyleText: {
-    color: "#ffffff",
-    fontSize: 15,
-    marginTop: 45,
-    marginLeft: 40,
-    backgroundColor: "transparent",
-    fontWeight: "bold",
-    alignSelf: "flex-start"
+  segmentContainer: {
+    marginTop: 15
   },
   shotTypeText: {
     color: "#ffffff",
