@@ -67,7 +67,7 @@ class AnalysisCreate extends React.Component {
         )
       )
       .then(() => {
-        Actions.analysisView();
+        Actions.MultipleAnalysisView();
       });
   }
   pushAnalysisSearchEvent(selectedUserIndex) {
@@ -205,6 +205,6 @@ const styles = StyleSheet.create({
     marginTop: 10,
     marginBottom: 10,
     marginLeft: "auto",
-    marginRight: 50
+    marginRight: 0
   }
 });
