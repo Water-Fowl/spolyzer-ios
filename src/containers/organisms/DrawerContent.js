@@ -34,7 +34,7 @@ class DrawerContent extends React.Component {
             </Text>
           </View>
           <Text style={styles.bad}>
-            バドミントン
+            テニス
           </Text>
         </View>
         <View style={styles.logoutContainer}>
