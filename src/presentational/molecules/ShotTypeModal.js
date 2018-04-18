@@ -93,8 +93,8 @@ const styles = StyleSheet.create({
     width: 220,
     alignSelf: "center",
     textAlign: "center",
-    padding: 5,
-    margin: 5,
+    padding: 3,
+    margin: 3,
     color: "white",
     backgroundColor: "#2EA7E0"
   },
@@ -103,8 +103,8 @@ const styles = StyleSheet.create({
     width: 220,
     alignSelf: "center",
     textAlign: "center",
-    padding: 5,
-    margin: 5,
+    padding: 3,
+    margin: 3,
     color: "white",
     backgroundColor: "#EE0000"
   },
