@@ -4,10 +4,17 @@ const initialState = {
 
 const GET_SHOT_TYPES_RECEIVED = "GET_SHOT_TYPES_RECEIVED";
 const GET_SHOT_TYPES_REQUEST = "GET_SHOT_TYPES_REQUEST";
+const SET_SPORT = "SET_SPORT";
 
 export function getShotTypesRequest() {
   return {
     type: GET_SHOT_TYPES_REQUEST
+  };
+}
+export function setSport(sportId){
+  return {
+    type: SET_SPORT,
+    sportId: sportId
   };
 }
 
@@ -23,27 +30,6 @@ export function getShotTypesReceived(json) {
   };
 }
 
-export function getShotTypes(params, authHeaders) {
-  return (dispatch) => {
-    dispatch(getShotTypesRequest());
-    return fetch( SHOT_TYPES_ENDPOINT + "?sport_id=" +  params, {
-      method: "GET",
-      headers: {
-        "Accept": "application/json",
-        "Content-Type": "application/json",
-        ...authHeaders
-      }
-    })
-      .then(response => response.json())
-      .then(function(json){
-        dispatch(getShotTypesReceived(json.shot_types));
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-}
-
 export function sportReducer(state = initialState, action={}){
   switch (action.type){
   case GET_SHOT_TYPES_REQUEST:
@@ -52,6 +38,11 @@ export function sportReducer(state = initialState, action={}){
     return {
       ...state,
       shotTypes:action.shotTypes
+    };
+  case SET_SPORT:
+    return {
+      ...state,
+      id: action.sportId
     };
   default:
     return state;

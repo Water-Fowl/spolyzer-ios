@@ -54,10 +54,10 @@ export function reshapeShotTypeCounts(counts, shotTypes){
   console.log(counts);
   for (key in counts){
     shotTypesList.push(shotTypes[key]);
-    if (counts[key][0]) {
+    if (counts[key][false]) {
       shotTypeCountsList.push({
         label: shotTypes[key],
-        value: counts[key][0]
+        value: counts[key][false]
       });
     }
     else{
@@ -68,10 +68,10 @@ export function reshapeShotTypeCounts(counts, shotTypes){
     }
   }
   for (key in counts){
-    if (counts[key][1]) {
+    if (counts[key][true]) {
       missShotTypeCountsList.push({
         label: shotTypes[key],
-        value: counts[key][1]
+        value: counts[key][true]
       });
     }
     else{

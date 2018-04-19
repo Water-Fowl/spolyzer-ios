@@ -28,7 +28,7 @@ import {
 } from "../containers";
 import { DrawerContent } from "organisms";
 import { GameIcon, AnalysisIcon } from "atoms";
-import { getShotTypesReceived, getShotTypesRequest } from "../modules/sport";
+import { getShotTypesReceived, getShotTypesRequest, setSport } from "../modules/sport";
 
 import { getValidTokenRequest, getValidTokenReceived, setToken } from "../modules/authentication";
 import { getUserRequest, getUserReceived } from "../modules/profile";
@@ -107,6 +107,7 @@ class Route extends React.Component {
             receivedCallback=getUserReceived
           )
         );
+        await this.props.dispatch(setSport(1));
 
         await this.props.dispatch(
           getApiRequest(

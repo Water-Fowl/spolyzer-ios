@@ -19,33 +19,22 @@ const OUT_MIN_POSITION = 1;
 const OUT_MAX_POSITION = 6;
 
 export default class ShotTypeModal extends React.Component {
-  renderButtons(textStyles, isMiss){
-    if (
-      isMiss &&
-      this.props.position != NET_MAX_POSITION &&
-      this.props.position != NET_MIN_POSITION
+  renderButtons(textStyles, isNetMiss){
+    console.log(this.props.position);
+    buttonsComponentsList = [];
+    if (isNetMiss &&
+        NET_MIN_POSITION != this.props.position &&
+        NET_MAX_POSITION != this.props.position
     ){
       return (
         null
       );
     }
-    const buttonsComponentsList = [];
-    /* 外に出ているかどうかを判別する */
-    if (
-      this.props.position > OUT_MAX_POSITION &&
-      this.props.position < OUT_MAX_POSITION
-    ){
-      var missType = 2;
-    }
-    else {
-      var missType = isMiss? 1:0;
-    }
-
     for (let shotTypeId in this.props.shotTypes){
       buttonsComponentsList.push(
         <TouchableHighlight
           onPress={() => {
-            this.props.callback(shotTypeId, missType);
+            this.props.callback(shotTypeId, isNetMiss);
             this.props.hideModal();
           }}
         >
@@ -66,8 +55,8 @@ export default class ShotTypeModal extends React.Component {
       return (
         <View style={styles.container}>
           <View style={styles.shotTypeContainer}>
-            { this.renderButtons(styles.shotType, isMiss=false) }
-            { this.renderButtons(styles.missShotType, isMiss=true) }
+            { this.renderButtons(styles.shotType, isNetMiss=false) }
+            { this.renderButtons(styles.missShotType, isNetMiss=true) }
           </View>
           <TouchableHighlight style={styles.touchableContainer} onPress={() => {this.props.hideModal();}} >
             <Text style={styles.close}>戻る</Text>
@@ -104,8 +93,8 @@ const styles = StyleSheet.create({
     width: 220,
     alignSelf: "center",
     textAlign: "center",
-    padding: 5,
-    margin: 5,
+    padding: 3,
+    margin: 3,
     color: "white",
     backgroundColor: "#2EA7E0"
   },
@@ -114,8 +103,8 @@ const styles = StyleSheet.create({
     width: 220,
     alignSelf: "center",
     textAlign: "center",
-    padding: 5,
-    margin: 5,
+    padding: 3,
+    margin: 3,
     color: "white",
     backgroundColor: "#EE0000"
   },

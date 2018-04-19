@@ -179,19 +179,23 @@ export function analysisReducer(state = initialState, action = {}) {
     });
   case REMOVE_USER:
     let selectedUser = state.analysisUsers[state.selectedUserIndex];
-    state.analysisUsers[state.selectedUserIndex] = null;
-    if (selectedUser) {
-      state.analysisUsersIds.splice(
-        state.analysisUsersIds.indexOf(selectedUser.id),
-        1
-      );
+    if(selectedUser){
+      state.analysisUsersIds.splice(state.analysisUsersIds.indexOf(selectedUser.id), 1);
+      state.analysisUsers.splice(state.selectedUserIndex, 1);
     }
     return Object.assign({}, state, {
       analysisUsers: state.analysisUsers,
       analysisUsersIds: state.analysisUsersIds
     });
   case SET_USER:
-    state.analysisUsers[action.selectedUserIndex] = action.user;
+    if(state.analysisUsers[state.selectedUserIndex]){
+      let selectedUser = state.analysisUsers[state.selectedUserIndex];
+      state.analysisUsersIds.splice(state.analysisUsersIds.indexOf(selectedUser.id), 1);
+      state.analysisUsers[state.selectedUserIndex] = action.user;
+    }
+    else {
+      state.analysisUsers.push(action.user);
+    }
     state.analysisUsersIds.push(action.user.id);
     return Object.assign({}, state, {
       analysisUsers: state.analysisUsers,

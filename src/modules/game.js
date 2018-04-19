@@ -79,12 +79,12 @@ export function getShotTypesReceived(shotTypes) {
   };
 }
 
-export function setPositionAndSide(position, side, missType) {
+export function setPositionAndSide(position, side, isNetMiss) {
   return {
     type: SET_POSITION_AND_SIDE,
     position,
     side,
-    missType
+    isNetMiss
   };
 }
 
@@ -96,11 +96,11 @@ export function setShotTypeCounts(position, side){
   };
 }
 
-export function setShotType(shotType, missType) {
+export function setShotType(shotType, isNetMiss) {
   return {
     type: SET_SHOT_TYPE,
     shotType,
-    missType
+    isNetMiss
   };
 }
 
@@ -166,7 +166,7 @@ export function gameReducer(state = initialState, action = {}) {
     });
   case SET_SHOT_TYPE:
     /* 今回得られたスコアを取得し、配列に格納する */
-    state.scores = state.scores.concat({unit: state.side, dropped_at: state.position, shot_type: action.shotType, miss_type: action.missType, side: state.side});
+    state.scores = state.scores.concat({unit: state.side, dropped_at: state.position, shot_type: action.shotType, is_net_miss: action.isNetMiss, side: state.side});
     let currentScores = getScoreCounts(state.scores);
     return Object.assign({}, state, {
       scores: state.scores,
@@ -205,12 +205,11 @@ export function gameReducer(state = initialState, action = {}) {
     });
   case SET_USER:
     if(state.gameUnits[state.selectedUnitIndex].users[state.selectedUserIndex]){
-      state.gameUnits[state.selectedUnitIndex].users[state.selectedUserIndex] = state.user;
+      state.gameUnits[state.selectedUnitIndex].users[state.selectedUserIndex] = action.user;
     }
     else{
       state.gameUnits[state.selectedUnitIndex].users.push(action.user);
     }
-    console.log(state.gameUnits[state.selectedUnitIndex]);
     state.gameUnits[state.selectedUnitIndex].count = state.gameUnits[state.selectedUnitIndex].users.length;
     state.gameUnits.ids.push(action.user.id);
     return Object.assign({}, state, {

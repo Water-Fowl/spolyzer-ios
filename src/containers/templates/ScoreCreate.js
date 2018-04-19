@@ -76,8 +76,8 @@ class ScoreCreate extends React.Component {
     this.setState({ modalIsVisible: false });
   }
 
-  setShotType(shotTypeId, missType=0) {
-    this.props.dispatch(setShotType(shotTypeId, missType));
+  setShotType(shotTypeId, isNetMiss) {
+    this.props.dispatch(setShotType(shotTypeId, isNetMiss));
   }
 
   navigationEvent(users, scores){
@@ -88,9 +88,9 @@ class ScoreCreate extends React.Component {
       units:  users,
       scores,
       game: {
-        name: "トレーニングマッチ",
-        sport_name: "バドミントン"
-      }
+        name: "トレーニングマッチ"
+      },
+      sport_id: this.props.sport.id
     };
     this.props.dispatch(postApiRequest(GAMES_ENDPOINT, body, this.props.authentication.header, postGameRequest, postGameReceived)).then((json) => {
       let endpoint = gameCountEndpointGenerator({game_id: json.game.id});
