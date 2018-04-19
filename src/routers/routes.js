@@ -28,9 +28,17 @@ import {
 } from "../containers";
 import { DrawerContent } from "organisms";
 import { GameIcon, AnalysisIcon } from "atoms";
-import { getShotTypesReceived, getShotTypesRequest, setSport } from "../modules/sport";
+import {
+  getShotTypesReceived,
+  getShotTypesRequest,
+  setSport
+} from "../modules/sport";
 
-import { getValidTokenRequest, getValidTokenReceived, setToken } from "../modules/authentication";
+import {
+  getValidTokenRequest,
+  getValidTokenReceived,
+  setToken
+} from "../modules/authentication";
 import { getUserRequest, getUserReceived } from "../modules/profile";
 import { getApiRequest } from "../modules/request";
 import {
@@ -73,8 +81,8 @@ class Route extends React.Component {
       );
     });
   }
-  async componentWillMountValidToken(){
-    try{
+  async componentWillMountValidToken() {
+    try {
       const rowHeader = await AsyncStorage.getItem("header");
       if (!rowHeader) {
         this.setState({
@@ -84,38 +92,39 @@ class Route extends React.Component {
         return false;
       }
       const header = await JSON.parse(rowHeader);
-      let isSuccess = await this.props.dispatch(getApiRequest(
-        VALIDATE_TOKEN_ENDPOINT,
-        params={},
-        header,
-        getValidTokenRequest,
-        getValidTokenReceived
-      ));
+      let isSuccess = await this.props.dispatch(
+        getApiRequest(
+          VALIDATE_TOKEN_ENDPOINT,
+          (params = {}),
+          header,
+          getValidTokenRequest,
+          getValidTokenReceived
+        )
+      );
       if (!isSuccess) {
         throw new Error("Network request faild");
       }
 
-
-      if(this.props.isValidToken) {
+      if (this.props.isValidToken) {
         await this.props.dispatch(setToken(header));
         await this.props.dispatch(
           getApiRequest(
-            endpoint=USERS_ENDPOINT,
-            params={},
-            headers=header,
-            requestCallback=getUserRequest,
-            receivedCallback=getUserReceived
+            (endpoint = USERS_ENDPOINT),
+            (params = {}),
+            (headers = header),
+            (requestCallback = getUserRequest),
+            (receivedCallback = getUserReceived)
           )
         );
         await this.props.dispatch(setSport(1));
 
         await this.props.dispatch(
           getApiRequest(
-            endpoint=SHOT_TYPES_ENDPOINT,
-            params={sport_id: 1},
-            headers=header,
-            requestCallback=getShotTypesRequest,
-            receivedCallback=getShotTypesReceived
+            (endpoint = SHOT_TYPES_ENDPOINT),
+            (params = { sport_id: 1 }),
+            (headers = header),
+            (requestCallback = getShotTypesRequest),
+            (receivedCallback = getShotTypesReceived)
           )
         );
       }
@@ -124,9 +133,7 @@ class Route extends React.Component {
         isValidToken: this.props.isValidToken,
         loading: false
       });
-
-    }
-    catch(error){
+    } catch (error) {
       console.log(error);
       this.networkError();
     }
@@ -231,19 +238,19 @@ class Route extends React.Component {
                   component={MultipleAnalysisView}
                   title="複合分析結果"
                 />
-                <Scene
-                  key="GameAnalysisCreate"
-                  component={GameAnalysisCreate}
-                  title="単分析作成"
-                />
-                <Scene
-                  key="GameAnalysisView"
-                  component={GameAnalysisView}
-                  title="単分析結果"
-                />
               </Scene>
             </Tabs>
           </Drawer>
+          <Scene
+            key="GameAnalysisCreate"
+            component={GameAnalysisCreate}
+            title="単分析作成"
+          />
+          <Scene
+            key="GameAnalysisView"
+            component={GameAnalysisView}
+            title="単分析結果"
+          />
         </Scene>
       </RouterWithRedux>
     );
