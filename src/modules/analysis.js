@@ -5,7 +5,7 @@ const initialState = {
   shotTypeId: 1,
   term: 1,
   result: 0,
-  analysisUsers: {},
+  analysisUsers: [],
   analysisUsersIds: []
 };
 

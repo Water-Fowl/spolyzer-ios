@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 import { listToQueryParams } from "utils";
 import { SegmentedControl } from "react-native-ios-kit";
 
-import { setUserIndex } from "../../modules/analysis";
+import { setUserIndex, setGameType } from "../../modules/analysis";
 
 import {
   GameTypeButtonList,
@@ -35,12 +35,17 @@ import { mapStateToProps } from "utils";
 class AnalysisCreate extends React.Component {
   constructor(props) {
     super(props);
+    this.setGameType = this.setGameType.bind(this);
     this.getPositionsCountsEvent.bind(this);
     this.setPicker.bind(this);
     this.hidePicker.bind(this);
     this.state = {
-      isPickerVisible: false
+      isPickerVisible: false,
+      selectedIndex: 0
     };
+  }
+  setGameType(gameUserCount) {
+    this.props.dispatch(setGameType(gameUserCount));
   }
   getPositionsCountsEvent() {
     var userIds = [];
@@ -55,7 +60,7 @@ class AnalysisCreate extends React.Component {
       shot_type_id: this.props.analysis.shotTypeId
     };
 
-    let endpoint = analysisEndpointGenerator(params);
+    let endpoint = analysisEndpointGenerator(params, !this.state.selectedIndex);
     this.props
       .dispatch(
         getApiRequest(
@@ -89,6 +94,7 @@ class AnalysisCreate extends React.Component {
             values={["シングルス", "ダブルス"]}
             selectedIndex={0}
             onValueChange={(value, index) => {
+              this.setGameType(index+1);
               this.setState({
                 selectedValue: value,
                 selectedIndex: index

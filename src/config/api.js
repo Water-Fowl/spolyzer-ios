@@ -17,12 +17,14 @@ export const AGGREGATED_SCORES_ENDPOINT = `${SCHEME}/aggregated_scores/`;
 export const VALIDATE_TOKEN_ENDPOINT = `${SCHEME}/auth/validate_token/`;
 export const CONFIRMATION_ENDPOINT = `${SCHEME}/api/v1/auth/confirmation/`;
 
-export function analysisEndpointGenerator(params) {
+export function analysisEndpointGenerator(params, isSingles) {
   var endpoint = AGGREGATED_SCORES_ENDPOINT;
   endpoint += "shot_types/";
   endpoint += params.shot_type_id;
   if (params.ids.length > 0) {
-    endpoint += `/opponent_users/${params.ids}`;
+    isSingles
+      ? (endpoint += `/opponent_users/${params.ids[0]}`)
+      : (endpoint += `/opponent_users/${params.ids}`);
   }
   console.log(endpoint);
   return endpoint;
