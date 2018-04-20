@@ -7,9 +7,6 @@ import {
   View,
   TouchableOpacity
 } from "react-native";
-import {
-  ProfileImage
-} from "components";
 import { Actions } from "react-native-router-flux";
 import { connect } from "react-redux";
 import { resetToken } from "../../modules/authentication";
