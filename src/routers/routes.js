@@ -78,7 +78,6 @@ class Route extends React.Component{
         getValidTokenRequest,
         getValidTokenReceived
       ));
-
       if(!isSuccess){
         throw new Error("Network request faild");
       }
@@ -113,7 +112,6 @@ class Route extends React.Component{
       });
     }
     catch(error){
-      console.log(error);
       this.networkError();
     }
   }
