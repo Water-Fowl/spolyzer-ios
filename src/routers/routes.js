@@ -93,7 +93,7 @@ class Route extends React.Component{
             receivedCallback=getUserReceived
           )
         );
-        await this.props.dispatch(setSport(1))
+        await this.props.dispatch(setSport(1));
 
         await this.props.dispatch(
           getApiRequest(
