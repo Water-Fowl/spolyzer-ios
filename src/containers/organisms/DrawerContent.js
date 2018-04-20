@@ -7,6 +7,9 @@ import {
   View,
   TouchableOpacity
 } from "react-native";
+import {
+  ProfileImage
+} from "components";
 import { Actions } from "react-native-router-flux";
 import { connect } from "react-redux";
 import { resetToken } from "../../modules/authentication";
@@ -66,6 +69,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
     borderBottomColor: "#2EA7E0",
     borderWidth: 3,
+    marginTop: 20,
     flexDirection: "row"
   },
   userName: {

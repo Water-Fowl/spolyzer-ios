@@ -136,11 +136,13 @@ class Route extends React.Component{
             // drawerIcon={() => (<Icon/>)} // デフォルトのハンバーガーメニューを差し替える
             hideNavBar
             drawerWidth={ 280 }
-            contentComponent={DrawerContent}
+            contentComponent={()=> {return <DrawerContent name={this.props.userName} imageSource={this.props.userImageSource} />;} }
             drawerOpenRoute="DrawerOpen"
             drawerCloseRoute="DrawerClose"
             drawerToggleRoute="DrawerToggle"
             initial={this.state.isValidToken}
+            name={this.props.userName}
+            imageSource={this.props.userImageSource}
           >
             <Scene key="profileEdit" component={ProfileEdit} title="マイデータ編集"/>
             <Tabs initial key="tab" labelStyle={styles.label} tabBarStyle={styles.tabBarStyle} tabStyle={styles.tabStyle}>
@@ -167,7 +169,9 @@ function mapStateToProps(state, props){
   return {
     header: state.authentication.header || {},
     isValidToken: state.authentication.isValidToken,
-    errorMsg: state.authentication.errorMsg
+    errorMsg: state.authentication.errorMsg,
+    userName: state.profile.userName,
+    userImageSource: state.profile.userImageSource
   };
 }
 
