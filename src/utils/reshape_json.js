@@ -17,6 +17,10 @@ function pushPositionCount(list, count, positionString){
 export function reshapePositionsCount(counts, side, minPosition, maxPosition){
   const positionsCountList = [];
   const missPositionsCountList = [];
+  console.log(counts);
+  if (!counts){
+    return [];
+  }
   for (var position=minPosition; position <= maxPosition; position++){
     if(counts[side]){
       if(counts[side][position]){
@@ -39,21 +43,21 @@ export function reshapePositionsCount(counts, side, minPosition, maxPosition){
       counts[side] = [];
     }
   }
-  return {
-    positionsCountList
-  };
+  return positionsCountList;
+
 }
 
 export function reshapeShotTypeCounts(counts, shotTypes){
   shotTypeCountsList = [];
   missShotTypeCountsList = [];
   shotTypesList = [];
+  console.log(counts);
   for (key in counts){
     shotTypesList.push(shotTypes[key]);
-    if (counts[key][0]) {
+    if (counts[key][false]) {
       shotTypeCountsList.push({
         label: shotTypes[key],
-        value: counts[key][0]
+        value: counts[key][false]
       });
     }
     else{
@@ -64,10 +68,10 @@ export function reshapeShotTypeCounts(counts, shotTypes){
     }
   }
   for (key in counts){
-    if (counts[key][1]) {
+    if (counts[key][true]) {
       missShotTypeCountsList.push({
         label: shotTypes[key],
-        value: counts[key][1]
+        value: counts[key][true]
       });
     }
     else{

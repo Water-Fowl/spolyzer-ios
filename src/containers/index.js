@@ -1,21 +1,15 @@
-import AnalysisCreate from "./analysis/AnalysisCreate";
-import AnalysisSearchUser from "./analysis/AnalysisSearchUser";
-import AnalysisView from "./analysis/AnalysisView";
-import GameCreate from "./game/GameCreate";
-import GameSearchUser from "./game/GameSearchUser";
-import Login from "./authentication/Login";
-import ProfileEdit from "./profile/ProfileEdit";
-import ProfileTop from "./profile/ProfileTop";
-import ScoreCreate from "./game/ScoreCreate";
-import ScoreView from "./game/ScoreView";
-import SignUp from "./authentication/SignUp";
-import Confirmation from "./authentication/Confirmation";
-/* Reducersのimport  */
-import analysisReducer from "./analysis/reducer";
-import authenticationReducer from "./authentication/reducer";
-import gameReducer from "./game/reducer";
-import profileReducer from "./profile/reducer";
-
+import AnalysisCreate from "./templates/AnalysisCreate";
+import AnalysisSearchUser from "./templates/AnalysisSearchUser";
+import AnalysisView from "./templates/AnalysisView";
+import GameCreate from "./templates/GameCreate";
+import GameSearchUser from "./templates/GameSearchUser";
+import Login from "./templates/Login";
+import ProfileEdit from "./templates/ProfileEdit";
+import ProfileTop from "./templates/ProfileTop";
+import ScoreCreate from "./templates/ScoreCreate";
+import ScoreView from "./templates/ScoreView";
+import SignUp from "./templates/SignUp";
+import Confirmation from "./templates/Confirmation";
 export {
   /* Componentのexport */
   AnalysisCreate,
@@ -29,10 +23,5 @@ export {
   ProfileEdit,
   SignUp,
   Login,
-  Confirmation,
-  /* Reducersのexport */
-  analysisReducer,
-  gameReducer,
-  profileReducer,
-  authenticationReducer
+  Confirmation
 };

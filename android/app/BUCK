@@ -45,12 +45,12 @@ android_library(
 
 android_build_config(
     name = "build_config",
-    package = "com.redux_front_app",
+    package = "com.spolyzer",
 )
 
 android_resource(
     name = "res",
-    package = "com.redux_front_app",
+    package = "com.spolyzer",
     res = "src/main/res",
 )
 

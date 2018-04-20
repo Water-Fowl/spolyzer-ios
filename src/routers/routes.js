@@ -4,7 +4,8 @@ import {
   StyleSheet,
   View,
   Text,
-  Alert
+  Alert,
+  AsyncStorage
 } from "react-native";
 import { connect } from "react-redux";
 import {
@@ -29,10 +30,12 @@ import {
 } from "../containers";
 import {
   DrawerContent
-} from "../components";
-import { validateToken } from "../containers/authentication/actions/validate_token";
-import getShotTypes from "../reducer/sport/actions/get_shot_types";
-import { getUser } from "../containers/profile/actions/get_user";
+} from "organisms";
+import { getShotTypesReceived, getShotTypesRequest, setSport } from "../modules/sport";
+import { getValidTokenRequest, getValidTokenReceived, setToken } from "../modules/authentication";
+import { getUserRequest, getUserReceived } from "../modules/profile";
+import { getApiRequest } from "../modules/request";
+import { USERS_ENDPOINT, SHOT_TYPES_ENDPOINT, VALIDATE_TOKEN_ENDPOINT } from "../config/api";
 const RouterWithRedux = connect()(Router);
 const AppLogo = () => {
   return (
@@ -57,25 +60,60 @@ class Route extends React.Component{
       Alert.alert("ネットワークエラー", "インターネットの接続を確認して下さい", [{text: "再接続", onPress: () => { this.componentWillMountValidToken(); } }]);
     });
   }
-  componentWillMountValidToken(){
-    /* バドミントンのIDは1*/
-    const sport_id = 1;
-
-    this.props.dispatch(validateToken(this.props.header))
-      .then(() => {
-        if(this.props.errorMsg){
-          this.networkError();
-        }
-      })
-      .then(() => {
+  async componentWillMountValidToken(){
+    try{
+      const rowHeader = await AsyncStorage.getItem("header");
+      if (!rowHeader) {
         this.setState({
-          isValidToken: this.props.isValidToken,
+          isValidToken: false,
           loading: false
         });
-      })
-      .then(() => {
-        this.props.dispatch(getShotTypes(sport_id, this.props.header));
+        return false;
+      }
+      const header = await JSON.parse(rowHeader);
+      let isSuccess = await this.props.dispatch(getApiRequest(
+        VALIDATE_TOKEN_ENDPOINT,
+        params={},
+        header,
+        getValidTokenRequest,
+        getValidTokenReceived
+      ));
+      if(!isSuccess){
+        throw new Error("Network request faild");
+      }
+
+      if(this.props.isValidToken) {
+        await this.props.dispatch(setToken(header));
+        await this.props.dispatch(
+          getApiRequest(
+            endpoint=USERS_ENDPOINT,
+            params={},
+            headers=header,
+            requestCallback=getUserRequest,
+            receivedCallback=getUserReceived
+          )
+        );
+        await this.props.dispatch(setSport(1));
+
+        await this.props.dispatch(
+          getApiRequest(
+            endpoint=SHOT_TYPES_ENDPOINT,
+            params={sport_id: 1},
+            headers=header,
+            requestCallback=getShotTypesRequest,
+            receivedCallback=getShotTypesReceived
+          )
+        );
+      }
+
+      this.setState({
+        isValidToken: this.props.isValidToken,
+        loading: false
       });
+    }
+    catch(error){
+      this.networkError();
+    }
   }
   async componentWillMount(){
     await this.componentWillMountValidToken();
@@ -106,12 +144,9 @@ class Route extends React.Component{
             name={this.props.userName}
             imageSource={this.props.userImageSource}
           >
-            <Tabs key="tab" labelStyle={styles.label} tabBarStyle={styles.tabBarStyle} tabStyle={styles.tabStyle}>
-              <Scene key="Mypage" tabBarLabel="マイページ" icon={() => (<Image style={styles.icon} source={require("../assets/img/tabs_home.png")} />)}>
-                <Scene key="profileTop" initial component={ProfileTop} title="マイページ"/>
-                <Scene key="profileEdit" component={ProfileEdit} title="マイデータ編集"/>
-              </Scene>
-              <Scene key="Score" tabBarLabel="スコアシート" icon={() => (<Image style={styles.icon} source={require("../assets/img/tabs_score.png")} />)}>
+            <Scene key="profileEdit" component={ProfileEdit} title="マイデータ編集"/>
+            <Tabs initial key="tab" labelStyle={styles.label} tabBarStyle={styles.tabBarStyle} tabStyle={styles.tabStyle}>
+              <Scene key="Score" initial tabBarLabel="スコアシート" icon={() => (<Image style={styles.icon} source={require("../assets/img/tabs_score.png")} />)}>
                 <Scene key="gameCreate" initial component={GameCreate} title="単分析"/>
                 <Scene key="gameSearchUser" component={GameSearchUser} title="ユーザー検索"/>
                 <Scene key="scoreCreate" hideTabBar component={ScoreCreate} title="スコアシート" hideNavBar />
@@ -132,7 +167,7 @@ class Route extends React.Component{
 
 function mapStateToProps(state, props){
   return {
-    header: state.authentication.header,
+    header: state.authentication.header || {},
     isValidToken: state.authentication.isValidToken,
     errorMsg: state.authentication.errorMsg,
     userName: state.profile.userName,

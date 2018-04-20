@@ -98,7 +98,7 @@ android {
     buildToolsVersion "23.0.1"
 
     defaultConfig {
-        applicationId "com.redux_front_app"
+        applicationId "com.spolyzer"
         minSdkVersion 16
         targetSdkVersion 22
         versionCode 1
@@ -137,6 +137,7 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-splash-screen')
     compile project(':react-native-image-crop-picker')
     compile project(':react-native-image-picker')
     compile project(':react-native-svg')

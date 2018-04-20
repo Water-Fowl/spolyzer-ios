@@ -4459,6 +4459,10 @@ react-native-router-flux@^4.0.0-beta.24:
     prop-types "^15.6.0"
     react-navigation "1.0.0-beta.22"
 
+react-native-splash-screen@^3.0.6:
+  version "3.0.6"
+  resolved "https://registry.yarnpkg.com/react-native-splash-screen/-/react-native-splash-screen-3.0.6.tgz#c0bbf2c8ae40a313c4c7044f55e569414ff68332"
+
 react-native-svg-charts@^2.2.2:
   version "2.2.3"
   resolved "https://registry.yarnpkg.com/react-native-svg-charts/-/react-native-svg-charts-2.2.3.tgz#7d359131e9a77274c94d0710fdf9b83c72e246db"

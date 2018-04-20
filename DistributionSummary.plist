@@ -2,7 +2,7 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>redux_front_app.ipa</key>
+	<key>spolyzer.ipa</key>
 	<array>
 		<dict>
 			<key>architectures</key>
@@ -90,7 +90,7 @@
 			<key>profile</key>
 			<dict>
 				<key>UUID</key>
-				<string>39f650e3-8882-4a5a-b094-06b708c0ed89</string>
+				<string>a95d5440-304f-4a07-95d9-605192fcb5ee</string>
 				<key>name</key>
 				<string>spolyzer_deploy_gate</string>
 			</dict>
