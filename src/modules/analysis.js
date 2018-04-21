@@ -26,6 +26,7 @@ const GET_POSITIONS_COUNTS_REQUEST = "GET_POSITIONS_COUNTS_REQUEST";
 const GET_POSITIONS_COUNTS_RECEIVED = "GET_POSITIONS_COUNTS_RECEIVED";
 const SET_USER = "SET_USER_ANALYSIS";
 const REMOVE_USER = "REMOVE_USER_ON_ANALYSIS";
+const REMOVE_DOUBLES_USER = "REMOVE_DOUBLES_USER";
 const SET_SELECTED_USER_INDEX = "SET_SELECTED_USER_INDEX";
 const SET_POSITIONS_COUNTS = "SET_POSITIONS_COUNTS";
 
@@ -141,6 +142,12 @@ export function setUserIndex(selectedUserIndex) {
   };
 }
 
+export function removeDoublesUser() {
+  return {
+    type: REMOVE_DOUBLES_USER
+  };
+}
+
 export function analysisReducer(state = initialState, action = {}) {
   switch (action.type) {
   case GET_GAMES_REQUEST:
@@ -179,21 +186,28 @@ export function analysisReducer(state = initialState, action = {}) {
     });
   case REMOVE_USER:
     let selectedUser = state.analysisUsers[state.selectedUserIndex];
-    if(selectedUser){
-      state.analysisUsersIds.splice(state.analysisUsersIds.indexOf(selectedUser.id), 1);
+    if (selectedUser) {
+      state.analysisUsersIds.splice(
+        state.analysisUsersIds.indexOf(selectedUser.id),
+        1
+      );
       state.analysisUsers.splice(state.selectedUserIndex, 1);
     }
     return Object.assign({}, state, {
       analysisUsers: state.analysisUsers,
       analysisUsersIds: state.analysisUsersIds
     });
+  case REMOVE_DOUBLES_USER:
+    return state;
   case SET_USER:
-    if(state.analysisUsers[state.selectedUserIndex]){
+    if (state.analysisUsers[state.selectedUserIndex]) {
       let selectedUser = state.analysisUsers[state.selectedUserIndex];
-      state.analysisUsersIds.splice(state.analysisUsersIds.indexOf(selectedUser.id), 1);
+      state.analysisUsersIds.splice(
+        state.analysisUsersIds.indexOf(selectedUser.id),
+        1
+      );
       state.analysisUsers[state.selectedUserIndex] = action.user;
-    }
-    else {
+    } else {
       state.analysisUsers.push(action.user);
     }
     state.analysisUsersIds.push(action.user.id);
