@@ -173,6 +173,7 @@ class Route extends React.Component {
             drawerCloseRoute="DrawerClose"
             drawerToggleRoute="DrawerToggle"
             initial={this.state.isValidToken}
+            gesturesEnabled={false}
           >
             <Scene
               key="profileEdit"
@@ -199,18 +200,18 @@ class Route extends React.Component {
                   title="単分析"
                 />
                 <Scene
-                  key="gameSearchUser"
-                  component={GameSearchUser}
-                  title="ユーザー検索"
-                />
-                <Scene
                   key="scoreCreate"
                   hideTabBar
                   component={ScoreCreate}
                   title="スコアシート"
                   hideNavBar
                 />
-                <Scene key="scoreView" component={ScoreView} title="結果" />
+                <Scene
+                  key="scoreView"
+                  hideTabBar
+                  component={ScoreView}
+                  title="結果"
+                />
               </Scene>
               <Scene
                 key="Analysis"
@@ -223,24 +224,29 @@ class Route extends React.Component {
                   component={AnalysisCreate}
                   title="分析"
                 />
-                <Scene
-                  key="analysisSearchUser"
-                  component={AnalysisSearchUser}
-                  title="ユーザー検索"
-                />
-                <Scene
-                  key="MultipleAnalysisCreate"
-                  component={MultipleAnalysisCreate}
-                  title="複合分析作成"
-                />
-                <Scene
-                  key="MultipleAnalysisView"
-                  component={MultipleAnalysisView}
-                  title="複合分析結果"
-                />
               </Scene>
             </Tabs>
           </Drawer>
+          <Scene
+            key="gameSearchUser"
+            component={GameSearchUser}
+            title="ユーザー検索"
+          />
+          <Scene
+            key="analysisSearchUser"
+            component={AnalysisSearchUser}
+            title="ユーザー検索"
+          />
+          <Scene
+            key="MultipleAnalysisCreate"
+            component={MultipleAnalysisCreate}
+            title="複合分析作成"
+          />
+          <Scene
+            key="MultipleAnalysisView"
+            component={MultipleAnalysisView}
+            title="複合分析結果"
+          />
           <Scene
             key="GameAnalysisCreate"
             component={GameAnalysisCreate}
