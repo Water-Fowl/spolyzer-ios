@@ -1,5 +1,5 @@
 import React from "react";
-import baseEnhancer from "enhances";
+import templateEnhancer from "./hoc";
 import { Actions } from "react-native-router-flux";
 import {
   Image,
@@ -43,7 +43,7 @@ class ProfileTop extends React.Component {
   }
 }
 
-export default connect(mapStateToProps)(baseEnhancer(ProfileTop));
+export default connect(mapStateToProps)(templateEnhancer(ProfileTop));
 
 const styles = StyleSheet.create({
   container: {
