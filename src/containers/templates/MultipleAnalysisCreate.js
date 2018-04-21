@@ -39,6 +39,7 @@ class AnalysisCreate extends React.Component {
     this.getPositionsCountsEvent.bind(this);
     this.setPicker.bind(this);
     this.hidePicker.bind(this);
+    this.setSegment.bind(this);
     this.state = {
       isPickerVisible: false,
       selectedIndex: 0
@@ -85,6 +86,12 @@ class AnalysisCreate extends React.Component {
   hidePicker() {
     this.setState({ isPickerVisible: false });
   }
+  setSegment(value, index) {
+    this.setState({
+      selectedValue: value,
+      selectedIndex: index
+    });
+  }
   render() {
     return (
       <View style={styles.container}>
@@ -92,7 +99,7 @@ class AnalysisCreate extends React.Component {
         <View style={styles.segmentContainer}>
           <SegmentedControl
             values={["シングルス", "ダブルス"]}
-            selectedIndex={0}
+            selectedIndex={this.state.selectedIndex}
             onValueChange={(value, index) => {
               this.setGameType(index+1);
               this.setState({
@@ -147,15 +154,6 @@ class AnalysisCreate extends React.Component {
           style={styles.navigateButton}
           text="分析"
         />
-        <View style={styles.backButtonContainer}>
-          <TextBox
-            callback={() => {
-              Actions.analysisCreate({ type: ActionConst.BACK_ACTION });
-            }}
-          >
-            戻る
-          </TextBox>
-        </View>
       </View>
     );
   }
@@ -202,15 +200,5 @@ const styles = StyleSheet.create({
   },
   navigateButton: {
     marginTop: 50
-  },
-  backButtonContainer: {
-    justifyContent: "flex-end",
-    flex: 1,
-    height: 44,
-    width: 90,
-    marginTop: 10,
-    marginBottom: 10,
-    marginLeft: "auto",
-    marginRight: 0
   }
 });

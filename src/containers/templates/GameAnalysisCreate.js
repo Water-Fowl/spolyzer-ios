@@ -127,15 +127,6 @@ export default class GameAnalysisCreate extends React.Component {
           )}
           style={styles.flatListConteiner}
         />
-        <View style={styles.backButtonContainer}>
-          <TextBox
-            callback={() => {
-              Actions.analysisCreate({ type: ActionConst.BACK_ACTION });
-            }}
-          >
-            戻る
-          </TextBox>
-        </View>
       </View>
     );
   }
@@ -174,14 +165,5 @@ const styles = StyleSheet.create({
     position: "absolute",
     paddingRight: 20,
     alignSelf: "flex-end"
-  },
-  backButtonContainer: {
-    justifyContent: "center",
-    height: 44,
-    width: 90,
-    marginTop: 10,
-    marginBottom: 10,
-    marginLeft: "auto",
-    marginRight: 50
   }
 });
