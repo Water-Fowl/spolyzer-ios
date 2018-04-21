@@ -26,7 +26,8 @@ import {
   ScoreCreate,
   ScoreView,
   SignUp,
-  Confirmation
+  Confirmation,
+  DashboardTop
 } from "../containers";
 import {
   DrawerContent
