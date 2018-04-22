@@ -27,7 +27,8 @@ import {
   ScoreView,
   SignUp,
   Confirmation,
-  DashboardTop
+  DashboardTop,
+  DashboardCreate
 } from "../containers";
 import {
   DrawerContent
@@ -148,7 +149,8 @@ class Route extends React.Component{
             <Scene key="profileEdit" component={ProfileEdit} title="マイデータ編集"/>
             <Tabs initial key="tab" labelStyle={styles.label} tabBarStyle={styles.tabBarStyle} tabStyle={styles.tabStyle}>
               <Scene key="Dashboard" tabBarLabel="ダッシュボード" icon={() => (<Image style={styles.icon} source={require("../assets/img/tabs_dashboard.png")} />)}>
-                <Scene key="DashboardTop" initial component={DashboardTop} title="ダッシュボード"/>
+                <Scene key="DashboardTop" initial component={DashboardTop} title="ダッシュボード ホーム"/>
+                <Scene key="DashboardCreate" component={DashboardCreate} title="ダッシュボード 目標設定"/>
               </Scene>
               <Scene key="Score" initial tabBarLabel="スコアシート" icon={() => (<Image style={styles.icon} source={require("../assets/img/tabs_score.png")} />)}>
                 <Scene key="gameCreate" initial component={GameCreate} title="単分析"/>

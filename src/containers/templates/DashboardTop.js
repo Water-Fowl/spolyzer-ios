@@ -15,7 +15,6 @@ import {
   NavigateButton
 } from "atoms";
 import {
-  $spolyzerBlue,
   $spolyzerDarkBlue
 } from "../../const/color";
 
@@ -67,7 +66,7 @@ class DashboardTop extends React.Component {
             </View>
           </ScrollView>
         </View>
-        <NavigateButton style={styles.navigateButton} text="作成" />
+        <NavigateButton style={styles.navigateButton} action={() => {Actions.DashboardCreate();}} text="作成" />
       </View>
     );
   }

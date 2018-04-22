@@ -11,6 +11,8 @@ import ScoreView from "./templates/ScoreView";
 import SignUp from "./templates/SignUp";
 import Confirmation from "./templates/Confirmation";
 import DashboardTop from "./templates/DashboardTop";
+import DashboardCreate from "./templates/DashboardCreate";
+
 
 export {
   /* Componentのexport */
@@ -26,5 +28,6 @@ export {
   SignUp,
   Login,
   Confirmation,
-  DashboardTop
+  DashboardTop,
+  DashboardCreate
 };
