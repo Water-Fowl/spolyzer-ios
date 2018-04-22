@@ -18,7 +18,7 @@ export const VALIDATE_TOKEN_ENDPOINT = `${SCHEME}/auth/validate_token/`;
 export const CONFIRMATION_ENDPOINT = `${SCHEME}/api/v1/auth/confirmation/`;
 
 export function analysisEndpointGenerator(params) {
-  var endpoint = SHOT_TYPES_ENDPOINT
+  var endpoint = SHOT_TYPES_ENDPOINT;
   endpoint += params.shot_type_id;
   endpoint += "/aggregated_scores/";
   return endpoint;
