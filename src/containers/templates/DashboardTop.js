@@ -14,6 +14,10 @@ import { mapStateToProps } from "utils";
 import {
   NavigateButton
 } from "atoms";
+import {
+  $spolyzerBlue,
+  $spolyzerDarkBlue
+} from "../../const/color";
 
 class DashboardTop extends React.Component {
 
@@ -104,25 +108,25 @@ const styles = StyleSheet.create({
   },
   listContainer: {
     height: "71%",
-    borderTopColor: "#0a2444",
-    borderBottomColor: "#0a2444",
+    borderTopColor: $spolyzerDarkBlue,
+    borderBottomColor: $spolyzerDarkBlue,
     borderWidth: 1
   },
   list:{
   },
   dashboardCard:{
     height: 76,
-    backgroundColor: "#0a2444",
+    backgroundColor: $spolyzerDarkBlue,
     flexDirection: "row"
   },
   cardMainConteiner: {
     width: "69%",
-    borderRightColor: "rgba(46,167,224,0.4)",
+    borderRightColor: "rgba(46,167,224,0.3)",
     borderRightWidth: 1
   },
   cardCompareContainer: {
     width: "13%",
-    borderRightColor: "rgba(46,167,224,0.4)",
+    borderRightColor: "rgba(46,167,224,0.3)",
     borderRightWidth: 1,
     justifyContent: "center",
     alignItems: "center"
