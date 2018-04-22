@@ -24,10 +24,10 @@ class DashboardTop extends React.Component {
             目標一覧
           </Text>
           <Text style={styles.compareText}>
-            前回比較
+            前回{"\n"}比較
           </Text>
           <Text style={styles.achivementText}>
-            目標達成度
+            目標{"\n"}達成度
           </Text>
         </View>
         <View style={styles.listContainer}>
@@ -62,20 +62,21 @@ const styles = StyleSheet.create({
   },
   compareText: {
     color: "white",
-    fontSize: 15,
+    fontSize: 14,
     fontWeight: "bold",
-    marginTop: "13%",
-    marginLeft: "34%"
+    marginTop: "9%",
+    marginLeft: "46%"
   },
   achivementText: {
     color: "white",
-    fontSize: 15,
+    fontSize: 14,
     fontWeight: "bold",
-    marginTop: "13%",
-    marginLeft: "4%"
+    marginTop: "9%",
+    marginLeft: "8%",
+    textAlign: "center"
   },
   listContainer: {
-    height: "70%",
+    height: "71%",
     borderTopColor: "#0a2444",
     borderBottomColor: "#0a2444",
     borderWidth: 1
