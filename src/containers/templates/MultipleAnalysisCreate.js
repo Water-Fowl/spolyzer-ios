@@ -78,7 +78,7 @@ class AnalysisCreate extends React.Component {
   }
   pushAnalysisSearchEvent(selectedUserIndex) {
     this.props.dispatch(setUserIndex(selectedUserIndex));
-    Actions.analysisSearchUser();
+    Actions.multipleAnalysisSearchUser();
   }
   setPicker() {
     this.setState({ isPickerVisible: true });
@@ -101,7 +101,7 @@ class AnalysisCreate extends React.Component {
             values={["シングルス", "ダブルス"]}
             selectedIndex={this.state.selectedIndex}
             onValueChange={(value, index) => {
-              this.setGameType(index+1);
+              this.setGameType(index + 1);
               this.setState({
                 selectedValue: value,
                 selectedIndex: index

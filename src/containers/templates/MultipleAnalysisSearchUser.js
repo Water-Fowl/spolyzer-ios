@@ -22,7 +22,7 @@ import {
 import { UserList } from "organisms";
 import { mapStateToProps } from "utils";
 
-class AnalysisSearchUser extends React.Component {
+class MultipleAnalysisSearchUser extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -109,7 +109,7 @@ class AnalysisSearchUser extends React.Component {
   }
 }
 
-export default connect(mapStateToProps)(AnalysisSearchUser);
+export default connect(mapStateToProps)(MultipleAnalysisSearchUser);
 
 const styles = StyleSheet.create({
   container: {

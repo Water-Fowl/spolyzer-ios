@@ -11,11 +11,11 @@ import { connect } from "react-redux";
 import { Router, Scene, Tabs, Drawer } from "react-native-router-flux";
 import {
   AnalysisCreate,
-  AnalysisSearchUser,
   GameAnalysisCreate,
   GameAnalysisView,
   MultipleAnalysisCreate,
   MultipleAnalysisView,
+  MultipleAnalysisSearchUser,
   GameCreate,
   GameSearchUser,
   Login,
@@ -233,8 +233,8 @@ class Route extends React.Component {
             title="ユーザー検索"
           />
           <Scene
-            key="analysisSearchUser"
-            component={AnalysisSearchUser}
+            key="multipleAnalysisSearchUser"
+            component={MultipleAnalysisSearchUser}
             title="ユーザー検索"
           />
           <Scene
