@@ -1,5 +1,5 @@
 import React from "react";
-import baseEnhancer from "enhances";
+import templateEnhancer from "./hoc";
 import { ActionConst, Actions } from "react-native-router-flux";
 import {
   Image,
@@ -169,7 +169,7 @@ class AnalysisView extends React.Component {
   }
 }
 
-export default connect(mapStateToProps)(baseEnhancer(AnalysisView));
+export default connect(mapStateToProps)(templateEnhancer(AnalysisView));
 
 const styles = StyleSheet.create({
   container: {

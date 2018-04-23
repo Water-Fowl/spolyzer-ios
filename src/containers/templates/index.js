@@ -1,6 +1,6 @@
 import ImagePicker from "react-native-image-crop-picker";
 import React from "react";
-import baseEnhancer from "enhances";
+import templateEnhancer from "./hoc";
 import {
   ActionConst,
   Actions
@@ -156,7 +156,7 @@ class ProfileEdit extends React.Component {
     );
   }
 }
-export default connect(mapStateToProps)(baseEnhancer(ProfileEdit));
+export default connect(mapStateToProps)(templateEnhancer(ProfileEdit));
 
 
 const styles = StyleSheet.create({

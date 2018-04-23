@@ -1,6 +1,6 @@
 import Orientation from "react-native-orientation";
 import React from "react";
-import baseEnhancer from "enhances";
+import templateEnhancer from "./hoc";
 import { Actions } from "react-native-router-flux";
 import {
   ProfileImage,
@@ -120,7 +120,7 @@ class GameCreate extends React.Component {
     );
   }
 }
-export default connect(mapStateToProps)(baseEnhancer(GameCreate));
+export default connect(mapStateToProps)(templateEnhancer(GameCreate));
 
 const styles = StyleSheet.create({
   container: {
