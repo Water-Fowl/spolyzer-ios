@@ -97,7 +97,7 @@ class ScoreView extends React.Component {
               { this.renderWinLossText(side=1) }
             </View>
           </View>
-          <Field horizontal callback={this.setShotTypeCounts} />
+          <Field horizontal sport={this.props.sport.id} callback={this.setShotTypeCounts} />
           <Graph data={this.state.data} missData={this.state.missData} shotTypeList={this.state.shotTypeList}/>
           <View style={styles.backButtonContainer}>
             <TouchableOpacity onPress={() => {

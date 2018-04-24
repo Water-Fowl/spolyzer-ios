@@ -44,7 +44,7 @@ export default class Field extends React.Component {
             backfaceVisibility: "hidden",
             resizeMode: "contain"
           }}
-          source={fieldType[1]}
+          source={fieldType[this.props.sport]}
         />
         <View style={styles.overContainer}>
           <View style={styles.overOutFieldSideContainer}>

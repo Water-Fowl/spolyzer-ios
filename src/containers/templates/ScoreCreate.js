@@ -12,15 +12,10 @@ import {
   TriangleCorner,
   View
 } from "react-native";
-import {
-  LandScapeBackground,
-  TopContentBar
-} from "atoms";
+import { LandScapeBackground, TopContentBar } from "atoms";
 import { ShotTypeModal } from "molecules";
 import { Field } from "organisms";
-import {
-  connect
-} from "react-redux";
+import { connect } from "react-redux";
 import {
   postGameRequest,
   postGameReceived,
@@ -35,10 +30,7 @@ import {
   SHOT_TYPE_COUNTS_ENDPOINT,
   gameCountEndpointGenerator
 } from "../../config/api";
-import {
-  postApiRequest,
-  getApiRequest
-} from "../../modules/request";
+import { postApiRequest, getApiRequest } from "../../modules/request";
 import { mapStateToProps } from "utils";
 
 class ScoreCreate extends React.Component {
@@ -61,9 +53,9 @@ class ScoreCreate extends React.Component {
   componentWillUnmount() {
     Orientation.lockToPortrait();
   }
-  componentWillReceiveProps(nextProps){
-    if (nextProps.scores){
-      this.setState({ scores:nextProps.scores });
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.scores) {
+      this.setState({ scores: nextProps.scores });
     }
   }
 
@@ -80,53 +72,71 @@ class ScoreCreate extends React.Component {
     this.props.dispatch(setShotType(shotTypeId, isNetMiss));
   }
 
-  navigationEvent(users, scores){
-    if (this.props.game.scores.length == 0){
-      return Alert.alert("エラー", "スコアを入力してください。", [{ text: "了解"}], { cancelable: false });
+  navigationEvent(users, scores) {
+    if (this.props.game.scores.length == 0) {
+      return Alert.alert(
+        "エラー",
+        "スコアを入力してください。",
+        [{ text: "了解" }],
+        { cancelable: false }
+      );
     }
     const body = {
-      units:  users,
+      units: users,
       scores,
       game: {
         name: "トレーニングマッチ"
       },
       sport_id: this.props.sport.id
     };
-    this.props.dispatch(postApiRequest(GAMES_ENDPOINT, body, this.props.authentication.header, postGameRequest, postGameReceived)).then((json) => {
-      let endpoint = gameCountEndpointGenerator({game_id: json.game.id});
-      this.props.dispatch(getApiRequest(
-        endpoint=endpoint,
-        params={},
-        this.props.authentication.header,
-        getShotTypeCountsRequest,
-        getShotTypeCountsReceived
-      ));
-      Actions.scoreView();
-    });
+    this.props
+      .dispatch(
+        postApiRequest(
+          GAMES_ENDPOINT,
+          body,
+          this.props.authentication.header,
+          postGameRequest,
+          postGameReceived
+        )
+      )
+      .then(json => {
+        let endpoint = gameCountEndpointGenerator({ game_id: json.game.id });
+        this.props.dispatch(
+          getApiRequest(
+            (endpoint = endpoint),
+            (params = {}),
+            this.props.authentication.header,
+            getShotTypeCountsRequest,
+            getShotTypeCountsReceived
+          )
+        );
+        Actions.scoreView();
+      });
   }
 
-  renderUnitUsersName(users){
+  renderUnitUsersName(users) {
     const unitUserNameComponentList = [];
-    for (let user of users){
+    for (let user of users) {
       unitUserNameComponentList.push(
         <Text style={styles.scoreInformationUserName}>{user.name}</Text>
       );
     }
     return (
       <View style={styles.scoreInformationUserNameContainer}>
-        { unitUserNameComponentList }
+        {unitUserNameComponentList}
       </View>
     );
   }
 
   render() {
     return (
-      <View style={{
-        /* eslint react-native/no-inline-styles: 0 */
-        alignItems: "center",
-        width: this.state.width,
-        height: this.state.height
-      }}
+      <View
+        style={{
+          /* eslint react-native/no-inline-styles: 0 */
+          alignItems: "center",
+          width: this.state.width,
+          height: this.state.height
+        }}
       >
         <ShotTypeModal
           shotTypes={this.props.sport.shotTypes}
@@ -139,34 +149,56 @@ class ScoreCreate extends React.Component {
         <TopContentBar>スコアシート</TopContentBar>
         <View style={styles.scoreInformationBar}>
           <View style={styles.scoreInformationContainer}>
-            { this.renderUnitUsersName(this.props.game.gameUnits[0].users) }
+            {this.renderUnitUsersName(this.props.game.gameUnits[0].users)}
             <View style={styles.scoreInformationPointContainer}>
-              <Text style={styles.scoreInformationPoint}>{this.props.game.scoreCounts[0]}</Text>
+              <Text style={styles.scoreInformationPoint}>
+                {this.props.game.scoreCounts[0]}
+              </Text>
             </View>
             <Text style={styles.scoreInformationGamePoint}>0</Text>
           </View>
-          <TouchableHighlight onPress={()=> {this.props.dispatch(removeScore());}}>
-            <Image style={styles.scoreInformationBack} source={require("../../assets/img/score_create_back.png")} />
+          <TouchableHighlight
+            onPress={() => {
+              this.props.dispatch(removeScore());
+            }}
+          >
+            <Image
+              style={styles.scoreInformationBack}
+              source={require("../../assets/img/score_create_back.png")}
+            />
           </TouchableHighlight>
           <View style={styles.scoreInformationContainer}>
             <Text style={styles.scoreInformationGamePoint}>0</Text>
             <View style={styles.scoreInformationPointContainer}>
-              <Text style={styles.scoreInformationPoint}>{this.props.game.scoreCounts[1]}</Text>
+              <Text style={styles.scoreInformationPoint}>
+                {this.props.game.scoreCounts[1]}
+              </Text>
             </View>
-            { this.renderUnitUsersName(this.props.game.gameUnits[1].users) }
+            {this.renderUnitUsersName(this.props.game.gameUnits[1].users)}
           </View>
         </View>
-        <TouchableHighlight onPress={() => {this.navigationEvent(this.props.game.gameUnits, this.props.game.scores);}} style={styles.analysisNavigate}>
+        <TouchableHighlight
+          onPress={() => {
+            this.navigationEvent(
+              this.props.game.gameUnits,
+              this.props.game.scores
+            );
+          }}
+          style={styles.analysisNavigate}
+        >
           <Text style={styles.analysisNavigateText}>分析</Text>
         </TouchableHighlight>
-        <Field horizontal={false} callback={this.showModal} />
+        <Field
+          horizontal={false}
+          sport={this.props.sport.id}
+          callback={this.showModal}
+        />
       </View>
     );
   }
 }
 
 export default connect(mapStateToProps)(ScoreCreate);
-
 
 const styles = StyleSheet.create({
   analysisNavigate: {
