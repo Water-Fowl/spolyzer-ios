@@ -5,6 +5,7 @@ export const SCHEME = LOCAL_URL;
 export const SIGN_IN_ENDPOINT = `${SCHEME}/auth/sign_in/`;
 export const REGISTRATION_ENDPOINT = `${SCHEME}/auth/`;
 export const USERS_ENDPOINT = `${SCHEME}/users/`;
+export const USERS_GAMES_ENDPOINT = `${SCHEME}/users/games/`;
 export const SEARCH_USER_ENDPOINT = `${SCHEME}/users/search`;
 export const GAMES_ENDPOINT = `${SCHEME}/games/`;
 export const GAMES_COUNT_ENDPOINT = `${SCHEME}/games/count`;
@@ -34,5 +35,10 @@ export function gameCountEndpointGenerator(params) {
   var endpoint = GAMES_ENDPOINT;
   endpoint += params.game_id;
   endpoint += "/aggregated_scores/";
+  return endpoint;
+}
+
+export function usersGamesEndpointGenerator() {
+  var endpoint = USERS_GAMES_ENDPOINT;
   return endpoint;
 }

@@ -1,4 +1,5 @@
 import React from "react";
+import baseEnhancer from "enhances";
 import { ActionConst, Actions } from "react-native-router-flux";
 import {
   View,
@@ -7,16 +8,86 @@ import {
   Text,
   TouchableOpacity
 } from "react-native";
+import { connect } from "react-redux";
 import { TopContentBar, TextBox } from "atoms";
 import { Icon, SegmentedControl } from "react-native-ios-kit";
+import {
+  getUsersGamesRequest,
+  getUsersGamesReceived
+} from "../../modules/analysis";
+import {
+  getShotTypeCountsReceived,
+  getShotTypeCountsRequest
+} from "../../modules/game";
+import { getApiRequest } from "../../modules/request";
+import {
+  USERS_GAMES_ENDPOINT,
+  usersGamesEndpointGenerator,
+  gameCountEndpointGenerator
+} from "../../config/api";
+import { mapStateToProps } from "utils";
 
-export default class GameAnalysisCreate extends React.Component {
+class GameAnalysisCreate extends React.Component {
+  constructor(props) {
+    super(props);
+    this.getUsersGamesEvent.bind(this);
+    this.setPicker.bind(this);
+    this.hidePicker.bind(this);
+    this.state = {
+      isPickerVisible: false,
+      selectedIndex: 0,
+      analysis: { gameId: { games: [] } }
+    };
+    this.getUsersGamesEvent();
+  }
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.scores) {
+      this.setState({ scores: nextProps.scores });
+    }
+  }
+  getUsersGamesEvent() {
+    let endpoint = usersGamesEndpointGenerator();
+    this.props
+      .dispatch(
+        getApiRequest(
+          (endpoint = endpoint),
+          (params = {}),
+          this.props.authentication.header,
+          getUsersGamesRequest,
+          getUsersGamesReceived
+        )
+      )
+      .then(json => {
+        this.setState({ analysis: { gameId: json } });
+      });
+  }
+  setPicker() {
+    this.setState({ isPickerVisible: true });
+  }
+  hidePicker() {
+    this.setState({ isPickerVisible: false });
+  }
+  navigationEvent(item) {
+    let endpoint = gameCountEndpointGenerator({
+      game_id: item.id
+    });
+    this.props.dispatch(
+      getApiRequest(
+        endpoint = endpoint,
+        params = {},
+        this.props.authentication.header,
+        getShotTypeCountsRequest,
+        getShotTypeCountsReceived
+      )
+    );
+    Actions.GameAnalysisView();
+  }
   render() {
     return (
       <View style={styles.container}>
         <TopContentBar>試合一覧</TopContentBar>
         <View style={styles.segmentContainer}>
-          <SegmentedControl
+          {/* <SegmentedControl
             values={["シングルス", "ダブルス"]}
             selectedIndex={0}
             onValueChange={(value, index) =>
@@ -27,95 +98,20 @@ export default class GameAnalysisCreate extends React.Component {
             }
             tintColor={"#2ea7e0"}
             style={{ width: 222, alignSelf: "center" }}
-          />
+          /> */}
         </View>
         <FlatList
-          data={[
-            {
-              opponentUserName: "プレイヤー名",
-              gameCreateTime: "2018/4/1 10:00:00"
-            },
-            {
-              opponentUserName: "プレイヤー名",
-              gameCreateTime: "2018/4/1 10:00:00"
-            },
-            {
-              opponentUserName: "プレイヤー名",
-              gameCreateTime: "2018/4/1 10:00:00"
-            },
-            {
-              opponentUserName: "プレイヤー名",
-              gameCreateTime: "2018/4/1 10:00:00"
-            },
-            {
-              opponentUserName: "プレイヤー名",
-              gameCreateTime: "2018/4/1 10:00:00"
-            },
-            {
-              opponentUserName: "プレイヤー名",
-              gameCreateTime: "2018/4/1 10:00:00"
-            },
-            {
-              opponentUserName: "プレイヤー名",
-              gameCreateTime: "2018/4/1 10:00:00"
-            },
-            {
-              opponentUserName: "プレイヤー名",
-              gameCreateTime: "2018/4/1 10:00:00"
-            },
-            {
-              opponentUserName: "プレイヤー名",
-              gameCreateTime: "2018/4/1 10:00:00"
-            },
-            {
-              opponentUserName: "プレイヤー名",
-              gameCreateTime: "2018/4/1 10:00:00"
-            },
-            {
-              opponentUserName: "プレイヤー名",
-              gameCreateTime: "2018/4/1 10:00:00"
-            },
-            {
-              opponentUserName: "プレイヤー名",
-              gameCreateTime: "2018/4/1 10:00:00"
-            },
-            {
-              opponentUserName: "プレイヤー名",
-              gameCreateTime: "2018/4/1 10:00:00"
-            },
-            {
-              opponentUserName: "プレイヤー名",
-              gameCreateTime: "2018/4/1 10:00:00"
-            },
-            {
-              opponentUserName: "プレイヤー名",
-              gameCreateTime: "2018/4/1 10:00:00"
-            },
-            {
-              opponentUserName: "プレイヤー名",
-              gameCreateTime: "2018/4/1 10:00:00"
-            },
-            {
-              opponentUserName: "プレイヤー名",
-              gameCreateTime: "2018/4/1 10:00:00"
-            },
-            {
-              opponentUserName: "プレイヤー名",
-              gameCreateTime: "2018/4/1 10:00:00"
-            }
-          ]}
+          data={this.state.analysis.gameId.games}
           renderItem={({ item }) => (
             <View style={styles.listConteiner}>
               <TouchableOpacity
                 onPress={() => {
-                  Actions.GameAnalysisView();
+                  this.navigationEvent(item);
                 }}
                 style={styles.gameAnalysisViewButton}
               >
-                <Text style={styles.opponentText}>
-                  VS {item.opponentUserName}
-                </Text>
-                <Text style={styles.gameCreateTime}>{item.gameCreateTime}</Text>
+                <Text style={styles.opponentText}>{item.name}</Text>
+                <Text style={styles.gameCreateTime}>{item.created_at}</Text>
                 <Icon
                   name={"ios-arrow-forward"}
                   size={40}
@@ -131,6 +127,7 @@ export default class GameAnalysisCreate extends React.Component {
     );
   }
 }
+export default connect(mapStateToProps)(baseEnhancer(GameAnalysisCreate));
 
 const styles = StyleSheet.create({
   container: {
