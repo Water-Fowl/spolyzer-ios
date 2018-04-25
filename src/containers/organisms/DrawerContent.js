@@ -11,44 +11,58 @@ import { Actions } from "react-native-router-flux";
 import { connect } from "react-redux";
 import { resetToken } from "../../modules/authentication";
 import { mapStateToProps } from "utils";
-import {
-  ProfileImage
-} from "atoms";
+import { ProfileImage } from "atoms";
 
 class DrawerContent extends React.Component {
-
+  constructor(props) {
+    super(props);
+    console.log("props:", this.props);
+  }
+  sportName(id) {
+    switch (id) {
+    case 1:
+      return "バドミントン";
+      break;
+    case 2:
+      return "テニス";
+      break;
+    default:
+      return "";
+      break;
+    }
+  }
   render() {
     return (
-    	<View style={styles.drawerContainer}>
-        <TouchableOpacity onPress={Actions.profileEdit} style={styles.userContainer}>
-          <ProfileImage size={40} imageSource={this.props.profile.userImageSource} />
-          <Text style={styles.userName}>
-            { this.props.profile.userName }
-          </Text>
+      <View style={styles.drawerContainer}>
+        <TouchableOpacity
+          onPress={Actions.profileEdit}
+          style={styles.userContainer}
+        >
+          <ProfileImage
+            size={40}
+            imageSource={this.props.profile.userImageSource}
+          />
+          <Text style={styles.userName}>{this.props.profile.userName}</Text>
         </TouchableOpacity>
         <View style={styles.sportContainer}>
           <View style={styles.kyugiContainer}>
             <View style={styles.circle} />
-            <Text style={styles.kyogi}>
-              競技
-            </Text>
+            <Text style={styles.kyogi}>競技</Text>
           </View>
-          <Text style={styles.bad}>
-            バドミントン
-          </Text>
+          <Text style={styles.bad}>{this.sportName(this.props.sport.id)}</Text>
         </View>
         <View style={styles.logoutContainer}>
           <Image
             source={require("../../assets/img/logout.png")}
             style={styles.logoutImage}
           />
-          <TouchableOpacity onPress={() => {
-            Actions.login();
-            this.props.dispatch(resetToken());
-          }}>
-            <Text style={styles.logoutText}>
-              ログアウト
-            </Text>
+          <TouchableOpacity
+            onPress={() => {
+              Actions.login();
+              this.props.dispatch(resetToken());
+            }}
+          >
+            <Text style={styles.logoutText}>ログアウト</Text>
           </TouchableOpacity>
         </View>
       </View>
