@@ -63,7 +63,7 @@ class DashboardTop extends React.Component {
               </View>
               <View style={styles.cardAchivementContainer}>
                 <Text style={styles.percentText}>
-                    %
+                  %
                 </Text>
               </View>
             </View>
