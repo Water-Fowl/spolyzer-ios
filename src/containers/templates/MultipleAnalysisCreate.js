@@ -11,8 +11,7 @@ import { setUserIndex, setGameType } from "../../modules/analysis";
 import {
   GameTypeButtonList,
   TermButtonList,
-  ShotTypeButtonList,
-  GameResultButtonList
+  ShotTypeButtonList
 } from "organisms";
 import {
   SelectedUserName,
@@ -118,10 +117,6 @@ class AnalysisCreate extends React.Component {
         <View style={styles.rowContainer}>
           <Text style={styles.termText}>期間</Text>
           <TermButtonList />
-        </View>
-        <View style={styles.rowContainer}>
-          <Text style={styles.termText}>勝敗</Text>
-          <GameResultButtonList />
         </View>
         <View style={styles.rowContainer}>
           <Text style={styles.opponentText}>対戦相手</Text>

@@ -73,8 +73,8 @@ class GameAnalysisCreate extends React.Component {
     });
     this.props.dispatch(
       getApiRequest(
-        (endpoint = endpoint),
-        (params = {}),
+        endpoint = endpoint,
+        params = {},
         this.props.authentication.header,
         getShotTypeCountsRequest,
         getShotTypeCountsReceived

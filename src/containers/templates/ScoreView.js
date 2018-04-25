@@ -9,20 +9,11 @@ import {
   TouchableOpacity,
   View
 } from "react-native";
-import {
-  TopContentBar
-} from "atoms";
+import { TopContentBar } from "atoms";
 import { connect } from "react-redux";
-import {
-  setShotTypeCounts,
-  resetState
-} from "../../modules/game";
+import { setShotTypeCounts, resetState } from "../../modules/game";
 import { reshapeShotTypeCounts, mapStateToProps } from "utils";
-import {
-  Field,
-  Graph
-} from "organisms";
-
+import { Field, Graph } from "organisms";
 
 class ScoreView extends React.Component {
   constructor(props) {
@@ -35,47 +26,48 @@ class ScoreView extends React.Component {
     };
   }
   setShotTypeCounts(position, side, isNetMiss) {
-    let selectedShotTypeCounts =  this.props.game.shotTypeCounts[side] || {};
+    let selectedShotTypeCounts = this.props.game.shotTypeCounts[side] || {};
     const {
       shotTypeCountsList,
       missShotTypeCountsList,
       shotTypesList
-    } = reshapeShotTypeCounts(selectedShotTypeCounts[position], this.props.sport.shotTypes);
+    } = reshapeShotTypeCounts(
+      selectedShotTypeCounts[position],
+      this.props.sport.shotTypes
+    );
     console.log(shotTypeCountsList);
     this.setState({
       data: shotTypeCountsList,
       missData: missShotTypeCountsList
     });
   }
-  renderUnitUsersName(users){
+  renderUnitUsersName(users) {
     const unitUserNameComponentList = [];
-    for (let user of users){
+    for (let user of users) {
       unitUserNameComponentList.push(
-        <Text style={styles.userNameText}> { user.name } </Text>
+        <Text style={styles.userNameText}> {user.name} </Text>
       );
     }
     return (
       <View style={styles.gameInformationTextContainer}>
-        { unitUserNameComponentList }
+        {unitUserNameComponentList}
       </View>
     );
   }
 
-  renderWinLossText(side){
-    if( this.props.game.scoreCounts[side] > this.props.game.scoreCounts[Number(!side)]){
-      return(
-        <Text style={styles.winLossText}>Win</Text>
-      );
-    }
-    else if( this.props.game.scoreCounts[side] < this.props.game.scoreCounts[Number(!side)]){
-      return(
-        <Text style={styles.winLossText}>Loss</Text>
-      );
-    }
-    else {
-      return(
-        <Text style={styles.winLossText}>Draw</Text>
-      );
+  renderWinLossText(side) {
+    if (
+      this.props.game.scoreCounts[side] >
+      this.props.game.scoreCounts[Number(!side)]
+    ) {
+      return <Text style={styles.winLossText}>Win</Text>;
+    } else if (
+      this.props.game.scoreCounts[side] <
+      this.props.game.scoreCounts[Number(!side)]
+    ) {
+      return <Text style={styles.winLossText}>Loss</Text>;
+    } else {
+      return <Text style={styles.winLossText}>Draw</Text>;
     }
   }
 
@@ -85,29 +77,37 @@ class ScoreView extends React.Component {
         <TopContentBar>単分析結果</TopContentBar>
         <View>
           <View style={styles.userNameContainer}>
-            { this.renderUnitUsersName(this.props.game.gameUnits[0].users) }
-            { this.renderUnitUsersName(this.props.game.gameUnits[1].users) }
+            {this.renderUnitUsersName(this.props.game.gameUnits[0].users)}
+            {this.renderUnitUsersName(this.props.game.gameUnits[1].users)}
           </View>
           <View style={styles.gameInformationsContaier}>
             <View style={styles.gameInformationTextContainer}>
-              { this.renderWinLossText(side=0) }
-              <Text style={styles.scoreText}>{this.props.game.scoreCounts[0]}</Text>
+              {this.renderWinLossText((side = 0))}
+              <Text style={styles.scoreText}>
+                {this.props.game.scoreCounts[0]}
+              </Text>
             </View>
             <View style={styles.gameInformationTextContainer}>
-              <Text style={styles.scoreText}>{this.props.game.scoreCounts[1]}</Text>
-              { this.renderWinLossText(side=1) }
+              <Text style={styles.scoreText}>
+                {this.props.game.scoreCounts[1]}
+              </Text>
+              {this.renderWinLossText((side = 1))}
             </View>
           </View>
           <Field horizontal callback={this.setShotTypeCounts} />
-          <Graph data={this.state.data} missData={this.state.missData} shotTypeList={this.state.shotTypeList}/>
+          <Graph
+            data={this.state.data}
+            missData={this.state.missData}
+            shotTypeList={this.state.shotTypeList}
+          />
           <View style={styles.backButtonContainer}>
-            <TouchableOpacity onPress={() => {
-              this.props.dispatch(resetState());
-              Actions.popTo("gameCreate");
-            }}>
-              <Text style={styles.backButtonText}>
-                保存して終了
-              </Text>
+            <TouchableOpacity
+              onPress={() => {
+                this.props.dispatch(resetState());
+                Actions.popTo("gameCreate");
+              }}
+            >
+              <Text style={styles.backButtonText}>保存して終了</Text>
             </TouchableOpacity>
           </View>
         </View>

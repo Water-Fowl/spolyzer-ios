@@ -77,8 +77,8 @@ class GameAnalysisView extends React.Component {
         <TopContentBar>単分析結果</TopContentBar>
         <View>
           <View style={styles.userNameContainer}>
-            {/* {this.renderUnitUsersName(this.props.game.gameUnits[0].users)}
-            {this.renderUnitUsersName(this.props.game.gameUnits[1].users)} */}
+            {this.renderUnitUsersName(this.props.game.gameUnits[0].users)}
+            {this.renderUnitUsersName(this.props.game.gameUnits[1].users)}
           </View>
           <View style={styles.gameInformationsContaier}>
             <View style={styles.gameInformationTextContainer}>
