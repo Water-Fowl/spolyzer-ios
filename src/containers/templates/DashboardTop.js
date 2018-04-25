@@ -24,8 +24,8 @@ class DashboardTop extends React.Component {
     return (
       <View style={styles.container}>
         <View style={styles.textContainer}>
-          <View style={styles.goalListTextContainer}>
-            <Text style={styles.goalListText}>
+          <View style={styles.aimListTextContainer}>
+            <Text style={styles.aimListText}>
               目標一覧
             </Text>
           </View>
@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
     backgroundColor: "transparent",
     flex: 1
   },
-  goalListText: {
+  aimListText: {
     marginTop: 30,
     marginLeft: 20,
     color: "white",
@@ -169,7 +169,7 @@ const styles = StyleSheet.create({
   navigateButton: {
     marginTop: "7%"
   },
-  goalListTextContainer: {
+  aimListTextContainer: {
     flex: 8
   },
   compareTextContainer: {
