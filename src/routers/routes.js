@@ -153,6 +153,7 @@ class Route extends React.Component {
             return <AppLogo />;
           }}
           navigationBarStyle={styles.navBarStyle}
+          backButtonImage={require("../assets/img/left_arrow.png")}
         >
           <Scene
             key="login"
@@ -240,7 +241,7 @@ class Route extends React.Component {
           <Scene
             key="MultipleAnalysisCreate"
             component={MultipleAnalysisCreate}
-            title="複合分析作成"
+            title="検索条件"
           />
           <Scene
             key="MultipleAnalysisView"
@@ -250,7 +251,7 @@ class Route extends React.Component {
           <Scene
             key="GameAnalysisCreate"
             component={GameAnalysisCreate}
-            title="単分析作成"
+            title="試合一覧"
           />
           <Scene
             key="GameAnalysisView"

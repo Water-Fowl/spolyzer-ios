@@ -153,16 +153,6 @@ class AnalysisView extends React.Component {
 
           <Field horizontal callback={this.setPositionEvent} renderInField={this.renderInField} renderInButton={this._renderFieldButtonText}/>
           <Graph data={this.state.selectedPositionsCount} />
-          <View style={styles.backButtonContainer}>
-            <TouchableOpacity onPress={() => {
-              Actions.analysisCreate({ type: ActionConst.BACK_ACTION });
-            }}
-            >
-              <Text style={styles.backButtonText}>
-                検索条件に戻る
-              </Text>
-            </TouchableOpacity>
-          </View>
         </ScrollView>
       </View>
     );
@@ -259,28 +249,6 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     textAlign: "center",
     paddingTop: 5
-  },
-  backButtonContainer: {
-    borderRightColor: "#28a8de",
-    borderTopColor: "#28a8de",
-    borderLeftColor: "#28a8de",
-    borderBottomColor: "#28a8de",
-    height: 34,
-    width: 154,
-    borderWidth: 1,
-    borderRadius: 4,
-    marginLeft: 190,
-    marginTop: 8
-  },
-  backButtonText: {
-    backgroundColor: "transparent",
-    color: "#ffffff",
-    fontSize: 16,
-    fontWeight: "bold",
-    borderRadius: 4,
-    textAlign: "center",
-    paddingTop: 7,
-    paddingLeft: 20
   },
   outAreaContainer: {
     width: 300,
