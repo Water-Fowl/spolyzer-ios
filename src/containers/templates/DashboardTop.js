@@ -24,21 +24,27 @@ class DashboardTop extends React.Component {
     return (
       <View style={styles.container}>
         <View style={styles.textContainer}>
-          <Text style={styles.goalListText}>
-            目標一覧
-          </Text>
-          <Text style={styles.compareText}>
-            前回{"\n"}比較
-          </Text>
-          <Text style={styles.achivementText}>
-            目標{"\n"}達成度
-          </Text>
+          <View style={styles.goalListTextContainer}>
+            <Text style={styles.goalListText}>
+              目標一覧
+            </Text>
+          </View>
+          <View style={styles.compareTextContainer}>
+            <Text style={styles.compareText}>
+              前回{"\n"}比較
+            </Text>
+          </View>
+          <View style={styles.achivementTextContainer}>
+            <Text style={styles.achivementText}>
+              目標{"\n"}達成度
+            </Text>
+          </View>
         </View>
         <View style={styles.listContainer}>
           <ScrollView style={styles.list}>
             <View style={styles.dashboardCard}>
               <View style={styles.cardMainConteiner}>
-                <View style={styles.cardInformationView}>
+                <View style={styles.cardInformationContainer}>
                   <Text style={styles.cardDateText}>
                     4/18
                   </Text>
@@ -46,7 +52,7 @@ class DashboardTop extends React.Component {
                     VS 池田吉来・吉川明成
                   </Text>
                 </View>
-                <View style={styles.cardTitleView}>
+                <View style={styles.cardTitleContainer}>
                   <Text style={styles.cardTitleText}>
                     シングルス の試合で エリア C.D の{"\n"} クリア の ミス を 4 回 以下 にしたい
                   </Text>
@@ -56,9 +62,6 @@ class DashboardTop extends React.Component {
                 <Image source={require("../../assets/img/compare_up.png")} />
               </View>
               <View style={styles.cardAchivementContainer}>
-                <Text style={styles.achivementScoreText}>
-                    30
-                </Text>
                 <Text style={styles.percentText}>
                     %
                 </Text>
@@ -66,7 +69,9 @@ class DashboardTop extends React.Component {
             </View>
           </ScrollView>
         </View>
-        <NavigateButton style={styles.navigateButton} action={() => {Actions.DashboardCreate();}} text="作成" />
+        <View style={styles.navigateButtonContainer}>
+          <NavigateButton style={styles.navigateButton} action={() => {Actions.DashboardCreate();}} text="作成" />
+        </View>
       </View>
     );
   }
@@ -81,37 +86,31 @@ const styles = StyleSheet.create({
   textContainer: {
     flexDirection: "row",
     backgroundColor: "transparent",
-    height: "12%"
+    flex: 1
   },
   goalListText: {
-    marginTop: "11%",
-    marginLeft: "6%",
+    marginTop: 30,
+    marginLeft: 20,
     color: "white",
-    fontSize: 24,
+    fontSize: 22,
     fontWeight: "bold"
   },
   compareText: {
     color: "white",
     fontSize: 14,
-    fontWeight: "bold",
-    marginTop: "9%",
-    marginLeft: "44%"
+    fontWeight: "bold"
   },
   achivementText: {
     color: "white",
     fontSize: 14,
     fontWeight: "bold",
-    marginTop: "9%",
-    marginLeft: "8%",
     textAlign: "center"
   },
   listContainer: {
-    height: "71%",
+    flex: 7,
     borderTopColor: $spolyzerDarkBlue,
     borderBottomColor: $spolyzerDarkBlue,
     borderWidth: 1
-  },
-  list:{
   },
   dashboardCard:{
     height: 76,
@@ -119,28 +118,29 @@ const styles = StyleSheet.create({
     flexDirection: "row"
   },
   cardMainConteiner: {
-    width: "69%",
+    flex: 8,
     borderRightColor: "rgba(46,167,224,0.3)",
     borderRightWidth: 1
   },
   cardCompareContainer: {
-    width: "13%",
+    flex: 1,
     borderRightColor: "rgba(46,167,224,0.3)",
     borderRightWidth: 1,
     justifyContent: "center",
     alignItems: "center"
   },
   cardAchivementContainer: {
-    width: "18%",
-    flexDirection: "row"
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center"
   },
-  cardInformationView: {
-    height: "36%",
+  cardInformationContainer: {
+    flex: 1,
     flexDirection: "row",
     alignItems: "center"
   },
-  cardTitleView: {
-    height: "64%",
+  cardTitleContainer: {
+    flex: 2,
     justifyContent: "center"
   },
   cardDateText: {
@@ -161,21 +161,28 @@ const styles = StyleSheet.create({
     fontSize: 16,
     textAlign: "center"
   },
-  achivementScoreText: {
-    color: "white",
-    fontWeight: "bold",
-    fontSize: 30,
-    marginLeft: 8,
-    alignSelf: "center"
-  },
   percentText: {
     color: "white",
     fontWeight: "bold",
-    fontSize: 20,
-    marginLeft: 2,
-    marginTop: 30
+    fontSize: 20
   },
   navigateButton: {
     marginTop: "7%"
+  },
+  goalListTextContainer: {
+    flex: 8
+  },
+  compareTextContainer: {
+    flex: 1,
+    marginTop: 24,
+    alignItems: "center"
+  },
+  achivementTextContainer: {
+    flex: 1,
+    marginTop: 24,
+    alignItems: "center"
+  },
+  navigateButtonContainer: {
+    flex: 2
   }
 });
