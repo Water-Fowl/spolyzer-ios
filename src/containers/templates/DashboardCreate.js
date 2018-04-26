@@ -59,49 +59,31 @@ class DashboardCreate extends React.Component {
             title="対戦相手１"
             onPress={() => {Actions.DashboardTop();}}
             info="池田吉来"
-            theme={{
-              backgroundColor: $transparent
-            }}
           />
           <NavigationRow
             title="対戦相手２"
             onPress={() => {Actions.DashboardTop();}}
             info="吉川明成"
-            theme={{
-              backgroundColor: $transparent
-            }}
           />
           <NavigationRow
             title="目標設定"
             onPress={() => {Actions.DashboardTop();}}
             info="ミス"
-            theme={{
-              backgroundColor: $transparent
-            }}
           />
           <NavigationRow
             title="球種"
             onPress={() => {Actions.DashboardTop();}}
             info="ヘアピン"
-            theme={{
-              backgroundColor: $transparent
-            }}
           />
           <NavigationRow
             title="エリア"
             onPress={() => {Actions.DashboardTop();}}
             info="A,B"
-            theme={{
-              backgroundColor: $transparent
-            }}
           />
           <NavigationRow
             title="目標回数"
             onPress={() => {Actions.DashboardTop();}}
-            info="４"
-            theme={{
-              backgroundColor: $transparent
-            }}
+            info=""
           />
         </View>
         <View style={styles.creatingButtonContainer}>
