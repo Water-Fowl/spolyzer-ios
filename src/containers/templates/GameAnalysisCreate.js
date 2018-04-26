@@ -94,12 +94,20 @@ class GameAnalysisCreate extends React.Component {
     if (seconds < 10) seconds = "0" + seconds;
     return `${year}/${month}/${date}(${day}) ${hours}:${minutes}:${seconds}`;
   }
+  setListData() {
+    let listData = [];
+    for (let game of this.state.games.reverse()) {
+      if (game.left_users.length === this.state.selectedIndex + 1)
+        listData.push(game);
+    }
+    return listData;
+  }
   render() {
     return (
       <View style={styles.container}>
         <TopContentBar>試合一覧</TopContentBar>
         <View style={styles.segmentContainer}>
-          {/* <SegmentedControl
+          <SegmentedControl
             values={["シングルス", "ダブルス"]}
             selectedIndex={0}
             onValueChange={(value, index) =>
@@ -110,10 +118,10 @@ class GameAnalysisCreate extends React.Component {
             }
             tintColor={"#2ea7e0"}
             style={{ width: 222, alignSelf: "center" }}
-          /> */}
+          />
         </View>
         <FlatList
-          data={this.state.games.reverse()}
+          data={this.setListData()}
           renderItem={({ item }) => (
             <View style={styles.listConteiner}>
               <TouchableOpacity
