@@ -12,6 +12,7 @@ import SignUp from "./templates/SignUp";
 import Confirmation from "./templates/Confirmation";
 import DashboardTop from "./templates/DashboardTop";
 import DashboardCreate from "./templates/DashboardCreate";
+import DashboardCreateSelect from "./templates/DashboardCreateSelect";
 
 
 export {
@@ -29,5 +30,6 @@ export {
   Login,
   Confirmation,
   DashboardTop,
-  DashboardCreate
+  DashboardCreate,
+  DashboardCreateSelect
 };

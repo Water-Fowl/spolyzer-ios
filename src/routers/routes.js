@@ -28,7 +28,8 @@ import {
   SignUp,
   Confirmation,
   DashboardTop,
-  DashboardCreate
+  DashboardCreate,
+  DashboardCreateSelect
 } from "../containers";
 import {
   DrawerContent
@@ -151,6 +152,7 @@ class Route extends React.Component{
               <Scene key="Dashboard" tabBarLabel="ダッシュボード" icon={() => (<Image style={styles.icon} source={require("../assets/img/tabs_dashboard.png")} />)}>
                 <Scene key="DashboardTop" initial component={DashboardTop} title="ダッシュボード ホーム"/>
                 <Scene key="DashboardCreate" component={DashboardCreate} title="ダッシュボード 目標設定"/>
+                <Scene key="DashboardCreateSelect" component={DashboardCreateSelect} title=""/>
               </Scene>
               <Scene key="Score" initial tabBarLabel="スコアシート" icon={() => (<Image style={styles.icon} source={require("../assets/img/tabs_score.png")} />)}>
                 <Scene key="gameCreate" initial component={GameCreate} title="単分析"/>

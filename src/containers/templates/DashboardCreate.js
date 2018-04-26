@@ -57,33 +57,39 @@ class DashboardCreate extends React.Component {
         <View style={styles.listContainer}>
           <NavigationRow
             title="対戦相手１"
-            onPress={() => {Actions.DashboardTop();}}
+            onPress={() => {Actions.DashboardCreateSelect();}}
             info="池田吉来"
+            style={styles.navigationRow}
           />
           <NavigationRow
             title="対戦相手２"
-            onPress={() => {Actions.DashboardTop();}}
+            onPress={() => {Actions.DashboardCreateSelect();}}
             info="吉川明成"
+            style={styles.navigationRow}
           />
           <NavigationRow
             title="目標設定"
-            onPress={() => {Actions.DashboardTop();}}
+            onPress={() => {Actions.DashboardCreateSelect();}}
             info="ミス"
+            style={styles.navigationRow}
           />
           <NavigationRow
             title="球種"
-            onPress={() => {Actions.DashboardTop();}}
+            onPress={() => {Actions.DashboardCreateSelect();}}
             info="ヘアピン"
+            style={styles.navigationRow}
           />
           <NavigationRow
             title="エリア"
-            onPress={() => {Actions.DashboardTop();}}
+            onPress={() => {Actions.DashboardCreateSelect();}}
             info="A,B"
+            style={styles.navigationRow}
           />
           <NavigationRow
             title="目標回数"
-            onPress={() => {Actions.DashboardTop();}}
-            info=""
+            onPress={() => {Actions.DashboardCreateSelect();}}
+            info="4"
+            style={styles.navigationRow}
           />
         </View>
         <View style={styles.creatingButtonContainer}>
@@ -102,12 +108,13 @@ const styles = StyleSheet.create({
   },
   segmentedControlContainer: {
     flex: 1,
-    justifyContent: "center"
+    justifyContent: "center",
+    borderBottomColor: $spolyzerDarkBlue,
+    borderBottomWidth: 1,
+    marginBottom: 1
   },
   listContainer: {
-    flex: 3,
-    borderTopColor: $spolyzerDarkBlue,
-    borderWidth: 1
+    flex: 3
   },
   creatingButtonContainer: {
     flex: 2,
