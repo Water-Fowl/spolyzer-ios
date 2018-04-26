@@ -11,6 +11,7 @@ import ScoreView from "./templates/ScoreView";
 import SignUp from "./templates/SignUp";
 import Confirmation from "./templates/Confirmation";
 import DashboardTop from "./templates/DashboardTop";
+import DashboardView from "./templates/DashboardView";
 import DashboardCreate from "./templates/DashboardCreate";
 import DashboardCreateSelect from "./templates/DashboardCreateSelect";
 
@@ -30,6 +31,7 @@ export {
   Login,
   Confirmation,
   DashboardTop,
+  DashboardView,
   DashboardCreate,
   DashboardCreateSelect
 };

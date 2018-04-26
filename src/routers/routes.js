@@ -28,6 +28,7 @@ import {
   SignUp,
   Confirmation,
   DashboardTop,
+  DashboardView,
   DashboardCreate,
   DashboardCreateSelect
 } from "../containers";
@@ -151,6 +152,7 @@ class Route extends React.Component{
             <Tabs initial key="tab" labelStyle={styles.label} tabBarStyle={styles.tabBarStyle} tabStyle={styles.tabStyle}>
               <Scene key="Dashboard" tabBarLabel="ダッシュボード" icon={() => (<Image style={styles.icon} source={require("../assets/img/tabs_dashboard.png")} />)}>
                 <Scene key="DashboardTop" initial component={DashboardTop} title="ダッシュボード ホーム"/>
+                <Scene key="DashboardView" component={DashboardView} title="ダッシュボード 詳細"/>
                 <Scene key="DashboardCreate" component={DashboardCreate} title="ダッシュボード 目標設定"/>
                 <Scene key="DashboardCreateSelect" component={DashboardCreateSelect} title=""/>
               </Scene>

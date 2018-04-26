@@ -7,7 +7,8 @@ import {
   Text,
   ScrollView,
   Image,
-  StyleSheet
+  StyleSheet,
+  TouchableOpacity
 } from "react-native";
 import { connect } from "react-redux";
 import { mapStateToProps } from "utils";
@@ -42,7 +43,7 @@ class DashboardTop extends React.Component {
         </View>
         <View style={styles.listContainer}>
           <ScrollView style={styles.list}>
-            <View style={styles.dashboardCard}>
+            <TouchableOpacity style={styles.dashboardCard} onPress={Actions.DashboardView}>
               <View style={styles.cardMainConteiner}>
                 <View style={styles.cardInformationContainer}>
                   <Text style={styles.cardDateText}>
@@ -66,7 +67,7 @@ class DashboardTop extends React.Component {
                   %
                 </Text>
               </View>
-            </View>
+            </TouchableOpacity>
           </ScrollView>
         </View>
         <View style={styles.navigateButtonContainer}>
