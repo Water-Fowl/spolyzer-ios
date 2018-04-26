@@ -16,8 +16,6 @@ const RESULT_SETTING = "RESULT_SETTING";
 const OPPONENT_USER_SETTING = "OPPONENT_USER_SETTING";
 const GET_GAMES_REQUEST = "GET_GAMES_REQUEST";
 const GET_GAMES_RECEIVED = "GET_GAMES_RECEIVED";
-const GET_USERS_GAMES_REQUEST = "GET_USERS_GAMES_REQUEST";
-const GET_USERS_GAMES_RECEIVED = "GET_USERS_GAMES_RECEIVED";
 const GET_SEARCH_USER_RECEIVED = "GET_SEARCH_USER_RECEIVED";
 const GET_SEARCH_USER_REQUEST = "GET_SEARCH_USER_REQUEST";
 const GET_RECENTLY_GAMES_REQUEST = "GET_RECENTLY_GAMES_REQUEST";
@@ -51,26 +49,12 @@ export function getGamesRequest() {
   };
 }
 
-export function getGamesReceived(gameId) {
+export function getGamesReceived(json) {
   return {
     type: GET_GAMES_RECEIVED,
-    gameId
-  };
-}
-
-export function getUsersGamesRequest() {
-  return {
-    type: GET_USERS_GAMES_REQUEST
-  };
-}
-
-export function getUsersGamesReceived(json) {
-  return {
-    type: GET_USERS_GAMES_RECEIVED,
     json
   };
 }
-
 export function getPositionsCountsRequest() {
   return {
     type: GET_POSITIONS_COUNTS_REQUEST

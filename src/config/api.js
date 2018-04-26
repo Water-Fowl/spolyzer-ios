@@ -38,7 +38,7 @@ export function gameCountEndpointGenerator(params) {
   return endpoint;
 }
 
-export function usersGamesEndpointGenerator() {
-  var endpoint = USERS_GAMES_ENDPOINT;
+export function gamesEndpointGenerator() {
+  var endpoint = GAMES_ENDPOINT;
   return endpoint;
 }

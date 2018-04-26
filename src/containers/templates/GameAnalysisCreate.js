@@ -11,18 +11,15 @@ import {
 import { connect } from "react-redux";
 import { TopContentBar, TextBox } from "atoms";
 import { Icon, SegmentedControl } from "react-native-ios-kit";
-import {
-  getUsersGamesRequest,
-  getUsersGamesReceived
-} from "../../modules/analysis";
+import { getGamesRequest, getGamesReceived } from "../../modules/analysis";
 import {
   getShotTypeCountsReceived,
   getShotTypeCountsRequest
 } from "../../modules/game";
 import { getApiRequest } from "../../modules/request";
 import {
-  USERS_GAMES_ENDPOINT,
-  usersGamesEndpointGenerator,
+  GAMES_ENDPOINT,
+  gamesEndpointGenerator,
   gameCountEndpointGenerator
 } from "../../config/api";
 import { mapStateToProps } from "utils";
@@ -36,7 +33,7 @@ class GameAnalysisCreate extends React.Component {
     this.state = {
       isPickerVisible: false,
       selectedIndex: 0,
-      analysis: { gameId: { games: [] } }
+      games: []
     };
     this.getUsersGamesEvent();
   }
@@ -46,19 +43,19 @@ class GameAnalysisCreate extends React.Component {
     }
   }
   getUsersGamesEvent() {
-    let endpoint = usersGamesEndpointGenerator();
+    let endpoint = gamesEndpointGenerator();
     this.props
       .dispatch(
         getApiRequest(
           (endpoint = endpoint),
           (params = {}),
           this.props.authentication.header,
-          getUsersGamesRequest,
-          getUsersGamesReceived
+          getGamesRequest,
+          getGamesReceived
         )
       )
       .then(json => {
-        this.setState({ analysis: { gameId: json } });
+        this.setState({ games: json.games });
       });
   }
   setPicker() {
@@ -69,18 +66,18 @@ class GameAnalysisCreate extends React.Component {
   }
   navigationEvent(item) {
     let endpoint = gameCountEndpointGenerator({
-      game_id: item.id
+      game_id: item.game.id
     });
     this.props.dispatch(
       getApiRequest(
-        endpoint = endpoint,
-        params = {},
+        (endpoint = endpoint),
+        (params = {}),
         this.props.authentication.header,
         getShotTypeCountsRequest,
         getShotTypeCountsReceived
       )
     );
-    Actions.GameAnalysisView();
+    Actions.GameAnalysisView({ games: item });
   }
   timeEncode(time) {
     let dt = new Date(Date.parse(time));
@@ -116,7 +113,7 @@ class GameAnalysisCreate extends React.Component {
           /> */}
         </View>
         <FlatList
-          data={this.state.analysis.gameId.games}
+          data={this.state.games.reverse()}
           renderItem={({ item }) => (
             <View style={styles.listConteiner}>
               <TouchableOpacity
@@ -125,9 +122,9 @@ class GameAnalysisCreate extends React.Component {
                 }}
                 style={styles.gameAnalysisViewButton}
               >
-                <Text style={styles.opponentText}>{item.name}</Text>
+                <Text style={styles.opponentText}>{item.game.name}</Text>
                 <Text style={styles.gameCreateTime}>
-                  {this.timeEncode(item.created_at)}
+                  {this.timeEncode(item.game.created_at)}
                 </Text>
                 <Icon
                   name={"ios-arrow-forward"}
