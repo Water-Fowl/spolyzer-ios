@@ -37,8 +37,3 @@ export function gameCountEndpointGenerator(params) {
   endpoint += "/aggregated_scores/";
   return endpoint;
 }
-
-export function gamesEndpointGenerator() {
-  var endpoint = GAMES_ENDPOINT;
-  return endpoint;
-}

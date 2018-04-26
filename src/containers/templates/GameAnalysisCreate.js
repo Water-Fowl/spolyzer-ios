@@ -22,14 +22,12 @@ import {
   gamesEndpointGenerator,
   gameCountEndpointGenerator
 } from "../../config/api";
-import { mapStateToProps } from "utils";
+import { mapStateToProps, timeEncode } from "utils";
 
 class GameAnalysisCreate extends React.Component {
   constructor(props) {
     super(props);
     this.getUsersGamesEvent.bind(this);
-    this.setPicker.bind(this);
-    this.hidePicker.bind(this);
     this.state = {
       isPickerVisible: false,
       selectedIndex: 0,
@@ -43,11 +41,10 @@ class GameAnalysisCreate extends React.Component {
     }
   }
   getUsersGamesEvent() {
-    let endpoint = gamesEndpointGenerator();
     this.props
       .dispatch(
         getApiRequest(
-          (endpoint = endpoint),
+          (endpoint = GAMES_ENDPOINT),
           (params = {}),
           this.props.authentication.header,
           getGamesRequest,
@@ -57,12 +54,6 @@ class GameAnalysisCreate extends React.Component {
       .then(json => {
         this.setState({ games: json.games });
       });
-  }
-  setPicker() {
-    this.setState({ isPickerVisible: true });
-  }
-  hidePicker() {
-    this.setState({ isPickerVisible: false });
   }
   navigationEvent(item) {
     let endpoint = gameCountEndpointGenerator({
@@ -78,21 +69,6 @@ class GameAnalysisCreate extends React.Component {
       )
     );
     Actions.GameAnalysisView({ games: item });
-  }
-  timeEncode(time) {
-    let dt = new Date(Date.parse(time));
-    let year = dt.getFullYear();
-    let month = dt.getMonth() + 1;
-    let date = dt.getDate();
-    let dateT = ["日", "月", "火", "水", "木", "金", "土"];
-    let day = dateT[dt.getDay()];
-    let hours = dt.getHours();
-    if (hours < 10) hours = "0" + hours;
-    let minutes = dt.getMinutes();
-    if (minutes < 10) minutes = "0" + minutes;
-    let seconds = dt.getSeconds();
-    if (seconds < 10) seconds = "0" + seconds;
-    return `${year}/${month}/${date}(${day}) ${hours}:${minutes}:${seconds}`;
   }
   setListData() {
     let listData = [];
@@ -132,7 +108,7 @@ class GameAnalysisCreate extends React.Component {
               >
                 <Text style={styles.opponentText}>{item.game.name}</Text>
                 <Text style={styles.gameCreateTime}>
-                  {this.timeEncode(item.game.created_at)}
+                  {timeEncode(item.game.created_at)}
                 </Text>
                 <Icon
                   name={"ios-arrow-forward"}

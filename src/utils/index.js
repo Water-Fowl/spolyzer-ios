@@ -1,19 +1,12 @@
 /**
  * @providesModule utils
  */
-import { getScoreByPositionAndSide, getScoreCounts }from "./get_score";
+import { getScoreByPositionAndSide, getScoreCounts } from "./get_score";
 import listToQueryParams from "./list_to_query_params";
-import {
-  reshapePositionsCount,
-  reshapeShotTypeCounts
-} from "./reshape_json";
-import {
-  mapStateToProps
-} from "./redux";
-import {
-  errorAlertCallback,
-  errorMessage
-} from "./error";
+import { reshapePositionsCount, reshapeShotTypeCounts } from "./reshape_json";
+import { mapStateToProps } from "./redux";
+import { errorAlertCallback, errorMessage } from "./error";
+import { timeEncode } from "./time_encode";
 export {
   reshapeShotTypeCounts,
   reshapePositionsCount,
@@ -22,5 +15,6 @@ export {
   listToQueryParams,
   mapStateToProps,
   errorAlertCallback,
-  errorMessage
+  errorMessage,
+  timeEncode
 };
