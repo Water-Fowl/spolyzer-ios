@@ -52,6 +52,9 @@ class GameAnalysisCreate extends React.Component {
         )
       )
       .then(json => {
+        console.log("====================================");
+        console.log(json);
+        console.log("====================================");
         this.setState({ games: json.games });
       });
   }
@@ -77,6 +80,20 @@ class GameAnalysisCreate extends React.Component {
         listData.push(game);
     }
     return listData;
+  }
+  setOpponentUsers(left_users, right_users) {
+    let opponentUsers = { left: [], right: [], side: null };
+    for (let index = 0; index < left_users.length; index++) {
+      opponentUsers.left.push(left_users[index].name);
+      opponentUsers.right.push(right_users[index].name);
+      if (left_users[index].name === this.props.profile.userName)
+        opponentUsers.side = 0;
+      if (right_users[index].name === this.props.profile.userName)
+        opponentUsers.side = 1;
+    }
+    return opponentUsers.side
+      ? opponentUsers.left.join(" / ")
+      : opponentUsers.right.join(" / ");
   }
   render() {
     return (
@@ -106,7 +123,10 @@ class GameAnalysisCreate extends React.Component {
                 }}
                 style={styles.gameAnalysisViewButton}
               >
-                <Text style={styles.opponentText}>{item.game.name}</Text>
+                <Text style={styles.titleText}>{item.game.name}</Text>
+                <Text style={styles.opponentText}>
+                  VS  {this.setOpponentUsers(item.left_users, item.right_users)}
+                </Text>
                 <Text style={styles.gameCreateTime}>
                   {timeEncode(item.game.created_at)}
                 </Text>
@@ -141,20 +161,29 @@ const styles = StyleSheet.create({
   },
   listConteiner: {
     paddingLeft: 30,
-    paddingBottom: 10,
-    paddingTop: 10,
+    paddingBottom: 4,
+    paddingTop: 6,
     // borderBottomColor: "#2ea7e0",
     borderRadius: 4,
     borderWidth: 1,
     borderTopColor: "#2ea7e0"
   },
+  gameAnalysisViewButton: {
+    justifyContent: "center"
+  },
+  titleText: {
+    color: "white",
+    fontSize: 14
+  },
   opponentText: {
     color: "white",
-    fontSize: 22
+    fontSize: 18,
+    paddingTop: 4,
+    paddingBottom: 4
   },
   gameCreateTime: {
     color: "white",
-    fontSize: 14
+    fontSize: 12
   },
   iconArrow: {
     position: "absolute",
