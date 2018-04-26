@@ -56,40 +56,43 @@ class GameAnalysisView extends React.Component {
   }
 
   renderWinLossText(side) {
+    let scoreCounts = [
+      this.props.games.score_count.left,
+      this.props.games.score_count.right
+    ];
     if (
-      this.props.game.scoreCounts[side] >
-      this.props.game.scoreCounts[Number(!side)]
+      scoreCounts[side] >
+      scoreCounts[Number(!side)]
     ) {
       return <Text style={styles.winLossText}>Win</Text>;
     } else if (
-      this.props.game.scoreCounts[side] <
-      this.props.game.scoreCounts[Number(!side)]
+      scoreCounts[side] <
+      scoreCounts[Number(!side)]
     ) {
       return <Text style={styles.winLossText}>Loss</Text>;
     } else {
       return <Text style={styles.winLossText}>Draw</Text>;
     }
   }
-
   render() {
     return (
       <ScrollView style={styles.container}>
         <TopContentBar>単分析結果</TopContentBar>
         <View>
           <View style={styles.userNameContainer}>
-            {this.renderUnitUsersName(this.props.game.gameUnits[0].users)}
-            {this.renderUnitUsersName(this.props.game.gameUnits[1].users)}
+            {this.renderUnitUsersName(this.props.games.left_users)}
+            {this.renderUnitUsersName(this.props.games.right_users)}
           </View>
           <View style={styles.gameInformationsContaier}>
             <View style={styles.gameInformationTextContainer}>
               {this.renderWinLossText((side = 0))}
               <Text style={styles.scoreText}>
-                {this.props.game.scoreCounts[0]}
+                {this.props.games.score_count.left}
               </Text>
             </View>
             <View style={styles.gameInformationTextContainer}>
               <Text style={styles.scoreText}>
-                {this.props.game.scoreCounts[1]}
+                {this.props.games.score_count.right}
               </Text>
               {this.renderWinLossText((side = 1))}
             </View>
