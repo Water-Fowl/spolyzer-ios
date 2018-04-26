@@ -70,7 +70,7 @@ class DashboardTop extends React.Component {
           </ScrollView>
         </View>
         <View style={styles.navigateButtonContainer}>
-          <NavigateButton style={styles.navigateButton} action={() => {Actions.DashboardCreate();}} text="作成" />
+          <NavigateButton style={styles.navigateButton} action={() => {Actions.DashboardCreate();}} text="新規作成" />
         </View>
       </View>
     );
@@ -97,12 +97,12 @@ const styles = StyleSheet.create({
   },
   compareText: {
     color: "white",
-    fontSize: 14,
+    fontSize: 12,
     fontWeight: "bold"
   },
   achivementText: {
     color: "white",
-    fontSize: 14,
+    fontSize: 12,
     fontWeight: "bold",
     textAlign: "center"
   },
