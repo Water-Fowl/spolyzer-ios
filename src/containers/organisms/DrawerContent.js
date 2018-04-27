@@ -66,6 +66,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
     borderBottomColor: "#2EA7E0",
     borderWidth: 3,
+    marginTop: 20,
     flexDirection: "row"
   },
   userName: {

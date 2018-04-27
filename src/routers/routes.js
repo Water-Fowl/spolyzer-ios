@@ -33,7 +33,6 @@ import {
   getShotTypesRequest,
   setSport
 } from "../modules/sport";
-
 import {
   getValidTokenRequest,
   getValidTokenReceived,
@@ -134,7 +133,6 @@ class Route extends React.Component {
         loading: false
       });
     } catch (error) {
-      console.log(error);
       this.networkError();
     }
   }
@@ -174,6 +172,8 @@ class Route extends React.Component {
             drawerCloseRoute="DrawerClose"
             drawerToggleRoute="DrawerToggle"
             initial={this.state.isValidToken}
+            name={this.props.userName}
+            imageSource={this.props.userImageSource}
             gesturesEnabled={false}
           >
             <Scene
@@ -268,7 +268,9 @@ function mapStateToProps(state, props) {
   return {
     header: state.authentication.header || {},
     isValidToken: state.authentication.isValidToken,
-    errorMsg: state.authentication.errorMsg
+    errorMsg: state.authentication.errorMsg,
+    userName: state.profile.userName,
+    userImageSource: state.profile.userImageSource
   };
 }
 
