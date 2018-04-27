@@ -10,14 +10,8 @@ import {
   TouchableHighlight,
   View
 } from "react-native";
-import {
-  Graph,
-  Field
-} from "organisms";
-import {
-  ProfileImage,
-  TopContentBar
-} from "atoms";
+import { Graph, Field } from "organisms";
+import { ProfileImage, TopContentBar } from "atoms";
 import {
   VictoryAxis,
   VictoryBar,
@@ -39,57 +33,60 @@ const RIGHT = 1;
 const TERM_LIST = ["Day", "Week", "Month"];
 
 class AnalysisView extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
+    let selectedPositionsCount = reshapePositionsCount(this.props.analysis.positionCounts, 0, 1, 6);
     this.state = {
       /* Out = 0, In = 1 */
       /* Left = 0, Right = 1 */
       onPressOut: OUT,
       onPressSide: LEFT,
-      selectedPositionsCount: []
+      selectedPositionsCount
     };
     this.setPositionEvent = this.setPositionEvent.bind(this);
     this._renderFieldButtonText = this._renderFieldButtonText.bind(this);
   }
 
   setPositionEvent(position, side) {
-    if(position < 7){
+    if (position < 7) {
       min = OUT_MIN_POSITION;
       max = OUT_MAX_POSITION;
       field = OUT;
-    }
-    else {
+    } else {
       min = IN_MIN_POSITION;
       max = IN_MAX_POSITION;
       field = IN;
     }
-    let selectedPositionsCount = reshapePositionsCount(this.props.analysis.positionCounts, side, min, max);
-    this.setState({ selectedPositionsCount, onPressOut: field, onPressSide: side });
+    let selectedPositionsCount = reshapePositionsCount(
+      this.props.analysis.positionCounts,
+      side,
+      min,
+      max
+    );
+    this.setState({
+      selectedPositionsCount,
+      onPressOut: field,
+      onPressSide: side
+    });
   }
-  _renderFieldButtonText(position, side){
+  _renderFieldButtonText(position, side) {
     /* positionは1から始まるが、indexは0からなので、1を引く */
-    if(position < 7){
+    if (position < 7) {
       positionString = alphabet[position - 1];
       field = OUT;
-    }
-    else {
+    } else {
       positionString = alphabet[position - 6 - 1];
       field = IN;
     }
 
-    if(this.state.onPressSide == side && this.state.onPressOut == field){
-      return(
-        <Text style={styles.droppedIdText}>{positionString}</Text>
-      );
-    }
-    else{
-      return(
-        <View/>
-      );
+    if (this.state.onPressSide == side && this.state.onPressOut == field) {
+      return <Text style={styles.droppedIdText}>{positionString}</Text>;
+    } else {
+      return <View />;
     }
   }
-  renderInField(){
-    return(
+  renderInField() {
+    return (
       <View>
         <View style={styles.outAreaContainer}>
           <TouchableOpacity style={styles.outFieldArea} />
@@ -107,24 +104,21 @@ class AnalysisView extends React.Component {
     );
   }
 
-  _renderOpponentUserNames(users){
+  _renderOpponentUserNames(users) {
     const opponentUserNameComponentList = [];
-    for (let userIdx in users){
-      if( users[userIdx]){
+    for (let userIdx in users) {
+      if (users[userIdx]) {
         opponentUserNameComponentList.push(
           <View style={styles.flexDirectionRow}>
-            <ProfileImage
-              imageSource={users[userIdx].image.url}
-              size={20}
-            />
+            <ProfileImage imageSource={users[userIdx].image.url} size={20} />
             <Text style={styles.opponentName}>{users[userIdx].name}</Text>
           </View>
         );
       }
     }
-    return(
+    return (
       <View style={styles.opponentUserNameContainer}>
-        { opponentUserNameComponentList }
+        {opponentUserNameComponentList}
       </View>
     );
   }
@@ -138,20 +132,31 @@ class AnalysisView extends React.Component {
             <Text style={styles.vsText}>vs</Text>
             <View style={styles.nameOutsideContainer}>
               <View style={styles.nameInsideContainer}>
-                { this._renderOpponentUserNames(this.props.analysis.analysisUsers) }
+                {this._renderOpponentUserNames(
+                  this.props.analysis.analysisUsers
+                )}
               </View>
             </View>
           </View>
           <View style={styles.optionContainer}>
             <View style={styles.optionTextContainer}>
-              <Text style={styles.optionText}>{TERM_LIST[this.props.analysis.term]}</Text>
+              <Text style={styles.optionText}>
+                {TERM_LIST[this.props.analysis.term]}
+              </Text>
             </View>
             <View style={styles.optionTextContainer}>
-              <Text style={styles.optionText}>{this.props.sport.shotTypes[this.props.analysis.shotTypeId]}</Text>
+              <Text style={styles.optionText}>
+                {this.props.sport.shotTypes[this.props.analysis.shotTypeId]}
+              </Text>
             </View>
           </View>
 
-          <Field horizontal callback={this.setPositionEvent} renderInField={this.renderInField} renderInButton={this._renderFieldButtonText}/>
+          <Field
+            horizontal
+            callback={this.setPositionEvent}
+            renderInField={this.renderInField}
+            renderInButton={this._renderFieldButtonText}
+          />
           <Graph data={this.state.selectedPositionsCount} />
         </ScrollView>
       </View>
@@ -172,9 +177,8 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     marginTop: 16,
     backgroundColor: "transparent"
-
   },
-  droppedIdText:{
+  droppedIdText: {
     fontSize: 15,
     color: "white",
     backgroundColor: "transparent",
@@ -273,7 +277,7 @@ const styles = StyleSheet.create({
     paddingRight: 10
   },
   blankArea: {
-    flex: 0.40,
+    flex: 0.4,
     alignSelf: "center",
     backgroundColor: "black",
     height: 138,

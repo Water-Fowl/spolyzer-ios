@@ -52,9 +52,6 @@ class GameAnalysisCreate extends React.Component {
         )
       )
       .then(json => {
-        console.log("====================================");
-        console.log(json);
-        console.log("====================================");
         this.setState({ games: json.games });
       });
   }
