@@ -10,9 +10,7 @@ import { setUserIndex, setGameType } from "../../modules/analysis";
 
 import {
   GameTypeButtonList,
-  TermButtonList,
-  ShotTypeButtonList,
-  GameResultButtonList
+  ShotTypeButtonList
 } from "organisms";
 import {
   SelectedUserName,
@@ -116,14 +114,6 @@ class AnalysisCreate extends React.Component {
           <ShotTypeButtonList />
         </View>
         <View style={styles.rowContainer}>
-          <Text style={styles.termText}>期間</Text>
-          <TermButtonList />
-        </View>
-        <View style={styles.rowContainer}>
-          <Text style={styles.termText}>勝敗</Text>
-          <GameResultButtonList />
-        </View>
-        <View style={styles.rowContainer}>
           <Text style={styles.opponentText}>対戦相手</Text>
           <TouchableOpacity
             onPress={() => {
@@ -174,15 +164,6 @@ const styles = StyleSheet.create({
     color: "#ffffff",
     fontSize: 15,
     marginTop: 68,
-    marginLeft: 40,
-    backgroundColor: "transparent",
-    fontWeight: "bold",
-    alignSelf: "flex-start"
-  },
-  termText: {
-    color: "#ffffff",
-    fontSize: 15,
-    marginTop: 30,
     marginLeft: 40,
     backgroundColor: "transparent",
     fontWeight: "bold",
