@@ -139,7 +139,7 @@ class ScoreCreate extends React.Component {
         <TopContentBar>スコアシート</TopContentBar>
         <View style={styles.scoreInformationBar}>
           <View style={styles.scoreInformationContainer}>
-            { this.renderUnitUsersName(this.props.game.gameUnits[0].users) }
+            { this.renderUnitUsersName(this.props.game.gameUnits.left.users) }
             <View style={styles.scoreInformationPointContainer}>
               <Text style={styles.scoreInformationPoint}>{this.props.game.scoreCounts[0]}</Text>
             </View>
@@ -153,7 +153,7 @@ class ScoreCreate extends React.Component {
             <View style={styles.scoreInformationPointContainer}>
               <Text style={styles.scoreInformationPoint}>{this.props.game.scoreCounts[1]}</Text>
             </View>
-            { this.renderUnitUsersName(this.props.game.gameUnits[1].users) }
+            { this.renderUnitUsersName(this.props.game.gameUnits.right.users) }
           </View>
         </View>
         <TouchableHighlight onPress={() => {this.navigationEvent(this.props.game.gameUnits, this.props.game.scores);}} style={styles.analysisNavigate}>

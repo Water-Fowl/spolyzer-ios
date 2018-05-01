@@ -75,11 +75,12 @@ class GameCreate extends React.Component {
       );
     }
   }
+
   navigateScoreCreate(){
-    if (this.props.game.gameUnits[0].count != this.props.game.gameUnits[1].count){
+    if (this.props.game.gameUnits.left.count != this.props.game.gameUnits.right.count){
       return Alert.alert("エラー", "対戦人数を合わせてください。", [{ text: "了解"}], { cancelable: false });
     }
-    else if (this.props.game.gameUnits[0].count == 0)
+    else if (this.props.game.gameUnits.left.count == 0)
     {
       return Alert.alert("エラー", "ユーザーを選択してください。", [{ text: "了解"}], { cancelable: false });
     }
@@ -98,8 +99,8 @@ class GameCreate extends React.Component {
               <Text style={styles.scoreGameCreateOpponents}>対戦相手選択</Text>
               <View style={styles.gameSettingTableInner}>
                 <View style={styles.gameSettingTableInnerLeft}>
-                  { this.renderUserIcon(0, 0) }
-                  { this.renderUserIcon(0, 1) }
+                  { this.renderUserIcon("left", 0) }
+                  { this.renderUserIcon("left", 1) }
                 </View>
                 <View style={styles.gameSettingTableInnerCenter}>
                   <Image
@@ -108,8 +109,8 @@ class GameCreate extends React.Component {
                   />
                 </View>
                 <View style={styles.gameSettingInnerRight} >
-                  { this.renderUserIcon(1, 0) }
-                  { this.renderUserIcon(1, 1) }
+                  { this.renderUserIcon("right", 0) }
+                  { this.renderUserIcon("right", 1) }
                 </View>
               </View>
             </View>
