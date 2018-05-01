@@ -141,11 +141,6 @@ class AnalysisView extends React.Component {
           <View style={styles.optionContainer}>
             <View style={styles.optionTextContainer}>
               <Text style={styles.optionText}>
-                {TERM_LIST[this.props.analysis.term]}
-              </Text>
-            </View>
-            <View style={styles.optionTextContainer}>
-              <Text style={styles.optionText}>
                 {this.props.sport.shotTypes[this.props.analysis.shotTypeId]}
               </Text>
             </View>
