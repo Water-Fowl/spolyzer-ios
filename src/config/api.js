@@ -12,19 +12,15 @@ export const RECENTLY_GAMES_ENDPOINT = `${SCHEME}/games/recently`;
 export const POSITIONS_COUNTS_ENDPOINT = `${SCHEME}/positions/counts`;
 export const SCORES_ENDPOINT = `${SCHEME}/scores/`;
 export const SHOT_TYPE_COUNTS_ENDPOINT = `${SCHEME}/shot_types/counts`;
-export const SHOT_TYPES_ENDPOINT = `${SCHEME}/shot_types`;
+export const SHOT_TYPES_ENDPOINT = `${SCHEME}/shot_types/`;
 export const AGGREGATED_SCORES_ENDPOINT = `${SCHEME}/aggregated_scores/`;
 export const VALIDATE_TOKEN_ENDPOINT = `${SCHEME}/auth/validate_token/`;
 export const CONFIRMATION_ENDPOINT = `${SCHEME}/api/v1/auth/confirmation/`;
 
 export function analysisEndpointGenerator(params) {
-  var endpoint = AGGREGATED_SCORES_ENDPOINT;
-  endpoint += "shot_types/";
+  var endpoint = SHOT_TYPES_ENDPOINT;
   endpoint += params.shot_type_id;
-  if (params.ids.length > 0) {
-    endpoint += `/opponent_users/${params.ids}`;
-  }
-  console.log(endpoint);
+  endpoint += "/aggregated_scores/";
   return endpoint;
 }
 
