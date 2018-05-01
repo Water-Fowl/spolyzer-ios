@@ -72,7 +72,7 @@ class GameAnalysisCreate extends React.Component {
   }
   setListData() {
     let listData = [];
-    for (let game of this.state.games.reverse()) {
+    for (let game of this.state.games.slice().reverse()) {
       if (game.left_users.length === this.state.selectedIndex + 1)
         listData.push(game);
     }
@@ -122,7 +122,7 @@ class GameAnalysisCreate extends React.Component {
               >
                 <Text style={styles.titleText}>{item.game.name}</Text>
                 <Text style={styles.opponentText}>
-                  VS  {this.setOpponentUsers(item.left_users, item.right_users)}
+                  VS {this.setOpponentUsers(item.left_users, item.right_users)}
                 </Text>
                 <Text style={styles.gameCreateTime}>
                   {timeEncode(item.game.created_at)}
