@@ -1,5 +1,5 @@
 import React from "react";
-import baseEnhancer from "enhances";
+import templateEnhancer from "./hoc";
 import { Actions } from "react-native-router-flux";
 import {
   StyleSheet,
@@ -114,7 +114,7 @@ class AnalysisCreate extends React.Component {
     );
   }
 }
-export default connect(mapStateToProps)(baseEnhancer(AnalysisCreate));
+export default connect(mapStateToProps)(templateEnhancer(AnalysisCreate));
 
 const styles = StyleSheet.create({
   container: {

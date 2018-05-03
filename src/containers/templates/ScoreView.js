@@ -1,5 +1,5 @@
 import React from "react";
-import baseEnhancer from "enhances";
+import templateEnhancer from "./hoc";
 import { ActionConst, Actions } from "react-native-router-flux";
 import {
   Image,
@@ -115,7 +115,7 @@ class ScoreView extends React.Component {
   }
 }
 
-export default connect(mapStateToProps)(baseEnhancer(ScoreView));
+export default connect(mapStateToProps)(templateEnhancer(ScoreView));
 
 const styles = StyleSheet.create({
   container: {
