@@ -48,14 +48,14 @@ class AnalysisCreate extends React.Component {
   }
   getPositionsCountsEvent() {
     let params = {
-      ids: this.props.analysis.analysisUsersIds,
+      ids: userIds,
       shot_type_id: this.props.analysis.shotTypeId
     };
 
     let endpoint = analysisEndpointGenerator(params);
     this.props.dispatch(getApiRequest(
       endpoint=endpoint,
-      params={game_user_count: this.props.analysis.gameUserCount},
+      params={opponent_users_ids: this.props.analysis.analysisUsersIds, game_user_count: this.props.analysis.gameUserCount},
       this.props.authentication.header,
       getPositionsCountsRequest,
       getPositionsCountsReceived

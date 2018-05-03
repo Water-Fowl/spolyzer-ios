@@ -84,8 +84,8 @@ class ScoreView extends React.Component {
         <TopContentBar>単分析結果</TopContentBar>
         <View>
           <View style={styles.userNameContainer}>
-            { this.renderUnitUsersName(this.props.game.gameUnits[0].users) }
-            { this.renderUnitUsersName(this.props.game.gameUnits[1].users) }
+            { this.renderUnitUsersName(this.props.game.gameUnits.left.users) }
+            { this.renderUnitUsersName(this.props.game.gameUnits.right.users) }
           </View>
           <View style={styles.gameInformationsContaier}>
             <View style={styles.gameInformationTextContainer}>
