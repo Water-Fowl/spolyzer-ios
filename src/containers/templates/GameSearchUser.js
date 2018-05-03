@@ -1,11 +1,7 @@
 import React from "react";
 import templateEnhancer from "./hoc";
-import {
-  ActionConst, Actions, TouchableOpacity
-} from "react-native-router-flux";
-import {
-  Background, NavBar, NavigateButton, TopContentBar, TextBox
-} from "atoms";
+import { ActionConst, Actions, TouchableOpacity } from "react-native-router-flux";
+import { Background, NavBar, NavigateButton, TopContentBar, TextBox } from "atoms";
 import { UserList } from "organisms";
 import { Image, StyleSheet, Text, TextInput, View } from "react-native";
 import { connect } from "react-redux";
