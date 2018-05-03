@@ -1,24 +1,16 @@
 import React from "react";
 import templateEnhancer from "./hoc";
 import { Actions } from "react-native-router-flux";
-import {
-  StyleSheet, Text, TouchableOpacity, View
-} from "react-native";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { connect } from "react-redux";
 
-import {
-  GameTypeButtonList, TermButtonList, ShotTypeButtonList
-} from "organisms";
-import {
-  SelectedUserName, NavigateButton, TopContentBar
-} from "atoms";
-import { mapStateToProps, listToQueryParams } from "utils";
+import { GameTypeButtonList, TermButtonList, ShotTypeButtonList } from "organisms";
+import { SelectedUserName, NavigateButton, TopContentBar } from "atoms";
 
+import { mapStateToProps, listToQueryParams } from "utils";
 import * as analysisModules from "../../modules/analysis";
 import * as requestModules from "../../modules/request";
-import {
-  POSITIONS_COUNTS_ENDPOINT, analysisEndpointGenerator
-} from "../../config/api";
+import { POSITIONS_COUNTS_ENDPOINT, analysisEndpointGenerator } from "../../config/api";
 
 class AnalysisCreate extends React.Component {
   constructor(props) {
@@ -35,7 +27,7 @@ class AnalysisCreate extends React.Component {
     };
 
     let endpoint = analysisEndpointGenerator(params);
-    this.props.dispatch(getApiRequest(
+    this.props.dispatch(requestModules.getApiRequest(
       endpoint=endpoint,
       params={opponent_users_ids: this.props.analysis.analysisUsersIds, game_user_count: this.props.analysis.gameUserCount},
       this.props.authentication.header,

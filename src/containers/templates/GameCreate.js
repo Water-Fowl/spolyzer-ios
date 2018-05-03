@@ -12,14 +12,12 @@ import { ProfileImage, Background, NavBar, NavigateButton, TopBar, TopContentBar
 
 import { mapStateToProps } from "utils";
 import * as sportModules from "../../modules/sport";
-import * as gameModules from "../../modules/sport";
+import * as gameModules from "../../modules/game";
 
 class GameCreate extends React.Component {
-  componentDidMount(){
-    SplashScreen.hide();
-  }
+
   setUserIndexEvent(selectedUnitIndex, selectedUserIndex){
-    this.props.dispatch(sportModules.setUserIndex(selectedUnitIndex, selectedUserIndex));
+    this.props.dispatch(gameModules.setUserIndex(selectedUnitIndex, selectedUserIndex));
     Actions.gameSearchUser();
     this.navigateScoreCreate = this.navigateScoreCreate.bind(this);
   }
