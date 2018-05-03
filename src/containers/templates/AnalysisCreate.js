@@ -48,10 +48,7 @@ class AnalysisCreate extends React.Component {
   }
   getPositionsCountsEvent() {
     let params = {
-<<<<<<< HEAD
-=======
       ids: userIds,
->>>>>>> ecbbdf7... [fix] eslint fix
       shot_type_id: this.props.analysis.shotTypeId
     };
 
