@@ -3,37 +3,23 @@ import React from "react";
 import templateEnhancer from "./hoc";
 import { Actions } from "react-native-router-flux";
 import {
-  ProfileImage,
-  Background,
-  NavBar,
-  NavigateButton,
-  TopBar,
-  TopContentBar
-} from "atoms";
-
-import {
-  Alert,
-  Dimensions,
-  Image,
-  StyleSheet,
-  Text,
-  TouchableHighlight,
-  TouchableOpacity,
-  View
+  Alert, Dimensions, Image, StyleSheet, Text,
+  TouchableHighlight, TouchableOpacity, View
 } from "react-native";
 import { connect } from "react-redux";
 
-import { getShotTypes } from "../../modules/sport";
-import { setUserIndex } from "../../modules/game";
+import { ProfileImage, Background, NavBar, NavigateButton, TopBar, TopContentBar } from "atoms";
+
 import { mapStateToProps } from "utils";
-import SplashScreen from "react-native-splash-screen";
+import * as sportModules from "../../modules/sport";
+import * as gameModules from "../../modules/sport";
 
 class GameCreate extends React.Component {
   componentDidMount(){
     SplashScreen.hide();
   }
   setUserIndexEvent(selectedUnitIndex, selectedUserIndex){
-    this.props.dispatch(setUserIndex(selectedUnitIndex, selectedUserIndex));
+    this.props.dispatch(sportModules.setUserIndex(selectedUnitIndex, selectedUserIndex));
     Actions.gameSearchUser();
     this.navigateScoreCreate = this.navigateScoreCreate.bind(this);
   }

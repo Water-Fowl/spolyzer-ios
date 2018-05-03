@@ -1,41 +1,19 @@
 import React from "react";
 import templateEnhancer from "./hoc";
-import {
-  ActionConst,
-  Actions
-} from "react-native-router-flux";
-import {
-  Image,
-  StyleSheet,
-  Text,
-  TextInput,
-  View
-} from "react-native";
+import { ActionConst, Actions } from "react-native-router-flux";
+import { Image, StyleSheet, Text, TextInput, View } from "react-native";
 import { connect } from "react-redux";
 
-import {
-  getSearchUserRequest,
-  getSearchUserReceived,
-  setUser,
-  removeUser
-} from "../../modules/analysis";
-import {
-  getApiRequest
-} from "../../modules/request";
+import { Background, NavBar, NavigateButton, TopContentBar, TextBox } from "atoms";
+import { UserList } from "organisms";
+
+import { mapStateToProps } from "utils";
+import * as analysisModules from "../../modules/analysis";
+import * as requestModules from "../../modules/request";
+
 import {
   SEARCH_USER_ENDPOINT
 } from "../../config/api";
-import {
-  Background,
-  NavBar,
-  NavigateButton,
-  TopContentBar,
-  TextBox
-} from "atoms";
-import { UserList } from "organisms";
-import {
-  mapStateToProps
-} from "utils";
 
 class AnalysisSearchUser extends React.Component {
   constructor(props){
@@ -55,17 +33,25 @@ class AnalysisSearchUser extends React.Component {
       name: name
     };
     if (name != ""){
-      this.props.dispatch(getApiRequest(SEARCH_USER_ENDPOINT, params, this.props.authentication.header, getSearchUserRequest, getSearchUserReceived));
+      this.props.dispatch(requestModules.getApiRequest(
+        SEARCH_USER_ENDPOINT,
+        params,
+        this.props.authentication.header,
+        analysisModules.getSearchUserRequest,
+        analysisModules.getSearchUserReceived));
       this.setState({ users: this.props.analysis.users });
     }
     this.setState({ users: [] });
   }
   setUser(selectedIndex){
-    this.props.dispatch(setUser(this.props.analysis.selectedUserIndex, this.props.analysis.users[selectedIndex].user));
+    this.props.dispatch(analysisModules.setUser(
+      this.props.analysis.selectedUserIndex,
+      this.props.analysis.users[selectedIndex].user
+    ));
     Actions.popTo("analysisCreate");
   }
   removeUser(){
-    this.props.dispatch(removeUser());
+    this.props.dispatch(analysisModules.removeUser());
     Actions.popTo("analysisCreate");
   }
   render() {

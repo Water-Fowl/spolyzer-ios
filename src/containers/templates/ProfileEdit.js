@@ -1,36 +1,18 @@
 import ImagePicker from "react-native-image-crop-picker";
 import React from "react";
 import templateEnhancer from "./hoc";
+import { ActionConst, Actions } from "react-native-router-flux";
 import {
-  ActionConst,
-  Actions
-} from "react-native-router-flux";
-import {
-  Alert,
-  Image,
-  Picker,
-  StyleSheet,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View
+  Alert, Image, Picker, StyleSheet, Text,
+  TextInput, TouchableOpacity, View
 } from "react-native";
-import {
-  NavigateButton,
-  TopContentBar,
-  ProfileImage
-} from "atoms";
+import { NavigateButton, TopContentBar, ProfileImage } from "atoms";
 import { SexPicker } from "molecules";
 import { connect } from "react-redux";
 import { emailReg } from "const";
+import * as profileModules from "../../modules/profile";
+import * as requestModules from "../../modules/request";
 
-import {
-  patchUserReceived,
-  patchUserRequest
-} from "../../modules/profile";
-import {
-  patchApiRequest
-} from "../../modules/request";
 import {
   USERS_ENDPOINT
 } from "../../config/api";
@@ -94,12 +76,12 @@ class ProfileEdit extends React.Component {
     if(this.state.imageData){
       body["image"] = this.state.imageData;
     }
-    this.props.dispatch(patchApiRequest(
+    this.props.dispatch(requestModules.patchApiRequest(
       USERS_ENDPOINT + this.props.authentication.userId,
       body,
       this.props.authentication.header,
-      patchUserRequest,
-      patchUserReceived
+      profileModules.patchUserRequest,
+      profileModules.patchUserReceived
     )).then(() => {
       Actions.pop();
     });

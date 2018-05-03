@@ -2,24 +2,15 @@ import React from "react";
 import templateEnhancer from "./hoc";
 import { ActionConst, Actions } from "react-native-router-flux";
 import {
-  Image,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  TouchableHighlight,
-  View
+  Image, ScrollView, StyleSheet, Text,
+  TouchableOpacity, TouchableHighlight, View
 } from "react-native";
+import { VictoryAxis, VictoryBar, VictoryChart, VictoryTheme } from "victory-native";
+import { connect } from "react-redux";
+
 import { Graph, Field } from "organisms";
 import { ProfileImage, TopContentBar } from "atoms";
-import {
-  VictoryAxis,
-  VictoryBar,
-  VictoryChart,
-  VictoryTheme
-} from "victory-native";
-import { connect } from "react-redux";
-import { setPositionsCount } from "../../modules/analysis";
+
 import { mapStateToProps, reshapePositionsCount } from "utils";
 
 const IN_MIN_POSITION = 7;

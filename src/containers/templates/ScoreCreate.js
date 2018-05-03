@@ -1,44 +1,17 @@
 import Orientation from "react-native-orientation";
 import React from "react";
 import { Actions } from "react-native-router-flux";
-import {
-  Alert,
-  BackgroundImage,
-  Dimensions,
-  Image,
-  StyleSheet,
-  Text,
-  TouchableHighlight,
-  TriangleCorner,
-  View
+import { Alert, BackgroundImage, Dimensions, Image, StyleSheet,
+  Text, TouchableHighlight, TriangleCorner, View
 } from "react-native";
-import {
-  LandScapeBackground,
-  TopContentBar
-} from "atoms";
+import { LandScapeBackground, TopContentBar } from "atoms";
 import { ShotTypeModal } from "molecules";
 import { Field } from "organisms";
-import {
-  connect
-} from "react-redux";
-import {
-  postGameRequest,
-  postGameReceived,
-  getShotTypeCountsReceived,
-  getShotTypeCountsRequest,
-  setPositionAndSide,
-  setShotType,
-  removeScore
-} from "../../modules/game";
-import {
-  GAMES_ENDPOINT,
-  SHOT_TYPE_COUNTS_ENDPOINT,
-  gameCountEndpointGenerator
-} from "../../config/api";
-import {
-  postApiRequest,
-  getApiRequest
-} from "../../modules/request";
+import { connect } from "react-redux";
+import * as gameModules from "../../modules/game";
+import * as requestModules from "../../modules/request";
+
+import { GAMES_ENDPOINT, SHOT_TYPE_COUNTS_ENDPOINT, gameCountEndpointGenerator } from "../../config/api";
 import { mapStateToProps } from "utils";
 
 class ScoreCreate extends React.Component {
@@ -69,7 +42,7 @@ class ScoreCreate extends React.Component {
 
   showModal(position, side) {
     this.setState({ modalIsVisible: true });
-    this.props.dispatch(setPositionAndSide(position, side));
+    this.props.dispatch(gameModules.setPositionAndSide(position, side));
   }
 
   hideModal() {
@@ -77,7 +50,7 @@ class ScoreCreate extends React.Component {
   }
 
   setShotType(shotTypeId, isNetMiss) {
-    this.props.dispatch(setShotType(shotTypeId, isNetMiss));
+    this.props.dispatch(gameModules.setShotType(shotTypeId, isNetMiss));
   }
 
   navigationEvent(users, scores){
@@ -92,14 +65,20 @@ class ScoreCreate extends React.Component {
       },
       sport_id: this.props.sport.id
     };
-    this.props.dispatch(postApiRequest(GAMES_ENDPOINT, body, this.props.authentication.header, postGameRequest, postGameReceived)).then((json) => {
+    this.props.dispatch(requestModules.postApiRequest(
+      GAMES_ENDPOINT,
+      body,
+      this.props.authentication.header,
+      gameModules.postGameRequest,
+      gameModules.postGameReceived
+    )).then((json) => {
       let endpoint = gameCountEndpointGenerator({game_id: json.game.id});
-      this.props.dispatch(getApiRequest(
+      this.props.dispatch(requestModules.getApiRequest(
         endpoint=endpoint,
         params={},
         this.props.authentication.header,
-        getShotTypeCountsRequest,
-        getShotTypeCountsReceived
+        gameModules.getShotTypeCountsRequest,
+        gameModules.getShotTypeCountsReceived
       ));
       Actions.scoreView();
     });
@@ -145,7 +124,7 @@ class ScoreCreate extends React.Component {
             </View>
             <Text style={styles.scoreInformationGamePoint}>0</Text>
           </View>
-          <TouchableHighlight onPress={()=> {this.props.dispatch(removeScore());}}>
+          <TouchableHighlight onPress={()=> {this.props.dispatch(gameModules.removeScore());}}>
             <Image style={styles.scoreInformationBack} source={require("../../assets/img/score_create_back.png")} />
           </TouchableHighlight>
           <View style={styles.scoreInformationContainer}>
