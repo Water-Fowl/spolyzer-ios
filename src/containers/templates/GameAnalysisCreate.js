@@ -72,6 +72,7 @@ class GameAnalysisCreate extends React.Component {
   }
   setListData() {
     let listData = [];
+    if (!this.state.games) return listData;
     for (let game of this.state.games.slice().reverse()) {
       if (game.left_users.length === this.state.selectedIndex + 1)
         listData.push(game);
