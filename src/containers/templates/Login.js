@@ -34,7 +34,6 @@ class Login extends React.Component {
   }
 
   componentDidMount(){
-    SplashScreen.hide();
   }
 
   postLoginEvent() {
