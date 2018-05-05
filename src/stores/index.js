@@ -11,12 +11,6 @@ import { analysisReducer } from "../modules/analysis";
 import { gameReducer } from "../modules/game";
 import { sportReducer } from "../modules/sport";
 
-const authenticationConfig = {
-  key: "authentication",
-  storage: AsyncStorage,
-  whitelist: "header"
-};
-
 const loggerMiddleware = createLogger();
 const middleware = [thunkMiddleware, loggerMiddleware];
 const reducers = combineReducers({

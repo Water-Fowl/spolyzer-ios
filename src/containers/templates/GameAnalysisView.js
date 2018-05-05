@@ -1,5 +1,5 @@
 import React from "react";
-import baseEnhancer from "enhances";
+import baseEnhancer from "./hoc";
 import { ActionConst, Actions } from "react-native-router-flux";
 import {
   Image,

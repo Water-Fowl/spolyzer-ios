@@ -1,5 +1,5 @@
 import React from "react";
-import baseEnhancer from "enhances";
+import templateEnhancer from "./hoc";
 import { ActionConst, Actions } from "react-native-router-flux";
 import {
   View,
@@ -143,7 +143,7 @@ class GameAnalysisCreate extends React.Component {
     );
   }
 }
-export default connect(mapStateToProps)(baseEnhancer(GameAnalysisCreate));
+export default connect(mapStateToProps)(templateEnhancer(GameAnalysisCreate));
 
 const styles = StyleSheet.create({
   container: {

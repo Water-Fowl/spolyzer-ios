@@ -1,25 +1,54 @@
 import React from "react";
-import { View, StyleSheet, Text, TouchableOpacity } from "react-native";
-import {
-  GameIcon,
-  MultipleAnalysisIcon,
-  TopContentBar,
-  Background
-} from "atoms";
+import templateEnhancer from "./hoc";
 import { Actions } from "react-native-router-flux";
-import {
-  getPositionsCountsRequest,
-  getPositionsCountsReceived
-} from "../../modules/analysis";
-import { getApiRequest } from "../../modules/request";
-import {
-  POSITIONS_COUNTS_ENDPOINT,
-  analysisEndpointGenerator
-} from "../../config/api";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { connect } from "react-redux";
 
-import { mapStateToProps } from "utils";
+import { GameTypeButtonList, TermButtonList, ShotTypeButtonList } from "organisms";
+import {
+  SelectedUserName,
+  NavigateButton,
+  TopContentBar,
+  GameIcon,
+  MultipleAnalysisIcon
+} from "atoms";
 
-export default class AnalysisCreate extends React.Component {
+import { mapStateToProps, listToQueryParams } from "utils";
+import * as analysisModules from "../../modules/analysis";
+import * as requestModules from "../../modules/request";
+import { POSITIONS_COUNTS_ENDPOINT, analysisEndpointGenerator } from "../../config/api";
+
+class AnalysisCreate extends React.Component {
+  constructor(props) {
+    super(props);
+    this.getPositionsCountsEvent.bind(this);
+    this.state = {
+      isPickerVisible: false
+    };
+  }
+
+  getPositionsCountsEvent() {
+    let params = {
+      shot_type_id: this.props.analysis.shotTypeId
+    };
+
+    let endpoint = analysisEndpointGenerator(params);
+    this.props.dispatch(requestModules.getApiRequest(
+      endpoint=endpoint,
+      params={opponent_users_ids: this.props.analysis.analysisUsersIds, game_user_count: this.props.analysis.gameUserCount},
+      this.props.authentication.header,
+      analysisModules.getPositionsCountsRequest,
+      analysisModules.getPositionsCountsReceived
+    )).then(()=> {
+      Actions.analysisView();
+    });
+  }
+
+  pushAnalysisSearchEvent(selectedUserIndex) {
+    this.props.dispatch(analysisModules.setUserIndex(selectedUserIndex));
+    Actions.analysisSearchUser();
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -48,6 +77,7 @@ export default class AnalysisCreate extends React.Component {
     );
   }
 }
+export default connect(mapStateToProps)(templateEnhancer(AnalysisCreate));
 
 const styles = StyleSheet.create({
   container: {

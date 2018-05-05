@@ -2,35 +2,19 @@ import Orientation from "react-native-orientation";
 import React, { Component } from "react";
 import { Actions } from "react-native-router-flux";
 import {
-  Dimensions,
-  Image,
-  StyleSheet,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View
+  Dimensions, Image, StyleSheet, Text,
+  TextInput, TouchableOpacity, View
 } from "react-native";
 import { connect } from "react-redux";
+
 import { emailReg } from "const";
-import {
-  ErrorText,
-  Background
-} from "atoms";
+import { ErrorText, Background } from "atoms";
 
 import { GET_USER_ENDPOINT } from "../../config/api";
-import {
-  postRegistrationRequest,
-  postRegistrationReceived
-} from "../../modules/authentication";
-import {
-  postApiRequest
-} from "../../modules/request";
-import {
-  errorAlertCallback
-} from "utils";
-import {
-  REGISTRATION_ENDPOINT
-} from "../../config/api";
+import * as authenticationModules from "../../modules/authentication";
+import * as requestModules from "../../modules/request";
+import { errorAlertCallback } from "utils";
+import { REGISTRATION_ENDPOINT } from "../../config/api";
 
 function errorInstanceCallback(json){
   return new Error(json.errors.full_messages);
@@ -60,12 +44,12 @@ class SignUp extends React.Component {
         password: this.state.password,
         password_confirmation: this.state.password_confirmation
       };
-      this.props.dispatch(postApiRequest(
+      this.props.dispatch(requestModules.postApiRequest(
         REGISTRATION_ENDPOINT,
         body,
         headers={},
-        requestCallback=postRegistrationRequest,
-        receivedCallback=postRegistrationReceived,
+        requestCallback=authenticationModules.postRegistrationRequest,
+        receivedCallback=authenticationModules.postRegistrationReceived,
         errorInstanceCallback=errorInstanceCallback,
         errorCallback=errorAlertCallback,
         returnHeader=false

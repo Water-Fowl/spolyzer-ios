@@ -1,5 +1,5 @@
 import React from "react";
-import baseEnhancer from "enhances";
+import baseEnhancer from "./hoc";
 import { Actions, ActionConst } from "react-native-router-flux";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { connect } from "react-redux";
