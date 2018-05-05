@@ -82,7 +82,6 @@ export default connect(mapStateToProps)(templateEnhancer(AnalysisCreate));
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "rgba(6, 6, 25, 1)",
     alignItems: "center"
   },
   buttonContainer: {
