@@ -33,10 +33,6 @@ class Login extends React.Component {
     Orientation.lockToPortrait();
   }
 
-  componentDidMount(){
-    SplashScreen.hide();
-  }
-
   postLoginEvent() {
     var body = {
       name: this.state.name,
