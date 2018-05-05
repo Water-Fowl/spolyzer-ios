@@ -48,11 +48,11 @@ class MultipleAnalysisSearchUser extends React.Component {
       this.props.analysis.selectedUserIndex,
       this.props.analysis.users[selectedIndex].user
     ));
-    Actions.popTo("analysisCreate");
+    Actions.popTo("MultipleAnalysisCreate");
   }
   removeUser(){
     this.props.dispatch(analysisModules.removeUser());
-    Actions.popTo("analysisCreate");
+    Actions.popTo("MultipleAnalysisCreate");
   }
   render() {
     return (
