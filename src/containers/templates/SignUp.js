@@ -12,6 +12,7 @@ import { ErrorText, Background } from "atoms";
 
 import { GET_USER_ENDPOINT } from "../../config/api";
 import * as authenticationModules from "../../modules/authentication";
+import * as requestModules from "../../modules/request";
 import { errorAlertCallback } from "utils";
 import { REGISTRATION_ENDPOINT } from "../../config/api";
 

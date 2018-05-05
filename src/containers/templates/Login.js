@@ -33,9 +33,6 @@ class Login extends React.Component {
     Orientation.lockToPortrait();
   }
 
-  componentDidMount(){
-  }
-
   postLoginEvent() {
     var body = {
       name: this.state.name,
