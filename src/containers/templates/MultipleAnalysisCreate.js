@@ -10,7 +10,9 @@ import { setUserIndex, setGameType } from "../../modules/analysis";
 
 import {
   GameTypeButtonList,
-  ShotTypeButtonList
+  ShotTypeButtonList,
+  TermButtonList,
+  GameResultButtonList
 } from "organisms";
 import {
   SelectedUserName,
@@ -111,7 +113,15 @@ class AnalysisCreate extends React.Component {
         </View>
         <View style={styles.rowContainer}>
           <Text style={styles.shotTypeText}>球種</Text>
-          <ShotTypeButtonList />
+          <ShotTypeButtonList/>
+        </View>
+        <View style = {styles.rowContainer}>
+          <Text style = {styles.termText}>期間</Text>
+          <TermButtonList/>
+        </View>
+        <View style = {styles.rowContainer}>
+          <Text style = {styles.termText}>勝敗</Text>
+          <GameResultButtonList/>
         </View>
         <View style={styles.rowContainer}>
           <Text style={styles.opponentText}>対戦相手</Text>
@@ -164,6 +174,14 @@ const styles = StyleSheet.create({
     color: "#ffffff",
     fontSize: 15,
     marginTop: 68,
+    marginLeft: 40,
+    backgroundColor: "transparent",
+    fontWeight: "bold",
+    alignSelf: "flex-start"
+  },
+  termText: {color: "#ffffff",
+    fontSize: 15,
+    marginTop: 30,
     marginLeft: 40,
     backgroundColor: "transparent",
     fontWeight: "bold",
