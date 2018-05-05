@@ -152,6 +152,7 @@ class Route extends React.Component {
           }}
           navigationBarStyle={styles.navBarStyle}
           backButtonImage={require("../assets/img/left_arrow.png")}
+          gesturesEnabled={false}
         >
           <Scene
             key="login"
@@ -180,6 +181,7 @@ class Route extends React.Component {
               key="profileEdit"
               component={ProfileEdit}
               title="マイデータ編集"
+              hideDrawerButton
             />
             <Tabs
               initial
@@ -187,6 +189,7 @@ class Route extends React.Component {
               labelStyle={styles.label}
               tabBarStyle={styles.tabBarStyle}
               tabStyle={styles.tabStyle}
+              gesturesEnabled={false}
             >
               <Scene
                 key="Score"
@@ -201,6 +204,13 @@ class Route extends React.Component {
                   title="単分析"
                 />
                 <Scene
+                  key="gameSearchUser"
+                  component={GameSearchUser}
+                  title="ユーザー検索"
+                  hideDrawerButton
+                  back
+                />
+                <Scene
                   key="scoreCreate"
                   hideTabBar
                   component={ScoreCreate}
@@ -212,6 +222,7 @@ class Route extends React.Component {
                   hideTabBar
                   component={ScoreView}
                   title="結果"
+                  hideDrawerButton
                 />
               </Scene>
               <Scene
@@ -225,39 +236,44 @@ class Route extends React.Component {
                   component={AnalysisCreate}
                   title="分析"
                 />
+                <Scene
+                  key="GameAnalysisCreate"
+                  component={GameAnalysisCreate}
+                  title="試合一覧"
+                  hideDrawerButton
+                  back
+                />
+                <Scene
+                  key="GameAnalysisView"
+                  component={GameAnalysisView}
+                  title="単分析結果"
+                  hideDrawerButton
+                  back
+                />
+                <Scene
+                  key="MultipleAnalysisCreate"
+                  component={MultipleAnalysisCreate}
+                  title="検索条件"
+                  hideDrawerButton
+                  back
+                />
+                <Scene
+                  key="multipleAnalysisSearchUser"
+                  component={MultipleAnalysisSearchUser}
+                  title="ユーザー検索"
+                  hideDrawerButton
+                  back
+                />
+                <Scene
+                  key="MultipleAnalysisView"
+                  component={MultipleAnalysisView}
+                  title="複合分析結果"
+                  hideDrawerButton
+                  back
+                />
               </Scene>
             </Tabs>
           </Drawer>
-          <Scene
-            key="gameSearchUser"
-            component={GameSearchUser}
-            title="ユーザー検索"
-          />
-          <Scene
-            key="multipleAnalysisSearchUser"
-            component={MultipleAnalysisSearchUser}
-            title="ユーザー検索"
-          />
-          <Scene
-            key="MultipleAnalysisCreate"
-            component={MultipleAnalysisCreate}
-            title="検索条件"
-          />
-          <Scene
-            key="MultipleAnalysisView"
-            component={MultipleAnalysisView}
-            title="複合分析結果"
-          />
-          <Scene
-            key="GameAnalysisCreate"
-            component={GameAnalysisCreate}
-            title="試合一覧"
-          />
-          <Scene
-            key="GameAnalysisView"
-            component={GameAnalysisView}
-            title="単分析結果"
-          />
         </Scene>
       </RouterWithRedux>
     );
