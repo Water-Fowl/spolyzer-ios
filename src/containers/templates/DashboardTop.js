@@ -16,6 +16,9 @@ import {
   NavigateButton
 } from "atoms";
 import {
+  DashboardList
+} from "organisms";
+import {
   $spolyzerDarkBlue
 } from "../../const/color";
 
@@ -41,35 +44,7 @@ class DashboardTop extends React.Component {
             </Text>
           </View>
         </View>
-        <View style={styles.listContainer}>
-          <ScrollView style={styles.list}>
-            <TouchableOpacity style={styles.dashboardCard} onPress={Actions.DashboardView}>
-              <View style={styles.cardMainConteiner}>
-                <View style={styles.cardInformationContainer}>
-                  <Text style={styles.cardDateText}>
-                    4/18
-                  </Text>
-                  <Text style={styles.cardVsText}>
-                    VS 池田吉来・吉川明成
-                  </Text>
-                </View>
-                <View style={styles.cardTitleContainer}>
-                  <Text style={styles.cardTitleText}>
-                    シングルス の試合で エリア C.D の{"\n"} クリア の ミス を 4 回 以下 にしたい
-                  </Text>
-                </View>
-              </View>
-              <View style={styles.cardCompareContainer}>
-                <Image source={require("../../assets/img/compare_up.png")} />
-              </View>
-              <View style={styles.cardAchivementContainer}>
-                <Text style={styles.percentText}>
-                  %
-                </Text>
-              </View>
-            </TouchableOpacity>
-          </ScrollView>
-        </View>
+        <DashboardList/>
         <View style={styles.navigateButtonContainer}>
           <NavigateButton style={styles.navigateButton} action={() => {Actions.DashboardCreate();}} text="新規作成" />
         </View>
@@ -106,66 +81,6 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontWeight: "bold",
     textAlign: "center"
-  },
-  listContainer: {
-    flex: 7,
-    borderTopColor: $spolyzerDarkBlue,
-    borderBottomColor: $spolyzerDarkBlue,
-    borderWidth: 1
-  },
-  dashboardCard:{
-    height: 76,
-    backgroundColor: $spolyzerDarkBlue,
-    flexDirection: "row"
-  },
-  cardMainConteiner: {
-    flex: 8,
-    borderRightColor: "rgba(46,167,224,0.3)",
-    borderRightWidth: 1
-  },
-  cardCompareContainer: {
-    flex: 1,
-    borderRightColor: "rgba(46,167,224,0.3)",
-    borderRightWidth: 1,
-    justifyContent: "center",
-    alignItems: "center"
-  },
-  cardAchivementContainer: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center"
-  },
-  cardInformationContainer: {
-    flex: 1,
-    flexDirection: "row",
-    alignItems: "center"
-  },
-  cardTitleContainer: {
-    flex: 2,
-    justifyContent: "center"
-  },
-  cardDateText: {
-    color: "white",
-    fontWeight: "bold",
-    fontSize: 13,
-    marginLeft: 20
-  },
-  cardVsText: {
-    color: "white",
-    fontWeight: "bold",
-    fontSize: 13,
-    marginLeft: 16
-  },
-  cardTitleText: {
-    color: "white",
-    fontWeight: "bold",
-    fontSize: 16,
-    textAlign: "center"
-  },
-  percentText: {
-    color: "white",
-    fontWeight: "bold",
-    fontSize: 20
   },
   navigateButton: {
     marginTop: "7%"
