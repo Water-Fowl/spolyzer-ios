@@ -13,6 +13,7 @@ import { mapStateToProps } from "utils";
 import {
   RowItem
 } from "react-native-ios-kit";
+import {DashboardCard} from "molecules";
 import {
   $spolyzerBlue,
   $spolyzerDarkBlue,
@@ -37,31 +38,7 @@ class DashboardView extends React.Component {
             </Text>
           </View>
         </View>
-        <View style={styles.dashboardCard}>
-          <View style={styles.cardMainConteiner}>
-            <View style={styles.cardInformationContainer}>
-              <Text style={styles.cardDateText}>
-                4/18
-              </Text>
-              <Text style={styles.cardVsText}>
-                VS 池田吉来・吉川明成
-              </Text>
-            </View>
-            <View style={styles.cardTitleContainer}>
-              <Text style={styles.cardTitleText}>
-                シングルス の試合で エリア C.D の{"\n"} クリア の ミス を 4 回 以下 にしたい
-              </Text>
-            </View>
-          </View>
-          <View style={styles.cardCompareContainer}>
-            <Image source={require("../../assets/img/compare_up.png")} />
-          </View>
-          <View style={styles.cardAchivementContainer}>
-            <Text style={styles.percentText}>
-              %
-            </Text>
-          </View>
-        </View>
+        <DashboardCard date="4/18" vs="VS 池田吉来・吉川明成" title="シングルス の試合で エリア C.D のクリア の ミス を 4 回 以下 にしたい"/>
       </View>
     );
   }
