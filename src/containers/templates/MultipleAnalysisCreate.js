@@ -37,8 +37,6 @@ class AnalysisCreate extends React.Component {
     super(props);
     this.setGameType = this.setGameType.bind(this);
     this.getPositionsCountsEvent.bind(this);
-    this.setPicker.bind(this);
-    this.hidePicker.bind(this);
     this.setSegment.bind(this);
     this.state = {
       isPickerVisible: false,
@@ -79,12 +77,6 @@ class AnalysisCreate extends React.Component {
   pushAnalysisSearchEvent(selectedUserIndex) {
     this.props.dispatch(setUserIndex(selectedUserIndex));
     Actions.multipleAnalysisSearchUser();
-  }
-  setPicker() {
-    this.setState({ isPickerVisible: true });
-  }
-  hidePicker() {
-    this.setState({ isPickerVisible: false });
   }
   setSegment(value, index) {
     this.setState({

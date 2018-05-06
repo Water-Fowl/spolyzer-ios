@@ -2,10 +2,20 @@ import React from "react";
 import templateEnhancer from "./hoc";
 import { ActionConst, Actions } from "react-native-router-flux";
 import {
-  Image, ScrollView, StyleSheet, Text,
-  TouchableOpacity, TouchableHighlight, View
+  Image,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  TouchableHighlight,
+  View
 } from "react-native";
-import { VictoryAxis, VictoryBar, VictoryChart, VictoryTheme } from "victory-native";
+import {
+  VictoryAxis,
+  VictoryBar,
+  VictoryChart,
+  VictoryTheme
+} from "victory-native";
 import { connect } from "react-redux";
 
 import { Graph, Field } from "organisms";
@@ -26,7 +36,12 @@ const TERM_LIST = ["Day", "Week", "Month"];
 class AnalysisView extends React.Component {
   constructor(props) {
     super(props);
-    let selectedPositionsCount = reshapePositionsCount(this.props.analysis.positionCounts, 0, 1, 6);
+    let selectedPositionsCount = reshapePositionsCount(
+      this.props.analysis.positionCounts,
+      0,
+      1,
+      6
+    );
     this.state = {
       /* Out = 0, In = 1 */
       /* Left = 0, Right = 1 */
@@ -130,6 +145,11 @@ class AnalysisView extends React.Component {
             </View>
           </View>
           <View style={styles.optionContainer}>
+            <View style={styles.optionTextContainer}>
+              <Text style={styles.optionText}>
+                {TERM_LIST[this.props.analysis.term]}
+              </Text>
+            </View>
             <View style={styles.optionTextContainer}>
               <Text style={styles.optionText}>
                 {this.props.sport.shotTypes[this.props.analysis.shotTypeId]}
