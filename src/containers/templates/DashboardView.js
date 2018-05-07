@@ -13,6 +13,9 @@ import { mapStateToProps } from "utils";
 import {
   RowItem
 } from "react-native-ios-kit";
+import {
+  NavigateButton
+} from "atoms";
 import {DashboardCard} from "molecules";
 import {
   $spolyzerBlue,
@@ -38,7 +41,16 @@ class DashboardView extends React.Component {
             </Text>
           </View>
         </View>
-        <DashboardCard date="4/18" vs="VS 池田吉来・吉川明成" title="シングルス の試合で エリア C.D のクリア の ミス を 4 回 以下 にしたい"/>
+        <View style={styles.mainContainer}>
+          <DashboardCard date="4/18" vs="VS 池田吉来・吉川明成" title="シングルス の試合で エリア C.D のクリア の ミス を 4 回 以下 にしたい"/>
+          <View style={styles.graghCard}>
+          </View>
+        </View>
+        <View style={styles.gameScoreContainer}>
+        </View>
+        <View style={styles.navigateButtonContainer}>
+          <NavigateButton style={styles.navigateButton} action={() => {Actions.popTo("DashboardTop");}} text="アーカイブ" />
+        </View>
       </View>
     );
   }
@@ -52,7 +64,16 @@ const styles = StyleSheet.create({
   },
   textContainer: {
     flexDirection: "row",
-    backgroundColor: "transparent"
+    backgroundColor: "transparent",
+    flex: 2
+  },
+  mainContainer: {
+  },
+  gameScoreContainer: {
+    flex: 10
+  },
+  navigateButtonContainer: {
+    flex: 4
   },
   compareText: {
     color: "white",
@@ -78,58 +99,13 @@ const styles = StyleSheet.create({
     marginTop: 24,
     alignItems: "center"
   },
-  dashboardCard:{
-    height: 76,
+  graghCard:{
+    height: 110,
     backgroundColor: $spolyzerDarkBlue,
-    flexDirection: "row"
+    borderTopColor: "rgba(46,167,224,0.3)",
+    borderTopWidth: 1
   },
-  cardMainConteiner: {
-    flex: 8,
-    borderRightColor: "rgba(46,167,224,0.3)",
-    borderRightWidth: 1
-  },
-  cardCompareContainer: {
-    flex: 1,
-    borderRightColor: "rgba(46,167,224,0.3)",
-    borderRightWidth: 1,
-    justifyContent: "center",
-    alignItems: "center"
-  },
-  cardAchivementContainer: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center"
-  },
-  cardInformationContainer: {
-    flex: 1,
-    flexDirection: "row",
-    alignItems: "center"
-  },
-  cardTitleContainer: {
-    flex: 2,
-    justifyContent: "center"
-  },
-  cardDateText: {
-    color: "white",
-    fontWeight: "bold",
-    fontSize: 13,
-    marginLeft: 20
-  },
-  cardVsText: {
-    color: "white",
-    fontWeight: "bold",
-    fontSize: 13,
-    marginLeft: 16
-  },
-  cardTitleText: {
-    color: "white",
-    fontWeight: "bold",
-    fontSize: 16,
-    textAlign: "center"
-  },
-  percentText: {
-    color: "white",
-    fontWeight: "bold",
-    fontSize: 20
+  navigateButton: {
+    marginTop: "7%"
   }
 });
