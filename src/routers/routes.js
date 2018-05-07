@@ -136,7 +136,7 @@ class Route extends React.Component{
     }
     return (
       <RouterWithRedux>
-        <Scene key="root" renderTitle={() => { return <AppLogo />; }} navigationBarStyle={styles.navBarStyle}>
+        <Scene key="root" renderTitle={() => { return <AppLogo />; }} navigationBarStyle={styles.navBarStyle} backButtonImage={require("../assets/img/left_arrow.png")}>
           <Scene key="login" component={Login} initial={!this.state.isValidToken}  hideNavBar />
           <Scene key="signUp" component={SignUp} hideNavBar />
           <Scene key="confirmation" component={Confirmation} hideNavBar />
@@ -157,12 +157,8 @@ class Route extends React.Component{
             <Scene key="profileEdit" component={ProfileEdit} title="マイデータ編集"/>
             <Tabs initial key="tab" labelStyle={styles.label} tabBarStyle={styles.tabBarStyle} tabStyle={styles.tabStyle}>
               <Scene key="Dashboard" tabBarLabel="ダッシュボード" icon={() => (<Image style={styles.icon} source={require("../assets/img/tabs_dashboard.png")} />)}>
-                <Modal hideNavBar>
-                  <Scene key="root">
-                    <Scene key="DashboardTop" initial hideNavBar={false} component={DashboardTop} title="ダッシュボード ホーム"/>
-                  </Scene>
-                  <Scene key="DashboardCreate" hideNavBar={false} leftButtonTextStyle={styles.backButton} onLeft={() => {Actions.pop();}} leftTitle="キャンセル" component={DashboardCreate} title="ダッシュボード 目標設定"/>
-                </Modal>
+                <Scene key="DashboardTop" initial component={DashboardTop} title="ダッシュボード ホーム"/>
+                <Scene key="DashboardCreate" leftButtonTextStyle={styles.backButton} onLeft={() => {Actions.pop();}} leftTitle="キャンセル" component={DashboardCreate} title="ダッシュボード 目標設定"/>
                 <Scene key="DashboardView" hideTabBar  back backTitle="戻る"　backButtonTextStyle={styles.backButton} backButtonTintColor={$spolyzerBlue} component={DashboardView} title="ダッシュボード 詳細"/>
                 <Scene key="DashboardCreateSelect"  hideDrawerButton　leftButtonTextStyle={styles.backButton} onLeft={() => {Actions.pop();}} leftTitle="キャンセル" hideNavBar={false} component={DashboardCreateSelect} title=""/>
                 <Scene key="DashboardCreateAreaSelect" hideDrawerButton　leftButtonTextStyle={styles.backButton} onLeft={() => {Actions.pop();}} leftTitle="キャンセル"　hideNavBar={false} component={DashboardCreateAreaSelect} title=""/>
