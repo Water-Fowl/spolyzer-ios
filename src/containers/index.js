@@ -14,7 +14,7 @@ import DashboardTop from "./templates/DashboardTop";
 import DashboardView from "./templates/DashboardView";
 import DashboardCreate from "./templates/DashboardCreate";
 import DashboardCreateSelect from "./templates/DashboardCreateSelect";
-
+import DashboardCreateAreaSelect from "./templates/DashboardCreateAreaSelect";
 
 export {
   /* Componentのexport */
@@ -33,5 +33,6 @@ export {
   DashboardTop,
   DashboardView,
   DashboardCreate,
-  DashboardCreateSelect
+  DashboardCreateSelect,
+  DashboardCreateAreaSelect
 };

@@ -81,7 +81,7 @@ class DashboardCreate extends React.Component {
           />
           <NavigationRow
             title="エリア"
-            onPress={() => {Actions.DashboardCreateSelect();}}
+            onPress={() => {Actions.DashboardCreateAreaSelect();}}
             info="A,B"
             style={styles.navigationRow}
           />
