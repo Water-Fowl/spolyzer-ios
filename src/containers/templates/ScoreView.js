@@ -1,7 +1,14 @@
 import React from "react";
 import templateEnhancer from "./hoc";
 import { ActionConst, Actions } from "react-native-router-flux";
-import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import {
+  Image,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View
+} from "react-native";
 import { connect } from "react-redux";
 
 import { TopContentBar } from "atoms";
@@ -9,7 +16,6 @@ import { Field, Graph } from "organisms";
 
 import { reshapeShotTypeCounts, mapStateToProps } from "utils";
 import * as gameModules from "../../modules/game";
-
 
 class ScoreView extends React.Component {
   constructor(props) {
@@ -22,46 +28,43 @@ class ScoreView extends React.Component {
     };
   }
   setShotTypeCounts(position, side, isNetMiss) {
-    let selectedShotTypeCounts =  this.props.game.shotTypeCounts[side] || {};
+    let selectedShotTypeCounts = this.props.game.shotTypeCounts[side] || {};
     const {
       shotTypeCountsList,
       missShotTypeCountsList,
       shotTypesList
-    } = reshapeShotTypeCounts(selectedShotTypeCounts[position], this.props.sport.shotTypes);
+    } = reshapeShotTypeCounts(
+      selectedShotTypeCounts[position],
+      this.props.sport.shotTypes
+    );
     this.setState({
       data: shotTypeCountsList,
       missData: missShotTypeCountsList
     });
   }
-  renderUnitUsersName(users){
+  renderUnitUsersName(users) {
     const unitUserNameComponentList = [];
-    for (let user of users){
+    for (let user of users) {
       unitUserNameComponentList.push(
-        <Text style={styles.userNameText}> { user.name } </Text>
+        <Text style={styles.userNameText}> {user.name} </Text>
       );
     }
-    return (
-      <View style={styles.gameInformationTextContainer}>
-        { unitUserNameComponentList }
-      </View>
-    );
+    return <View style={styles.userNameBox}>{unitUserNameComponentList}</View>;
   }
 
-  renderWinLossText(side){
-    if( this.props.game.scoreCounts[side] > this.props.game.scoreCounts[Number(!side)]){
-      return(
-        <Text style={styles.winLossText}>Win</Text>
-      );
-    }
-    else if( this.props.game.scoreCounts[side] < this.props.game.scoreCounts[Number(!side)]){
-      return(
-        <Text style={styles.winLossText}>Loss</Text>
-      );
-    }
-    else {
-      return(
-        <Text style={styles.winLossText}>Draw</Text>
-      );
+  renderWinLossText(side) {
+    if (
+      this.props.game.scoreCounts[side] >
+      this.props.game.scoreCounts[Number(!side)]
+    ) {
+      return <Text style={styles.winLossText}>Win</Text>;
+    } else if (
+      this.props.game.scoreCounts[side] <
+      this.props.game.scoreCounts[Number(!side)]
+    ) {
+      return <Text style={styles.winLossText}>Loss</Text>;
+    } else {
+      return <Text style={styles.winLossText}>Draw</Text>;
     }
   }
 
@@ -71,29 +74,41 @@ class ScoreView extends React.Component {
         <TopContentBar>単分析結果</TopContentBar>
         <View>
           <View style={styles.userNameContainer}>
-            { this.renderUnitUsersName(this.props.game.gameUnits.left.users) }
-            { this.renderUnitUsersName(this.props.game.gameUnits.right.users) }
+            {this.renderUnitUsersName(this.props.game.gameUnits.left.users)}
+            {this.renderUnitUsersName(this.props.game.gameUnits.right.users)}
           </View>
           <View style={styles.gameInformationsContaier}>
             <View style={styles.gameInformationTextContainer}>
-              { this.renderWinLossText(side=0) }
-              <Text style={styles.scoreText}>{this.props.game.scoreCounts[0]}</Text>
+              {this.renderWinLossText((side = 0))}
+              <Text style={styles.scoreText}>
+                {this.props.game.scoreCounts[0]}
+              </Text>
             </View>
             <View style={styles.gameInformationTextContainer}>
-              <Text style={styles.scoreText}>{this.props.game.scoreCounts[1]}</Text>
-              { this.renderWinLossText(side=1) }
+              <Text style={styles.scoreText}>
+                {this.props.game.scoreCounts[1]}
+              </Text>
+              {this.renderWinLossText((side = 1))}
             </View>
           </View>
-          <Field horizontal sport={this.props.sport.id} callback={this.setShotTypeCounts} />
-          <Graph data={this.state.data} missData={this.state.missData} shotTypeList={this.state.shotTypeList}/>
+          <Field
+            horizontal
+            sport={this.props.sport.id}
+            callback={this.setShotTypeCounts}
+          />
+          <Graph
+            data={this.state.data}
+            missData={this.state.missData}
+            shotTypeList={this.state.shotTypeList}
+          />
           <View style={styles.backButtonContainer}>
-            <TouchableOpacity onPress={() => {
-              this.props.dispatch(gameModules.resetState());
-              Actions.popTo("gameCreate");
-            }}>
-              <Text style={styles.backButtonText}>
-                保存して終了
-              </Text>
+            <TouchableOpacity
+              onPress={() => {
+                this.props.dispatch(gameModules.resetState());
+                Actions.popTo("gameCreate");
+              }}
+            >
+              <Text style={styles.backButtonText}>保存して終了</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -110,8 +125,14 @@ const styles = StyleSheet.create({
   },
   userNameContainer: {
     flexDirection: "row",
-    justifyContent: "space-between",
-    marginTop: 20
+    paddingTop: 15
+  },
+  userNameBox: {
+    flex: 1,
+    borderBottomColor: "#28a8de",
+    borderBottomWidth: 1,
+    borderBottomLeftRadius: 15,
+    borderBottomRightRadius: 15
   },
   userNameText: {
     color: "white",
@@ -120,12 +141,7 @@ const styles = StyleSheet.create({
     paddingTop: 5,
     paddingBottom: 5,
     fontSize: 15,
-    paddingLeft: 14,
-    paddingRight: 14,
-    backgroundColor: "transparent",
-    borderColor: "#28a8de",
-    borderRadius: 3,
-    borderWidth: 1
+    backgroundColor: "transparent"
   },
   gameInformationsContaier: {
     flexDirection: "row",
