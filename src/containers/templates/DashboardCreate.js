@@ -93,7 +93,7 @@ class DashboardCreate extends React.Component {
           />
         </View>
         <View style={styles.creatingButtonContainer}>
-          <NavigateButton style={styles.navigateButton} action={() => {Actions.DashboardTop();}} text="作成" />
+          <NavigateButton style={styles.navigateButton} action={() => {Actions.popTo("DashboardTop");}} text="作成" />
         </View>
       </View>
     );

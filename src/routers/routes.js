@@ -12,6 +12,7 @@ import {
   Router,
   Scene,
   Tabs,
+  Modal,
   Drawer
 } from "react-native-router-flux";
 import {
@@ -40,6 +41,9 @@ import { getValidTokenRequest, getValidTokenReceived, setToken } from "../module
 import { getUserRequest, getUserReceived } from "../modules/profile";
 import { getApiRequest } from "../modules/request";
 import { USERS_ENDPOINT, SHOT_TYPES_ENDPOINT, VALIDATE_TOKEN_ENDPOINT } from "../config/api";
+import {
+  $spolyzerBlue
+} from "../const/color";
 const RouterWithRedux = connect()(Router);
 const AppLogo = () => {
   return (
@@ -151,10 +155,14 @@ class Route extends React.Component{
             <Scene key="profileEdit" component={ProfileEdit} title="マイデータ編集"/>
             <Tabs initial key="tab" labelStyle={styles.label} tabBarStyle={styles.tabBarStyle} tabStyle={styles.tabStyle}>
               <Scene key="Dashboard" tabBarLabel="ダッシュボード" icon={() => (<Image style={styles.icon} source={require("../assets/img/tabs_dashboard.png")} />)}>
-                <Scene key="DashboardTop" initial component={DashboardTop} title="ダッシュボード ホーム"/>
+                <Modal hideNavBar>
+                  <Scene key="root">
+                    <Scene key="DashboardTop" initial component={DashboardTop} title="ダッシュボード ホーム"/>
+                  </Scene>
+                  <Scene key="DashboardCreate" hideNavBar={false} backTitle="キャンセル"　backButtonTintColor={$spolyzerBlue} back component={DashboardCreate} title="ダッシュボード 目標設定"/>
+                </Modal>
                 <Scene key="DashboardView" component={DashboardView} title="ダッシュボード 詳細"/>
-                <Scene key="DashboardCreate" component={DashboardCreate} title="ダッシュボード 目標設定"/>
-                <Scene key="DashboardCreateSelect" component={DashboardCreateSelect} title=""/>
+                <Scene key="DashboardCreateSelect"  backTitle="キャンセル"　backButtonTintColor={$spolyzerBlue} back component={DashboardCreateSelect} title=""/>
               </Scene>
               <Scene key="Score" initial tabBarLabel="スコアシート" icon={() => (<Image style={styles.icon} source={require("../assets/img/tabs_score.png")} />)}>
                 <Scene key="gameCreate" initial component={GameCreate} title="単分析"/>

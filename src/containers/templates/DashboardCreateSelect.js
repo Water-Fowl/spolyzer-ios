@@ -25,7 +25,7 @@ class DashboardCreateSelect extends React.Component {
       <View style={styles.container}>
         <RowItem
           title="スマッシュ"
-          onPress={() => {Actions.DashboardCreate();}}
+          onPress={() => {Actions.popTo("DashboardCreate");}}
         />
       </View>
     );
