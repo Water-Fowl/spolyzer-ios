@@ -20,11 +20,8 @@ import {
   TopContentBar,
   TextBox
 } from "atoms";
-import {
-  getPositionsCountsRequest,
-  getPositionsCountsReceived
-} from "../../modules/analysis";
-import { getApiRequest } from "../../modules/request";
+import * as analysisModules from "../../modules/analysis";
+import * as requestModules from "../../modules/request";
 import {
   POSITIONS_COUNTS_ENDPOINT,
   analysisEndpointGenerator
@@ -47,27 +44,22 @@ class AnalysisCreate extends React.Component {
     this.props.dispatch(setGameType(gameUserCount));
   }
   getPositionsCountsEvent() {
-    var userIds = [];
-    for (key in this.props.analysis.analysisUsers) {
-      let user = this.props.analysis.analysisUsers[key];
-      if (user) {
-        userIds.push(user.id);
-      }
-    }
     let params = {
-      ids: userIds,
       shot_type_id: this.props.analysis.shotTypeId
     };
 
-    let endpoint = analysisEndpointGenerator(params, !this.state.selectedIndex);
+    let endpoint = analysisEndpointGenerator(params);
     this.props
       .dispatch(
-        getApiRequest(
+        requestModules.getApiRequest(
           (endpoint = endpoint),
-          (params = { game_user_count: this.props.analysis.gameUserCount }),
+          (params = {
+            opponent_users_ids: this.props.analysis.analysisUsersIds,
+            game_user_count: this.props.analysis.gameUserCount
+          }),
           this.props.authentication.header,
-          getPositionsCountsRequest,
-          getPositionsCountsReceived
+          analysisModules.getPositionsCountsRequest,
+          analysisModules.getPositionsCountsReceived
         )
       )
       .then(() => {
@@ -105,15 +97,15 @@ class AnalysisCreate extends React.Component {
         </View>
         <View style={styles.rowContainer}>
           <Text style={styles.shotTypeText}>球種</Text>
-          <ShotTypeButtonList/>
+          <ShotTypeButtonList />
         </View>
-        <View style = {styles.rowContainer}>
-          <Text style = {styles.termText}>期間</Text>
-          <TermButtonList/>
+        <View style={styles.rowContainer}>
+          <Text style={styles.termText}>期間</Text>
+          <TermButtonList />
         </View>
-        <View style = {styles.rowContainer}>
-          <Text style = {styles.termText}>勝敗</Text>
-          <GameResultButtonList/>
+        <View style={styles.rowContainer}>
+          <Text style={styles.termText}>勝敗</Text>
+          <GameResultButtonList />
         </View>
         <View style={styles.rowContainer}>
           <Text style={styles.opponentText}>対戦相手</Text>
@@ -171,7 +163,8 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     alignSelf: "flex-start"
   },
-  termText: {color: "#ffffff",
+  termText: {
+    color: "#ffffff",
     fontSize: 15,
     marginTop: 30,
     marginLeft: 40,
