@@ -1,78 +1,48 @@
 import React from "react";
-import baseEnhancer from "enhances";
+import templateEnhancer from "./hoc";
 import { Actions } from "react-native-router-flux";
-import {
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View
-} from "react-native";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { connect } from "react-redux";
-import { listToQueryParams } from "utils";
 
-import { setUserIndex } from "../../modules/analysis";
+import { GameTypeButtonList, TermButtonList, ShotTypeButtonList } from "organisms";
+import { SelectedUserName, NavigateButton, TopContentBar } from "atoms";
 
-import {
-  GameTypeButtonList,
-  TermButtonList,
-  ShotTypeButtonList
-} from "organisms";
-import {
-  SelectedUserName,
-  NavigateButton,
-  TopContentBar
-} from "atoms";
-import {
-  getPositionsCountsRequest,
-  getPositionsCountsReceived
-} from "../../modules/analysis";
-import {
-  getApiRequest
-} from "../../modules/request";
-import {
-  POSITIONS_COUNTS_ENDPOINT,
-  analysisEndpointGenerator
-} from "../../config/api";
-
-import { mapStateToProps } from "utils";
+import { mapStateToProps, listToQueryParams } from "utils";
+import * as analysisModules from "../../modules/analysis";
+import * as requestModules from "../../modules/request";
+import { POSITIONS_COUNTS_ENDPOINT, analysisEndpointGenerator } from "../../config/api";
 
 class AnalysisCreate extends React.Component {
   constructor(props) {
     super(props);
     this.getPositionsCountsEvent.bind(this);
-    this.setPicker.bind(this);
-    this.hidePicker.bind(this);
     this.state = {
       isPickerVisible: false
     };
   }
+
   getPositionsCountsEvent() {
     let params = {
-      ids: this.props.analysis.analysisUsersIds,
       shot_type_id: this.props.analysis.shotTypeId
     };
 
     let endpoint = analysisEndpointGenerator(params);
-    this.props.dispatch(getApiRequest(
+    this.props.dispatch(requestModules.getApiRequest(
       endpoint=endpoint,
-      params={game_user_count: this.props.analysis.gameUserCount},
+      params={opponent_users_ids: this.props.analysis.analysisUsersIds, game_user_count: this.props.analysis.gameUserCount},
       this.props.authentication.header,
-      getPositionsCountsRequest,
-      getPositionsCountsReceived
+      analysisModules.getPositionsCountsRequest,
+      analysisModules.getPositionsCountsReceived
     )).then(()=> {
       Actions.analysisView();
     });
   }
+
   pushAnalysisSearchEvent(selectedUserIndex) {
-    this.props.dispatch(setUserIndex(selectedUserIndex));
+    this.props.dispatch(analysisModules.setUserIndex(selectedUserIndex));
     Actions.analysisSearchUser();
   }
-  setPicker(){
-    this.setState({isPickerVisible: true});
-  }
-  hidePicker(){
-    this.setState({isPickerVisible: false});
-  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -111,7 +81,7 @@ class AnalysisCreate extends React.Component {
     );
   }
 }
-export default connect(mapStateToProps)(baseEnhancer(AnalysisCreate));
+export default connect(mapStateToProps)(templateEnhancer(AnalysisCreate));
 
 const styles = StyleSheet.create({
   container: {

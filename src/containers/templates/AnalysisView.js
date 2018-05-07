@@ -1,25 +1,16 @@
 import React from "react";
-import baseEnhancer from "enhances";
+import templateEnhancer from "./hoc";
 import { ActionConst, Actions } from "react-native-router-flux";
 import {
-  Image,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  TouchableHighlight,
-  View
+  Image, ScrollView, StyleSheet, Text,
+  TouchableOpacity, TouchableHighlight, View
 } from "react-native";
+import { VictoryAxis, VictoryBar, VictoryChart, VictoryTheme } from "victory-native";
+import { connect } from "react-redux";
+
 import { Graph, Field } from "organisms";
 import { ProfileImage, TopContentBar } from "atoms";
-import {
-  VictoryAxis,
-  VictoryBar,
-  VictoryChart,
-  VictoryTheme
-} from "victory-native";
-import { connect } from "react-redux";
-import { setPositionsCount } from "../../modules/analysis";
+
 import { mapStateToProps, reshapePositionsCount } from "utils";
 
 const IN_MIN_POSITION = 7;
@@ -35,12 +26,13 @@ const TERM_LIST = ["Day", "Week", "Month"];
 class AnalysisView extends React.Component {
   constructor(props) {
     super(props);
+    let selectedPositionsCount = reshapePositionsCount(this.props.analysis.positionCounts, 0, 1, 6);
     this.state = {
       /* Out = 0, In = 1 */
       /* Left = 0, Right = 1 */
       onPressOut: OUT,
       onPressSide: LEFT,
-      selectedPositionsCount: []
+      selectedPositionsCount
     };
     this.setPositionEvent = this.setPositionEvent.bind(this);
     this._renderFieldButtonText = this._renderFieldButtonText.bind(this);
@@ -173,7 +165,7 @@ class AnalysisView extends React.Component {
   }
 }
 
-export default connect(mapStateToProps)(baseEnhancer(AnalysisView));
+export default connect(mapStateToProps)(templateEnhancer(AnalysisView));
 
 const styles = StyleSheet.create({
   container: {

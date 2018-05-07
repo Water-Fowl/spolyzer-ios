@@ -1,13 +1,6 @@
 import React from "react";
-import {
-  View,
-  Text,
-  StyleSheet
-} from "react-native";
-import {
-  Background,
-  NavigateButton
-} from "atoms";
+import { View, Text, StyleSheet } from "react-native";
+import { Background, NavigateButton } from "atoms";
 import { Actions } from "react-native-router-flux";
 
 

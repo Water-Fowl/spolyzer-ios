@@ -2,48 +2,18 @@ import Orientation from "react-native-orientation";
 import React, { Component } from "react";
 import { Actions } from "react-native-router-flux";
 import { Background } from "atoms";
-import {
-  AsyncStorage,
-  Dimensions,
-  Image,
-  StyleSheet,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View
+import { AsyncStorage, Dimensions, Image, StyleSheet,
+  Text, TextInput, TouchableOpacity, View
 } from "react-native";
 import { connect } from "react-redux";
-
-import {
-  postLoginRequest,
-  postLoginReceived
-} from "../../modules/authentication";
-import {
-  getShotTypesRequest,
-  getShotTypesReceived,
-  setSport
-} from "../../modules/sport";
-import {
-  getUserRequest,
-  getUserReceived
-} from "../../modules/profile";
-import {
-  postApiRequest,
-  getApiRequest
-} from "../../modules/request";
-import {
-  SIGN_IN_ENDPOINT,
-  USERS_ENDPOINT,
-  SHOT_TYPES_ENDPOINT
-} from "../../config/api";
-import {
-  mapStateToProps,
-  errorAlertCallback
-} from "utils";
-import SplashScreen from "react-native-splash-screen";
+import * as authenticationModules from "../../modules/authentication";
+import * as sportModules from "../../modules/sport";
+import * as profileModules from "../../modules/profile";
+import * as requestModules from "../../modules/request";
+import { SIGN_IN_ENDPOINT, USERS_ENDPOINT, SHOT_TYPES_ENDPOINT } from "../../config/api";
+import { mapStateToProps, errorAlertCallback } from "utils";
 
 function errorInstanceCallback(json){
-  console.log(json);
   return new Error(json.errors);
 }
 
@@ -63,10 +33,6 @@ class Login extends React.Component {
     Orientation.lockToPortrait();
   }
 
-  componentDidMount(){
-    SplashScreen.hide();
-  }
-
   postLoginEvent() {
     var body = {
       name: this.state.name,
@@ -74,12 +40,12 @@ class Login extends React.Component {
       password: this.state.password
     };
     this.props.dispatch(
-      postApiRequest(
+      requestModules.postApiRequest(
         SIGN_IN_ENDPOINT,
         body,
         headers={},
-        postLoginRequest,
-        postLoginReceived,
+        authenticationModules.postLoginRequest,
+        authenticationModules.postLoginReceived,
         errorInstanceCallback=errorInstanceCallback,
         errorCallback=errorAlertCallback,
         returnHeader=true,
@@ -88,22 +54,22 @@ class Login extends React.Component {
       if(header){
         await AsyncStorage.setItem("header", JSON.stringify(header));
         this.props.dispatch(
-          getApiRequest(
+          requestModules.getApiRequest(
             endpoint=USERS_ENDPOINT,
             params={},
             headers=header,
-            requestCallback=getUserRequest,
-            receivedCallback=getUserReceived
+            requestCallback=profileModules.getUserRequest,
+            receivedCallback=profileModules.getUserReceived
           )
         );
-        this.props.dispatch(setSport(1));
+        this.props.dispatch(sportModules.setSport(1));
         this.props.dispatch(
-          getApiRequest(
+          requestModules.getApiRequest(
             SHOT_TYPES_ENDPOINT,
             params={sport_id: 1},
             header,
-            getShotTypesRequest,
-            getShotTypesReceived
+            sportModules.getShotTypesRequest,
+            sportModules.getShotTypesReceived
           )
         );
         Actions.tab();

@@ -142,11 +142,11 @@ const initialState = {
   scoreCounts: [0, 0],
   users: [],
   gameUnits: {
-    0:{
+    left:{
       users: [],
       count: 0
     },
-    1:{
+    right:{
       users: [],
       count: 0
     },

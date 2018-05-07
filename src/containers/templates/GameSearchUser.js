@@ -1,28 +1,13 @@
 import React from "react";
-import baseEnhancer from "enhances";
-import {
-  ActionConst,
-  Actions,
-  TouchableOpacity
-} from "react-native-router-flux";
-import {
-  Background,
-  NavBar,
-  NavigateButton,
-  TopContentBar,
-  TextBox
-} from "atoms";
+import templateEnhancer from "./hoc";
+import { ActionConst, Actions, TouchableOpacity } from "react-native-router-flux";
+import { Background, NavBar, NavigateButton, TopContentBar, TextBox } from "atoms";
+import { UserList } from "organisms";
 import { Image, StyleSheet, Text, TextInput, View } from "react-native";
 import { connect } from "react-redux";
 import { SEARCH_USER_ENDPOINT } from "../../config/api";
-import {
-  getSearchUserReceived,
-  getSearchUserRequest,
-  setUser,
-  removeUser
-} from "../../modules/game";
+import * as gameModules from "../../modules/game";
 import { getApiRequest } from "../../modules/request";
-import { UserList } from "organisms";
 import { mapStateToProps } from "utils";
 
 class GameSearchUser extends React.Component {
@@ -51,8 +36,8 @@ class GameSearchUser extends React.Component {
           SEARCH_USER_ENDPOINT,
           params,
           this.props.authentication.header,
-          getSearchUserRequest,
-          getSearchUserReceived
+          gameModules.getSearchUserRequest,
+          gameModules.getSearchUserReceived
         )
       );
       this.setState({ users: this.props.game.users });
@@ -62,12 +47,12 @@ class GameSearchUser extends React.Component {
   }
   setUser(selectedSearchUserIndex) {
     this.props.dispatch(
-      setUser(this.props.game.users[selectedSearchUserIndex].user)
+      gameModules.setUser(this.props.game.users[selectedSearchUserIndex].user)
     );
     Actions.gameCreate();
   }
   removeUser() {
-    this.props.dispatch(removeUser());
+    this.props.dispatch(gameModules.removeUser());
     Actions.popTo("gameCreate");
   }
   render() {

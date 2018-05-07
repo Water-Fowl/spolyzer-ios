@@ -1,27 +1,14 @@
 import React from "react";
-import baseEnhancer from "enhances";
+import templateEnhancer from "./hoc";
 import { ActionConst, Actions } from "react-native-router-flux";
-import {
-  Image,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View
-} from "react-native";
-import {
-  TopContentBar
-} from "atoms";
+import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { connect } from "react-redux";
-import {
-  setShotTypeCounts,
-  resetState
-} from "../../modules/game";
+
+import { TopContentBar } from "atoms";
+import { Field, Graph } from "organisms";
+
 import { reshapeShotTypeCounts, mapStateToProps } from "utils";
-import {
-  Field,
-  Graph
-} from "organisms";
+import * as gameModules from "../../modules/game";
 
 
 class ScoreView extends React.Component {
@@ -84,8 +71,8 @@ class ScoreView extends React.Component {
         <TopContentBar>単分析結果</TopContentBar>
         <View>
           <View style={styles.userNameContainer}>
-            { this.renderUnitUsersName(this.props.game.gameUnits[0].users) }
-            { this.renderUnitUsersName(this.props.game.gameUnits[1].users) }
+            { this.renderUnitUsersName(this.props.game.gameUnits.left.users) }
+            { this.renderUnitUsersName(this.props.game.gameUnits.right.users) }
           </View>
           <View style={styles.gameInformationsContaier}>
             <View style={styles.gameInformationTextContainer}>
@@ -101,7 +88,7 @@ class ScoreView extends React.Component {
           <Graph data={this.state.data} missData={this.state.missData} shotTypeList={this.state.shotTypeList}/>
           <View style={styles.backButtonContainer}>
             <TouchableOpacity onPress={() => {
-              this.props.dispatch(resetState());
+              this.props.dispatch(gameModules.resetState());
               Actions.popTo("gameCreate");
             }}>
               <Text style={styles.backButtonText}>
@@ -115,7 +102,7 @@ class ScoreView extends React.Component {
   }
 }
 
-export default connect(mapStateToProps)(baseEnhancer(ScoreView));
+export default connect(mapStateToProps)(templateEnhancer(ScoreView));
 
 const styles = StyleSheet.create({
   container: {

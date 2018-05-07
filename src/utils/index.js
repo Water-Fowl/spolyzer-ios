@@ -2,7 +2,6 @@
  * @providesModule utils
  */
 import { getScoreByPositionAndSide, getScoreCounts }from "./get_score";
-import listToQueryParams from "./list_to_query_params";
 import {
   reshapePositionsCount,
   reshapeShotTypeCounts
@@ -19,7 +18,6 @@ export {
   reshapePositionsCount,
   getScoreByPositionAndSide,
   getScoreCounts,
-  listToQueryParams,
   mapStateToProps,
   errorAlertCallback,
   errorMessage

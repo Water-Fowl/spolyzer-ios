@@ -1,39 +1,23 @@
 import Orientation from "react-native-orientation";
 import React from "react";
-import baseEnhancer from "enhances";
+import templateEnhancer from "./hoc";
 import { Actions } from "react-native-router-flux";
 import {
-  ProfileImage,
-  Background,
-  NavBar,
-  NavigateButton,
-  TopBar,
-  TopContentBar
-} from "atoms";
-
-import {
-  Alert,
-  Dimensions,
-  Image,
-  StyleSheet,
-  Text,
-  TouchableHighlight,
-  TouchableOpacity,
-  View
+  Alert, Dimensions, Image, StyleSheet, Text,
+  TouchableHighlight, TouchableOpacity, View
 } from "react-native";
 import { connect } from "react-redux";
 
-import { getShotTypes } from "../../modules/sport";
-import { setUserIndex } from "../../modules/game";
+import { ProfileImage, Background, NavBar, NavigateButton, TopBar, TopContentBar } from "atoms";
+
 import { mapStateToProps } from "utils";
-import SplashScreen from "react-native-splash-screen";
+import * as sportModules from "../../modules/sport";
+import * as gameModules from "../../modules/game";
 
 class GameCreate extends React.Component {
-  componentDidMount(){
-    SplashScreen.hide();
-  }
+
   setUserIndexEvent(selectedUnitIndex, selectedUserIndex){
-    this.props.dispatch(setUserIndex(selectedUnitIndex, selectedUserIndex));
+    this.props.dispatch(gameModules.setUserIndex(selectedUnitIndex, selectedUserIndex));
     Actions.gameSearchUser();
     this.navigateScoreCreate = this.navigateScoreCreate.bind(this);
   }
@@ -75,11 +59,12 @@ class GameCreate extends React.Component {
       );
     }
   }
+
   navigateScoreCreate(){
-    if (this.props.game.gameUnits[0].count != this.props.game.gameUnits[1].count){
+    if (this.props.game.gameUnits.left.count != this.props.game.gameUnits.right.count){
       return Alert.alert("エラー", "対戦人数を合わせてください。", [{ text: "了解"}], { cancelable: false });
     }
-    else if (this.props.game.gameUnits[0].count == 0)
+    else if (this.props.game.gameUnits.left.count == 0)
     {
       return Alert.alert("エラー", "ユーザーを選択してください。", [{ text: "了解"}], { cancelable: false });
     }
@@ -98,8 +83,8 @@ class GameCreate extends React.Component {
               <Text style={styles.scoreGameCreateOpponents}>対戦相手選択</Text>
               <View style={styles.gameSettingTableInner}>
                 <View style={styles.gameSettingTableInnerLeft}>
-                  { this.renderUserIcon(0, 0) }
-                  { this.renderUserIcon(0, 1) }
+                  { this.renderUserIcon("left", 0) }
+                  { this.renderUserIcon("left", 1) }
                 </View>
                 <View style={styles.gameSettingTableInnerCenter}>
                   <Image
@@ -108,8 +93,8 @@ class GameCreate extends React.Component {
                   />
                 </View>
                 <View style={styles.gameSettingInnerRight} >
-                  { this.renderUserIcon(1, 0) }
-                  { this.renderUserIcon(1, 1) }
+                  { this.renderUserIcon("right", 0) }
+                  { this.renderUserIcon("right", 1) }
                 </View>
               </View>
             </View>
@@ -120,7 +105,7 @@ class GameCreate extends React.Component {
     );
   }
 }
-export default connect(mapStateToProps)(baseEnhancer(GameCreate));
+export default connect(mapStateToProps)(templateEnhancer(GameCreate));
 
 const styles = StyleSheet.create({
   container: {
