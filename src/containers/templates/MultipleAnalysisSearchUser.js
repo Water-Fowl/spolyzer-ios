@@ -83,13 +83,6 @@ class MultipleAnalysisSearchUser extends React.Component {
           users={this.state.users}
           selectedIds={this.props.analysis.analysisUsersIds}
         />
-        <NavigateButton
-          action={() => {
-            Actions.popTo("MultipleAnalysisCreate");
-          }}
-          style={styles.navigateButton}
-          text="戻る"
-        />
       </View>
     );
   }
@@ -121,9 +114,5 @@ const styles = StyleSheet.create({
     color: "#ffffff",
     paddingLeft: 20,
     letterSpacing: 0
-  },
-  navigateButton: {
-    alignSelf: "center",
-    marginTop: 11
   }
 });
