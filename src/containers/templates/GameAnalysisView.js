@@ -60,15 +60,9 @@ class GameAnalysisView extends React.Component {
       this.props.games.score_count.left,
       this.props.games.score_count.right
     ];
-    if (
-      scoreCounts[side] >
-      scoreCounts[Number(!side)]
-    ) {
+    if (scoreCounts[side] > scoreCounts[Number(!side)]) {
       return <Text style={styles.winLossText}>Win</Text>;
-    } else if (
-      scoreCounts[side] <
-      scoreCounts[Number(!side)]
-    ) {
+    } else if (scoreCounts[side] < scoreCounts[Number(!side)]) {
       return <Text style={styles.winLossText}>Loss</Text>;
     } else {
       return <Text style={styles.winLossText}>Draw</Text>;
@@ -97,7 +91,11 @@ class GameAnalysisView extends React.Component {
               {this.renderWinLossText((side = 1))}
             </View>
           </View>
-          <Field horizontal callback={this.setShotTypeCounts} />
+          <Field
+            horizontal
+            sport={this.props.sport.id}
+            callback={this.setShotTypeCounts}
+          />
           <Graph
             data={this.state.data}
             missData={this.state.missData}
