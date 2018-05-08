@@ -29,7 +29,13 @@ class AnalysisCreate extends React.Component {
     let endpoint = analysisEndpointGenerator(params);
     this.props.dispatch(requestModules.getApiRequest(
       endpoint=endpoint,
-      params={opponent_users_ids: this.props.analysis.analysisUsersIds, game_user_count: this.props.analysis.gameUserCount},
+      params={
+        outcome: "all",
+        created_after: "2018/04/25",
+        created_before: "2018/05/10",
+        opponent_users_ids: this.props.analysis.analysisUsersIds,
+        game_user_count: this.props.analysis.gameUserCount
+      },
       this.props.authentication.header,
       analysisModules.getPositionsCountsRequest,
       analysisModules.getPositionsCountsReceived
