@@ -1,6 +1,5 @@
 import React from "react";
 import configureStore from "../stores";
-import { PersistGate } from "redux-persist/integration/react";
 import { Provider, connect } from "react-redux";
 import { ThemeProvider } from "react-native-ios-kit";
 

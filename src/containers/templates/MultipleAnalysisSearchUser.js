@@ -11,9 +11,7 @@ import { mapStateToProps } from "utils";
 import * as analysisModules from "../../modules/analysis";
 import * as requestModules from "../../modules/request";
 
-import {
-  SEARCH_USER_ENDPOINT
-} from "../../config/api";
+import { SEARCH_USER_ENDPOINT } from "../../config/api";
 
 class MultipleAnalysisSearchUser extends React.Component {
   constructor(props) {

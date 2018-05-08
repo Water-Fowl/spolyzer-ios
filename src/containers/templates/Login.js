@@ -2,7 +2,8 @@ import Orientation from "react-native-orientation";
 import React, { Component } from "react";
 import { Actions } from "react-native-router-flux";
 import { Background } from "atoms";
-import { AsyncStorage, Dimensions, Image, StyleSheet,
+import {
+  AsyncStorage, Dimensions, Image, StyleSheet,
   Text, TextInput, TouchableOpacity, View
 } from "react-native";
 import { connect } from "react-redux";
@@ -22,7 +23,6 @@ class Login extends React.Component {
     super(props);
     this.postLoginEvent.bind(this);
     this.state = {
-      name: "yamad07",
       email: "",
       password: "",
       loginError: false

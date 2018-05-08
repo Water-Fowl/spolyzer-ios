@@ -1,8 +1,5 @@
-export const BASE_URL = "http://128.199.68.200/api/v1";
-export const STAGING_URL = "http://52.199.120.130/api/v1";
-export const PRODUCTION_URL = "http://54.249.94.110/api/v1";
-export const LOCAL_URL = "http://localhost:3000/api/v1";
-export const SCHEME = LOCAL_URL;
+import Config from "react-native-config";
+export const SCHEME = Config.SCHEME_URL;
 
 export const SIGN_IN_ENDPOINT = `${SCHEME}/auth/sign_in/`;
 export const REGISTRATION_ENDPOINT = `${SCHEME}/auth/`;
