@@ -15,8 +15,8 @@ import {
   SEARCH_USER_ENDPOINT
 } from "../../config/api";
 
-class AnalysisSearchUser extends React.Component {
-  constructor(props){
+class MultipleAnalysisSearchUser extends React.Component {
+  constructor(props) {
     super(props);
     this.state = {
       name: "",
@@ -25,10 +25,10 @@ class AnalysisSearchUser extends React.Component {
     this.getUser = this.getUser.bind(this);
     this.setUser = this.setUser.bind(this);
   }
-  componentWillReceiveProps(nextProps){
+  componentWillReceiveProps(nextProps) {
     this.setState({ users: nextProps.analysis.users });
   }
-  getUser(name){
+  getUser(name) {
     const params = {
       name: name
     };
@@ -48,22 +48,20 @@ class AnalysisSearchUser extends React.Component {
       this.props.analysis.selectedUserIndex,
       this.props.analysis.users[selectedIndex].user
     ));
-    Actions.popTo("analysisCreate");
+    Actions.popTo("MultipleAnalysisCreate");
   }
   removeUser(){
     this.props.dispatch(analysisModules.removeUser());
-    Actions.popTo("analysisCreate");
+    Actions.popTo("MultipleAnalysisCreate");
   }
   render() {
     return (
-    	<View style={styles.container}>
+      <View style={styles.container}>
         <Background />
-        <TopContentBar>
-          名前検索
-        </TopContentBar>
+        <TopContentBar>名前検索</TopContentBar>
         <View style={styles.form}>
           <TextInput
-            onChangeText={(name) => {
+            onChangeText={name => {
               this.setState({ name });
               this.getUser(name);
             }}
@@ -75,15 +73,31 @@ class AnalysisSearchUser extends React.Component {
             returnKeyType="done"
           />
         </View>
-        <TextBox callback={() => {this.removeUser();}}>選択なし</TextBox>
-        <UserList callback={this.setUser} users={this.state.users} selectedIds={this.props.analysis.analysisUsersIds}/>
-        <NavigateButton action={() =>{Actions.popTo("analysisCreate"); }} style={styles.navigateButton} text="戻る" />
+        <TextBox
+          callback={() => {
+            this.removeUser();
+          }}
+        >
+          選択なし
+        </TextBox>
+        <UserList
+          callback={this.setUser}
+          users={this.state.users}
+          selectedIds={this.props.analysis.analysisUsersIds}
+        />
+        <NavigateButton
+          action={() => {
+            Actions.popTo("MultipleAnalysisCreate");
+          }}
+          style={styles.navigateButton}
+          text="戻る"
+        />
       </View>
     );
   }
 }
 
-export default connect(mapStateToProps)(AnalysisSearchUser);
+export default connect(mapStateToProps)(MultipleAnalysisSearchUser);
 
 const styles = StyleSheet.create({
   container: {
