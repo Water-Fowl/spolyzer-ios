@@ -54,6 +54,9 @@ class AnalysisCreate extends React.Component {
         requestModules.getApiRequest(
           (endpoint = endpoint),
           (params = {
+            outcome: "all",
+            created_after: "2017/04/25",
+            created_before: "2017/05/10",
             opponent_users_ids: this.props.analysis.analysisUsersIds,
             game_user_count: this.props.analysis.gameUserCount
           }),
