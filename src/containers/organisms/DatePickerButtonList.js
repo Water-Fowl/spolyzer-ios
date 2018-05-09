@@ -25,7 +25,7 @@ class DatePickerButtonList extends React.Component {
           date={this.props.date}
           mode="date"
           placeholder={this.props.placeholder}
-          format="YYYY-MM-DD"
+          format="YYYY/MM/DD"
           minDate={this.props.minDate}
           maxDate={this.props.maxDate}
           confirmBtnText="決定"
