@@ -8,7 +8,7 @@ import TermButtonList from "./TermButtonList";
 import GameTypeButtonList from "./GameTypeButtonList";
 import ShotTypeButtonList from "./ShotTypeButtonList";
 import DrawerContent from "./DrawerContent";
-import GameResultButtonList from "./GameResultButtonList";
+import OutcomeButtonList from "./OutcomeButtonList";
 import DatePickerButtonList from "./DatePickerButtonList";
 
 export {
@@ -19,6 +19,6 @@ export {
   GameTypeButtonList,
   ShotTypeButtonList,
   DrawerContent,
-  GameResultButtonList,
+  OutcomeButtonList,
   DatePickerButtonList
 };

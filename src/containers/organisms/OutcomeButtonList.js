@@ -4,41 +4,41 @@ import { StyleSheet, Text, TouchableHighlight, View } from "react-native";
 import { ParametricButton } from "atoms";
 import { mapStateToProps } from "utils";
 import { connect } from "react-redux";
-import { setGameResult } from "../../modules/analysis";
+import { setGameOutcome } from "../../modules/analysis";
 
-class GameResultButtonList extends React.Component {
+class OutcomeButtonList extends React.Component {
   constructor(props) {
     super(props);
-    this.setGameResult = this.setGameResult.bind(this);
+    this.setGameOutcome = this.setGameOutcome.bind(this);
   }
 
-  setGameResult(result) {
-    this.props.dispatch(setGameResult(result));
+  setGameOutcome(outcome) {
+    this.props.dispatch(setGameOutcome(outcome));
   }
   render() {
     return (
       <View style={styles.container}>
         <ParametricButton
           width={60}
-          selectedParams={this.props.analysis.result}
-          callback={this.setGameResult}
-          params={0}
+          selectedParams={this.props.analysis.outcome}
+          callback={this.setGameOutcome}
+          params={"all"}
         >
           全て
         </ParametricButton>
         <ParametricButton
           width={60}
-          selectedParams={this.props.analysis.result}
-          callback={this.setGameResult}
-          params={1}
+          selectedParams={this.props.analysis.outcome}
+          callback={this.setGameOutcome}
+          params={"win"}
         >
           勝ち
         </ParametricButton>
         <ParametricButton
           width={60}
-          selectedParams={this.props.analysis.result}
-          callback={this.setGameResult}
-          params={2}
+          selectedParams={this.props.analysis.outcome}
+          callback={this.setGameOutcome}
+          params={"lose"}
         >
           負け
         </ParametricButton>
@@ -47,7 +47,7 @@ class GameResultButtonList extends React.Component {
   }
 }
 
-export default connect(mapStateToProps)(GameResultButtonList);
+export default connect(mapStateToProps)(OutcomeButtonList);
 
 const styles = StyleSheet.create({
   container: {
