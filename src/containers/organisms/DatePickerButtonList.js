@@ -4,6 +4,7 @@ import DatePicker from "react-native-datepicker";
 
 import { ParametricButton } from "atoms";
 import { mapStateToProps } from "utils";
+import { $spolyzerDarkBlue } from "const";
 import { connect } from "react-redux";
 
 class DatePickerButtonList extends React.Component {
@@ -21,7 +22,7 @@ class DatePickerButtonList extends React.Component {
             width: this.props.width,
             justifyContent: "center"
           }}
-          date={this.state.date}
+          date={this.props.date}
           mode="date"
           placeholder={this.props.placeholder}
           format="YYYY-MM-DD"
@@ -41,10 +42,12 @@ class DatePickerButtonList extends React.Component {
             },
             dateInput: {
               borderColor: "none"
+            },
+            btnTextConfirm: {
+              color: $spolyzerDarkBlue
             }
           }}
           onDateChange={date => {
-            this.setState({ date: date });
             this.props.callback(date);
           }}
         />

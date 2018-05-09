@@ -11,8 +11,8 @@ import { setUserIndex, setGameType } from "../../modules/analysis";
 import {
   GameTypeButtonList,
   ShotTypeButtonList,
-  TermButtonList,
-  GameResultButtonList
+  GameResultButtonList,
+  DatePickerButtonList
 } from "organisms";
 import {
   SelectedUserName,
@@ -35,9 +35,17 @@ class AnalysisCreate extends React.Component {
     this.setGameType = this.setGameType.bind(this);
     this.getPositionsCountsEvent.bind(this);
     this.setSegment.bind(this);
+    this.setBeforeDate.bind(this);
+    this.setAfterDate.bind(this);
+    this.setMinDate.bind(this);
+    this.setMaxDate.bind(this);
     this.state = {
       isPickerVisible: false,
-      selectedIndex: 0
+      selectedIndex: 0,
+      created_before: "",
+      created_after: "",
+      chosenDate: new Date(),
+      outcome: "all"
     };
   }
   setGameType(gameUserCount) {
@@ -54,9 +62,9 @@ class AnalysisCreate extends React.Component {
         requestModules.getApiRequest(
           (endpoint = endpoint),
           (params = {
-            outcome: "all",
-            created_after: "2017/04/25",
-            created_before: "2017/05/10",
+            created_after: this.state.created_after,
+            created_before: this.state.created_before,
+            outcome: this.state.outcome,
             opponent_users_ids: this.props.analysis.analysisUsersIds,
             game_user_count: this.props.analysis.gameUserCount
           }),
@@ -78,6 +86,18 @@ class AnalysisCreate extends React.Component {
       selectedValue: value,
       selectedIndex: index
     });
+  }
+  setBeforeDate(date) {
+    this.setState({ created_before: date });
+  }
+  setAfterDate(date) {
+    this.setState({ created_after: date });
+  }
+  setMinDate() {
+    return this.state.created_before;
+  }
+  setMaxDate() {
+    return this.state.created_after;
   }
   render() {
     return (
@@ -104,10 +124,30 @@ class AnalysisCreate extends React.Component {
         </View>
         <View style={styles.rowContainer}>
           <Text style={styles.termText}>期間</Text>
-          <TermButtonList />
+          <DatePickerButtonList
+            width={100}
+            date={this.state.created_before}
+            placeholder="開始"
+            minDate="2018-01-01"
+            maxDate={this.setMaxDate()}
+            callback={date => {
+              this.setBeforeDate(date);
+            }}
+          />
+          <Text style={styles.dateBetweenText}>〜</Text>
+          <DatePickerButtonList
+            width={100}
+            date={this.state.created_after}
+            placeholder="終了"
+            minDate={this.setMinDate()}
+            maxDate={this.state.chosenDate}
+            callback={date => {
+              this.setAfterDate(date);
+            }}
+          />
         </View>
         <View style={styles.rowContainer}>
-          <Text style={styles.termText}>勝敗</Text>
+          <Text style={styles.resultText}>勝敗</Text>
           <GameResultButtonList />
         </View>
         <View style={styles.rowContainer}>
@@ -171,9 +211,29 @@ const styles = StyleSheet.create({
     fontSize: 15,
     marginTop: 30,
     marginLeft: 40,
+    marginRight: 57,
     backgroundColor: "transparent",
     fontWeight: "bold",
     alignSelf: "flex-start"
+  },
+  resultText: {
+    color: "#ffffff",
+    fontSize: 15,
+    marginTop: 30,
+    marginLeft: 40,
+    marginRight: 57,
+    backgroundColor: "transparent",
+    fontWeight: "bold",
+    alignSelf: "flex-start"
+  },
+  dateBetweenText: {
+    backgroundColor: "transparent",
+    fontWeight: "bold",
+    color: "white",
+    alignSelf: "flex-start",
+    marginTop: 30,
+    paddingLeft: 5,
+    paddingRight: 5
   },
   opponentText: {
     color: "#ffffff",
