@@ -11,8 +11,10 @@ import {
   View
 } from "react-native";
 import {
-  VictoryAxis, VictoryBar,
-  VictoryChart, VictoryTheme
+  VictoryAxis,
+  VictoryBar,
+  VictoryChart,
+  VictoryTheme
 } from "victory-native";
 import { connect } from "react-redux";
 
@@ -111,7 +113,10 @@ class AnalysisView extends React.Component {
   _renderOpponentUserNames(users) {
     const opponentUserNameComponentList = [];
     for (let userIdx in users) {
-      if (users[userIdx]) {
+      if (
+        users[userIdx] &&
+        opponentUserNameComponentList.length != this.props.date.game_user_count
+      ) {
         opponentUserNameComponentList.push(
           <View style={styles.flexDirectionRow}>
             <ProfileImage imageSource={users[userIdx].image.url} size={20} />
