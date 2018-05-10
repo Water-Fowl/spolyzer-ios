@@ -23,7 +23,7 @@ class OpponentUsersButtonList extends React.Component {
   }
 }
 
-export default connect(mapStateToProps)(OpponentUsersButtonList)
+export default connect(mapStateToProps)(OpponentUsersButtonList);
 
 const styles = StyleSheet.create({
   container: {
@@ -38,5 +38,5 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     alignSelf: "flex-start",
     marginRight: 22
-  },
-})
+  }
+});

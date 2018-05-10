@@ -73,46 +73,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1
   },
-  rowContainer: {
-    flexDirection: "row"
-  },
-  gameStyleText: {
-    color: "#ffffff",
-    fontSize: 15,
-    marginTop: 45,
-    marginLeft: 40,
-    backgroundColor: "transparent",
-    fontWeight: "bold",
-    alignSelf: "flex-start"
-  },
-  shotTypeText: {
-    color: "#ffffff",
-    fontSize: 15,
-    marginTop: 68,
-    marginLeft: 40,
-    backgroundColor: "transparent",
-    fontWeight: "bold",
-    alignSelf: "flex-start"
-  },
-  termText: {
-    color: "#ffffff",
-    fontSize: 15,
-    marginTop: 30,
-    marginLeft: 40,
-    backgroundColor: "transparent",
-    fontWeight: "bold",
-    alignSelf: "flex-start"
-  },
-  opponentText: {
-    color: "#ffffff",
-    fontSize: 15,
-    marginTop: 32,
-    marginLeft: 40,
-    backgroundColor: "transparent",
-    fontWeight: "bold",
-    alignSelf: "flex-start",
-    marginRight: 22
-  },
   navigateButton: {
     marginTop: 50
   }

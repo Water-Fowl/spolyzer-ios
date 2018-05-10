@@ -56,9 +56,7 @@ class AnalysisSearchUser extends React.Component {
     return (
     	<View style={styles.container}>
         <Background />
-        <TopContentBar>
-          名前検索
-        </TopContentBar>
+        <TopContentBar>名前検索</TopContentBar>
         <View style={styles.form}>
           <TextInput
             onChangeText={(name) => {

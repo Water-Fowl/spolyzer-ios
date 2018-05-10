@@ -79,5 +79,5 @@ const styles = StyleSheet.create({
     backgroundColor: "transparent",
     fontWeight: "bold",
     alignSelf: "flex-start"
-  },
+  }
 });
