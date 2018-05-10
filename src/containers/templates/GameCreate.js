@@ -11,7 +11,6 @@ import { connect } from "react-redux";
 import { ProfileImage, Background, NavBar, NavigateButton, TopBar, TopContentBar } from "atoms";
 
 import { mapStateToProps } from "utils";
-import * as sportModules from "../../modules/sport";
 import * as gameModules from "../../modules/game";
 
 class GameCreate extends React.Component {

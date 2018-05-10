@@ -1,13 +1,7 @@
 import React from "react";
+import { $spolyzerDarkBlue, $transparent } from "const";
 import {
-  $spolyzerDarkBlue,
-  $transparent
-} from "const";
-import {
-  StyleSheet,
-  Text,
-  TouchableHighlight,
-  View
+  StyleSheet, Text, TouchableHighlight, View
 } from "react-native";
 import { connect } from "react-redux";
 

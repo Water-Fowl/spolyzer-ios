@@ -11,10 +11,8 @@ import {
   View
 } from "react-native";
 import {
-  VictoryAxis,
-  VictoryBar,
-  VictoryChart,
-  VictoryTheme
+  VictoryAxis, VictoryBar,
+  VictoryChart, VictoryTheme
 } from "victory-native";
 import { connect } from "react-redux";
 
@@ -147,7 +145,7 @@ class AnalysisView extends React.Component {
           <View style={styles.optionContainer}>
             <View style={styles.optionTextContainer}>
               <Text style={styles.optionText}>
-                {TERM_LIST[this.props.analysis.term]}
+                {this.props.date.created_after}~{this.props.date.created_before}
               </Text>
             </View>
             <View style={styles.optionTextContainer}>

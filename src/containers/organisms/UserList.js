@@ -1,10 +1,7 @@
 import React from "react";
 import { Actions } from "react-native-router-flux";
 import {
-  ScrollView,
-  StyleSheet,
-  TouchableOpacity,
-  View
+  ScrollView, StyleSheet, TouchableOpacity, View
 } from "react-native";
 
 import { UserListItem } from "molecules";

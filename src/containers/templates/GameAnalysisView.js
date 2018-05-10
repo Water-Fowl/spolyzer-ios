@@ -2,16 +2,11 @@ import React from "react";
 import baseEnhancer from "./hoc";
 import { ActionConst, Actions } from "react-native-router-flux";
 import {
-  Image,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View
+  Image, ScrollView, StyleSheet, Text,
+  TouchableOpacity, View
 } from "react-native";
 import { TopContentBar } from "atoms";
 import { connect } from "react-redux";
-import { setShotTypeCounts, resetState } from "../../modules/game";
 import { reshapeShotTypeCounts, mapStateToProps } from "utils";
 import { Field, Graph } from "organisms";
 
@@ -35,7 +30,6 @@ class GameAnalysisView extends React.Component {
       selectedShotTypeCounts[position],
       this.props.sport.shotTypes
     );
-    console.log(shotTypeCountsList);
     this.setState({
       data: shotTypeCountsList,
       missData: missShotTypeCountsList

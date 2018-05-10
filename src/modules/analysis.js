@@ -4,7 +4,7 @@ const initialState = {
   gameUserCount: 1,
   shotTypeId: 1,
   term: 1,
-  result: 0,
+  outcome: "all",
   analysisUsers: [],
   analysisUsersIds: []
 };
@@ -12,7 +12,7 @@ const initialState = {
 const GAME_TYPE_SETTING = "GAME_TYPE_SETTING";
 const SHOT_TYPE_SETTING = "SHOT_TYPE_SETTING";
 const TERM_SETTING = "TERM_SETTING";
-const RESULT_SETTING = "RESULT_SETTING";
+const OUTCOME_SETTING = "OUTCOME_SETTING";
 const OPPONENT_USER_SETTING = "OPPONENT_USER_SETTING";
 const GET_GAMES_REQUEST = "GET_GAMES_REQUEST";
 const GET_GAMES_RECEIVED = "GET_GAMES_RECEIVED";
@@ -117,10 +117,10 @@ export function setTerm(term) {
   };
 }
 
-export function setGameResult(result) {
+export function setGameOutcome(outcome) {
   return {
-    type: RESULT_SETTING,
-    result
+    type: OUTCOME_SETTING,
+    outcome
   };
 }
 
@@ -165,9 +165,9 @@ export function analysisReducer(state = initialState, action = {}) {
     return Object.assign({}, state, {
       term: action.term
     });
-  case RESULT_SETTING:
+  case OUTCOME_SETTING:
     return Object.assign({}, state, {
-      result: action.result
+      outcome: action.outcome
     });
   case GET_SEARCH_USER_REQUEST:
     return state;

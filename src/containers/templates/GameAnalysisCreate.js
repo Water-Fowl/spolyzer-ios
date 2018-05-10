@@ -1,22 +1,13 @@
 import React from "react";
 import templateEnhancer from "./hoc";
 import { ActionConst, Actions } from "react-native-router-flux";
-import {
-  View,
-  StyleSheet,
-  FlatList,
-  Text,
-  TouchableOpacity
-} from "react-native";
+import { View, StyleSheet, FlatList, Text, TouchableOpacity } from "react-native";
 import { connect } from "react-redux";
 import { TopContentBar, TextBox } from "atoms";
 import { Icon, SegmentedControl } from "react-native-ios-kit";
-import { getGamesRequest, getGamesReceived } from "../../modules/analysis";
-import {
-  getShotTypeCountsReceived,
-  getShotTypeCountsRequest
-} from "../../modules/game";
-import { getApiRequest } from "../../modules/request";
+import * as analysisModules from "../../modules/analysis";
+import * as gameModules from "../../modules/game";
+import * as requestModules from "../../modules/request";
 import {
   GAMES_ENDPOINT,
   gamesEndpointGenerator,
@@ -43,12 +34,12 @@ class GameAnalysisCreate extends React.Component {
   getUsersGamesEvent() {
     this.props
       .dispatch(
-        getApiRequest(
+        requestModules.getApiRequest(
           (endpoint = GAMES_ENDPOINT),
           (params = {}),
           this.props.authentication.header,
-          getGamesRequest,
-          getGamesReceived
+          analysisModules.getGamesRequest,
+          analysisModules.getGamesReceived
         )
       )
       .then(json => {
@@ -60,12 +51,12 @@ class GameAnalysisCreate extends React.Component {
       game_id: item.game.id
     });
     this.props.dispatch(
-      getApiRequest(
+      requestModules.getApiRequest(
         (endpoint = endpoint),
         (params = {}),
         this.props.authentication.header,
-        getShotTypeCountsRequest,
-        getShotTypeCountsReceived
+        gameModules.getShotTypeCountsRequest,
+        gameModules.getShotTypeCountsReceived
       )
     );
     Actions.GameAnalysisView({ "games": item });

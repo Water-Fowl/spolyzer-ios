@@ -6,13 +6,10 @@ import { connect } from "react-redux";
 import { listToQueryParams } from "utils";
 import { SegmentedControl } from "react-native-ios-kit";
 
-import { setUserIndex, setGameType } from "../../modules/analysis";
-
 import {
-  GameTypeButtonList,
   ShotTypeButtonList,
-  TermButtonList,
-  GameResultButtonList
+  OutcomeButtonList,
+  DatePickerButtonList
 } from "organisms";
 import {
   SelectedUserName,
@@ -27,35 +24,42 @@ import {
   analysisEndpointGenerator
 } from "../../config/api";
 
-import { mapStateToProps } from "utils";
+import { mapStateToProps, getNowYMD } from "utils";
 
 class AnalysisCreate extends React.Component {
   constructor(props) {
     super(props);
-    this.setGameType = this.setGameType.bind(this);
     this.getPositionsCountsEvent.bind(this);
     this.setSegment.bind(this);
+    this.setBeforeDate.bind(this);
+    this.setAfterDate.bind(this);
+    this.setMinDate.bind(this);
+    this.setMaxDate.bind(this);
     this.state = {
-      isPickerVisible: false,
-      selectedIndex: 0
+      game_user_count: 1,
+      created_after: "",
+      created_before: "",
+      chosenDate: new Date()
     };
   }
-  setGameType(gameUserCount) {
-    this.props.dispatch(setGameType(gameUserCount));
-  }
+
   getPositionsCountsEvent() {
     let params = {
       shot_type_id: this.props.analysis.shotTypeId
     };
-
+    this.state.created_after = this.state.created_after || "2018/1/1";
+    this.state.created_before = this.state.created_before || getNowYMD();
     let endpoint = analysisEndpointGenerator(params);
     this.props
       .dispatch(
         requestModules.getApiRequest(
           (endpoint = endpoint),
           (params = {
+            created_after: this.state.created_after + " 0:00:00",
+            created_before: this.state.created_before + " 23:59:59",
+            outcome: this.props.analysis.outcome,
             opponent_users_ids: this.props.analysis.analysisUsersIds,
-            game_user_count: this.props.analysis.gameUserCount
+            game_user_count: this.state.game_user_count
           }),
           this.props.authentication.header,
           analysisModules.getPositionsCountsRequest,
@@ -63,18 +67,30 @@ class AnalysisCreate extends React.Component {
         )
       )
       .then(() => {
-        Actions.MultipleAnalysisView();
+        Actions.MultipleAnalysisView({ date: this.state });
       });
   }
   pushAnalysisSearchEvent(selectedUserIndex) {
-    this.props.dispatch(setUserIndex(selectedUserIndex));
+    this.props.dispatch(analysisModules.setUserIndex(selectedUserIndex));
     Actions.multipleAnalysisSearchUser();
   }
   setSegment(value, index) {
     this.setState({
       selectedValue: value,
-      selectedIndex: index
+      game_user_count: index + 1
     });
+  }
+  setAfterDate(date) {
+    this.setState({ created_after: date });
+  }
+  setBeforeDate(date) {
+    this.setState({ created_before: date });
+  }
+  setMinDate() {
+    return this.state.created_after;
+  }
+  setMaxDate() {
+    return this.state.created_before;
   }
   render() {
     return (
@@ -83,12 +99,11 @@ class AnalysisCreate extends React.Component {
         <View style={styles.segmentContainer}>
           <SegmentedControl
             values={["シングルス", "ダブルス"]}
-            selectedIndex={this.state.selectedIndex}
+            selectedIndex={this.state.game_user_count - 1}
             onValueChange={(value, index) => {
-              this.setGameType(index + 1);
               this.setState({
                 selectedValue: value,
-                selectedIndex: index
+                game_user_count: index + 1
               });
             }}
             tintColor={"#2ea7e0"}
@@ -101,11 +116,31 @@ class AnalysisCreate extends React.Component {
         </View>
         <View style={styles.rowContainer}>
           <Text style={styles.termText}>期間</Text>
-          <TermButtonList />
+          <DatePickerButtonList
+            width={100}
+            date={this.state.created_after}
+            placeholder="開始"
+            minDate={"2018/01/01"}
+            maxDate={this.setMaxDate()}
+            callback={date => {
+              this.setAfterDate(date);
+            }}
+          />
+          <Text style={styles.dateBetweenText}>〜</Text>
+          <DatePickerButtonList
+            width={100}
+            date={this.state.created_before}
+            placeholder="終了"
+            minDate={this.setMinDate()}
+            maxDate={this.state.chosenDate}
+            callback={date => {
+              this.setBeforeDate(date);
+            }}
+          />
         </View>
         <View style={styles.rowContainer}>
-          <Text style={styles.termText}>勝敗</Text>
-          <GameResultButtonList />
+          <Text style={styles.outcomeText}>勝敗</Text>
+          <OutcomeButtonList />
         </View>
         <View style={styles.rowContainer}>
           <Text style={styles.opponentText}>対戦相手</Text>
@@ -117,7 +152,7 @@ class AnalysisCreate extends React.Component {
             <SelectedUserName user={this.props.analysis.analysisUsers[0]} />
           </TouchableOpacity>
           {(() => {
-            if (this.state.selectedIndex)
+            if (this.state.game_user_count - 1)
               return (
                 <TouchableOpacity
                   onPress={() => {
@@ -168,9 +203,29 @@ const styles = StyleSheet.create({
     fontSize: 15,
     marginTop: 30,
     marginLeft: 40,
+    marginRight: 57,
     backgroundColor: "transparent",
     fontWeight: "bold",
     alignSelf: "flex-start"
+  },
+  outcomeText: {
+    color: "#ffffff",
+    fontSize: 15,
+    marginTop: 30,
+    marginLeft: 40,
+    marginRight: 57,
+    backgroundColor: "transparent",
+    fontWeight: "bold",
+    alignSelf: "flex-start"
+  },
+  dateBetweenText: {
+    backgroundColor: "transparent",
+    fontWeight: "bold",
+    color: "white",
+    alignSelf: "flex-start",
+    marginTop: 30,
+    paddingLeft: 5,
+    paddingRight: 5
   },
   opponentText: {
     color: "#ffffff",
