@@ -38,7 +38,7 @@ class AnalysisCreate extends React.Component {
     this.setMinDate.bind(this);
     this.setMaxDate.bind(this);
     this.state = {
-      selectedIndex: 0,
+      game_user_count: 1,
       created_after: "",
       created_before: "",
       chosenDate: new Date()
@@ -61,7 +61,7 @@ class AnalysisCreate extends React.Component {
             created_before: this.state.created_before + " 23:59:59",
             outcome: this.props.analysis.outcome,
             opponent_users_ids: this.props.analysis.analysisUsersIds,
-            game_user_count: this.state.selectedIndex + 1
+            game_user_count: this.state.game_user_count
           }),
           this.props.authentication.header,
           analysisModules.getPositionsCountsRequest,
@@ -79,7 +79,7 @@ class AnalysisCreate extends React.Component {
   setSegment(value, index) {
     this.setState({
       selectedValue: value,
-      selectedIndex: index
+      game_user_count: index + 1
     });
   }
   setAfterDate(date) {
@@ -101,11 +101,11 @@ class AnalysisCreate extends React.Component {
         <View style={styles.segmentContainer}>
           <SegmentedControl
             values={["シングルス", "ダブルス"]}
-            selectedIndex={this.state.selectedIndex}
+            selectedIndex={this.state.game_user_count - 1}
             onValueChange={(value, index) => {
               this.setState({
                 selectedValue: value,
-                selectedIndex: index
+                game_user_count: index + 1
               });
             }}
             tintColor={"#2ea7e0"}
@@ -154,7 +154,7 @@ class AnalysisCreate extends React.Component {
             <SelectedUserName user={this.props.analysis.analysisUsers[0]} />
           </TouchableOpacity>
           {(() => {
-            if (this.state.selectedIndex)
+            if (this.state.game_user_count - 1)
               return (
                 <TouchableOpacity
                   onPress={() => {
