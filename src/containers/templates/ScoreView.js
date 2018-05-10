@@ -12,6 +12,7 @@ import {
 import { connect } from "react-redux";
 
 import { TopContentBar } from "atoms";
+import { PlayersDisplay } from "molecules";
 import { Field, Graph } from "organisms";
 
 import { reshapeShotTypeCounts, mapStateToProps } from "utils";
@@ -42,15 +43,6 @@ class ScoreView extends React.Component {
       missData: missShotTypeCountsList
     });
   }
-  renderUnitUsersName(users) {
-    const unitUserNameComponentList = [];
-    for (let user of users) {
-      unitUserNameComponentList.push(
-        <Text style={styles.userNameText}> {user.name} </Text>
-      );
-    }
-    return <View style={styles.userNameBox}>{unitUserNameComponentList}</View>;
-  }
 
   renderWinLossText(side) {
     if (
@@ -73,10 +65,10 @@ class ScoreView extends React.Component {
       <ScrollView style={styles.container}>
         <TopContentBar>単分析結果</TopContentBar>
         <View>
-          <View style={styles.userNameContainer}>
-            {this.renderUnitUsersName(this.props.game.gameUnits.left.users)}
-            {this.renderUnitUsersName(this.props.game.gameUnits.right.users)}
-          </View>
+          <PlayersDisplay
+            leftUsers={this.props.game.gameUnits.left.users}
+            rightUsers={this.props.game.gameUnits.right.users}
+          />
           <View style={styles.gameInformationsContaier}>
             <View style={styles.gameInformationTextContainer}>
               {this.renderWinLossText((side = 0))}
@@ -122,26 +114,6 @@ export default connect(mapStateToProps)(templateEnhancer(ScoreView));
 const styles = StyleSheet.create({
   container: {
     flex: 1
-  },
-  userNameContainer: {
-    flexDirection: "row",
-    paddingTop: 15
-  },
-  userNameBox: {
-    flex: 1,
-    borderBottomColor: "#28a8de",
-    borderBottomWidth: 1,
-    borderBottomLeftRadius: 15,
-    borderBottomRightRadius: 15
-  },
-  userNameText: {
-    color: "white",
-    alignSelf: "center",
-    textAlign: "center",
-    paddingTop: 5,
-    paddingBottom: 5,
-    fontSize: 15,
-    backgroundColor: "transparent"
   },
   gameInformationsContaier: {
     flexDirection: "row",
