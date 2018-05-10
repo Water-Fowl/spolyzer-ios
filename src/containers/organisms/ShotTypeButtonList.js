@@ -45,7 +45,12 @@ class ShotTypeButtonList extends React.Component {
     }
     return (
       <View style={styles.container}>
-        { shotTypesButtonsComponent }
+        <Text style={styles.shotTypeText}>
+          球種
+        </Text>
+        <View style={styles.shotTypesButtonsContainer}>
+          { shotTypesButtonsComponent }
+        </View>
       </View>
     );
   }
@@ -54,6 +59,18 @@ export default connect(mapStateToProps)(ShotTypeButtonList);
 
 const styles = StyleSheet.create({
   container: {
+    flexDirection: "row"
+  },
+  shotTypeText: {
+    color: "#ffffff",
+    fontSize: 15,
+    marginTop: 68,
+    marginLeft: 40,
+    backgroundColor: "transparent",
+    fontWeight: "bold",
+    alignSelf: "flex-start"
+  },
+  shotTypesButtonsContainer: {
     flexDirection: "row",
     flexWrap: "wrap",
     backgroundColor: "transparent",
