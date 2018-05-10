@@ -6,10 +6,9 @@ import { connect } from "react-redux";
 import { listToQueryParams } from "utils";
 import { SegmentedControl } from "react-native-ios-kit";
 
-import { setUserIndex, setGameType } from "../../modules/analysis";
+import { setUserIndex } from "../../modules/analysis";
 
 import {
-  GameTypeButtonList,
   ShotTypeButtonList,
   OutcomeButtonList,
   DatePickerButtonList
@@ -27,12 +26,11 @@ import {
   analysisEndpointGenerator
 } from "../../config/api";
 
-import { mapStateToProps } from "utils";
+import { mapStateToProps, getNowYMD } from "utils";
 
 class AnalysisCreate extends React.Component {
   constructor(props) {
     super(props);
-    this.setGameType = this.setGameType.bind(this);
     this.getPositionsCountsEvent.bind(this);
     this.setSegment.bind(this);
     this.setBeforeDate.bind(this);
@@ -46,14 +44,13 @@ class AnalysisCreate extends React.Component {
       chosenDate: new Date()
     };
   }
-  setGameType(gameUserCount) {
-    this.props.dispatch(setGameType(gameUserCount));
-  }
+
   getPositionsCountsEvent() {
     let params = {
       shot_type_id: this.props.analysis.shotTypeId
     };
-
+    this.state.created_after = this.state.created_after || "2018/1/1";
+    this.state.created_before = this.state.created_before || getNowYMD();
     let endpoint = analysisEndpointGenerator(params);
     this.props
       .dispatch(
@@ -64,7 +61,7 @@ class AnalysisCreate extends React.Component {
             created_before: this.state.created_before + " 23:59:59",
             outcome: this.props.analysis.outcome,
             opponent_users_ids: this.props.analysis.analysisUsersIds,
-            game_user_count: this.props.analysis.gameUserCount
+            game_user_count: this.state.selectedIndex + 1
           }),
           this.props.authentication.header,
           analysisModules.getPositionsCountsRequest,
@@ -106,7 +103,6 @@ class AnalysisCreate extends React.Component {
             values={["シングルス", "ダブルス"]}
             selectedIndex={this.state.selectedIndex}
             onValueChange={(value, index) => {
-              this.setGameType(index + 1);
               this.setState({
                 selectedValue: value,
                 selectedIndex: index
