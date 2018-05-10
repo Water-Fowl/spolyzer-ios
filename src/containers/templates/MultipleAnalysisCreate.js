@@ -6,8 +6,6 @@ import { connect } from "react-redux";
 import { listToQueryParams } from "utils";
 import { SegmentedControl } from "react-native-ios-kit";
 
-import { setUserIndex } from "../../modules/analysis";
-
 import {
   ShotTypeButtonList,
   OutcomeButtonList,
@@ -73,7 +71,7 @@ class AnalysisCreate extends React.Component {
       });
   }
   pushAnalysisSearchEvent(selectedUserIndex) {
-    this.props.dispatch(setUserIndex(selectedUserIndex));
+    this.props.dispatch(analysisModules.setUserIndex(selectedUserIndex));
     Actions.multipleAnalysisSearchUser();
   }
   setSegment(value, index) {

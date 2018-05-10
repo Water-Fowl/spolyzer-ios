@@ -2,19 +2,12 @@ import React from "react";
 import templateEnhancer from "./hoc";
 import { ActionConst, Actions } from "react-native-router-flux";
 import {
-  Image,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  TouchableHighlight,
-  View
+  Image, ScrollView, StyleSheet, Text,
+  TouchableOpacity, TouchableHighlight, View
 } from "react-native";
 import {
-  VictoryAxis,
-  VictoryBar,
-  VictoryChart,
-  VictoryTheme
+  VictoryAxis, VictoryBar,
+  VictoryChart, VictoryTheme
 } from "victory-native";
 import { connect } from "react-redux";
 
