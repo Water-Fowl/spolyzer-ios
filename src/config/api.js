@@ -4,6 +4,7 @@ export const SCHEME = Config.SCHEME_URL;
 export const SIGN_IN_ENDPOINT = `${SCHEME}/auth/sign_in/`;
 export const REGISTRATION_ENDPOINT = `${SCHEME}/auth/`;
 export const USERS_ENDPOINT = `${SCHEME}/users/`;
+export const USERS_GAMES_ENDPOINT = `${SCHEME}/users/games/`;
 export const SEARCH_USER_ENDPOINT = `${SCHEME}/users/search`;
 export const GAMES_ENDPOINT = `${SCHEME}/games/`;
 export const GAMES_COUNT_ENDPOINT = `${SCHEME}/games/count`;

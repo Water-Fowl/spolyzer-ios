@@ -1,17 +1,16 @@
 import React from "react";
-import templateEnhancer from "./hoc";
+import baseEnhancer from "./hoc";
 import { ActionConst, Actions } from "react-native-router-flux";
-import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import { connect } from "react-redux";
-
+import {
+  Image, ScrollView, StyleSheet, Text,
+  TouchableOpacity, View
+} from "react-native";
 import { TopContentBar } from "atoms";
+import { connect } from "react-redux";
+import { reshapeShotTypeCounts, mapStateToProps } from "utils";
 import { Field, Graph } from "organisms";
 
-import { reshapeShotTypeCounts, mapStateToProps } from "utils";
-import * as gameModules from "../../modules/game";
-
-
-class ScoreView extends React.Component {
+class GameAnalysisView extends React.Component {
   constructor(props) {
     super(props);
     this.setShotTypeCounts = this.setShotTypeCounts.bind(this);
@@ -27,7 +26,10 @@ class ScoreView extends React.Component {
       shotTypeCountsList,
       missShotTypeCountsList,
       shotTypesList
-    } = reshapeShotTypeCounts(selectedShotTypeCounts[position], this.props.sport.shotTypes);
+    } = reshapeShotTypeCounts(
+      selectedShotTypeCounts[position],
+      this.props.sport.shotTypes
+    );
     this.setState({
       data: shotTypeCountsList,
       missData: missShotTypeCountsList
@@ -48,40 +50,37 @@ class ScoreView extends React.Component {
   }
 
   renderWinLossText(side) {
-    if (
-      this.props.game.scoreCounts[side] >
-      this.props.game.scoreCounts[Number(!side)]
-    ) {
+    let scoreCounts = [
+      this.props.games.score_count.left,
+      this.props.games.score_count.right
+    ];
+    if (scoreCounts[side] > scoreCounts[Number(!side)]) {
       return <Text style={styles.winLossText}>Win</Text>;
-    } else if (
-      this.props.game.scoreCounts[side] <
-      this.props.game.scoreCounts[Number(!side)]
-    ) {
+    } else if (scoreCounts[side] < scoreCounts[Number(!side)]) {
       return <Text style={styles.winLossText}>Loss</Text>;
     } else {
       return <Text style={styles.winLossText}>Draw</Text>;
     }
   }
-
   render() {
     return (
       <ScrollView style={styles.container}>
         <TopContentBar>単分析結果</TopContentBar>
         <View>
           <View style={styles.userNameContainer}>
-            { this.renderUnitUsersName(this.props.game.gameUnits.left.users) }
-            { this.renderUnitUsersName(this.props.game.gameUnits.right.users) }
+            {this.renderUnitUsersName(this.props.games.left_users)}
+            {this.renderUnitUsersName(this.props.games.right_users)}
           </View>
           <View style={styles.gameInformationsContaier}>
             <View style={styles.gameInformationTextContainer}>
               {this.renderWinLossText((side = 0))}
               <Text style={styles.scoreText}>
-                {this.props.game.scoreCounts[0]}
+                {this.props.games.score_count.left}
               </Text>
             </View>
             <View style={styles.gameInformationTextContainer}>
               <Text style={styles.scoreText}>
-                {this.props.game.scoreCounts[1]}
+                {this.props.games.score_count.right}
               </Text>
               {this.renderWinLossText((side = 1))}
             </View>
@@ -92,23 +91,13 @@ class ScoreView extends React.Component {
             missData={this.state.missData}
             shotTypeList={this.state.shotTypeList}
           />
-          <View style={styles.backButtonContainer}>
-            <TouchableOpacity onPress={() => {
-              this.props.dispatch(gameModules.resetState());
-              Actions.popTo("gameCreate");
-            }}>
-              <Text style={styles.backButtonText}>
-                保存して終了
-              </Text>
-            </TouchableOpacity>
-          </View>
         </View>
       </ScrollView>
     );
   }
 }
 
-export default connect(mapStateToProps)(templateEnhancer(ScoreView));
+export default connect(mapStateToProps)(baseEnhancer(GameAnalysisView));
 
 const styles = StyleSheet.create({
   container: {
@@ -167,27 +156,5 @@ const styles = StyleSheet.create({
     padding: 3,
     marginLeft: 5,
     marginRight: 5
-  },
-  backButtonContainer: {
-    borderRightColor: "#28a8de",
-    borderTopColor: "#28a8de",
-    borderLeftColor: "#28a8de",
-    borderBottomColor: "#28a8de",
-    height: 34,
-    width: 154,
-    borderWidth: 1,
-    borderRadius: 4,
-    marginLeft: 190,
-    marginTop: 15
-  },
-  backButtonText: {
-    backgroundColor: "transparent",
-    color: "#ffffff",
-    fontSize: 16,
-    fontWeight: "bold",
-    borderRadius: 4,
-    textAlign: "center",
-    paddingTop: 7,
-    paddingLeft: 20
   }
 });

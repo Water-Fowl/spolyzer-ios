@@ -1,16 +1,9 @@
 import React from "react";
-import {
-  View,
-  Image,
-  StyleSheet
-} from "react-native";
+import { View, Image, StyleSheet } from "react-native";
 
 import {
-  InFieldLength,
-  InFieldSide,
-  InFieldCircle,
-  OutFieldSide,
-  OutFieldLength
+  InFieldLength, InFieldSide, InFieldCircle,
+  OutFieldSide, OutFieldLength
 } from "atoms";
 
 export default class Field extends React.Component {

@@ -1,16 +1,8 @@
 import React from "react";
+import { ScrollView, StyleSheet, View } from "react-native";
 import {
-  ScrollView,
-  StyleSheet,
-  View
-} from "react-native";
-import {
-  VictoryAxis,
-  VictoryBar,
-  VictoryChart,
-  VictoryLabel,
-  VictoryStack,
-  VictoryTheme,
+  VictoryAxis, VictoryBar, VictoryChart,
+  VictoryLabel, VictoryStack, VictoryTheme,
   VictoryZoomContainer
 } from "victory-native";
 import { connect } from "react-redux";

@@ -5,7 +5,10 @@ import {
   Image, ScrollView, StyleSheet, Text,
   TouchableOpacity, TouchableHighlight, View
 } from "react-native";
-import { VictoryAxis, VictoryBar, VictoryChart, VictoryTheme } from "victory-native";
+import {
+  VictoryAxis, VictoryBar,
+  VictoryChart, VictoryTheme
+} from "victory-native";
 import { connect } from "react-redux";
 
 import { Graph, Field } from "organisms";
@@ -26,7 +29,12 @@ const TERM_LIST = ["Day", "Week", "Month"];
 class AnalysisView extends React.Component {
   constructor(props) {
     super(props);
-    let selectedPositionsCount = reshapePositionsCount(this.props.analysis.positionCounts, 0, 1, 6);
+    let selectedPositionsCount = reshapePositionsCount(
+      this.props.analysis.positionCounts,
+      0,
+      1,
+      6
+    );
     this.state = {
       /* Out = 0, In = 1 */
       /* Left = 0, Right = 1 */
@@ -132,7 +140,7 @@ class AnalysisView extends React.Component {
           <View style={styles.optionContainer}>
             <View style={styles.optionTextContainer}>
               <Text style={styles.optionText}>
-                {TERM_LIST[this.props.analysis.term]}
+                {this.props.date.created_after}~{this.props.date.created_before}
               </Text>
             </View>
             <View style={styles.optionTextContainer}>
@@ -149,15 +157,6 @@ class AnalysisView extends React.Component {
             renderInButton={this._renderFieldButtonText}
           />
           <Graph data={this.state.selectedPositionsCount} />
-          <View style={styles.backButtonContainer}>
-            <TouchableOpacity
-              onPress={() => {
-                Actions.analysisCreate({ type: ActionConst.BACK_ACTION });
-              }}
-            >
-              <Text style={styles.backButtonText}>検索条件に戻る</Text>
-            </TouchableOpacity>
-          </View>
         </ScrollView>
       </View>
     );
@@ -253,28 +252,6 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     textAlign: "center",
     paddingTop: 5
-  },
-  backButtonContainer: {
-    borderRightColor: "#28a8de",
-    borderTopColor: "#28a8de",
-    borderLeftColor: "#28a8de",
-    borderBottomColor: "#28a8de",
-    height: 34,
-    width: 154,
-    borderWidth: 1,
-    borderRadius: 4,
-    marginLeft: 190,
-    marginTop: 8
-  },
-  backButtonText: {
-    backgroundColor: "transparent",
-    color: "#ffffff",
-    fontSize: 16,
-    fontWeight: "bold",
-    borderRadius: 4,
-    textAlign: "center",
-    paddingTop: 7,
-    paddingLeft: 20
   },
   outAreaContainer: {
     width: 300,

@@ -1,19 +1,13 @@
 import React from "react";
 import {
-  Image,
-  StyleSheet,
-  Text,
-  TextInput,
-  View,
-  TouchableOpacity
+  Image, StyleSheet, Text, TextInput,
+  View,  TouchableOpacity
 } from "react-native";
 import { Actions } from "react-native-router-flux";
 import { connect } from "react-redux";
 import { resetToken } from "../../modules/authentication";
 import { mapStateToProps } from "utils";
-import {
-  ProfileImage
-} from "atoms";
+import { ProfileImage } from "atoms";
 
 class DrawerContent extends React.Component {
 
