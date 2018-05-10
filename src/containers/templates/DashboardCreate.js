@@ -61,12 +61,17 @@ class DashboardCreate extends React.Component {
             info="池田吉来"
             style={styles.navigationRow}
           />
-          <NavigationRow
-            title="対戦相手２"
-            onPress={() => {Actions.DashboardCreateSelect();}}
-            info="吉川明成"
-            style={styles.navigationRow}
-          />
+          {(() => {
+            if (this.state.selectedIndex)
+              return (
+                <NavigationRow
+                  title="対戦相手２"
+                  onPress={() => {Actions.DashboardCreateSelect();}}
+                  info="吉川明成"
+                  style={styles.navigationRow}
+                />
+              );
+          })()}
           <NavigationRow
             title="目標設定"
             onPress={() => {Actions.DashboardCreateSelect();}}
