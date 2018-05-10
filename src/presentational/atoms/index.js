@@ -18,6 +18,10 @@ import ProfileImage from "./ProfileImage";
 import SelectedUserName from "./SelectedUserName";
 import TextBox from "./TextBox";
 import TextInputForm from "./TextInputForm";
+import CardInformationText from "./CardInformationText";
+import CardTitleText from "./CardTitleText";
+import CompareImage from "./CompareImage";
+
 
 export {
   Background,
@@ -36,5 +40,8 @@ export {
   NavBar,
   NavigateButton,
   TopBar,
-  TopContentBar
+  TopContentBar,
+  CardInformationText,
+  CardTitleText,
+  CompareImage
 };

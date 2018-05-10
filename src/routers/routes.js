@@ -9,9 +9,11 @@ import {
 } from "react-native";
 import { connect } from "react-redux";
 import {
+  Actions,
   Router,
   Scene,
   Tabs,
+  Modal,
   Drawer
 } from "react-native-router-flux";
 import {
@@ -26,7 +28,12 @@ import {
   ScoreCreate,
   ScoreView,
   SignUp,
-  Confirmation
+  Confirmation,
+  DashboardTop,
+  DashboardView,
+  DashboardCreate,
+  DashboardCreateSelect,
+  DashboardCreateAreaSelect
 } from "../containers";
 import {
   DrawerContent
@@ -36,6 +43,9 @@ import { getValidTokenRequest, getValidTokenReceived, setToken } from "../module
 import { getUserRequest, getUserReceived } from "../modules/profile";
 import { getApiRequest } from "../modules/request";
 import { USERS_ENDPOINT, SHOT_TYPES_ENDPOINT, VALIDATE_TOKEN_ENDPOINT } from "../config/api";
+import {
+  $spolyzerBlue
+} from "../const/color";
 const RouterWithRedux = connect()(Router);
 const AppLogo = () => {
   return (
@@ -126,7 +136,7 @@ class Route extends React.Component{
     }
     return (
       <RouterWithRedux>
-        <Scene key="root" renderTitle={() => { return <AppLogo />; }} navigationBarStyle={styles.navBarStyle}>
+        <Scene key="root" renderTitle={() => { return <AppLogo />; }} navigationBarStyle={styles.navBarStyle} backButtonImage={require("../assets/img/left_arrow.png")}>
           <Scene key="login" component={Login} initial={!this.state.isValidToken}  hideNavBar />
           <Scene key="signUp" component={SignUp} hideNavBar />
           <Scene key="confirmation" component={Confirmation} hideNavBar />
@@ -146,6 +156,13 @@ class Route extends React.Component{
           >
             <Scene key="profileEdit" component={ProfileEdit} title="マイデータ編集"/>
             <Tabs initial key="tab" labelStyle={styles.label} tabBarStyle={styles.tabBarStyle} tabStyle={styles.tabStyle}>
+              <Scene key="Dashboard" tabBarLabel="ダッシュボード" icon={() => (<Image style={styles.icon} source={require("../assets/img/tabs_dashboard.png")} />)}>
+                <Scene key="DashboardTop" initial component={DashboardTop} title="ダッシュボード ホーム"/>
+                <Scene key="DashboardCreate" leftButtonTextStyle={styles.backButton} onLeft={() => {Actions.pop();}} leftTitle="キャンセル" component={DashboardCreate} title="ダッシュボード 目標設定"/>
+                <Scene key="DashboardView" hideTabBar  back backTitle="戻る"　backButtonTextStyle={styles.backButton} backButtonTintColor={$spolyzerBlue} component={DashboardView} title="ダッシュボード 詳細"/>
+                <Scene key="DashboardCreateSelect"  hideDrawerButton　leftButtonTextStyle={styles.backButton} onLeft={() => {Actions.pop();}} leftTitle="キャンセル" hideNavBar={false} component={DashboardCreateSelect} title=""/>
+                <Scene key="DashboardCreateAreaSelect" hideDrawerButton　leftButtonTextStyle={styles.backButton} onLeft={() => {Actions.pop();}} leftTitle="キャンセル"　hideNavBar={false} component={DashboardCreateAreaSelect} title=""/>
+              </Scene>
               <Scene key="Score" initial tabBarLabel="スコアシート" icon={() => (<Image style={styles.icon} source={require("../assets/img/tabs_score.png")} />)}>
                 <Scene key="gameCreate" initial component={GameCreate} title="単分析"/>
                 <Scene key="gameSearchUser" component={GameSearchUser} title="ユーザー検索"/>
@@ -193,6 +210,8 @@ const styles = StyleSheet.create({
   },
   navBarStyle: {
     backgroundColor: "#134A65"
+  },
+  backButton: {
+    color: $spolyzerBlue
   }
 });
-

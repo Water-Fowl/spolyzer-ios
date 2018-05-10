@@ -10,6 +10,12 @@ import ScoreCreate from "./templates/ScoreCreate";
 import ScoreView from "./templates/ScoreView";
 import SignUp from "./templates/SignUp";
 import Confirmation from "./templates/Confirmation";
+import DashboardTop from "./templates/DashboardTop";
+import DashboardView from "./templates/DashboardView";
+import DashboardCreate from "./templates/DashboardCreate";
+import DashboardCreateSelect from "./templates/DashboardCreateSelect";
+import DashboardCreateAreaSelect from "./templates/DashboardCreateAreaSelect";
+
 export {
   /* Componentのexport */
   AnalysisCreate,
@@ -23,5 +29,10 @@ export {
   ProfileEdit,
   SignUp,
   Login,
-  Confirmation
+  Confirmation,
+  DashboardTop,
+  DashboardView,
+  DashboardCreate,
+  DashboardCreateSelect,
+  DashboardCreateAreaSelect
 };
