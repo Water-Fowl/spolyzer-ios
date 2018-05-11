@@ -68,7 +68,7 @@ class ScoreView extends React.Component {
           <PlayersDisplay
             leftUsers={this.props.game.gameUnits.left.users}
             rightUsers={this.props.game.gameUnits.right.users}
-          />
+          >VS</PlayersDisplay>
           <View style={styles.gameInformationsContaier}>
             <View style={styles.gameInformationTextContainer}>
               {this.renderWinLossText((side = 0))}

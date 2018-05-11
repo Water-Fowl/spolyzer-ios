@@ -13,9 +13,14 @@ export default class PlayersDisplay extends React.Component {
   }
   render() {
     return (
-      <View style={styles.userNameContainer}>
+      <View
+        style={[
+          styles.userNameContainer,
+          { paddingTop: this.props.padding, paddingBottom: this.props.padding }
+        ]}
+      >
         {this.renderUnitUsersName(this.props.leftUsers)}
-        <Text style={styles.vsText}>VS</Text>
+        <Text style={styles.vsText}>{this.props.children}</Text>
         {this.renderUnitUsersName(this.props.rightUsers)}
       </View>
     );

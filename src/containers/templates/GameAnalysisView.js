@@ -57,7 +57,7 @@ class GameAnalysisView extends React.Component {
           <PlayersDisplay
             leftUsers={this.props.games.left_users}
             rightUsers={this.props.games.right_users}
-          />
+          >VS</PlayersDisplay>
           <View style={styles.gameInformationsContaier}>
             <View style={styles.gameInformationTextContainer}>
               {this.renderWinLossText((side = 0))}
