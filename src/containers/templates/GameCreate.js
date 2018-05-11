@@ -4,8 +4,7 @@ import templateEnhancer from "./hoc";
 import { Actions } from "react-native-router-flux";
 import {
   Alert, Dimensions, Image, StyleSheet, Text,
-  TouchableHighlight, TouchableOpacity, View,
-  TextInput
+  TouchableHighlight, TouchableOpacity, View, TextInput
 } from "react-native";
 import { connect } from "react-redux";
 
@@ -29,7 +28,6 @@ class GameCreate extends React.Component {
       gameModules.setUserIndex(selectedUnitIndex, selectedUserIndex)
     );
     Actions.gameSearchUser();
-    this.navigateScoreCreate = this.navigateScoreCreate.bind(this);
   }
 
   renderNoSelectedUserIcon() {
