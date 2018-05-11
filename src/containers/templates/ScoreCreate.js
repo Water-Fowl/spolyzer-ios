@@ -96,8 +96,8 @@ class ScoreCreate extends React.Component {
         let endpoint = gameCountEndpointGenerator({ game_id: json.game.id });
         this.props.dispatch(
           requestModules.getApiRequest(
-            endpoint = endpoint,
-            params = {},
+            (endpoint = endpoint),
+            (params = {}),
             this.props.authentication.header,
             gameModules.getShotTypeCountsRequest,
             gameModules.getShotTypeCountsReceived
@@ -237,11 +237,12 @@ const styles = StyleSheet.create({
   analysisNavigateText: {
     borderColor: "#00A0E9",
     backgroundColor: "#00A0E9",
-    borderWidth: 1.0,
+    borderWidth: 1,
     borderRadius: 4,
-    padding: 5,
+    padding: 12,
     paddingLeft: 8,
     paddingRight: 8,
+    fontSize: 16,
     color: "white",
     fontWeight: "bold"
   },
@@ -254,13 +255,14 @@ const styles = StyleSheet.create({
     alignSelf: "flex-end"
   },
   backButtonText: {
-    borderColor: "#00A0E9",
+    borderColor: "red",
     backgroundColor: "red",
-    borderWidth: 1.0,
+    borderWidth: 1,
     borderRadius: 4,
-    padding: 5,
+    padding: 12,
     paddingLeft: 8,
     paddingRight: 8,
+    fontSize: 16,
     color: "white",
     fontWeight: "bold"
   },
