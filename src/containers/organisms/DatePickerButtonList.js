@@ -41,7 +41,7 @@ class DatePickerButtonList extends React.Component {
               fontWeight: "bold"
             },
             dateInput: {
-              borderColor: "none"
+              borderColor: "transparent"
             },
             btnTextConfirm: {
               color: $spolyzerDarkBlue
