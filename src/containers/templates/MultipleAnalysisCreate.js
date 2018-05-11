@@ -1,7 +1,7 @@
 import React from "react";
 import baseEnhancer from "./hoc";
 import { Actions, ActionConst } from "react-native-router-flux";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { StyleSheet, Text, TouchableOpacity, View, Alert } from "react-native";
 import { connect } from "react-redux";
 import { listToQueryParams } from "utils";
 import { SegmentedControl } from "react-native-ios-kit";
@@ -43,7 +43,30 @@ class AnalysisCreate extends React.Component {
     };
   }
 
+  checkValidate() {
+    if (this.props.analysis.analysisUsers) {
+      if (this.state.game_user_count - 1) {
+        // ダブルス時
+        if (this.props.analysis.analysisUsers.length == 1) {
+          Alert.alert(
+            "エラー",
+            "ユーザーを選択してください。",
+            [{ text: "了解" }],
+            { cancelable: false }
+          );
+          return true;
+        }
+      } else {
+        // シングルス時
+        if (this.props.analysis.analysisUsers.length == 2)
+          this.props.dispatch(analysisModules.removeUser());
+      }
+    }
+    return false;
+  }
+
   getPositionsCountsEvent() {
+    if (this.checkValidate()) return;
     let params = {
       shot_type_id: this.props.analysis.shotTypeId
     };
