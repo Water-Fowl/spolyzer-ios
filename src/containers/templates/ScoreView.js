@@ -2,12 +2,8 @@ import React from "react";
 import templateEnhancer from "./hoc";
 import { ActionConst, Actions } from "react-native-router-flux";
 import {
-  Image,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View
+  Image, ScrollView, StyleSheet,
+  Text, TouchableOpacity, View
 } from "react-native";
 import { connect } from "react-redux";
 
@@ -68,6 +64,7 @@ class ScoreView extends React.Component {
           <PlayersDisplay
             leftUsers={this.props.game.gameUnits.left.users}
             rightUsers={this.props.game.gameUnits.right.users}
+            padding={5}
           >VS</PlayersDisplay>
           <View style={styles.gameInformationsContaier}>
             <View style={styles.gameInformationTextContainer}>

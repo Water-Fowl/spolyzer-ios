@@ -57,7 +57,10 @@ class GameAnalysisView extends React.Component {
           <PlayersDisplay
             leftUsers={this.props.games.left_users}
             rightUsers={this.props.games.right_users}
-          >VS</PlayersDisplay>
+            padding={5}
+          >
+            VS
+          </PlayersDisplay>
           <View style={styles.gameInformationsContaier}>
             <View style={styles.gameInformationTextContainer}>
               {this.renderWinLossText((side = 0))}
@@ -76,6 +79,7 @@ class GameAnalysisView extends React.Component {
             horizontal
             sport={this.props.sport.id}
             callback={this.setShotTypeCounts}
+            margin={20}
           />
           <Graph
             data={this.state.data}
