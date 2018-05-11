@@ -223,6 +223,7 @@ class Route extends React.Component {
                   component={ScoreView}
                   title="結果"
                   hideDrawerButton
+                  back
                 />
               </Scene>
               <Scene

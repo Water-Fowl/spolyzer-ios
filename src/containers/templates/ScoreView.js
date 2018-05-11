@@ -1,3 +1,4 @@
+import Orientation from "react-native-orientation";
 import React from "react";
 import templateEnhancer from "./hoc";
 import { ActionConst, Actions } from "react-native-router-flux";
@@ -25,9 +26,14 @@ class ScoreView extends React.Component {
     this.state = {
       data: [],
       missData: [],
-      shotTypeList: []
+      shotTypeList: [],
+      lockToLandscape: true
     };
   }
+  componentWillUnmount() {
+    if (this.state.lockToLandscape) Orientation.lockToLandscape();
+  }
+
   setShotTypeCounts(position, side, isNetMiss) {
     let selectedShotTypeCounts = this.props.game.shotTypeCounts[side] || {};
     const {
@@ -100,6 +106,9 @@ class ScoreView extends React.Component {
         <View style={styles.backButtonContainer}>
           <TouchableOpacity
             onPress={() => {
+              this.setState({
+                lockToLandscape: false
+              });
               this.props.dispatch(gameModules.resetState());
               Actions.popTo("gameCreate");
             }}
