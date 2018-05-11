@@ -2,11 +2,19 @@ import React from "react";
 import templateEnhancer from "./hoc";
 import { ActionConst, Actions } from "react-native-router-flux";
 import {
-  Image, ScrollView, StyleSheet, Text, TouchableOpacity,
-  TouchableHighlight, View
+  Image,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  TouchableHighlight,
+  View
 } from "react-native";
 import {
-  VictoryAxis, VictoryBar, VictoryChart, VictoryTheme
+  VictoryAxis,
+  VictoryBar,
+  VictoryChart,
+  VictoryTheme
 } from "victory-native";
 import { connect } from "react-redux";
 
@@ -134,6 +142,13 @@ class AnalysisView extends React.Component {
     );
   }
 
+  setOutcome() {
+    if (this.props.analysis.outcome == "all") return "全て";
+    if (this.props.analysis.outcome == "win") return "勝ち";
+    if (this.props.analysis.outcome == "lose") return "負け";
+    return "-";
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -146,11 +161,12 @@ class AnalysisView extends React.Component {
             {this._renderOpponentUserNames(this.props.analysis.analysisUsers)}
           </View>
           <View style={styles.optionContainer}>
-            <View style={styles.optionTextContainer}>
-              <Text style={styles.optionText}>
-                {this.props.sport.shotTypes[this.props.analysis.shotTypeId]}
-              </Text>
-            </View>
+            <Text style={styles.optionLabel}>勝敗</Text>
+            <Text style={styles.optionText}>{this.setOutcome()}</Text>
+            <Text style={styles.optionLabel}>球種</Text>
+            <Text style={styles.optionText}>
+              {this.props.sport.shotTypes[this.props.analysis.shotTypeId]}
+            </Text>
           </View>
           <Field
             horizontal
@@ -212,32 +228,26 @@ const styles = StyleSheet.create({
   },
   optionContainer: {
     flexDirection: "row",
-    justifyContent: "center",
     alignSelf: "center",
-    paddingTop: 10
+    paddingTop: 10,
+    flex: 1
   },
-  optionTextContainer: {
-    borderRightColor: "#0a2444",
-    borderTopColor: "#0a2444",
-    borderLeftColor: "#0a2444",
-    borderBottomColor: "#0a2444",
-    height: 32,
-    width: 96,
-    borderWidth: 1,
-    borderRadius: 4,
-    alignItems: "center",
-    justifyContent: "center"
+  optionLabel: {
+    fontWeight: "bold",
+    color: "white",
+    fontSize: 14,
+    alignSelf: "center",
+    margin: 8,
+    backgroundColor: "transparent"
   },
   optionText: {
     backgroundColor: "#0a2444",
     color: "#ffffff",
     fontSize: 14,
     fontWeight: "bold",
-    height: 26,
-    width: 90,
     borderRadius: 4,
     textAlign: "center",
-    paddingTop: 5
+    padding: 8
   },
   outAreaContainer: {
     width: 300,
