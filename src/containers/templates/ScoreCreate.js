@@ -164,14 +164,6 @@ class ScoreCreate extends React.Component {
         />
         <LandScapeBackground />
         <TopContentBar>スコアシート</TopContentBar>
-        <TouchableHighlight
-          onPress={() => {
-            this.backButtonAlert();
-          }}
-          style={styles.backButton}
-        >
-          <Text style={styles.backButtonText}>戻る</Text>
-        </TouchableHighlight>
         <View style={styles.scoreInformationBar}>
           <View style={styles.scoreInformationContainer}>
             {this.renderUnitUsersName(this.props.game.gameUnits.left.users)}
@@ -182,16 +174,6 @@ class ScoreCreate extends React.Component {
             </View>
             <Text style={styles.scoreInformationGamePoint}>0</Text>
           </View>
-          <TouchableHighlight
-            onPress={() => {
-              this.props.dispatch(gameModules.removeScore());
-            }}
-          >
-            <Image
-              style={styles.scoreInformationBack}
-              source={require("../../assets/img/score_create_back.png")}
-            />
-          </TouchableHighlight>
           <View style={styles.scoreInformationContainer}>
             <Text style={styles.scoreInformationGamePoint}>0</Text>
             <View style={styles.scoreInformationPointContainer}>
@@ -202,6 +184,14 @@ class ScoreCreate extends React.Component {
             {this.renderUnitUsersName(this.props.game.gameUnits.right.users)}
           </View>
         </View>
+        <TouchableHighlight
+          onPress={() => {
+            this.backButtonAlert();
+          }}
+          style={styles.backButton}
+        >
+          <Text style={styles.backButtonText}>戻る</Text>
+        </TouchableHighlight>
         <TouchableHighlight
           onPress={() => {
             this.navigationEvent(
@@ -217,7 +207,17 @@ class ScoreCreate extends React.Component {
           horizontal={false}
           sport={this.props.sport.id}
           callback={this.showModal}
+          margin={36}
         />
+        <View style={styles.scoreInformationBackContainer}>
+          <TouchableHighlight
+            onPress={() => {
+              this.props.dispatch(gameModules.removeScore());
+            }}
+          >
+            <Image source={require("../../assets/img/score_create_back.png")} />
+          </TouchableHighlight>
+        </View>
       </View>
     );
   }
@@ -230,8 +230,8 @@ const styles = StyleSheet.create({
     position: "absolute",
     backgroundColor: "transparent",
     height: 40,
-    right: 10,
-    top: 8,
+    right: 6,
+    top: 6,
     alignSelf: "flex-end"
   },
   analysisNavigateText: {
@@ -250,8 +250,8 @@ const styles = StyleSheet.create({
     position: "absolute",
     backgroundColor: "transparent",
     height: 40,
-    left: 10,
-    top: 8,
+    left: 6,
+    top: 6,
     alignSelf: "flex-end"
   },
   backButtonText: {
@@ -268,32 +268,33 @@ const styles = StyleSheet.create({
   },
   scoreInformationBar: {
     flexDirection: "row",
-    justifyContent: "space-between",
-    height: 40,
-    marginTop: -20
+    position: "absolute",
+    height: 48,
+    width: "100%"
   },
-  scoreInformationBack: {
-    marginTop: 25,
-    marginLeft: 20,
-    marginRight: 20
+  scoreInformationBackContainer: {
+    position: "absolute",
+    top: 38
   },
   scoreInformationUserNameContainer: {
     flex: 2,
-    justifyContent: "flex-end"
+    justifyContent: "flex-end",
+    borderBottomColor: "#28a8de",
+    borderBottomWidth: 1,
+    borderBottomLeftRadius: 10,
+    borderBottomRightRadius: 10
   },
   scoreInformationUserName: {
-    paddingTop: 4,
-    paddingBottom: 4,
+    paddingTop: 2,
+    paddingBottom: 2,
     justifyContent: "center",
     color: "white",
     textAlign: "center",
+    fontWeight: "bold",
     fontSize: 15,
     width: 130,
     alignSelf: "center",
-    backgroundColor: "rgba(0, 0, 0, 0)",
-    borderWidth: 0.5,
-    borderRadius: 4,
-    borderColor: "#2EA7E0"
+    backgroundColor: "rgba(0, 0, 0, 0)"
   },
   scoreInformationPointContainer: {
     justifyContent: "flex-end"
@@ -325,6 +326,8 @@ const styles = StyleSheet.create({
   },
   scoreInformationContainer: {
     flexDirection: "row",
-    flex: 0.4
+    flex: 1,
+    paddingLeft: 55,
+    paddingRight: 55
   }
 });
