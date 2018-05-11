@@ -2,8 +2,12 @@ import React from "react";
 import templateEnhancer from "./hoc";
 import { ActionConst, Actions } from "react-native-router-flux";
 import {
-  Image, ScrollView, StyleSheet,
-  Text, TouchableOpacity, View
+  Image,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View
 } from "react-native";
 import { connect } from "react-redux";
 
@@ -58,14 +62,16 @@ class ScoreView extends React.Component {
 
   render() {
     return (
-      <ScrollView style={styles.container}>
-        <TopContentBar>単分析結果</TopContentBar>
-        <View>
+      <View style={styles.container}>
+        <ScrollView style={styles.scrollContainer}>
+          <TopContentBar>単分析結果</TopContentBar>
           <PlayersDisplay
             leftUsers={this.props.game.gameUnits.left.users}
             rightUsers={this.props.game.gameUnits.right.users}
             padding={5}
-          >VS</PlayersDisplay>
+          >
+            VS
+          </PlayersDisplay>
           <View style={styles.gameInformationsContaier}>
             <View style={styles.gameInformationTextContainer}>
               {this.renderWinLossText((side = 0))}
@@ -90,18 +96,18 @@ class ScoreView extends React.Component {
             missData={this.state.missData}
             shotTypeList={this.state.shotTypeList}
           />
-          <View style={styles.backButtonContainer}>
-            <TouchableOpacity
-              onPress={() => {
-                this.props.dispatch(gameModules.resetState());
-                Actions.popTo("gameCreate");
-              }}
-            >
-              <Text style={styles.backButtonText}>保存して終了</Text>
-            </TouchableOpacity>
-          </View>
+        </ScrollView>
+        <View style={styles.backButtonContainer}>
+          <TouchableOpacity
+            onPress={() => {
+              this.props.dispatch(gameModules.resetState());
+              Actions.popTo("gameCreate");
+            }}
+          >
+            <Text style={styles.backButtonText}>保存して終了</Text>
+          </TouchableOpacity>
         </View>
-      </ScrollView>
+      </View>
     );
   }
 }
@@ -111,6 +117,10 @@ export default connect(mapStateToProps)(templateEnhancer(ScoreView));
 const styles = StyleSheet.create({
   container: {
     flex: 1
+  },
+  scrollContainer: {
+    flex: 1,
+    marginBottom: 12
   },
   gameInformationsContaier: {
     flexDirection: "row",
@@ -148,25 +158,21 @@ const styles = StyleSheet.create({
     marginRight: 5
   },
   backButtonContainer: {
-    borderRightColor: "#28a8de",
-    borderTopColor: "#28a8de",
-    borderLeftColor: "#28a8de",
-    borderBottomColor: "#28a8de",
-    height: 34,
-    width: 154,
-    borderWidth: 1,
-    borderRadius: 4,
-    marginLeft: 190,
-    marginTop: 15
+    justifyContent: "center",
+    alignItems: "center"
   },
   backButtonText: {
+    bottom: 6,
+    borderColor: "#28a8de",
+    borderWidth: 1,
+    borderRadius: 4,
+    padding: 12,
+    paddingLeft: 30,
+    paddingRight: 30,
     backgroundColor: "transparent",
     color: "#ffffff",
     fontSize: 16,
     fontWeight: "bold",
-    borderRadius: 4,
-    textAlign: "center",
-    paddingTop: 7,
-    paddingLeft: 20
+    textAlign: "center"
   }
 });
