@@ -2,8 +2,11 @@ import React from "react";
 import { View, Image, StyleSheet } from "react-native";
 
 import {
-  InFieldLength, InFieldSide, InFieldCircle,
-  OutFieldSide, OutFieldLength
+  InFieldLength,
+  InFieldSide,
+  InFieldCircle,
+  OutFieldSide,
+  OutFieldLength
 } from "atoms";
 
 export default class Field extends React.Component {
@@ -29,7 +32,7 @@ export default class Field extends React.Component {
           marginBottom: 5,
           height: 170 * sizeMagnification,
           width: 300 * sizeMagnification,
-          marginTop: 26
+          marginTop: (this.props.margin = this.props.margin||26)
         }}
       >
         {this.renderInField()}
