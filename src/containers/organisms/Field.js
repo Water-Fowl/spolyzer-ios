@@ -32,7 +32,7 @@ export default class Field extends React.Component {
           marginBottom: 5,
           height: 170 * sizeMagnification,
           width: 300 * sizeMagnification,
-          marginTop: (this.props.margin = this.props.margin||26)
+          marginTop: this.props.margin || 26
         }}
       >
         {this.renderInField()}

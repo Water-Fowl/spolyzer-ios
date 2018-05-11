@@ -16,7 +16,7 @@ export default class PlayersDisplay extends React.Component {
       <View
         style={[
           styles.userNameContainer,
-          { paddingTop: this.props.padding, paddingBottom: this.props.padding }
+          { paddingTop: this.props.padding||15, paddingBottom: this.props.padding||15 }
         ]}
       >
         {this.renderUnitUsersName(this.props.leftUsers)}
@@ -28,9 +28,7 @@ export default class PlayersDisplay extends React.Component {
 }
 const styles = StyleSheet.create({
   userNameContainer: {
-    flexDirection: "row",
-    paddingTop: 15,
-    paddingBottom: 15
+    flexDirection: "row"
   },
   userNameBox: {
     flex: 1,
