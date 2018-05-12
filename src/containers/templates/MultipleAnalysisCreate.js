@@ -62,9 +62,6 @@ class AnalysisCreate extends React.Component {
 
   getPositionsCountsEvent() {
     if (this.checkValidate()) return;
-    let params = {
-      shot_type_id: this.props.analysis.shotTypeId
-    };
     this.state.created_after = this.state.created_after || "2018/1/1";
     this.state.created_before = this.state.created_before || getNowYMD();
     let endpoint = analysisEndpointGenerator({shot_type_id: this.props.analysis.shotTypeId});
