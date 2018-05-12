@@ -44,23 +44,23 @@ class AnalysisCreate extends React.Component {
   }
 
   getPositionsCountsEvent() {
-    let params = {
-      shot_type_id: this.props.analysis.shotTypeId
-    };
     this.state.created_after = this.state.created_after || "2018/1/1";
     this.state.created_before = this.state.created_before || getNowYMD();
-    let endpoint = analysisEndpointGenerator(params);
+    let endpoint = analysisEndpointGenerator({shot_type_id: this.props.analysis.shotTypeId});
+    let params = {
+      created_after: this.state.created_after + " 0:00:00",
+      created_before: this.state.created_before + " 23:59:59",
+      outcome: this.props.analysis.outcome,
+      game_user_count: this.state.game_user_count
+    }
+    if (this.props.analysis.analysisUsersIds.length > 0){
+      params["opponent_users_ids"] = this.props.analysis.analysisUsersIds
+    }
     this.props
       .dispatch(
         requestModules.getApiRequest(
           (endpoint = endpoint),
-          (params = {
-            created_after: this.state.created_after + " 0:00:00",
-            created_before: this.state.created_before + " 23:59:59",
-            outcome: this.props.analysis.outcome,
-            opponent_users_ids: this.props.analysis.analysisUsersIds,
-            game_user_count: this.state.game_user_count
-          }),
+          params = params,
           this.props.authentication.header,
           analysisModules.getPositionsCountsRequest,
           analysisModules.getPositionsCountsReceived

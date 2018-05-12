@@ -16,6 +16,7 @@ import {
 import { mapStateToProps, timeEncode } from "utils";
 
 class GameAnalysisCreate extends React.Component {
+
   constructor(props) {
     super(props);
     this.getUsersGamesEvent.bind(this);
@@ -26,11 +27,13 @@ class GameAnalysisCreate extends React.Component {
     };
     this.getUsersGamesEvent();
   }
+
   componentWillReceiveProps(nextProps) {
     if (nextProps.scores) {
       this.setState({ scores: nextProps.scores });
     }
   }
+
   getUsersGamesEvent() {
     this.props
       .dispatch(
@@ -46,6 +49,7 @@ class GameAnalysisCreate extends React.Component {
         this.setState({ games: json.games });
       });
   }
+
   navigationEvent(item) {
     let endpoint = gameCountEndpointGenerator({
       game_id: item.game.id
@@ -61,6 +65,7 @@ class GameAnalysisCreate extends React.Component {
     );
     Actions.GameAnalysisView({ games: item });
   }
+
   setListData() {
     let listData = [];
     if (!this.state.games) return listData;
@@ -70,20 +75,26 @@ class GameAnalysisCreate extends React.Component {
     }
     return listData;
   }
+
   setOpponentUsers(left_users, right_users) {
     let opponentUsers = { left: [], right: [], side: null };
+
     for (let index = 0; index < left_users.length; index++) {
       opponentUsers.left.push(left_users[index].name);
       opponentUsers.right.push(right_users[index].name);
+
       if (left_users[index].name === this.props.profile.userName)
         opponentUsers.side = 0;
+
       if (right_users[index].name === this.props.profile.userName)
         opponentUsers.side = 1;
+
     }
     return opponentUsers.side
       ? opponentUsers.left.join(" / ")
       : opponentUsers.right.join(" / ");
   }
+
   render() {
     return (
       <View style={styles.container}>
