@@ -62,12 +62,12 @@ class AnalysisCreate extends React.Component {
 
   getPositionsCountsEvent() {
     if (this.checkValidate()) return;
-    this.state.created_after = this.state.created_after || "2018/1/1";
-    this.state.created_before = this.state.created_before || getNowYMD();
+    let created_after = this.state.created_after || "2018/1/1";
+    let created_before = this.state.created_before || getNowYMD();
     let endpoint = analysisEndpointGenerator({shot_type_id: this.props.analysis.shotTypeId});
     let params = {
-      created_after: this.state.created_after + " 0:00:00",
-      created_before: this.state.created_before + " 23:59:59",
+      created_after: created_after + " 0:00:00",
+      created_before: created_before + " 23:59:59",
       outcome: this.props.analysis.outcome,
       game_user_count: this.state.game_user_count
     };
@@ -85,7 +85,11 @@ class AnalysisCreate extends React.Component {
         )
       )
       .then(() => {
-        Actions.MultipleAnalysisView({ date: this.state });
+        Actions.MultipleAnalysisView({
+          game_user_count: this.state.game_user_count,
+          created_after: created_after,
+          created_before: created_before
+        });
       });
   }
   pushAnalysisSearchEvent(selectedUserIndex) {

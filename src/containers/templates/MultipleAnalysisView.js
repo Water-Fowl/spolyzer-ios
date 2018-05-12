@@ -104,7 +104,7 @@ class AnalysisView extends React.Component {
   _renderOpponentUserNames(users) {
     if (!users.length) {
       let text =
-        this.props.date.game_user_count - 1 ? "ダブルス" : "シングルス";
+        this.props.game_user_count - 1 ? "ダブルス" : "シングルス";
       return (
         <View style={styles.userNameContainer}>
           <View style={styles.userNameBox}>
@@ -117,7 +117,7 @@ class AnalysisView extends React.Component {
     for (let userIdx in users) {
       if (
         users[userIdx] &&
-        opponentUserNameComponentList.length != this.props.date.game_user_count
+        opponentUserNameComponentList.length != this.props.game_user_count
       ) {
         opponentUserNameComponentList.push(
           <View style={styles.userNameBox}>
@@ -146,7 +146,7 @@ class AnalysisView extends React.Component {
         <TopContentBar>複合分析結果</TopContentBar>
         <ScrollView>
           <Text style={styles.termText}>
-            {this.props.date.created_after}~{this.props.date.created_before}
+            {this.props.created_after}~{this.props.created_before}
           </Text>
           <View>
             {this._renderOpponentUserNames(this.props.analysis.analysisUsers)}
