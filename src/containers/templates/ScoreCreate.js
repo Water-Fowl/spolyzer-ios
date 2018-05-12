@@ -2,15 +2,8 @@ import Orientation from "react-native-orientation";
 import React from "react";
 import { Actions } from "react-native-router-flux";
 import {
-  Alert,
-  BackgroundImage,
-  Dimensions,
-  Image,
-  StyleSheet,
-  Text,
-  TouchableHighlight,
-  TriangleCorner,
-  View
+  Alert, BackgroundImage, Dimensions, Image, StyleSheet,
+  Text, TouchableHighlight, TriangleCorner, View
 } from "react-native";
 import { LandScapeBackground, TopContentBar } from "atoms";
 import { ShotTypeModal } from "molecules";

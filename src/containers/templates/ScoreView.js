@@ -2,14 +2,7 @@ import Orientation from "react-native-orientation";
 import React from "react";
 import templateEnhancer from "./hoc";
 import { ActionConst, Actions } from "react-native-router-flux";
-import {
-  Image,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View
-} from "react-native";
+import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { connect } from "react-redux";
 
 import { TopContentBar } from "atoms";
