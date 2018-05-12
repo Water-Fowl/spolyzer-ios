@@ -7,15 +7,10 @@ import { listToQueryParams } from "utils";
 import { SegmentedControl } from "react-native-ios-kit";
 
 import {
-  ShotTypeButtonList,
-  OutcomeButtonList,
-  DatePickerButtonList
+  ShotTypeButtonList, OutcomeButtonList, DatePickerButtonList
 } from "organisms";
 import {
-  SelectedUserName,
-  NavigateButton,
-  TopContentBar,
-  TextBox
+  SelectedUserName, NavigateButton, TopContentBar, TextBox
 } from "atoms";
 import * as analysisModules from "../../modules/analysis";
 import * as requestModules from "../../modules/request";
@@ -78,9 +73,9 @@ class AnalysisCreate extends React.Component {
       created_before: this.state.created_before + " 23:59:59",
       outcome: this.props.analysis.outcome,
       game_user_count: this.state.game_user_count
-    }
+    };
     if (this.props.analysis.analysisUsersIds.length > 0){
-      params["opponent_users_ids"] = this.props.analysis.analysisUsersIds
+      params["opponent_users_ids"] = this.props.analysis.analysisUsersIds;
     }
     this.props
       .dispatch(
