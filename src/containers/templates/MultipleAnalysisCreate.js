@@ -1,21 +1,16 @@
 import React from "react";
 import baseEnhancer from "./hoc";
 import { Actions, ActionConst } from "react-native-router-flux";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { StyleSheet, Text, TouchableOpacity, View, Alert } from "react-native";
 import { connect } from "react-redux";
 import { listToQueryParams } from "utils";
 import { SegmentedControl } from "react-native-ios-kit";
 
 import {
-  ShotTypeButtonList,
-  OutcomeButtonList,
-  DatePickerButtonList
+  ShotTypeButtonList, OutcomeButtonList, DatePickerButtonList
 } from "organisms";
 import {
-  SelectedUserName,
-  NavigateButton,
-  TopContentBar,
-  TextBox
+  SelectedUserName, NavigateButton, TopContentBar, TextBox
 } from "atoms";
 import * as analysisModules from "../../modules/analysis";
 import * as requestModules from "../../modules/request";
@@ -43,7 +38,33 @@ class AnalysisCreate extends React.Component {
     };
   }
 
+  checkValidate() {
+    if (this.props.analysis.analysisUsers) {
+      if (this.state.game_user_count - 1) {
+        // ダブルス時
+        if (this.props.analysis.analysisUsers.length == 1) {
+          Alert.alert(
+            "エラー",
+            "ユーザーを選択してください。",
+            [{ text: "了解" }],
+            { cancelable: false }
+          );
+          return true;
+        }
+      } else {
+        // シングルス時
+        if (this.props.analysis.analysisUsers.length == 2)
+          this.props.dispatch(analysisModules.removeUser());
+      }
+    }
+    return false;
+  }
+
   getPositionsCountsEvent() {
+    if (this.checkValidate()) return;
+    let params = {
+      shot_type_id: this.props.analysis.shotTypeId
+    };
     this.state.created_after = this.state.created_after || "2018/1/1";
     this.state.created_before = this.state.created_before || getNowYMD();
     let endpoint = analysisEndpointGenerator({shot_type_id: this.props.analysis.shotTypeId});
@@ -52,9 +73,9 @@ class AnalysisCreate extends React.Component {
       created_before: this.state.created_before + " 23:59:59",
       outcome: this.props.analysis.outcome,
       game_user_count: this.state.game_user_count
-    }
+    };
     if (this.props.analysis.analysisUsersIds.length > 0){
-      params["opponent_users_ids"] = this.props.analysis.analysisUsersIds
+      params["opponent_users_ids"] = this.props.analysis.analysisUsersIds;
     }
     this.props
       .dispatch(

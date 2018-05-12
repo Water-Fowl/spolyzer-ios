@@ -63,7 +63,7 @@ class GameAnalysisCreate extends React.Component {
         gameModules.getShotTypeCountsReceived
       )
     );
-    Actions.GameAnalysisView({ games: item });
+    Actions.GameAnalysisView({ "games": item });
   }
 
   setListData() {

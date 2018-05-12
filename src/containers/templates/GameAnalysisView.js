@@ -6,6 +6,7 @@ import {
   TouchableOpacity, View
 } from "react-native";
 import { TopContentBar } from "atoms";
+import { PlayersDisplay } from "molecules";
 import { connect } from "react-redux";
 import { reshapeShotTypeCounts, mapStateToProps } from "utils";
 import { Field, Graph } from "organisms";
@@ -35,20 +36,6 @@ class GameAnalysisView extends React.Component {
       missData: missShotTypeCountsList
     });
   }
-  renderUnitUsersName(users) {
-    const unitUserNameComponentList = [];
-    for (let user of users) {
-      unitUserNameComponentList.push(
-        <Text style={styles.userNameText}> {user.name} </Text>
-      );
-    }
-    return (
-      <View style={styles.gameInformationTextContainer}>
-        {unitUserNameComponentList}
-      </View>
-    );
-  }
-
   renderWinLossText(side) {
     let scoreCounts = [
       this.props.games.score_count.left,
@@ -67,10 +54,13 @@ class GameAnalysisView extends React.Component {
       <ScrollView style={styles.container}>
         <TopContentBar>単分析結果</TopContentBar>
         <View>
-          <View style={styles.userNameContainer}>
-            {this.renderUnitUsersName(this.props.games.left_users)}
-            {this.renderUnitUsersName(this.props.games.right_users)}
-          </View>
+          <PlayersDisplay
+            leftUsers={this.props.games.left_users}
+            rightUsers={this.props.games.right_users}
+            padding={5}
+          >
+            VS
+          </PlayersDisplay>
           <View style={styles.gameInformationsContaier}>
             <View style={styles.gameInformationTextContainer}>
               {this.renderWinLossText((side = 0))}
@@ -85,7 +75,12 @@ class GameAnalysisView extends React.Component {
               {this.renderWinLossText((side = 1))}
             </View>
           </View>
-          <Field horizontal callback={this.setShotTypeCounts} />
+          <Field
+            horizontal
+            sport={this.props.sport.id}
+            callback={this.setShotTypeCounts}
+            margin={20}
+          />
           <Graph
             data={this.state.data}
             missData={this.state.missData}
@@ -102,25 +97,6 @@ export default connect(mapStateToProps)(baseEnhancer(GameAnalysisView));
 const styles = StyleSheet.create({
   container: {
     flex: 1
-  },
-  userNameContainer: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    marginTop: 20
-  },
-  userNameText: {
-    color: "white",
-    alignSelf: "center",
-    textAlign: "center",
-    paddingTop: 5,
-    paddingBottom: 5,
-    fontSize: 15,
-    paddingLeft: 14,
-    paddingRight: 14,
-    backgroundColor: "transparent",
-    borderColor: "#28a8de",
-    borderRadius: 3,
-    borderWidth: 1
   },
   gameInformationsContaier: {
     flexDirection: "row",

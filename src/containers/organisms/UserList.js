@@ -46,13 +46,13 @@ export default connect(mapStateToProps)(UserList);
 
 const styles=StyleSheet.create({
   container: {
-    height: "60%",
     alignSelf: "center",
     backgroundColor: "transparent",
     borderRightColor: "#0a2444",
     borderTopColor: "#0a2444",
     borderLeftColor: "#0a2444",
-    borderBottomColor: "#0a2444"
+    borderBottomColor: "#0a2444",
+    paddingBottom: 160
   },
   scrollContainer: {
     width: 300,

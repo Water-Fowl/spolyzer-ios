@@ -2,12 +2,10 @@ import React from "react";
 import templateEnhancer from "./hoc";
 import { ActionConst, Actions } from "react-native-router-flux";
 import {
-  Image, ScrollView, StyleSheet, Text,
-  TouchableOpacity, TouchableHighlight, View
+  Image, ScrollView, StyleSheet, Text, TouchableOpacity, TouchableHighlight, View
 } from "react-native";
 import {
-  VictoryAxis, VictoryBar,
-  VictoryChart, VictoryTheme
+  VictoryAxis, VictoryBar, VictoryChart, VictoryTheme
 } from "victory-native";
 import { connect } from "react-redux";
 
@@ -104,22 +102,42 @@ class AnalysisView extends React.Component {
   }
 
   _renderOpponentUserNames(users) {
+    if (!users.length) {
+      let text =
+        this.props.date.game_user_count - 1 ? "ダブルス" : "シングルス";
+      return (
+        <View style={styles.userNameContainer}>
+          <View style={styles.userNameBox}>
+            <Text style={styles.userNameText}>{text}</Text>
+          </View>
+        </View>
+      );
+    }
     const opponentUserNameComponentList = [];
     for (let userIdx in users) {
-      if (users[userIdx]) {
+      if (
+        users[userIdx] &&
+        opponentUserNameComponentList.length != this.props.date.game_user_count
+      ) {
         opponentUserNameComponentList.push(
-          <View style={styles.flexDirectionRow}>
-            <ProfileImage imageSource={users[userIdx].image.url} size={20} />
-            <Text style={styles.opponentName}>{users[userIdx].name}</Text>
+          <View style={styles.userNameBox}>
+            <Text style={styles.userNameText}>{users[userIdx].name}</Text>
           </View>
         );
       }
     }
     return (
-      <View style={styles.opponentUserNameContainer}>
+      <View style={styles.userNameContainer}>
         {opponentUserNameComponentList}
       </View>
     );
+  }
+
+  setOutcome() {
+    if (this.props.analysis.outcome == "all") return "全て";
+    if (this.props.analysis.outcome == "win") return "勝ち";
+    if (this.props.analysis.outcome == "lose") return "負け";
+    return "-";
   }
 
   render() {
@@ -127,34 +145,27 @@ class AnalysisView extends React.Component {
       <View style={styles.container}>
         <TopContentBar>複合分析結果</TopContentBar>
         <ScrollView>
-          <View style={styles.analysisInformationContiner}>
-            <Text style={styles.vsText}>vs</Text>
-            <View style={styles.nameOutsideContainer}>
-              <View style={styles.nameInsideContainer}>
-                {this._renderOpponentUserNames(
-                  this.props.analysis.analysisUsers
-                )}
-              </View>
-            </View>
+          <Text style={styles.termText}>
+            {this.props.date.created_after}~{this.props.date.created_before}
+          </Text>
+          <View>
+            {this._renderOpponentUserNames(this.props.analysis.analysisUsers)}
           </View>
           <View style={styles.optionContainer}>
-            <View style={styles.optionTextContainer}>
-              <Text style={styles.optionText}>
-                {this.props.date.created_after}~{this.props.date.created_before}
-              </Text>
-            </View>
-            <View style={styles.optionTextContainer}>
-              <Text style={styles.optionText}>
-                {this.props.sport.shotTypes[this.props.analysis.shotTypeId]}
-              </Text>
-            </View>
+            <Text style={styles.optionLabel}>勝敗</Text>
+            <Text style={styles.optionText}>{this.setOutcome()}</Text>
+            <Text style={styles.optionLabel}>球種</Text>
+            <Text style={styles.optionText}>
+              {this.props.sport.shotTypes[this.props.analysis.shotTypeId]}
+            </Text>
           </View>
-
           <Field
             horizontal
+            sport={this.props.sport.id}
             callback={this.setPositionEvent}
             renderInField={this.renderInField}
             renderInButton={this._renderFieldButtonText}
+            margin={10}
           />
           <Graph data={this.state.selectedPositionsCount} />
         </ScrollView>
@@ -169,12 +180,12 @@ const styles = StyleSheet.create({
   container: {
     flex: 1
   },
-  vsText: {
+  termText: {
     fontWeight: "bold",
-    color: "skyblue",
-    fontSize: 26,
+    color: "white",
+    fontSize: 14,
     alignSelf: "center",
-    marginTop: 16,
+    margin: 8,
     backgroundColor: "transparent"
   },
   droppedIdText: {
@@ -184,74 +195,50 @@ const styles = StyleSheet.create({
     textAlign: "center",
     alignSelf: "center"
   },
-  analysisInformationContiner: {
+  userNameContainer: {
     flexDirection: "row",
-    alignSelf: "center"
-  },
-  nameOutsideContainer: {
-    borderRightColor: "#0a2444",
-    borderTopColor: "#0a2444",
-    borderLeftColor: "#0a2444",
-    borderBottomColor: "#0a2444",
-    width: 104,
-    borderWidth: 1,
-    marginLeft: 6,
-    borderRadius: 4,
-    marginTop: 20,
     alignItems: "center",
     justifyContent: "center"
   },
-  nameInsideContainer: {
-    borderRightColor: "#0a2444",
-    borderTopColor: "#0a2444",
-    borderLeftColor: "#0a2444",
-    borderBottomColor: "#0a2444",
-    width: 100,
-    borderWidth: 1,
-    borderRadius: 2,
-    flexDirection: "row"
+  userNameBox: {
+    flex: 1,
+    borderBottomColor: "#28a8de",
+    borderBottomWidth: 1,
+    borderBottomLeftRadius: 10,
+    borderBottomRightRadius: 10
   },
-  opponentName: {
-    backgroundColor: "transparent",
-    color: "#ffffff",
+  userNameText: {
+    color: "white",
     fontWeight: "bold",
-    fontSize: 12,
     alignSelf: "center",
-    paddingLeft: 4,
-    paddingRight: 4
-  },
-  flexDirectionRow: {
-    flexDirection: "row"
+    textAlign: "center",
+    paddingTop: 5,
+    paddingBottom: 5,
+    fontSize: 15,
+    backgroundColor: "transparent"
   },
   optionContainer: {
     flexDirection: "row",
-    justifyContent: "space-between",
     alignSelf: "center",
-    width: 310,
-    marginTop: 4
+    paddingTop: 10,
+    flex: 1
   },
-  optionTextContainer: {
-    borderRightColor: "#0a2444",
-    borderTopColor: "#0a2444",
-    borderLeftColor: "#0a2444",
-    borderBottomColor: "#0a2444",
-    height: 32,
-    width: 96,
-    borderWidth: 1,
-    borderRadius: 4,
-    alignItems: "center",
-    justifyContent: "center"
+  optionLabel: {
+    fontWeight: "bold",
+    color: "white",
+    fontSize: 14,
+    alignSelf: "center",
+    margin: 8,
+    backgroundColor: "transparent"
   },
   optionText: {
     backgroundColor: "#0a2444",
     color: "#ffffff",
     fontSize: 14,
     fontWeight: "bold",
-    height: 26,
-    width: 90,
     borderRadius: 4,
     textAlign: "center",
-    paddingTop: 5
+    padding: 8
   },
   outAreaContainer: {
     width: 300,

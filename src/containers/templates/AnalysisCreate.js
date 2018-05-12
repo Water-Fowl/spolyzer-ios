@@ -3,10 +3,7 @@ import templateEnhancer from "./hoc";
 import { connect } from "react-redux";
 import { View, StyleSheet, Text, TouchableOpacity } from "react-native";
 import {
-  GameIcon,
-  MultipleAnalysisIcon,
-  TopContentBar,
-  Background
+  GameIcon, MultipleAnalysisIcon, TopContentBar, Background
 } from "atoms";
 import { Actions } from "react-native-router-flux";
 import { mapStateToProps } from "utils";
