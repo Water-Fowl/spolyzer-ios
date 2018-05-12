@@ -62,7 +62,7 @@ class ScoreCreate extends React.Component {
       units:  users,
       scores,
       game: {
-        name: "トレーニングマッチ"
+        name: this.props.gameName
       },
       sport_id: this.props.sport.id
     };
