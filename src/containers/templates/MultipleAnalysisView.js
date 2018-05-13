@@ -11,8 +11,8 @@ import { connect } from "react-redux";
 
 import { Graph, Field } from "organisms";
 import { ProfileImage, TopContentBar } from "atoms";
-
-import { mapStateToProps, reshapePositionsCount } from "utils";
+import { mapStateToProps } from "../../modules/mapToProps";
+import * as utils from "../../utils";
 
 const IN_MIN_POSITION = 7;
 const IN_MAX_POSITION = 13;
@@ -22,21 +22,18 @@ const OUT = 0;
 const IN = 1;
 const LEFT = 0;
 const RIGHT = 1;
-const TERM_LIST = ["Day", "Week", "Month"];
 
 class AnalysisView extends React.Component {
   constructor(props) {
     super(props);
-    let selectedPositionsCount = reshapePositionsCount(
+    let selectedPositionsCount = utils.aggregatedMultipleAnalysis(
       this.props.analysis.positionCounts,
-      0,
-      1,
-      6
+      LEFT,
+      IN_MIN_POSITION,
+      IN_MAX_POSITION
     );
     this.state = {
-      /* Out = 0, In = 1 */
-      /* Left = 0, Right = 1 */
-      onPressOut: OUT,
+      onPressOut: IN,
       onPressSide: LEFT,
       selectedPositionsCount
     };
@@ -54,7 +51,7 @@ class AnalysisView extends React.Component {
       max = IN_MAX_POSITION;
       field = IN;
     }
-    let selectedPositionsCount = reshapePositionsCount(
+    let selectedPositionsCount = utils.aggregatedMultipleAnalysis(
       this.props.analysis.positionCounts,
       side,
       min,

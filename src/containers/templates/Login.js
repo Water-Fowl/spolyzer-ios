@@ -11,8 +11,9 @@ import * as authenticationModules from "../../modules/authentication";
 import * as sportModules from "../../modules/sport";
 import * as profileModules from "../../modules/profile";
 import * as requestModules from "../../modules/request";
+import { mapStateToProps } from "../../modules/mapToProps";
 import { SIGN_IN_ENDPOINT, USERS_ENDPOINT, SHOT_TYPES_ENDPOINT } from "../../config/api";
-import { mapStateToProps, errorAlertCallback } from "utils";
+import { errorAlertCallback } from "utils";
 
 function errorInstanceCallback(json){
   return new Error(json.errors);

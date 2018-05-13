@@ -6,7 +6,7 @@ import {
 import { connect } from "react-redux";
 
 import { ParametricButton } from "atoms";
-import { mapStateToProps } from "utils";
+import { mapStateToProps } from "../../modules/mapToProps";
 import { setShotType } from "../../modules/analysis";
 
 class ShotTypeButtonList extends React.Component {

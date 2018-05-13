@@ -6,7 +6,7 @@ import {
   GameIcon, MultipleAnalysisIcon, TopContentBar, Background
 } from "atoms";
 import { Actions } from "react-native-router-flux";
-import { mapStateToProps } from "utils";
+import { mapStateToProps } from "../../modules/mapToProps";
 
 class AnalysisCreate extends React.Component {
   render() {
