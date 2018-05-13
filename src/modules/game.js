@@ -1,6 +1,5 @@
 
 import {
-  getScoreByPositionAndSide,
   getScoreCounts
 } from "utils";
 
