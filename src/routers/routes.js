@@ -216,6 +216,7 @@ class Route extends React.Component {
                   component={ScoreCreate}
                   title="スコアシート"
                   hideNavBar
+                  drawerLockMode="locked-closed"
                 />
                 <Scene
                   key="scoreView"
