@@ -1,9 +1,9 @@
-
-const initialState = {
-};
+const initialState = {};
 
 const GET_SHOT_TYPES_RECEIVED = "GET_SHOT_TYPES_RECEIVED";
 const GET_SHOT_TYPES_REQUEST = "GET_SHOT_TYPES_REQUEST";
+const GET_SPORTS_RECEIVED = "GET_SPORTS_RECEIVED";
+const GET_SPORTS_REQUEST = "GET_SPORTS_REQUEST";
 const SET_SPORT = "SET_SPORT";
 
 export function getShotTypesRequest() {
@@ -11,17 +11,10 @@ export function getShotTypesRequest() {
     type: GET_SHOT_TYPES_REQUEST
   };
 }
-export function setSport(sportId){
-  return {
-    type: SET_SPORT,
-    sportId: sportId
-  };
-}
-
 export function getShotTypesReceived(json) {
   const shotTypes = json.shot_types;
   let reshapedShotTypes = {};
-  for (shotType of shotTypes){
+  for (shotType of shotTypes) {
     reshapedShotTypes[shotType.id] = shotType.name_ja;
   }
   return {
@@ -30,15 +23,39 @@ export function getShotTypesReceived(json) {
   };
 }
 
-export function sportReducer(state = initialState, action={}){
-  switch (action.type){
+export function getSportsRequest() {
+  return {
+    type: GET_SPORTS_REQUEST
+  };
+}
+
+export function getSportsReceived(json) {
+  return {
+    type: GET_SPORTS_RECEIVED,
+    json
+  };
+}
+
+export function setSport(sportId) {
+  return {
+    type: SET_SPORT,
+    sportId: sportId
+  };
+}
+
+export function sportReducer(state = initialState, action = {}) {
+  switch (action.type) {
   case GET_SHOT_TYPES_REQUEST:
     return state;
   case GET_SHOT_TYPES_RECEIVED:
     return {
       ...state,
-      shotTypes:action.shotTypes
+      shotTypes: action.shotTypes
     };
+  case GET_SPORTS_REQUEST:
+    return state;
+  case GET_SPORTS_RECEIVED:
+    return state;
   case SET_SPORT:
     return {
       ...state,
