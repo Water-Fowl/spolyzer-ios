@@ -27,6 +27,9 @@ class DrawerContent extends React.Component {
       break;
     }
   }
+  switchSport(id) {
+    // スポーツ切り替え処理
+  }
   render() {
     return (
       <View style={styles.drawerContainer}>
@@ -45,7 +48,22 @@ class DrawerContent extends React.Component {
             <View style={styles.circle} />
             <Text style={styles.kyogi}>競技</Text>
           </View>
-          <Text style={styles.bad}>{this.sportName(this.props.sport.id)}</Text>
+          <View style={styles.sportsContainer}>
+            <Text style={styles.sportName}>
+              {this.sportName(this.props.sport.id)}[現在]
+            </Text>
+          </View>
+          <View style={styles.kyugiContainer}>
+            <Text style={styles.takyogi}>競技一覧(変更)</Text>
+          </View>
+          <TouchableOpacity
+            onPress={this.switchSport()}
+            style={styles.sportsContainer}
+          >
+            <Text style={styles.sportName}>
+              {this.sportName(this.props.sport.id)}[他競技の表示]
+            </Text>
+          </TouchableOpacity>
         </View>
         <View style={styles.logoutContainer}>
           <Image
@@ -93,7 +111,8 @@ const styles = StyleSheet.create({
   kyugiContainer: {
     borderBottomColor: "#2EA7E0",
     borderWidth: 1,
-    flexDirection: "row"
+    flexDirection: "row",
+    padding: 3
   },
   circle: {
     width: 16,
@@ -110,12 +129,24 @@ const styles = StyleSheet.create({
     fontSize: 22,
     marginBottom: 2
   },
-  bad: {
-    marginTop: 14,
-    marginLeft: 10,
+  takyogi: {
+    marginTop: 16,
+    marginLeft: 8,
     color: "white",
-    fontSize: 20,
-    marginBottom: 4
+    fontSize: 16,
+    marginBottom: 2
+  },
+  sportsContainer: {
+    marginLeft: 42,
+    borderBottomColor: "#2EA7E0",
+    borderWidth: 1,
+    padding: 5
+  },
+  sportName: {
+    marginTop: 14,
+    color: "white",
+    fontWeight: "bold",
+    fontSize: 18
   },
   logoutContainer: {
     borderBottomColor: "#2EA7E0",
