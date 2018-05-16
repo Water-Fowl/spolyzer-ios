@@ -307,7 +307,7 @@ const styles = StyleSheet.create({
     color: "white"
   },
   tabBarStyle: {
-    backgroundColor: "#00769E"
+    backgroundColor: "#134A65"
   },
   navBarStyle: {
     backgroundColor: "#134A65"
