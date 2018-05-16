@@ -208,6 +208,7 @@ class Route extends React.Component {
                   component={GameSearchUser}
                   title="ユーザー検索"
                   hideDrawerButton
+                  drawerLockMode="locked-closed"
                   back
                 />
                 <Scene
@@ -224,6 +225,7 @@ class Route extends React.Component {
                   component={ScoreView}
                   title="結果"
                   hideDrawerButton
+                  drawerLockMode="locked-closed"
                   back
                 />
               </Scene>
@@ -250,6 +252,7 @@ class Route extends React.Component {
                   component={GameAnalysisView}
                   title="単分析結果"
                   hideDrawerButton
+                  drawerLockMode="locked-closed"
                   back
                 />
                 <Scene
@@ -264,6 +267,7 @@ class Route extends React.Component {
                   component={MultipleAnalysisSearchUser}
                   title="ユーザー検索"
                   hideDrawerButton
+                  drawerLockMode="locked-closed"
                   back
                 />
                 <Scene
@@ -271,6 +275,7 @@ class Route extends React.Component {
                   component={MultipleAnalysisView}
                   title="複合分析結果"
                   hideDrawerButton
+                  drawerLockMode="locked-closed"
                   back
                 />
               </Scene>
