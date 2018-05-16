@@ -1,6 +1,6 @@
 import Toast from "react-native-root-toast";
 
-export function setToast(message) {
+export function toastPresent(message) {
   let toast = Toast.show(message, {
     duration: Toast.durations.LONG,
     position: Toast.positions.CENTER,

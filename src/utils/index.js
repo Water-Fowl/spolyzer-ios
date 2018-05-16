@@ -6,7 +6,7 @@ import { reshapePositionsCount, reshapeShotTypeCounts } from "./reshape_json";
 import { mapStateToProps } from "./redux";
 import { errorAlertCallback, errorMessage } from "./error";
 import { timeEncode, getNowYMD } from "./time_encode";
-import { setToast } from "./toast";
+import { toastPresent } from "./toast";
 export {
   reshapeShotTypeCounts,
   reshapePositionsCount,
@@ -17,5 +17,5 @@ export {
   errorMessage,
   timeEncode,
   getNowYMD,
-  setToast
+  toastPresent
 };

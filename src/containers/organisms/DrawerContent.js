@@ -11,7 +11,7 @@ import {
 import { Actions } from "react-native-router-flux";
 import { connect } from "react-redux";
 import { resetToken } from "../../modules/authentication";
-import { mapStateToProps } from "utils";
+import { mapStateToProps, toastPresent } from "utils";
 import { ProfileImage } from "atoms";
 import * as sportModules from "../../modules/sport";
 import * as requestModules from "../../modules/request";
@@ -48,15 +48,19 @@ class DrawerContent extends React.Component {
   switchSport(id = "") {
     if (!id) return;
     this.props.dispatch(sportModules.setSport(id));
-    this.props.dispatch(
-      requestModules.getApiRequest(
-        SHOT_TYPES_ENDPOINT,
-        (params = { sport_id: id }),
-        this.props.authentication.header,
-        sportModules.getShotTypesRequest,
-        sportModules.getShotTypesReceived
+    this.props
+      .dispatch(
+        requestModules.getApiRequest(
+          SHOT_TYPES_ENDPOINT,
+          (params = { sport_id: id }),
+          this.props.authentication.header,
+          sportModules.getShotTypesRequest,
+          sportModules.getShotTypesReceived
+        )
       )
-    );
+      .then(() => {
+        toastPresent(`競技を${this.sportName(this.props.sport.id)}に変更しました`);
+      });
   }
   setSportsList() {
     const sportsList = [];
