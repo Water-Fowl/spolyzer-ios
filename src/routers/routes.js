@@ -160,7 +160,7 @@ class Route extends React.Component {
             initial={!this.state.isValidToken}
             hideNavBar
           />
-          <Scene key="signUp" component={SignUp} hideNavBar />
+          <Scene key="signUp" component={SignUp} hideNavBar gesturesEnabled />
           <Scene key="confirmation" component={Confirmation} hideNavBar />
           <Drawer
             key="drawer"
