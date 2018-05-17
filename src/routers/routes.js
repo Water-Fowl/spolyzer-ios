@@ -24,7 +24,8 @@ import {
   ScoreCreate,
   ScoreView,
   SignUp,
-  Confirmation
+  Confirmation,
+  SportSelect
 } from "../containers";
 import { DrawerContent } from "organisms";
 import { GameIcon, AnalysisIcon } from "atoms";
@@ -162,6 +163,12 @@ class Route extends React.Component {
           />
           <Scene key="signUp" component={SignUp} hideNavBar gesturesEnabled />
           <Scene key="confirmation" component={Confirmation} hideNavBar />
+          <Scene
+            key="sportSelect"
+            component={SportSelect}
+            hideNavBar
+            gesturesEnabled={false}
+          />
           <Drawer
             key="drawer"
             drawerImage={require("../assets/img/hamburger.png")} // デフォルトのハンバーガーメニューを差し替える
