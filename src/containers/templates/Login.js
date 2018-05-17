@@ -14,7 +14,7 @@ import * as requestModules from "../../modules/request";
 import { SIGN_IN_ENDPOINT, USERS_ENDPOINT, SHOT_TYPES_ENDPOINT } from "../../config/api";
 import { mapStateToProps, errorAlertCallback } from "utils";
 
-function errorInstanceCallback(json){
+function errorInstanceCallback(json) {
   return new Error(json.errors);
 }
 
@@ -62,19 +62,9 @@ class Login extends React.Component {
             receivedCallback=profileModules.getUserReceived
           )
         );
-        this.props.dispatch(sportModules.setSport(1));
-        this.props.dispatch(
-          requestModules.getApiRequest(
-            SHOT_TYPES_ENDPOINT,
-            params={sport_id: 1},
-            header,
-            sportModules.getShotTypesRequest,
-            sportModules.getShotTypesReceived
-          )
-        );
-        Actions.tab();
-      }
-      else {
+        // apiで初ログイン時にsportSelectへ遷移するようにする
+        this.props.sport.id ? Actions.tab() : Actions.sportSelect();
+      } else {
       }
     });
   }
@@ -113,7 +103,7 @@ class Login extends React.Component {
               return (
                 <View style={styles.rowContainer}>
                   <Text style={styles.autoLoginText}>
-                メールアドレスかパスワードが間違っています。
+                    メールアドレスかパスワードが間違っています。
                   </Text>
                 </View>
               );
@@ -121,23 +111,18 @@ class Login extends React.Component {
           })()}
           <View style={styles.rowContainer} />
           <View style={styles.button}>
-            <TouchableOpacity onPress={() => {
-              this.postLoginEvent();
-            }}
+            <TouchableOpacity
+              onPress={() => {
+                this.postLoginEvent();
+              }}
             >
-              <Text style={styles.buttonText}>
-                ログイン
-              </Text>
+              <Text style={styles.buttonText}>ログイン</Text>
             </TouchableOpacity>
           </View>
-          <Text style={styles.forgetPasswordText}>
-            パスワードをお忘れの方
-          </Text>
+          <Text style={styles.forgetPasswordText}>パスワードをお忘れの方</Text>
           <View style={styles.button}>
             <TouchableOpacity onPress={Actions.signUp}>
-              <Text style={styles.buttonText}>
-                新規登録(無料)
-              </Text>
+              <Text style={styles.buttonText}>新規登録(無料)</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -145,7 +130,6 @@ class Login extends React.Component {
     );
   }
 }
-
 
 export default connect(mapStateToProps)(Login);
 
