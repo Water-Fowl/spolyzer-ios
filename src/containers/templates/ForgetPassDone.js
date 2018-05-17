@@ -5,13 +5,19 @@ import { Actions } from "react-native-router-flux";
 import {
   StyleSheet,
   Image,
-
   Text, TextInput, TouchableOpacity, View
 } from "react-native";
 import { connect } from "react-redux";
 import { mapStateToProps } from "utils";
 
 class ForgetPassDone extends React.Component {
+
+
+  constructor(props) {
+    super(props);
+    console.log(this.props);
+  }
+
 
   render() {
     return (
@@ -21,11 +27,11 @@ class ForgetPassDone extends React.Component {
           source={require("../../assets/img/spolyzer_top.png")}
         />
         <Text style={styles.mainText}>
-          パスワード再設定メール送信しました
+          パスワード再設定メールを送信しました
         </Text>
         <View style={styles.textContainer}>
           <Text style={styles.subText}>
-            **********************にメールを送信しました。メールに記載されたリンクをクリックするとパスワードをリセットできます。
+            {this.props.email}にメールを送信しました。メールに記載されたリンクをクリックするとパスワードをリセットできます。
             {"\n"}{"\n"}メールが届かない場合、迷惑メールやスパムフォルダーなどもご確認ください。
           </Text>
         </View>

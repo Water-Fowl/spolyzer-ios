@@ -5,7 +5,6 @@ import { Actions } from "react-native-router-flux";
 import {
   StyleSheet,
   Image,
-
   Text, TextInput, TouchableOpacity, View
 } from "react-native";
 import { connect } from "react-redux";
@@ -34,7 +33,10 @@ class ForgetPass extends React.Component {
           />
         </View>
         <View style={styles.button}>
-          <TouchableOpacity onPress={Actions.ForgetPassDone}>
+          <TouchableOpacity onPress={(
+            () => {
+              Actions.ForgetPassDone({email:this.state.email});
+            })}>
             <Text style={styles.buttonText}>
               送信
             </Text>
