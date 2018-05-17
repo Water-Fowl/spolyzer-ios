@@ -24,7 +24,9 @@ import {
   ScoreCreate,
   ScoreView,
   SignUp,
-  Confirmation
+  Confirmation,
+  ForgetPass,
+  ForgetPassDone
 } from "../containers";
 import { DrawerContent } from "organisms";
 import { GameIcon, AnalysisIcon } from "atoms";
@@ -161,6 +163,8 @@ class Route extends React.Component {
             hideNavBar
           />
           <Scene key="signUp" component={SignUp} hideNavBar />
+          <Scene key="ForgetPass" component={ForgetPass} hideNavBar />
+          <Scene key="ForgetPassDone" component={ForgetPassDone} hideNavBar />
           <Scene key="confirmation" component={Confirmation} hideNavBar />
           <Drawer
             key="drawer"

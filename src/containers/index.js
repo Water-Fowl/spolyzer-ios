@@ -13,6 +13,10 @@ import ScoreCreate from "./templates/ScoreCreate";
 import ScoreView from "./templates/ScoreView";
 import SignUp from "./templates/SignUp";
 import Confirmation from "./templates/Confirmation";
+import ForgetPass from "./templates/ForgetPass";
+import ForgetPassDone from "./templates/ForgetPassDone";
+
+
 export {
   /* Componentのexport */
   AnalysisCreate,
@@ -29,5 +33,7 @@ export {
   ProfileEdit,
   SignUp,
   Login,
-  Confirmation
+  Confirmation,
+  ForgetPass,
+  ForgetPassDone
 };
