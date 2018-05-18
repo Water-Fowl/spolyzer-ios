@@ -24,7 +24,8 @@ import {
   ScoreCreate,
   ScoreView,
   SignUp,
-  Confirmation
+  Confirmation,
+  SportSelect
 } from "../containers";
 import { DrawerContent } from "organisms";
 import { GameIcon, AnalysisIcon } from "atoms";
@@ -160,8 +161,14 @@ class Route extends React.Component {
             initial={!this.state.isValidToken}
             hideNavBar
           />
-          <Scene key="signUp" component={SignUp} hideNavBar />
+          <Scene key="signUp" component={SignUp} hideNavBar gesturesEnabled />
           <Scene key="confirmation" component={Confirmation} hideNavBar />
+          <Scene
+            key="sportSelect"
+            component={SportSelect}
+            hideNavBar
+            gesturesEnabled={false}
+          />
           <Drawer
             key="drawer"
             drawerImage={require("../assets/img/hamburger.png")} // デフォルトのハンバーガーメニューを差し替える
@@ -208,6 +215,7 @@ class Route extends React.Component {
                   component={GameSearchUser}
                   title="ユーザー検索"
                   hideDrawerButton
+                  drawerLockMode="locked-closed"
                   back
                 />
                 <Scene
@@ -224,6 +232,7 @@ class Route extends React.Component {
                   component={ScoreView}
                   title="結果"
                   hideDrawerButton
+                  drawerLockMode="locked-closed"
                   back
                 />
               </Scene>
@@ -250,6 +259,7 @@ class Route extends React.Component {
                   component={GameAnalysisView}
                   title="単分析結果"
                   hideDrawerButton
+                  drawerLockMode="locked-closed"
                   back
                 />
                 <Scene
@@ -264,6 +274,7 @@ class Route extends React.Component {
                   component={MultipleAnalysisSearchUser}
                   title="ユーザー検索"
                   hideDrawerButton
+                  drawerLockMode="locked-closed"
                   back
                 />
                 <Scene
@@ -271,6 +282,7 @@ class Route extends React.Component {
                   component={MultipleAnalysisView}
                   title="複合分析結果"
                   hideDrawerButton
+                  drawerLockMode="locked-closed"
                   back
                 />
               </Scene>
@@ -302,7 +314,7 @@ const styles = StyleSheet.create({
     color: "white"
   },
   tabBarStyle: {
-    backgroundColor: "#00769E"
+    backgroundColor: "#134A65"
   },
   navBarStyle: {
     backgroundColor: "#134A65"

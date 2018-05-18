@@ -13,6 +13,7 @@ import ScoreCreate from "./templates/ScoreCreate";
 import ScoreView from "./templates/ScoreView";
 import SignUp from "./templates/SignUp";
 import Confirmation from "./templates/Confirmation";
+import SportSelect from "./templates/SportSelect";
 export {
   /* Componentのexport */
   AnalysisCreate,
@@ -29,5 +30,6 @@ export {
   ProfileEdit,
   SignUp,
   Login,
-  Confirmation
+  Confirmation,
+  SportSelect
 };
