@@ -3,15 +3,25 @@ import React, { Component } from "react";
 import { Actions } from "react-native-router-flux";
 import { Background } from "atoms";
 import {
-  AsyncStorage, Dimensions, Image, StyleSheet,
-  Text, TextInput, TouchableOpacity, View
+  AsyncStorage,
+  Dimensions,
+  Image,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View
 } from "react-native";
 import { connect } from "react-redux";
 import * as authenticationModules from "../../modules/authentication";
 import * as sportModules from "../../modules/sport";
 import * as profileModules from "../../modules/profile";
 import * as requestModules from "../../modules/request";
-import { SIGN_IN_ENDPOINT, USERS_ENDPOINT, SHOT_TYPES_ENDPOINT } from "../../config/api";
+import {
+  SIGN_IN_ENDPOINT,
+  USERS_ENDPOINT,
+  SHOT_TYPES_ENDPOINT
+} from "../../config/api";
 import { mapStateToProps, errorAlertCallback } from "utils";
 
 function errorInstanceCallback(json) {
@@ -39,34 +49,39 @@ class Login extends React.Component {
       email: this.state.email,
       password: this.state.password
     };
-    this.props.dispatch(
-      requestModules.postApiRequest(
-        SIGN_IN_ENDPOINT,
-        body,
-        headers={},
-        authenticationModules.postLoginRequest,
-        authenticationModules.postLoginReceived,
-        errorInstanceCallback=errorInstanceCallback,
-        errorCallback=errorAlertCallback,
-        returnHeader=true,
+    this.props
+      .dispatch(
+        requestModules.postApiRequest(
+          SIGN_IN_ENDPOINT,
+          body,
+          (headers = {}),
+          authenticationModules.postLoginRequest,
+          authenticationModules.postLoginReceived,
+          (errorInstanceCallback = errorInstanceCallback),
+          (errorCallback = errorAlertCallback),
+          (returnHeader = true)
+        )
       )
-    ).then(async (header) => {
-      if(header){
-        await AsyncStorage.setItem("header", JSON.stringify(header));
-        this.props.dispatch(
-          requestModules.getApiRequest(
-            endpoint=USERS_ENDPOINT,
-            params={},
-            headers=header,
-            requestCallback=profileModules.getUserRequest,
-            receivedCallback=profileModules.getUserReceived
-          )
-        );
-        // apiで初ログイン時にsportSelectへ遷移するようにする
-        this.props.sport.id ? Actions.tab() : Actions.sportSelect();
-      } else {
-      }
-    });
+      .then(async header => {
+        if (header) {
+          await AsyncStorage.setItem("header", JSON.stringify(header));
+          this.props
+            .dispatch(
+              requestModules.getApiRequest(
+                (endpoint = USERS_ENDPOINT),
+                (params = {}),
+                (headers = header),
+                (requestCallback = profileModules.getUserRequest),
+                (receivedCallback = profileModules.getUserReceived)
+              )
+            )
+            .then(() => {
+              this.props.profile.user.sport_id
+                ? Actions.tab()
+                : Actions.sportSelect();
+            });
+        }
+      });
   }
   render() {
     return (
