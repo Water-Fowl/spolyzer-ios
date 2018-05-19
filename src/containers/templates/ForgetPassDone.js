@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import { connect } from "react-redux";
 import { mapStateToProps } from "utils";
+import { NavigateButton }  from "atoms";
 
 class ForgetPassDone extends React.Component {
 
@@ -35,11 +36,7 @@ class ForgetPassDone extends React.Component {
             {"\n"}{"\n"}メールが届かない場合、迷惑メールやスパムフォルダーなどもご確認ください。
           </Text>
         </View>
-        <TouchableOpacity onPress={() => {Actions.popTo("login");}}>
-          <Text style={styles.actionText}>
-            ログイン
-          </Text>
-        </TouchableOpacity>
+        <NavigateButton style={styles.navigateButton} text="ログインへ" action={() => {Actions.popTo("login");}}/>
       </View>
     );
   }
@@ -71,18 +68,12 @@ const styles = StyleSheet.create({
   },
   subText: {
     color: "white",
-    fontSize: 12,
+    fontSize: 14,
     backgroundColor: "transparent",
     fontWeight: "bold",
     lineHeight: 18
   },
-  actionText: {
-    color: "#28a8de",
-    textDecorationLine: "underline",
-    textDecorationColor: "#28a8de",
-    marginTop: 40,
-    marginLeft: 20,
-    fontSize: 16,
-    backgroundColor: "transparent"
+  navigateButton: {
+    marginTop: 26
   }
 });
