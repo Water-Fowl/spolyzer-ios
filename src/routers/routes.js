@@ -163,8 +163,13 @@ class Route extends React.Component {
             initial={!this.state.isValidToken}
             hideNavBar
           />
-          <Scene key="signUp" component={SignUp} hideNavBar />
-          <Scene key="ForgetPass" component={ForgetPass} hideNavBar />
+          <Scene key="signUp" component={SignUp} hideNavBar gesturesEnabled />
+          <Scene
+            key="ForgetPass"
+            component={ForgetPass}
+            hideNavBar
+            gesturesEnabled
+          />
           <Scene key="ForgetPassDone" component={ForgetPassDone} hideNavBar />
           <Scene key="confirmation" component={Confirmation} hideNavBar />
           <Scene
