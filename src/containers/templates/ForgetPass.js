@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
     borderWidth: 1.3,
     alignSelf: "center",
     borderRadius: 5,
-    marginTop: 60,
+    marginTop: 18,
     justifyContent: "center"
   },
   buttonText: {
