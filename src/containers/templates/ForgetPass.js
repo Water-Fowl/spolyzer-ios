@@ -5,13 +5,61 @@ import { Actions } from "react-native-router-flux";
 import {
   StyleSheet,
   Image,
-  Text, TextInput, TouchableOpacity, View
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View
 } from "react-native";
+import * as authenticationModules from "../../modules/authentication";
+import * as requestModules from "../../modules/request";
+
+import { emailReg } from "const";
+import { ErrorText } from "atoms";
 import { connect } from "react-redux";
-import { mapStateToProps } from "utils";
+import { mapStateToProps, errorAlertCallback } from "utils";
+
+function errorInstanceCallback(json) {
+  return new Error(json.errors.full_messages);
+}
 
 class ForgetPass extends React.Component {
-
+  constructor(props) {
+    super(props);
+    this.state = {
+      email: "",
+      isErrorVisible: false
+    };
+    this.postForgetPassForm.bind(this);
+  }
+  postForgetPassForm() {
+    const isEmail = emailReg.test(this.state.email);
+    if (isEmail) {
+      /* パスワードお忘れAPIをココに書く */
+      // const body = {
+      //   email: this.state.email
+      // };
+      // this.props
+      //   .dispatch(
+      //     requestModules.postApiRequest(
+      //       REGISTRATION_ENDPOINT,
+      //       body,
+      //       (headers = {}),
+      //       (requestCallback = authenticationModules.postRegistrationRequest),
+      //       (receivedCallback = authenticationModules.postRegistrationReceived),
+      //       (errorInstanceCallback = errorInstanceCallback),
+      //       (errorCallback = errorAlertCallback),
+      //       (returnHeader = false)
+      //     )
+      //   )
+      //   .then(isValid => {
+      //     if (isValid) {
+      Actions.ForgetPassDone({ email: this.state.email });
+      //   }
+      // });
+    } else {
+      this.setState({ isErrorVisible: true });
+    }
+  }
   render() {
     return (
       <View style={styles.container}>
@@ -19,9 +67,7 @@ class ForgetPass extends React.Component {
           style={styles.logo}
           source={require("../../assets/img/spolyzer_top.png")}
         />
-        <Text style={styles.text}>
-          パスワード再設定メールを送る
-        </Text>
+        <Text style={styles.text}>パスワード再設定メールを送る</Text>
         <View style={styles.form}>
           <TextInput
             onChangeText={email => this.setState({ email })}
@@ -32,14 +78,16 @@ class ForgetPass extends React.Component {
             returnKeyType="done"
           />
         </View>
+        <ErrorText isVisible={this.state.isErrorVisible}>
+          メールアドレスを入力してください
+        </ErrorText>
         <View style={styles.button}>
-          <TouchableOpacity onPress={(
-            () => {
-              Actions.ForgetPassDone({email:this.state.email});
-            })}>
-            <Text style={styles.buttonText}>
-              送信
-            </Text>
+          <TouchableOpacity
+            onPress={() => {
+              this.postForgetPassForm();
+            }}
+          >
+            <Text style={styles.buttonText}>送信</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -47,12 +95,12 @@ class ForgetPass extends React.Component {
   }
 }
 
-
 export default connect(mapStateToProps)(templateEnhancer(ForgetPass));
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
+    alignItems: "center"
   },
   logo: {
     marginTop: 80,
@@ -74,7 +122,8 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     justifyContent: "center",
     borderRadius: 5,
-    marginTop: 50
+    marginTop: 50,
+    marginBottom: 9
   },
   textField: {
     fontSize: 20,
