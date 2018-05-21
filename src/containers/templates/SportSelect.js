@@ -13,7 +13,12 @@ import {
 import { connect } from "react-redux";
 import * as sportModules from "../../modules/sport";
 import * as requestModules from "../../modules/request";
-import { SHOT_TYPES_ENDPOINT, SPORTS_ENDPOINT } from "../../config/api";
+import * as profileModules from "../../modules/profile";
+import {
+  SHOT_TYPES_ENDPOINT,
+  SPORTS_ENDPOINT,
+  USERS_ENDPOINT
+} from "../../config/api";
 import { mapStateToProps } from "utils";
 
 class SportSelect extends React.Component {
@@ -51,12 +56,11 @@ class SportSelect extends React.Component {
     const sportsList = [];
     for (let sport of this.state.sports) {
       sportsList.push(
-        <View style={styles.button}>
+        <View style={styles.button} key={sport.id}>
           <TouchableOpacity
             onPress={() => {
               this.setSportEvent(sport.id);
             }}
-            key={sport.id}
           >
             <Text style={styles.buttonText}>{sport.name_ja}</Text>
           </TouchableOpacity>
@@ -66,17 +70,31 @@ class SportSelect extends React.Component {
     return <ScrollView>{sportsList}</ScrollView>;
   }
   setSportEvent(id) {
-    this.props.dispatch(sportModules.setSport(id));
-    this.props.dispatch(
-      requestModules.getApiRequest(
-        SHOT_TYPES_ENDPOINT,
-        (params = { sport_id: id }),
-        this.props.authentication.header,
-        sportModules.getShotTypesRequest,
-        sportModules.getShotTypesReceived
+    const body = {
+      sport_id: id
+    };
+    this.props
+      .dispatch(
+        requestModules.patchApiRequest(
+          USERS_ENDPOINT + this.props.authentication.userId,
+          body,
+          this.props.authentication.header,
+          profileModules.patchUserRequest,
+          profileModules.patchUserReceived
+        )
       )
-    );
-    Actions.tab();
+      .then(() => {
+        this.props.dispatch(
+          requestModules.getApiRequest(
+            SHOT_TYPES_ENDPOINT,
+            (params = { sport_id: id }),
+            this.props.authentication.header,
+            sportModules.getShotTypesRequest,
+            sportModules.getShotTypesReceived
+          )
+        );
+        Actions.tab();
+      });
   }
   render() {
     return (

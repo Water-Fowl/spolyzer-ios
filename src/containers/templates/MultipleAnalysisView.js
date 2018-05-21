@@ -2,10 +2,19 @@ import React from "react";
 import templateEnhancer from "./hoc";
 import { ActionConst, Actions } from "react-native-router-flux";
 import {
-  Image, ScrollView, StyleSheet, Text, TouchableOpacity, TouchableHighlight, View
+  Image,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  TouchableHighlight,
+  View
 } from "react-native";
 import {
-  VictoryAxis, VictoryBar, VictoryChart, VictoryTheme
+  VictoryAxis,
+  VictoryBar,
+  VictoryChart,
+  VictoryTheme
 } from "victory-native";
 import { connect } from "react-redux";
 
@@ -103,8 +112,7 @@ class AnalysisView extends React.Component {
 
   _renderOpponentUserNames(users) {
     if (!users.length) {
-      let text =
-        this.props.game_user_count - 1 ? "ダブルス" : "シングルス";
+      let text = this.props.game_user_count - 1 ? "ダブルス" : "シングルス";
       return (
         <View style={styles.userNameContainer}>
           <View style={styles.userNameBox}>
@@ -161,7 +169,7 @@ class AnalysisView extends React.Component {
           </View>
           <Field
             horizontal
-            sport={this.props.sport.id}
+            sport={this.props.profile.user.sport_id}
             callback={this.setPositionEvent}
             renderInField={this.renderInField}
             renderInButton={this._renderFieldButtonText}

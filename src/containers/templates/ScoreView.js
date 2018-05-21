@@ -94,7 +94,7 @@ class ScoreView extends React.Component {
           </View>
           <Field
             horizontal
-            sport={this.props.sport.id}
+            sport={this.props.profile.user.sport_id}
             callback={this.setShotTypeCounts}
           />
           <Graph

@@ -75,10 +75,9 @@ class Login extends React.Component {
                 (receivedCallback = profileModules.getUserReceived)
               )
             )
-            .then(() => {
-              this.props.profile.user.sport_id
-                ? Actions.tab()
-                : Actions.sportSelect();
+            .then(user => {
+              console.log("props:", user, "state:", this.state);
+              user.user.sport_id === null ? Actions.sportSelect() : Actions.tab();
             });
         }
       });

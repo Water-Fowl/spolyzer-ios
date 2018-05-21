@@ -80,7 +80,7 @@ class ScoreCreate extends React.Component {
       game: {
         name: this.props.gameName
       },
-      sport_id: this.props.sport.id
+      sport_id: this.props.profile.user.sport_id
     };
     this.props
       .dispatch(
@@ -207,7 +207,7 @@ class ScoreCreate extends React.Component {
         </TouchableHighlight>
         <Field
           horizontal={false}
-          sport={this.props.sport.id}
+          sport={this.props.profile.user.sport_id}
           callback={this.showModal}
           margin={36}
         />

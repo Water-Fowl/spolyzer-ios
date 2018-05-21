@@ -77,7 +77,7 @@ class GameAnalysisCreate extends React.Component {
     for (let gameData of this.state.games.slice().reverse()) {
       if (
         gameData.left_users.length === this.state.selectedIndex + 1 &&
-        gameData.game.sport_id === this.props.sport.id
+        gameData.game.sport_id === this.props.profile.user.sport_id
       )
         listData.push(gameData);
     }
