@@ -28,7 +28,7 @@ import {
   SportSelect
 } from "../containers";
 import { DrawerContent } from "organisms";
-import { GameIcon, AnalysisIcon, HamburgerIcon } from "atoms";
+import { GameIcon, AnalysisIcon, HamburgerIcon } from "molecules";
 import {
   getShotTypesReceived,
   getShotTypesRequest,
@@ -205,7 +205,7 @@ class Route extends React.Component {
                 key="Score"
                 initial
                 tabBarLabel="スコアシート"
-                icon={() => <GameIcon size={50} />}
+                icon={() => <GameIcon />}
               >
                 <Scene
                   key="gameCreate"
