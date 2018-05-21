@@ -47,8 +47,8 @@ class GameAnalysisCreate extends React.Component {
         )
       )
       .then(json => {
-        console.log(json.games)
         this.setState({ games: json.games });
+        console.log(json);
       });
   }
 

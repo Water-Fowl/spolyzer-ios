@@ -1,7 +1,7 @@
 // apiから取ってきた試合結果を整形する関数
 // ミスの球種、ミスでない球種、それぞれに対応する球種の名前を返す
 
-export function aggregatedGameAnalysis(counts, shotTypes){
+export default function aggregatedGameAnalysis(counts, shotTypes){
   shotTypeCountsList = [];
   missShotTypeCountsList = [];
   shotTypesList = [];
