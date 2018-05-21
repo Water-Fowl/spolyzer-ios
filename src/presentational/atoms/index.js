@@ -18,7 +18,6 @@ import ProfileImage from "./ProfileImage";
 import SelectedUserName from "./SelectedUserName";
 import TextBox from "./TextBox";
 import TextInputForm from "./TextInputForm";
-import MultipleAnalysisIcon from "./MultipleAnalysisIcon";
 import AssetsImage from "./AssetsImage";
 
 export {
@@ -39,6 +38,5 @@ export {
   NavigateButton,
   TopBar,
   TopContentBar,
-  MultipleAnalysisIcon,
   AssetsImage
 };

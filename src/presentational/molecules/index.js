@@ -8,6 +8,7 @@ import PlayersDisplay from "./PlayersDisplay";
 import AnalysisIcon from "./icons/AnalysisIcon";
 import GameIcon from "./icons/GameIcon";
 import HamburgerIcon from "./icons/HamburgerIcon";
+import MultipleAnalysisIcon from "./icons/MultipleAnalysisIcon";
 
 export {
   UserListItem,
@@ -16,5 +17,6 @@ export {
   PlayersDisplay,
   AnalysisIcon,
   GameIcon,
-  HamburgerIcon
+  HamburgerIcon,
+  MultipleAnalysisIcon
 };
