@@ -116,7 +116,7 @@ class GameCreate extends React.Component {
                 </View>
                 <View style={styles.gameSettingTableInnerCenter}>
                   <Image
-                    source={require("../../assets/img/game_create_vs.png")}
+                    source={{ url: "game_create_vs.png" }}
                     style={styles.vsPosition}
                   />
                 </View>

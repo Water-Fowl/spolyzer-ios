@@ -28,7 +28,7 @@ import {
   SportSelect
 } from "../containers";
 import { DrawerContent } from "organisms";
-import { GameIcon, AnalysisIcon } from "atoms";
+import { GameIcon, AnalysisIcon, HamburgerIcon } from "atoms";
 import {
   getShotTypesReceived,
   getShotTypesRequest,
@@ -50,7 +50,10 @@ const RouterWithRedux = connect()(Router);
 const AppLogo = () => {
   return (
     <View>
-      <Image source={require("../assets/img/spolyzer_header.png")} />
+      <Image
+        style={{ width: 117, height: 36 }}
+        source={{ url: "spolyzer_header.png" }}
+      />
     </View>
   );
 };
@@ -152,7 +155,7 @@ class Route extends React.Component {
             return <AppLogo />;
           }}
           navigationBarStyle={styles.navBarStyle}
-          backButtonImage={require("../assets/img/left_arrow.png")}
+          backButtonImage={{ url: "left_arrow.png" }}
           gesturesEnabled={false}
         >
           <Scene
@@ -171,8 +174,8 @@ class Route extends React.Component {
           />
           <Drawer
             key="drawer"
-            drawerImage={require("../assets/img/hamburger.png")} // デフォルトのハンバーガーメニューを差し替える
-            // drawerIcon={() => (<Icon/>)} // デフォルトのハンバーガーメニューを差し替える
+            // drawerImage={{ url: "hamburger.png" }} // デフォルトのハンバーガーメニューを差し替える
+            drawerIcon={() => <HamburgerIcon />} // デフォルトのハンバーガーメニューを差し替える
             hideNavBar
             drawerWidth={280}
             contentComponent={DrawerContent}
@@ -239,7 +242,7 @@ class Route extends React.Component {
               <Scene
                 key="Analysis"
                 tabBarLabel="分析"
-                icon={() => <AnalysisIcon size={50} />}
+                icon={() => <AnalysisIcon />}
               >
                 <Scene
                   key="analysisCreate"

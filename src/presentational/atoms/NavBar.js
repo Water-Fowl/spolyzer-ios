@@ -9,7 +9,7 @@ export default class NavBar extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Image source={require("../../assets/img/spolyzer_header.png")} />
+        <Image  style={{width:117,height:36}} source={{ url: "spolyzer_header.png" }} />
       </View>
     );
   }

@@ -19,9 +19,9 @@ export default class Field extends React.Component {
   }
   render() {
     const sizeMagnification = this.props.horizontal ? 1 : 2;
-    let fieldType = {
-      1: require("../../assets/img/field-line-badminton.png"),
-      2: require("../../assets/img/field-line-tennis.png")
+    const fieldType = {
+      1: "field-line-badminton.png",
+      2: "field-line-tennis.png"
     };
     return (
       <View
@@ -31,7 +31,7 @@ export default class Field extends React.Component {
           flex: 1,
           marginBottom: 5,
           height: 170 * sizeMagnification,
-          width: 300 * sizeMagnification,
+          width: 295 * sizeMagnification,
           marginTop: this.props.margin || 26
         }}
       >
@@ -40,11 +40,12 @@ export default class Field extends React.Component {
           style={{
             position: "absolute",
             alignSelf: "center",
-            height: 170 * sizeMagnification,
+            height: 150 * sizeMagnification,
+            width: 290 * sizeMagnification,
             backfaceVisibility: "hidden",
             resizeMode: "contain"
           }}
-          source={fieldType[this.props.sport]}
+          source={{ url: fieldType[this.props.sport] }}
         />
         <View style={styles.overContainer}>
           <View style={styles.overOutFieldSideContainer}>

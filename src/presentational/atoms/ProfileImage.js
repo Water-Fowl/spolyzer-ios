@@ -1,12 +1,9 @@
 import React from "react";
-import {
-  Image,
-  StyleSheet
-} from "react-native";
+import { Image, StyleSheet } from "react-native";
 
 export default class ProfileImage extends React.Component {
-  componentWillReceiveProps(nextProps){
-    if(nextProps.imageSource){
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.imageSource) {
       this.forceUpdate();
     }
   }
@@ -34,9 +31,8 @@ export default class ProfileImage extends React.Component {
           height: this.props.size,
           borderRadius: this.props.size / 2
         }}
-        source={require("../../assets/img/score_create_person.png")}
+        source={{ url: "score_create_person.png" }}
       />
     );
   }
 }
-

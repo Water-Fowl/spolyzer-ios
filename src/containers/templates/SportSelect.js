@@ -3,7 +3,12 @@ import React, { Component } from "react";
 import { Actions } from "react-native-router-flux";
 import { Background } from "atoms";
 import {
-  Image, StyleSheet, Text, TouchableOpacity, View, ScrollView
+  Image,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+  ScrollView
 } from "react-native";
 import { connect } from "react-redux";
 import * as sportModules from "../../modules/sport";
@@ -76,10 +81,7 @@ class SportSelect extends React.Component {
     return (
       <View style={styles.container}>
         <Background />
-        <Image
-          style={styles.logo}
-          source={require("../../assets/img/spolyzer_top.png")}
-        />
+        <Image style={styles.logo} source={{ url: "spolyzer_top.png" }} />
         <View style={styles.formContainer}>
           <Text style={styles.titleText}>主に行う競技を選んでください</Text>
           <Text style={styles.subText}>※後から変更することもできます</Text>
@@ -117,7 +119,9 @@ const styles = StyleSheet.create({
   logo: {
     marginTop: 80,
     marginBottom: 80,
-    alignSelf: "center"
+    alignSelf: "center",
+    width: 209,
+    height: 64
   },
   buttonText: {
     color: "#28a8de",

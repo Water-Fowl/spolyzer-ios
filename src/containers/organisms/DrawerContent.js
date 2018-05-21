@@ -59,7 +59,9 @@ class DrawerContent extends React.Component {
         )
       )
       .then(() => {
-        toastPresent(`競技を${this.sportName(this.props.sport.id)}に変更しました`);
+        toastPresent(
+          `競技を${this.sportName(this.props.sport.id)}に変更しました`
+        );
       });
   }
   setSportsList() {
@@ -109,10 +111,7 @@ class DrawerContent extends React.Component {
           {this.setSportsList()}
         </View>
         <View style={styles.logoutContainer}>
-          <Image
-            source={require("../../assets/img/logout.png")}
-            style={styles.logoutImage}
-          />
+          <Image source={{ url: "logout.png" }} style={styles.logoutImage} />
           <TouchableOpacity
             onPress={() => {
               Actions.login();

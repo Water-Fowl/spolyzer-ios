@@ -2,8 +2,15 @@ import Orientation from "react-native-orientation";
 import React from "react";
 import { Actions } from "react-native-router-flux";
 import {
-  Alert, BackgroundImage, Dimensions, Image, StyleSheet,
-  Text, TouchableHighlight, TriangleCorner, View
+  Alert,
+  BackgroundImage,
+  Dimensions,
+  Image,
+  StyleSheet,
+  Text,
+  TouchableHighlight,
+  TriangleCorner,
+  View
 } from "react-native";
 import { LandScapeBackground, TopContentBar } from "atoms";
 import { ShotTypeModal } from "molecules";
@@ -208,7 +215,10 @@ class ScoreCreate extends React.Component {
               this.props.dispatch(gameModules.removeScore());
             }}
           >
-            <Image source={require("../../assets/img/score_create_back.png")} />
+            <Image
+              style={{ width: 79, height: 25 }}
+              source={{ url: "score_create_back.png" }}
+            />
           </TouchableHighlight>
         </View>
       </View>
