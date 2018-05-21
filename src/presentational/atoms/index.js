@@ -21,6 +21,7 @@ import TextInputForm from "./TextInputForm";
 import GameIcon from "./GameIcon";
 import AnalysisIcon from "./AnalysisIcon";
 import MultipleAnalysisIcon from "./MultipleAnalysisIcon";
+import HamburgerIcon from "./HamburgerIcon";
 
 export {
   Background,
@@ -42,5 +43,6 @@ export {
   TopContentBar,
   GameIcon,
   AnalysisIcon,
-  MultipleAnalysisIcon
+  MultipleAnalysisIcon,
+  HamburgerIcon
 };
