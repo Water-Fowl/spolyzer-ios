@@ -1,13 +1,16 @@
 import React from "react";
 import { Image } from "react-native";
+let width, height;
 
 export default class AssetsImage extends React.Component {
-  render() {
-    let width, height;
+  constructor(props) {
+    super(props);
     Image.getSize({ url: this.props.name }, (width, height) => {
       this.width = width;
       this.height = height;
     });
+  }
+  render() {
     return (
       <Image
         source={{ url: this.props.name }}
