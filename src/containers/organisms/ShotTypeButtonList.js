@@ -16,6 +16,10 @@ class ShotTypeButtonList extends React.Component {
     this.props.dispatch(setShotType(shotTypeId));
   }
 
+  setFontSize() {
+    if (this.props.profile.user.sport_id == 2) return 12;
+  }
+
   componentWillReceiveProps(nextProps) {
     if (nextProps.sport.shotTypes) {
       this.forceUpdate();
@@ -33,6 +37,7 @@ class ShotTypeButtonList extends React.Component {
             callback={this.setShotType}
             params={shotTypeId}
             key={shotTypeId}
+            fontSize={this.setFontSize()}
           >
             {this.props.sport.shotTypes[shotTypeId]}
           </ParametricButton>

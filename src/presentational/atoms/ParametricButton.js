@@ -35,7 +35,9 @@ export default class ParametricButton extends React.Component {
         }}
         key={this.props.params}
       >
-        <Text style={styles.text}>{this.props.children}</Text>
+        <Text style={[styles.text, {fontSize:this.props.fontSize}]}>
+          {this.props.children}
+        </Text>
       </TouchableHighlight>
     );
   }
