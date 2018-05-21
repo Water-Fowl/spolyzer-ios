@@ -4,16 +4,23 @@ import { connect } from "react-redux";
 
 import { ParametricButton } from "atoms";
 import { mapStateToProps } from "utils";
-import { setShotType } from "../../modules/analysis";
+import * as analysisModules from "../../modules/analysis";
 
 class ShotTypeButtonList extends React.Component {
   constructor(props) {
     super(props);
     this.setShotType = this.setShotType.bind(this);
+    this.firstShotType(this.props.sport.shotTypes);
   }
 
   setShotType(shotTypeId) {
-    this.props.dispatch(setShotType(shotTypeId));
+    this.props.dispatch(analysisModules.setShotType(shotTypeId));
+  }
+
+  firstShotType(shotTypes) {
+    for (shotTypeId in shotTypes) {
+      return this.props.dispatch(analysisModules.setShotType(shotTypeId));
+    }
   }
 
   setFontSize() {
@@ -23,6 +30,9 @@ class ShotTypeButtonList extends React.Component {
   componentWillReceiveProps(nextProps) {
     if (nextProps.sport.shotTypes) {
       this.forceUpdate();
+      if (this.props.sport.shotTypes !== nextProps.sport.shotTypes) {
+        this.firstShotType(nextProps.sport.shotTypes);
+      }
     }
   }
 
