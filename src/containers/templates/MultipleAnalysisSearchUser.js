@@ -24,7 +24,7 @@ class MultipleAnalysisSearchUser extends React.Component {
     super(props);
     this.state = {
       name: "",
-      users: this.props.analysis.users
+      users: ""
     };
     this.getUser = this.getUser.bind(this);
     this.setUser = this.setUser.bind(this);
