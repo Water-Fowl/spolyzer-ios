@@ -1,75 +1,64 @@
 import React from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  TouchableHighlight
-} from "react-native";
-import {
-  NavigateButton
-} from "components";
+import { StyleSheet, Text, View, TouchableHighlight } from "react-native";
+import { NavigateButton } from "components";
 
 import { connect } from "react-redux";
-import {
-  mapStateToProps
-} from "utils";
+import { mapStateToProps } from "utils";
 const NET_MIN_POSITION = 8;
 const NET_MAX_POSITION = 13;
 const OUT_MIN_POSITION = 1;
 const OUT_MAX_POSITION = 6;
 
 export default class ShotTypeModal extends React.Component {
-  renderButtons(textStyles, isNetMiss){
+  renderButtons(textStyles, isNetMiss) {
     console.log(this.props.position);
     buttonsComponentsList = [];
-    if (isNetMiss &&
-        NET_MIN_POSITION != this.props.position &&
-        NET_MAX_POSITION != this.props.position
-    ){
-      return (
-        null
-      );
+    if (
+      isNetMiss &&
+      NET_MIN_POSITION != this.props.position &&
+      NET_MAX_POSITION != this.props.position
+    ) {
+      return null;
     }
 
     var buttonsComponentsList = [];
-    for (let shotTypeId in this.props.shotTypes){
+    for (let shotTypeId in this.props.shotTypes) {
       buttonsComponentsList.push(
         <TouchableHighlight
           onPress={() => {
             this.props.callback(shotTypeId, isNetMiss);
             this.props.hideModal();
           }}
+          key={shotTypeId}
         >
           <Text style={textStyles}>{this.props.shotTypes[shotTypeId]}</Text>
         </TouchableHighlight>
       );
     }
 
-    return (
-      <View>
-        { buttonsComponentsList }
-      </View>
-    );
+    return <View>{buttonsComponentsList}</View>;
   }
 
   render() {
-    if(this.props.isVisible){
+    if (this.props.isVisible) {
       return (
         <View style={styles.container}>
           <View style={styles.shotTypeContainer}>
-            { this.renderButtons(styles.shotType, isNetMiss=false) }
-            { this.renderButtons(styles.missShotType, isNetMiss=true) }
+            {this.renderButtons(styles.shotType, (isNetMiss = false))}
+            {this.renderButtons(styles.missShotType, (isNetMiss = true))}
           </View>
-          <TouchableHighlight style={styles.touchableContainer} onPress={() => {this.props.hideModal();}} >
+          <TouchableHighlight
+            style={styles.touchableContainer}
+            onPress={() => {
+              this.props.hideModal();
+            }}
+          >
             <Text style={styles.close}>戻る</Text>
           </TouchableHighlight>
         </View>
       );
-    }
-    else {
-      return (
-        null
-      );
+    } else {
+      return null;
     }
   }
 }
@@ -117,4 +106,3 @@ const styles = StyleSheet.create({
     flexDirection: "row"
   }
 });
-

@@ -56,6 +56,7 @@ class SportSelect extends React.Component {
             onPress={() => {
               this.setSportEvent(sport.id);
             }}
+            key={sport.id}
           >
             <Text style={styles.buttonText}>{sport.name_ja}</Text>
           </TouchableOpacity>

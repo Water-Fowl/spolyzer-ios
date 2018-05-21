@@ -2,7 +2,14 @@ import Orientation from "react-native-orientation";
 import React from "react";
 import templateEnhancer from "./hoc";
 import { ActionConst, Actions } from "react-native-router-flux";
-import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import {
+  Image,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View
+} from "react-native";
 import { connect } from "react-redux";
 
 import { TopContentBar } from "atoms";
@@ -99,10 +106,10 @@ class ScoreView extends React.Component {
         <View style={styles.backButtonContainer}>
           <TouchableOpacity
             onPress={() => {
+              this.props.dispatch(gameModules.resetState());
               this.setState({
                 lockToLandscape: false
               });
-              this.props.dispatch(gameModules.resetState());
               Actions.popTo("gameCreate");
             }}
           >

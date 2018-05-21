@@ -1,8 +1,5 @@
 import React from "react";
-import {
-  StyleSheet, Text,
-  TouchableHighlight, View
-} from "react-native";
+import { StyleSheet, Text, TouchableHighlight, View } from "react-native";
 import { connect } from "react-redux";
 
 import { ParametricButton } from "atoms";
@@ -19,33 +16,30 @@ class ShotTypeButtonList extends React.Component {
     this.props.dispatch(setShotType(shotTypeId));
   }
 
-  componentWillReceiveProps(nextProps){
-    if(nextProps.sport.shotTypes){
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.sport.shotTypes) {
       this.forceUpdate();
     }
   }
 
   render() {
     const shotTypesButtonsComponent = [];
-    if(this.props.sport.shotTypes){
-      for (shotTypeId in this.props.sport.shotTypes){
+    if (this.props.sport.shotTypes) {
+      for (shotTypeId in this.props.sport.shotTypes) {
         shotTypesButtonsComponent.push(
           <ParametricButton
             width={90}
             selectedParams={this.props.analysis.shotTypeId}
             callback={this.setShotType}
             params={shotTypeId}
+            key={shotTypeId}
           >
-            { this.props.sport.shotTypes[shotTypeId] }
+            {this.props.sport.shotTypes[shotTypeId]}
           </ParametricButton>
         );
       }
     }
-    return (
-      <View style={styles.container}>
-        { shotTypesButtonsComponent }
-      </View>
-    );
+    return <View style={styles.container}>{shotTypesButtonsComponent}</View>;
   }
 }
 export default connect(mapStateToProps)(ShotTypeButtonList);

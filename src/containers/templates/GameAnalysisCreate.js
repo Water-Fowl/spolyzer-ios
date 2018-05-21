@@ -75,7 +75,10 @@ class GameAnalysisCreate extends React.Component {
     let listData = [];
     if (!this.state.games) return listData;
     for (let gameData of this.state.games.slice().reverse()) {
-      if (gameData.left_users.length === this.state.selectedIndex + 1 && gameData.game.sport_id===this.props.sport.id)
+      if (
+        gameData.left_users.length === this.state.selectedIndex + 1 &&
+        gameData.game.sport_id === this.props.sport.id
+      )
         listData.push(gameData);
     }
     return listData;
@@ -119,7 +122,7 @@ class GameAnalysisCreate extends React.Component {
         </View>
         <FlatList
           data={this.setListData()}
-          renderItem={({ item }) => (
+          renderItem={({ item, index }) => (
             <View style={styles.listConteiner}>
               <TouchableOpacity
                 onPress={() => {
@@ -143,6 +146,7 @@ class GameAnalysisCreate extends React.Component {
               </TouchableOpacity>
             </View>
           )}
+          keyExtractor={(item, index) => index}
           style={styles.flatListConteiner}
         />
       </View>

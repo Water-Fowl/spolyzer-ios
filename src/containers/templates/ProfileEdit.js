@@ -3,8 +3,14 @@ import React from "react";
 import templateEnhancer from "./hoc";
 import { ActionConst, Actions } from "react-native-router-flux";
 import {
-  Alert, Image, Picker, StyleSheet, Text,
-  TextInput, TouchableOpacity, View
+  Alert,
+  Image,
+  Picker,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View
 } from "react-native";
 import { NavigateButton, TopContentBar, ProfileImage } from "atoms";
 import { SexPicker } from "molecules";
@@ -13,9 +19,7 @@ import { emailReg } from "const";
 import * as profileModules from "../../modules/profile";
 import * as requestModules from "../../modules/request";
 
-import {
-  USERS_ENDPOINT
-} from "../../config/api";
+import { USERS_ENDPOINT } from "../../config/api";
 import { mapStateToProps } from "utils";
 
 class ProfileEdit extends React.Component {
@@ -38,7 +42,7 @@ class ProfileEdit extends React.Component {
       includeBase64: true,
       width: 200,
       height: 200
-    }).then((image) => {
+    }).then(image => {
       this._openCropper(image.path);
     });
   }
@@ -50,53 +54,65 @@ class ProfileEdit extends React.Component {
       width: 200,
       height: 200,
       cropperCircleOverlay: true
-    }).then((image) => {
+    }).then(image => {
       this.setState({
         userImageSource: image.path,
         imageData: `data:image/png;base64, ${image.data}`
       });
     });
   }
-  _setPicker(){
-    this.setState({isPickerVisible: true});
+  _setPicker() {
+    this.setState({ isPickerVisible: true });
   }
-  _hidePicker(){
-    this.setState({isPickerVisible: false});
+  _hidePicker() {
+    this.setState({ isPickerVisible: false });
   }
-  completeButtonEvent(){
+  completeButtonEvent() {
     const { dispatch } = this.props;
     const isEmail = emailReg.test(this.state.userEmail);
-    if(!isEmail){
-      return Alert.alert("エラー", "メールアドレスを入力してください", [{ text: "了解"}], { cancelable: false });
+    if (!isEmail) {
+      return Alert.alert(
+        "エラー",
+        "メールアドレスを入力してください",
+        [{ text: "了解" }],
+        { cancelable: false }
+      );
     }
     const body = {
       name: this.state.userName,
       email: this.state.userEmail
     };
-    if(this.state.imageData){
+    if (this.state.imageData) {
       body["image"] = this.state.imageData;
     }
-    this.props.dispatch(requestModules.patchApiRequest(
-      USERS_ENDPOINT + this.props.authentication.userId,
-      body,
-      this.props.authentication.header,
-      profileModules.patchUserRequest,
-      profileModules.patchUserReceived
-    )).then(() => {
-      Actions.pop();
-    });
+    this.props
+      .dispatch(
+        requestModules.patchApiRequest(
+          USERS_ENDPOINT + this.props.authentication.userId,
+          body,
+          this.props.authentication.header,
+          profileModules.patchUserRequest,
+          profileModules.patchUserReceived
+        )
+      )
+      .then(() => {
+        Actions.pop();
+      });
   }
   render() {
     return (
       <View style={styles.container}>
-        <TopContentBar><Text style={styles.topBar}>マイデータ編集</Text></TopContentBar>
+        <TopContentBar>
+          <Text style={styles.topBar}>マイデータ編集</Text>
+        </TopContentBar>
         <View style={styles.mostOut}>
           <View style={styles.rowDirecition}>
             <View style={styles.leftSide}>
-              <TouchableOpacity
-                onPress={this._selectPhotoTapped}
-              >
-                <ProfileImage size={80} imageSource={this.state.userImageSource} />
+              <TouchableOpacity onPress={this._selectPhotoTapped}>
+                <ProfileImage
+                  size={80}
+                  imageSource={this.state.userImageSource}
+                />
               </TouchableOpacity>
               <View style={styles.marginTop40}>
                 <Text style={styles.profileTitle}>メールアドレス</Text>
@@ -138,21 +154,28 @@ class ProfileEdit extends React.Component {
           </View>
         </View>
         <View style={styles.container}>
-          <NavigateButton action={() => {this.completeButtonEvent();}} style={styles.complete} text="完了" />
+          <NavigateButton
+            action={() => {
+              this.completeButtonEvent();
+            }}
+            style={styles.complete}
+            text="完了"
+          />
         </View>
         <SexPicker
           _hidePicker={this._hidePicker}
           isVisible={this.state.isPickerVisible}
           selectedValue={this.state.sex}
           enabled={false}
-          onValueChange={(itemValue, itemIndex) => this.setState({sex: itemValue})}
+          onValueChange={(itemValue, itemIndex) =>
+            this.setState({ sex: itemValue })
+          }
         />
       </View>
     );
   }
 }
 export default connect(mapStateToProps)(templateEnhancer(ProfileEdit));
-
 
 const styles = StyleSheet.create({
   container: {
@@ -224,8 +247,7 @@ const styles = StyleSheet.create({
   },
   userName: {
     fontSize: 23,
-    color: "white",
-    textAlign: "center"
+    color: "white"
   },
   marginTop40: {
     marginTop: 40

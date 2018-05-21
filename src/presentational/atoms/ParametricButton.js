@@ -40,6 +40,7 @@ export default class ParametricButton extends React.Component {
         onPress={() => {
           this.props.callback(this.props.params);
         }}
+        key={this.props.key}
       >
         <Text style={styles.text}>
           {this.props.children}

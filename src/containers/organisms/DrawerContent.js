@@ -74,6 +74,7 @@ class DrawerContent extends React.Component {
               this.switchSport(sport.id);
             }}
             style={styles.sportsContainer}
+            key={sport.id}
           >
             <Text style={styles.sportName}>{sport.name_ja}</Text>
           </TouchableOpacity>

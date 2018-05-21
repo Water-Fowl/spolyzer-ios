@@ -6,7 +6,9 @@ export default class PlayersDisplay extends React.Component {
     const unitUserNameComponentList = [];
     for (let user of users) {
       unitUserNameComponentList.push(
-        <Text style={styles.userNameText}> {user.name} </Text>
+        <Text style={styles.userNameText} key={user.name}>
+          {user.name}
+        </Text>
       );
     }
     return <View style={styles.userNameBox}>{unitUserNameComponentList}</View>;
@@ -16,7 +18,10 @@ export default class PlayersDisplay extends React.Component {
       <View
         style={[
           styles.userNameContainer,
-          { paddingTop: this.props.padding||15, paddingBottom: this.props.padding||15 }
+          {
+            paddingTop: this.props.padding || 15,
+            paddingBottom: this.props.padding || 15
+          }
         ]}
       >
         {this.renderUnitUsersName(this.props.leftUsers)}
