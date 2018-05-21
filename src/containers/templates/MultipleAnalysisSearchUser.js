@@ -4,7 +4,13 @@ import { ActionConst, Actions } from "react-native-router-flux";
 import { Image, StyleSheet, Text, TextInput, View } from "react-native";
 import { connect } from "react-redux";
 
-import { Background, NavBar, NavigateButton, TopContentBar, TextBox } from "atoms";
+import {
+  Background,
+  NavBar,
+  NavigateButton,
+  TopContentBar,
+  TextBox
+} from "atoms";
 import { UserList } from "organisms";
 
 import { mapStateToProps } from "utils";
@@ -24,31 +30,42 @@ class MultipleAnalysisSearchUser extends React.Component {
     this.setUser = this.setUser.bind(this);
   }
   componentWillReceiveProps(nextProps) {
-    this.setState({ users: nextProps.analysis.users });
+    // ログインユーザーを取り除く
+    let users = nextProps.analysis.users;
+    let userId = nextProps.profile.user.id;
+    users.some(function(array, index) {
+      if (array.user.id == userId) users.splice(index, 1);
+    });
+    this.setState({ users: users });
   }
   getUser(name) {
     const params = {
       name: name
     };
-    if (name != ""){
-      this.props.dispatch(requestModules.getApiRequest(
-        SEARCH_USER_ENDPOINT,
-        params,
-        this.props.authentication.header,
-        analysisModules.getSearchUserRequest,
-        analysisModules.getSearchUserReceived));
+    if (name != "") {
+      this.props.dispatch(
+        requestModules.getApiRequest(
+          SEARCH_USER_ENDPOINT,
+          params,
+          this.props.authentication.header,
+          analysisModules.getSearchUserRequest,
+          analysisModules.getSearchUserReceived
+        )
+      );
       this.setState({ users: this.props.analysis.users });
     }
     this.setState({ users: [] });
   }
-  setUser(selectedIndex){
-    this.props.dispatch(analysisModules.setUser(
-      this.props.analysis.selectedUserIndex,
-      this.props.analysis.users[selectedIndex].user
-    ));
+  setUser(selectedIndex) {
+    this.props.dispatch(
+      analysisModules.setUser(
+        this.props.analysis.selectedUserIndex,
+        this.props.analysis.users[selectedIndex].user
+      )
+    );
     Actions.popTo("MultipleAnalysisCreate");
   }
-  removeUser(){
+  removeUser() {
     this.props.dispatch(analysisModules.removeUser());
     Actions.popTo("MultipleAnalysisCreate");
   }
