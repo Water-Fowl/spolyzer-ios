@@ -124,7 +124,6 @@ class GameAnalysisCreate extends React.Component {
           />
         </View>
         {(() => {
-          console.log(this.state.listLength);
           if (!this.state.listLength)
             return (
               <View style={styles.listConteiner}>

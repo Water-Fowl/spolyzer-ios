@@ -1,5 +1,11 @@
 import React from "react";
-import { StyleSheet, Text, View, TouchableHighlight } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableHighlight,
+  TouchableWithoutFeedback
+} from "react-native";
 import { NavigateButton } from "components";
 
 import { connect } from "react-redux";
@@ -25,7 +31,8 @@ export default class ShotTypeModal extends React.Component {
     for (let shotTypeId in this.props.shotTypes) {
       buttonsComponentsList.push(
         <TouchableHighlight
-          onPress={() => {
+          delayPressOut={10}
+          onPressOut={() => {
             this.props.callback(shotTypeId, isNetMiss);
             this.props.hideModal();
           }}
