@@ -3,8 +3,7 @@ import {
   StyleSheet,
   Text,
   View,
-  TouchableHighlight,
-  TouchableWithoutFeedback
+  TouchableHighlight
 } from "react-native";
 import { NavigateButton } from "components";
 
@@ -31,7 +30,7 @@ export default class ShotTypeModal extends React.Component {
     for (let shotTypeId in this.props.shotTypes) {
       buttonsComponentsList.push(
         <TouchableHighlight
-          delayPressOut={10}
+          delayPressOut={1}
           onPressOut={() => {
             this.props.callback(shotTypeId, isNetMiss);
             this.props.hideModal();

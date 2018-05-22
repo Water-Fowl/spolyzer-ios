@@ -1,26 +1,17 @@
 import React from "react";
-import {
-  StyleSheet,
-  TouchableHighlight,
-  View
-} from "react-native";
+import { StyleSheet, TouchableHighlight, View } from "react-native";
 
 export default class InFieldCircle extends React.Component {
-  renderInButton(position, side){
-    if(this.props.renderInButton) {
-      return (
-        this.props.renderInButton(position, side)
-      );
-    }
-    else {
-      return (
-        <View />
-      );
+  renderInButton(position, side) {
+    if (this.props.renderInButton) {
+      return this.props.renderInButton(position, side);
+    } else {
+      return <View />;
     }
   }
 
   render() {
-    const sizeMagnification = this.props.horizontal? 1 : 2;
+    const sizeMagnification = this.props.horizontal ? 1 : 2;
     return (
       <TouchableHighlight
         style={{
@@ -33,7 +24,8 @@ export default class InFieldCircle extends React.Component {
           opacity: 0.3,
           alignSelf: "center"
         }}
-        onPress={() => {
+        delayPressOut={1}
+        onPressOut={() => {
           this.props.callback(this.props.position, this.props.side);
         }}
       >

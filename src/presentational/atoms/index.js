@@ -3,11 +3,11 @@
  */
 import Background from "./Background";
 import ErrorText from "./ErrorText";
-import InFieldSide from "./InFieldSide";
-import InFieldCircle from "./InFieldCircle";
-import InFieldLength from "./InFieldLength";
-import OutFieldSide from "./OutFieldSide";
-import OutFieldLength from "./OutFieldLength";
+import InFieldSide from "./field/InFieldSide";
+import InFieldCircle from "./field/InFieldCircle";
+import InFieldLength from "./field/InFieldLength";
+import OutFieldSide from "./field/OutFieldSide";
+import OutFieldLength from "./field/OutFieldLength";
 import LandScapeBackground from "./LandscapeBackground";
 import NavBar from "./NavBar";
 import NavigateButton from "./NavigateButton";
