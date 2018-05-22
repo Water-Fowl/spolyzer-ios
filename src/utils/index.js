@@ -7,6 +7,7 @@ import aggregatedMultipleAnalysis from "./aggregatedMultipleAnalysis";
 import aggregatedGameAnalysis from "./aggregatedGameAnalysis";
 import { timeEncode, getNowYMD } from "./timeEncode";
 
+import { toastPresent } from "./toast";
 export {
   aggregatedMultipleAnalysis,
   aggregatedGameAnalysis,
@@ -15,5 +16,6 @@ export {
   errorAlertCallback,
   errorMessage,
   timeEncode,
-  getNowYMD
+  getNowYMD,
+  toastPresent
 };

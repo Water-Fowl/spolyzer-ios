@@ -1,7 +1,13 @@
 import React from "react";
 import templateEnhancer from "./hoc";
 import { ActionConst, Actions } from "react-native-router-flux";
-import { View, StyleSheet, FlatList, Text, TouchableOpacity } from "react-native";
+import {
+  View,
+  StyleSheet,
+  FlatList,
+  Text,
+  TouchableOpacity
+} from "react-native";
 import { connect } from "react-redux";
 import { TopContentBar, TextBox } from "atoms";
 import { Icon, SegmentedControl } from "react-native-ios-kit";
@@ -17,7 +23,6 @@ import {
 import { timeEncode } from "utils";
 
 class GameAnalysisCreate extends React.Component {
-
   constructor(props) {
     super(props);
     this.getUsersGamesEvent.bind(this);
@@ -65,15 +70,15 @@ class GameAnalysisCreate extends React.Component {
         gameModules.getShotTypeCountsReceived
       )
     );
-    Actions.GameAnalysisView({ "games": item });
+    Actions.GameAnalysisView({ games: item });
   }
 
   setListData() {
     let listData = [];
     if (!this.state.games) return listData;
-    for (let game of this.state.games.slice().reverse()) {
-      if (game.left_users.length === this.state.selectedIndex + 1)
-        listData.push(game);
+    for (let gameData of this.state.games.slice().reverse()) {
+      if (gameData.left_users.length === this.state.selectedIndex + 1 && gameData.game.sport_id===this.props.sport.id)
+        listData.push(gameData);
     }
     console.log(listData);
     return listData;
@@ -91,7 +96,6 @@ class GameAnalysisCreate extends React.Component {
 
       if (right_users[index].name === this.props.profile.userName)
         opponentUsers.side = 1;
-
     }
     return opponentUsers.side
       ? opponentUsers.left.join(" / ")
