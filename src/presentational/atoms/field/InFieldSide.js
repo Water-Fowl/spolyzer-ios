@@ -16,11 +16,12 @@ export default class InFieldSide extends React.Component {
           borderColor: "#2EA7E0",
           backgroundColor: "#2EA7E0",
           height: 10 * sizeMagnification,
-          width: 40 * sizeMagnification,
+          width: 45 * sizeMagnification,
           borderWidth: 1.3,
           borderRadius: 3,
           opacity: 0.3,
-          alignSelf: "center"
+          alignSelf: "center",
+          padding: 15
         }}
         delayPressOut={1}
         onPressOut={() => {

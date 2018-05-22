@@ -22,7 +22,8 @@ export default class InFieldCircle extends React.Component {
           borderWidth: 1,
           borderRadius: 100,
           opacity: 0.3,
-          alignSelf: "center"
+          alignSelf: "center",
+          padding: 40
         }}
         delayPressOut={1}
         onPressOut={() => {

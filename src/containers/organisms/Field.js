@@ -287,7 +287,7 @@ const styles = StyleSheet.create({
   },
   middleContainer: {
     flexDirection: "row",
-    flex: 4,
+    flex: 3.7,
     justifyContent: "space-between"
   },
   underContainer: {
@@ -296,19 +296,17 @@ const styles = StyleSheet.create({
     justifyContent: "space-between"
   },
   outFieldLengthContainer: {
-    marginLeft: 4,
-    marginRight: 4,
+    paddingLeft: 7,
+    paddingRight: 7,
     flexDirection: "column",
     justifyContent: "space-between"
   },
   inFieldContainer: {
-    flexDirection: "row",
-    marginLeft: 10,
-    marginRight: 10
+    flexDirection: "row"
   },
   inFieldLengthContainer: {
-    marginLeft: 8,
-    marginRight: 8,
+    paddingLeft: 23,
+    paddingRight: 23,
     justifyContent: "space-between",
     alignItems: "center"
   },
@@ -316,13 +314,13 @@ const styles = StyleSheet.create({
     justifyContent: "space-between"
   },
   inFieldSideContainer: {
-    marginLeft: 6,
-    marginRight: 6,
+    paddingLeft: 7,
+    paddingRight: 7,
     justifyContent: "space-between"
   },
   underOutFieldSideContainer: {
     alignSelf: "flex-end",
-    flex: 0.5,
+    flex: 0.6,
     justifyContent: "space-around",
     flexDirection: "row"
   }
