@@ -25,6 +25,8 @@ import {
   ScoreView,
   SignUp,
   Confirmation,
+  ForgetPass,
+  ForgetPassDone,
   SportSelect
 } from "../containers";
 import { DrawerContent } from "organisms";
@@ -162,6 +164,13 @@ class Route extends React.Component {
             hideNavBar
           />
           <Scene key="signUp" component={SignUp} hideNavBar gesturesEnabled />
+          <Scene
+            key="ForgetPass"
+            component={ForgetPass}
+            hideNavBar
+            gesturesEnabled
+          />
+          <Scene key="ForgetPassDone" component={ForgetPassDone} hideNavBar />
           <Scene key="confirmation" component={Confirmation} hideNavBar />
           <Scene
             key="sportSelect"

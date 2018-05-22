@@ -134,7 +134,11 @@ class Login extends React.Component {
               <Text style={styles.buttonText}>ログイン</Text>
             </TouchableOpacity>
           </View>
-          <Text style={styles.forgetPasswordText}>パスワードをお忘れの方</Text>
+          <TouchableOpacity onPress={Actions.ForgetPass}>
+            <Text style={styles.forgetPasswordText}>
+              パスワードをお忘れの方
+            </Text>
+          </TouchableOpacity>
           <View style={styles.button}>
             <TouchableOpacity onPress={Actions.signUp}>
               <Text style={styles.buttonText}>新規登録(無料)</Text>
