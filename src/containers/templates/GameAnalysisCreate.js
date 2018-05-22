@@ -28,7 +28,8 @@ class GameAnalysisCreate extends React.Component {
     this.state = {
       isPickerVisible: false,
       selectedIndex: 0,
-      games: []
+      games: [],
+      listLength: 0
     };
     this.getUsersGamesEvent();
   }
@@ -81,6 +82,8 @@ class GameAnalysisCreate extends React.Component {
       )
         listData.push(gameData);
     }
+    if (listData.length !== this.state.listLength)
+      this.setState({ listLength: listData.length });
     return listData;
   }
 
@@ -120,6 +123,15 @@ class GameAnalysisCreate extends React.Component {
             style={{ width: 222, alignSelf: "center" }}
           />
         </View>
+        {(() => {
+          console.log(this.state.listLength);
+          if (!this.state.listLength)
+            return (
+              <View style={styles.listConteiner}>
+                <Text style={styles.noDataText}>データがありません</Text>
+              </View>
+            );
+        })()}
         <FlatList
           data={this.setListData()}
           renderItem={({ item, index }) => (
@@ -170,14 +182,20 @@ const styles = StyleSheet.create({
   listConteiner: {
     paddingLeft: 30,
     paddingBottom: 4,
-    paddingTop: 6,
-    // borderBottomColor: "#2ea7e0",
+    paddingTop: 6, // borderBottomColor: "#2ea7e0",
     borderRadius: 4,
     borderWidth: 1,
     borderTopColor: "#2ea7e0"
   },
   gameAnalysisViewButton: {
     justifyContent: "center"
+  },
+  noDataText: {
+    alignSelf: "center",
+    color: "white",
+    fontSize: 20,
+    paddingTop: 10,
+    paddingRight: 30
   },
   titleText: {
     color: "white",
