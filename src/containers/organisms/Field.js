@@ -45,7 +45,7 @@ export default class Field extends React.Component {
             backfaceVisibility: "hidden",
             resizeMode: "contain"
           }}
-          source={{ url: fieldType[this.props.sport] }}
+          source={{ url: fieldType[1] }}
         />
         <View style={styles.overContainer}>
           <View style={styles.overOutFieldSideContainer}>
@@ -287,7 +287,7 @@ const styles = StyleSheet.create({
   },
   middleContainer: {
     flexDirection: "row",
-    flex: 3.7,
+    flex: 3.9,
     justifyContent: "space-between"
   },
   underContainer: {
@@ -296,8 +296,6 @@ const styles = StyleSheet.create({
     justifyContent: "space-between"
   },
   outFieldLengthContainer: {
-    paddingLeft: 7,
-    paddingRight: 7,
     flexDirection: "column",
     justifyContent: "space-between"
   },
@@ -305,8 +303,8 @@ const styles = StyleSheet.create({
     flexDirection: "row"
   },
   inFieldLengthContainer: {
-    paddingLeft: 23,
-    paddingRight: 23,
+    paddingLeft: 20,
+    paddingRight: 20,
     justifyContent: "space-between",
     alignItems: "center"
   },

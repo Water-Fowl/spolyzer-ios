@@ -22,7 +22,7 @@ export default class OutFieldSide extends React.Component {
           width: 50 * sizeMagnification,
           height: 10 * sizeMagnification,
           alignSelf: "center",
-          padding: 11
+          padding: 10
         }}
         delayPressOut={1}
         onPressOut={() => {
