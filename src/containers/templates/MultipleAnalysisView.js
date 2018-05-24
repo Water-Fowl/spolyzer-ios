@@ -148,13 +148,18 @@ class AnalysisView extends React.Component {
     return "-";
   }
 
+  setCreatedAfter() {
+    return this.props.created_after === "2018/1/1"
+      ? ""
+      : this.props.created_after;
+  }
   render() {
     return (
       <View style={styles.container}>
         <TopContentBar>複合分析結果</TopContentBar>
         <ScrollView>
           <Text style={styles.termText}>
-            {this.props.created_after}~{this.props.created_before}
+            {this.setCreatedAfter()}~{this.props.created_before}
           </Text>
           <View>
             {this._renderOpponentUserNames(this.props.analysis.analysisUsers)}
@@ -174,6 +179,8 @@ class AnalysisView extends React.Component {
             renderInField={this.renderInField}
             renderInButton={this._renderFieldButtonText}
             margin={10}
+            fieldHeight={165}
+            fieldWidth={319}
           />
           <Graph data={this.state.selectedPositionsCount} />
         </ScrollView>
