@@ -38,14 +38,14 @@ class AnalysisView extends React.Component {
     super(props);
     let selectedPositionsCount = reshapePositionsCount(
       this.props.analysis.positionCounts,
-      0,
-      1,
-      6
+      LEFT,
+      IN_MIN_POSITION,
+      IN_MAX_POSITION
     );
     this.state = {
       /* Out = 0, In = 1 */
       /* Left = 0, Right = 1 */
-      onPressOut: OUT,
+      onPressOut: IN,
       onPressSide: LEFT,
       selectedPositionsCount
     };
@@ -258,8 +258,9 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     flex: 0.45,
     backgroundColor: "#FAEE00",
-    opacity: 0.3,
-    height: 170
+    opacity: 0.4,
+    height: 170,
+    zIndex: 999
   },
   blankContainer: {
     width: 320,
@@ -289,7 +290,7 @@ const styles = StyleSheet.create({
   inArea: {
     flex: 0.35,
     alignSelf: "center",
-    backgroundColor: "rgba(46, 167, 224, 0.8)",
+    backgroundColor: "rgba(46, 167, 224, 0.5)",
     height: 120,
     marginTop: 25,
     marginBottom: 25
