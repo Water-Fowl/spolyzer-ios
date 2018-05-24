@@ -23,8 +23,7 @@ export default class InFieldLength extends React.Component {
           width: 10 * sizeMagnification,
           borderWidth: 1.3,
           borderRadius: 3,
-          opacity: 0.3,
-          padding: 14
+          opacity: 0.3
         }}
         delayPressOut={1}
         onPressOut={() => {

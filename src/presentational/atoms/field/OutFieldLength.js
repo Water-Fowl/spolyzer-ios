@@ -17,10 +17,9 @@ export default class OutFieldLength extends React.Component {
           borderColor: "#A29A67",
           backgroundColor: "#A29A67",
           width: 10 * sizeMagnification,
-          height: 42 * sizeMagnification,
+          height: 40 * sizeMagnification,
           borderWidth: 1.3,
-          borderRadius: 3,
-          padding: 11
+          borderRadius: 3
         }}
         delayPressOut={1}
         onPressOut={() => {

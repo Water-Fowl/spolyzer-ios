@@ -210,6 +210,8 @@ class ScoreCreate extends React.Component {
           sport={2}
           callback={this.showModal}
           margin={36}
+          fieldHeight={150}
+          fieldWidth={290}
         />
         <View style={styles.scoreInformationBackContainer}>
           <TouchableHighlight

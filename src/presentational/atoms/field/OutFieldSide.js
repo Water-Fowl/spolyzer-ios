@@ -17,12 +17,11 @@ export default class OutFieldSide extends React.Component {
         style={{
           borderColor: "#A29A67",
           backgroundColor: "#A29A67",
-          borderWidth: 1.5,
+          borderWidth: 1.3,
           borderRadius: 3,
-          width: 50 * sizeMagnification,
+          width: 45 * sizeMagnification,
           height: 10 * sizeMagnification,
-          alignSelf: "center",
-          padding: 10
+          alignSelf: "center"
         }}
         delayPressOut={1}
         onPressOut={() => {

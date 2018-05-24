@@ -31,7 +31,7 @@ export default class Field extends React.Component {
           flex: 1,
           marginBottom: 5,
           height: 170 * sizeMagnification,
-          width: 295 * sizeMagnification,
+          width: 300 * sizeMagnification,
           marginTop: this.props.margin || 26
         }}
       >
@@ -40,8 +40,8 @@ export default class Field extends React.Component {
           style={{
             position: "absolute",
             alignSelf: "center",
-            height: 150 * sizeMagnification,
-            width: 290 * sizeMagnification,
+            height: (this.props.fieldHeight || 165) * sizeMagnification,
+            width: (this.props.fieldWidth || 319) * sizeMagnification,
             backfaceVisibility: "hidden",
             resizeMode: "contain"
           }}
@@ -287,7 +287,7 @@ const styles = StyleSheet.create({
   },
   middleContainer: {
     flexDirection: "row",
-    flex: 3.9,
+    flex: 4,
     justifyContent: "space-between"
   },
   underContainer: {
@@ -296,15 +296,19 @@ const styles = StyleSheet.create({
     justifyContent: "space-between"
   },
   outFieldLengthContainer: {
+    marginLeft: 4,
+    marginRight: 4,
     flexDirection: "column",
     justifyContent: "space-between"
   },
   inFieldContainer: {
-    flexDirection: "row"
+    flexDirection: "row",
+    marginLeft: 10,
+    marginRight: 10
   },
   inFieldLengthContainer: {
-    paddingLeft: 20,
-    paddingRight: 20,
+    marginLeft: 8,
+    marginRight: 8,
     justifyContent: "space-between",
     alignItems: "center"
   },
@@ -312,13 +316,13 @@ const styles = StyleSheet.create({
     justifyContent: "space-between"
   },
   inFieldSideContainer: {
-    paddingLeft: 7,
-    paddingRight: 7,
+    marginLeft: 6,
+    marginRight: 6,
     justifyContent: "space-between"
   },
   underOutFieldSideContainer: {
     alignSelf: "flex-end",
-    flex: 0.6,
+    flex: 0.5,
     justifyContent: "space-around",
     flexDirection: "row"
   }
