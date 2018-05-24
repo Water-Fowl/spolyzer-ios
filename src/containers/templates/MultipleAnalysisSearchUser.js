@@ -33,6 +33,7 @@ class MultipleAnalysisSearchUser extends React.Component {
     // ログインユーザーを取り除く
     let users = nextProps.analysis.users;
     let userId = nextProps.profile.user.id;
+    if (!users) return;
     users.some(function(array, index) {
       if (array.user.id == userId) users.splice(index, 1);
     });
