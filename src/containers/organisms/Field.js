@@ -40,8 +40,8 @@ export default class Field extends React.Component {
           style={{
             position: "absolute",
             alignSelf: "center",
-            height: (this.props.fieldHeight || 165) * sizeMagnification,
-            width: (this.props.fieldWidth || 319) * sizeMagnification,
+            height: (this.props.fieldHeight || 145) * sizeMagnification,
+            width: (this.props.fieldWidth || 256) * sizeMagnification,
             backfaceVisibility: "hidden",
             resizeMode: "contain"
           }}

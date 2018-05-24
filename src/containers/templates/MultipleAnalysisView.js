@@ -179,8 +179,6 @@ class AnalysisView extends React.Component {
             renderInField={this.renderInField}
             renderInButton={this._renderFieldButtonText}
             margin={10}
-            fieldHeight={165}
-            fieldWidth={319}
           />
           <Graph data={this.state.selectedPositionsCount} />
         </ScrollView>
