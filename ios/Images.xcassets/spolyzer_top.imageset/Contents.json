@@ -2,15 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
+      "filename" : "spolyzer_top-1.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "spolyzer_top.png",
+      "filename" : "spolyzer_top@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
+      "filename" : "spolyzer_top@3x.png",
       "scale" : "3x"
     }
   ],
