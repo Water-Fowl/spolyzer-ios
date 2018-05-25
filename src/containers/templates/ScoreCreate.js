@@ -65,7 +65,7 @@ class ScoreCreate extends React.Component {
     let scoreCounts = scoreDisplay(this.props.profile.user.sport_id, setScores);
     this.setState({ scoreCounts });
     console.log(this.state.hideAlert);
-    if (scoreCounts[0] === "Win" || scoreCounts[1] === "Win") {
+    if (scoreCounts[0] === "○" || scoreCounts[1] === "○") {
       if (!this.state.hideAlert)
         Alert.alert(
           "試合を分析する",
