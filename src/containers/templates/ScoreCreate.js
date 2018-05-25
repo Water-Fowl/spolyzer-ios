@@ -34,7 +34,8 @@ class ScoreCreate extends React.Component {
       width: Dimensions.get("window").height,
       scores: "",
       scoreCounts: [0, 0],
-      modalIsVisible: false
+      modalIsVisible: false,
+      hideAlert: false
     };
     this.hideModal = this.hideModal.bind(this);
     this.setShotType = this.setShotType.bind(this);
@@ -63,9 +64,38 @@ class ScoreCreate extends React.Component {
   setSoreDisplay(setScores) {
     let scoreCounts = scoreDisplay(this.props.profile.user.sport_id, setScores);
     this.setState({ scoreCounts });
+    console.log(this.state.hideAlert);
+    if (scoreCounts[0] === "Win" || scoreCounts[1] === "Win") {
+      if (!this.state.hideAlert)
+        Alert.alert(
+          "試合を分析する",
+          "分析ページから保存ができます",
+          [
+            {
+              text: "キャンセル",
+              onPress: () => {
+                this.setState({ hideAlert: true });
+              },
+              style: "cancel"
+            },
+            {
+              text: "分析する",
+              onPress: () => {
+                this.setState({ hideAlert: true });
+                this.navigationEvent(
+                  this.props.game.gameUnits,
+                  this.props.game.scores
+                );
+              }
+            }
+          ],
+          { cancelable: false }
+        );
+    }
   }
 
   navigationEvent(users, scores) {
+    console.log(this.props.game.gameUnits, this.props.game.scores);
     if (this.props.game.scores.length == 0) {
       return Alert.alert(
         "エラー",
