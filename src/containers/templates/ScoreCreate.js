@@ -43,10 +43,6 @@ class ScoreCreate extends React.Component {
   componentDidMount() {
     Orientation.lockToLandscape();
   }
-
-  componentWillUnmount() {
-    Orientation.lockToPortrait();
-  }
   componentWillReceiveProps(nextProps) {
     this.setSoreDisplay(nextProps.game.scoreCounts);
   }
@@ -142,7 +138,7 @@ class ScoreCreate extends React.Component {
           onPress: () => {
             this.props.dispatch(gameModules.resetState());
             Actions.popTo("gameCreate");
-            Actions.gameCreate();
+            Orientation.lockToPortrait();
           },
           style: "destructive"
         }
@@ -178,10 +174,10 @@ class ScoreCreate extends React.Component {
                 {this.state.scoreCounts[0]}
               </Text>
             </View>
-            <Text style={styles.scoreInformationGamePoint}></Text>
+            <Text style={styles.scoreInformationGamePoint} />
           </View>
           <View style={styles.scoreInformationContainer}>
-            <Text style={styles.scoreInformationGamePoint}></Text>
+            <Text style={styles.scoreInformationGamePoint} />
             <View style={styles.scoreInformationPointContainer}>
               <Text style={styles.scoreInformationPoint}>
                 {this.state.scoreCounts[1]}

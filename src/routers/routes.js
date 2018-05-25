@@ -8,7 +8,15 @@ import {
   AsyncStorage
 } from "react-native";
 import { connect } from "react-redux";
-import { Router, Scene, Tabs, Drawer } from "react-native-router-flux";
+import {
+  Router,
+  Scene,
+  Tabs,
+  Drawer,
+  ActionConst,
+  Actions
+} from "react-native-router-flux";
+import Orientation from "react-native-orientation";
 import {
   AnalysisCreate,
   GameAnalysisCreate,
@@ -234,6 +242,10 @@ class Route extends React.Component {
                   title="結果"
                   hideDrawerButton
                   drawerLockMode="locked-closed"
+                  onBack={() => {
+                    Actions.popTo("scoreCreate");
+                    Orientation.lockToLandscape();
+                  }}
                   back
                 />
               </Scene>
