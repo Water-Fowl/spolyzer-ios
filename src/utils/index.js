@@ -7,6 +7,7 @@ import { mapStateToProps } from "./redux";
 import { errorAlertCallback, errorMessage } from "./error";
 import { timeEncode, getNowYMD } from "./time_encode";
 import { toastPresent } from "./toast";
+import { scoreDisplay } from "./score_system";
 export {
   reshapeShotTypeCounts,
   reshapePositionsCount,
@@ -17,5 +18,6 @@ export {
   errorMessage,
   timeEncode,
   getNowYMD,
-  toastPresent
+  toastPresent,
+  scoreDisplay
 };

@@ -24,7 +24,7 @@ import {
   SHOT_TYPE_COUNTS_ENDPOINT,
   gameCountEndpointGenerator
 } from "../../config/api";
-import { mapStateToProps } from "utils";
+import { mapStateToProps, scoreDisplay } from "utils";
 
 class ScoreCreate extends React.Component {
   constructor(props) {
@@ -33,6 +33,7 @@ class ScoreCreate extends React.Component {
       height: Dimensions.get("window").width,
       width: Dimensions.get("window").height,
       scores: "",
+      scoreCounts: [0, 0],
       modalIsVisible: false
     };
     this.hideModal = this.hideModal.bind(this);
@@ -47,9 +48,7 @@ class ScoreCreate extends React.Component {
     Orientation.lockToPortrait();
   }
   componentWillReceiveProps(nextProps) {
-    if (nextProps.scores) {
-      this.setState({ scores: nextProps.scores });
-    }
+    this.setSoreDisplay(nextProps.game.scoreCounts);
   }
 
   showModal(position, side) {
@@ -63,6 +62,11 @@ class ScoreCreate extends React.Component {
 
   setShotType(shotTypeId, isNetMiss) {
     this.props.dispatch(gameModules.setShotType(shotTypeId, isNetMiss));
+  }
+
+  setSoreDisplay(setScores) {
+    let scoreCounts = scoreDisplay(this.props.profile.user.sport_id, setScores);
+    this.setState({ scoreCounts });
   }
 
   navigationEvent(users, scores) {
@@ -171,16 +175,16 @@ class ScoreCreate extends React.Component {
             {this.renderUnitUsersName(this.props.game.gameUnits.left.users)}
             <View style={styles.scoreInformationPointContainer}>
               <Text style={styles.scoreInformationPoint}>
-                {this.props.game.scoreCounts[0]}
+                {this.state.scoreCounts[0]}
               </Text>
             </View>
-            <Text style={styles.scoreInformationGamePoint}>0</Text>
+            <Text style={styles.scoreInformationGamePoint}></Text>
           </View>
           <View style={styles.scoreInformationContainer}>
-            <Text style={styles.scoreInformationGamePoint}>0</Text>
+            <Text style={styles.scoreInformationGamePoint}></Text>
             <View style={styles.scoreInformationPointContainer}>
               <Text style={styles.scoreInformationPoint}>
-                {this.props.game.scoreCounts[1]}
+                {this.state.scoreCounts[1]}
               </Text>
             </View>
             {this.renderUnitUsersName(this.props.game.gameUnits.right.users)}
@@ -328,8 +332,8 @@ const styles = StyleSheet.create({
     textAlign: "center",
     backgroundColor: "rgba(0, 0, 0, 0)",
     borderWidth: 0.5,
-    borderRadius: 4,
-    borderColor: "#2EA7E0"
+    borderRadius: 4
+    // borderColor: "#2EA7E0"
   },
   scoreInformationContainer: {
     flexDirection: "row",
