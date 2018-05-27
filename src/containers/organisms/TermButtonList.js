@@ -5,7 +5,7 @@ import {
 
 import { ParametricButton } from "atoms";
 import { setTerm } from "../../modules/analysis";
-import { mapStateToProps } from "utils";
+import { mapStateToProps } from "../../modules/mapToProps";
 import { connect } from "react-redux";
 
 class TermButtonList extends React.Component {

@@ -6,7 +6,7 @@ import {
 import { connect } from "react-redux";
 
 import { ParametricButton } from "atoms";
-import { mapStateToProps } from "utils";
+import { mapStateToProps } from "../../modules/mapToProps";
 import { setGameType } from "../../modules/analysis";
 
 class GameTypeButtonList extends React.Component {

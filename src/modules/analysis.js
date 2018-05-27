@@ -1,4 +1,4 @@
-import { reshapePositionsCount } from "utils";
+import * as utils from "../utils";
 
 const initialState = {
   gameUserCount: 1,
@@ -217,7 +217,7 @@ export function analysisReducer(state = initialState, action = {}) {
       selectedUserIndex: action.selectedUserIndex
     });
   case SET_POSITIONS_COUNTS:
-    const { positionsCountList } = reshapePositionsCount(
+    const { positionsCountList } = utils.aggregatedMultipleAnalysis(
       state.positionCounts,
       action.side,
       action.minPosition,

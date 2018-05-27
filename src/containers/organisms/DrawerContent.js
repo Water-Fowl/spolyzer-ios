@@ -11,7 +11,8 @@ import {
 import { Actions } from "react-native-router-flux";
 import { connect } from "react-redux";
 import { resetToken } from "../../modules/authentication";
-import { mapStateToProps, toastPresent } from "utils";
+import { mapStateToProps } from "../../modules/mapToProps";
+import { toastPresent } from "utils";
 import { ProfileImage } from "atoms";
 import * as sportModules from "../../modules/sport";
 import * as requestModules from "../../modules/request";
@@ -59,7 +60,9 @@ class DrawerContent extends React.Component {
         )
       )
       .then(() => {
-        toastPresent(`競技を${this.sportName(this.props.sport.id)}に変更しました`);
+        toastPresent(
+          `競技を${this.sportName(this.props.sport.id)}に変更しました`
+        );
       });
   }
   setSportsList() {
