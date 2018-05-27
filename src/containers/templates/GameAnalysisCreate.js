@@ -48,7 +48,6 @@ class GameAnalysisCreate extends React.Component {
       )
       .then(json => {
         this.setState({ games: json.games });
-        console.log(json);
       });
   }
 
@@ -75,7 +74,6 @@ class GameAnalysisCreate extends React.Component {
       if (game.left_users.length === this.state.selectedIndex + 1)
         listData.push(game);
     }
-    console.log(listData);
     return listData;
   }
 
