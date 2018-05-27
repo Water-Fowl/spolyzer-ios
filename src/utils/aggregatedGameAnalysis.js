@@ -8,7 +8,7 @@ export default function aggregatedGameAnalysis(counts, shotTypes){
 
   for (key in counts){
     shotTypesList.push(shotTypes[key]);
-    shotTypeCountsList = aggregateByMiss(counts[key], false, shotTypeCountsList, shotTypes)
+    shotTypeCountsList = aggregateByMiss(counts[key], false, shotTypeCountsList, shotTypes);
     missShotTypeCountsList = aggregateByMiss(counts[key], true, missShotTypeCountsList, shotTypes);
   }
 
@@ -32,5 +32,5 @@ function aggregateByMiss(count, isNetMiss, shotTypeCountsList, shotTypes){
       value: 0
     });
   }
-  return shotTypeCountsList
+  return shotTypeCountsList;
 }
