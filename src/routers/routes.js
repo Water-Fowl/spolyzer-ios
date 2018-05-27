@@ -35,7 +35,8 @@ import {
   Confirmation,
   ForgetPass,
   ForgetPassDone,
-  SportSelect
+  SportSelect,
+  Usage
 } from "../containers";
 import { DrawerContent } from "organisms";
 import { GameIcon, AnalysisIcon, HamburgerIcon } from "molecules";
@@ -198,6 +199,14 @@ class Route extends React.Component {
               component={ProfileEdit}
               title="マイデータ編集"
               hideDrawerButton
+            />
+            <Scene
+              key="usage"
+              component={Usage}
+              title="使い方"
+              hideDrawerButton
+              drawerLockMode="locked-closed"
+              back
             />
             <Tabs
               initial
