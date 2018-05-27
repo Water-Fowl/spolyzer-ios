@@ -16,7 +16,6 @@ const OUT_MAX_POSITION = 6;
 
 export default class ShotTypeModal extends React.Component {
   renderButtons(textStyles, isNetMiss) {
-    console.log(this.props.position);
     buttonsComponentsList = [];
     if (
       isNetMiss &&

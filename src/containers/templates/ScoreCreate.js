@@ -64,7 +64,6 @@ class ScoreCreate extends React.Component {
   setSoreDisplay(setScores) {
     let scoreCounts = scoreDisplay(this.props.profile.user.sport_id, setScores);
     this.setState({ scoreCounts });
-    console.log(this.state.hideAlert);
     if (scoreCounts[0] === "○" || scoreCounts[1] === "○") {
       if (!this.state.hideAlert)
         Alert.alert(
@@ -95,7 +94,6 @@ class ScoreCreate extends React.Component {
   }
 
   navigationEvent(users, scores) {
-    console.log(this.props.game.gameUnits, this.props.game.scores);
     if (this.props.game.scores.length == 0) {
       return Alert.alert(
         "エラー",

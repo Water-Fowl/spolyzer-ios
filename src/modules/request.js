@@ -120,7 +120,6 @@ export function getApiRequest(
         return json;
       })
       .catch(error => {
-        console.log(error);
         return false;
       });
   };

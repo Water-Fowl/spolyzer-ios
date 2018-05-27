@@ -10,7 +10,6 @@ import { reshapeShotTypeCounts } from "utils";
 
 export default class Graph extends React.Component{
   componentWillReceiveProps(nextProps){
-    console.log(nextProps);
     this.forceUpdate();
   }
 

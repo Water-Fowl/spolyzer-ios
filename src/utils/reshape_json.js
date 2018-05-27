@@ -50,7 +50,6 @@ export function reshapeShotTypeCounts(counts, shotTypes){
   shotTypeCountsList = [];
   missShotTypeCountsList = [];
   shotTypesList = [];
-  console.log(counts);
   for (key in counts){
     shotTypesList.push(shotTypes[key]);
     if (counts[key][false]) {
