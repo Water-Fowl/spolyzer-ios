@@ -89,10 +89,10 @@ export function setShotTypeCounts(position, side){
 export function setShotType(shotType, isNetMiss, _side, position) {
   let side;
   if (!isNetMiss){
-    side = _side == 1 ? 0 : 1
+    side = _side == 1 ? 0 : 1;
   }
   else {
-   side = _side
+    side = _side;
   }
   console.log(side);
 
