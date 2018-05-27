@@ -3,19 +3,29 @@ import React, { Component } from "react";
 import { Actions } from "react-native-router-flux";
 import { Background } from "atoms";
 import {
-  AsyncStorage, Dimensions, Image, StyleSheet,
-  Text, TextInput, TouchableOpacity, View
+  AsyncStorage,
+  Dimensions,
+  Image,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View
 } from "react-native";
 import { connect } from "react-redux";
 import * as authenticationModules from "../../modules/authentication";
 import * as sportModules from "../../modules/sport";
 import * as profileModules from "../../modules/profile";
 import * as requestModules from "../../modules/request";
+import {
+  SIGN_IN_ENDPOINT,
+  USERS_ENDPOINT,
+  SHOT_TYPES_ENDPOINT
+} from "../../config/api";
 import { mapStateToProps } from "../../modules/mapToProps";
-import { SIGN_IN_ENDPOINT, USERS_ENDPOINT, SHOT_TYPES_ENDPOINT } from "../../config/api";
 import { errorAlertCallback } from "utils";
 
-function errorInstanceCallback(json){
+function errorInstanceCallback(json) {
   return new Error(json.errors);
 }
 
@@ -40,44 +50,39 @@ class Login extends React.Component {
       email: this.state.email,
       password: this.state.password
     };
-    this.props.dispatch(
-      requestModules.postApiRequest(
-        SIGN_IN_ENDPOINT,
-        body,
-        headers={},
-        authenticationModules.postLoginRequest,
-        authenticationModules.postLoginReceived,
-        errorInstanceCallback=errorInstanceCallback,
-        errorCallback=errorAlertCallback,
-        returnHeader=true,
+    this.props
+      .dispatch(
+        requestModules.postApiRequest(
+          SIGN_IN_ENDPOINT,
+          body,
+          (headers = {}),
+          authenticationModules.postLoginRequest,
+          authenticationModules.postLoginReceived,
+          (errorInstanceCallback = errorInstanceCallback),
+          (errorCallback = errorAlertCallback),
+          (returnHeader = true)
+        )
       )
-    ).then(async (header) => {
-      if(header){
-        await AsyncStorage.setItem("header", JSON.stringify(header));
-        this.props.dispatch(
-          requestModules.getApiRequest(
-            endpoint=USERS_ENDPOINT,
-            params={},
-            headers=header,
-            requestCallback=profileModules.getUserRequest,
-            receivedCallback=profileModules.getUserReceived
-          )
-        );
-        this.props.dispatch(sportModules.setSport(1));
-        this.props.dispatch(
-          requestModules.getApiRequest(
-            SHOT_TYPES_ENDPOINT,
-            params={sport_id: 1},
-            header,
-            sportModules.getShotTypesRequest,
-            sportModules.getShotTypesReceived
-          )
-        );
-        Actions.tab();
-      }
-      else {
-      }
-    });
+      .then(async header => {
+        if (header) {
+          await AsyncStorage.setItem("header", JSON.stringify(header));
+          this.props
+            .dispatch(
+              requestModules.getApiRequest(
+                (endpoint = USERS_ENDPOINT),
+                (params = {}),
+                (headers = header),
+                (requestCallback = profileModules.getUserRequest),
+                (receivedCallback = profileModules.getUserReceived)
+              )
+            )
+            .then(() => {
+              this.props.profile.user.sport_id
+                ? Actions.tab()
+                : Actions.sportSelect();
+            });
+        }
+      });
   }
   render() {
     return (
@@ -114,7 +119,7 @@ class Login extends React.Component {
               return (
                 <View style={styles.rowContainer}>
                   <Text style={styles.autoLoginText}>
-                メールアドレスかパスワードが間違っています。
+                    メールアドレスかパスワードが間違っています。
                   </Text>
                 </View>
               );
@@ -122,23 +127,22 @@ class Login extends React.Component {
           })()}
           <View style={styles.rowContainer} />
           <View style={styles.button}>
-            <TouchableOpacity onPress={() => {
-              this.postLoginEvent();
-            }}
+            <TouchableOpacity
+              onPress={() => {
+                this.postLoginEvent();
+              }}
             >
-              <Text style={styles.buttonText}>
-                ログイン
-              </Text>
+              <Text style={styles.buttonText}>ログイン</Text>
             </TouchableOpacity>
           </View>
-          <Text style={styles.forgetPasswordText}>
-            パスワードをお忘れの方
-          </Text>
+          <TouchableOpacity onPress={Actions.ForgetPass}>
+            <Text style={styles.forgetPasswordText}>
+              パスワードをお忘れの方
+            </Text>
+          </TouchableOpacity>
           <View style={styles.button}>
             <TouchableOpacity onPress={Actions.signUp}>
-              <Text style={styles.buttonText}>
-                新規登録(無料)
-              </Text>
+              <Text style={styles.buttonText}>新規登録(無料)</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -146,7 +150,6 @@ class Login extends React.Component {
     );
   }
 }
-
 
 export default connect(mapStateToProps)(Login);
 

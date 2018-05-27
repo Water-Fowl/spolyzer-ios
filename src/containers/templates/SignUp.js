@@ -42,7 +42,6 @@ class SignUp extends React.Component {
         name: this.state.name,
         email: this.state.email,
         password: this.state.password,
-        sport_id: 1,
         password_confirmation: this.state.password_confirmation
       };
       this.props.dispatch(requestModules.postApiRequest(

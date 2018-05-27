@@ -4,8 +4,7 @@ const GET_USER_RECEIVED = "GET_USER_RECEIVED";
 const GET_USER_REQUEST = "GET_USER_REQUEST";
 const SET_USER = "SET_USER";
 
-const initialState = {
-};
+const initialState = {};
 
 export function getUserRequest() {
   return {
@@ -18,18 +17,18 @@ export function getUserReceived(json) {
     type: GET_USER_RECEIVED,
     userName: json.user.name,
     userImageSource: json.user.image.url,
-    userEmail: json.user.email
+    userEmail: json.user.email,
+    user: json.user
   };
 }
 
 export function patchUserRequest() {
-  return{
+  return {
     type: REQUEST_POST_USER_UPDATE
   };
 }
 
-export function patchUserReceived(json){
-  console.log(json);
+export function patchUserReceived(json) {
   return {
     type: RECEIVED_POST_USER_UPDATE,
     userName: json.user.name,
@@ -47,19 +46,19 @@ export function setUser(userName, mailAddress, image) {
   };
 }
 
-export function profileReducer(state=initialState, action={}){
-  switch (action.type){
+export function profileReducer(state = initialState, action = {}) {
+  switch (action.type) {
   case GET_USER_REQUEST:
     return state;
   case GET_USER_RECEIVED:
     return Object.assign({}, state, {
       userName: action.userName,
       userEmail: action.userEmail,
-      userImageSource: action.userImageSource
+      userImageSource: action.userImageSource,
+      user:action.user
     });
   case REQUEST_POST_USER_UPDATE:
-    return Object.assign({}, state, {
-    });
+    return Object.assign({}, state, {});
   case RECEIVED_POST_USER_UPDATE:
     return Object.assign({}, state, {
       userName: action.userName,
