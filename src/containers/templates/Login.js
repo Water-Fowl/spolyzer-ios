@@ -3,14 +3,8 @@ import React, { Component } from "react";
 import { Actions } from "react-native-router-flux";
 import { Background } from "atoms";
 import {
-  AsyncStorage,
-  Dimensions,
-  Image,
-  StyleSheet,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View
+  AsyncStorage, Dimensions, Image, StyleSheet,
+  Text, TextInput, TouchableOpacity, View
 } from "react-native";
 import { connect } from "react-redux";
 import * as authenticationModules from "../../modules/authentication";
@@ -80,6 +74,7 @@ class Login extends React.Component {
         }
       });
   }
+
   render() {
     return (
       <View style={styles.container}>

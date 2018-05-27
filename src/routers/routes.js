@@ -5,7 +5,8 @@ import {
   View,
   Text,
   Alert,
-  AsyncStorage
+  AsyncStorage,
+  Linking
 } from "react-native";
 import { connect } from "react-redux";
 import { Router, Scene, Tabs, Drawer } from "react-native-router-flux";
@@ -27,7 +28,8 @@ import {
   Confirmation,
   ForgetPass,
   ForgetPassDone,
-  SportSelect
+  SportSelect,
+  NewPassword
 } from "../containers";
 import { DrawerContent } from "organisms";
 import { GameIcon, AnalysisIcon } from "atoms";
@@ -48,6 +50,7 @@ import {
   SHOT_TYPES_ENDPOINT,
   VALIDATE_TOKEN_ENDPOINT
 } from "../config/api";
+
 const RouterWithRedux = connect()(Router);
 const AppLogo = () => {
   return (
@@ -58,15 +61,18 @@ const AppLogo = () => {
 };
 
 class Route extends React.Component {
+
   constructor(props) {
     super(props);
     this.state = {
       isValidToken: false,
-      loading: true
+      loading: true,
+      isPasswordReset: false
     };
     this.componentWillMountValidToken.bind(this);
     this.networkError.bind(this);
   }
+
   networkError() {
     return new Promise(resolve => {
       Alert.alert(
@@ -83,6 +89,7 @@ class Route extends React.Component {
       );
     });
   }
+
   async componentWillMountValidToken() {
     try {
       const rowHeader = await AsyncStorage.getItem("header");
@@ -139,13 +146,17 @@ class Route extends React.Component {
       this.networkError();
     }
   }
+
   async componentWillMount() {
     await this.componentWillMountValidToken();
   }
+
   render() {
+
     if (this.state.loading) {
       return <View />;
     }
+
     return (
       <RouterWithRedux>
         <Scene
@@ -160,7 +171,7 @@ class Route extends React.Component {
           <Scene
             key="login"
             component={Login}
-            initial={!this.state.isValidToken}
+            initial={!this.state.isValidToken && this.state.isPasswordReset}
             hideNavBar
           />
           <Scene key="signUp" component={SignUp} hideNavBar gesturesEnabled />
@@ -171,6 +182,7 @@ class Route extends React.Component {
             gesturesEnabled
           />
           <Scene key="ForgetPassDone" component={ForgetPassDone} hideNavBar />
+          <Scene key="NewPassword" component={NewPassword} hideNavBar />
           <Scene key="confirmation" component={Confirmation} hideNavBar />
           <Scene
             key="sportSelect"

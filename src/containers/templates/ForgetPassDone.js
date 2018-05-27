@@ -3,8 +3,7 @@ import React from "react";
 import templateEnhancer from "./hoc";
 import { Actions } from "react-native-router-flux";
 import {
-  StyleSheet,
-  Image,
+  StyleSheet, Image, Linking,
   Text, TextInput, TouchableOpacity, View
 } from "react-native";
 import { connect } from "react-redux";
@@ -16,9 +15,45 @@ class ForgetPassDone extends React.Component {
 
   constructor(props) {
     super(props);
-    console.log(this.props);
   }
 
+  componentDidMount(){
+    Linking.addEventListener('url', this.handleOpenURL);
+  }
+
+  handleOpenURL(event){
+    let url = event.url
+    const route = url.replace(/.*?:\/\//g, '');
+    const routeName = route.split('?')[0];
+    const token = route.split('=')[1]
+    if (routeName === 'reset_password') {
+      Actions.NewPassword({ token });
+    }
+  }
+
+  postForgetPassForm() {
+    let email = this.state.email
+    const isEmail = emailReg.test(email);
+    if (isEmail) {
+      const body = {
+        email:email,
+        redirect_url: "spolyzerios://reset_password"
+      }
+      this.props.dispatch(
+        requestModules.postApiRequest(
+          PASSWORD_ENDPOINT,
+          body,
+          headers={},
+          requestCallback=authenticationModules.postPasswordRequest,
+          receivedCallback=authenticationModules.postPasswordReceived,
+        )
+      ).then(() => {
+        Actions.ForgetPassDone({ email });
+      })
+    } else {
+      this.setState({ isErrorVisible: true });
+    }
+  }
 
   render() {
     return (

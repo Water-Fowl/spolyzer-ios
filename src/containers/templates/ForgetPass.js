@@ -8,11 +8,12 @@ import {
   Text,
   TextInput,
   TouchableOpacity,
-  View
+  View,
 } from "react-native";
 import * as authenticationModules from "../../modules/authentication";
 import * as requestModules from "../../modules/request";
 
+import { PASSWORD_ENDPOINT } from "../../config/api";
 import { emailReg } from "const";
 import { ErrorText } from "atoms";
 import { connect } from "react-redux";
@@ -31,35 +32,31 @@ class ForgetPass extends React.Component {
     };
     this.postForgetPassForm.bind(this);
   }
+
   postForgetPassForm() {
-    const isEmail = emailReg.test(this.state.email);
+    let email = this.state.email
+    const isEmail = emailReg.test(email);
     if (isEmail) {
-      /* パスワードお忘れAPIをココに書く */
-      // const body = {
-      //   email: this.state.email
-      // };
-      // this.props
-      //   .dispatch(
-      //     requestModules.postApiRequest(
-      //       REGISTRATION_ENDPOINT,
-      //       body,
-      //       (headers = {}),
-      //       (requestCallback = authenticationModules.postRegistrationRequest),
-      //       (receivedCallback = authenticationModules.postRegistrationReceived),
-      //       (errorInstanceCallback = errorInstanceCallback),
-      //       (errorCallback = errorAlertCallback),
-      //       (returnHeader = false)
-      //     )
-      //   )
-      //   .then(isValid => {
-      //     if (isValid) {
-      Actions.ForgetPassDone({ email: this.state.email });
-      //   }
-      // });
+      const body = {
+        email:email,
+        redirect_url: "spolyzerios://reset_password"
+      }
+      this.props.dispatch(
+        requestModules.postApiRequest(
+          PASSWORD_ENDPOINT,
+          body,
+          headers={},
+          requestCallback=authenticationModules.postPasswordRequest,
+          receivedCallback=authenticationModules.postPasswordReceived,
+        )
+      ).then(() => {
+        Actions.ForgetPassDone({ email });
+      })
     } else {
       this.setState({ isErrorVisible: true });
     }
   }
+
   render() {
     return (
       <View style={styles.container}>

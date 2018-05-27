@@ -8,6 +8,11 @@ const EMAIL_VALIDATION = "EMAIL_VALIDATION";
 const SET_TOKEN = "SET_TOKEN";
 const RESET_TOKEN = "RESET_TOKEN";
 const NETWORK_ERROR = "NETWORK_ERROR";
+const POST_PASSWORD_REQUEST = "POST_PASSWORD_REQUEST";
+const POST_PASSWORD_RECEIVED = "POST_PASSWORD_RECEIVED";
+const PATCH_PASSWORD_REQUEST = "PATCH_PASSWORD_REQUEST";
+const PATCH_PASSWORD_RECEIVED = "PATCH_PASSWORD_RECEIVED";
+
 const initialState = {
   header: {},
   isValidToken: false
@@ -85,6 +90,30 @@ export function resetToken(){
   };
 }
 
+export function postPasswordRequest(){
+  return {
+    type: POST_PASSWORD_REQUEST
+  }
+}
+
+export function postPasswordReceived(json){
+  return {
+    type: POST_PASSWORD_REQUEST
+  }
+}
+
+export function patchPasswordRequest(){
+  return {
+    type: PATCH_PASSWORD_REQUEST
+  }
+}
+
+export function patchPasswordReceived(){
+  return {
+    type: PATCH_PASSWORD_RECEIVED
+  }
+}
+
 export function authenticationReducer(state = initialState, action = {}) {
   switch (action.type) {
   case POST_LOGIN_REQUEST:
@@ -122,6 +151,10 @@ export function authenticationReducer(state = initialState, action = {}) {
     return Object.assign({}, state, {
       header: action.header
     });
+  case POST_PASSWORD_REQUEST:
+    return state
+  case POST_PASSWORD_RECEIVED:
+    return state
   default:
     return state;
   }

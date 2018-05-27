@@ -17,6 +17,7 @@ export const AGGREGATED_SCORES_ENDPOINT = `${SCHEME}/aggregated_scores/`;
 export const SPORTS_ENDPOINT = `${SCHEME}/sports/`;
 export const VALIDATE_TOKEN_ENDPOINT = `${SCHEME}/auth/validate_token/`;
 export const CONFIRMATION_ENDPOINT = `${SCHEME}/api/v1/auth/confirmation/`;
+export const PASSWORD_ENDPOINT = `${SCHEME}/auth/password`;
 
 export function analysisEndpointGenerator(params) {
   var endpoint = SHOT_TYPES_ENDPOINT;
