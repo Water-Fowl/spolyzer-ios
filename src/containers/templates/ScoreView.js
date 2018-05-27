@@ -15,7 +15,7 @@ import { TopContentBar } from "atoms";
 import { PlayersDisplay } from "molecules";
 import { Field, Graph } from "organisms";
 
-import { reshapeShotTypeCounts, mapStateToProps } from "utils";
+import { reshapeShotTypeCounts, mapStateToProps, toastPresent } from "utils";
 import * as gameModules from "../../modules/game";
 
 class ScoreView extends React.Component {
@@ -102,6 +102,7 @@ class ScoreView extends React.Component {
           <TouchableOpacity
             onPress={() => {
               this.props.dispatch(gameModules.resetState());
+              toastPresent("保存しました");
               Actions.popTo("gameCreate");
             }}
           >
