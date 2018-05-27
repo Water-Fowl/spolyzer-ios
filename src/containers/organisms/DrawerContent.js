@@ -142,8 +142,18 @@ class DrawerContent extends React.Component {
           </View>
           {this.setSportsList()}
         </View>
-        <View style={styles.logoutContainer}>
-          <Image source={{ url: "logout.png" }} style={styles.logoutImage} />
+        <View style={styles.endContainer}>
+          <Image source={{ url: "usage.png" }} style={styles.endImage} />
+          <TouchableOpacity
+            onPress={() => {
+              Actions.usage();
+            }}
+          >
+            <Text style={styles.endText}>使い方</Text>
+          </TouchableOpacity>
+        </View>
+        <View style={styles.endContainer}>
+          <Image source={{ url: "logout.png" }} style={styles.endImage} />
           <TouchableOpacity
             onPress={() => {
               AsyncStorage.removeItem("header", () => {
@@ -152,7 +162,7 @@ class DrawerContent extends React.Component {
               });
             }}
           >
-            <Text style={styles.logoutText}>ログアウト</Text>
+            <Text style={styles.endText}>ログアウト</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -224,18 +234,18 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 18
   },
-  logoutContainer: {
+  endContainer: {
     borderBottomColor: "#2EA7E0",
     borderWidth: 1,
     flexDirection: "row"
   },
-  logoutImage: {
+  endImage: {
     width: 20,
     height: 23,
     marginTop: 18,
     marginLeft: 10
   },
-  logoutText: {
+  endText: {
     marginTop: 20,
     marginLeft: 6,
     color: "white",

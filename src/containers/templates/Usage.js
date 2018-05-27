@@ -5,12 +5,12 @@ import { connect } from "react-redux";
 import { mapStateToProps } from "utils";
 
 class Usage extends React.Component {
+  constructor(props) {
+    super(props);
+  }
   render() {
-    return (
-      <WebView
-        source={{ uri: "http://water-fowl.co.jp" }}
-      />
-    );
+    let uri ="https://spolyzer.water-fowl.co.jp/"+this.props.profile.user.sport_id;
+    return <WebView source={{ uri: uri }} />;
   }
 }
 export default connect(mapStateToProps)(templateEnhancer(Usage));
