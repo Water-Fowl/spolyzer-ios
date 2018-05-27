@@ -9,7 +9,7 @@ class Usage extends React.Component {
     super(props);
   }
   render() {
-    let uri ="https://spolyzer.water-fowl.co.jp/"+this.props.profile.user.sport_id;
+    let uri ="https://spolyzer.water-fowl.co.jp/?sport_id="+this.props.profile.user.sport_id;
     return <WebView source={{ uri: uri }} />;
   }
 }
