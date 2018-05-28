@@ -10,7 +10,6 @@ import * as utils from "../../utils";
 
 class Graph extends React.Component{
   componentWillReceiveProps(nextProps){
-    console.log(nextProps);
     this.forceUpdate();
   }
 

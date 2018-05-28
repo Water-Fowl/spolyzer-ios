@@ -20,7 +20,6 @@ export function postLoginRequest() {
 }
 
 export function postLoginReceived(_, header) {
-  console.log(header);
   return {
     type: POST_LOGIN_RECIEVED,
     isAuthenticated: true,

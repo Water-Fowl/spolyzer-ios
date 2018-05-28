@@ -34,7 +34,6 @@ export default class ShotTypeModal extends React.Component {
       buttonsComponentsList.push(
         <TouchableHighlight
           onPress={() => {
-            console.log(this.props.position);
             this.props.callback(
               shotTypeId,
               isNetMiss,

@@ -86,11 +86,9 @@ export function setShotType(shotType, isNetMiss, _side, position) {
   let side;
   if (!isNetMiss) {
     side = _side == 1 ? 0 : 1;
-    console.log("sides", side);
   } else {
     side = _side;
   }
-  console.log("side", side);
 
   return {
     type: SET_SHOT_TYPE,
