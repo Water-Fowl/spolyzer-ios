@@ -143,7 +143,7 @@ class DrawerContent extends React.Component {
           {this.setSportsList()}
         </View>
         <View style={styles.endContainer}>
-          <Image source={{ url: "usage.png" }} style={styles.endImage} />
+          <Image source={{ url: "book_icon.png" }} style={styles.endImage} />
           <TouchableOpacity
             onPress={() => {
               Actions.usage();
