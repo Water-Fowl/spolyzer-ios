@@ -86,21 +86,21 @@ export function setShotTypeCounts(position, side){
   };
 }
 
-export function setShotType(shotType, isNetMiss, _side, position) {
-  let side;
+export function setShotType(shotType, isNetMiss, side, position) {
+  let unit_side;
   if (!isNetMiss){
-    side = _side == 1 ? 0 : 1;
+    unit_side = side == 1 ? 0 : 1;
   }
   else {
-    side = _side;
+    unit_side = side;
   }
-  console.log(side);
 
   return {
     type: SET_SHOT_TYPE,
     shotType,
     isNetMiss,
     side,
+    unit_side,
     position
   };
 }
@@ -167,7 +167,7 @@ export function gameReducer(state = initialState, action = {}) {
     });
   case SET_SHOT_TYPE:
     /* 今回得られたスコアを取得し、配列に格納する */
-    state.scores = state.scores.concat({unit: action.side, dropped_at: action.position, shot_type: action.shotType, is_net_miss: action.isNetMiss, side: state.side});
+    state.scores = state.scores.concat({unit: action.unit_side, dropped_at: action.position, shot_type: action.shotType, is_net_miss: action.isNetMiss, side: action.side});
     let currentScores = getScoreCounts(state.scores);
     return Object.assign({}, state, {
       scores: state.scores,
