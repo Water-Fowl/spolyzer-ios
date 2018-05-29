@@ -3,7 +3,7 @@ import { StyleSheet, Text, TouchableHighlight, View } from "react-native";
 import DatePicker from "react-native-datepicker";
 
 import { ParametricButton } from "atoms";
-import { mapStateToProps } from "utils";
+import { mapStateToProps } from "../../modules/mapToProps";
 import { $spolyzerDarkBlue } from "const";
 import { connect } from "react-redux";
 

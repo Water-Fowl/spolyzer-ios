@@ -17,7 +17,7 @@ import {
   SHOT_TYPE_COUNTS_ENDPOINT,
   gameCountEndpointGenerator
 } from "../../config/api";
-import { mapStateToProps } from "utils";
+import { mapStateToProps } from "../../modules/mapToProps";
 
 class ScoreCreate extends React.Component {
   constructor(props) {

@@ -15,7 +15,6 @@ export function networkErrorAlert(){
 }
 
 export function errorMessage(message, defaultErrorCallback){
-  console.log(message);
   switch (message) {
   case "Network request failed":
     networkErrorAlert();

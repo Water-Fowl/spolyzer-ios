@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet, Text, TouchableHighlight, View } from "react-native";
 
 import { ParametricButton } from "atoms";
-import { mapStateToProps } from "utils";
+import { mapStateToProps } from "../../modules/mapToProps";
 import { connect } from "react-redux";
 import { setGameOutcome } from "../../modules/analysis";
 
