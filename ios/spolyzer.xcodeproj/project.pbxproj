@@ -1566,7 +1566,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = 4JFLJM8MPM;
 				HEADER_SEARCH_PATHS = (
@@ -1594,8 +1594,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.waterfowl.spolyzer;
 				PRODUCT_NAME = spolyzer;
-				PROVISIONING_PROFILE = "4a6e6028-0aca-49a8-a2d5-4325dbb58681";
-				PROVISIONING_PROFILE_SPECIFIER = spolyzer_deploy_gate;
+				PROVISIONING_PROFILE = "e28c4479-a24e-477a-8724-ee3bbf31b685";
+				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.waterfowl.spolyzer";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -1608,7 +1608,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 4JFLJM8MPM;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1635,8 +1635,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.waterfowl.spolyzer;
 				PRODUCT_NAME = spolyzer;
-				PROVISIONING_PROFILE = "4a6e6028-0aca-49a8-a2d5-4325dbb58681";
-				PROVISIONING_PROFILE_SPECIFIER = spolyzer_deploy_gate;
+				PROVISIONING_PROFILE = "e28c4479-a24e-477a-8724-ee3bbf31b685";
+				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.waterfowl.spolyzer";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;

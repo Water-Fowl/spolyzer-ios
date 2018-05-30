@@ -58,6 +58,8 @@ buck-out/
 */fastlane/report.xml
 */fastlane/Preview.html
 */fastlane/screenshots
+ios/vendor/bundler/
+
 
 # vscode
 .vscode
