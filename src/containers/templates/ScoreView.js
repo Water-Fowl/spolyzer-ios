@@ -103,7 +103,7 @@ class ScoreView extends React.Component {
           <TouchableOpacity
             onPress={() => {
               this.props.dispatch(gameModules.resetState());
-              toastPresent("保存しました");
+              utils.toastPresent("保存しました");
               Actions.popTo("gameCreate");
             }}
           >
