@@ -1,7 +1,10 @@
 import AnalysisCreate from "./templates/AnalysisCreate";
-import AnalysisSearchUser from "./templates/AnalysisSearchUser";
-import AnalysisView from "./templates/AnalysisView";
 import GameCreate from "./templates/GameCreate";
+import GameAnalysisCreate from "./templates/GameAnalysisCreate";
+import GameAnalysisView from "./templates/GameAnalysisView";
+import MultipleAnalysisCreate from "./templates/MultipleAnalysisCreate";
+import MultipleAnalysisView from "./templates/MultipleAnalysisView";
+import MultipleAnalysisSearchUser from "./templates/MultipleAnalysisSearchUser";
 import GameSearchUser from "./templates/GameSearchUser";
 import Login from "./templates/Login";
 import ProfileEdit from "./templates/ProfileEdit";
@@ -10,18 +13,27 @@ import ScoreCreate from "./templates/ScoreCreate";
 import ScoreView from "./templates/ScoreView";
 import SignUp from "./templates/SignUp";
 import Confirmation from "./templates/Confirmation";
+import ForgetPass from "./templates/ForgetPass";
+import ForgetPassDone from "./templates/ForgetPassDone";
+import SportSelect from "./templates/SportSelect";
 export {
   /* Componentのexport */
   AnalysisCreate,
-  AnalysisSearchUser,
-  AnalysisView,
   ScoreCreate,
   GameCreate,
+  GameAnalysisCreate,
+  GameAnalysisView,
+  MultipleAnalysisCreate,
+  MultipleAnalysisView,
+  MultipleAnalysisSearchUser,
   GameSearchUser,
   ScoreView,
   ProfileTop,
   ProfileEdit,
   SignUp,
   Login,
-  Confirmation
+  Confirmation,
+  ForgetPass,
+  ForgetPassDone,
+  SportSelect
 };

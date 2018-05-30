@@ -1,15 +1,12 @@
 import React from "react";
 import { Actions } from "react-native-router-flux";
 import {
-  ScrollView,
-  StyleSheet,
-  TouchableOpacity,
-  View
+  ScrollView, StyleSheet, TouchableOpacity, View
 } from "react-native";
 
 import { UserListItem } from "molecules";
 import { connect } from "react-redux";
-import { mapStateToProps } from "utils";
+import { mapStateToProps } from "../../modules/mapToProps";
 
 class UserList extends React.Component{
   constructor(props){
@@ -49,13 +46,13 @@ export default connect(mapStateToProps)(UserList);
 
 const styles=StyleSheet.create({
   container: {
-    height: "60%",
     alignSelf: "center",
     backgroundColor: "transparent",
     borderRightColor: "#0a2444",
     borderTopColor: "#0a2444",
     borderLeftColor: "#0a2444",
-    borderBottomColor: "#0a2444"
+    borderBottomColor: "#0a2444",
+    paddingBottom: 160
   },
   scrollContainer: {
     width: 300,

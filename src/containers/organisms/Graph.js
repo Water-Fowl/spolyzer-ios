@@ -1,24 +1,14 @@
 import React from "react";
+import { ScrollView, StyleSheet, View } from "react-native";
 import {
-  ScrollView,
-  StyleSheet,
-  View
-} from "react-native";
-import {
-  VictoryAxis,
-  VictoryBar,
-  VictoryChart,
-  VictoryLabel,
-  VictoryStack,
-  VictoryTheme,
+  VictoryAxis, VictoryBar, VictoryChart,
+  VictoryLabel, VictoryStack, VictoryTheme,
   VictoryZoomContainer
 } from "victory-native";
 import { connect } from "react-redux";
-import { reshapeShotTypeCounts } from "utils";
 
 export default class Graph extends React.Component{
   componentWillReceiveProps(nextProps){
-    console.log(nextProps);
     this.forceUpdate();
   }
 

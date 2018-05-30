@@ -1,15 +1,10 @@
-
-import {
-  getScoreByPositionAndSide,
-  getScoreCounts
-} from "utils";
+import { getScoreCounts } from "utils";
 
 const GET_SEARCH_USER_REQUEST = "GET_SEARCH_USER_REQUEST_ON_GAME";
 const GET_SEARCH_USER_RECEIVED = "GET_SEARCH_USER_RECEIVED_ON_GAME";
 const SET_USER = "SET_USER";
 const REMOVE_USER = "REMOVE_USER_ON_GAME";
 const SET_SHOT_TYPE = "SET_SHOT_TYPE";
-const SET_POSITION_AND_SIDE = "SET_POSITION_AND_SIDE";
 const SET_SHOT_TYPE_COUNTS = "SET_SHOT_TYPE_COUNTS";
 const POST_GAME_REQUEST = "POST_GAME_REQUEST";
 const POST_GAME_RECIEVED = "POST_GAME_RECIEVED";
@@ -70,7 +65,7 @@ export function getSearchUserReceived(json) {
 
 export function getShotTypesReceived(shotTypes) {
   const reshapedShotTypes = {};
-  for (shotType in shotTypes){
+  for (shotType in shotTypes) {
     reshapedShotTypes[shotType.id] = shotType.name_ja;
   }
   return {
@@ -79,16 +74,7 @@ export function getShotTypesReceived(shotTypes) {
   };
 }
 
-export function setPositionAndSide(position, side, isNetMiss) {
-  return {
-    type: SET_POSITION_AND_SIDE,
-    position,
-    side,
-    isNetMiss
-  };
-}
-
-export function setShotTypeCounts(position, side){
+export function setShotTypeCounts(position, side) {
   return {
     type: SET_SHOT_TYPE_COUNTS,
     position,
@@ -96,34 +82,45 @@ export function setShotTypeCounts(position, side){
   };
 }
 
-export function setShotType(shotType, isNetMiss) {
+export function setShotType(shotType, isNetMiss, side, position) {
+  let unit_side;
+  if (!isNetMiss){
+    unit_side = side == 1 ? 0 : 1;
+  }
+  else {
+    unit_side = side;
+  }
+
   return {
     type: SET_SHOT_TYPE,
     shotType,
-    isNetMiss
+    isNetMiss,
+    side,
+    unit_side,
+    position
   };
 }
 
-export function removeScore(){
+export function removeScore() {
   return {
     type: REMOVE_SCORE
   };
 }
 
-export function setUser(user){
+export function setUser(user) {
   return {
     type: SET_USER,
     user
   };
 }
 
-export function removeUser(){
+export function removeUser() {
   return {
     type: REMOVE_USER
   };
 }
 
-export function setUserIndex(selectedUnitIndex, selectedUserIndex){
+export function setUserIndex(selectedUnitIndex, selectedUserIndex) {
   return {
     type: SET_SELECTED_USER_INDEX,
     selectedUnitIndex,
@@ -131,7 +128,7 @@ export function setUserIndex(selectedUnitIndex, selectedUserIndex){
   };
 }
 
-export function resetState(){
+export function resetState() {
   return {
     type: RESET_STATE
   };
@@ -142,11 +139,11 @@ const initialState = {
   scoreCounts: [0, 0],
   users: [],
   gameUnits: {
-    left:{
+    left: {
       users: [],
       count: 0
     },
-    right:{
+    right: {
       users: [],
       count: 0
     },
@@ -166,7 +163,13 @@ export function gameReducer(state = initialState, action = {}) {
     });
   case SET_SHOT_TYPE:
     /* 今回得られたスコアを取得し、配列に格納する */
-    state.scores = state.scores.concat({unit: state.side, dropped_at: state.position, shot_type: action.shotType, is_net_miss: action.isNetMiss, side: state.side});
+    state.scores = state.scores.concat({
+      unit: action.side,
+      dropped_at: action.position,
+      shot_type: action.shotType,
+      is_net_miss: action.isNetMiss,
+      side: action.side
+    });
     let currentScores = getScoreCounts(state.scores);
     return Object.assign({}, state, {
       scores: state.scores,
@@ -179,11 +182,6 @@ export function gameReducer(state = initialState, action = {}) {
       scores: state.scores,
       scoreCounts: removedScores
     });
-  case SET_POSITION_AND_SIDE:
-    return Object.assign({}, state, {
-      position: action.position,
-      side: action.side
-    });
   case POST_GAME_REQUEST:
     return state;
   case POST_GAME_RECIEVED:
@@ -191,8 +189,7 @@ export function gameReducer(state = initialState, action = {}) {
       gameId: action.gameId
     });
   case GET_SEARCH_USER_REQUEST:
-    return Object.assign({}, state, {
-    });
+    return Object.assign({}, state, {});
   case GET_SEARCH_USER_RECEIVED:
     return Object.assign({}, state, {
       users: action.users
@@ -204,27 +201,39 @@ export function gameReducer(state = initialState, action = {}) {
       shotTypeCounts: action.shotTypeCounts
     });
   case SET_USER:
-    if(state.gameUnits[state.selectedUnitIndex].users[state.selectedUserIndex]){
-      state.gameUnits[state.selectedUnitIndex].users[state.selectedUserIndex] = action.user;
-    }
-    else{
+    if (
+      state.gameUnits[state.selectedUnitIndex].users[state.selectedUserIndex]
+    ) {
+      state.gameUnits[state.selectedUnitIndex].users[
+        state.selectedUserIndex
+      ] =
+          action.user;
+    } else {
       state.gameUnits[state.selectedUnitIndex].users.push(action.user);
     }
-    state.gameUnits[state.selectedUnitIndex].count = state.gameUnits[state.selectedUnitIndex].users.length;
+    state.gameUnits[state.selectedUnitIndex].count =
+        state.gameUnits[state.selectedUnitIndex].users.length;
     state.gameUnits.ids.push(action.user.id);
     return Object.assign({}, state, {
       gameUnits: state.gameUnits,
       users: []
     });
 
-
   case REMOVE_USER:
-    let selectedUser = state.gameUnits[state.selectedUnitIndex].users[state.selectedUserIndex];
-    if(selectedUser){
-      state.gameUnits[state.selectedUnitIndex].users.splice(state.selectedUserIndex, 1);
-      state.gameUnits.ids.splice(state.gameUnits.ids.indexOf(selectedUser.id), 1);
+    let selectedUser =
+        state.gameUnits[state.selectedUnitIndex].users[state.selectedUserIndex];
+    if (selectedUser) {
+      state.gameUnits[state.selectedUnitIndex].users.splice(
+        state.selectedUserIndex,
+        1
+      );
+      state.gameUnits.ids.splice(
+        state.gameUnits.ids.indexOf(selectedUser.id),
+        1
+      );
     }
-    state.gameUnits[state.selectedUnitIndex].count = state.gameUnits[state.selectedUnitIndex].users.length;
+    state.gameUnits[state.selectedUnitIndex].count =
+        state.gameUnits[state.selectedUnitIndex].users.length;
     return Object.assign({}, state, {
       gameUnits: state.gameUnits
     });
@@ -234,13 +243,13 @@ export function gameReducer(state = initialState, action = {}) {
       selectedUnitIndex: action.selectedUnitIndex
     });
   case SET_SHOT_TYPE_COUNTS:
-    if(state.shotTypeCounts[action.side]){
+    if (state.shotTypeCounts[action.side]) {
       return {
         ...state,
-        selectedShotTypeCounts: state.shotTypeCounts[action.side][action.position]
+        selectedShotTypeCounts:
+            state.shotTypeCounts[action.side][action.position]
       };
-    }
-    else {
+    } else {
       return {
         ...state,
         selectedShotTypeCounts: []

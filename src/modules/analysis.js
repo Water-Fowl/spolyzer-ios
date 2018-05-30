@@ -1,9 +1,10 @@
-import { reshapePositionsCount } from "utils";
+import * as utils from "../utils";
 
 const initialState = {
   gameUserCount: 1,
   shotTypeId: 1,
   term: 1,
+  outcome: "all",
   analysisUsers: [],
   analysisUsersIds: []
 };
@@ -11,9 +12,10 @@ const initialState = {
 const GAME_TYPE_SETTING = "GAME_TYPE_SETTING";
 const SHOT_TYPE_SETTING = "SHOT_TYPE_SETTING";
 const TERM_SETTING = "TERM_SETTING";
+const OUTCOME_SETTING = "OUTCOME_SETTING";
 const OPPONENT_USER_SETTING = "OPPONENT_USER_SETTING";
 const GET_GAMES_REQUEST = "GET_GAMES_REQUEST";
-const GET_GAMES_RECEIVED = "GET_GAMES_RRQUEST";
+const GET_GAMES_RECEIVED = "GET_GAMES_RECEIVED";
 const GET_SEARCH_USER_RECEIVED = "GET_SEARCH_USER_RECEIVED";
 const GET_SEARCH_USER_REQUEST = "GET_SEARCH_USER_REQUEST";
 const GET_RECENTLY_GAMES_REQUEST = "GET_RECENTLY_GAMES_REQUEST";
@@ -24,16 +26,17 @@ const GET_POSITIONS_COUNTS_REQUEST = "GET_POSITIONS_COUNTS_REQUEST";
 const GET_POSITIONS_COUNTS_RECEIVED = "GET_POSITIONS_COUNTS_RECEIVED";
 const SET_USER = "SET_USER_ANALYSIS";
 const REMOVE_USER = "REMOVE_USER_ON_ANALYSIS";
+const REMOVE_DOUBLES_USER = "REMOVE_DOUBLES_USER";
 const SET_SELECTED_USER_INDEX = "SET_SELECTED_USER_INDEX";
 const SET_POSITIONS_COUNTS = "SET_POSITIONS_COUNTS";
 
-export function requestGetActions(){
-  return{
+export function requestGetActions() {
+  return {
     type: GET_ACTIONS_REQUEST
   };
 }
 
-export function reveivedGetActions(actions){
+export function reveivedGetActions(actions) {
   return {
     type: GET_ACTIONS_RECEIVED,
     actions: actions
@@ -46,22 +49,20 @@ export function getGamesRequest() {
   };
 }
 
-export function getGamesReceived(gameId) {
+export function getGamesReceived(json) {
   return {
     type: GET_GAMES_RECEIVED,
-    gameId
+    json
   };
 }
-
-export function getPositionsCountsRequest(){
-  return{
+export function getPositionsCountsRequest() {
+  return {
     type: GET_POSITIONS_COUNTS_REQUEST
   };
 }
 
-export function getPositionsCountsReceived(json){
-  console.log(json);
-  return{
+export function getPositionsCountsReceived(json) {
+  return {
     positionCounts: json.counts,
     type: GET_POSITIONS_COUNTS_RECEIVED
   };
@@ -74,20 +75,19 @@ export function getSearchUserRequest() {
 }
 
 export function getSearchUserReceived(json) {
-  console.log(json);
   return {
     type: GET_SEARCH_USER_RECEIVED,
     users: json.users
   };
 }
 
-export function removeUser(){
+export function removeUser() {
   return {
     type: REMOVE_USER
   };
 }
 
-export function setPositionsCount(minPosition, maxPosition, side){
+export function setPositionsCount(minPosition, maxPosition, side) {
   return {
     type: SET_POSITIONS_COUNTS,
     minPosition,
@@ -117,7 +117,14 @@ export function setTerm(term) {
   };
 }
 
-export function setUser(selectedUserIndex, user){
+export function setGameOutcome(outcome) {
+  return {
+    type: OUTCOME_SETTING,
+    outcome
+  };
+}
+
+export function setUser(selectedUserIndex, user) {
   return {
     type: SET_USER,
     selectedUserIndex,
@@ -125,10 +132,16 @@ export function setUser(selectedUserIndex, user){
   };
 }
 
-export function setUserIndex(selectedUserIndex){
+export function setUserIndex(selectedUserIndex) {
   return {
     type: SET_SELECTED_USER_INDEX,
     selectedUserIndex
+  };
+}
+
+export function removeDoublesUser() {
+  return {
+    type: REMOVE_DOUBLES_USER
   };
 }
 
@@ -152,6 +165,10 @@ export function analysisReducer(state = initialState, action = {}) {
     return Object.assign({}, state, {
       term: action.term
     });
+  case OUTCOME_SETTING:
+    return Object.assign({}, state, {
+      outcome: action.outcome
+    });
   case GET_SEARCH_USER_REQUEST:
     return state;
   case GET_SEARCH_USER_RECEIVED:
@@ -159,29 +176,35 @@ export function analysisReducer(state = initialState, action = {}) {
       users: action.users
     });
   case GET_POSITIONS_COUNTS_REQUEST:
-    return Object.assign({}, state, {
-    });
+    return Object.assign({}, state, {});
   case GET_POSITIONS_COUNTS_RECEIVED:
     return Object.assign({}, state, {
       positionCounts: action.positionCounts
     });
   case REMOVE_USER:
     let selectedUser = state.analysisUsers[state.selectedUserIndex];
-    if(selectedUser){
-      state.analysisUsersIds.splice(state.analysisUsersIds.indexOf(selectedUser.id), 1);
+    if (selectedUser) {
+      state.analysisUsersIds.splice(
+        state.analysisUsersIds.indexOf(selectedUser.id),
+        1
+      );
       state.analysisUsers.splice(state.selectedUserIndex, 1);
     }
     return Object.assign({}, state, {
       analysisUsers: state.analysisUsers,
       analysisUsersIds: state.analysisUsersIds
     });
+  case REMOVE_DOUBLES_USER:
+    return state;
   case SET_USER:
-    if(state.analysisUsers[state.selectedUserIndex]){
+    if (state.analysisUsers[state.selectedUserIndex]) {
       let selectedUser = state.analysisUsers[state.selectedUserIndex];
-      state.analysisUsersIds.splice(state.analysisUsersIds.indexOf(selectedUser.id), 1);
+      state.analysisUsersIds.splice(
+        state.analysisUsersIds.indexOf(selectedUser.id),
+        1
+      );
       state.analysisUsers[state.selectedUserIndex] = action.user;
-    }
-    else {
+    } else {
       state.analysisUsers.push(action.user);
     }
     state.analysisUsersIds.push(action.user.id);
@@ -194,9 +217,7 @@ export function analysisReducer(state = initialState, action = {}) {
       selectedUserIndex: action.selectedUserIndex
     });
   case SET_POSITIONS_COUNTS:
-    const {
-      positionsCountList
-    } = reshapePositionsCount(
+    const { positionsCountList } = utils.aggregatedMultipleAnalysis(
       state.positionCounts,
       action.side,
       action.minPosition,

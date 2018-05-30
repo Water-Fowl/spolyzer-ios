@@ -1,23 +1,22 @@
 import React from "react";
-import {
-  View,
-  Text,
-  StyleSheet
-} from "react-native";
-import {
-  Background,
-  NavigateButton
-} from "atoms";
+import { View, Text, StyleSheet } from "react-native";
+import { Background, NavigateButton } from "atoms";
 import { Actions } from "react-native-router-flux";
 
-
 export default class Confirmation extends React.Component {
-  render(){
+  render() {
     return (
       <View style={styles.container}>
         <Background />
-        <Text style={styles.text}>確認メールを送信しました。{"\n"}メールのリンクを踏んで登録を完了してください。</Text>
-        <NavigateButton text="ログインへ" action={Actions.login}/>
+        <Text style={styles.text}>
+          確認メールを送信しました。{"\n"}メールのリンクを踏んで登録を完了してください。
+        </Text>
+        <NavigateButton
+          text="ログインへ"
+          action={() => {
+            Actions.popTo("login");
+          }}
+        />
       </View>
     );
   }
@@ -36,4 +35,3 @@ const styles = StyleSheet.create({
     marginBottom: 30
   }
 });
-

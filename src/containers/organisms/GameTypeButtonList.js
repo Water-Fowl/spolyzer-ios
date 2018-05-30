@@ -1,18 +1,12 @@
 import React from "react";
+import { $spolyzerDarkBlue, $transparent } from "const";
 import {
-  $spolyzerDarkBlue,
-  $transparent
-} from "const";
-import {
-  StyleSheet,
-  Text,
-  TouchableHighlight,
-  View
+  StyleSheet, Text, TouchableHighlight, View
 } from "react-native";
 import { connect } from "react-redux";
 
 import { ParametricButton } from "atoms";
-import { mapStateToProps } from "utils";
+import { mapStateToProps } from "../../modules/mapToProps";
 import { setGameType } from "../../modules/analysis";
 
 class GameTypeButtonList extends React.Component {

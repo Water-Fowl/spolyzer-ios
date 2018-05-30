@@ -1,23 +1,10 @@
 import React from "react";
 import templateEnhancer from "./hoc";
 import { Actions } from "react-native-router-flux";
-import {
-  Image,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View
-} from "react-native";
-import {
-  ProfileImage,
-  TopContentBar
-} from "atoms";
-import {
-  connect
-} from "react-redux";
-import {
-  mapStateToProps
-} from "utils";
+import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { ProfileImage, TopContentBar } from "atoms";
+import { connect } from "react-redux";
+import { mapStateToProps } from "../../modules/mapToProps";
 
 class ProfileTop extends React.Component {
   render() {

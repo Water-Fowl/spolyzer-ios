@@ -11,8 +11,11 @@ import { connect } from "react-redux";
 import { Router, Scene, Tabs, Drawer } from "react-native-router-flux";
 import {
   AnalysisCreate,
-  AnalysisSearchUser,
-  AnalysisView,
+  GameAnalysisCreate,
+  GameAnalysisView,
+  MultipleAnalysisCreate,
+  MultipleAnalysisView,
+  MultipleAnalysisSearchUser,
   GameCreate,
   GameSearchUser,
   Login,
@@ -21,9 +24,13 @@ import {
   ScoreCreate,
   ScoreView,
   SignUp,
-  Confirmation
+  Confirmation,
+  ForgetPass,
+  ForgetPassDone,
+  SportSelect
 } from "../containers";
 import { DrawerContent } from "organisms";
+import { GameIcon, AnalysisIcon } from "atoms";
 import {
   getShotTypesReceived,
   getShotTypesRequest,
@@ -147,6 +154,8 @@ class Route extends React.Component {
             return <AppLogo />;
           }}
           navigationBarStyle={styles.navBarStyle}
+          backButtonImage={require("../assets/img/left_arrow.png")}
+          gesturesEnabled={false}
         >
           <Scene
             key="login"
@@ -154,22 +163,28 @@ class Route extends React.Component {
             initial={!this.state.isValidToken}
             hideNavBar
           />
-          <Scene key="signUp" component={SignUp} hideNavBar />
+          <Scene key="signUp" component={SignUp} hideNavBar gesturesEnabled />
+          <Scene
+            key="ForgetPass"
+            component={ForgetPass}
+            hideNavBar
+            gesturesEnabled
+          />
+          <Scene key="ForgetPassDone" component={ForgetPassDone} hideNavBar />
           <Scene key="confirmation" component={Confirmation} hideNavBar />
+          <Scene
+            key="sportSelect"
+            component={SportSelect}
+            hideNavBar
+            gesturesEnabled={false}
+          />
           <Drawer
             key="drawer"
             drawerImage={require("../assets/img/hamburger.png")} // デフォルトのハンバーガーメニューを差し替える
             // drawerIcon={() => (<Icon/>)} // デフォルトのハンバーガーメニューを差し替える
             hideNavBar
             drawerWidth={280}
-            contentComponent={() => {
-              return (
-                <DrawerContent
-                  name={this.props.userName}
-                  imageSource={this.props.userImageSource}
-                />
-              );
-            }}
+            contentComponent={DrawerContent}
             drawerOpenRoute="DrawerOpen"
             drawerCloseRoute="DrawerClose"
             drawerToggleRoute="DrawerToggle"
@@ -182,6 +197,7 @@ class Route extends React.Component {
               key="profileEdit"
               component={ProfileEdit}
               title="マイデータ編集"
+              hideDrawerButton
             />
             <Tabs
               initial
@@ -189,70 +205,94 @@ class Route extends React.Component {
               labelStyle={styles.label}
               tabBarStyle={styles.tabBarStyle}
               tabStyle={styles.tabStyle}
+              gesturesEnabled={false}
             >
               <Scene
                 key="Score"
                 initial
                 tabBarLabel="スコアシート"
-                icon={() => (
-                  <Image
-                    style={styles.icon}
-                    source={require("../assets/img/tabs_score.png")}
-                  />
-                )}
+                icon={() => <GameIcon size={50} />}
               >
                 <Scene
                   key="gameCreate"
                   initial
                   component={GameCreate}
                   title="単分析"
-                  hide
                 />
                 <Scene
                   key="gameSearchUser"
                   component={GameSearchUser}
                   title="ユーザー検索"
+                  hideDrawerButton
+                  drawerLockMode="locked-closed"
+                  back
                 />
                 <Scene
                   key="scoreCreate"
+                  hideTabBar
                   component={ScoreCreate}
                   title="スコアシート"
                   hideNavBar
-                  hideTabBar
-                  drawerLockMode={"locked-closed"}
+                  drawerLockMode="locked-closed"
                 />
                 <Scene
                   key="scoreView"
+                  hideTabBar
                   component={ScoreView}
                   title="結果"
-                  hideTabBar
+                  hideDrawerButton
+                  drawerLockMode="locked-closed"
+                  back
                 />
               </Scene>
               <Scene
                 key="Analysis"
                 tabBarLabel="分析"
-                icon={() => (
-                  <Image
-                    style={styles.icon}
-                    source={require("../assets/img/tabs_analysis.png")}
-                  />
-                )}
+                icon={() => <AnalysisIcon size={50} />}
               >
                 <Scene
                   key="analysisCreate"
                   initial
                   component={AnalysisCreate}
-                  title="複合分析"
+                  title="分析"
                 />
                 <Scene
-                  key="analysisSearchUser"
-                  component={AnalysisSearchUser}
+                  key="GameAnalysisCreate"
+                  component={GameAnalysisCreate}
+                  title="試合一覧"
+                  hideDrawerButton
+                  back
+                />
+                <Scene
+                  key="GameAnalysisView"
+                  component={GameAnalysisView}
+                  title="単分析結果"
+                  hideDrawerButton
+                  drawerLockMode="locked-closed"
+                  back
+                />
+                <Scene
+                  key="MultipleAnalysisCreate"
+                  component={MultipleAnalysisCreate}
+                  title="検索条件"
+                  hideDrawerButton
+                  back
+                />
+                <Scene
+                  key="multipleAnalysisSearchUser"
+                  component={MultipleAnalysisSearchUser}
                   title="ユーザー検索"
+                  hideDrawerButton
+                  drawerLockMode="locked-closed"
+                  back
                 />
                 <Scene
-                  key="analysisView"
-                  component={AnalysisView}
-                  title="単分析"
+                  key="MultipleAnalysisView"
+                  component={MultipleAnalysisView}
+                  title="複合分析結果"
+                  hideDrawerButton
+                  drawerLockMode="locked-closed"
+                  back
                 />
               </Scene>
             </Tabs>
@@ -276,9 +316,6 @@ function mapStateToProps(state, props) {
 export default connect(mapStateToProps)(Route);
 
 const styles = StyleSheet.create({
-  icon: {
-    margin: 10
-  },
   tabStyle: {
     backgroundColor: "#134A65"
   },
@@ -286,7 +323,7 @@ const styles = StyleSheet.create({
     color: "white"
   },
   tabBarStyle: {
-    backgroundColor: "#00769E"
+    backgroundColor: "#134A65"
   },
   navBarStyle: {
     backgroundColor: "#134A65"

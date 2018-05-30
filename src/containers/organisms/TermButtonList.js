@@ -1,14 +1,11 @@
 import React from "react";
 import {
-  StyleSheet,
-  Text,
-  TouchableHighlight,
-  View
+  StyleSheet, Text, TouchableHighlight, View
 } from "react-native";
 
 import { ParametricButton } from "atoms";
 import { setTerm } from "../../modules/analysis";
-import { mapStateToProps } from "utils";
+import { mapStateToProps } from "../../modules/mapToProps";
 import { connect } from "react-redux";
 
 class TermButtonList extends React.Component {
