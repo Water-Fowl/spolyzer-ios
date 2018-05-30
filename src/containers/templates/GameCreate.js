@@ -13,7 +13,7 @@ import {
   NavigateButton, TopBar, TopContentBar
 } from "atoms";
 
-import { mapStateToProps } from "utils";
+import { mapStateToProps } from "../../modules/mapToProps";
 import * as gameModules from "../../modules/game";
 
 class GameCreate extends React.Component {

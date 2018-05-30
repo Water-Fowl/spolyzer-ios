@@ -24,7 +24,8 @@ import {
   analysisEndpointGenerator
 } from "../../config/api";
 
-import { mapStateToProps, getNowYMD } from "utils";
+import { mapStateToProps } from "../../modules/mapToProps";
+import { getNowYMD } from "utils";
 
 class AnalysisCreate extends React.Component {
   constructor(props) {

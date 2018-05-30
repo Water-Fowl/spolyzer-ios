@@ -16,7 +16,7 @@ import * as requestModules from "../../modules/request";
 import {
   USERS_ENDPOINT
 } from "../../config/api";
-import { mapStateToProps } from "utils";
+import { mapStateToProps } from "../../modules/mapToProps";
 
 class ProfileEdit extends React.Component {
   constructor(props) {

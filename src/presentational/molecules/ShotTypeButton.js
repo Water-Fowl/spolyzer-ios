@@ -8,7 +8,7 @@ import {
 import { connect } from "react-redux";
 
 import Button from "./components/Button";
-import { mapStateToProps } from "utils";
+import { mapStateToProps } from "../../modules/mapToProps";
 
 class ShotTypeButton extends React.Component {
 

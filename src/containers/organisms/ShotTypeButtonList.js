@@ -3,8 +3,8 @@ import { StyleSheet, Text, TouchableHighlight, View } from "react-native";
 import { connect } from "react-redux";
 
 import { ParametricButton } from "atoms";
-import { mapStateToProps } from "utils";
 import * as analysisModules from "../../modules/analysis";
+import { mapStateToProps } from "../../modules/mapToProps";
 
 class ShotTypeButtonList extends React.Component {
   constructor(props) {

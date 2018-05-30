@@ -8,7 +8,7 @@ import { connect } from "react-redux";
 import { SEARCH_USER_ENDPOINT } from "../../config/api";
 import * as gameModules from "../../modules/game";
 import { getApiRequest } from "../../modules/request";
-import { mapStateToProps } from "utils";
+import { mapStateToProps } from "../../modules/mapToProps";
 
 class GameSearchUser extends React.Component {
   constructor(props) {

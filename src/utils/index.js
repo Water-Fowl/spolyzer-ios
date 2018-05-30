@@ -1,19 +1,18 @@
 /**
  * @providesModule utils
  */
-import { getScoreByPositionAndSide, getScoreCounts } from "./get_score";
-import { reshapePositionsCount, reshapeShotTypeCounts } from "./reshape_json";
-import { mapStateToProps } from "./redux";
+import { getScoreByPositionAndSide, getScoreCounts } from "./getScore";
 import { errorAlertCallback, errorMessage } from "./error";
-import { timeEncode, getNowYMD } from "./time_encode";
+import aggregatedMultipleAnalysis from "./aggregatedMultipleAnalysis";
+import aggregatedGameAnalysis from "./aggregatedGameAnalysis";
+import { timeEncode, getNowYMD } from "./timeEncode";
 import { toastPresent } from "./toast";
 import { scoreDisplay } from "./score_system";
 export {
-  reshapeShotTypeCounts,
-  reshapePositionsCount,
+  aggregatedMultipleAnalysis,
+  aggregatedGameAnalysis,
   getScoreByPositionAndSide,
   getScoreCounts,
-  mapStateToProps,
   errorAlertCallback,
   errorMessage,
   timeEncode,

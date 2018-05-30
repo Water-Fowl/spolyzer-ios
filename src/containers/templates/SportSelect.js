@@ -19,7 +19,7 @@ import {
   SPORTS_ENDPOINT,
   USERS_ENDPOINT
 } from "../../config/api";
-import { mapStateToProps } from "utils";
+import { mapStateToProps } from "../../modules/mapToProps";
 
 class SportSelect extends React.Component {
   constructor(props) {

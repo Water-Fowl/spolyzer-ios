@@ -15,7 +15,8 @@ import { TopContentBar } from "atoms";
 import { PlayersDisplay } from "molecules";
 import { Field, Graph } from "organisms";
 
-import { reshapeShotTypeCounts, mapStateToProps, toastPresent } from "utils";
+import * as utils from "../../utils";
+import { mapStateToProps } from "../../modules/mapToProps";
 import * as gameModules from "../../modules/game";
 
 class ScoreView extends React.Component {
@@ -35,7 +36,7 @@ class ScoreView extends React.Component {
       shotTypeCountsList,
       missShotTypeCountsList,
       shotTypesList
-    } = reshapeShotTypeCounts(
+    } = utils.aggregatedGameAnalysis(
       selectedShotTypeCounts[position],
       this.props.sport.shotTypes
     );

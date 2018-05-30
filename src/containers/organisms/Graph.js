@@ -6,7 +6,6 @@ import {
   VictoryZoomContainer
 } from "victory-native";
 import { connect } from "react-redux";
-import { reshapeShotTypeCounts } from "utils";
 
 export default class Graph extends React.Component{
   componentWillReceiveProps(nextProps){

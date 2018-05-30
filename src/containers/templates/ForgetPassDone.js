@@ -11,7 +11,7 @@ import {
   View
 } from "react-native";
 import { connect } from "react-redux";
-import { mapStateToProps } from "utils";
+import { mapStateToProps } from "../../modules/mapToProps";
 import { NavigateButton } from "atoms";
 
 class ForgetPassDone extends React.Component {
