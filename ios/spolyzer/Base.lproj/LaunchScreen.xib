@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -15,18 +16,38 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="LaunchStoryboard" highlightedImage="background" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xP5-XZ-N8d">
-                    <rect key="frame" x="-163" y="-17" width="700" height="700"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ppc-N7-WsF">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="230"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UQG-80-QTN">
+                    <rect key="frame" x="0.0" y="230" width="8" height="437"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="8" id="hlA-bD-XsS"/>
+                    </constraints>
+                </view>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash-icon" translatesAutoresizingMaskIntoConstraints="NO" id="G7B-Vl-fog">
+                    <rect key="frame" x="0.5" y="230" width="375" height="184.5"/>
                 </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="G7B-Vl-fog" firstAttribute="height" secondItem="ppc-N7-WsF" secondAttribute="height" multiplier="0.8" id="1bU-Zi-fSQ"/>
+                <constraint firstItem="UQG-80-QTN" firstAttribute="height" secondItem="ppc-N7-WsF" secondAttribute="height" multiplier="1.9" id="4WP-Kn-BE9"/>
+                <constraint firstItem="G7B-Vl-fog" firstAttribute="width" secondItem="ppc-N7-WsF" secondAttribute="width" id="F1F-Dz-wug"/>
+                <constraint firstItem="G7B-Vl-fog" firstAttribute="centerX" secondItem="ppc-N7-WsF" secondAttribute="centerX" id="WnH-tw-Qdl"/>
+                <constraint firstItem="UQG-80-QTN" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="XP6-Xg-lG6"/>
+                <constraint firstAttribute="bottom" secondItem="UQG-80-QTN" secondAttribute="bottom" id="Y9M-z8-pPo"/>
+                <constraint firstItem="G7B-Vl-fog" firstAttribute="top" secondItem="ppc-N7-WsF" secondAttribute="bottom" id="ZOL-WK-NR7"/>
+                <constraint firstItem="ppc-N7-WsF" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="cs0-Cx-NpH"/>
+                <constraint firstItem="ppc-N7-WsF" firstAttribute="leading" secondItem="UQG-80-QTN" secondAttribute="leading" id="eg4-Gq-b8q"/>
+                <constraint firstAttribute="trailing" secondItem="ppc-N7-WsF" secondAttribute="trailing" id="hk9-0u-cwm"/>
+                <constraint firstItem="UQG-80-QTN" firstAttribute="top" secondItem="ppc-N7-WsF" secondAttribute="bottom" id="oQr-o8-e7y"/>
+            </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <point key="canvasLocation" x="190.5" y="219.5"/>
         </view>
     </objects>
     <resources>
-        <image name="LaunchStoryboard" width="1366" height="1366"/>
-        <image name="background" width="376" height="668"/>
+        <image name="splash-icon" width="640" height="640"/>
     </resources>
 </document>
