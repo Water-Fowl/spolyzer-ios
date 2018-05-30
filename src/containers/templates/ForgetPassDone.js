@@ -5,20 +5,19 @@ import { Actions } from "react-native-router-flux";
 import {
   StyleSheet,
   Image,
-  Text, TextInput, TouchableOpacity, View
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View
 } from "react-native";
 import { connect } from "react-redux";
-import { mapStateToProps } from "utils";
-import { NavigateButton }  from "atoms";
+import { mapStateToProps } from "../../modules/mapToProps";
+import { NavigateButton } from "atoms";
 
 class ForgetPassDone extends React.Component {
-
-
   constructor(props) {
     super(props);
-    console.log(this.props);
   }
-
 
   render() {
     return (
@@ -33,15 +32,23 @@ class ForgetPassDone extends React.Component {
         <View style={styles.textContainer}>
           <Text style={styles.subText}>
             {this.props.email}にメールを送信しました。メールに記載されたリンクをクリックするとパスワードをリセットできます。
-            {"\n"}{"\n"}メールが届かない場合、迷惑メールやスパムフォルダーなどもご確認ください。
+            {"\n"}
+            {
+              "\n"
+            }メールが届かない場合、迷惑メールやスパムフォルダーなどもご確認ください。
           </Text>
         </View>
-        <NavigateButton style={styles.navigateButton} text="ログインへ" action={() => {Actions.popTo("login");}}/>
+        <NavigateButton
+          style={styles.navigateButton}
+          text="ログインへ"
+          action={() => {
+            Actions.popTo("login");
+          }}
+        />
       </View>
     );
   }
 }
-
 
 export default connect(mapStateToProps)(templateEnhancer(ForgetPassDone));
 

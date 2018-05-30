@@ -22,7 +22,8 @@ import {
   USERS_ENDPOINT,
   SHOT_TYPES_ENDPOINT
 } from "../../config/api";
-import { mapStateToProps, errorAlertCallback } from "utils";
+import { mapStateToProps } from "../../modules/mapToProps";
+import { errorAlertCallback } from "utils";
 
 function errorInstanceCallback(json) {
   return new Error(json.errors);

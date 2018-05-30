@@ -7,7 +7,7 @@ import { connect } from "react-redux";
 import { Background, NavBar, NavigateButton, TopContentBar, TextBox } from "atoms";
 import { UserList } from "organisms";
 
-import { mapStateToProps } from "utils";
+import { mapStateToProps } from "../../modules/mapToProps";
 import * as analysisModules from "../../modules/analysis";
 import * as requestModules from "../../modules/request";
 

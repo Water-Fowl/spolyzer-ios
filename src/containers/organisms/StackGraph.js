@@ -6,11 +6,10 @@ import {
   VictoryZoomContainer
 } from "victory-native";
 import { connect } from "react-redux";
-import { reshapeShotTypeCounts } from "utils";
+import * as utils from "../../utils";
 
 class Graph extends React.Component{
   componentWillReceiveProps(nextProps){
-    console.log(nextProps);
     this.forceUpdate();
   }
 
@@ -112,7 +111,7 @@ function mapStateToProps(state, props){
     shotTypeCountsList,
     missShotTypeCountsList,
     shotTypesList
-  } = reshapeShotTypeCounts(selectedShotTypeCounts, state.sport.shotTypes);
+  } = utils.aggregatedGameAnalysis(selectedShotTypeCounts, state.sport.shotTypes);
   return {
     shotTypeCountsList,
     missShotTypeCountsList,

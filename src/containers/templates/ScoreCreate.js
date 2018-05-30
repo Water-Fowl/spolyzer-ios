@@ -17,7 +17,7 @@ import {
   SHOT_TYPE_COUNTS_ENDPOINT,
   gameCountEndpointGenerator
 } from "../../config/api";
-import { mapStateToProps } from "utils";
+import { mapStateToProps } from "../../modules/mapToProps";
 
 class ScoreCreate extends React.Component {
   constructor(props) {
@@ -46,16 +46,15 @@ class ScoreCreate extends React.Component {
   }
 
   showModal(position, side) {
-    this.setState({ modalIsVisible: true });
-    this.props.dispatch(gameModules.setPositionAndSide(position, side));
+    this.setState({ modalIsVisible: true, position: position, side: side });
   }
 
   hideModal() {
     this.setState({ modalIsVisible: false });
   }
 
-  setShotType(shotTypeId, isNetMiss) {
-    this.props.dispatch(gameModules.setShotType(shotTypeId, isNetMiss));
+  setShotType(shotTypeId, isNetMiss, side, position) {
+    this.props.dispatch(gameModules.setShotType(shotTypeId, isNetMiss, side, position));
   }
 
   navigationEvent(users, scores) {
@@ -150,7 +149,8 @@ class ScoreCreate extends React.Component {
       >
         <ShotTypeModal
           shotTypes={this.props.sport.shotTypes}
-          position={this.props.game.position}
+          position={this.state.position}
+          side={this.state.side}
           isVisible={this.state.modalIsVisible}
           hideModal={this.hideModal}
           callback={this.setShotType}

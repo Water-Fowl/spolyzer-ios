@@ -14,12 +14,13 @@ import { Icon, SegmentedControl } from "react-native-ios-kit";
 import * as analysisModules from "../../modules/analysis";
 import * as gameModules from "../../modules/game";
 import * as requestModules from "../../modules/request";
+import { mapStateToProps } from "../../modules/mapToProps";
 import {
   GAMES_ENDPOINT,
   gamesEndpointGenerator,
   gameCountEndpointGenerator
 } from "../../config/api";
-import { mapStateToProps, timeEncode } from "utils";
+import { timeEncode } from "utils";
 
 class GameAnalysisCreate extends React.Component {
   constructor(props) {

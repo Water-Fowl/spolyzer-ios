@@ -3,13 +3,18 @@ import React, { Component } from "react";
 import { Actions } from "react-native-router-flux";
 import { Background } from "atoms";
 import {
-  Image, StyleSheet, Text, TouchableOpacity, View, ScrollView
+  Image,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+  ScrollView
 } from "react-native";
 import { connect } from "react-redux";
 import * as sportModules from "../../modules/sport";
 import * as requestModules from "../../modules/request";
 import { SHOT_TYPES_ENDPOINT, SPORTS_ENDPOINT } from "../../config/api";
-import { mapStateToProps } from "utils";
+import { mapStateToProps } from "../../modules/mapToProps";
 
 class SportSelect extends React.Component {
   constructor(props) {

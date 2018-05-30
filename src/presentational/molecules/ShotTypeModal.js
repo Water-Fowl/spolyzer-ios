@@ -10,17 +10,15 @@ import {
 } from "components";
 
 import { connect } from "react-redux";
-import {
-  mapStateToProps
-} from "utils";
+import { mapStateToProps } from "../../modules/mapToProps";
 const NET_MIN_POSITION = 8;
 const NET_MAX_POSITION = 13;
 const OUT_MIN_POSITION = 1;
 const OUT_MAX_POSITION = 6;
 
 export default class ShotTypeModal extends React.Component {
+
   renderButtons(textStyles, isNetMiss){
-    console.log(this.props.position);
     buttonsComponentsList = [];
     if (isNetMiss &&
         NET_MIN_POSITION != this.props.position &&
@@ -36,7 +34,12 @@ export default class ShotTypeModal extends React.Component {
       buttonsComponentsList.push(
         <TouchableHighlight
           onPress={() => {
-            this.props.callback(shotTypeId, isNetMiss);
+            this.props.callback(
+              shotTypeId,
+              isNetMiss,
+              this.props.side,
+              this.props.position
+            );
             this.props.hideModal();
           }}
         >

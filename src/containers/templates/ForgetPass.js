@@ -16,7 +16,8 @@ import * as requestModules from "../../modules/request";
 import { emailReg } from "const";
 import { ErrorText } from "atoms";
 import { connect } from "react-redux";
-import { mapStateToProps, errorAlertCallback } from "utils";
+import { mapStateToProps } from "../../modules/mapToProps";
+import { errorAlertCallback } from "utils";
 
 function errorInstanceCallback(json) {
   return new Error(json.errors.full_messages);

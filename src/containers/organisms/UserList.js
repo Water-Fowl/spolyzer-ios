@@ -6,7 +6,7 @@ import {
 
 import { UserListItem } from "molecules";
 import { connect } from "react-redux";
-import { mapStateToProps } from "utils";
+import { mapStateToProps } from "../../modules/mapToProps";
 
 class UserList extends React.Component{
   constructor(props){

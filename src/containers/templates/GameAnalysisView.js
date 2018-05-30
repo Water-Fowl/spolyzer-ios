@@ -8,7 +8,8 @@ import {
 import { TopContentBar } from "atoms";
 import { PlayersDisplay } from "molecules";
 import { connect } from "react-redux";
-import { reshapeShotTypeCounts, mapStateToProps } from "utils";
+import * as utils from "utils";
+import { mapStateToProps } from "../../modules/mapToProps";
 import { Field, Graph } from "organisms";
 
 class GameAnalysisView extends React.Component {
@@ -27,7 +28,7 @@ class GameAnalysisView extends React.Component {
       shotTypeCountsList,
       missShotTypeCountsList,
       shotTypesList
-    } = reshapeShotTypeCounts(
+    } = utils.aggregatedGameAnalysis(
       selectedShotTypeCounts[position],
       this.props.sport.shotTypes
     );
