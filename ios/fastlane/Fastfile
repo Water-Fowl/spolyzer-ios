@@ -21,19 +21,17 @@ platform :ios do
     # add actions here: https://docs.fastlane.tools/actions
   end
   lane :beta do
-    match(git_url: "git@github.com:Water-Fowl/spolyzer-ios.git",
-          username: "yoshiki.ikeda@water-fowl.co.jp",
-          app_identifier: "com.waterfowl.spolyzer")
     sync_code_signing(type: "appstore",
                       git_url: "git@github.com:Water-Fowl/spolyzer-ios.git")
-    build_app(scheme: "spolyzer(release)")
     increment_build_number(
-      build_number: app_store_build_number + 1,
       xcodeproj: "spolyzer.xcodeproj",
     )
-    upload_to_testflight(git_url: "git@github.com:Water-Fowl/spolyzer-ios.git",
-                         username: "yoshiki.ikeda@water-fowl.co.jp",
-                         app_identifier: "com.waterfowl.spolyzer")
-    slack(message: "Successfully distributed a new beta build")
+    build_app(scheme: "spolyzer(release)")
+    upload_to_testflight(
+      username: "yoshiki.ikeda@water-fowl.co.jp",
+      app_identifier: "com.waterfowl.spolyzer",
+    )
+    slack(message: "Successfully distributed a new beta build",
+          slack_url: "https://hooks.slack.com/services/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")
   end
 end
