@@ -24,10 +24,10 @@ class UserList extends React.Component{
     }
     const usersComponent = [];
     for (let i = 0; i < users.length; i++) {
-      if(this.props.selectedIds.indexOf(users[i].user.id) == -1){
+      if(this.props.selectedIds.indexOf(users[i].id) == -1){
         usersComponent.push(
-          <TouchableOpacity onPress={() => {this.props.callback(i);}}>
-            <UserListItem key={i} userName={users[i].user.name} />
+          <TouchableOpacity onPress={() => {this.props.callback(users[i]);}}>
+            <UserListItem key={i} userName={users[i].name} />
           </TouchableOpacity>
         );
       }

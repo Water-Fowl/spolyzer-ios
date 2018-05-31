@@ -11,6 +11,7 @@ import { getApiRequest } from "../../modules/request";
 import { mapStateToProps } from "../../modules/mapToProps";
 
 class GameSearchUser extends React.Component {
+
   constructor(props) {
     super(props);
     this.state = {
@@ -21,11 +22,13 @@ class GameSearchUser extends React.Component {
     this.setUser = this.setUser.bind(this);
     this.removeUser = this.removeUser.bind(this);
   }
+
   componentWillReceiveProps(nextProps) {
     if (nextProps.game.users) {
       this.setState({ users: nextProps.game.users });
     }
   }
+
   searchUserEvent(name) {
     const params = {
       name
@@ -45,12 +48,14 @@ class GameSearchUser extends React.Component {
       this.setState({ users: [] });
     }
   }
-  setUser(selectedSearchUserIndex) {
+
+  setUser(user) {
     this.props.dispatch(
-      gameModules.setUser(this.props.game.users[selectedSearchUserIndex].user)
+      gameModules.setUser(user)
     );
     Actions.popTo("gameCreate");
   }
+
   removeUser() {
     this.props.dispatch(gameModules.removeUser());
     Actions.popTo("gameCreate");

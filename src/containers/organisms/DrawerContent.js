@@ -19,6 +19,7 @@ import * as requestModules from "../../modules/request";
 import { SHOT_TYPES_ENDPOINT, SPORTS_ENDPOINT } from "../../config/api";
 
 class DrawerContent extends React.Component {
+
   constructor(props) {
     super(props);
     this.state = {
@@ -27,10 +28,12 @@ class DrawerContent extends React.Component {
     this.getSportsEvent.bind(this);
     this.getSportsEvent();
   }
+
   sportName(id) {
     if (!this.state.sports.length) return;
     return this.state.sports[id - 1].name_ja;
   }
+
   getSportsEvent() {
     this.props
       .dispatch(
@@ -43,9 +46,10 @@ class DrawerContent extends React.Component {
         )
       )
       .then(json => {
-        this.setState({ sports: json.sports });
+        this.setState({ sports: json });
       });
   }
+
   switchSport(id = "") {
     if (!id) return;
     this.props.dispatch(sportModules.setSport(id));
@@ -65,8 +69,10 @@ class DrawerContent extends React.Component {
         );
       });
   }
+
   setSportsList() {
     const sportsList = [];
+
     for (let sport of this.state.sports) {
       if (this.props.sport.id !== sport.id) {
         sportsList.push(
@@ -81,8 +87,10 @@ class DrawerContent extends React.Component {
         );
       }
     }
+
     return <ScrollView style={styles.scrollContainer}>{sportsList}</ScrollView>;
   }
+
   render() {
     return (
       <View style={styles.drawerContainer}>
@@ -92,9 +100,9 @@ class DrawerContent extends React.Component {
         >
           <ProfileImage
             size={40}
-            imageSource={this.props.profile.userImageSource}
+            imageSource={this.props.profile.user.image.url}
           />
-          <Text style={styles.userName}>{this.props.profile.userName}</Text>
+          <Text style={styles.userName}>{this.props.profile.user.name}</Text>
         </TouchableOpacity>
         <View style={styles.sportContainer}>
           <View style={styles.kyugiContainer}>

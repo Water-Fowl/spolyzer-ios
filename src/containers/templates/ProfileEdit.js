@@ -19,6 +19,7 @@ import {
 import { mapStateToProps } from "../../modules/mapToProps";
 
 class ProfileEdit extends React.Component {
+
   constructor(props) {
     super(props);
     this._selectPhotoTapped = this._selectPhotoTapped.bind(this);
@@ -26,13 +27,14 @@ class ProfileEdit extends React.Component {
     this._hidePicker = this._hidePicker.bind(this);
     this.state = {
       imageSource: null,
-      userEmail: this.props.profile.userEmail,
-      userImageSource: this.props.profile.userImageSource,
-      userName: this.props.profile.userName,
+      userEmail: this.props.profile.user.email,
+      userImageSource: this.props.profile.user.image.url,
+      userName: this.props.profile.user.name,
       sex: "男性",
       isPickerVisible: false
     };
   }
+
   _selectPhotoTapped() {
     ImagePicker.openPicker({
       includeBase64: true,
@@ -57,25 +59,32 @@ class ProfileEdit extends React.Component {
       });
     });
   }
+
   _setPicker(){
     this.setState({isPickerVisible: true});
   }
+
   _hidePicker(){
     this.setState({isPickerVisible: false});
   }
+
   completeButtonEvent(){
     const { dispatch } = this.props;
     const isEmail = emailReg.test(this.state.userEmail);
+
     if(!isEmail){
       return Alert.alert("エラー", "メールアドレスを入力してください", [{ text: "了解"}], { cancelable: false });
     }
+
     const body = {
       name: this.state.userName,
       email: this.state.userEmail
     };
+
     if(this.state.imageData){
       body["image"] = this.state.imageData;
     }
+
     this.props.dispatch(requestModules.patchApiRequest(
       USERS_ENDPOINT + this.props.authentication.userId,
       body,
@@ -86,6 +95,7 @@ class ProfileEdit extends React.Component {
       Actions.pop();
     });
   }
+
   render() {
     return (
       <View style={styles.container}>
@@ -109,7 +119,7 @@ class ProfileEdit extends React.Component {
                     ref="email"
                     style={styles.userName}
                     onChangeText={userName => this.setState({ userName })}
-                    defaultValue={this.props.profile.userName}
+                    defaultValue={this.props.profile.user.name}
                     placeholder="ユーザーネーム"
                     keyboardType="email-address"
                     returnKeyType="done"
@@ -124,7 +134,7 @@ class ProfileEdit extends React.Component {
                         ref="email"
                         style={styles.profileTitle}
                         onChangeText={userEmail => this.setState({ userEmail })}
-                        defaultValue={this.props.profile.userEmail}
+                        defaultValue={this.props.profile.user.email}
                         placeholder="メールアドレス"
                         keyboardType="email-address"
                         returnKeyType="done"

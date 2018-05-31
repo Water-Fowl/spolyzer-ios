@@ -17,6 +17,7 @@ import { SHOT_TYPES_ENDPOINT, SPORTS_ENDPOINT } from "../../config/api";
 import { mapStateToProps } from "../../modules/mapToProps";
 
 class SportSelect extends React.Component {
+
   constructor(props) {
     super(props);
     this.setSportEvent.bind(this);
@@ -44,9 +45,10 @@ class SportSelect extends React.Component {
         )
       )
       .then(json => {
-        this.setState({ sports: json.sports });
+        this.setState({ sports: json });
       });
   }
+
   setSportsSelect() {
     const sportsList = [];
     for (let sport of this.state.sports) {
@@ -64,6 +66,7 @@ class SportSelect extends React.Component {
     }
     return <ScrollView>{sportsList}</ScrollView>;
   }
+
   setSportEvent(id) {
     this.props.dispatch(sportModules.setSport(id));
     this.props.dispatch(
@@ -77,6 +80,7 @@ class SportSelect extends React.Component {
     );
     Actions.tab();
   }
+
   render() {
     return (
       <View style={styles.container}>
@@ -93,6 +97,7 @@ class SportSelect extends React.Component {
       </View>
     );
   }
+
 }
 
 export default connect(mapStateToProps)(SportSelect);

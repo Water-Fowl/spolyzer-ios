@@ -30,6 +30,7 @@ function errorInstanceCallback(json) {
 }
 
 class Login extends React.Component {
+
   constructor(props) {
     super(props);
     this.postLoginEvent.bind(this);
@@ -77,6 +78,7 @@ class Login extends React.Component {
               )
             )
             .then(() => {
+              console.log(this.props.profile);
               this.props.profile.user.sport_id
                 ? Actions.tab()
                 : Actions.sportSelect();
@@ -84,6 +86,7 @@ class Login extends React.Component {
         }
       });
   }
+
   render() {
     return (
       <View style={styles.container}>
@@ -149,6 +152,7 @@ class Login extends React.Component {
       </View>
     );
   }
+
 }
 
 export default connect(mapStateToProps)(Login);
