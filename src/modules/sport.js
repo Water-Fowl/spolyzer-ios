@@ -12,7 +12,7 @@ export function getShotTypesRequest() {
   };
 }
 export function getShotTypesReceived(json) {
-  const shotTypes = json.shot_types;
+  const shotTypes = json;
   let reshapedShotTypes = {};
   for (shotType of shotTypes) {
     reshapedShotTypes[shotType.id] = shotType.name_ja;
@@ -32,7 +32,7 @@ export function getSportsRequest() {
 export function getSportsReceived(json) {
   return {
     type: GET_SPORTS_RECEIVED,
-    json
+    sports: json
   };
 }
 

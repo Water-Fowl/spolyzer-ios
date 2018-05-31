@@ -90,6 +90,7 @@ export function patchApiRequest(
     })
       .then(response => response.json())
       .then(function(json) {
+        console.log(json);
         dispatch(receivedCallback(json));
         return json;
       });
@@ -116,6 +117,7 @@ export function getApiRequest(
     })
       .then(response => response.json())
       .then(function(json) {
+        console.log(json);
         dispatch(receivedCallback(json));
         return json;
       })

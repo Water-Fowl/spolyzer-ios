@@ -27,7 +27,7 @@ export function getShotTypeCountsRequest() {
 export function getShotTypeCountsReceived(json) {
   return {
     type: GET_SHOT_TYPE_COUNTS_RECEIVED,
-    shotTypeCounts: json.counts
+    shotTypeCounts: json.meta.counts
   };
 }
 
@@ -52,14 +52,14 @@ export function postGameRequest() {
 export function postGameReceived(json) {
   return {
     type: POST_GAME_RECIEVED,
-    gameId: json.game.id
+    game: json
   };
 }
 
 export function getSearchUserReceived(json) {
   return {
     type: GET_SEARCH_USER_RECEIVED,
-    users: json.users
+    users: json
   };
 }
 
@@ -186,7 +186,7 @@ export function gameReducer(state = initialState, action = {}) {
     return state;
   case POST_GAME_RECIEVED:
     return Object.assign({}, state, {
-      gameId: action.gameId
+      game: action.game
     });
   case GET_SEARCH_USER_REQUEST:
     return Object.assign({}, state, {});
@@ -204,10 +204,7 @@ export function gameReducer(state = initialState, action = {}) {
     if (
       state.gameUnits[state.selectedUnitIndex].users[state.selectedUserIndex]
     ) {
-      state.gameUnits[state.selectedUnitIndex].users[
-        state.selectedUserIndex
-      ] =
-          action.user;
+      state.gameUnits[state.selectedUnitIndex].users[state.selectedUserIndex] = action.user;
     } else {
       state.gameUnits[state.selectedUnitIndex].users.push(action.user);
     }

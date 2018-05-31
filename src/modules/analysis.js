@@ -52,7 +52,7 @@ export function getGamesRequest() {
 export function getGamesReceived(json) {
   return {
     type: GET_GAMES_RECEIVED,
-    json
+    games: json
   };
 }
 export function getPositionsCountsRequest() {
@@ -151,7 +151,7 @@ export function analysisReducer(state = initialState, action = {}) {
     return state;
   case GET_GAMES_RECEIVED:
     return Object.assign({}, state, {
-      gameId: action.gameId
+      games: action.games
     });
   case GAME_TYPE_SETTING:
     return Object.assign({}, state, {
