@@ -14,12 +14,12 @@ class ProfileTop extends React.Component {
           <TopContentBar>マイページ</TopContentBar>
           <View style={styles.alignItemsCenter}>
             <TouchableOpacity onPress={Actions.profileEdit}>
-              <ProfileImage style={styles.profileImage} imageSource={this.props.profile.userImageSource} size={100}/>
+              <ProfileImage style={styles.profileImage} imageSource={this.props.profile.user.image.url} size={100}/>
             </TouchableOpacity>
             <Image
-              source={require("../../assets/img/my_page_center_design.png")}
+              source={{ url: "my_page_center_design.png" }}
             />
-            <Text style={styles.myName}>{this.props.profile.userName}</Text>
+            <Text style={styles.myName}>{this.props.profile.user.name}</Text>
             <View style={styles.gameSettingBorder}>
               <View style={styles.gameSettingTable} />
             </View>

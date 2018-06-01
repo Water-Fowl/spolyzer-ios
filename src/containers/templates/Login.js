@@ -76,10 +76,8 @@ class Login extends React.Component {
                 (receivedCallback = profileModules.getUserReceived)
               )
             )
-            .then(() => {
-              this.props.profile.user.sport_id
-                ? Actions.tab()
-                : Actions.sportSelect();
+            .then(user => {
+              user.user.sport_id === null ? Actions.sportSelect() : Actions.tab();
             });
         }
       });
@@ -88,10 +86,7 @@ class Login extends React.Component {
     return (
       <View style={styles.container}>
         <Background />
-        <Image
-          style={styles.logo}
-          source={require("../../assets/img/spolyzer_top.png")}
-        />
+        <Image style={styles.logo} source={{ url: "spolyzer_top.png" }} />
         <View style={styles.formContainer}>
           <View style={styles.form}>
             <TextInput
@@ -195,7 +190,9 @@ const styles = StyleSheet.create({
   logo: {
     marginTop: 80,
     marginBottom: 80,
-    alignSelf: "center"
+    alignSelf: "center",
+    width: 209,
+    height: 64
   },
   textField: {
     fontSize: 20,

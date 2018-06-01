@@ -26,9 +26,9 @@ class ProfileEdit extends React.Component {
     this._hidePicker = this._hidePicker.bind(this);
     this.state = {
       imageSource: null,
-      userEmail: this.props.profile.userEmail,
-      userImageSource: this.props.profile.userImageSource,
-      userName: this.props.profile.userName,
+      userEmail: this.props.profile.user.email,
+      userImageSource: this.props.profile.user.image.url,
+      userName: this.props.profile.user.name,
       sex: "男性",
       isPickerVisible: false
     };
@@ -77,7 +77,7 @@ class ProfileEdit extends React.Component {
       body["image"] = this.state.imageData;
     }
     this.props.dispatch(requestModules.patchApiRequest(
-      USERS_ENDPOINT + this.props.authentication.userId,
+      USERS_ENDPOINT + this.props.profile.user.id,
       body,
       this.props.authentication.header,
       profileModules.patchUserRequest,
@@ -109,7 +109,7 @@ class ProfileEdit extends React.Component {
                     ref="email"
                     style={styles.userName}
                     onChangeText={userName => this.setState({ userName })}
-                    defaultValue={this.props.profile.userName}
+                    defaultValue={this.props.profile.user.name}
                     placeholder="ユーザーネーム"
                     keyboardType="email-address"
                     returnKeyType="done"
@@ -124,7 +124,7 @@ class ProfileEdit extends React.Component {
                         ref="email"
                         style={styles.profileTitle}
                         onChangeText={userEmail => this.setState({ userEmail })}
-                        defaultValue={this.props.profile.userEmail}
+                        defaultValue={this.props.profile.user.email}
                         placeholder="メールアドレス"
                         keyboardType="email-address"
                         returnKeyType="done"

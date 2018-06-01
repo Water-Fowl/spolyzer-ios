@@ -2,9 +2,8 @@ import React from "react";
 import templateEnhancer from "./hoc";
 import { connect } from "react-redux";
 import { View, StyleSheet, Text, TouchableOpacity } from "react-native";
-import {
-  GameIcon, MultipleAnalysisIcon, TopContentBar, Background
-} from "atoms";
+import { TopContentBar, Background } from "atoms";
+import { GameIcon, MultipleAnalysisIcon } from "molecules";
 import { Actions } from "react-native-router-flux";
 import { mapStateToProps } from "../../modules/mapToProps";
 
@@ -20,7 +19,7 @@ class AnalysisCreate extends React.Component {
             }}
             style={styles.leftGameButton}
           >
-            <GameIcon size={60} />
+            <GameIcon size={1.2} />
             <Text style={styles.gameAnalysisText}>単分析</Text>
           </TouchableOpacity>
           <TouchableOpacity
@@ -29,7 +28,7 @@ class AnalysisCreate extends React.Component {
             }}
             style={styles.rightGameButton}
           >
-            <MultipleAnalysisIcon size={60} />
+            <MultipleAnalysisIcon size={0.54}/>
             <Text style={styles.multipleAnalysisText}>複合分析</Text>
           </TouchableOpacity>
         </View>

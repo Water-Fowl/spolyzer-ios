@@ -29,7 +29,8 @@ class GameAnalysisCreate extends React.Component {
     this.state = {
       isPickerVisible: false,
       selectedIndex: 0,
-      games: []
+      games: [],
+      listLength: 0
     };
     this.getUsersGamesEvent();
   }
@@ -76,9 +77,14 @@ class GameAnalysisCreate extends React.Component {
     let listData = [];
     if (!this.state.games) return listData;
     for (let gameData of this.state.games.slice().reverse()) {
-      if (gameData.left_users.length === this.state.selectedIndex + 1 && gameData.game.sport_id===this.props.sport.id)
+      if (
+        gameData.left_users.length === this.state.selectedIndex + 1 &&
+        gameData.game.sport_id === this.props.profile.user.sport_id
+      )
         listData.push(gameData);
     }
+    if (listData.length !== this.state.listLength)
+      this.setState({ listLength: listData.length });
     return listData;
   }
 
@@ -89,10 +95,10 @@ class GameAnalysisCreate extends React.Component {
       opponentUsers.left.push(left_users[index].name);
       opponentUsers.right.push(right_users[index].name);
 
-      if (left_users[index].name === this.props.profile.userName)
+      if (left_users[index].name === this.props.profile.user.name)
         opponentUsers.side = 0;
 
-      if (right_users[index].name === this.props.profile.userName)
+      if (right_users[index].name === this.props.profile.user.name)
         opponentUsers.side = 1;
     }
     return opponentUsers.side
@@ -118,9 +124,17 @@ class GameAnalysisCreate extends React.Component {
             style={{ width: 222, alignSelf: "center" }}
           />
         </View>
+        {(() => {
+          if (!this.state.listLength)
+            return (
+              <View style={styles.listConteiner}>
+                <Text style={styles.noDataText}>データがありません</Text>
+              </View>
+            );
+        })()}
         <FlatList
           data={this.setListData()}
-          renderItem={({ item }) => (
+          renderItem={({ item, index }) => (
             <View style={styles.listConteiner}>
               <TouchableOpacity
                 onPress={() => {
@@ -144,6 +158,7 @@ class GameAnalysisCreate extends React.Component {
               </TouchableOpacity>
             </View>
           )}
+          keyExtractor={(item, index) => index}
           style={styles.flatListConteiner}
         />
       </View>
@@ -167,14 +182,20 @@ const styles = StyleSheet.create({
   listConteiner: {
     paddingLeft: 30,
     paddingBottom: 4,
-    paddingTop: 6,
-    // borderBottomColor: "#2ea7e0",
+    paddingTop: 6, // borderBottomColor: "#2ea7e0",
     borderRadius: 4,
     borderWidth: 1,
     borderTopColor: "#2ea7e0"
   },
   gameAnalysisViewButton: {
     justifyContent: "center"
+  },
+  noDataText: {
+    alignSelf: "center",
+    color: "white",
+    fontSize: 20,
+    paddingTop: 10,
+    paddingRight: 30
   },
   titleText: {
     color: "white",

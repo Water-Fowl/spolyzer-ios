@@ -10,7 +10,6 @@ import ShotTypeButtonList from "./ShotTypeButtonList";
 import DrawerContent from "./DrawerContent";
 import OutcomeButtonList from "./OutcomeButtonList";
 import DatePickerButtonList from "./DatePickerButtonList";
-
 export {
   UserList,
   Field,
