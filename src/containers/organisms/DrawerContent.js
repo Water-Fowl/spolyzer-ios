@@ -123,9 +123,9 @@ class DrawerContent extends React.Component {
         >
           <ProfileImage
             size={40}
-            imageSource={this.props.profile.userImageSource}
+            imageSource={this.props.profile.user.image.url}
           />
-          <Text style={styles.userName}>{this.props.profile.userName}</Text>
+          <Text style={styles.userName}>{this.props.profile.user.name}</Text>
         </TouchableOpacity>
         <View style={styles.sportContainer}>
           <View style={styles.kyugiContainer}>

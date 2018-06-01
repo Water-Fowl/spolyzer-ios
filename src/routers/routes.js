@@ -190,8 +190,8 @@ class Route extends React.Component {
             drawerCloseRoute="DrawerClose"
             drawerToggleRoute="DrawerToggle"
             initial={this.state.isValidToken}
-            name={this.props.userName}
-            imageSource={this.props.userImageSource}
+            name={this.props.profile.user.name}
+            imageSource={this.props.profile.user.image.url}
             gesturesEnabled={false}
           >
             <Scene
@@ -321,8 +321,7 @@ function mapStateToProps(state, props) {
     header: state.authentication.header || {},
     isValidToken: state.authentication.isValidToken,
     errorMsg: state.authentication.errorMsg,
-    userName: state.profile.userName,
-    userImageSource: state.profile.userImageSource
+    profile: state.profile
   };
 }
 

@@ -95,10 +95,10 @@ class GameAnalysisCreate extends React.Component {
       opponentUsers.left.push(left_users[index].name);
       opponentUsers.right.push(right_users[index].name);
 
-      if (left_users[index].name === this.props.profile.userName)
+      if (left_users[index].name === this.props.profile.user.name)
         opponentUsers.side = 0;
 
-      if (right_users[index].name === this.props.profile.userName)
+      if (right_users[index].name === this.props.profile.user.name)
         opponentUsers.side = 1;
     }
     return opponentUsers.side

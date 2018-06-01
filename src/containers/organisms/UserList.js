@@ -30,7 +30,11 @@ class UserList extends React.Component {
             }}
             key={i}
           >
-            <UserListItem key={i} userName={users[i].user.name} />
+            <UserListItem
+              key={i}
+              userName={users[i].user.name}
+              userImageSource={users[i].user.image.url}
+            />
           </TouchableOpacity>
         );
       }
