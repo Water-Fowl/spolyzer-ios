@@ -11,7 +11,7 @@ export default class NavigateButton extends React.Component {
     return (
       <TouchableOpacity onPress={this.props.action} style={this.props.style}>
         <Image
-          source={require("../../assets/img/navigate_button.png")}
+          source={{ url: "navigate_button.png" }}
           style={styles.navigateButton}
         />
         <Text style={styles.navigateText}>
@@ -26,7 +26,9 @@ const styles = StyleSheet.create({
   navigateButton: {
     marginTop: 0,
     alignSelf: "center",
-    position: "absolute"
+    position: "absolute",
+    width:184,
+    height:54
   },
   navigateText: {
     top: 15,

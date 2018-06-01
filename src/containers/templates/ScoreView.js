@@ -1,8 +1,14 @@
-import Orientation from "react-native-orientation";
 import React from "react";
 import templateEnhancer from "./hoc";
 import { ActionConst, Actions } from "react-native-router-flux";
-import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import {
+  Image,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View
+} from "react-native";
 import { connect } from "react-redux";
 
 import { TopContentBar } from "atoms";
@@ -20,12 +26,8 @@ class ScoreView extends React.Component {
     this.state = {
       data: [],
       missData: [],
-      shotTypeList: [],
-      lockToLandscape: true
+      shotTypeList: []
     };
-  }
-  componentWillUnmount() {
-    if (this.state.lockToLandscape) Orientation.lockToLandscape();
   }
 
   setShotTypeCounts(position, side, isNetMiss) {
@@ -88,7 +90,7 @@ class ScoreView extends React.Component {
           </View>
           <Field
             horizontal
-            sport={this.props.sport.id}
+            sport={this.props.profile.user.sport_id}
             callback={this.setShotTypeCounts}
           />
           <Graph
@@ -100,10 +102,8 @@ class ScoreView extends React.Component {
         <View style={styles.backButtonContainer}>
           <TouchableOpacity
             onPress={() => {
-              this.setState({
-                lockToLandscape: false
-              });
               this.props.dispatch(gameModules.resetState());
+              utils.toastPresent("保存しました");
               Actions.popTo("gameCreate");
             }}
           >

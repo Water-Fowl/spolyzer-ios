@@ -77,7 +77,7 @@ class ProfileEdit extends React.Component {
       body["image"] = this.state.imageData;
     }
     this.props.dispatch(requestModules.patchApiRequest(
-      USERS_ENDPOINT + this.props.authentication.userId,
+      USERS_ENDPOINT + this.props.profile.user.id,
       body,
       this.props.authentication.header,
       profileModules.patchUserRequest,

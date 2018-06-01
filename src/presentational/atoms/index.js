@@ -3,11 +3,11 @@
  */
 import Background from "./Background";
 import ErrorText from "./ErrorText";
-import InFieldSide from "./InFieldSide";
-import InFieldCircle from "./InFieldCircle";
-import InFieldLength from "./InFieldLength";
-import OutFieldSide from "./OutFieldSide";
-import OutFieldLength from "./OutFieldLength";
+import InFieldSide from "./field/InFieldSide";
+import InFieldCircle from "./field/InFieldCircle";
+import InFieldLength from "./field/InFieldLength";
+import OutFieldSide from "./field/OutFieldSide";
+import OutFieldLength from "./field/OutFieldLength";
 import LandScapeBackground from "./LandscapeBackground";
 import NavBar from "./NavBar";
 import NavigateButton from "./NavigateButton";
@@ -18,9 +18,7 @@ import ProfileImage from "./ProfileImage";
 import SelectedUserName from "./SelectedUserName";
 import TextBox from "./TextBox";
 import TextInputForm from "./TextInputForm";
-import GameIcon from "./GameIcon";
-import AnalysisIcon from "./AnalysisIcon";
-import MultipleAnalysisIcon from "./MultipleAnalysisIcon";
+import AssetsImage from "./AssetsImage";
 
 export {
   Background,
@@ -40,7 +38,5 @@ export {
   NavigateButton,
   TopBar,
   TopContentBar,
-  GameIcon,
-  AnalysisIcon,
-  MultipleAnalysisIcon
+  AssetsImage
 };

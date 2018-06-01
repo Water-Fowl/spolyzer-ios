@@ -17,7 +17,7 @@ class ProfileTop extends React.Component {
               <ProfileImage style={styles.profileImage} imageSource={this.props.profile.userImageSource} size={100}/>
             </TouchableOpacity>
             <Image
-              source={require("../../assets/img/my_page_center_design.png")}
+              source={{ url: "my_page_center_design.png" }}
             />
             <Text style={styles.myName}>{this.props.profile.userName}</Text>
             <View style={styles.gameSettingBorder}>

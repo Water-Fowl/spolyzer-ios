@@ -164,7 +164,7 @@ export function gameReducer(state = initialState, action = {}) {
   case SET_SHOT_TYPE:
     /* 今回得られたスコアを取得し、配列に格納する */
     state.scores = state.scores.concat({
-      unit: action.side,
+      unit: action.unit_side,
       dropped_at: action.position,
       shot_type: action.shotType,
       is_net_miss: action.isNetMiss,

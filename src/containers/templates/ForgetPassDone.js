@@ -24,7 +24,7 @@ class ForgetPassDone extends React.Component {
       <View style={styles.container}>
         <Image
           style={styles.logo}
-          source={require("../../assets/img/spolyzer_top.png")}
+          source={{ url: "spolyzer_top.png" }}
         />
         <Text style={styles.mainText}>
           パスワード再設定メールを送信しました

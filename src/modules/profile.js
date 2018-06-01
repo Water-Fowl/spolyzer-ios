@@ -33,7 +33,8 @@ export function patchUserReceived(json) {
     type: RECEIVED_POST_USER_UPDATE,
     userName: json.user.name,
     userEmail: json.user.email,
-    userImageSource: json.user.image.url
+    userImageSource: json.user.image.url,
+    user: json.user
   };
 }
 
@@ -55,7 +56,7 @@ export function profileReducer(state = initialState, action = {}) {
       userName: action.userName,
       userEmail: action.userEmail,
       userImageSource: action.userImageSource,
-      user:action.user
+      user: action.user
     });
   case REQUEST_POST_USER_UPDATE:
     return Object.assign({}, state, {});
@@ -63,7 +64,8 @@ export function profileReducer(state = initialState, action = {}) {
     return Object.assign({}, state, {
       userName: action.userName,
       userEmail: action.userEmail,
-      userImageSource: action.userImageSource
+      userImageSource: action.userImageSource,
+      user: action.user
     });
   default:
     return state;

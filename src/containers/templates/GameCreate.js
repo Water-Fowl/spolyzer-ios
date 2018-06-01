@@ -3,14 +3,25 @@ import React from "react";
 import templateEnhancer from "./hoc";
 import { Actions } from "react-native-router-flux";
 import {
-  Alert, Dimensions, Image, StyleSheet, Text,
-  TouchableHighlight, TouchableOpacity, View, TextInput
+  Alert,
+  Dimensions,
+  Image,
+  StyleSheet,
+  Text,
+  TouchableHighlight,
+  TouchableOpacity,
+  View,
+  TextInput
 } from "react-native";
 import { connect } from "react-redux";
 
 import {
-  ProfileImage, Background, NavBar,
-  NavigateButton, TopBar, TopContentBar
+  ProfileImage,
+  Background,
+  NavBar,
+  NavigateButton,
+  TopBar,
+  TopContentBar
 } from "atoms";
 
 import { mapStateToProps } from "../../modules/mapToProps";
@@ -116,7 +127,7 @@ class GameCreate extends React.Component {
                 </View>
                 <View style={styles.gameSettingTableInnerCenter}>
                   <Image
-                    source={require("../../assets/img/game_create_vs.png")}
+                    source={{ url: "game_create_vs.png" }}
                     style={styles.vsPosition}
                   />
                 </View>
@@ -183,7 +194,8 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     alignItems: "center",
     width: 280,
-    height: 240
+    height: "auto",
+    marginBottom: 10
   },
   gameSettingTableInnerLeft: {
     flex: 1,

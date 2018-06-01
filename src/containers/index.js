@@ -16,6 +16,7 @@ import Confirmation from "./templates/Confirmation";
 import ForgetPass from "./templates/ForgetPass";
 import ForgetPassDone from "./templates/ForgetPassDone";
 import SportSelect from "./templates/SportSelect";
+import Usage from "./templates/Usage";
 export {
   /* Componentのexport */
   AnalysisCreate,
@@ -35,5 +36,6 @@ export {
   Confirmation,
   ForgetPass,
   ForgetPassDone,
-  SportSelect
+  SportSelect,
+  Usage
 };

@@ -2,8 +2,12 @@ import React from "react";
 import baseEnhancer from "./hoc";
 import { ActionConst, Actions } from "react-native-router-flux";
 import {
-  Image, ScrollView, StyleSheet, Text,
-  TouchableOpacity, View
+  Image,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View
 } from "react-native";
 import { TopContentBar } from "atoms";
 import { PlayersDisplay } from "molecules";
@@ -78,7 +82,7 @@ class GameAnalysisView extends React.Component {
           </View>
           <Field
             horizontal
-            sport={this.props.sport.id}
+            sport={this.props.profile.user.sport_id}
             callback={this.setShotTypeCounts}
             margin={20}
           />
