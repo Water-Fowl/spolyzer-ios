@@ -236,7 +236,7 @@ class ScoreCreate extends React.Component {
         </TouchableHighlight>
         <Field
           horizontal={false}
-          sport={2}
+          sport={this.props.profile.user.sport_id}
           callback={this.showModal}
           margin={36}
           fieldHeight={137}
