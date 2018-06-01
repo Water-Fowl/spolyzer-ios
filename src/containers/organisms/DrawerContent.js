@@ -142,7 +142,7 @@ class DrawerContent extends React.Component {
           <Image source={{ url: "book_icon.png" }} style={styles.endImage} />
           <TouchableOpacity
             onPress={() => {
-              Actions.usage();
+              Actions.usage({sport_id:this.props.profile.user.sport_id});
             }}
           >
             <Text style={styles.endText}>使い方</Text>
