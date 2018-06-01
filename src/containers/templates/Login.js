@@ -30,7 +30,6 @@ function errorInstanceCallback(json) {
 }
 
 class Login extends React.Component {
-
   constructor(props) {
     super(props);
     this.postLoginEvent.bind(this);
@@ -77,11 +76,8 @@ class Login extends React.Component {
                 (receivedCallback = profileModules.getUserReceived)
               )
             )
-            .then(() => {
-              console.log(this.props.profile);
-              this.props.profile.user.sport_id
-                ? Actions.tab()
-                : Actions.sportSelect();
+            .then(json => {
+              json.sport_id ? Actions.tab() : Actions.sportSelect();
             });
         }
       });
@@ -152,7 +148,6 @@ class Login extends React.Component {
       </View>
     );
   }
-
 }
 
 export default connect(mapStateToProps)(Login);

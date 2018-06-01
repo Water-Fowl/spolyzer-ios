@@ -19,7 +19,6 @@ import * as requestModules from "../../modules/request";
 import { SHOT_TYPES_ENDPOINT, SPORTS_ENDPOINT } from "../../config/api";
 
 class DrawerContent extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -30,8 +29,9 @@ class DrawerContent extends React.Component {
   }
 
   sportName(id) {
+    let index = id - 1;
     if (!this.state.sports.length) return;
-    return this.state.sports[id - 1].name_ja;
+    return this.state.sports[index].name_ja;
   }
 
   getSportsEvent() {
@@ -111,7 +111,7 @@ class DrawerContent extends React.Component {
           </View>
           <View style={styles.sportsContainer}>
             <Text style={styles.sportName}>
-              {this.sportName(this.props.sport.id)}
+              {this.sportName(this.props.profile.user.sport_id)}
             </Text>
           </View>
           <View style={styles.kyugiContainer}>
@@ -137,6 +137,7 @@ class DrawerContent extends React.Component {
     );
   }
 }
+
 export default connect(mapStateToProps)(DrawerContent);
 
 const styles = StyleSheet.create({

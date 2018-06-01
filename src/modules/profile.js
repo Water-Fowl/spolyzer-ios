@@ -50,9 +50,6 @@ export function profileReducer(state = initialState, action = {}) {
     return state;
   case GET_USER_RECEIVED:
     return Object.assign({}, state, {
-      userName: action.userName,
-      userEmail: action.userEmail,
-      userImageSource: action.userImageSource,
       user: action.user
     });
   case REQUEST_POST_USER_UPDATE:
