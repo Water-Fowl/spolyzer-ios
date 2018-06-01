@@ -61,8 +61,8 @@ buck-out/
 
 ios/vendor/bundler/
 ios/.vendor/
-ios/spolyzer.ipa/
-ios/spolyzer.app.dSYM.zip/
+ios/spolyzer.ipa
+ios/spolyzer.app.dSYM.zip
 ios/build/
 
 # vscode
