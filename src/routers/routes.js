@@ -190,8 +190,6 @@ class Route extends React.Component {
             drawerCloseRoute="DrawerClose"
             drawerToggleRoute="DrawerToggle"
             initial={this.state.isValidToken}
-            name={this.props.profile.user.name}
-            imageSource={this.props.profile.user.image.url}
             gesturesEnabled={false}
           >
             <Scene
