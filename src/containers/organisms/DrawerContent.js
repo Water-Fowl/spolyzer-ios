@@ -88,11 +88,7 @@ class DrawerContent extends React.Component {
             sportModules.getShotTypesReceived
           )
         );
-        toastPresent(
-          `競技を${this.sportName(
-            this.props.profile.user.sport_id
-          )}に変更しました`
-        );
+        toastPresent(`競技を${this.sportName(id)}に変更しました`);
       });
   }
   setSportsList() {
