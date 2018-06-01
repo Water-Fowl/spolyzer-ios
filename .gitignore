@@ -59,11 +59,12 @@ buck-out/
 */fastlane/Preview.html
 */fastlane/screenshots
 
-ios/vendor/bundler/
+ios/vendor/
 ios/.vendor/
 ios/spolyzer.ipa
 ios/spolyzer.app.dSYM.zip
 ios/build/
+ios/fastlane/metadata/
 
 # vscode
 .vscode

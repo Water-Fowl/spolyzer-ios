@@ -16,13 +16,18 @@
 default_platform(:ios)
 
 platform :ios do
-  desc "Description of what the lane does"
-  lane :custom_lane do
-    # add actions here: https://docs.fastlane.tools/actions
+  desc "Push a new release build to the App Store"
+  lane :release do
+    increment_build_number(xcodeproj: "spolyzer.xcodeproj")
+    build_app(scheme: "spolyzer(release)")
+    upload_to_app_store
   end
-  lane :beta do
+    lane :beta do
+      get_provisioning_profile
+      get_certificates   
     sync_code_signing(type: "appstore",
-                      git_url: "git@github.com:Water-Fowl/spolyzer-ios.git")
+                      git_url: "git@github.com:Water-Fowl/spolyzer-ios.git",
+                      clone_branch_directly: true)
     build_app(scheme: "spolyzer(release)")
     increment_build_number(
       xcodeproj: "spolyzer.xcodeproj",
