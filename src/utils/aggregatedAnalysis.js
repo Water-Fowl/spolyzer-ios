@@ -7,9 +7,8 @@ import { alphabet } from "const";
 // 引数のfilterには"dropped_side","position_id","shot_type_id","is_net_miss"のうちどれか１つ以上を設定する
 export function aggregatedCounts(games, filter) {
   if (!filter) return;
-  let aggregatedCounts = new Object();
   let counts = 0;
-  let dropped_sides = games.filter(function(game, index) {
+  let dropped_sides = games.filter(function(game) {
     let flag = true;
     if (
       !filter.hasOwnProperty("dropped_side") &&
