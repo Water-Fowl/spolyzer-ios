@@ -1,14 +1,14 @@
 // apiから取ってきた試合結果を整形する関数
 // ミスの球種、ミスでない球種、それぞれに対応する球種の名前を返す
 
-export function aggregatedAnalysis(games) {}
+import { alphabet } from "const";
 
 // 条件に応じた集計結果を出力
 // 引数のfilterには"dropped_side","position_id","shot_type_id","is_net_miss"のうちどれか１つ以上を設定する
 export function aggregatedCounts(games, filter) {
   if (!filter) return;
   let aggregatedCounts = new Object();
-  let count = 0;
+  let counts = 0;
   let dropped_sides = games.filter(function(game, index) {
     let flag = true;
     if (
@@ -38,9 +38,9 @@ export function aggregatedCounts(games, filter) {
       filter.hasOwnProperty("is_net_miss")
     )
       return;
-    count++;
+    counts++;
   });
-  return count;
+  return counts;
 }
 
 // 単分析のスコア集計処理
@@ -83,4 +83,27 @@ export function aggregatedGameCounts(
 }
 
 // 複合分析のスコア集計処理
-export function aggregatedMultipleCounts() {}
+export function aggregatedMultipleCounts(
+  games,
+  dropped_side,
+  minPosition,
+  maxPosition
+) {
+  const positionsCountList = [];
+  const missPositionsCountList = [];
+  for (let position = minPosition; position <= maxPosition; position++) {
+    let counts = aggregatedCounts(games, {
+      dropped_side: dropped_side,
+      is_net_miss: false,
+      position_id: position
+    });
+    let positionString = alphabet[position - minPosition];
+    if (counts) {
+      positionsCountList.push({
+        label: positionString,
+        value: counts
+      });
+    }
+  }
+  return positionsCountList;
+}

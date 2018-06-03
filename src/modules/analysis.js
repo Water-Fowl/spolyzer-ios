@@ -63,8 +63,8 @@ export function getPositionsCountsRequest() {
 
 export function getPositionsCountsReceived(json) {
   return {
-    positionCounts: json.counts,
-    type: GET_POSITIONS_COUNTS_RECEIVED
+    type: GET_POSITIONS_COUNTS_RECEIVED,
+    positionCounts: json
   };
 }
 

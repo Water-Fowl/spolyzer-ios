@@ -2,10 +2,19 @@ import React from "react";
 import templateEnhancer from "./hoc";
 import { ActionConst, Actions } from "react-native-router-flux";
 import {
-  Image, ScrollView, StyleSheet, Text, TouchableOpacity, TouchableHighlight, View
+  Image,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  TouchableHighlight,
+  View
 } from "react-native";
 import {
-  VictoryAxis, VictoryBar, VictoryChart, VictoryTheme
+  VictoryAxis,
+  VictoryBar,
+  VictoryChart,
+  VictoryTheme
 } from "victory-native";
 import { connect } from "react-redux";
 
@@ -26,7 +35,7 @@ const RIGHT = 1;
 class AnalysisView extends React.Component {
   constructor(props) {
     super(props);
-    let selectedPositionsCount = utils.aggregatedMultipleAnalysis(
+    let selectedPositionsCount = utils.aggregatedMultipleCounts(
       this.props.analysis.positionCounts,
       LEFT,
       IN_MIN_POSITION,
@@ -51,7 +60,7 @@ class AnalysisView extends React.Component {
       max = IN_MAX_POSITION;
       field = IN;
     }
-    let selectedPositionsCount = utils.aggregatedMultipleAnalysis(
+    let selectedPositionsCount = utils.aggregatedMultipleCounts(
       this.props.analysis.positionCounts,
       side,
       min,
@@ -63,6 +72,7 @@ class AnalysisView extends React.Component {
       onPressSide: side
     });
   }
+
   _renderFieldButtonText(position, side) {
     /* positionは1から始まるが、indexは0からなので、1を引く */
     if (position < 7) {
@@ -79,6 +89,7 @@ class AnalysisView extends React.Component {
       return <View />;
     }
   }
+
   renderInField() {
     return (
       <View>
@@ -100,8 +111,7 @@ class AnalysisView extends React.Component {
 
   _renderOpponentUserNames(users) {
     if (!users.length) {
-      let text =
-        this.props.game_user_count - 1 ? "ダブルス" : "シングルス";
+      let text = this.props.game_user_count - 1 ? "ダブルス" : "シングルス";
       return (
         <View style={styles.userNameContainer}>
           <View style={styles.userNameBox}>
