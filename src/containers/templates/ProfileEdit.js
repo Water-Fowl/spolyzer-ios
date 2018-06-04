@@ -64,12 +64,15 @@ class ProfileEdit extends React.Component {
       });
     });
   }
+
   _setPicker() {
     this.setState({ isPickerVisible: true });
   }
+
   _hidePicker() {
     this.setState({ isPickerVisible: false });
   }
+
   completeButtonEvent() {
     const { dispatch } = this.props;
     const isEmail = emailReg.test(this.state.userEmail);
@@ -104,6 +107,7 @@ class ProfileEdit extends React.Component {
         Actions.pop();
       });
   }
+
   render() {
     return (
       <View style={styles.container}>
