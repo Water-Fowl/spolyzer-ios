@@ -77,7 +77,7 @@ class Login extends React.Component {
               )
             )
             .then(user => {
-              user.user.sport_id === null ? Actions.sportSelect() : Actions.tab();
+              user.sport_id === null ? Actions.sportSelect() : Actions.tab();
             });
         }
       });
