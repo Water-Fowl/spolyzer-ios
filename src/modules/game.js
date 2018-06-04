@@ -25,6 +25,7 @@ export function getShotTypeCountsRequest() {
 }
 
 export function getShotTypeCountsReceived(json) {
+  console.log(json);
   return {
     type: GET_SHOT_TYPE_COUNTS_RECEIVED,
     shotTypeCounts: json
