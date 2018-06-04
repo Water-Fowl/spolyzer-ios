@@ -123,7 +123,7 @@ class ScoreCreate extends React.Component {
         )
       )
       .then(json => {
-        let endpoint = gameCountEndpointGenerator({ game_id: json.game.id });
+        let endpoint = gameCountEndpointGenerator({ game_id: json.id });
         this.props.dispatch(
           requestModules.getApiRequest(
             (endpoint = endpoint),

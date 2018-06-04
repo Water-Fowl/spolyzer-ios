@@ -30,16 +30,19 @@ class ScoreView extends React.Component {
     };
   }
 
-  setShotTypeCounts(position, side, isNetMiss) {
-    let selectedShotTypeCounts = this.props.game.shotTypeCounts[side] || {};
+  setShotTypeCounts(position_id, dropped_side, is_net_miss) {
+    let selectedShotTypeCounts = this.props.game.scores[side] || {};
+
     const {
       shotTypeCountsList,
-      missShotTypeCountsList,
-      shotTypesList
-    } = utils.aggregatedGameAnalysis(
-      selectedShotTypeCounts[position],
-      this.props.sport.shotTypes
+      missShotTypeCountsList
+    } = utils.aggregatedGameCounts(
+      this.props.game.scores,
+      this.props.sport.shotTypes,
+      position_id,
+      dropped_side
     );
+
     this.setState({
       data: shotTypeCountsList,
       missData: missShotTypeCountsList
