@@ -1,6 +1,5 @@
 import React from "react";
 import { Picker, StyleSheet, Text, View } from "react-native";
-import { lightBlue } from "const";
 
 export default class SportPicker extends React.Component {
   setSportsPicker() {
