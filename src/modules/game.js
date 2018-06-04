@@ -27,7 +27,7 @@ export function getShotTypeCountsRequest() {
 export function getShotTypeCountsReceived(json) {
   return {
     type: GET_SHOT_TYPE_COUNTS_RECEIVED,
-    shotTypeCounts: json.counts
+    shotTypeCounts: json
   };
 }
 
@@ -59,7 +59,7 @@ export function postGameReceived(json) {
 export function getSearchUserReceived(json) {
   return {
     type: GET_SEARCH_USER_RECEIVED,
-    users: json.users
+    users: json
   };
 }
 
@@ -84,10 +84,9 @@ export function setShotTypeCounts(position, side) {
 
 export function setShotType(shotType, isNetMiss, side, position) {
   let unit_side;
-  if (!isNetMiss){
+  if (!isNetMiss) {
     unit_side = side == 1 ? 0 : 1;
-  }
-  else {
+  } else {
     unit_side = side;
   }
 

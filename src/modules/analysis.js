@@ -49,10 +49,10 @@ export function getGamesRequest() {
   };
 }
 
-export function getGamesReceived(json) {
+export function getGamesReceived(games) {
   return {
     type: GET_GAMES_RECEIVED,
-    json
+    games
   };
 }
 export function getPositionsCountsRequest() {
@@ -63,8 +63,8 @@ export function getPositionsCountsRequest() {
 
 export function getPositionsCountsReceived(json) {
   return {
-    positionCounts: json.counts,
-    type: GET_POSITIONS_COUNTS_RECEIVED
+    type: GET_POSITIONS_COUNTS_RECEIVED,
+    positionCounts: json
   };
 }
 
@@ -77,7 +77,7 @@ export function getSearchUserRequest() {
 export function getSearchUserReceived(json) {
   return {
     type: GET_SEARCH_USER_RECEIVED,
-    users: json.users
+    users: json
   };
 }
 
@@ -151,7 +151,7 @@ export function analysisReducer(state = initialState, action = {}) {
     return state;
   case GET_GAMES_RECEIVED:
     return Object.assign({}, state, {
-      gameId: action.gameId
+      games: action.games
     });
   case GAME_TYPE_SETTING:
     return Object.assign({}, state, {

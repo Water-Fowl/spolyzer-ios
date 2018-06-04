@@ -31,8 +31,9 @@ class DrawerContent extends React.Component {
       sports: []
     };
     this.getSportsEvent.bind(this);
+    this.getSportsEvent();
   }
-  componentWillMount() {
+  componentDidMount() {
     this.props.dispatch(
       requestModules.getApiRequest(
         (endpoint = SHOT_TYPES_ENDPOINT),
@@ -42,7 +43,6 @@ class DrawerContent extends React.Component {
         (receivedCallback = sportModules.getShotTypesReceived)
       )
     );
-    this.getSportsEvent();
   }
   sportName(id) {
     if (!this.state.sports.length || id === null) return;
@@ -60,7 +60,7 @@ class DrawerContent extends React.Component {
         )
       )
       .then(json => {
-        this.setState({ sports: json.sports });
+        this.setState({ sports: json });
       });
   }
   switchSport(id = "") {
@@ -142,7 +142,7 @@ class DrawerContent extends React.Component {
           <Image source={{ url: "book_icon.png" }} style={styles.endImage} />
           <TouchableOpacity
             onPress={() => {
-              Actions.usage({sport_id:this.props.profile.user.sport_id});
+              Actions.usage({ sport_id: this.props.profile.user.sport_id });
             }}
           >
             <Text style={styles.endText}>使い方</Text>

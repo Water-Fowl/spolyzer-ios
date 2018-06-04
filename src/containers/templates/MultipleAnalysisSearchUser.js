@@ -35,7 +35,7 @@ class MultipleAnalysisSearchUser extends React.Component {
     let userId = nextProps.profile.user.id;
     if (!users) return;
     users.some(function(array, index) {
-      if (array.user.id == userId) users.splice(index, 1);
+      if (array.id == userId) users.splice(index, 1);
     });
     this.setState({ users: users });
   }
@@ -61,7 +61,7 @@ class MultipleAnalysisSearchUser extends React.Component {
     this.props.dispatch(
       analysisModules.setUser(
         this.props.analysis.selectedUserIndex,
-        this.props.analysis.users[selectedIndex].user
+        this.props.analysis.users[selectedIndex]
       )
     );
     Actions.popTo("MultipleAnalysisCreate");

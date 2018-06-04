@@ -5,6 +5,7 @@ import { ScrollView, StyleSheet, TouchableOpacity, View } from "react-native";
 import { UserListItem } from "molecules";
 import { connect } from "react-redux";
 import { mapStateToProps } from "../../modules/mapToProps";
+import { cleanSingle } from "react-native-image-crop-picker";
 
 class UserList extends React.Component {
   constructor(props) {
@@ -22,7 +23,7 @@ class UserList extends React.Component {
     }
     const usersComponent = [];
     for (let i = 0; i < users.length; i++) {
-      if (this.props.selectedIds.indexOf(users[i].user.id) == -1) {
+      if (this.props.selectedIds.indexOf(users[i].id) == -1) {
         usersComponent.push(
           <TouchableOpacity
             onPress={() => {
@@ -32,8 +33,8 @@ class UserList extends React.Component {
           >
             <UserListItem
               key={i}
-              userName={users[i].user.name}
-              userImageSource={users[i].user.image.url}
+              userName={users[i].name}
+              userImageSource={users[i].image.url}
             />
           </TouchableOpacity>
         );

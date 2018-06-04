@@ -52,14 +52,14 @@ class GameAnalysisCreate extends React.Component {
           analysisModules.getGamesReceived
         )
       )
-      .then(json => {
-        this.setState({ games: json.games });
+      .then(games => {
+        this.setState({ games: games });
       });
   }
 
   navigationEvent(item) {
     let endpoint = gameCountEndpointGenerator({
-      game_id: item.game.id
+      game_id: item.id
     });
     this.props.dispatch(
       requestModules.getApiRequest(
@@ -79,7 +79,7 @@ class GameAnalysisCreate extends React.Component {
     for (let gameData of this.state.games.slice().reverse()) {
       if (
         gameData.left_users.length === this.state.selectedIndex + 1 &&
-        gameData.game.sport_id === this.props.profile.user.sport_id
+        gameData.sport_id === this.props.profile.user.sport_id
       )
         listData.push(gameData);
     }
@@ -142,12 +142,12 @@ class GameAnalysisCreate extends React.Component {
                 }}
                 style={styles.gameAnalysisViewButton}
               >
-                <Text style={styles.titleText}>{item.game.name}</Text>
+                <Text style={styles.titleText}>{item.name}</Text>
                 <Text style={styles.opponentText}>
                   VS {this.setOpponentUsers(item.left_users, item.right_users)}
                 </Text>
                 <Text style={styles.gameCreateTime}>
-                  {timeEncode(item.game.created_at)}
+                  {timeEncode(item.created_at)}
                 </Text>
                 <Icon
                   name={"ios-arrow-forward"}

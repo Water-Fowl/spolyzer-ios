@@ -49,7 +49,7 @@ class SportSelect extends React.Component {
         )
       )
       .then(json => {
-        this.setState({ sports: json.sports });
+        this.setState({ sports: json });
       });
   }
   setSportsSelect() {
