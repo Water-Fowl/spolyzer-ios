@@ -74,16 +74,17 @@ class GameAnalysisCreate extends React.Component {
   }
 
   setListData() {
-    let listData = [];
-    if (!this.state.games) return listData;
+    let setAggregatedScores = [];
+    let gameType = this.state.selectedIndex + 1;
+    if (!this.state.games) return setAggregatedScores;
     for (let gameData of this.state.games.slice().reverse()) {
       if (
-        gameData.left_users.length === this.state.selectedIndex + 1 &&
+        gameData.left_users.length === gameType &&
         gameData.sport_id === this.props.profile.user.sport_id
       )
-        listData.push(gameData);
+        setAggregatedScores.push(gameData);
     }
-    return listData;
+    return setAggregatedScores;
   }
 
   setOpponentUsers(left_users, right_users) {

@@ -36,7 +36,7 @@ class AnalysisView extends React.Component {
   constructor(props) {
     super(props);
     let selectedPositionsCount = utils.aggregatedMultipleCounts(
-      this.props.analysis.positionCounts,
+      this.props.analysis.scores,
       LEFT,
       IN_MIN_POSITION,
       IN_MAX_POSITION
@@ -61,7 +61,7 @@ class AnalysisView extends React.Component {
       field = IN;
     }
     let selectedPositionsCount = utils.aggregatedMultipleCounts(
-      this.props.analysis.positionCounts,
+      this.props.analysis.scores,
       side,
       min,
       max
@@ -111,7 +111,8 @@ class AnalysisView extends React.Component {
 
   _renderOpponentUserNames(users) {
     if (!users.length) {
-      let text = this.props.game_user_count - 1 ? "ダブルス" : "シングルス";
+      let isDoubles = this.props.game_user_count - 1;
+      let text = isDoubles ? "ダブルス" : "シングルス";
       return (
         <View style={styles.userNameContainer}>
           <View style={styles.userNameBox}>
