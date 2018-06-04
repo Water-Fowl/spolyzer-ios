@@ -25,10 +25,9 @@ export function getShotTypeCountsRequest() {
 }
 
 export function getShotTypeCountsReceived(json) {
-  console.log(json);
   return {
     type: GET_SHOT_TYPE_COUNTS_RECEIVED,
-    shotTypeCounts: json
+    scores: json
   };
 }
 
@@ -198,7 +197,7 @@ export function gameReducer(state = initialState, action = {}) {
     return state;
   case GET_SHOT_TYPE_COUNTS_RECEIVED:
     return Object.assign({}, state, {
-      shotTypeCounts: action.shotTypeCounts
+      scores: action.scores
     });
   case SET_USER:
     if (
@@ -243,11 +242,10 @@ export function gameReducer(state = initialState, action = {}) {
       selectedUnitIndex: action.selectedUnitIndex
     });
   case SET_SHOT_TYPE_COUNTS:
-    if (state.shotTypeCounts[action.side]) {
+    if (state.scores[action.side]) {
       return {
         ...state,
-        selectedShotTypeCounts:
-            state.shotTypeCounts[action.side][action.position]
+        selectedscores: state.scores[action.side][action.position]
       };
     } else {
       return {

@@ -64,7 +64,7 @@ export function getPositionsCountsRequest() {
 export function getPositionsCountsReceived(json) {
   return {
     type: GET_POSITIONS_COUNTS_RECEIVED,
-    positionCounts: json
+    scores: json
   };
 }
 
@@ -179,7 +179,7 @@ export function analysisReducer(state = initialState, action = {}) {
     return Object.assign({}, state, {});
   case GET_POSITIONS_COUNTS_RECEIVED:
     return Object.assign({}, state, {
-      positionCounts: action.positionCounts
+      scores: action.scores
     });
   case REMOVE_USER:
     let selectedUser = state.analysisUsers[state.selectedUserIndex];

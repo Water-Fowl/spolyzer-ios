@@ -32,7 +32,7 @@ class GameAnalysisView extends React.Component {
       shotTypeCountsList,
       missShotTypeCountsList
     } = utils.aggregatedGameCounts(
-      this.props.game.shotTypeCounts,
+      this.props.game.scores,
       this.props.sport.shotTypes,
       position_id,
       dropped_side
