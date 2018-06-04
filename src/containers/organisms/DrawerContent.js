@@ -75,28 +75,6 @@ class DrawerContent extends React.Component {
     const body = {
       sport_id: id
     };
-    // this.props
-    //   .dispatch(
-    //     requestModules.patchApiRequest(
-    //       USERS_ENDPOINT + this.props.profile.user.id,
-    //       body,
-    //       this.props.authentication.header,
-    //       profileModules.patchUserRequest,
-    //       profileModules.patchUserReceived
-    //     )
-    //   )
-    //   .then(() => {
-    //     this.props.dispatch(
-    //       requestModules.getApiRequest(
-    //         SHOT_TYPES_ENDPOINT,
-    //         (params = { sport_id: id }),
-    //         this.props.authentication.header,
-    //         sportModules.getShotTypesRequest,
-    //         sportModules.getShotTypesReceived
-    //       )
-    //     );
-    //     toastPresent(`競技を${this.sportName(id)}に変更しました`);
-    //   });
     this.props.dispatch(sportModules.setSport(id));
     this.props
       .dispatch(
