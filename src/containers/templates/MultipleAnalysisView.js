@@ -174,7 +174,7 @@ class AnalysisView extends React.Component {
           </View>
           <Field
             horizontal
-            sport={this.props.profile.user.sport_id}
+            sport={this.props.sport.id}
             callback={this.setPositionEvent}
             renderInField={this.renderInField}
             renderInButton={this._renderFieldButtonText}

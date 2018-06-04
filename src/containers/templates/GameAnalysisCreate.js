@@ -80,7 +80,7 @@ class GameAnalysisCreate extends React.Component {
     for (let gameData of this.state.games.slice().reverse()) {
       if (
         gameData.left_users.length === gameType &&
-        gameData.sport_id === this.props.profile.user.sport_id
+        gameData.sport_id === this.props.sport.id
       )
         setAggregatedScores.push(gameData);
     }

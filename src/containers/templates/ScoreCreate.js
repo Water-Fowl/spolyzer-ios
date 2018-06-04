@@ -58,11 +58,13 @@ class ScoreCreate extends React.Component {
   }
 
   setShotType(shotTypeId, isNetMiss, side, position) {
-    this.props.dispatch(gameModules.setShotType(shotTypeId, isNetMiss, side, position));
+    this.props.dispatch(
+      gameModules.setShotType(shotTypeId, isNetMiss, side, position)
+    );
   }
 
   setSoreDisplay(setScores) {
-    let scoreCounts = scoreDisplay(this.props.profile.user.sport_id, setScores);
+    let scoreCounts = scoreDisplay(this.props.sport.id, setScores);
     this.setState({ scoreCounts });
     if (scoreCounts[0] === "○" || scoreCounts[1] === "○") {
       if (!this.state.hideAlert)
@@ -108,7 +110,7 @@ class ScoreCreate extends React.Component {
       game: {
         name: this.props.gameName
       },
-      sport_id: this.props.profile.user.sport_id
+      sport_id: this.props.sport.id
     };
     this.props
       .dispatch(
@@ -236,7 +238,7 @@ class ScoreCreate extends React.Component {
         </TouchableHighlight>
         <Field
           horizontal={false}
-          sport={this.props.profile.user.sport_id}
+          sport={this.props.sport.id}
           callback={this.showModal}
           margin={36}
           fieldHeight={137}
