@@ -16,6 +16,7 @@ import { LandScapeBackground, TopContentBar } from "atoms";
 import { ShotTypeModal } from "molecules";
 import { Field } from "organisms";
 import { connect } from "react-redux";
+import * as analysisModules from "../../modules/analysis";
 import * as gameModules from "../../modules/game";
 import * as requestModules from "../../modules/request";
 
@@ -104,6 +105,17 @@ class ScoreCreate extends React.Component {
         { cancelable: false }
       );
     }
+
+    let tempScores = JSON.stringify(this.props.game.scores);
+    tempScores = JSON.parse(tempScores);
+    for (key in tempScores) {
+      tempScores[key] = {
+        shot_type_id: Number(tempScores[key].shot_type),
+        dropped_side: tempScores[key].side,
+        position_id: tempScores[key].dropped_at,
+        is_net_miss: tempScores[key].is_net_miss
+      };
+    }
     const body = {
       units: users,
       scores,
@@ -112,29 +124,10 @@ class ScoreCreate extends React.Component {
       },
       sport_id: this.props.sport.id
     };
-    this.props
-      .dispatch(
-        requestModules.postApiRequest(
-          GAMES_ENDPOINT,
-          body,
-          this.props.authentication.header,
-          gameModules.postGameRequest,
-          gameModules.postGameReceived
-        )
-      )
-      .then(json => {
-        let endpoint = gameCountEndpointGenerator({ game_id: json.id });
-        this.props.dispatch(
-          requestModules.getApiRequest(
-            (endpoint = endpoint),
-            (params = {}),
-            this.props.authentication.header,
-            gameModules.getShotTypeCountsRequest,
-            gameModules.getShotTypeCountsReceived
-          )
-        );
-        Actions.scoreView();
-      });
+    Actions.scoreView({
+      tempScores: tempScores,
+      body
+    });
   }
 
   renderUnitUsersName(users) {
