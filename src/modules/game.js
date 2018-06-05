@@ -138,6 +138,7 @@ const initialState = {
   scoreCounts: [0, 0],
   users: [],
   gameUnits: {
+    ids: [],
     left: {
       users: [],
       count: 0
@@ -145,8 +146,24 @@ const initialState = {
     right: {
       users: [],
       count: 0
+    }
+  }
+};
+
+const initialProps = {
+  scores: [],
+  scoreCounts: [0, 0],
+  users: [],
+  gameUnits: {
+    ids: [],
+    left: {
+      users: [],
+      count: 0
     },
-    ids: []
+    right: {
+      users: [],
+      count: 0
+    }
   }
 };
 
@@ -257,7 +274,9 @@ export function gameReducer(state = initialState, action = {}) {
       selectedShotTypeCounts: selectedShotTypeCounts
     });
   case RESET_STATE:
-    return initialState;
+    let newInitial = JSON.stringify(initialProps);
+    newInitial = JSON.parse(newInitial);
+    return newInitial;
   default:
     return state;
   }
