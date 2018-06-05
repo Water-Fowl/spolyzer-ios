@@ -6,7 +6,9 @@ export default class SportPicker extends React.Component {
     if (!this.props.sports) return;
     const pickerItems = [];
     for (let sport of this.props.sports) {
-      pickerItems.push(<Picker.Item label={sport.name_ja} value={sport.id} />);
+      pickerItems.push(
+        <Picker.Item label={sport.name_ja} value={sport.id} key="sport.id" />
+      );
     }
     return (
       <Picker
@@ -54,7 +56,6 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(0,0,0,0.9)"
   },
   picker: {
-    backgroundColor: "rgba(0,0,0,0.9)",
-    color: "white"
+    backgroundColor: "rgba(0,0,0,0.9)"
   }
 });

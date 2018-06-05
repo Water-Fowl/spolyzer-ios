@@ -135,7 +135,7 @@ class ProfileEdit extends React.Component {
                 <View style={styles.plateName}>
                   <TextInput
                     ref="email"
-                    style={styles.userName}
+                    style={styles.plateNameText}
                     onChangeText={userName => this.setState({ userName })}
                     defaultValue={this.props.profile.user.name}
                     placeholder="ユーザーネーム"
@@ -148,7 +148,7 @@ class ProfileEdit extends React.Component {
                 <View style={styles.plateName}>
                   <TextInput
                     ref="email"
-                    style={styles.profileTitle}
+                    style={styles.plateNameText}
                     onChangeText={userEmail => this.setState({ userEmail })}
                     defaultValue={this.props.profile.user.email}
                     placeholder="メールアドレス"
@@ -165,7 +165,7 @@ class ProfileEdit extends React.Component {
                       this.setState({ isPickerVisible: true });
                     }}
                   >
-                    <Text style={styles.sport}>
+                    <Text style={styles.plateNameText}>
                       {this.props.sport.sports[this.state.sport_id - 1].name_ja}
                     </Text>
                   </TouchableOpacity>
@@ -254,13 +254,8 @@ const styles = StyleSheet.create({
   complete: {
     alignSelf: "center"
   },
-  userName: {
-    fontSize: 23,
-    color: "white",
-    textAlign: "center"
-  },
-  sport: {
-    fontSize: 23,
+  plateNameText: {
+    fontSize: 18,
     color: "white",
     textAlign: "center"
   },
