@@ -35,7 +35,8 @@ export default class ShotTypeModal extends React.Component {
               shotTypeId,
               isNetMiss,
               this.props.side,
-              this.props.position
+              this.props.position,
+              this.props.n_sets
             );
             this.props.hideModal();
           }}
