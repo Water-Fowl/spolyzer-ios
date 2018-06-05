@@ -66,8 +66,8 @@ class GameAnalysisCreate extends React.Component {
         (endpoint = endpoint),
         (params = {}),
         this.props.authentication.header,
-        gameModules.getShotTypeCountsRequest,
-        gameModules.getShotTypeCountsReceived
+        analysisModules.getPositionsCountsRequest,
+        analysisModules.getPositionsCountsReceived
       )
     );
     Actions.GameAnalysisView({ games: item });
