@@ -2,8 +2,13 @@ import Orientation from "react-native-orientation";
 import React, { Component } from "react";
 import { Actions } from "react-native-router-flux";
 import {
-  Dimensions, Image, StyleSheet, Text,
-  TextInput, TouchableOpacity, View
+  Dimensions,
+  Image,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View
 } from "react-native";
 import { connect } from "react-redux";
 
@@ -16,7 +21,7 @@ import * as requestModules from "../../modules/request";
 import { errorAlertCallback } from "utils";
 import { REGISTRATION_ENDPOINT } from "../../config/api";
 
-function errorInstanceCallback(json){
+function errorInstanceCallback(json) {
   return new Error(json.errors.full_messages);
 }
 
@@ -35,40 +40,41 @@ class SignUp extends React.Component {
     Orientation.lockToPortrait();
   }
   postRegistrationForm() {
-
     const isEmail = emailReg.test(this.state.email);
-    if (isEmail){
+    if (isEmail) {
       const body = {
         name: this.state.name,
         email: this.state.email,
         password: this.state.password,
         password_confirmation: this.state.password_confirmation
       };
-      this.props.dispatch(requestModules.postApiRequest(
-        REGISTRATION_ENDPOINT,
-        body,
-        headers={},
-        requestCallback=authenticationModules.postRegistrationRequest,
-        receivedCallback=authenticationModules.postRegistrationReceived,
-        errorInstanceCallback=errorInstanceCallback,
-        errorCallback=errorAlertCallback,
-        returnHeader=false
-      ))
-        .then((isValid) => {if(isValid) {Actions.confirmation();}}
-        );
-    }
-    else{
-      this.setState({isErrorVisible: true});
+      this.props
+        .dispatch(
+          requestModules.postApiRequest(
+            REGISTRATION_ENDPOINT,
+            body,
+            (headers = {}),
+            (requestCallback = authenticationModules.postRegistrationRequest),
+            (receivedCallback = authenticationModules.postRegistrationReceived),
+            (errorInstanceCallback = errorInstanceCallback),
+            (errorCallback = errorAlertCallback),
+            (returnHeader = false)
+          )
+        )
+        .then(isValid => {
+          if (isValid) {
+            Actions.confirmation();
+          }
+        });
+    } else {
+      this.setState({ isErrorVisible: true });
     }
   }
   render() {
     return (
       <View style={styles.container}>
         <Background />
-        <Image
-          style={styles.logo}
-          source={require("../../assets/img/spolyzer_top.png")}
-        />
+        <Image style={styles.logo} source={{ url: "spolyzer_top.png" }} />
         <View style={styles.form}>
           <TextInput
             ref="name"
@@ -93,7 +99,7 @@ class SignUp extends React.Component {
         </View>
         <View style={styles.form}>
           <TextInput
-            ref='password'
+            ref="password"
             onChangeText={password => this.setState({ password })}
             placeholder="パスワード"
             placeholderTextColor="#666677"
@@ -105,7 +111,9 @@ class SignUp extends React.Component {
         </View>
         <View style={styles.form}>
           <TextInput
-            onChangeText={password_confirmation => this.setState({ password_confirmation })}
+            onChangeText={password_confirmation =>
+              this.setState({ password_confirmation })
+            }
             placeholder="パスワード（確認用）"
             placeholderTextColor="#666677"
             style={styles.textField}
@@ -114,22 +122,22 @@ class SignUp extends React.Component {
             secureTextEntry
           />
         </View>
-        <ErrorText isVisible={this.state.isErrorVisible}>メールアドレスを入力してください</ErrorText>
+        <ErrorText isVisible={this.state.isErrorVisible}>
+          メールアドレスを入力してください
+        </ErrorText>
         <View style={styles.registrationForm}>
-          <TouchableOpacity onPress={() => {
-            this.postRegistrationForm();
-          }}
+          <TouchableOpacity
+            onPress={() => {
+              this.postRegistrationForm();
+            }}
           >
-            <Text style={styles.registrationButtonText}>
-              登録
-            </Text>
+            <Text style={styles.registrationButtonText}>登録</Text>
           </TouchableOpacity>
         </View>
       </View>
     );
   }
 }
-
 
 export default connect()(SignUp);
 
@@ -141,7 +149,9 @@ const styles = StyleSheet.create({
   logo: {
     marginTop: 80,
     marginBottom: 80,
-    alignSelf: "center"
+    alignSelf: "center",
+    width: 209,
+    height: 64
   },
   form: {
     borderRightColor: "#28a8de",

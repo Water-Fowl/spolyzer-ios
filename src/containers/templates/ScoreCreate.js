@@ -2,13 +2,21 @@ import Orientation from "react-native-orientation";
 import React from "react";
 import { Actions } from "react-native-router-flux";
 import {
-  Alert, BackgroundImage, Dimensions, Image, StyleSheet,
-  Text, TouchableHighlight, TriangleCorner, View
+  Alert,
+  BackgroundImage,
+  Dimensions,
+  Image,
+  StyleSheet,
+  Text,
+  TouchableHighlight,
+  TriangleCorner,
+  View
 } from "react-native";
 import { LandScapeBackground, TopContentBar } from "atoms";
 import { ShotTypeModal } from "molecules";
 import { Field } from "organisms";
 import { connect } from "react-redux";
+import * as analysisModules from "../../modules/analysis";
 import * as gameModules from "../../modules/game";
 import * as requestModules from "../../modules/request";
 
@@ -17,6 +25,7 @@ import {
   SHOT_TYPE_COUNTS_ENDPOINT,
   gameCountEndpointGenerator
 } from "../../config/api";
+import { scoreDisplay } from "utils";
 import { mapStateToProps } from "../../modules/mapToProps";
 
 class ScoreCreate extends React.Component {
@@ -26,7 +35,10 @@ class ScoreCreate extends React.Component {
       height: Dimensions.get("window").width,
       width: Dimensions.get("window").height,
       scores: "",
-      modalIsVisible: false
+      scoreCounts: [0, 0],
+      modalIsVisible: false,
+      hideAlert: false,
+      n_sets: 0
     };
     this.hideModal = this.hideModal.bind(this);
     this.setShotType = this.setShotType.bind(this);
@@ -35,14 +47,8 @@ class ScoreCreate extends React.Component {
   componentDidMount() {
     Orientation.lockToLandscape();
   }
-
-  componentWillUnmount() {
-    Orientation.lockToPortrait();
-  }
   componentWillReceiveProps(nextProps) {
-    if (nextProps.scores) {
-      this.setState({ scores: nextProps.scores });
-    }
+    this.setSoreDisplay(nextProps.game.scoreCounts);
   }
 
   showModal(position, side) {
@@ -53,8 +59,42 @@ class ScoreCreate extends React.Component {
     this.setState({ modalIsVisible: false });
   }
 
-  setShotType(shotTypeId, isNetMiss, side, position) {
-    this.props.dispatch(gameModules.setShotType(shotTypeId, isNetMiss, side, position));
+  setShotType(shotTypeId, isNetMiss, side, position, n_sets) {
+    this.props.dispatch(
+      gameModules.setShotType(shotTypeId, isNetMiss, side, position, n_sets)
+    );
+  }
+
+  setSoreDisplay(setScores) {
+    let scoreCounts = scoreDisplay(this.props.sport.id, setScores);
+    this.setState({ scoreCounts });
+    if (scoreCounts[0] === "○" || scoreCounts[1] === "○") {
+      if (!this.state.hideAlert)
+        Alert.alert(
+          "試合を分析する",
+          "分析ページから保存ができます",
+          [
+            {
+              text: "キャンセル",
+              onPress: () => {
+                this.setState({ hideAlert: true });
+              },
+              style: "cancel"
+            },
+            {
+              text: "分析する",
+              onPress: () => {
+                this.setState({ hideAlert: true });
+                this.navigationEvent(
+                  this.props.game.gameUnits,
+                  this.props.game.scores
+                );
+              }
+            }
+          ],
+          { cancelable: false }
+        );
+    }
   }
 
   navigationEvent(users, scores) {
@@ -66,6 +106,17 @@ class ScoreCreate extends React.Component {
         { cancelable: false }
       );
     }
+
+    let tempScores = JSON.stringify(this.props.game.scores);
+    tempScores = JSON.parse(tempScores);
+    for (key in tempScores) {
+      tempScores[key] = {
+        shot_type_id: Number(tempScores[key].shot_type),
+        dropped_side: tempScores[key].side,
+        position_id: tempScores[key].dropped_at,
+        is_net_miss: tempScores[key].is_net_miss
+      };
+    }
     const body = {
       units: users,
       scores,
@@ -74,36 +125,19 @@ class ScoreCreate extends React.Component {
       },
       sport_id: this.props.sport.id
     };
-    this.props
-      .dispatch(
-        requestModules.postApiRequest(
-          GAMES_ENDPOINT,
-          body,
-          this.props.authentication.header,
-          gameModules.postGameRequest,
-          gameModules.postGameReceived
-        )
-      )
-      .then(json => {
-        let endpoint = gameCountEndpointGenerator({ game_id: json.game.id });
-        this.props.dispatch(
-          requestModules.getApiRequest(
-            (endpoint = endpoint),
-            (params = {}),
-            this.props.authentication.header,
-            gameModules.getShotTypeCountsRequest,
-            gameModules.getShotTypeCountsReceived
-          )
-        );
-        Actions.scoreView();
-      });
+    Actions.scoreView({
+      tempScores: tempScores,
+      body
+    });
   }
 
   renderUnitUsersName(users) {
     const unitUserNameComponentList = [];
     for (let user of users) {
       unitUserNameComponentList.push(
-        <Text style={styles.scoreInformationUserName}>{user.name}</Text>
+        <Text style={styles.scoreInformationUserName} key={user.name}>
+          {user.name}
+        </Text>
       );
     }
     return (
@@ -128,7 +162,7 @@ class ScoreCreate extends React.Component {
           onPress: () => {
             this.props.dispatch(gameModules.resetState());
             Actions.popTo("gameCreate");
-            Actions.gameCreate();
+            Orientation.lockToPortrait();
           },
           style: "destructive"
         }
@@ -153,6 +187,7 @@ class ScoreCreate extends React.Component {
           side={this.state.side}
           isVisible={this.state.modalIsVisible}
           hideModal={this.hideModal}
+          n_sets={this.state.n_sets}
           callback={this.setShotType}
         />
         <LandScapeBackground />
@@ -162,16 +197,16 @@ class ScoreCreate extends React.Component {
             {this.renderUnitUsersName(this.props.game.gameUnits.left.users)}
             <View style={styles.scoreInformationPointContainer}>
               <Text style={styles.scoreInformationPoint}>
-                {this.props.game.scoreCounts[0]}
+                {this.state.scoreCounts[0]}
               </Text>
             </View>
-            <Text style={styles.scoreInformationGamePoint}>0</Text>
+            <Text style={styles.scoreInformationGamePoint} />
           </View>
           <View style={styles.scoreInformationContainer}>
-            <Text style={styles.scoreInformationGamePoint}>0</Text>
+            <Text style={styles.scoreInformationGamePoint} />
             <View style={styles.scoreInformationPointContainer}>
               <Text style={styles.scoreInformationPoint}>
-                {this.props.game.scoreCounts[1]}
+                {this.state.scoreCounts[1]}
               </Text>
             </View>
             {this.renderUnitUsersName(this.props.game.gameUnits.right.users)}
@@ -201,6 +236,8 @@ class ScoreCreate extends React.Component {
           sport={this.props.sport.id}
           callback={this.showModal}
           margin={36}
+          fieldHeight={137}
+          fieldWidth={242}
         />
         <View style={styles.scoreInformationBackContainer}>
           <TouchableHighlight
@@ -208,7 +245,10 @@ class ScoreCreate extends React.Component {
               this.props.dispatch(gameModules.removeScore());
             }}
           >
-            <Image source={require("../../assets/img/score_create_back.png")} />
+            <Image
+              style={{ width: 79, height: 25 }}
+              source={{ url: "score_create_back.png" }}
+            />
           </TouchableHighlight>
         </View>
       </View>
@@ -314,8 +354,8 @@ const styles = StyleSheet.create({
     textAlign: "center",
     backgroundColor: "rgba(0, 0, 0, 0)",
     borderWidth: 0.5,
-    borderRadius: 4,
-    borderColor: "#2EA7E0"
+    borderRadius: 4
+    // borderColor: "#2EA7E0"
   },
   scoreInformationContainer: {
     flexDirection: "row",

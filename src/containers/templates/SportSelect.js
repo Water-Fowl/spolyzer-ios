@@ -13,7 +13,12 @@ import {
 import { connect } from "react-redux";
 import * as sportModules from "../../modules/sport";
 import * as requestModules from "../../modules/request";
-import { SHOT_TYPES_ENDPOINT, SPORTS_ENDPOINT } from "../../config/api";
+import * as profileModules from "../../modules/profile";
+import {
+  SHOT_TYPES_ENDPOINT,
+  SPORTS_ENDPOINT,
+  USERS_ENDPOINT
+} from "../../config/api";
 import { mapStateToProps } from "../../modules/mapToProps";
 
 class SportSelect extends React.Component {
@@ -44,14 +49,14 @@ class SportSelect extends React.Component {
         )
       )
       .then(json => {
-        this.setState({ sports: json.sports });
+        this.setState({ sports: json });
       });
   }
   setSportsSelect() {
     const sportsList = [];
     for (let sport of this.state.sports) {
       sportsList.push(
-        <View style={styles.button}>
+        <View style={styles.button} key={sport.id}>
           <TouchableOpacity
             onPress={() => {
               this.setSportEvent(sport.id);
@@ -65,26 +70,37 @@ class SportSelect extends React.Component {
     return <ScrollView>{sportsList}</ScrollView>;
   }
   setSportEvent(id) {
-    this.props.dispatch(sportModules.setSport(id));
-    this.props.dispatch(
-      requestModules.getApiRequest(
-        SHOT_TYPES_ENDPOINT,
-        (params = { sport_id: id }),
-        this.props.authentication.header,
-        sportModules.getShotTypesRequest,
-        sportModules.getShotTypesReceived
+    const body = {
+      sport_id: id
+    };
+    this.props
+      .dispatch(
+        requestModules.patchApiRequest(
+          USERS_ENDPOINT + this.props.profile.user.id,
+          body,
+          this.props.authentication.header,
+          profileModules.patchUserRequest,
+          profileModules.patchUserReceived
+        )
       )
-    );
-    Actions.tab();
+      .then(() => {
+        this.props.dispatch(
+          requestModules.getApiRequest(
+            SHOT_TYPES_ENDPOINT,
+            (params = { sport_id: id }),
+            this.props.authentication.header,
+            sportModules.getShotTypesRequest,
+            sportModules.getShotTypesReceived
+          )
+        );
+        Actions.tab();
+      });
   }
   render() {
     return (
       <View style={styles.container}>
         <Background />
-        <Image
-          style={styles.logo}
-          source={require("../../assets/img/spolyzer_top.png")}
-        />
+        <Image style={styles.logo} source={{ url: "spolyzer_top.png" }} />
         <View style={styles.formContainer}>
           <Text style={styles.titleText}>主に行う競技を選んでください</Text>
           <Text style={styles.subText}>※後から変更することもできます</Text>
@@ -122,7 +138,9 @@ const styles = StyleSheet.create({
   logo: {
     marginTop: 80,
     marginBottom: 80,
-    alignSelf: "center"
+    alignSelf: "center",
+    width: 209,
+    height: 64
   },
   buttonText: {
     color: "#28a8de",

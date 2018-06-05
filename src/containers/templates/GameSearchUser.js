@@ -15,7 +15,7 @@ class GameSearchUser extends React.Component {
     super(props);
     this.state = {
       name: "",
-      users: this.props.game.users
+      users: ""
     };
     this.searchUserEvent.bind(this);
     this.setUser = this.setUser.bind(this);
@@ -47,7 +47,7 @@ class GameSearchUser extends React.Component {
   }
   setUser(selectedSearchUserIndex) {
     this.props.dispatch(
-      gameModules.setUser(this.props.game.users[selectedSearchUserIndex].user)
+      gameModules.setUser(this.props.game.users[selectedSearchUserIndex])
     );
     Actions.popTo("gameCreate");
   }
@@ -86,13 +86,6 @@ class GameSearchUser extends React.Component {
           users={this.state.users}
           selectedIds={this.props.game.gameUnits.ids}
         />
-        <NavigateButton
-          action={() => {
-            Actions.popTo("gameCreate");
-          }}
-          style={styles.navigateButton}
-          text="選択"
-        />
       </View>
     );
   }
@@ -124,9 +117,5 @@ const styles = StyleSheet.create({
     color: "#ffffff",
     paddingLeft: 20,
     letterSpacing: 0
-  },
-  navigateButton: {
-    alignSelf: "center",
-    marginTop: 11
   }
 });

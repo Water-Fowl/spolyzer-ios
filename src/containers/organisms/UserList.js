@@ -1,42 +1,48 @@
 import React from "react";
 import { Actions } from "react-native-router-flux";
-import {
-  ScrollView, StyleSheet, TouchableOpacity, View
-} from "react-native";
+import { ScrollView, StyleSheet, TouchableOpacity, View } from "react-native";
 
 import { UserListItem } from "molecules";
 import { connect } from "react-redux";
 import { mapStateToProps } from "../../modules/mapToProps";
+import { cleanSingle } from "react-native-image-crop-picker";
 
-class UserList extends React.Component{
-  constructor(props){
+class UserList extends React.Component {
+  constructor(props) {
     super(props);
   }
-  componentWillReceiveProps(nextProps){
-    if (nextProps.users){
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.users) {
       this.forceUpdate();
     }
   }
-  render(){
+  render() {
     const { users } = this.props;
-    if(!users){
+    if (!users) {
       return null;
     }
     const usersComponent = [];
     for (let i = 0; i < users.length; i++) {
-      if(this.props.selectedIds.indexOf(users[i].user.id) == -1){
+      if (this.props.selectedIds.indexOf(users[i].id) == -1) {
         usersComponent.push(
-          <TouchableOpacity onPress={() => {this.props.callback(i);}}>
-            <UserListItem key={i} userName={users[i].user.name} />
+          <TouchableOpacity
+            onPress={() => {
+              this.props.callback(i);
+            }}
+            key={i}
+          >
+            <UserListItem
+              key={i}
+              userName={users[i].name}
+              userImageSource={users[i].image.url}
+            />
           </TouchableOpacity>
         );
       }
     }
-    return(
+    return (
       <View style={styles.container}>
-        <ScrollView style={styles.scrollContainer}>
-          { usersComponent }
-        </ScrollView>
+        <ScrollView style={styles.scrollContainer}>{usersComponent}</ScrollView>
       </View>
     );
   }
@@ -44,7 +50,7 @@ class UserList extends React.Component{
 
 export default connect(mapStateToProps)(UserList);
 
-const styles=StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
     alignSelf: "center",
     backgroundColor: "transparent",

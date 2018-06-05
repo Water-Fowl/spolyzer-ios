@@ -2,10 +2,19 @@ import React from "react";
 import templateEnhancer from "./hoc";
 import { ActionConst, Actions } from "react-native-router-flux";
 import {
-  Image, ScrollView, StyleSheet, Text, TouchableOpacity, TouchableHighlight, View
+  Image,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  TouchableHighlight,
+  View
 } from "react-native";
 import {
-  VictoryAxis, VictoryBar, VictoryChart, VictoryTheme
+  VictoryAxis,
+  VictoryBar,
+  VictoryChart,
+  VictoryTheme
 } from "victory-native";
 import { connect } from "react-redux";
 
@@ -26,8 +35,8 @@ const RIGHT = 1;
 class AnalysisView extends React.Component {
   constructor(props) {
     super(props);
-    let selectedPositionsCount = utils.aggregatedMultipleAnalysis(
-      this.props.analysis.positionCounts,
+    let selectedPositionsCount = utils.aggregatedMultipleCounts(
+      this.props.analysis.scores,
       LEFT,
       IN_MIN_POSITION,
       IN_MAX_POSITION
@@ -51,8 +60,8 @@ class AnalysisView extends React.Component {
       max = IN_MAX_POSITION;
       field = IN;
     }
-    let selectedPositionsCount = utils.aggregatedMultipleAnalysis(
-      this.props.analysis.positionCounts,
+    let selectedPositionsCount = utils.aggregatedMultipleCounts(
+      this.props.analysis.scores,
       side,
       min,
       max
@@ -63,6 +72,7 @@ class AnalysisView extends React.Component {
       onPressSide: side
     });
   }
+
   _renderFieldButtonText(position, side) {
     /* positionは1から始まるが、indexは0からなので、1を引く */
     if (position < 7) {
@@ -79,6 +89,7 @@ class AnalysisView extends React.Component {
       return <View />;
     }
   }
+
   renderInField() {
     return (
       <View>
@@ -100,8 +111,8 @@ class AnalysisView extends React.Component {
 
   _renderOpponentUserNames(users) {
     if (!users.length) {
-      let text =
-        this.props.game_user_count - 1 ? "ダブルス" : "シングルス";
+      let isDoubles = this.props.game_user_count - 1;
+      let text = isDoubles ? "ダブルス" : "シングルス";
       return (
         <View style={styles.userNameContainer}>
           <View style={styles.userNameBox}>
@@ -137,13 +148,18 @@ class AnalysisView extends React.Component {
     return "-";
   }
 
+  setCreatedAfter() {
+    return this.props.created_after === "2018/1/1"
+      ? ""
+      : this.props.created_after;
+  }
   render() {
     return (
       <View style={styles.container}>
         <TopContentBar>複合分析結果</TopContentBar>
         <ScrollView>
           <Text style={styles.termText}>
-            {this.props.created_after}~{this.props.created_before}
+            {this.setCreatedAfter()}~{this.props.created_before}
           </Text>
           <View>
             {this._renderOpponentUserNames(this.props.analysis.analysisUsers)}
@@ -247,8 +263,9 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     flex: 0.45,
     backgroundColor: "#FAEE00",
-    opacity: 0.3,
-    height: 170
+    opacity: 0.4,
+    height: 170,
+    zIndex: 999
   },
   blankContainer: {
     width: 320,
@@ -278,7 +295,7 @@ const styles = StyleSheet.create({
   inArea: {
     flex: 0.35,
     alignSelf: "center",
-    backgroundColor: "rgba(46, 167, 224, 0.8)",
+    backgroundColor: "rgba(46, 167, 224, 0.5)",
     height: 120,
     marginTop: 25,
     marginBottom: 25

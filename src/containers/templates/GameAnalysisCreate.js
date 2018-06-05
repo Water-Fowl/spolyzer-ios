@@ -29,7 +29,8 @@ class GameAnalysisCreate extends React.Component {
     this.state = {
       isPickerVisible: false,
       selectedIndex: 0,
-      games: []
+      games: [],
+      listLength: 0
     };
     this.getUsersGamesEvent();
   }
@@ -51,35 +52,41 @@ class GameAnalysisCreate extends React.Component {
           analysisModules.getGamesReceived
         )
       )
-      .then(json => {
-        this.setState({ games: json.games });
+      .then(games => {
+        this.setState({ games: games });
       });
   }
 
   navigationEvent(item) {
     let endpoint = gameCountEndpointGenerator({
-      game_id: item.game.id
+      game_id: item.id
     });
     this.props.dispatch(
       requestModules.getApiRequest(
         (endpoint = endpoint),
         (params = {}),
         this.props.authentication.header,
-        gameModules.getShotTypeCountsRequest,
-        gameModules.getShotTypeCountsReceived
+        analysisModules.getPositionsCountsRequest,
+        analysisModules.getPositionsCountsReceived
       )
     );
     Actions.GameAnalysisView({ games: item });
   }
 
   setListData() {
-    let listData = [];
-    if (!this.state.games) return listData;
+    let setAggregatedScores = [];
+    let gameType = this.state.selectedIndex + 1;
+    if (!this.state.games) return setAggregatedScores;
     for (let gameData of this.state.games.slice().reverse()) {
-      if (gameData.left_users.length === this.state.selectedIndex + 1 && gameData.game.sport_id===this.props.sport.id)
-        listData.push(gameData);
+      if (
+        gameData.left_users.length === gameType &&
+        gameData.sport_id === this.props.sport.id
+      )
+        setAggregatedScores.push(gameData);
     }
-    return listData;
+    if (setAggregatedScores.length !== this.state.listLength)
+      this.setState({ listLength: setAggregatedScores.length });
+    return setAggregatedScores;
   }
 
   setOpponentUsers(left_users, right_users) {
@@ -89,10 +96,10 @@ class GameAnalysisCreate extends React.Component {
       opponentUsers.left.push(left_users[index].name);
       opponentUsers.right.push(right_users[index].name);
 
-      if (left_users[index].name === this.props.profile.userName)
+      if (left_users[index].name === this.props.profile.user.name)
         opponentUsers.side = 0;
 
-      if (right_users[index].name === this.props.profile.userName)
+      if (right_users[index].name === this.props.profile.user.name)
         opponentUsers.side = 1;
     }
     return opponentUsers.side
@@ -118,9 +125,17 @@ class GameAnalysisCreate extends React.Component {
             style={{ width: 222, alignSelf: "center" }}
           />
         </View>
+        {(() => {
+          if (!this.state.listLength)
+            return (
+              <View style={styles.listConteiner}>
+                <Text style={styles.noDataText}>データがありません</Text>
+              </View>
+            );
+        })()}
         <FlatList
           data={this.setListData()}
-          renderItem={({ item }) => (
+          renderItem={({ item, index }) => (
             <View style={styles.listConteiner}>
               <TouchableOpacity
                 onPress={() => {
@@ -128,12 +143,12 @@ class GameAnalysisCreate extends React.Component {
                 }}
                 style={styles.gameAnalysisViewButton}
               >
-                <Text style={styles.titleText}>{item.game.name}</Text>
+                <Text style={styles.titleText}>{item.name}</Text>
                 <Text style={styles.opponentText}>
                   VS {this.setOpponentUsers(item.left_users, item.right_users)}
                 </Text>
                 <Text style={styles.gameCreateTime}>
-                  {timeEncode(item.game.created_at)}
+                  {timeEncode(item.created_at)}
                 </Text>
                 <Icon
                   name={"ios-arrow-forward"}
@@ -144,6 +159,7 @@ class GameAnalysisCreate extends React.Component {
               </TouchableOpacity>
             </View>
           )}
+          keyExtractor={(item, index) => index}
           style={styles.flatListConteiner}
         />
       </View>
@@ -167,14 +183,20 @@ const styles = StyleSheet.create({
   listConteiner: {
     paddingLeft: 30,
     paddingBottom: 4,
-    paddingTop: 6,
-    // borderBottomColor: "#2ea7e0",
+    paddingTop: 6, // borderBottomColor: "#2ea7e0",
     borderRadius: 4,
     borderWidth: 1,
     borderTopColor: "#2ea7e0"
   },
   gameAnalysisViewButton: {
     justifyContent: "center"
+  },
+  noDataText: {
+    alignSelf: "center",
+    color: "white",
+    fontSize: 20,
+    paddingTop: 10,
+    paddingRight: 30
   },
   titleText: {
     color: "white",

@@ -6,7 +6,8 @@ import {
   TextInput,
   View,
   TouchableOpacity,
-  ScrollView
+  ScrollView,
+  AsyncStorage
 } from "react-native";
 import { Actions } from "react-native-router-flux";
 import { connect } from "react-redux";
@@ -16,7 +17,12 @@ import { toastPresent } from "utils";
 import { ProfileImage } from "atoms";
 import * as sportModules from "../../modules/sport";
 import * as requestModules from "../../modules/request";
-import { SHOT_TYPES_ENDPOINT, SPORTS_ENDPOINT } from "../../config/api";
+import * as profileModules from "../../modules/profile";
+import {
+  SHOT_TYPES_ENDPOINT,
+  SPORTS_ENDPOINT,
+  USERS_ENDPOINT
+} from "../../config/api";
 
 class DrawerContent extends React.Component {
   constructor(props) {
@@ -27,10 +33,27 @@ class DrawerContent extends React.Component {
     this.getSportsEvent.bind(this);
     this.getSportsEvent();
   }
+
+  componentDidMount() {
+    this.props.dispatch(
+      requestModules.getApiRequest(
+        (endpoint = SHOT_TYPES_ENDPOINT),
+        (params = { sport_id: this.props.profile.user.sport_id }),
+        this.props.authentication.header,
+        (requestCallback = sportModules.getShotTypesRequest),
+        (receivedCallback = sportModules.getShotTypesReceived)
+      )
+    );
+    this.props.dispatch(
+      sportModules.setSport(this.props.profile.user.sport_id)
+    );
+  }
+
   sportName(id) {
-    if (!this.state.sports.length) return;
+    if (!this.state.sports.length || id === null) return;
     return this.state.sports[id - 1].name_ja;
   }
+
   getSportsEvent() {
     this.props
       .dispatch(
@@ -43,11 +66,15 @@ class DrawerContent extends React.Component {
         )
       )
       .then(json => {
-        this.setState({ sports: json.sports });
+        this.setState({ sports: json });
       });
   }
+
   switchSport(id = "") {
     if (!id) return;
+    const body = {
+      sport_id: id
+    };
     this.props.dispatch(sportModules.setSport(id));
     this.props
       .dispatch(
@@ -61,10 +88,11 @@ class DrawerContent extends React.Component {
       )
       .then(() => {
         toastPresent(
-          `競技を${this.sportName(this.props.sport.id)}に変更しました`
+          `競技を${this.sportName(id)}に変更しました`
         );
       });
   }
+
   setSportsList() {
     const sportsList = [];
     for (let sport of this.state.sports) {
@@ -75,6 +103,7 @@ class DrawerContent extends React.Component {
               this.switchSport(sport.id);
             }}
             style={styles.sportsContainer}
+            key={sport.id}
           >
             <Text style={styles.sportName}>{sport.name_ja}</Text>
           </TouchableOpacity>
@@ -83,6 +112,7 @@ class DrawerContent extends React.Component {
     }
     return <ScrollView style={styles.scrollContainer}>{sportsList}</ScrollView>;
   }
+
   render() {
     return (
       <View style={styles.drawerContainer}>
@@ -92,9 +122,9 @@ class DrawerContent extends React.Component {
         >
           <ProfileImage
             size={40}
-            imageSource={this.props.profile.userImageSource}
+            imageSource={this.props.profile.user.image.url}
           />
-          <Text style={styles.userName}>{this.props.profile.userName}</Text>
+          <Text style={styles.userName}>{this.props.profile.user.name}</Text>
         </TouchableOpacity>
         <View style={styles.sportContainer}>
           <View style={styles.kyugiContainer}>
@@ -111,18 +141,27 @@ class DrawerContent extends React.Component {
           </View>
           {this.setSportsList()}
         </View>
-        <View style={styles.logoutContainer}>
-          <Image
-            source={require("../../assets/img/logout.png")}
-            style={styles.logoutImage}
-          />
+        <View style={styles.endContainer}>
+          <Image source={{ url: "book_icon.png" }} style={styles.endImage} />
           <TouchableOpacity
             onPress={() => {
-              Actions.login();
-              this.props.dispatch(resetToken());
+              Actions.usage({ sport_id: this.props.sport.id });
             }}
           >
-            <Text style={styles.logoutText}>ログアウト</Text>
+            <Text style={styles.endText}>使い方</Text>
+          </TouchableOpacity>
+        </View>
+        <View style={styles.endContainer}>
+          <Image source={{ url: "logout.png" }} style={styles.endImage} />
+          <TouchableOpacity
+            onPress={() => {
+              AsyncStorage.removeItem("header", () => {
+                Actions.login();
+                this.props.dispatch(resetToken());
+              });
+            }}
+          >
+            <Text style={styles.endText}>ログアウト</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -194,18 +233,18 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 18
   },
-  logoutContainer: {
+  endContainer: {
     borderBottomColor: "#2EA7E0",
     borderWidth: 1,
     flexDirection: "row"
   },
-  logoutImage: {
+  endImage: {
     width: 20,
     height: 23,
     marginTop: 18,
     marginLeft: 10
   },
-  logoutText: {
+  endText: {
     marginTop: 20,
     marginLeft: 6,
     color: "white",

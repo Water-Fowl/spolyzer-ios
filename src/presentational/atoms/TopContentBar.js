@@ -12,7 +12,7 @@ export default class TopContentBar extends React.Component {
       <View style={styles.topContentBarContainer}>
         <Image
           style={styles.topContentBarImg}
-          source={require("../../assets/img/top_content_bar.png")}
+          source={{ url: "top_content_bar.png" }}
         />
         <Text style={styles.topContentBarText}>{this.props.children}</Text>
       </View>
@@ -32,7 +32,9 @@ const styles = StyleSheet.create({
   },
   topContentBarImg: {
     alignSelf: "center",
-    position: "absolute"
+    position: "absolute",
+    width:158,
+    height:32
   },
   topContentBarContainer: {
     backgroundColor: "transparent"

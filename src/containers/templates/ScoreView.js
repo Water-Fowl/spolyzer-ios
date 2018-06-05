@@ -1,8 +1,14 @@
-import Orientation from "react-native-orientation";
 import React from "react";
 import templateEnhancer from "./hoc";
 import { ActionConst, Actions } from "react-native-router-flux";
-import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import {
+  Image,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View
+} from "react-native";
 import { connect } from "react-redux";
 
 import { TopContentBar } from "atoms";
@@ -12,6 +18,10 @@ import { Field, Graph } from "organisms";
 import * as utils from "../../utils";
 import { mapStateToProps } from "../../modules/mapToProps";
 import * as gameModules from "../../modules/game";
+import * as requestModules from "../../modules/request";
+import {
+  GAMES_ENDPOINT
+} from "../../config/api";
 
 class ScoreView extends React.Component {
   constructor(props) {
@@ -20,24 +30,21 @@ class ScoreView extends React.Component {
     this.state = {
       data: [],
       missData: [],
-      shotTypeList: [],
-      lockToLandscape: true
+      shotTypeList: []
     };
   }
-  componentWillUnmount() {
-    if (this.state.lockToLandscape) Orientation.lockToLandscape();
-  }
 
-  setShotTypeCounts(position, side, isNetMiss) {
-    let selectedShotTypeCounts = this.props.game.shotTypeCounts[side] || {};
+  setShotTypeCounts(position_id, dropped_side, is_net_miss) {
     const {
       shotTypeCountsList,
-      missShotTypeCountsList,
-      shotTypesList
-    } = utils.aggregatedGameAnalysis(
-      selectedShotTypeCounts[position],
-      this.props.sport.shotTypes
+      missShotTypeCountsList
+    } = utils.aggregatedGameCounts(
+      this.props.tempScores,
+      this.props.sport.shotTypes,
+      position_id,
+      dropped_side
     );
+
     this.setState({
       data: shotTypeCountsList,
       missData: missShotTypeCountsList
@@ -100,11 +107,21 @@ class ScoreView extends React.Component {
         <View style={styles.backButtonContainer}>
           <TouchableOpacity
             onPress={() => {
-              this.setState({
-                lockToLandscape: false
-              });
-              this.props.dispatch(gameModules.resetState());
-              Actions.popTo("gameCreate");
+              this.props
+                .dispatch(
+                  requestModules.postApiRequest(
+                    GAMES_ENDPOINT,
+                    this.props.body,
+                    this.props.authentication.header,
+                    gameModules.postGameRequest,
+                    gameModules.postGameReceived
+                  )
+                )
+                .then(() => {
+                  this.props.dispatch(gameModules.resetState());
+                  utils.toastPresent("保存しました");
+                  Actions.popTo("gameCreate");
+                });
             }}
           >
             <Text style={styles.backButtonText}>保存して終了</Text>

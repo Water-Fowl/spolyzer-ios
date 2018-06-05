@@ -1,3 +1,5 @@
+import { cleanSingle } from "react-native-image-crop-picker";
+
 const initialState = {};
 
 const GET_SHOT_TYPES_RECEIVED = "GET_SHOT_TYPES_RECEIVED";
@@ -12,7 +14,7 @@ export function getShotTypesRequest() {
   };
 }
 export function getShotTypesReceived(json) {
-  const shotTypes = json.shot_types;
+  const shotTypes = json;
   let reshapedShotTypes = {};
   for (shotType of shotTypes) {
     reshapedShotTypes[shotType.id] = shotType.name_ja;
@@ -32,7 +34,7 @@ export function getSportsRequest() {
 export function getSportsReceived(json) {
   return {
     type: GET_SPORTS_RECEIVED,
-    json
+    sports: json
   };
 }
 
@@ -55,7 +57,10 @@ export function sportReducer(state = initialState, action = {}) {
   case GET_SPORTS_REQUEST:
     return state;
   case GET_SPORTS_RECEIVED:
-    return state;
+    return {
+      ...state,
+      sports: action.sports
+    };
   case SET_SPORT:
     return {
       ...state,

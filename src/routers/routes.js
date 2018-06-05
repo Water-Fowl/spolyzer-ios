@@ -8,7 +8,15 @@ import {
   AsyncStorage
 } from "react-native";
 import { connect } from "react-redux";
-import { Router, Scene, Tabs, Drawer } from "react-native-router-flux";
+import {
+  Router,
+  Scene,
+  Tabs,
+  Drawer,
+  ActionConst,
+  Actions
+} from "react-native-router-flux";
+import Orientation from "react-native-orientation";
 import {
   AnalysisCreate,
   GameAnalysisCreate,
@@ -27,10 +35,11 @@ import {
   Confirmation,
   ForgetPass,
   ForgetPassDone,
-  SportSelect
+  SportSelect,
+  Usage
 } from "../containers";
 import { DrawerContent } from "organisms";
-import { GameIcon, AnalysisIcon } from "atoms";
+import { GameIcon, AnalysisIcon, HamburgerIcon } from "molecules";
 import {
   getShotTypesReceived,
   getShotTypesRequest,
@@ -52,7 +61,10 @@ const RouterWithRedux = connect()(Router);
 const AppLogo = () => {
   return (
     <View>
-      <Image source={require("../assets/img/spolyzer_header.png")} />
+      <Image
+        style={{ width: 117, height: 36 }}
+        source={{ url: "spolyzer_header.png" }}
+      />
     </View>
   );
 };
@@ -118,12 +130,10 @@ class Route extends React.Component {
             (receivedCallback = getUserReceived)
           )
         );
-        await this.props.dispatch(setSport(1));
-
         await this.props.dispatch(
           getApiRequest(
             (endpoint = SHOT_TYPES_ENDPOINT),
-            (params = { sport_id: 1 }),
+            (params = { sport_id: this.props.profile.user.sport_id }),
             (headers = header),
             (requestCallback = getShotTypesRequest),
             (receivedCallback = getShotTypesReceived)
@@ -154,7 +164,7 @@ class Route extends React.Component {
             return <AppLogo />;
           }}
           navigationBarStyle={styles.navBarStyle}
-          backButtonImage={require("../assets/img/left_arrow.png")}
+          backButtonImage={{ url: "left_arrow.png" }}
           gesturesEnabled={false}
         >
           <Scene
@@ -180,8 +190,8 @@ class Route extends React.Component {
           />
           <Drawer
             key="drawer"
-            drawerImage={require("../assets/img/hamburger.png")} // デフォルトのハンバーガーメニューを差し替える
-            // drawerIcon={() => (<Icon/>)} // デフォルトのハンバーガーメニューを差し替える
+            // drawerImage={{ url: "hamburger.png" }} // デフォルトのハンバーガーメニューを差し替える
+            drawerIcon={() => <HamburgerIcon />} // デフォルトのハンバーガーメニューを差し替える
             hideNavBar
             drawerWidth={280}
             contentComponent={DrawerContent}
@@ -189,8 +199,6 @@ class Route extends React.Component {
             drawerCloseRoute="DrawerClose"
             drawerToggleRoute="DrawerToggle"
             initial={this.state.isValidToken}
-            name={this.props.userName}
-            imageSource={this.props.userImageSource}
             gesturesEnabled={false}
           >
             <Scene
@@ -198,6 +206,14 @@ class Route extends React.Component {
               component={ProfileEdit}
               title="マイデータ編集"
               hideDrawerButton
+            />
+            <Scene
+              key="usage"
+              component={Usage}
+              title="使い方"
+              hideDrawerButton
+              drawerLockMode="locked-closed"
+              back
             />
             <Tabs
               initial
@@ -211,7 +227,7 @@ class Route extends React.Component {
                 key="Score"
                 initial
                 tabBarLabel="スコアシート"
-                icon={() => <GameIcon size={50} />}
+                icon={() => <GameIcon />}
               >
                 <Scene
                   key="gameCreate"
@@ -242,13 +258,17 @@ class Route extends React.Component {
                   title="結果"
                   hideDrawerButton
                   drawerLockMode="locked-closed"
+                  onBack={() => {
+                    Actions.popTo("scoreCreate");
+                    Orientation.lockToLandscape();
+                  }}
                   back
                 />
               </Scene>
               <Scene
                 key="Analysis"
                 tabBarLabel="分析"
-                icon={() => <AnalysisIcon size={50} />}
+                icon={() => <AnalysisIcon />}
               >
                 <Scene
                   key="analysisCreate"
@@ -308,8 +328,7 @@ function mapStateToProps(state, props) {
     header: state.authentication.header || {},
     isValidToken: state.authentication.isValidToken,
     errorMsg: state.authentication.errorMsg,
-    userName: state.profile.userName,
-    userImageSource: state.profile.userImageSource
+    profile: state.profile
   };
 }
 

@@ -15,10 +15,7 @@ export function getUserRequest() {
 export function getUserReceived(json) {
   return {
     type: GET_USER_RECEIVED,
-    userName: json.user.name,
-    userImageSource: json.user.image.url,
-    userEmail: json.user.email,
-    user: json.user
+    user: json
   };
 }
 
@@ -31,9 +28,7 @@ export function patchUserRequest() {
 export function patchUserReceived(json) {
   return {
     type: RECEIVED_POST_USER_UPDATE,
-    userName: json.user.name,
-    userEmail: json.user.email,
-    userImageSource: json.user.image.url
+    user: json
   };
 }
 
@@ -52,18 +47,13 @@ export function profileReducer(state = initialState, action = {}) {
     return state;
   case GET_USER_RECEIVED:
     return Object.assign({}, state, {
-      userName: action.userName,
-      userEmail: action.userEmail,
-      userImageSource: action.userImageSource,
-      user:action.user
+      user: action.user
     });
   case REQUEST_POST_USER_UPDATE:
     return Object.assign({}, state, {});
   case RECEIVED_POST_USER_UPDATE:
     return Object.assign({}, state, {
-      userName: action.userName,
-      userEmail: action.userEmail,
-      userImageSource: action.userImageSource
+      user: action.user
     });
   default:
     return state;

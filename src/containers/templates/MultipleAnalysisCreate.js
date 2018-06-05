@@ -7,10 +7,15 @@ import { listToQueryParams } from "utils";
 import { SegmentedControl } from "react-native-ios-kit";
 
 import {
-  ShotTypeButtonList, OutcomeButtonList, DatePickerButtonList
+  ShotTypeButtonList,
+  OutcomeButtonList,
+  DatePickerButtonList
 } from "organisms";
 import {
-  SelectedUserName, NavigateButton, TopContentBar, TextBox
+  SelectedUserName,
+  NavigateButton,
+  TopContentBar,
+  TextBox
 } from "atoms";
 import * as analysisModules from "../../modules/analysis";
 import * as requestModules from "../../modules/request";
@@ -65,21 +70,23 @@ class AnalysisCreate extends React.Component {
     if (this.checkValidate()) return;
     let created_after = this.state.created_after || "2018/1/1";
     let created_before = this.state.created_before || getNowYMD();
-    let endpoint = analysisEndpointGenerator({shot_type_id: this.props.analysis.shotTypeId});
+    let endpoint = analysisEndpointGenerator({
+      shot_type_id: this.props.analysis.shotTypeId
+    });
     let params = {
       created_after: created_after + " 0:00:00",
       created_before: created_before + " 23:59:59",
       outcome: this.props.analysis.outcome,
       game_user_count: this.state.game_user_count
     };
-    if (this.props.analysis.analysisUsersIds.length > 0){
+    if (this.props.analysis.analysisUsersIds.length > 0) {
       params["opponent_users_ids"] = this.props.analysis.analysisUsersIds;
     }
     this.props
       .dispatch(
         requestModules.getApiRequest(
           (endpoint = endpoint),
-          params = params,
+          (params = params),
           this.props.authentication.header,
           analysisModules.getPositionsCountsRequest,
           analysisModules.getPositionsCountsReceived
@@ -113,7 +120,7 @@ class AnalysisCreate extends React.Component {
     return this.state.created_after;
   }
   setMaxDate() {
-    return this.state.created_before;
+    return this.state.created_before || this.state.chosenDate;
   }
   render() {
     return (
