@@ -35,8 +35,8 @@ const RIGHT = 1;
 class AnalysisView extends React.Component {
   constructor(props) {
     super(props);
-    let selectedPositionsCount = utils.aggregatedMultipleAnalysis(
-      this.props.analysis.positionCounts,
+    let selectedPositionsCount = utils.aggregatedMultipleCounts(
+      this.props.analysis.scores,
       LEFT,
       IN_MIN_POSITION,
       IN_MAX_POSITION
@@ -60,8 +60,8 @@ class AnalysisView extends React.Component {
       max = IN_MAX_POSITION;
       field = IN;
     }
-    let selectedPositionsCount = utils.aggregatedMultipleAnalysis(
-      this.props.analysis.positionCounts,
+    let selectedPositionsCount = utils.aggregatedMultipleCounts(
+      this.props.analysis.scores,
       side,
       min,
       max
@@ -72,6 +72,7 @@ class AnalysisView extends React.Component {
       onPressSide: side
     });
   }
+
   _renderFieldButtonText(position, side) {
     /* positionは1から始まるが、indexは0からなので、1を引く */
     if (position < 7) {
@@ -88,6 +89,7 @@ class AnalysisView extends React.Component {
       return <View />;
     }
   }
+
   renderInField() {
     return (
       <View>
@@ -109,7 +111,8 @@ class AnalysisView extends React.Component {
 
   _renderOpponentUserNames(users) {
     if (!users.length) {
-      let text = this.props.game_user_count - 1 ? "ダブルス" : "シングルス";
+      let isDoubles = this.props.game_user_count - 1;
+      let text = isDoubles ? "ダブルス" : "シングルス";
       return (
         <View style={styles.userNameContainer}>
           <View style={styles.userNameBox}>
@@ -171,7 +174,7 @@ class AnalysisView extends React.Component {
           </View>
           <Field
             horizontal
-            sport={this.props.profile.user.sport_id}
+            sport={this.props.sport.id}
             callback={this.setPositionEvent}
             renderInField={this.renderInField}
             renderInButton={this._renderFieldButtonText}

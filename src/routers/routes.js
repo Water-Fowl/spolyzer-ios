@@ -130,6 +130,15 @@ class Route extends React.Component {
             (receivedCallback = getUserReceived)
           )
         );
+        await this.props.dispatch(
+          getApiRequest(
+            (endpoint = SHOT_TYPES_ENDPOINT),
+            (params = { sport_id: this.props.profile.user.sport_id }),
+            (headers = header),
+            (requestCallback = getShotTypesRequest),
+            (receivedCallback = getShotTypesReceived)
+          )
+        );
       }
 
       this.setState({

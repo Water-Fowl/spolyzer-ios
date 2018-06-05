@@ -24,7 +24,7 @@ class ShotTypeButtonList extends React.Component {
   }
 
   setFontSize() {
-    if (this.props.profile.user.sport_id == 2) return 12;
+    if (this.props.sport.id == 2) return 12;
   }
 
   componentWillReceiveProps(nextProps) {

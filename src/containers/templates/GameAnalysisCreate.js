@@ -52,40 +52,41 @@ class GameAnalysisCreate extends React.Component {
           analysisModules.getGamesReceived
         )
       )
-      .then(json => {
-        this.setState({ games: json.games });
+      .then(games => {
+        this.setState({ games: games });
       });
   }
 
   navigationEvent(item) {
     let endpoint = gameCountEndpointGenerator({
-      game_id: item.game.id
+      game_id: item.id
     });
     this.props.dispatch(
       requestModules.getApiRequest(
         (endpoint = endpoint),
         (params = {}),
         this.props.authentication.header,
-        gameModules.getShotTypeCountsRequest,
-        gameModules.getShotTypeCountsReceived
+        analysisModules.getPositionsCountsRequest,
+        analysisModules.getPositionsCountsReceived
       )
     );
     Actions.GameAnalysisView({ games: item });
   }
 
   setListData() {
-    let listData = [];
-    if (!this.state.games) return listData;
+    let setAggregatedScores = [];
+    let gameType = this.state.selectedIndex + 1;
+    if (!this.state.games) return setAggregatedScores;
     for (let gameData of this.state.games.slice().reverse()) {
       if (
-        gameData.left_users.length === this.state.selectedIndex + 1 &&
-        gameData.game.sport_id === this.props.profile.user.sport_id
+        gameData.left_users.length === gameType &&
+        gameData.sport_id === this.props.sport.id
       )
-        listData.push(gameData);
+        setAggregatedScores.push(gameData);
     }
-    if (listData.length !== this.state.listLength)
-      this.setState({ listLength: listData.length });
-    return listData;
+    if (setAggregatedScores.length !== this.state.listLength)
+      this.setState({ listLength: setAggregatedScores.length });
+    return setAggregatedScores;
   }
 
   setOpponentUsers(left_users, right_users) {
@@ -142,12 +143,12 @@ class GameAnalysisCreate extends React.Component {
                 }}
                 style={styles.gameAnalysisViewButton}
               >
-                <Text style={styles.titleText}>{item.game.name}</Text>
+                <Text style={styles.titleText}>{item.name}</Text>
                 <Text style={styles.opponentText}>
                   VS {this.setOpponentUsers(item.left_users, item.right_users)}
                 </Text>
                 <Text style={styles.gameCreateTime}>
-                  {timeEncode(item.game.created_at)}
+                  {timeEncode(item.created_at)}
                 </Text>
                 <Icon
                   name={"ios-arrow-forward"}

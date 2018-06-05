@@ -31,8 +31,10 @@ class DrawerContent extends React.Component {
       sports: []
     };
     this.getSportsEvent.bind(this);
+    this.getSportsEvent();
   }
-  componentWillMount() {
+
+  componentDidMount() {
     this.props.dispatch(
       requestModules.getApiRequest(
         (endpoint = SHOT_TYPES_ENDPOINT),
@@ -42,12 +44,16 @@ class DrawerContent extends React.Component {
         (receivedCallback = sportModules.getShotTypesReceived)
       )
     );
-    this.getSportsEvent();
+    this.props.dispatch(
+      sportModules.setSport(this.props.profile.user.sport_id)
+    );
   }
+
   sportName(id) {
     if (!this.state.sports.length || id === null) return;
     return this.state.sports[id - 1].name_ja;
   }
+
   getSportsEvent() {
     this.props
       .dispatch(
@@ -60,41 +66,37 @@ class DrawerContent extends React.Component {
         )
       )
       .then(json => {
-        this.setState({ sports: json.sports });
+        this.setState({ sports: json });
       });
   }
+
   switchSport(id = "") {
     if (!id) return;
     const body = {
       sport_id: id
     };
+    this.props.dispatch(sportModules.setSport(id));
     this.props
       .dispatch(
-        requestModules.patchApiRequest(
-          USERS_ENDPOINT + this.props.profile.user.id,
-          body,
+        requestModules.getApiRequest(
+          SHOT_TYPES_ENDPOINT,
+          (params = { sport_id: id }),
           this.props.authentication.header,
-          profileModules.patchUserRequest,
-          profileModules.patchUserReceived
+          sportModules.getShotTypesRequest,
+          sportModules.getShotTypesReceived
         )
       )
       .then(() => {
-        this.props.dispatch(
-          requestModules.getApiRequest(
-            SHOT_TYPES_ENDPOINT,
-            (params = { sport_id: id }),
-            this.props.authentication.header,
-            sportModules.getShotTypesRequest,
-            sportModules.getShotTypesReceived
-          )
+        toastPresent(
+          `競技を${this.sportName(id)}に変更しました`
         );
-        toastPresent(`競技を${this.sportName(id)}に変更しました`);
       });
   }
+
   setSportsList() {
     const sportsList = [];
     for (let sport of this.state.sports) {
-      if (this.props.profile.user.sport_id !== sport.id) {
+      if (this.props.sport.id !== sport.id) {
         sportsList.push(
           <TouchableOpacity
             onPress={() => {
@@ -110,6 +112,7 @@ class DrawerContent extends React.Component {
     }
     return <ScrollView style={styles.scrollContainer}>{sportsList}</ScrollView>;
   }
+
   render() {
     return (
       <View style={styles.drawerContainer}>
@@ -130,7 +133,7 @@ class DrawerContent extends React.Component {
           </View>
           <View style={styles.sportsContainer}>
             <Text style={styles.sportName}>
-              {this.sportName(this.props.profile.user.sport_id)}
+              {this.sportName(this.props.sport.id)}
             </Text>
           </View>
           <View style={styles.kyugiContainer}>
@@ -142,7 +145,7 @@ class DrawerContent extends React.Component {
           <Image source={{ url: "book_icon.png" }} style={styles.endImage} />
           <TouchableOpacity
             onPress={() => {
-              Actions.usage({sport_id:this.props.profile.user.sport_id});
+              Actions.usage({ sport_id: this.props.sport.id });
             }}
           >
             <Text style={styles.endText}>使い方</Text>

@@ -16,6 +16,7 @@ import { LandScapeBackground, TopContentBar } from "atoms";
 import { ShotTypeModal } from "molecules";
 import { Field } from "organisms";
 import { connect } from "react-redux";
+import * as analysisModules from "../../modules/analysis";
 import * as gameModules from "../../modules/game";
 import * as requestModules from "../../modules/request";
 
@@ -58,11 +59,13 @@ class ScoreCreate extends React.Component {
   }
 
   setShotType(shotTypeId, isNetMiss, side, position) {
-    this.props.dispatch(gameModules.setShotType(shotTypeId, isNetMiss, side, position));
+    this.props.dispatch(
+      gameModules.setShotType(shotTypeId, isNetMiss, side, position)
+    );
   }
 
   setSoreDisplay(setScores) {
-    let scoreCounts = scoreDisplay(this.props.profile.user.sport_id, setScores);
+    let scoreCounts = scoreDisplay(this.props.sport.id, setScores);
     this.setState({ scoreCounts });
     if (scoreCounts[0] === "○" || scoreCounts[1] === "○") {
       if (!this.state.hideAlert)
@@ -102,37 +105,29 @@ class ScoreCreate extends React.Component {
         { cancelable: false }
       );
     }
+
+    let tempScores = JSON.stringify(this.props.game.scores);
+    tempScores = JSON.parse(tempScores);
+    for (key in tempScores) {
+      tempScores[key] = {
+        shot_type_id: Number(tempScores[key].shot_type),
+        dropped_side: tempScores[key].side,
+        position_id: tempScores[key].dropped_at,
+        is_net_miss: tempScores[key].is_net_miss
+      };
+    }
     const body = {
       units: users,
       scores,
       game: {
         name: this.props.gameName
       },
-      sport_id: this.props.profile.user.sport_id
+      sport_id: this.props.sport.id
     };
-    this.props
-      .dispatch(
-        requestModules.postApiRequest(
-          GAMES_ENDPOINT,
-          body,
-          this.props.authentication.header,
-          gameModules.postGameRequest,
-          gameModules.postGameReceived
-        )
-      )
-      .then(json => {
-        let endpoint = gameCountEndpointGenerator({ game_id: json.game.id });
-        this.props.dispatch(
-          requestModules.getApiRequest(
-            (endpoint = endpoint),
-            (params = {}),
-            this.props.authentication.header,
-            gameModules.getShotTypeCountsRequest,
-            gameModules.getShotTypeCountsReceived
-          )
-        );
-        Actions.scoreView();
-      });
+    Actions.scoreView({
+      tempScores: tempScores,
+      body
+    });
   }
 
   renderUnitUsersName(users) {
@@ -236,7 +231,7 @@ class ScoreCreate extends React.Component {
         </TouchableHighlight>
         <Field
           horizontal={false}
-          sport={this.props.profile.user.sport_id}
+          sport={this.props.sport.id}
           callback={this.showModal}
           margin={36}
           fieldHeight={137}

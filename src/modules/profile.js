@@ -15,7 +15,7 @@ export function getUserRequest() {
 export function getUserReceived(json) {
   return {
     type: GET_USER_RECEIVED,
-    user: json.user
+    user: json
   };
 }
 
@@ -28,7 +28,7 @@ export function patchUserRequest() {
 export function patchUserReceived(json) {
   return {
     type: RECEIVED_POST_USER_UPDATE,
-    user: json.user
+    user: json
   };
 }
 

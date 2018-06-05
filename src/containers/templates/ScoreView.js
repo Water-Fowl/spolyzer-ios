@@ -18,6 +18,10 @@ import { Field, Graph } from "organisms";
 import * as utils from "../../utils";
 import { mapStateToProps } from "../../modules/mapToProps";
 import * as gameModules from "../../modules/game";
+import * as requestModules from "../../modules/request";
+import {
+  GAMES_ENDPOINT
+} from "../../config/api";
 
 class ScoreView extends React.Component {
   constructor(props) {
@@ -30,16 +34,17 @@ class ScoreView extends React.Component {
     };
   }
 
-  setShotTypeCounts(position, side, isNetMiss) {
-    let selectedShotTypeCounts = this.props.game.shotTypeCounts[side] || {};
+  setShotTypeCounts(position_id, dropped_side, is_net_miss) {
     const {
       shotTypeCountsList,
-      missShotTypeCountsList,
-      shotTypesList
-    } = utils.aggregatedGameAnalysis(
-      selectedShotTypeCounts[position],
-      this.props.sport.shotTypes
+      missShotTypeCountsList
+    } = utils.aggregatedGameCounts(
+      this.props.tempScores,
+      this.props.sport.shotTypes,
+      position_id,
+      dropped_side
     );
+
     this.setState({
       data: shotTypeCountsList,
       missData: missShotTypeCountsList
@@ -90,7 +95,7 @@ class ScoreView extends React.Component {
           </View>
           <Field
             horizontal
-            sport={this.props.profile.user.sport_id}
+            sport={this.props.sport.id}
             callback={this.setShotTypeCounts}
           />
           <Graph
@@ -102,9 +107,21 @@ class ScoreView extends React.Component {
         <View style={styles.backButtonContainer}>
           <TouchableOpacity
             onPress={() => {
-              this.props.dispatch(gameModules.resetState());
-              utils.toastPresent("保存しました");
-              Actions.popTo("gameCreate");
+              this.props
+                .dispatch(
+                  requestModules.postApiRequest(
+                    GAMES_ENDPOINT,
+                    this.props.body,
+                    this.props.authentication.header,
+                    gameModules.postGameRequest,
+                    gameModules.postGameReceived
+                  )
+                )
+                .then(() => {
+                  this.props.dispatch(gameModules.resetState());
+                  utils.toastPresent("保存しました");
+                  Actions.popTo("gameCreate");
+                });
             }}
           >
             <Text style={styles.backButtonText}>保存して終了</Text>

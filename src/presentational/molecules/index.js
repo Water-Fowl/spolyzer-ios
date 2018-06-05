@@ -9,6 +9,7 @@ import AnalysisIcon from "./icons/AnalysisIcon";
 import GameIcon from "./icons/GameIcon";
 import HamburgerIcon from "./icons/HamburgerIcon";
 import MultipleAnalysisIcon from "./icons/MultipleAnalysisIcon";
+import SportPicker from "./SportPicker";
 
 export {
   UserListItem,
@@ -18,5 +19,6 @@ export {
   AnalysisIcon,
   GameIcon,
   HamburgerIcon,
-  MultipleAnalysisIcon
+  MultipleAnalysisIcon,
+  SportPicker
 };

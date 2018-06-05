@@ -47,7 +47,7 @@ class GameSearchUser extends React.Component {
   }
   setUser(selectedSearchUserIndex) {
     this.props.dispatch(
-      gameModules.setUser(this.props.game.users[selectedSearchUserIndex].user)
+      gameModules.setUser(this.props.game.users[selectedSearchUserIndex])
     );
     Actions.popTo("gameCreate");
   }

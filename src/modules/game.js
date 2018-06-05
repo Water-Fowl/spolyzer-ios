@@ -27,7 +27,7 @@ export function getShotTypeCountsRequest() {
 export function getShotTypeCountsReceived(json) {
   return {
     type: GET_SHOT_TYPE_COUNTS_RECEIVED,
-    shotTypeCounts: json.counts
+    scores: json
   };
 }
 
@@ -52,14 +52,14 @@ export function postGameRequest() {
 export function postGameReceived(json) {
   return {
     type: POST_GAME_RECIEVED,
-    gameId: json.game.id
+    game: json
   };
 }
 
 export function getSearchUserReceived(json) {
   return {
     type: GET_SEARCH_USER_RECEIVED,
-    users: json.users
+    users: json
   };
 }
 
@@ -84,10 +84,9 @@ export function setShotTypeCounts(position, side) {
 
 export function setShotType(shotType, isNetMiss, side, position) {
   let unit_side;
-  if (!isNetMiss){
+  if (!isNetMiss) {
     unit_side = side == 1 ? 0 : 1;
-  }
-  else {
+  } else {
     unit_side = side;
   }
 
@@ -139,6 +138,7 @@ const initialState = {
   scoreCounts: [0, 0],
   users: [],
   gameUnits: {
+    ids: [],
     left: {
       users: [],
       count: 0
@@ -146,8 +146,24 @@ const initialState = {
     right: {
       users: [],
       count: 0
+    }
+  }
+};
+
+const initialProps = {
+  scores: [],
+  scoreCounts: [0, 0],
+  users: [],
+  gameUnits: {
+    ids: [],
+    left: {
+      users: [],
+      count: 0
     },
-    ids: []
+    right: {
+      users: [],
+      count: 0
+    }
   }
 };
 
@@ -186,7 +202,7 @@ export function gameReducer(state = initialState, action = {}) {
     return state;
   case POST_GAME_RECIEVED:
     return Object.assign({}, state, {
-      gameId: action.gameId
+      game: action.game
     });
   case GET_SEARCH_USER_REQUEST:
     return Object.assign({}, state, {});
@@ -198,7 +214,7 @@ export function gameReducer(state = initialState, action = {}) {
     return state;
   case GET_SHOT_TYPE_COUNTS_RECEIVED:
     return Object.assign({}, state, {
-      shotTypeCounts: action.shotTypeCounts
+      scores: action.scores
     });
   case SET_USER:
     if (
@@ -243,11 +259,10 @@ export function gameReducer(state = initialState, action = {}) {
       selectedUnitIndex: action.selectedUnitIndex
     });
   case SET_SHOT_TYPE_COUNTS:
-    if (state.shotTypeCounts[action.side]) {
+    if (state.scores[action.side]) {
       return {
         ...state,
-        selectedShotTypeCounts:
-            state.shotTypeCounts[action.side][action.position]
+        selectedscores: state.scores[action.side][action.position]
       };
     } else {
       return {
@@ -259,7 +274,9 @@ export function gameReducer(state = initialState, action = {}) {
       selectedShotTypeCounts: selectedShotTypeCounts
     });
   case RESET_STATE:
-    return initialState;
+    let newInitial = JSON.stringify(initialProps);
+    newInitial = JSON.parse(newInitial);
+    return newInitial;
   default:
     return state;
   }
