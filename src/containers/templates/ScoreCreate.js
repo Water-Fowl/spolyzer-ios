@@ -122,7 +122,8 @@ class ScoreCreate extends React.Component {
       game: {
         name: this.props.gameName
       },
-      sport_id: this.props.sport.id
+      sport_id: this.props.sport.id,
+      n_sets: 0
     };
     Actions.scoreView({
       tempScores: tempScores,
