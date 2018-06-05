@@ -145,7 +145,7 @@ class ProfileEdit extends React.Component {
                 </View>
               </View>
               <View style={styles.frameName}>
-                <View style={[styles.plateName, styles.paddingleft20]}>
+                <View style={styles.plateName}>
                   <TextInput
                     ref="email"
                     style={styles.profileTitle}
@@ -243,7 +243,8 @@ const styles = StyleSheet.create({
   profileTitle: {
     color: "white",
     fontWeight: "bold",
-    marginTop: 10
+    marginTop: 10,
+    textAlign: "center"
   },
   profileUnderline: {
     borderWidth: 0.5,
@@ -265,8 +266,5 @@ const styles = StyleSheet.create({
   },
   marginTop30: {
     marginTop: 30
-  },
-  paddingleft20: {
-    paddingLeft: 20
   }
 });
