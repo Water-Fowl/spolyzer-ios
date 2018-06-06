@@ -11,7 +11,8 @@ import {
   TouchableHighlight,
   TouchableOpacity,
   View,
-  TextInput
+  TextInput,
+  ScrollView
 } from "react-native";
 import { connect } from "react-redux";
 
@@ -28,6 +29,7 @@ import { mapStateToProps } from "../../modules/mapToProps";
 import * as gameModules from "../../modules/game";
 
 class GameCreate extends React.Component {
+  test;
   constructor(props) {
     super(props);
     this.state = {
@@ -55,8 +57,10 @@ class GameCreate extends React.Component {
 
   renderSelectedUserIcon(user) {
     return (
-      <View style={styles.alignItemsCenter}>
-        <ProfileImage size={80} imageSource={user.image.url} />
+      <View>
+        <View style={styles.SelectedContainer}>
+          <ProfileImage size={70} imageSource={user.image.url} />
+        </View>
         <Text style={styles.nameText}> {user.name} </Text>
       </View>
     );
@@ -116,51 +120,54 @@ class GameCreate extends React.Component {
     return (
       <View style={styles.container}>
         <TopContentBar>試合設定</TopContentBar>
-        <View style={styles.alignItemsCenter}>
-          <View style={styles.gameSettingBorder}>
-            <View style={styles.gameSettingTable}>
-              <Text style={styles.scoreGameCreateOpponents}>対戦相手選択</Text>
-              <View style={styles.gameSettingTableInner}>
-                <View style={styles.gameSettingTableInnerLeft}>
-                  {this.renderUserIcon("left", 0)}
-                  {this.renderUserIcon("left", 1)}
-                </View>
-                <View style={styles.gameSettingTableInnerCenter}>
-                  <Image
-                    source={{ url: "game_create_vs.png" }}
-                    style={styles.vsPosition}
-                  />
-                </View>
-                <View style={styles.gameSettingInnerRight}>
-                  {this.renderUserIcon("right", 0)}
-                  {this.renderUserIcon("right", 1)}
+        <ScrollView>
+          <View style={styles.alignItemsCenter}>
+            <View style={styles.form}>
+              <TextInput
+                onChangeText={gameName => {
+                  this.setState({ gameName });
+                }}
+                value={this.state.gameName}
+                placeholder="試合タイトルを入力"
+                placeholderTextColor="#666677"
+                style={styles.textField}
+                keyboardType="email-address"
+                returnKeyType="done"
+                maxLength={120}
+              />
+            </View>
+            <View style={styles.gameSettingBorder}>
+              <View style={styles.gameSettingTable}>
+                <Text style={styles.scoreGameCreateOpponents}>
+                  対戦相手選択
+                </Text>
+                <View style={styles.gameSettingTableInner}>
+                  <View style={styles.gameSettingTableInnerLeft}>
+                    {this.renderUserIcon("left", 0)}
+                    {this.renderUserIcon("left", 1)}
+                  </View>
+                  <View style={styles.gameSettingTableInnerCenter}>
+                    <Image
+                      source={{ url: "game_create_vs.png" }}
+                      style={styles.vsPosition}
+                    />
+                  </View>
+                  <View style={styles.gameSettingInnerRight}>
+                    {this.renderUserIcon("right", 0)}
+                    {this.renderUserIcon("right", 1)}
+                  </View>
                 </View>
               </View>
             </View>
-          </View>
-          <Text style={styles.gameNameText}>試合タイトル</Text>
-          <View style={styles.form}>
-            <TextInput
-              onChangeText={gameName => {
-                this.setState({ gameName });
+            <NavigateButton
+              action={() => {
+                this.navigateScoreCreate();
               }}
-              value={this.state.gameName}
-              placeholder="試合タイトルを入力"
-              placeholderTextColor="#666677"
-              style={styles.textField}
-              keyboardType="email-address"
-              returnKeyType="done"
-              maxLength={120}
+              style={styles.buttonStyle}
+              text="試合開始"
             />
           </View>
-          <NavigateButton
-            action={() => {
-              this.navigateScoreCreate();
-            }}
-            style={styles.buttonStyle}
-            text="試合開始"
-          />
-        </View>
+        </ScrollView>
       </View>
     );
   }
@@ -169,70 +176,67 @@ export default connect(mapStateToProps)(templateEnhancer(GameCreate));
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
+    flexDirection: "column",
+    justifyContent: "space-between"
   },
   alignItemsCenter: {
-    alignItems: "center"
+    flex: 1,
+    alignItems: "center",
+    marginTop: 12,
+    marginBottom: 30,
+    justifyContent: "center"
   },
   gameSettingBorder: {
     padding: 5,
     backgroundColor: "rgba(0, 0, 0, 0)",
     borderWidth: 2.5,
-    marginTop: 30,
     borderColor: "rgb(20, 35, 70)"
   },
   gameSettingTable: {
-    width: 320,
-    height: 270,
-    backgroundColor: "rgb(20, 35, 70)",
-    justifyContent: "center",
-    opacity: 0.7
+    flexDirection: "row",
+    width: "95%",
+    backgroundColor: "rgb(20, 35, 70)"
   },
   gameSettingTableInner: {
     flexDirection: "row",
     justifyContent: "center",
     alignSelf: "center",
     alignItems: "center",
-    width: 280,
-    height: "auto",
-    marginBottom: 10
-  },
-  gameSettingTableInnerLeft: {
-    flex: 1,
-    width: 70,
-    height: 220,
-    justifyContent: "center",
-    alignItems: "center"
+    width: "100%",
+    padding: 5
   },
   gameSettingTableInnerCenter: {
-    flex: 1,
-    width: 30,
-    height: 220,
-    alignItems: "center"
+    padding: 25
   },
   scoreGameCreateOpponents: {
-    padding: 0,
-    marginTop: 10,
-    marginLeft: 20,
-    fontSize: 16,
+    paddingTop: 6,
+    fontSize: 13,
     fontWeight: "bold",
-    color: "white"
-  },
-  buttonStyle: {
-    marginTop: 20
+    color: "white",
+    backgroundColor: "transparent",
+    width: "100%",
+    textAlign: "center",
+    position: "absolute"
   },
   vsPosition: {
     height: 27,
-    width: 35,
-    marginTop: 100
+    width: 35
   },
   noSelectedContainer: {
     borderColor: "rgba(46, 167, 224, 0.4)",
     backgroundColor: "rgba(46, 167, 224, 0.4)",
-    height: 75,
-    width: 75,
+    height: 70,
+    width: 70,
     borderWidth: 2,
     borderRadius: 100,
+    alignSelf: "center",
+    margin: 7,
+    justifyContent: "center"
+  },
+  SelectedContainer: {
+    height: 70,
+    width: 70,
     alignSelf: "center",
     margin: 7,
     justifyContent: "center"
@@ -241,49 +245,36 @@ const styles = StyleSheet.create({
     backgroundColor: "transparent",
     color: "white",
     alignSelf: "center",
-    textAlign: "center"
+    textAlign: "center",
+    fontSize: 10
   },
   nameText: {
     paddingTop: 2,
     paddingBottom: 2,
-    fontSize: 12,
+    fontSize: 11,
     color: "white",
-    marginTop: 10,
+    marginTop: 2,
     textAlign: "center",
     borderColor: "#2EA7E0",
     width: 100,
-    borderWidth: 1.5,
+    borderWidth: 1,
     borderRadius: 5,
     alignSelf: "center"
   },
-  gameNameText: {
-    fontWeight: "bold",
-    color: "white",
-    fontSize: 14,
-    alignSelf: "flex-start",
-    marginTop: 16,
-    backgroundColor: "transparent",
-    paddingLeft: 48
-  },
   form: {
-    borderRightColor: "#28a8de",
-    borderTopColor: "#28a8de",
-    borderLeftColor: "#28a8de",
-    borderBottomColor: "#28a8de",
-    height: 42,
     width: "85%",
-    borderWidth: 1,
     alignSelf: "center",
-    justifyContent: "center",
-    borderRadius: 5,
-    marginTop: 12,
     marginBottom: 12
   },
+  buttonStyle: { bottom: 0, margin: 15 },
   textField: {
-    fontSize: 14,
+    fontSize: 16,
     fontWeight: "bold",
     color: "#ffffff",
-    paddingLeft: 20,
+    borderBottomColor: "#28a8de",
+    borderWidth: 0.5,
+    justifyContent: "center",
+    textAlign: "center",
     letterSpacing: 0
   }
 });
