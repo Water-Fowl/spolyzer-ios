@@ -10,7 +10,8 @@ import {
   Text,
   TextInput,
   TouchableOpacity,
-  View
+  View,
+  ScrollView
 } from "react-native";
 import { NavigateButton, TopContentBar, ProfileImage } from "atoms";
 import { SportPicker } from "molecules";
@@ -111,78 +112,68 @@ class ProfileEdit extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <TopContentBar>
-          <Text style={styles.topBar}>マイデータ編集</Text>
-        </TopContentBar>
-        <View style={styles.mostOut}>
-          <View style={styles.rowDirecition}>
-            <View style={styles.leftSide}>
-              <TouchableOpacity onPress={this._selectPhotoTapped}>
-                <ProfileImage
-                  size={80}
-                  imageSource={this.state.userImageSource}
+        <View style={styles.contentContainer}>
+          <TopContentBar>
+            <Text style={styles.topBar}>マイデータ編集</Text>
+          </TopContentBar>
+          <TouchableOpacity
+            onPress={this._selectPhotoTapped}
+            style={styles.photo}
+          >
+            <ProfileImage size={80} imageSource={this.state.userImageSource} />
+          </TouchableOpacity>
+          <ScrollView style={{ height: 210 }}>
+            <Text style={styles.profileTitle}>ユーザーネーム</Text>
+            <View style={styles.frameName}>
+              <View style={styles.plateName}>
+                <TextInput
+                  ref="email"
+                  style={styles.plateNameText}
+                  onChangeText={userName => this.setState({ userName })}
+                  defaultValue={this.props.profile.user.name}
+                  placeholder="ユーザーネーム"
+                  keyboardType="email-address"
+                  returnKeyType="done"
                 />
-              </TouchableOpacity>
-              <View style={styles.marginTop30}>
-                <Text style={styles.profileTitle}>メールアドレス</Text>
-              </View>
-              <View style={styles.marginTop30}>
-                <Text style={styles.profileTitle}>競技</Text>
               </View>
             </View>
-            <View style={styles.rightSide}>
-              <View style={styles.frameName}>
-                <View style={styles.plateName}>
-                  <TextInput
-                    ref="email"
-                    style={styles.plateNameText}
-                    onChangeText={userName => this.setState({ userName })}
-                    defaultValue={this.props.profile.user.name}
-                    placeholder="ユーザーネーム"
-                    keyboardType="email-address"
-                    returnKeyType="done"
-                  />
-                </View>
-              </View>
-              <View style={styles.frameName}>
-                <View style={styles.plateName}>
-                  <TextInput
-                    ref="email"
-                    style={styles.plateNameText}
-                    onChangeText={userEmail => this.setState({ userEmail })}
-                    defaultValue={this.props.profile.user.email}
-                    placeholder="メールアドレス"
-                    keyboardType="email-address"
-                    returnKeyType="done"
-                  />
-                  <View style={styles.profileUnderline} />
-                </View>
-              </View>
-              <View style={styles.frameName}>
-                <View style={styles.plateName}>
-                  <TouchableOpacity
-                    onPress={() => {
-                      this.setState({ isPickerVisible: true });
-                    }}
-                  >
-                    <Text style={styles.plateNameText}>
-                      {this.props.sport.sports[this.state.sport_id - 1].name_ja}
-                    </Text>
-                  </TouchableOpacity>
-                </View>
+            <Text style={styles.profileTitle}>メールアドレス</Text>
+            <View style={styles.frameName}>
+              <View style={styles.plateName}>
+                <TextInput
+                  ref="email"
+                  style={styles.plateNameText}
+                  onChangeText={userEmail => this.setState({ userEmail })}
+                  defaultValue={this.props.profile.user.email}
+                  placeholder="メールアドレス"
+                  keyboardType="email-address"
+                  returnKeyType="done"
+                />
               </View>
             </View>
-          </View>
+            <Text style={styles.profileTitle}>競技</Text>
+            <View style={styles.frameName}>
+              <View style={styles.plateName}>
+                <TouchableOpacity
+                  onPress={() => {
+                    this.setState({ isPickerVisible: true });
+                  }}
+                >
+                  <Text style={styles.plateNameText}>
+                    {this.props.sport.sports[this.state.sport_id - 1].name_ja}
+                  </Text>
+                </TouchableOpacity>
+              </View>
+            </View>
+          </ScrollView>
         </View>
-        <View style={styles.container}>
-          <NavigateButton
-            action={() => {
-              this.completeButtonEvent();
-            }}
-            style={styles.complete}
-            text="完了"
-          />
-        </View>
+        <NavigateButton
+          action={() => {
+            this.completeButtonEvent();
+          }}
+          style={styles.complete}
+          text="完了"
+        />
         <SportPicker
           _hidePicker={this._hidePicker}
           isVisible={this.state.isPickerVisible}
@@ -201,65 +192,55 @@ export default connect(mapStateToProps)(templateEnhancer(ProfileEdit));
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
+    alignItems: "center"
   },
-  mostOut: {
-    flex: 5,
-    paddingTop: 40
+  contentContainer: {
+    flex: 1,
+    justifyContent: "flex-start",
+    flexDirection: "column",
+    position: "absolute"
   },
-  rowDirecition: {
-    flexDirection: "row"
-  },
-  leftSide: {
-    flex: 3,
+  photo: {
     alignItems: "center",
-    backgroundColor: "transparent"
-  },
-  rightSide: {
-    flex: 7,
-    alignItems: "center",
-    paddingTop: 30
+    margin: 15
   },
   topBar: {
     fontSize: 16
   },
   frameName: {
     borderColor: "#0a2444",
-    height: 40,
+    height: 35,
     width: 230,
     borderWidth: 2,
     borderRadius: 4,
     alignItems: "center",
     justifyContent: "center",
-    marginBottom: 30
+    marginBottom: 15
   },
   plateName: {
     backgroundColor: "#0a2444",
-    height: 30,
+    height: 25,
     width: 220,
-    opacity: 0.7,
+    opacity: 1,
     justifyContent: "center"
   },
   profileTitle: {
     color: "white",
     fontWeight: "bold",
-    marginTop: 10,
-    textAlign: "center"
+    backgroundColor: "transparent",
+    fontSize: 12,
+    paddingBottom: 5
   },
-  profileUnderline: {
-    borderWidth: 0.5,
-    borderColor: "#4780c6",
-    marginRight: 20
-  },
+
   complete: {
+    bottom: 60,
+    position: "absolute",
     alignSelf: "center"
   },
   plateNameText: {
-    fontSize: 18,
+    fontSize: 16,
     color: "white",
     textAlign: "center"
-  },
-  marginTop30: {
-    marginTop: 30
   }
 });
