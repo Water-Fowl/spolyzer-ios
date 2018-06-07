@@ -18,7 +18,7 @@ import {
 } from "victory-native";
 import { connect } from "react-redux";
 
-import { Graph, Field } from "organisms";
+import { Graph, AnalysisField } from "organisms";
 import { ProfileImage, TopContentBar } from "atoms";
 import { mapStateToProps } from "../../modules/mapToProps";
 import * as utils from "../../utils";
@@ -172,7 +172,7 @@ class AnalysisView extends React.Component {
               {this.props.sport.shotTypes[this.props.analysis.shotTypeId]}
             </Text>
           </View>
-          <Field
+          <AnalysisField
             horizontal
             sport={this.props.sport.id}
             callback={this.setPositionEvent}

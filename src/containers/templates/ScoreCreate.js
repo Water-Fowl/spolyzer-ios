@@ -14,7 +14,7 @@ import {
 } from "react-native";
 import { LandScapeBackground, TopContentBar } from "atoms";
 import { ShotTypeModal } from "molecules";
-import { Field } from "organisms";
+import { ScoreField } from "organisms";
 import { connect } from "react-redux";
 import * as analysisModules from "../../modules/analysis";
 import * as gameModules from "../../modules/game";
@@ -233,7 +233,7 @@ class ScoreCreate extends React.Component {
         >
           <Text style={styles.analysisNavigateText}>分析</Text>
         </TouchableHighlight>
-        <Field
+        <ScoreField
           horizontal={false}
           sport={this.props.sport.id}
           callback={this.showModal}

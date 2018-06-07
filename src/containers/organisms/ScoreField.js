@@ -12,7 +12,7 @@ import {
 const { height, width } = Dimensions.get("window");
 const aspectRatio = height / width;
 
-export default class Field extends React.Component {
+export default class ScoreField extends React.Component {
   renderInField() {
     if (this.props.renderInField) {
       return this.props.renderInField();

@@ -13,15 +13,13 @@ import { connect } from "react-redux";
 
 import { TopContentBar } from "atoms";
 import { PlayersDisplay } from "molecules";
-import { Field, Graph } from "organisms";
+import { AnalysisField, Graph } from "organisms";
 
 import * as utils from "../../utils";
 import { mapStateToProps } from "../../modules/mapToProps";
 import * as gameModules from "../../modules/game";
 import * as requestModules from "../../modules/request";
-import {
-  GAMES_ENDPOINT
-} from "../../config/api";
+import { GAMES_ENDPOINT } from "../../config/api";
 
 class ScoreView extends React.Component {
   constructor(props) {
@@ -93,7 +91,7 @@ class ScoreView extends React.Component {
               {this.renderWinLossText((side = 1))}
             </View>
           </View>
-          <Field
+          <AnalysisField
             horizontal
             sport={this.props.sport.id}
             callback={this.setShotTypeCounts}

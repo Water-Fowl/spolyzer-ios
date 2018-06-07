@@ -2,7 +2,8 @@
  * @providesModule organisms
  */
 import UserList from "./UserList";
-import Field from "./Field";
+import ScoreField from "./ScoreField";
+import AnalysisField from "./AnalysisField";
 import Graph from "./Graph";
 import TermButtonList from "./TermButtonList";
 import GameTypeButtonList from "./GameTypeButtonList";
@@ -12,7 +13,8 @@ import OutcomeButtonList from "./OutcomeButtonList";
 import DatePickerButtonList from "./DatePickerButtonList";
 export {
   UserList,
-  Field,
+  ScoreField,
+  AnalysisField,
   Graph,
   TermButtonList,
   GameTypeButtonList,
