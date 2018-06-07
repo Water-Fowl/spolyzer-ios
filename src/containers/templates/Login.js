@@ -132,11 +132,11 @@ class Login extends React.Component {
                 <Text style={styles.buttonText}>ログイン</Text>
               </TouchableOpacity>
             </View>
-            <TouchableOpacity onPress={Actions.ForgetPass}>
+            {/* <TouchableOpacity onPress={Actions.ForgetPass}>
               <Text style={styles.forgetPasswordText}>
                 パスワードをお忘れの方
               </Text>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
             <View style={styles.button}>
               <TouchableOpacity onPress={Actions.signUp}>
                 <Text style={styles.buttonText}>新規登録(無料)</Text>
@@ -217,16 +217,15 @@ const styles = StyleSheet.create({
     marginBottom: 16,
     backgroundColor: "transparent"
   },
-
-  forgetPasswordText: {
-    color: "#28a8de",
-    textDecorationLine: "underline",
-    textDecorationColor: "#28a8de",
-    marginBottom: 35,
-    marginTop: 8,
-    fontSize: 16,
-    backgroundColor: "transparent"
-  },
+  // forgetPasswordText: {
+  //   color: "#28a8de",
+  //   textDecorationLine: "underline",
+  //   textDecorationColor: "#28a8de",
+  //   marginBottom: 35,
+  //   marginTop: 8,
+  //   fontSize: 16,
+  //   backgroundColor: "transparent"
+  // },
   buttonText: {
     color: "#28a8de",
     textAlign: "center",
