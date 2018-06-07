@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Image, StyleSheet } from "react-native";
+import { View, Image, StyleSheet, Dimensions } from "react-native";
 
 import {
   InFieldLength,
@@ -8,6 +8,9 @@ import {
   OutFieldSide,
   OutFieldLength
 } from "atoms";
+
+const { height, width } = Dimensions.get("window");
+const aspectRatio = height / width;
 
 export default class Field extends React.Component {
   renderInField() {
@@ -26,13 +29,9 @@ export default class Field extends React.Component {
     return (
       <View
         style={{
-          alignSelf: "center",
           justifyContent: "center",
-          flex: 1,
-          marginBottom: 5,
-          height: 170 * sizeMagnification,
-          width: 300 * sizeMagnification,
-          marginTop: this.props.margin || 26
+          height: height, //170 * sizeMagnification,
+          width: width //300 * sizeMagnification,
         }}
       >
         {this.renderInField()}
@@ -40,15 +39,15 @@ export default class Field extends React.Component {
           style={{
             position: "absolute",
             alignSelf: "center",
-            height: (this.props.fieldHeight || 145) * sizeMagnification,
-            width: (this.props.fieldWidth || 256) * sizeMagnification,
+            height: height * 0.7, //170 * sizeMagnification,
+            width: width * 0.7, //300 * sizeMagnification,
             backfaceVisibility: "hidden",
             resizeMode: "contain"
           }}
           source={{ url: fieldType[this.props.sport] }}
         />
         <View style={styles.overContainer}>
-          <View style={styles.overOutFieldSideContainer}>
+          <View style={[styles.overOutFieldSideContainer, styles.coatSideLeft]}>
             <OutFieldSide
               renderInButton={this.props.renderInButton}
               horizontal={this.props.horizontal}
@@ -64,7 +63,9 @@ export default class Field extends React.Component {
               side={0}
             />
           </View>
-          <View style={styles.overOutFieldSideContainer}>
+          <View
+            style={[styles.overOutFieldSideContainer, styles.coatSideRight]}
+          >
             <OutFieldSide
               renderInButton={this.props.renderInButton}
               horizontal={this.props.horizontal}
@@ -82,7 +83,7 @@ export default class Field extends React.Component {
           </View>
         </View>
         <View style={styles.middleContainer}>
-          <View style={styles.outFieldLengthContainer}>
+          <View style={[styles.outFieldLengthContainer, styles.coatEndLeft]}>
             <OutFieldLength
               renderInButton={this.props.renderInButton}
               horizontal={this.props.horizontal}
@@ -98,7 +99,7 @@ export default class Field extends React.Component {
               side={0}
             />
           </View>
-          <View style={styles.inFieldContainer}>
+          <View style={[styles.inFieldContainer, styles.inCoatLeft]}>
             <View style={styles.inFieldLengthContainer}>
               <InFieldLength
                 renderInButton={this.props.renderInButton}
@@ -157,7 +158,7 @@ export default class Field extends React.Component {
               />
             </View>
           </View>
-          <View style={styles.inFieldContainer}>
+          <View style={[styles.inFieldContainer, styles.inCoatRight]}>
             <View style={styles.inFieldLengthContainer}>
               <InFieldLength
                 renderInButton={this.props.renderInButton}
@@ -216,7 +217,7 @@ export default class Field extends React.Component {
               />
             </View>
           </View>
-          <View style={styles.outFieldLengthContainer}>
+          <View style={[styles.outFieldLengthContainer, styles.coatEndRight]}>
             <OutFieldLength
               renderInButton={this.props.renderInButton}
               horizontal={this.props.horizontal}
@@ -234,7 +235,9 @@ export default class Field extends React.Component {
           </View>
         </View>
         <View style={styles.underContainer}>
-          <View style={styles.underOutFieldSideContainer}>
+          <View
+            style={[styles.underOutFieldSideContainer, styles.coatSideLeft]}
+          >
             <OutFieldSide
               renderInButton={this.props.renderInButton}
               horizontal={this.props.horizontal}
@@ -250,7 +253,9 @@ export default class Field extends React.Component {
               side={0}
             />
           </View>
-          <View style={styles.underOutFieldSideContainer}>
+          <View
+            style={[styles.underOutFieldSideContainer, styles.coatSideRight]}
+          >
             <OutFieldSide
               renderInButton={this.props.renderInButton}
               horizontal={this.props.horizontal}
@@ -274,56 +279,82 @@ export default class Field extends React.Component {
 
 const styles = StyleSheet.create({
   overContainer: {
-    flexDirection: "row",
-    flex: 1,
-    zIndex: 2,
-    justifyContent: "space-between"
+    position: "absolute",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignSelf: "center",
+    height: height * 0.7
   },
   overOutFieldSideContainer: {
-    alignSelf: "flex-start",
-    flex: 0.5,
-    justifyContent: "space-around",
-    flexDirection: "row"
+    flexDirection: "row",
+    position: "absolute",
+    alignSelf: "center",
+    top: -10
+  },
+  underContainer: {
+    position: "absolute",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignSelf: "center",
+    height: height * 0.7
+  },
+  underOutFieldSideContainer: {
+    flexDirection: "row",
+    position: "absolute",
+    alignSelf: "center",
+    bottom: -10
+  },
+
+  coatSideLeft: {
+    paddingRight: 10,
+    right: "50%",
+    position: "absolute",
+    width: width * 0.35,
+    justifyContent: "space-between"
+  },
+  coatSideRight: {
+    paddingLeft: 10,
+    left: "50%",
+    position: "absolute",
+    width: width * 0.35,
+    justifyContent: "space-between"
   },
   middleContainer: {
     flexDirection: "row",
-    flex: 4,
-    justifyContent: "space-between"
+    justifyContent: "center",
+    alignSelf: "center",
+    width: width * 0.7
   },
-  underContainer: {
-    flexDirection: "row",
-    flex: 1,
-    justifyContent: "space-between"
-  },
+
   outFieldLengthContainer: {
-    marginLeft: 4,
-    marginRight: 4,
-    flexDirection: "column",
+    flexDirection: "column"
+  },
+
+  coatEndLeft: {
+    left: -30,
+    position: "absolute",
+    alignSelf: "center",
+    height: height * 0.6,
+    justifyContent: "space-between"
+  },
+  coatEndRight: {
+    right: -30,
+    position: "absolute",
+    alignSelf: "center",
+    height: height * 0.6,
     justifyContent: "space-between"
   },
   inFieldContainer: {
     flexDirection: "row",
-    marginLeft: 10,
-    marginRight: 10
+    justifyContent: "center",
+    width: width * 0.35,
+    height: height * 0.45
   },
-  inFieldLengthContainer: {
-    marginLeft: 8,
-    marginRight: 8,
-    justifyContent: "space-between",
-    alignItems: "center"
-  },
-  inFieldCircleContainer: {
-    justifyContent: "space-between"
-  },
+  inFieldLengthContainer: { justifyContent: "space-between" },
+  inFieldCircleContainer: { justifyContent: "space-between" },
   inFieldSideContainer: {
-    marginLeft: 6,
-    marginRight: 6,
+    marginLeft: width * 0.04,
+    marginRight: width * 0.04,
     justifyContent: "space-between"
-  },
-  underOutFieldSideContainer: {
-    alignSelf: "flex-end",
-    flex: 0.5,
-    justifyContent: "space-around",
-    flexDirection: "row"
   }
 });
