@@ -134,7 +134,11 @@ class ScoreCreate extends React.Component {
     const unitUserNameComponentList = [];
     for (let user of users) {
       unitUserNameComponentList.push(
-        <Text style={styles.scoreInformationUserName} key={user.name}>
+        <Text
+          style={styles.scoreInformationUserName}
+          key={user.name}
+          numberOfLines={1}
+        >
           {user.name}
         </Text>
       );
@@ -289,7 +293,6 @@ const styles = StyleSheet.create({
     borderColor: "red",
     backgroundColor: "red",
     borderWidth: 1,
-    borderRadius: 4,
     padding: 12,
     paddingLeft: 8,
     paddingRight: 8,
@@ -318,12 +321,13 @@ const styles = StyleSheet.create({
   scoreInformationUserName: {
     paddingTop: 2,
     paddingBottom: 2,
+    paddingLeft: 10,
+    paddingRight: 10,
     justifyContent: "center",
     color: "white",
     textAlign: "center",
     fontWeight: "bold",
-    fontSize: 15,
-    width: 130,
+    fontSize: 14,
     alignSelf: "center",
     backgroundColor: "rgba(0, 0, 0, 0)"
   },
