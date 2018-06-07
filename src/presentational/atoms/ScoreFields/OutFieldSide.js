@@ -20,8 +20,8 @@ export default class OutFieldSide extends React.Component {
           backgroundColor: "#A29A67",
           borderWidth: 1.3,
           borderRadius: 3,
-          width: width*0.08 * sizeMagnification,
-          height: height * 0.03 * sizeMagnification,
+          width: this.props.width * 0.08 * sizeMagnification,
+          height: this.props.height * 0.03 * sizeMagnification,
           alignSelf: "center"
         }}
         delayPressOut={1}

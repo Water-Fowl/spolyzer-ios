@@ -10,6 +10,9 @@ const InFieldLength = ScoreFields.InFieldLength;
 const OutFieldSide = ScoreFields.OutFieldSide;
 const OutFieldLength = ScoreFields.OutFieldLength;
 export default class ScoreField extends React.Component {
+  constructor(props) {
+    super(props);
+  }
   renderInField() {
     if (this.props.renderInField) {
       return this.props.renderInField();
@@ -27,8 +30,8 @@ export default class ScoreField extends React.Component {
       <View
         style={{
           justifyContent: "center",
-          height: height, //170 * sizeMagnification,
-          width: width //300 * sizeMagnification,
+          height: this.props.height, //170 * sizeMagnification,
+          width: this.props.width //300 * sizeMagnification,
         }}
       >
         {this.renderInField()}
@@ -36,21 +39,38 @@ export default class ScoreField extends React.Component {
           style={{
             position: "absolute",
             alignSelf: "center",
-            height: height * 0.7, //170 * sizeMagnification,
-            width: width * 0.7, //300 * sizeMagnification,
+            height: this.props.height * 0.7, //170 * sizeMagnification,
+            width: this.props.width * 0.7, //300 * sizeMagnification,
             backfaceVisibility: "hidden",
             resizeMode: "contain"
           }}
           source={{ url: fieldType[this.props.sport] }}
         />
-        <View style={styles.overContainer}>
-          <View style={[styles.overOutFieldSideContainer, styles.coatSideLeft]}>
+        <View
+          style={[
+            styles.overContainer,
+            {
+              height: this.props.height * 0.7
+            }
+          ]}
+        >
+          <View
+            style={[
+              styles.overOutFieldSideContainer,
+              styles.coatSideLeft,
+              {
+                width: this.props.width * 0.35
+              }
+            ]}
+          >
             <OutFieldSide
               renderInButton={this.props.renderInButton}
               horizontal={this.props.horizontal}
               callback={this.props.callback}
               position={5}
               side={0}
+              height={this.props.height}
+              width={this.props.width}
             />
             <OutFieldSide
               renderInButton={this.props.renderInButton}
@@ -58,10 +78,18 @@ export default class ScoreField extends React.Component {
               callback={this.props.callback}
               position={6}
               side={0}
+              height={this.props.height}
+              width={this.props.width}
             />
           </View>
           <View
-            style={[styles.overOutFieldSideContainer, styles.coatSideRight]}
+            style={[
+              styles.overOutFieldSideContainer,
+              styles.coatSideRight,
+              {
+                width: this.props.width * 0.35
+              }
+            ]}
           >
             <OutFieldSide
               renderInButton={this.props.renderInButton}
@@ -69,6 +97,8 @@ export default class ScoreField extends React.Component {
               callback={this.props.callback}
               position={1}
               side={1}
+              height={this.props.height}
+              width={this.props.width}
             />
             <OutFieldSide
               renderInButton={this.props.renderInButton}
@@ -76,17 +106,36 @@ export default class ScoreField extends React.Component {
               callback={this.props.callback}
               position={2}
               side={1}
+              height={this.props.height}
+              width={this.props.width}
             />
           </View>
         </View>
-        <View style={styles.middleContainer}>
-          <View style={[styles.outFieldLengthContainer, styles.coatEndLeft]}>
+        <View
+          style={[
+            styles.middleContainer,
+            {
+              width: this.props.width * 0.7
+            }
+          ]}
+        >
+          <View
+            style={[
+              styles.outFieldLengthContainer,
+              styles.coatEndLeft,
+              {
+                height: this.props.height * 0.6
+              }
+            ]}
+          >
             <OutFieldLength
               renderInButton={this.props.renderInButton}
               horizontal={this.props.horizontal}
               callback={this.props.callback}
               position={4}
               side={0}
+              height={this.props.height}
+              width={this.props.width}
             />
             <OutFieldLength
               renderInButton={this.props.renderInButton}
@@ -94,9 +143,20 @@ export default class ScoreField extends React.Component {
               callback={this.props.callback}
               position={3}
               side={0}
+              height={this.props.height}
+              width={this.props.width}
             />
           </View>
-          <View style={[styles.inFieldContainer, styles.inCoatLeft]}>
+          <View
+            style={[
+              styles.inFieldContainer,
+              {
+                width: this.props.width * 0.35,
+                height: this.props.height * 0.45
+              },
+              styles.inCoatLeft
+            ]}
+          >
             <View style={styles.inFieldLengthContainer}>
               <InFieldLength
                 renderInButton={this.props.renderInButton}
@@ -104,6 +164,8 @@ export default class ScoreField extends React.Component {
                 callback={this.props.callback}
                 position={11}
                 side={0}
+                height={this.props.height}
+                width={this.props.width}
               />
               <InFieldLength
                 renderInButton={this.props.renderInButton}
@@ -111,15 +173,27 @@ export default class ScoreField extends React.Component {
                 callback={this.props.callback}
                 position={10}
                 side={0}
+                height={this.props.height}
+                width={this.props.width}
               />
             </View>
-            <View style={styles.inFieldSideContainer}>
+            <View
+              style={[
+                styles.inFieldSideContainer,
+                {
+                  marginLeft: this.props.width * 0.04,
+                  marginRight: this.props.width * 0.04
+                }
+              ]}
+            >
               <InFieldSide
                 renderInButton={this.props.renderInButton}
                 horizontal={this.props.horizontal}
                 callback={this.props.callback}
                 position={12}
                 side={0}
+                height={this.props.height}
+                width={this.props.width}
               />
               <View style={styles.inFieldCircleContainer}>
                 <InFieldCircle
@@ -128,6 +202,8 @@ export default class ScoreField extends React.Component {
                   callback={this.props.callback}
                   position={7}
                   side={0}
+                  height={this.props.height}
+                  width={this.props.width}
                 />
               </View>
               <InFieldSide
@@ -136,6 +212,8 @@ export default class ScoreField extends React.Component {
                 callback={this.props.callback}
                 position={9}
                 side={0}
+                height={this.props.height}
+                width={this.props.width}
               />
             </View>
             <View style={styles.inFieldLengthContainer}>
@@ -145,6 +223,8 @@ export default class ScoreField extends React.Component {
                 callback={this.props.callback}
                 position={13}
                 side={0}
+                height={this.props.height}
+                width={this.props.width}
               />
               <InFieldLength
                 renderInButton={this.props.renderInButton}
@@ -152,10 +232,21 @@ export default class ScoreField extends React.Component {
                 callback={this.props.callback}
                 position={8}
                 side={0}
+                height={this.props.height}
+                width={this.props.width}
               />
             </View>
           </View>
-          <View style={[styles.inFieldContainer, styles.inCoatRight]}>
+          <View
+            style={[
+              styles.inFieldContainer,
+              {
+                width: this.props.width * 0.35,
+                height: this.props.height * 0.45
+              },
+              styles.inCoatRight
+            ]}
+          >
             <View style={styles.inFieldLengthContainer}>
               <InFieldLength
                 renderInButton={this.props.renderInButton}
@@ -163,6 +254,8 @@ export default class ScoreField extends React.Component {
                 callback={this.props.callback}
                 position={8}
                 side={1}
+                height={this.props.height}
+                width={this.props.width}
               />
               <InFieldLength
                 renderInButton={this.props.renderInButton}
@@ -170,15 +263,27 @@ export default class ScoreField extends React.Component {
                 callback={this.props.callback}
                 position={13}
                 side={1}
+                height={this.props.height}
+                width={this.props.width}
               />
             </View>
-            <View style={styles.inFieldSideContainer}>
+            <View
+              style={[
+                styles.inFieldSideContainer,
+                {
+                  marginLeft: this.props.width * 0.04,
+                  marginRight: this.props.width * 0.04
+                }
+              ]}
+            >
               <InFieldSide
                 renderInButton={this.props.renderInButton}
                 horizontal={this.props.horizontal}
                 callback={this.props.callback}
                 position={9}
                 side={1}
+                height={this.props.height}
+                width={this.props.width}
               />
               <View style={styles.inFieldCircleContainer}>
                 <InFieldCircle
@@ -187,6 +292,8 @@ export default class ScoreField extends React.Component {
                   callback={this.props.callback}
                   position={7}
                   side={1}
+                  height={this.props.height}
+                  width={this.props.width}
                 />
               </View>
               <InFieldSide
@@ -195,6 +302,8 @@ export default class ScoreField extends React.Component {
                 callback={this.props.callback}
                 position={12}
                 side={1}
+                height={this.props.height}
+                width={this.props.width}
               />
             </View>
             <View style={styles.inFieldLengthContainer}>
@@ -204,6 +313,8 @@ export default class ScoreField extends React.Component {
                 callback={this.props.callback}
                 position={10}
                 side={1}
+                height={this.props.height}
+                width={this.props.width}
               />
               <InFieldLength
                 renderInButton={this.props.renderInButton}
@@ -211,16 +322,28 @@ export default class ScoreField extends React.Component {
                 callback={this.props.callback}
                 position={11}
                 side={1}
+                height={this.props.height}
+                width={this.props.width}
               />
             </View>
           </View>
-          <View style={[styles.outFieldLengthContainer, styles.coatEndRight]}>
+          <View
+            style={[
+              styles.outFieldLengthContainer,
+              styles.coatEndRight,
+              {
+                height: this.props.height * 0.6
+              }
+            ]}
+          >
             <OutFieldLength
               renderInButton={this.props.renderInButton}
               horizontal={this.props.horizontal}
               callback={this.props.callback}
               position={3}
               side={1}
+              height={this.props.height}
+              width={this.props.width}
             />
             <OutFieldLength
               renderInButton={this.props.renderInButton}
@@ -228,12 +351,27 @@ export default class ScoreField extends React.Component {
               callback={this.props.callback}
               position={4}
               side={1}
+              height={this.props.height}
+              width={this.props.width}
             />
           </View>
         </View>
-        <View style={styles.underContainer}>
+        <View
+          style={[
+            styles.underContainer,
+            {
+              height: this.props.height * 0.7
+            }
+          ]}
+        >
           <View
-            style={[styles.underOutFieldSideContainer, styles.coatSideLeft]}
+            style={[
+              styles.underOutFieldSideContainer,
+              styles.coatSideLeft,
+              {
+                width: this.props.width * 0.35
+              }
+            ]}
           >
             <OutFieldSide
               renderInButton={this.props.renderInButton}
@@ -241,6 +379,8 @@ export default class ScoreField extends React.Component {
               callback={this.props.callback}
               position={2}
               side={0}
+              height={this.props.height}
+              width={this.props.width}
             />
             <OutFieldSide
               renderInButton={this.props.renderInButton}
@@ -248,10 +388,18 @@ export default class ScoreField extends React.Component {
               callback={this.props.callback}
               position={1}
               side={0}
+              height={this.props.height}
+              width={this.props.width}
             />
           </View>
           <View
-            style={[styles.underOutFieldSideContainer, styles.coatSideRight]}
+            style={[
+              styles.underOutFieldSideContainer,
+              styles.coatSideRight,
+              {
+                width: this.props.width * 0.35
+              }
+            ]}
           >
             <OutFieldSide
               renderInButton={this.props.renderInButton}
@@ -259,6 +407,8 @@ export default class ScoreField extends React.Component {
               callback={this.props.callback}
               position={6}
               side={1}
+              height={this.props.height}
+              width={this.props.width}
             />
             <OutFieldSide
               renderInButton={this.props.renderInButton}
@@ -266,6 +416,8 @@ export default class ScoreField extends React.Component {
               callback={this.props.callback}
               position={5}
               side={1}
+              height={this.props.height}
+              width={this.props.width}
             />
           </View>
         </View>
@@ -279,8 +431,7 @@ const styles = StyleSheet.create({
     position: "absolute",
     flexDirection: "column",
     justifyContent: "center",
-    alignSelf: "center",
-    height: height * 0.7
+    alignSelf: "center"
   },
   overOutFieldSideContainer: {
     flexDirection: "row",
@@ -292,8 +443,7 @@ const styles = StyleSheet.create({
     position: "absolute",
     flexDirection: "column",
     justifyContent: "center",
-    alignSelf: "center",
-    height: height * 0.7
+    alignSelf: "center"
   },
   underOutFieldSideContainer: {
     flexDirection: "row",
@@ -306,21 +456,18 @@ const styles = StyleSheet.create({
     paddingRight: 10,
     right: "50%",
     position: "absolute",
-    width: width * 0.35,
     justifyContent: "space-between"
   },
   coatSideRight: {
     paddingLeft: 10,
     left: "50%",
     position: "absolute",
-    width: width * 0.35,
     justifyContent: "space-between"
   },
   middleContainer: {
     flexDirection: "row",
     justifyContent: "center",
-    alignSelf: "center",
-    width: width * 0.7
+    alignSelf: "center"
   },
 
   outFieldLengthContainer: {
@@ -331,27 +478,21 @@ const styles = StyleSheet.create({
     left: -30,
     position: "absolute",
     alignSelf: "center",
-    height: height * 0.6,
     justifyContent: "space-between"
   },
   coatEndRight: {
     right: -30,
     position: "absolute",
     alignSelf: "center",
-    height: height * 0.6,
     justifyContent: "space-between"
   },
   inFieldContainer: {
     flexDirection: "row",
-    justifyContent: "center",
-    width: width * 0.35,
-    height: height * 0.45
+    justifyContent: "center"
   },
   inFieldLengthContainer: { justifyContent: "space-between" },
   inFieldCircleContainer: { justifyContent: "space-between" },
   inFieldSideContainer: {
-    marginLeft: width * 0.04,
-    marginRight: width * 0.04,
     justifyContent: "space-between"
   }
 });

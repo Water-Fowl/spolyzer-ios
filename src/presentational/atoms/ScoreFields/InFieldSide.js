@@ -17,8 +17,8 @@ export default class InFieldSide extends React.Component {
         style={{
           borderColor: "#2EA7E0",
           backgroundColor: "#2EA7E0",
-          width: width*0.08 * sizeMagnification,
-          height: height * 0.03 * sizeMagnification,
+          width: this.props.width * 0.08 * sizeMagnification,
+          height: this.props.height * 0.03 * sizeMagnification,
           borderWidth: 1.3,
           borderRadius: 3,
           opacity: 0.3,

@@ -17,8 +17,8 @@ export default class OutFieldLength extends React.Component {
         style={{
           borderColor: "#A29A67",
           backgroundColor: "#A29A67",
-          width: width * 0.019 * sizeMagnification,
-          height: height * 0.13 * sizeMagnification,
+          width: this.props.width * 0.019 * sizeMagnification,
+          height: this.props.height * 0.13 * sizeMagnification,
           borderWidth: 1.3,
           borderRadius: 3
         }}

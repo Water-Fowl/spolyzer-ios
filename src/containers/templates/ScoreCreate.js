@@ -191,6 +191,8 @@ class ScoreCreate extends React.Component {
           isVisible={this.state.modalIsVisible}
           hideModal={this.hideModal}
           callback={this.setShotType}
+          height={this.state.height}
+          width={this.state.width}
         />
         <LandScapeBackground />
         <TopContentBar>スコアシート</TopContentBar>
@@ -240,6 +242,8 @@ class ScoreCreate extends React.Component {
           margin={36}
           fieldHeight={137}
           fieldWidth={242}
+          height={this.state.height}
+          width={this.state.width}
         />
         <View style={styles.scoreInformationBackContainer}>
           <TouchableHighlight

@@ -51,9 +51,7 @@ export default class ShotTypeModal extends React.Component {
       );
     }
 
-    return (
-      <ScrollView>{buttonsComponentsList}</ScrollView>
-    );
+    return <ScrollView>{buttonsComponentsList}</ScrollView>;
   }
 
   render() {
@@ -85,8 +83,8 @@ const styles = StyleSheet.create({
     zIndex: 2,
     backgroundColor: "rgba(0, 0, 0, 0.5)",
     position: "absolute",
-    width: width,
-    height: height,
+    width: "100%",
+    height: "100%",
     justifyContent: "center",
     alignItems: "center"
   },

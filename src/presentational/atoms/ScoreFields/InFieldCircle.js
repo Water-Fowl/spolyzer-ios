@@ -18,8 +18,8 @@ export default class InFieldCircle extends React.Component {
         style={{
           borderColor: "#2EA7E0",
           backgroundColor: "#2EA7E0",
-          height: height / 10 * sizeMagnification,
-          width: height / 10 * sizeMagnification,
+          height: this.props.height / 10 * sizeMagnification,
+          width: this.props.height / 10 * sizeMagnification,
           borderWidth: 1,
           borderRadius: 100,
           opacity: 0.3,

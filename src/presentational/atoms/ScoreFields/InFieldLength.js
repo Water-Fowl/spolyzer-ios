@@ -21,8 +21,8 @@ export default class InFieldLength extends React.Component {
           borderColor: "#2EA7E0",
           backgroundColor: "#2EA7E0",
           flex: 0.4,
-          width: width * 0.019 * sizeMagnification,
-          height: height * 0.13 * sizeMagnification,
+          width: this.props.width * 0.019 * sizeMagnification,
+          height: this.props.height * 0.13 * sizeMagnification,
           borderWidth: 1.3,
           borderRadius: 3,
           opacity: 0.3
