@@ -44,13 +44,16 @@ export default class ShotTypeModal extends React.Component {
             this.props.hideModal();
           }}
           key={shotTypeId}
+          style={{ alignSelf: "center" }}
         >
           <Text style={textStyles}>{this.props.shotTypes[shotTypeId]}</Text>
         </TouchableHighlight>
       );
     }
 
-    return <ScrollView>{buttonsComponentsList}</ScrollView>;
+    return (
+      <ScrollView>{buttonsComponentsList}</ScrollView>
+    );
   }
 
   render() {
@@ -116,6 +119,7 @@ const styles = StyleSheet.create({
     padding: 5,
     borderColor: "#2EA7E0",
     borderWidth: 1,
+    width: "100%",
     maxHeight: height - 40
   }
 });
