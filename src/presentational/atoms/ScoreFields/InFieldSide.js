@@ -1,5 +1,7 @@
 import React from "react";
-import { StyleSheet, TouchableHighlight, View } from "react-native";
+import { StyleSheet, TouchableHighlight, View, Dimensions } from "react-native";
+const { height, width } = Dimensions.get("window");
+
 export default class InFieldSide extends React.Component {
   renderInButton(position, side) {
     if (this.props.renderInButton) {
@@ -15,8 +17,8 @@ export default class InFieldSide extends React.Component {
         style={{
           borderColor: "#2EA7E0",
           backgroundColor: "#2EA7E0",
-          height: 10 * sizeMagnification,
-          width: 40 * sizeMagnification,
+          width: width*0.08 * sizeMagnification,
+          height: height * 0.03 * sizeMagnification,
           borderWidth: 1.3,
           borderRadius: 3,
           opacity: 0.3,

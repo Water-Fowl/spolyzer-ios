@@ -19,6 +19,7 @@ import SelectedUserName from "./SelectedUserName";
 import TextBox from "./TextBox";
 import TextInputForm from "./TextInputForm";
 import AssetsImage from "./AssetsImage";
+import * as ScoreFields from "./ScoreFields";
 
 export {
   Background,
@@ -38,5 +39,6 @@ export {
   NavigateButton,
   TopBar,
   TopContentBar,
-  AssetsImage
+  AssetsImage,
+  ScoreFields
 };

@@ -1,17 +1,14 @@
 import React from "react";
 import { View, Image, StyleSheet, Dimensions } from "react-native";
 
-import {
-  InFieldLength,
-  InFieldSide,
-  InFieldCircle,
-  OutFieldSide,
-  OutFieldLength
-} from "atoms";
+import { ScoreFields } from "atoms";
 
 const { height, width } = Dimensions.get("window");
-const aspectRatio = height / width;
-
+const InFieldSide = ScoreFields.InFieldSide;
+const InFieldCircle = ScoreFields.InFieldCircle;
+const InFieldLength = ScoreFields.InFieldLength;
+const OutFieldSide = ScoreFields.OutFieldSide;
+const OutFieldLength = ScoreFields.OutFieldLength;
 export default class ScoreField extends React.Component {
   renderInField() {
     if (this.props.renderInField) {
