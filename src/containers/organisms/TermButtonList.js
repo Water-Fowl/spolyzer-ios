@@ -43,7 +43,6 @@ const styles = StyleSheet.create({
     borderWidth: 1.5,
     marginLeft: 57,
     borderRadius: 3,
-    marginTop: 25,
     justifyContent: "center"
   }
 });

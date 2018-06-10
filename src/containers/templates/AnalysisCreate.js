@@ -28,7 +28,7 @@ class AnalysisCreate extends React.Component {
             }}
             style={styles.rightGameButton}
           >
-            <MultipleAnalysisIcon size={0.54}/>
+            <MultipleAnalysisIcon size={0.54} />
             <Text style={styles.multipleAnalysisText}>複合分析</Text>
           </TouchableOpacity>
         </View>
@@ -41,13 +41,17 @@ export default connect(mapStateToProps)(templateEnhancer(AnalysisCreate));
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    flexDirection: "column",
+    justifyContent: "space-between",
     alignItems: "center"
   },
   buttonContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
     flexDirection: "row"
   },
   leftGameButton: {
-    marginTop: "50%",
     marginLeft: 15,
     marginRight: 5,
     flex: 1,
@@ -58,7 +62,6 @@ const styles = StyleSheet.create({
     height: 130
   },
   rightGameButton: {
-    marginTop: "50%",
     marginRight: 15,
     marginLeft: 5,
     flex: 1,

@@ -3,7 +3,9 @@ import {
   StyleSheet,
   Text,
   View,
-  TouchableHighlight
+  TouchableHighlight,
+  Dimensions,
+  ScrollView
 } from "react-native";
 import { NavigateButton } from "components";
 
@@ -13,6 +15,8 @@ const NET_MIN_POSITION = 8;
 const NET_MAX_POSITION = 13;
 const OUT_MIN_POSITION = 1;
 const OUT_MAX_POSITION = 6;
+
+const { height, width } = Dimensions.get("window");
 
 export default class ShotTypeModal extends React.Component {
   renderButtons(textStyles, isNetMiss) {
@@ -40,13 +44,14 @@ export default class ShotTypeModal extends React.Component {
             this.props.hideModal();
           }}
           key={shotTypeId}
+          style={{ alignSelf: "center" }}
         >
           <Text style={textStyles}>{this.props.shotTypes[shotTypeId]}</Text>
         </TouchableHighlight>
       );
     }
 
-    return <View>{buttonsComponentsList}</View>;
+    return <ScrollView>{buttonsComponentsList}</ScrollView>;
   }
 
   render() {
@@ -83,9 +88,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center"
   },
-  touchableContainer: {
-    marginTop: 10
-  },
   close: {
     color: "white"
   },
@@ -110,9 +112,12 @@ const styles = StyleSheet.create({
     backgroundColor: "#EE0000"
   },
   shotTypeContainer: {
-    padding: 10,
+    flexDirection: "row",
+    margin: 10,
+    padding: 5,
     borderColor: "#2EA7E0",
     borderWidth: 1,
-    flexDirection: "row"
+    width: "100%",
+    maxHeight: height - 40
   }
 });

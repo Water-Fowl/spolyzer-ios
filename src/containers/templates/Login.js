@@ -10,7 +10,8 @@ import {
   Text,
   TextInput,
   TouchableOpacity,
-  View
+  View,
+  SafeAreaView
 } from "react-native";
 import { connect } from "react-redux";
 import * as authenticationModules from "../../modules/authentication";
@@ -86,61 +87,63 @@ class Login extends React.Component {
     return (
       <View style={styles.container}>
         <Background />
-        <Image style={styles.logo} source={{ url: "spolyzer_top.png" }} />
-        <View style={styles.formContainer}>
-          <View style={styles.form}>
-            <TextInput
-              onChangeText={email => this.setState({ email })}
-              placeholder="メールアドレス"
-              placeholderTextColor="#666677"
-              style={styles.textField}
-              keyboardType="email-address"
-              returnKeyType="done"
-            />
+        <SafeAreaView style={styles.safeAreaContainer}>
+          <Image style={styles.logo} source={{ url: "spolyzer_top.png" }} />
+          <View style={styles.formContainer}>
+            <View style={styles.form}>
+              <TextInput
+                onChangeText={email => this.setState({ email })}
+                placeholder="メールアドレス"
+                placeholderTextColor="#666677"
+                style={styles.textField}
+                keyboardType="email-address"
+                returnKeyType="done"
+              />
+            </View>
+            <View style={styles.form}>
+              <TextInput
+                onChangeText={password => this.setState({ password })}
+                placeholder="パスワード"
+                placeholderTextColor="#666677"
+                style={styles.textField}
+                keyboardType="email-address"
+                returnKeyType="done"
+                secureTextEntry
+              />
+            </View>
+            {(() => {
+              if (this.state.loginError) {
+                return (
+                  <View style={styles.rowContainer}>
+                    <Text style={styles.autoLoginText}>
+                      メールアドレスかパスワードが間違っています。
+                    </Text>
+                  </View>
+                );
+              }
+            })()}
+            <View style={styles.rowContainer} />
+            <View style={styles.button}>
+              <TouchableOpacity
+                onPress={() => {
+                  this.postLoginEvent();
+                }}
+              >
+                <Text style={styles.buttonText}>ログイン</Text>
+              </TouchableOpacity>
+            </View>
+            {/* <TouchableOpacity onPress={Actions.ForgetPass}>
+              <Text style={styles.forgetPasswordText}>
+                パスワードをお忘れの方
+              </Text>
+            </TouchableOpacity> */}
+            <View style={styles.button}>
+              <TouchableOpacity onPress={Actions.signUp}>
+                <Text style={styles.buttonText}>新規登録(無料)</Text>
+              </TouchableOpacity>
+            </View>
           </View>
-          <View style={styles.form}>
-            <TextInput
-              onChangeText={password => this.setState({ password })}
-              placeholder="パスワード"
-              placeholderTextColor="#666677"
-              style={styles.textField}
-              keyboardType="email-address"
-              returnKeyType="done"
-              secureTextEntry
-            />
-          </View>
-          {(() => {
-            if (this.state.loginError) {
-              return (
-                <View style={styles.rowContainer}>
-                  <Text style={styles.autoLoginText}>
-                    メールアドレスかパスワードが間違っています。
-                  </Text>
-                </View>
-              );
-            }
-          })()}
-          <View style={styles.rowContainer} />
-          <View style={styles.button}>
-            <TouchableOpacity
-              onPress={() => {
-                this.postLoginEvent();
-              }}
-            >
-              <Text style={styles.buttonText}>ログイン</Text>
-            </TouchableOpacity>
-          </View>
-          <TouchableOpacity onPress={Actions.ForgetPass}>
-            <Text style={styles.forgetPasswordText}>
-              パスワードをお忘れの方
-            </Text>
-          </TouchableOpacity>
-          <View style={styles.button}>
-            <TouchableOpacity onPress={Actions.signUp}>
-              <Text style={styles.buttonText}>新規登録(無料)</Text>
-            </TouchableOpacity>
-          </View>
-        </View>
+        </SafeAreaView>
       </View>
     );
   }
@@ -150,7 +153,13 @@ export default connect(mapStateToProps)(Login);
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
+    flexDirection: "column",
+    justifyContent: "space-between"
+  },
+  safeAreaContainer: {
+    flex: 1,
+    justifyContent: "center"
   },
   rowContainer: {
     flexDirection: "row"
@@ -188,8 +197,7 @@ const styles = StyleSheet.create({
     justifyContent: "center"
   },
   logo: {
-    marginTop: 80,
-    marginBottom: 80,
+    marginBottom: 40,
     alignSelf: "center",
     width: 209,
     height: 64
@@ -209,16 +217,15 @@ const styles = StyleSheet.create({
     marginBottom: 16,
     backgroundColor: "transparent"
   },
-
-  forgetPasswordText: {
-    color: "#28a8de",
-    textDecorationLine: "underline",
-    textDecorationColor: "#28a8de",
-    marginBottom: 35,
-    marginTop: 8,
-    fontSize: 16,
-    backgroundColor: "transparent"
-  },
+  // forgetPasswordText: {
+  //   color: "#28a8de",
+  //   textDecorationLine: "underline",
+  //   textDecorationColor: "#28a8de",
+  //   marginBottom: 35,
+  //   marginTop: 8,
+  //   fontSize: 16,
+  //   backgroundColor: "transparent"
+  // },
   buttonText: {
     color: "#28a8de",
     textAlign: "center",

@@ -14,7 +14,7 @@ import { PlayersDisplay } from "molecules";
 import { connect } from "react-redux";
 import * as utils from "utils";
 import { mapStateToProps } from "../../modules/mapToProps";
-import { Field, Graph } from "organisms";
+import { AnalysisField, Graph } from "organisms";
 
 class GameAnalysisView extends React.Component {
   constructor(props) {
@@ -82,7 +82,7 @@ class GameAnalysisView extends React.Component {
               {this.renderWinLossText((side = 1))}
             </View>
           </View>
-          <Field
+          <AnalysisField
             horizontal
             sport={this.props.sport.id}
             callback={this.setShotTypeCounts}
