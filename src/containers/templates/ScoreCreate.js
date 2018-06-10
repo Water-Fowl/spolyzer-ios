@@ -14,7 +14,7 @@ import {
 } from "react-native";
 import { LandScapeBackground, TopContentBar } from "atoms";
 import { ShotTypeModal } from "molecules";
-import { Field } from "organisms";
+import { ScoreField } from "organisms";
 import { connect } from "react-redux";
 import * as analysisModules from "../../modules/analysis";
 import * as gameModules from "../../modules/game";
@@ -135,7 +135,11 @@ class ScoreCreate extends React.Component {
     const unitUserNameComponentList = [];
     for (let user of users) {
       unitUserNameComponentList.push(
-        <Text style={styles.scoreInformationUserName} key={user.name}>
+        <Text
+          style={styles.scoreInformationUserName}
+          key={user.name}
+          numberOfLines={1}
+        >
           {user.name}
         </Text>
       );
@@ -189,6 +193,8 @@ class ScoreCreate extends React.Component {
           hideModal={this.hideModal}
           n_sets={this.state.n_sets}
           callback={this.setShotType}
+          height={this.state.height}
+          width={this.state.width}
         />
         <LandScapeBackground />
         <TopContentBar>スコアシート</TopContentBar>
@@ -231,13 +237,15 @@ class ScoreCreate extends React.Component {
         >
           <Text style={styles.analysisNavigateText}>分析</Text>
         </TouchableHighlight>
-        <Field
+        <ScoreField
           horizontal={false}
           sport={this.props.sport.id}
           callback={this.showModal}
           margin={36}
           fieldHeight={137}
           fieldWidth={242}
+          height={this.state.height}
+          width={this.state.width}
         />
         <View style={styles.scoreInformationBackContainer}>
           <TouchableHighlight
@@ -291,7 +299,6 @@ const styles = StyleSheet.create({
     borderColor: "red",
     backgroundColor: "red",
     borderWidth: 1,
-    borderRadius: 4,
     padding: 12,
     paddingLeft: 8,
     paddingRight: 8,
@@ -320,12 +327,13 @@ const styles = StyleSheet.create({
   scoreInformationUserName: {
     paddingTop: 2,
     paddingBottom: 2,
+    paddingLeft: 10,
+    paddingRight: 10,
     justifyContent: "center",
     color: "white",
     textAlign: "center",
     fontWeight: "bold",
-    fontSize: 15,
-    width: 130,
+    fontSize: 14,
     alignSelf: "center",
     backgroundColor: "rgba(0, 0, 0, 0)"
   },

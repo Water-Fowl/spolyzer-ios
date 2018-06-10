@@ -1,7 +1,14 @@
 import React from "react";
 import baseEnhancer from "./hoc";
 import { Actions, ActionConst } from "react-native-router-flux";
-import { StyleSheet, Text, TouchableOpacity, View, Alert } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+  Alert,
+  ScrollView
+} from "react-native";
 import { connect } from "react-redux";
 import { listToQueryParams } from "utils";
 import { SegmentedControl } from "react-native-ios-kit";
@@ -124,8 +131,9 @@ class AnalysisCreate extends React.Component {
   }
   render() {
     return (
-      <View style={styles.container}>
+      <ScrollView style={styles.container}>
         <TopContentBar>検索条件</TopContentBar>
+
         <View style={styles.segmentContainer}>
           <SegmentedControl
             values={["シングルス", "ダブルス"]}
@@ -140,10 +148,12 @@ class AnalysisCreate extends React.Component {
             style={{ width: 222, alignSelf: "center" }}
           />
         </View>
+
         <View style={styles.rowContainer}>
           <Text style={styles.shotTypeText}>球種</Text>
           <ShotTypeButtonList />
         </View>
+
         <View style={styles.rowContainer}>
           <Text style={styles.termText}>期間</Text>
           <DatePickerButtonList
@@ -168,10 +178,12 @@ class AnalysisCreate extends React.Component {
             }}
           />
         </View>
+
         <View style={styles.rowContainer}>
           <Text style={styles.outcomeText}>勝敗</Text>
           <OutcomeButtonList />
         </View>
+
         <View style={styles.rowContainer}>
           <Text style={styles.opponentText}>対戦相手</Text>
           <TouchableOpacity
@@ -196,6 +208,7 @@ class AnalysisCreate extends React.Component {
               );
           })()}
         </View>
+
         <NavigateButton
           action={() => {
             this.getPositionsCountsEvent();
@@ -203,7 +216,7 @@ class AnalysisCreate extends React.Component {
           style={styles.navigateButton}
           text="分析"
         />
-      </View>
+      </ScrollView>
     );
   }
 }
@@ -214,60 +227,59 @@ const styles = StyleSheet.create({
     flex: 1
   },
   rowContainer: {
-    flexDirection: "row"
+    flex: 1,
+    flexDirection: "row",
+    alignItems: "center"
   },
   segmentContainer: {
     marginTop: 15
   },
   shotTypeText: {
+    width: "25%",
     color: "#ffffff",
     fontSize: 15,
-    marginTop: 68,
-    marginLeft: 40,
     backgroundColor: "transparent",
     fontWeight: "bold",
-    alignSelf: "flex-start"
+    textAlign: "center",
+    marginBottom: 15
   },
   termText: {
+    width: "25%",
     color: "#ffffff",
     fontSize: 15,
-    marginTop: 30,
-    marginLeft: 40,
-    marginRight: 57,
     backgroundColor: "transparent",
     fontWeight: "bold",
-    alignSelf: "flex-start"
+    textAlign: "center",
+    marginBottom: 15
   },
   outcomeText: {
+    width: "25%",
     color: "#ffffff",
     fontSize: 15,
-    marginTop: 30,
-    marginLeft: 40,
-    marginRight: 57,
     backgroundColor: "transparent",
     fontWeight: "bold",
-    alignSelf: "flex-start"
+    textAlign: "center",
+    marginBottom: 15
   },
   dateBetweenText: {
     backgroundColor: "transparent",
     fontWeight: "bold",
     color: "white",
-    alignSelf: "flex-start",
-    marginTop: 30,
+    alignSelf: "center",
     paddingLeft: 5,
-    paddingRight: 5
+    paddingRight: 5,
+    marginBottom: 15
   },
   opponentText: {
+    width: "25%",
     color: "#ffffff",
     fontSize: 15,
-    marginTop: 32,
-    marginLeft: 40,
     backgroundColor: "transparent",
     fontWeight: "bold",
-    alignSelf: "flex-start",
-    marginRight: 22
+    textAlign: "center",
+    marginBottom: 15
   },
   navigateButton: {
-    marginTop: 50
+    marginBottom: 50
   }
 });

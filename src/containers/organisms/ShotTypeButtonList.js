@@ -42,7 +42,7 @@ class ShotTypeButtonList extends React.Component {
       for (shotTypeId in this.props.sport.shotTypes) {
         shotTypesButtonsComponent.push(
           <ParametricButton
-            width={90}
+            width={100}
             selectedParams={this.props.analysis.shotTypeId}
             callback={this.setShotType}
             params={shotTypeId}
@@ -68,13 +68,12 @@ const styles = StyleSheet.create({
     borderTopColor: "#0a2444",
     borderLeftColor: "#0a2444",
     borderBottomColor: "#0a2444",
-    padding: 3,
     width: 220,
     borderWidth: 1.5,
-    marginLeft: 58,
     borderRadius: 3,
-    marginTop: 25,
+    marginTop: 15,
     justifyContent: "center",
-    alignContent: "center"
+    alignContent: "center",
+    marginBottom: 15
   }
 });

@@ -141,7 +141,7 @@ class DrawerContent extends React.Component {
           </View>
           {this.setSportsList()}
         </View>
-        <View style={styles.endContainer}>
+        {/* <View style={styles.endContainer}>
           <Image source={{ url: "book_icon.png" }} style={styles.endImage} />
           <TouchableOpacity
             onPress={() => {
@@ -150,7 +150,7 @@ class DrawerContent extends React.Component {
           >
             <Text style={styles.endText}>使い方</Text>
           </TouchableOpacity>
-        </View>
+        </View> */}
         <View style={styles.endContainer}>
           <Image source={{ url: "logout.png" }} style={styles.endImage} />
           <TouchableOpacity
