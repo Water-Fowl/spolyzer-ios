@@ -82,7 +82,7 @@ export function setShotTypeCounts(position, side) {
   };
 }
 
-export function setShotType(shotType, isNetMiss, side, position) {
+export function setShotType(shotType, isNetMiss, side, position, n_sets) {
   let unit_side;
   if (!isNetMiss) {
     unit_side = side == 1 ? 0 : 1;
@@ -96,7 +96,8 @@ export function setShotType(shotType, isNetMiss, side, position) {
     isNetMiss,
     side,
     unit_side,
-    position
+    position,
+    n_sets
   };
 }
 
@@ -184,7 +185,8 @@ export function gameReducer(state = initialState, action = {}) {
       dropped_at: action.position,
       shot_type: action.shotType,
       is_net_miss: action.isNetMiss,
-      side: action.side
+      side: action.side,
+      n_sets: action.n_sets
     });
     let currentScores = getScoreCounts(state.scores);
     return Object.assign({}, state, {

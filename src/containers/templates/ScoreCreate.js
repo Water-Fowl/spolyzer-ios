@@ -37,7 +37,8 @@ class ScoreCreate extends React.Component {
       scores: "",
       scoreCounts: [0, 0],
       modalIsVisible: false,
-      hideAlert: false
+      hideAlert: false,
+      n_sets: 0
     };
     this.hideModal = this.hideModal.bind(this);
     this.setShotType = this.setShotType.bind(this);
@@ -58,9 +59,9 @@ class ScoreCreate extends React.Component {
     this.setState({ modalIsVisible: false });
   }
 
-  setShotType(shotTypeId, isNetMiss, side, position) {
+  setShotType(shotTypeId, isNetMiss, side, position, n_sets) {
     this.props.dispatch(
-      gameModules.setShotType(shotTypeId, isNetMiss, side, position)
+      gameModules.setShotType(shotTypeId, isNetMiss, side, position, n_sets)
     );
   }
 
@@ -190,6 +191,7 @@ class ScoreCreate extends React.Component {
           side={this.state.side}
           isVisible={this.state.modalIsVisible}
           hideModal={this.hideModal}
+          n_sets={this.state.n_sets}
           callback={this.setShotType}
           height={this.state.height}
           width={this.state.width}
