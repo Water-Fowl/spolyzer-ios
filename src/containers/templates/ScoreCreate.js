@@ -218,25 +218,6 @@ class ScoreCreate extends React.Component {
             {this.renderUnitUsersName(this.props.game.gameUnits.right.users)}
           </View>
         </View>
-        <TouchableHighlight
-          onPress={() => {
-            this.backButtonAlert();
-          }}
-          style={styles.backButton}
-        >
-          <Text style={styles.backButtonText}>戻る</Text>
-        </TouchableHighlight>
-        <TouchableHighlight
-          onPress={() => {
-            this.navigationEvent(
-              this.props.game.gameUnits,
-              this.props.game.scores
-            );
-          }}
-          style={styles.analysisNavigate}
-        >
-          <Text style={styles.analysisNavigateText}>分析</Text>
-        </TouchableHighlight>
         <ScoreField
           horizontal={false}
           sport={this.props.sport.id}
@@ -252,11 +233,31 @@ class ScoreCreate extends React.Component {
             onPress={() => {
               this.props.dispatch(gameModules.removeScore());
             }}
+            style={[styles.undo, { left: this.state.width / 2 - 39.5 }]}
           >
             <Image
               style={{ width: 79, height: 25 }}
               source={{ url: "score_create_back.png" }}
             />
+          </TouchableHighlight>
+          <TouchableHighlight
+            onPress={() => {
+              this.backButtonAlert();
+            }}
+            style={styles.backButton}
+          >
+            <Text style={styles.backButtonText}>戻る</Text>
+          </TouchableHighlight>
+          <TouchableHighlight
+            onPress={() => {
+              this.navigationEvent(
+                this.props.game.gameUnits,
+                this.props.game.scores
+              );
+            }}
+            style={styles.analysisNavigate}
+          >
+            <Text style={styles.analysisNavigateText}>分析</Text>
           </TouchableHighlight>
         </View>
       </View>
@@ -314,7 +315,12 @@ const styles = StyleSheet.create({
   },
   scoreInformationBackContainer: {
     position: "absolute",
-    top: 38
+    width: "100%"
+  },
+  undo: {
+    position: "absolute",
+    top: 38,
+    backgroundColor: "transparent"
   },
   scoreInformationUserNameContainer: {
     flex: 2,
