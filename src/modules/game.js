@@ -222,6 +222,14 @@ export function gameReducer(state = initialState, action = {}) {
     if (
       state.gameUnits[state.selectedUnitIndex].users[state.selectedUserIndex]
     ) {
+      state.gameUnits.ids.splice(
+        state.gameUnits.ids.indexOf(
+          state.gameUnits[state.selectedUnitIndex].users[
+            state.selectedUserIndex
+          ].id
+        ),
+        1
+      );
       state.gameUnits[state.selectedUnitIndex].users[
         state.selectedUserIndex
       ] =
