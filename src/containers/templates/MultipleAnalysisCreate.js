@@ -148,67 +148,67 @@ class AnalysisCreate extends React.Component {
             style={{ width: 222, alignSelf: "center" }}
           />
         </View>
+        <View style={styles.settingTableContainer}>
+          <View style={styles.rowContainer}>
+            <Text style={styles.shotTypeText}>球種</Text>
+            <ShotTypeButtonList />
+          </View>
 
-        <View style={styles.rowContainer}>
-          <Text style={styles.shotTypeText}>球種</Text>
-          <ShotTypeButtonList />
+          <View style={styles.rowContainer}>
+            <Text style={styles.termText}>期間</Text>
+            <DatePickerButtonList
+              width={100}
+              date={this.state.created_after}
+              placeholder="開始"
+              minDate={"2018/01/01"}
+              maxDate={this.setMaxDate()}
+              callback={date => {
+                this.setAfterDate(date);
+              }}
+            />
+            <Text style={styles.dateBetweenText}>〜</Text>
+            <DatePickerButtonList
+              width={100}
+              date={this.state.created_before}
+              placeholder="終了"
+              minDate={this.setMinDate()}
+              maxDate={this.state.chosenDate}
+              callback={date => {
+                this.setBeforeDate(date);
+              }}
+            />
+          </View>
+
+          <View style={styles.rowContainer}>
+            <Text style={styles.outcomeText}>勝敗</Text>
+            <OutcomeButtonList />
+          </View>
+
+          <View style={styles.rowContainer}>
+            <Text style={styles.opponentText}>対戦相手</Text>
+            <TouchableOpacity
+              onPress={() => {
+                this.pushAnalysisSearchEvent(0);
+              }}
+            >
+              <SelectedUserName user={this.props.analysis.analysisUsers[0]} />
+            </TouchableOpacity>
+            {(() => {
+              if (this.state.game_user_count - 1)
+                return (
+                  <TouchableOpacity
+                    onPress={() => {
+                      this.pushAnalysisSearchEvent(1);
+                    }}
+                  >
+                    <SelectedUserName
+                      user={this.props.analysis.analysisUsers[1]}
+                    />
+                  </TouchableOpacity>
+                );
+            })()}
+          </View>
         </View>
-
-        <View style={styles.rowContainer}>
-          <Text style={styles.termText}>期間</Text>
-          <DatePickerButtonList
-            width={100}
-            date={this.state.created_after}
-            placeholder="開始"
-            minDate={"2018/01/01"}
-            maxDate={this.setMaxDate()}
-            callback={date => {
-              this.setAfterDate(date);
-            }}
-          />
-          <Text style={styles.dateBetweenText}>〜</Text>
-          <DatePickerButtonList
-            width={100}
-            date={this.state.created_before}
-            placeholder="終了"
-            minDate={this.setMinDate()}
-            maxDate={this.state.chosenDate}
-            callback={date => {
-              this.setBeforeDate(date);
-            }}
-          />
-        </View>
-
-        <View style={styles.rowContainer}>
-          <Text style={styles.outcomeText}>勝敗</Text>
-          <OutcomeButtonList />
-        </View>
-
-        <View style={styles.rowContainer}>
-          <Text style={styles.opponentText}>対戦相手</Text>
-          <TouchableOpacity
-            onPress={() => {
-              this.pushAnalysisSearchEvent(0);
-            }}
-          >
-            <SelectedUserName user={this.props.analysis.analysisUsers[0]} />
-          </TouchableOpacity>
-          {(() => {
-            if (this.state.game_user_count - 1)
-              return (
-                <TouchableOpacity
-                  onPress={() => {
-                    this.pushAnalysisSearchEvent(1);
-                  }}
-                >
-                  <SelectedUserName
-                    user={this.props.analysis.analysisUsers[1]}
-                  />
-                </TouchableOpacity>
-              );
-          })()}
-        </View>
-
         <NavigateButton
           action={() => {
             this.getPositionsCountsEvent();
@@ -225,6 +225,10 @@ export default connect(mapStateToProps)(baseEnhancer(AnalysisCreate));
 const styles = StyleSheet.create({
   container: {
     flex: 1
+  },
+  settingTableContainer: {
+    flex: 1,
+    alignSelf: "center"
   },
   rowContainer: {
     flex: 1,
