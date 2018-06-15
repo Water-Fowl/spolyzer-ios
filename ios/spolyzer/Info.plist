@@ -30,8 +30,17 @@
 	<dict>
 		<key>NSExceptionDomains</key>
 		<dict>
-		<!-- release時にはlocalhostをコメントアウトする -->
+			<key>applinks-spolyzer.water-fowl.co.jp - 2</key>
+			<dict>
+				<key>NSExceptionAllowsInsecureHTTPLoads</key>
+				<true/>
+			</dict>
 			<key>localhost</key>
+			<dict>
+				<key>NSExceptionAllowsInsecureHTTPLoads</key>
+				<true/>
+			</dict>
+			<key>spolyzer-app.water-fowl.co.jp - 3</key>
 			<dict>
 				<key>NSExceptionAllowsInsecureHTTPLoads</key>
 				<true/>

@@ -5,6 +5,8 @@
 	<key>com.apple.developer.associated-domains</key>
 	<array>
 		<string>applinks:spolyzer.water-fowl.co.jp</string>
+		<string>applinks:applinks-spolyzer.water-fowl.co.jp</string>
+		<string>applinks:spolyzer-app.water-fowl.co.jp</string>
 	</array>
 </dict>
 </plist>
