@@ -21,7 +21,7 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>35</string>
+	<string>36.1</string>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
 	<key>LSRequiresIPhoneOS</key>
@@ -30,6 +30,7 @@
 	<dict>
 		<key>NSExceptionDomains</key>
 		<dict>
+		<!-- release時にはlocalhostをコメントアウトする -->
 			<key>localhost</key>
 			<dict>
 				<key>NSExceptionAllowsInsecureHTTPLoads</key>
@@ -49,9 +50,9 @@
 	<key>NSMicrophoneUsageDescription</key>
 	<string>spolyzer would like to save photos to your photo gallery</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>spolyzer would like to save photos to your photo gallery</string>
+	<string>画像を選択するためにフォトライブラリにアクセスします</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>spolyzer would like access to your photo gallery</string>
+	<string>画像を選択するためにフォトライブラリにアクセスします</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Entypo.ttf</string>
