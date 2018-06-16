@@ -194,6 +194,7 @@ const styles = StyleSheet.create({
     borderColor: "rgb(20, 35, 70)"
   },
   gameSettingTable: {
+    paddingBottom: 10,
     flexDirection: "row",
     width: "95%",
     backgroundColor: "rgb(20, 35, 70)"
@@ -210,7 +211,7 @@ const styles = StyleSheet.create({
     padding: 25
   },
   scoreGameCreateOpponents: {
-    paddingTop: 6,
+    paddingTop: 8,
     fontSize: 13,
     fontWeight: "bold",
     color: "white",
