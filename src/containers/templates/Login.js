@@ -1,28 +1,19 @@
-import Orientation from "react-native-orientation";
-import React, { Component } from "react";
+import React from "react";
 import { Actions } from "react-native-router-flux";
-import { Background } from "atoms";
 import {
   AsyncStorage,
-  Dimensions,
-  Image,
-  StyleSheet,
-  Text,
-  TextInput,
-  TouchableOpacity,
+  ImageBackground,
   View,
-  SafeAreaView
+  StatusBar,
+  StyleSheet
 } from "react-native";
+import { Container, Button, Text, Form, Item, Input, Label } from "native-base";
+
 import { connect } from "react-redux";
 import * as authenticationModules from "../../modules/authentication";
-import * as sportModules from "../../modules/sport";
 import * as profileModules from "../../modules/profile";
 import * as requestModules from "../../modules/request";
-import {
-  SIGN_IN_ENDPOINT,
-  USERS_ENDPOINT,
-  SHOT_TYPES_ENDPOINT
-} from "../../config/api";
+import { SIGN_IN_ENDPOINT, USERS_ENDPOINT } from "../../config/api";
 import { mapStateToProps } from "../../modules/mapToProps";
 import { errorAlertCallback } from "utils";
 
@@ -39,10 +30,6 @@ class Login extends React.Component {
       password: "",
       loginError: false
     };
-  }
-
-  componentWillMount() {
-    Orientation.lockToPortrait();
   }
 
   postLoginEvent() {
@@ -83,68 +70,86 @@ class Login extends React.Component {
         }
       });
   }
+
   render() {
     return (
-      <View style={styles.container}>
-        <Background />
-        <SafeAreaView style={styles.safeAreaContainer}>
-          <Image style={styles.logo} source={{ url: "spolyzer_top.png" }} />
-          <View style={styles.formContainer}>
-            <View style={styles.form}>
-              <TextInput
-                onChangeText={email => this.setState({ email })}
-                placeholder="メールアドレス"
-                placeholderTextColor="#666677"
-                style={styles.textField}
-                keyboardType="email-address"
-                returnKeyType="done"
-              />
-            </View>
-            <View style={styles.form}>
-              <TextInput
-                onChangeText={password => this.setState({ password })}
-                placeholder="パスワード"
-                placeholderTextColor="#666677"
-                style={styles.textField}
-                keyboardType="email-address"
-                returnKeyType="done"
-                secureTextEntry
-              />
-            </View>
-            {(() => {
-              if (this.state.loginError) {
-                return (
-                  <View style={styles.rowContainer}>
-                    <Text style={styles.autoLoginText}>
-                      メールアドレスかパスワードが間違っています。
-                    </Text>
-                  </View>
-                );
-              }
-            })()}
-            <View style={styles.rowContainer} />
-            <View style={styles.button}>
-              <TouchableOpacity
-                onPress={() => {
-                  this.postLoginEvent();
-                }}
-              >
-                <Text style={styles.buttonText}>ログイン</Text>
-              </TouchableOpacity>
-            </View>
-            {/* <TouchableOpacity onPress={Actions.ForgetPass}>
-              <Text style={styles.forgetPasswordText}>
-                パスワードをお忘れの方
-              </Text>
-            </TouchableOpacity> */}
-            <View style={styles.button}>
-              <TouchableOpacity onPress={Actions.signUp}>
-                <Text style={styles.buttonText}>新規登録(無料)</Text>
-              </TouchableOpacity>
-            </View>
+      <Container>
+        <StatusBar barStyle="light-content" />
+        <ImageBackground
+          source={{ url: "background" }}
+          style={styles.imageContainer}
+        >
+          <View style={styles.logoContainer}>
+            <ImageBackground
+              source={{
+                url: "spolyzer_top.png"
+              }}
+              style={styles.logo}
+            />
           </View>
-        </SafeAreaView>
-      </View>
+          <View
+            style={{
+              marginTop: 20,
+              marginBottom: 25,
+              backgroundColor: "transparent"
+            }}
+          >
+            <Form
+              style={{
+                width: "70%",
+                maxWidth: 320,
+                alignSelf: "center"
+              }}
+            >
+              <Item stackedLabel last>
+                <Label>メールアドレス</Label>
+                <Input
+                  onChangeText={email => this.setState({ email })}
+                  style={{ color: "white" }}
+                  keyboardType="email-address"
+                  returnKeyType="done"
+                />
+              </Item>
+              <Item stackedLabel last>
+                <Label>パスワード</Label>
+                <Input
+                  onChangeText={password => this.setState({ password })}
+                  style={{ color: "white" }}
+                  keyboardType="email-address"
+                  returnKeyType="done"
+                  secureTextEntry
+                />
+              </Item>
+            </Form>
+          </View>
+          <View>
+            <Button
+              bordered
+              block
+              large
+              style={{
+                width: "70%",
+                maxWidth: 320,
+                alignSelf: "center",
+                marginBottom: 10
+              }}
+              onPress={() => this.postLoginEvent()}
+            >
+              <Text>ログイン</Text>
+            </Button>
+            <Button transparent style={{ alignSelf: "center" }} onPress={""}>
+              <Text>パスワードをお忘れの方</Text>
+            </Button>
+            <Button
+              transparent
+              style={{ alignSelf: "center" }}
+              onPress={Actions.signUp}
+            >
+              <Text>新規登録はこちら</Text>
+            </Button>
+          </View>
+        </ImageBackground>
+      </Container>
     );
   }
 }
@@ -152,86 +157,18 @@ class Login extends React.Component {
 export default connect(mapStateToProps)(Login);
 
 const styles = StyleSheet.create({
-  container: {
+  imageContainer: {
     flex: 1,
+    width: null,
+    height: null,
     flexDirection: "column",
-    justifyContent: "space-between"
-  },
-  safeAreaContainer: {
-    flex: 1,
     justifyContent: "center"
   },
-  rowContainer: {
-    flexDirection: "row"
-  },
-  formContainer: {
-    alignSelf: "center",
-    width: "80%"
-  },
-  form: {
-    borderRightColor: "#28a8de",
-    borderTopColor: "#28a8de",
-    borderLeftColor: "#28a8de",
-    borderBottomColor: "#28a8de",
-    height: 42,
-    width: "100%",
-    borderWidth: 1.3,
-    alignSelf: "center",
-    justifyContent: "center",
-    borderRadius: 5,
-    marginTop: 9,
-    marginBottom: 9
-  },
-  button: {
-    borderRightColor: "#28a8de",
-    borderTopColor: "#28a8de",
-    borderLeftColor: "#28a8de",
-    borderBottomColor: "#28a8de",
-    height: 42,
-    width: "100%",
-    borderWidth: 1.3,
-    alignSelf: "center",
-    borderRadius: 5,
-    marginTop: 9,
-    marginBottom: 9,
-    justifyContent: "center"
+  logoContainer: {
+    alignSelf: "center"
   },
   logo: {
-    marginBottom: 40,
-    alignSelf: "center",
-    width: 209,
-    height: 64
-  },
-  textField: {
-    fontSize: 20,
-    color: "#ffffff",
-    paddingLeft: 12,
-    letterSpacing: 0
-  },
-
-  autoLoginText: {
-    color: "#ffffff",
-    marginTop: 10,
-    fontSize: 15,
-    marginLeft: 6,
-    marginBottom: 16,
-    backgroundColor: "transparent"
-  },
-  // forgetPasswordText: {
-  //   color: "#28a8de",
-  //   textDecorationLine: "underline",
-  //   textDecorationColor: "#28a8de",
-  //   marginBottom: 35,
-  //   marginTop: 8,
-  //   fontSize: 16,
-  //   backgroundColor: "transparent"
-  // },
-  buttonText: {
-    color: "#28a8de",
-    textAlign: "center",
-    fontSize: 19,
-    marginTop: 1,
-    marginBottom: 1,
-    backgroundColor: "transparent"
+    width: 261.25,
+    height: 80
   }
 });
