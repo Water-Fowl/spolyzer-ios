@@ -121,6 +121,7 @@ class ProfileEdit extends React.Component {
             style={styles.photo}
           >
             <ProfileImage size={80} imageSource={this.state.userImageSource} />
+            <Text style={styles.profileImageText}>画像を変更</Text>
           </TouchableOpacity>
           <ScrollView style={{ height: 210 }}>
             <Text style={styles.profileTitle}>ユーザーネーム</Text>
@@ -217,6 +218,14 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     marginBottom: 15
+  },
+  profileImageText: {
+    color: "white",
+    textAlign: "center",
+    fontWeight: "bold",
+    fontSize: 12,
+    padding: 5,
+    backgroundColor: "transparent"
   },
   plateName: {
     backgroundColor: "#0a2444",
