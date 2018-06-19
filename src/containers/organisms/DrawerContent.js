@@ -9,7 +9,7 @@ import {
   ScrollView,
   AsyncStorage
 } from "react-native";
-import { Actions } from "react-native-router-flux";
+import { Actions, ActionConst } from "react-native-router-flux";
 import { connect } from "react-redux";
 import { resetToken } from "../../modules/authentication";
 import { mapStateToProps } from "../../modules/mapToProps";
@@ -87,9 +87,7 @@ class DrawerContent extends React.Component {
         )
       )
       .then(() => {
-        toastPresent(
-          `競技を${this.sportName(id)}に変更しました`
-        );
+        toastPresent(`競技を${this.sportName(id)}に変更しました`);
       });
   }
 
@@ -156,7 +154,7 @@ class DrawerContent extends React.Component {
           <TouchableOpacity
             onPress={() => {
               AsyncStorage.removeItem("header", () => {
-                Actions.login();
+                Actions.login({ type: ActionConst.RESET });
                 this.props.dispatch(resetToken());
               });
             }}
