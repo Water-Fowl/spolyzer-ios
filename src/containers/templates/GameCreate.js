@@ -12,7 +12,8 @@ import {
   TouchableOpacity,
   View,
   TextInput,
-  ScrollView
+  ScrollView,
+  AsyncStorage
 } from "react-native";
 import { connect } from "react-redux";
 
@@ -29,13 +30,80 @@ import { mapStateToProps } from "../../modules/mapToProps";
 import * as gameModules from "../../modules/game";
 
 class GameCreate extends React.Component {
-  test;
   constructor(props) {
     super(props);
     this.state = {
       gameName: ""
     };
   }
+
+  componentWillMount() {
+    if (
+      !this.props.profile.user.image.url &&
+      this.props.authentication.header
+    ) {
+      this.setChangedThumbnailIds();
+    }
+  }
+
+  setChangedThumbnailIds() {
+    try {
+      AsyncStorage.getItem("changedThumbnailIds").then(result => {
+        let changedThumbnailIds = JSON.parse(result);
+        if (!changedThumbnailIds) {
+          this.alertThumbnail();
+          return;
+        }
+        if (changedThumbnailIds.indexOf(this.props.profile.user.id) === -1) {
+          this.alertThumbnail(changedThumbnailIds);
+          return;
+        }
+      });
+    } catch (error) {
+    }
+  }
+
+  updateChangedThumbnailIds(changedThumbnailIds) {
+    changedThumbnailIds.push(this.props.profile.user.id);
+    try {
+      AsyncStorage.setItem(
+        "changedThumbnailIds",
+        JSON.stringify(changedThumbnailIds)
+      );
+    } catch (error) {
+    }
+  }
+
+  alertPresent = false;
+  alertThumbnail(changedThumbnailIds = []) {
+    if (!this.alertPresent) {
+      this.alertPresent = true;
+      Alert.alert(
+        "プロフィール編集(推奨)",
+        "プロフィール画像が設定されていません。画像を設定すると検索時に見つけやすくなります。",
+        [
+          {
+            text: "表示しない",
+            onPress: () => {
+              this.alertPresent = false;
+              this.updateChangedThumbnailIds(changedThumbnailIds);
+            },
+            style: "cancel"
+          },
+          {
+            text: "設定する",
+            onPress: () => {
+              this.alertPresent = false;
+              this.updateChangedThumbnailIds(changedThumbnailIds);
+              Actions.profileEdit();
+            }
+          }
+        ],
+        { cancelable: false }
+      );
+    }
+  }
+
   setUserIndexEvent(selectedUnitIndex, selectedUserIndex) {
     this.props.dispatch(
       gameModules.setUserIndex(selectedUnitIndex, selectedUserIndex)

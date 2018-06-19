@@ -206,6 +206,7 @@ class Route extends React.Component {
               component={ProfileEdit}
               title="マイデータ編集"
               hideDrawerButton
+              drawerLockMode="locked-closed"
             />
             <Scene
               key="usage"
