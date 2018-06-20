@@ -1,19 +1,23 @@
 import React from "react";
 import { ScrollView, StyleSheet, View } from "react-native";
 import {
-  VictoryAxis, VictoryBar, VictoryChart,
-  VictoryLabel, VictoryStack, VictoryTheme,
+  VictoryAxis,
+  VictoryBar,
+  VictoryChart,
+  VictoryLabel,
+  VictoryStack,
+  VictoryTheme,
   VictoryZoomContainer
 } from "victory-native";
 import { connect } from "react-redux";
 
-export default class Graph extends React.Component{
-  componentWillReceiveProps(nextProps){
+export default class Graph extends React.Component {
+  componentWillReceiveProps(nextProps) {
     this.forceUpdate();
   }
 
-  render(){
-    return(
+  render() {
+    return (
       <View style={styles.graphContainer}>
         <VictoryChart
           width={300}
@@ -21,30 +25,34 @@ export default class Graph extends React.Component{
           theme={VictoryTheme.material}
           domainPadding={30}
           padding={{
-            left: 20, right: 10, top: 20, bottom: 30
+            left: 20,
+            right: 10,
+            top: 20,
+            bottom: 30
           }}
         >
           <VictoryAxis
-            dependentAxis	/* Y軸 */
+            dependentAxis /* Y軸 */
             style={{
               grid: {
                 stroke: "#035f89",
-                axis: { stroke: "transparent"}
+                axis: { stroke: "transparent" }
               },
               tickLabels: { fontSize: 15, fill: "white" }
             }}
-            tickFormat={(tick) => { /* 整数目盛のみ表示 */
+            tickFormat={tick => {
+              /* 整数目盛のみ表示 */
               if (tick === Math.round(tick)) return String(tick);
               return "";
             }}
           />
-          <VictoryAxis	/* X軸 */
+          <VictoryAxis /* X軸 */
             style={{
               grid: {
-                stroke: "transparent" ,
-                axis: { stroke: "#2EA7E0"}
+                stroke: "transparent",
+                axis: { stroke: "#2EA7E0" }
               },
-              tickLabels: { fontSize: 10, fill: "transparent"}
+              tickLabels: { fontSize: 10, fill: "transparent" }
             }}
           />
           <VictoryStack
@@ -56,13 +64,16 @@ export default class Graph extends React.Component{
                 fontWeight: "bold"
               }
             }}
-            labels={(shot) => shot.label}
+            labels={shot => shot.label}
           >
             <VictoryBar
-              barRatio={0.4}
               style={{
                 data: {
-                  fill: "#2EA7E0"
+                  fill: "#2EA7E0",
+                  width:
+                    this.props.data.length > 2
+                      ? 100 / this.props.data.length
+                      : 30
                 }
               }}
               animate={{
@@ -75,10 +86,13 @@ export default class Graph extends React.Component{
               alignment="middle"
             />
             <VictoryBar
-              barRatio={0.4}
               style={{
                 data: {
-                  fill: "red"
+                  fill: "red",
+                  width:
+                    this.props.data.length > 2
+                      ? 100 / this.props.data.length
+                      : 30
                 }
               }}
               animate={{
@@ -97,7 +111,7 @@ export default class Graph extends React.Component{
   }
 }
 
-Graph.defaultProps = {data: [], missData: []};
+Graph.defaultProps = { data: [], missData: [] };
 
 const styles = StyleSheet.create({
   graphContainer: {
@@ -113,4 +127,3 @@ const styles = StyleSheet.create({
     marginTop: 20
   }
 });
-
