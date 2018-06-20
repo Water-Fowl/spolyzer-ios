@@ -76,7 +76,7 @@ export default class Graph extends React.Component {
                       : 30
                 },
                 labels: {
-                  opacity: 0
+                  opacity: this.props.opacityLabels ? 0 : 1
                 }
               }}
               animate={{

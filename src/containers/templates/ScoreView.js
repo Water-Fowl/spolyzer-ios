@@ -100,6 +100,7 @@ class ScoreView extends React.Component {
             data={this.state.data}
             missData={this.state.missData}
             shotTypeList={this.state.shotTypeList}
+            opacityLabels
           />
         </ScrollView>
         <View style={styles.backButtonContainer}>
