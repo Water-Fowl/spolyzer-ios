@@ -92,6 +92,7 @@ class GameAnalysisView extends React.Component {
             data={this.state.data}
             missData={this.state.missData}
             shotTypeList={this.state.shotTypeList}
+            opacityLabels
           />
         </View>
       </ScrollView>
