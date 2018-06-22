@@ -7,16 +7,13 @@ import {
   Dimensions,
   ScrollView
 } from "react-native";
-import { NavigateButton } from "components";
 
-import { connect } from "react-redux";
-import { mapStateToProps } from "../../modules/mapToProps";
 const NET_MIN_POSITION = 8;
 const NET_MAX_POSITION = 13;
 const OUT_MIN_POSITION = 1;
 const OUT_MAX_POSITION = 6;
 
-const { height, width } = Dimensions.get("window");
+const { height } = Dimensions.get("window");
 
 export default class ShotTypeModal extends React.Component {
   renderButtons(textStyles, isNetMiss) {

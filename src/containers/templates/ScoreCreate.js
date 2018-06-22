@@ -3,28 +3,19 @@ import React from "react";
 import { Actions } from "react-native-router-flux";
 import {
   Alert,
-  BackgroundImage,
   Dimensions,
   Image,
   StyleSheet,
   Text,
   TouchableHighlight,
-  TriangleCorner,
   View
 } from "react-native";
 import { LandScapeBackground, TopContentBar } from "atoms";
 import { ShotTypeModal } from "molecules";
 import { ScoreField } from "organisms";
 import { connect } from "react-redux";
-import * as analysisModules from "../../modules/analysis";
 import * as gameModules from "../../modules/game";
-import * as requestModules from "../../modules/request";
 
-import {
-  GAMES_ENDPOINT,
-  SHOT_TYPE_COUNTS_ENDPOINT,
-  gameCountEndpointGenerator
-} from "../../config/api";
 import { scoreDisplay } from "utils";
 import { mapStateToProps } from "../../modules/mapToProps";
 

@@ -1,5 +1,5 @@
 import React from "react";
-import { Image, StyleSheet } from "react-native";
+import { Image } from "react-native";
 
 export default class ProfileImage extends React.Component {
   componentWillReceiveProps(nextProps) {

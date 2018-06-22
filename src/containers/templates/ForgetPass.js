@@ -1,4 +1,3 @@
-import Orientation from "react-native-orientation";
 import React from "react";
 import templateEnhancer from "./hoc";
 import { Actions } from "react-native-router-flux";
@@ -10,14 +9,11 @@ import {
   TouchableOpacity,
   View
 } from "react-native";
-import * as authenticationModules from "../../modules/authentication";
-import * as requestModules from "../../modules/request";
 
 import { emailReg } from "const";
 import { ErrorText } from "atoms";
 import { connect } from "react-redux";
 import { mapStateToProps } from "../../modules/mapToProps";
-import { errorAlertCallback } from "utils";
 
 function errorInstanceCallback(json) {
   return new Error(json.errors.full_messages);

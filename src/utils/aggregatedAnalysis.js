@@ -91,7 +91,6 @@ export function aggregatedMultipleCounts(
   maxPosition
 ) {
   const positionsCountList = [];
-  const missPositionsCountList = [];
   for (let position = minPosition; position <= maxPosition; position++) {
     let counts = aggregatedCounts(games, {
       dropped_side: dropped_side,

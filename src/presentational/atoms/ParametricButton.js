@@ -1,6 +1,6 @@
 import React from "react";
 import { TouchableHighlight, StyleSheet, Text } from "react-native";
-import { $spolyzerDarkBlue, $transparent, $white } from "const";
+import { $transparent, $white } from "const";
 
 export default class ParametricButton extends React.Component {
   render() {

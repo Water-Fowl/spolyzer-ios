@@ -1,8 +1,7 @@
 import React from "react";
 import templateEnhancer from "./hoc";
-import { ActionConst, Actions } from "react-native-router-flux";
+import { Actions } from "react-native-router-flux";
 import {
-  Image,
   ScrollView,
   StyleSheet,
   Text,
@@ -32,7 +31,7 @@ class ScoreView extends React.Component {
     };
   }
 
-  setShotTypeCounts(position_id, dropped_side, is_net_miss) {
+  setShotTypeCounts(position_id, dropped_side) {
     const {
       shotTypeCountsList,
       missShotTypeCountsList

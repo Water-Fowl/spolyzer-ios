@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import { View, WebView } from "react-native";
+import React from "react";
+import { WebView } from "react-native";
 import templateEnhancer from "./hoc";
 import { connect } from "react-redux";
 import { mapStateToProps } from "utils";

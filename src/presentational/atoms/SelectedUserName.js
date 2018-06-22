@@ -1,7 +1,5 @@
 import React from "react";
 import { StyleSheet, Text } from "react-native";
-import { connect } from "react-redux";
-import { mapStateToProps } from "../../modules/mapToProps";
 
 export default class SelectedUserName extends React.Component {
   render() {

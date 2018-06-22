@@ -1,5 +1,3 @@
-import { cleanSingle } from "react-native-image-crop-picker";
-
 const initialState = {};
 
 const GET_SHOT_TYPES_RECEIVED = "GET_SHOT_TYPES_RECEIVED";

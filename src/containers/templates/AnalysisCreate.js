@@ -2,7 +2,7 @@ import React from "react";
 import templateEnhancer from "./hoc";
 import { connect } from "react-redux";
 import { View, StyleSheet, Text, TouchableOpacity } from "react-native";
-import { TopContentBar, Background } from "atoms";
+import { TopContentBar } from "atoms";
 import { GameIcon, MultipleAnalysisIcon } from "molecules";
 import { Actions } from "react-native-router-flux";
 import { mapStateToProps } from "../../modules/mapToProps";

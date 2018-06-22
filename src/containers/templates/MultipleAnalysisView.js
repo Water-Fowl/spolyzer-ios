@@ -1,25 +1,16 @@
 import React from "react";
 import templateEnhancer from "./hoc";
-import { ActionConst, Actions } from "react-native-router-flux";
 import {
-  Image,
   ScrollView,
   StyleSheet,
   Text,
   TouchableOpacity,
-  TouchableHighlight,
   View
 } from "react-native";
-import {
-  VictoryAxis,
-  VictoryBar,
-  VictoryChart,
-  VictoryTheme
-} from "victory-native";
 import { connect } from "react-redux";
 
 import { Graph, AnalysisField } from "organisms";
-import { ProfileImage, TopContentBar } from "atoms";
+import { TopContentBar } from "atoms";
 import { mapStateToProps } from "../../modules/mapToProps";
 import * as utils from "../../utils";
 

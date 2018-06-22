@@ -1,14 +1,11 @@
-import Orientation from "react-native-orientation";
 import React from "react";
 import templateEnhancer from "./hoc";
 import { Actions } from "react-native-router-flux";
 import {
   Alert,
-  Dimensions,
   Image,
   StyleSheet,
   Text,
-  TouchableHighlight,
   TouchableOpacity,
   View,
   TextInput,
@@ -19,10 +16,7 @@ import { connect } from "react-redux";
 
 import {
   ProfileImage,
-  Background,
-  NavBar,
   NavigateButton,
-  TopBar,
   TopContentBar
 } from "atoms";
 

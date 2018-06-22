@@ -1,9 +1,8 @@
 import React from "react";
-import templateEnhancer from "./hoc";
-import { ActionConst, Actions, TouchableOpacity } from "react-native-router-flux";
-import { Background, NavBar, NavigateButton, TopContentBar, TextBox } from "atoms";
+import {  Actions } from "react-native-router-flux";
+import { Background, TopContentBar, TextBox } from "atoms";
 import { UserList } from "organisms";
-import { Image, StyleSheet, Text, TextInput, View } from "react-native";
+import { StyleSheet, TextInput, View } from "react-native";
 import { connect } from "react-redux";
 import { SEARCH_USER_ENDPOINT } from "../../config/api";
 import * as gameModules from "../../modules/game";

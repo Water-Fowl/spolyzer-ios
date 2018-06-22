@@ -4,7 +4,6 @@ import { alphabet } from "const";
 // グラフに描画する際に最適化された形式の配列を返す
 export default function aggregatedMultipleAnalysis(counts, side, minPosition, maxPosition){
   const positionsCountList = [];
-  const missPositionsCountList = [];
   if (!counts){
     return [];
   }

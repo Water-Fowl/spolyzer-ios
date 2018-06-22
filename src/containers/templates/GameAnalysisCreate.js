@@ -1,6 +1,6 @@
 import React from "react";
 import templateEnhancer from "./hoc";
-import { ActionConst, Actions } from "react-native-router-flux";
+import { Actions } from "react-native-router-flux";
 import {
   View,
   StyleSheet,
@@ -9,15 +9,13 @@ import {
   TouchableOpacity
 } from "react-native";
 import { connect } from "react-redux";
-import { TopContentBar, TextBox } from "atoms";
+import { TopContentBar } from "atoms";
 import { Icon, SegmentedControl } from "react-native-ios-kit";
 import * as analysisModules from "../../modules/analysis";
-import * as gameModules from "../../modules/game";
 import * as requestModules from "../../modules/request";
 import { mapStateToProps } from "../../modules/mapToProps";
 import {
   GAMES_ENDPOINT,
-  gamesEndpointGenerator,
   gameCountEndpointGenerator
 } from "../../config/api";
 import { timeEncode } from "utils";
@@ -183,7 +181,7 @@ const styles = StyleSheet.create({
   listConteiner: {
     paddingLeft: 30,
     paddingBottom: 4,
-    paddingTop: 6, // borderBottomColor: "#2ea7e0",
+    paddingTop: 6,
     borderRadius: 4,
     borderWidth: 1,
     borderTopColor: "#2ea7e0"
