@@ -3,7 +3,6 @@ import {
   Image,
   StyleSheet,
   View,
-  Text,
   Alert,
   AsyncStorage
 } from "react-native";
@@ -13,7 +12,6 @@ import {
   Scene,
   Tabs,
   Drawer,
-  ActionConst,
   Actions
 } from "react-native-router-flux";
 import Orientation from "react-native-orientation";
@@ -28,7 +26,6 @@ import {
   GameSearchUser,
   Login,
   ProfileEdit,
-  ProfileTop,
   ScoreCreate,
   ScoreView,
   SignUp,
@@ -42,8 +39,7 @@ import { DrawerContent } from "organisms";
 import { GameIcon, AnalysisIcon, HamburgerIcon } from "molecules";
 import {
   getShotTypesReceived,
-  getShotTypesRequest,
-  setSport
+  getShotTypesRequest
 } from "../modules/sport";
 import {
   getValidTokenRequest,
@@ -190,8 +186,7 @@ class Route extends React.Component {
           />
           <Drawer
             key="drawer"
-            // drawerImage={{ url: "hamburger.png" }} // デフォルトのハンバーガーメニューを差し替える
-            drawerIcon={() => <HamburgerIcon />} // デフォルトのハンバーガーメニューを差し替える
+            drawerIcon={() => <HamburgerIcon />}
             hideNavBar
             drawerWidth={280}
             contentComponent={DrawerContent}
@@ -206,6 +201,7 @@ class Route extends React.Component {
               component={ProfileEdit}
               title="マイデータ編集"
               hideDrawerButton
+              drawerLockMode="locked-closed"
             />
             <Scene
               key="usage"
@@ -323,7 +319,7 @@ class Route extends React.Component {
   }
 }
 
-function mapStateToProps(state, props) {
+function mapStateToProps(state) {
   return {
     header: state.authentication.header || {},
     isValidToken: state.authentication.isValidToken,

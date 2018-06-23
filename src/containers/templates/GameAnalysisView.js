@@ -1,12 +1,9 @@
 import React from "react";
 import baseEnhancer from "./hoc";
-import { ActionConst, Actions } from "react-native-router-flux";
 import {
-  Image,
   ScrollView,
   StyleSheet,
   Text,
-  TouchableOpacity,
   View
 } from "react-native";
 import { TopContentBar } from "atoms";
@@ -27,7 +24,7 @@ class GameAnalysisView extends React.Component {
     };
   }
 
-  setShotTypeCounts(position_id, dropped_side, is_net_miss) {
+  setShotTypeCounts(position_id, dropped_side) {
     const {
       shotTypeCountsList,
       missShotTypeCountsList
@@ -92,6 +89,7 @@ class GameAnalysisView extends React.Component {
             data={this.state.data}
             missData={this.state.missData}
             shotTypeList={this.state.shotTypeList}
+            opacityLabels
           />
         </View>
       </ScrollView>

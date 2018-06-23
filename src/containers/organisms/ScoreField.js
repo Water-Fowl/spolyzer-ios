@@ -3,7 +3,6 @@ import { View, Image, StyleSheet, Dimensions } from "react-native";
 
 import { ScoreFields } from "atoms";
 
-const { height, width } = Dimensions.get("window");
 const InFieldSide = ScoreFields.InFieldSide;
 const InFieldCircle = ScoreFields.InFieldCircle;
 const InFieldLength = ScoreFields.InFieldLength;
@@ -21,7 +20,6 @@ export default class ScoreField extends React.Component {
     }
   }
   render() {
-    const sizeMagnification = this.props.horizontal ? 1 : 2;
     const fieldType = {
       1: "field-line-badminton.png",
       2: "field-line-tennis.png"
@@ -30,8 +28,8 @@ export default class ScoreField extends React.Component {
       <View
         style={{
           justifyContent: "center",
-          height: this.props.height, //170 * sizeMagnification,
-          width: this.props.width //300 * sizeMagnification,
+          height: this.props.height,
+          width: this.props.width
         }}
       >
         {this.renderInField()}
@@ -39,8 +37,8 @@ export default class ScoreField extends React.Component {
           style={{
             position: "absolute",
             alignSelf: "center",
-            height: this.props.height * 0.7, //170 * sizeMagnification,
-            width: this.props.width * 0.7, //300 * sizeMagnification,
+            height: this.props.height * 0.7,
+            width: this.props.width * 0.7,
             backfaceVisibility: "hidden",
             resizeMode: "contain"
           }}

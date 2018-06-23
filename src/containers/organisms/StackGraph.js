@@ -1,15 +1,14 @@
 import React from "react";
-import { ScrollView, StyleSheet, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import {
   VictoryAxis, VictoryBar, VictoryChart,
-  VictoryLabel, VictoryStack, VictoryTheme,
-  VictoryZoomContainer
+  VictoryStack, VictoryTheme
 } from "victory-native";
 import { connect } from "react-redux";
 import * as utils from "../../utils";
 
 class Graph extends React.Component{
-  componentWillReceiveProps(nextProps){
+  componentWillReceiveProps(){
     this.forceUpdate();
   }
 

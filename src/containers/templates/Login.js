@@ -15,13 +15,11 @@ import {
 } from "react-native";
 import { connect } from "react-redux";
 import * as authenticationModules from "../../modules/authentication";
-import * as sportModules from "../../modules/sport";
 import * as profileModules from "../../modules/profile";
 import * as requestModules from "../../modules/request";
 import {
   SIGN_IN_ENDPOINT,
-  USERS_ENDPOINT,
-  SHOT_TYPES_ENDPOINT
+  USERS_ENDPOINT
 } from "../../config/api";
 import { mapStateToProps } from "../../modules/mapToProps";
 import { errorAlertCallback } from "utils";

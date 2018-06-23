@@ -1,5 +1,5 @@
 import Orientation from "react-native-orientation";
-import React, { Component } from "react";
+import React from "react";
 import { Actions } from "react-native-router-flux";
 import { Background } from "atoms";
 import {

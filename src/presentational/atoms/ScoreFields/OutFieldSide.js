@@ -1,7 +1,5 @@
 import React from "react";
-import { StyleSheet, TouchableHighlight, View, Dimensions } from "react-native";
-import { connect } from "react-redux";
-const { height, width } = Dimensions.get("window");
+import { TouchableHighlight, View } from "react-native";
 
 export default class OutFieldSide extends React.Component {
   renderInButton(position, side) {

@@ -52,28 +52,30 @@ export function aggregatedGameCounts(
   shotTypeCountsList = [];
   missShotTypeCountsList = [];
   for (key in shotTypes) {
-    let counts = aggregatedCounts(games, {
-      dropped_side: dropped_side,
-      is_net_miss: false,
-      position_id: position_id,
-      shot_type_id: Number(key)
-    });
-    if (counts)
+    let counts = {
+      shotTypeCounts: aggregatedCounts(games, {
+        dropped_side: dropped_side,
+        is_net_miss: false,
+        position_id: position_id,
+        shot_type_id: Number(key)
+      }),
+      missShotTypeCounts: aggregatedCounts(games, {
+        dropped_side: dropped_side,
+        is_net_miss: true,
+        position_id: position_id,
+        shot_type_id: Number(key)
+      })
+    };
+    if (counts.shotTypeCounts || counts.missShotTypeCounts) {
       shotTypeCountsList.push({
         label: shotTypes[key],
-        value: counts
+        value: counts.shotTypeCounts
       });
-    counts = aggregatedCounts(games, {
-      dropped_side: dropped_side,
-      is_net_miss: true,
-      position_id: position_id,
-      shot_type_id: Number(key)
-    });
-    if (counts)
       missShotTypeCountsList.push({
         label: shotTypes[key],
-        value: counts
+        value: counts.missShotTypeCounts
       });
+    }
   }
   return {
     shotTypeCountsList,
@@ -89,7 +91,6 @@ export function aggregatedMultipleCounts(
   maxPosition
 ) {
   const positionsCountList = [];
-  const missPositionsCountList = [];
   for (let position = minPosition; position <= maxPosition; position++) {
     let counts = aggregatedCounts(games, {
       dropped_side: dropped_side,
