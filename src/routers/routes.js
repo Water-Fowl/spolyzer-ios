@@ -76,7 +76,7 @@ class Route extends React.Component {
     this.networkError.bind(this);
   }
   networkError() {
-    return new Promise(resolve => {
+    return new Promise(() => {
       Alert.alert(
         "ネットワークエラー",
         "インターネットの接続を確認して下さい",

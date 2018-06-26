@@ -8,8 +8,7 @@ import { alphabet } from "const";
 export function aggregatedCounts(games, filter) {
   if (!filter) return;
   let counts = 0;
-  let dropped_sides = games.filter(function(game) {
-    let flag = true;
+  games.filter(function(game) {
     if (
       !filter.hasOwnProperty("dropped_side") &&
       !filter.hasOwnProperty("position_id") &&
