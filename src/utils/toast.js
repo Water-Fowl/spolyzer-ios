@@ -1,6 +1,5 @@
 import Toast from "react-native-root-toast";
 
-let toast;
 export function toastPresent(message) {
   if (this.toast) Toast.hide(this.toast);
   this.toast = Toast.show(message, {

@@ -17,6 +17,7 @@ import ForgetPass from "./templates/ForgetPass";
 import ForgetPassDone from "./templates/ForgetPassDone";
 import SportSelect from "./templates/SportSelect";
 import Usage from "./templates/Usage";
+import Info from "./templates/Info";
 export {
   /* Componentのexport */
   AnalysisCreate,
@@ -37,5 +38,6 @@ export {
   ForgetPass,
   ForgetPassDone,
   SportSelect,
-  Usage
+  Usage,
+  Info
 };

@@ -4626,6 +4626,10 @@ react-native-drawer-layout@1.3.2:
   dependencies:
     react-native-dismiss-keyboard "1.0.0"
 
+react-native-exit-app@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/react-native-exit-app/-/react-native-exit-app-1.0.0.tgz#a2fbb121d902e6967cd8a365fe8453e5c4bc3172"
+
 react-native-form-validator@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/react-native-form-validator/-/react-native-form-validator-0.2.0.tgz#773016d522412185475f0bbeb6191c8f90542272"
@@ -4633,9 +4637,9 @@ react-native-form-validator@^0.2.0:
     moment "^2.11.2"
     prop-types "15.6.0"
 
-react-native-image-crop-picker@^0.19.3:
-  version "0.19.3"
-  resolved "https://registry.yarnpkg.com/react-native-image-crop-picker/-/react-native-image-crop-picker-0.19.3.tgz#ef4f10875fd9b6eff10df2b55e3cdb966b875d70"
+react-native-image-crop-picker@^0.20.3:
+  version "0.20.3"
+  resolved "https://registry.yarnpkg.com/react-native-image-crop-picker/-/react-native-image-crop-picker-0.20.3.tgz#565d69c1764e96abef23871fe4d6d58b1ee35e18"
 
 react-native-image-picker@^0.26.10:
   version "0.26.10"

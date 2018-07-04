@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, TouchableHighlight, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { connect } from "react-redux";
 
 import { ParametricButton } from "atoms";

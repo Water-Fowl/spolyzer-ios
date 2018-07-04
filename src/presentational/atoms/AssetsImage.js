@@ -1,6 +1,5 @@
 import React from "react";
 import { Image } from "react-native";
-let width, height;
 
 export default class AssetsImage extends React.Component {
   constructor(props) {

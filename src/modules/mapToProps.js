@@ -1,4 +1,4 @@
-export function mapStateToProps(state, props){
+export function mapStateToProps(state){
   const {
     authentication,
     profile,

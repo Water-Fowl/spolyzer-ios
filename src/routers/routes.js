@@ -1,21 +1,7 @@
 import React from "react";
-import {
-  Image,
-  StyleSheet,
-  View,
-  Text,
-  Alert,
-  AsyncStorage
-} from "react-native";
+import { Image, StyleSheet, View, Alert, AsyncStorage } from "react-native";
 import { connect } from "react-redux";
-import {
-  Router,
-  Scene,
-  Tabs,
-  Drawer,
-  ActionConst,
-  Actions
-} from "react-native-router-flux";
+import { Router, Scene, Tabs, Drawer, Actions } from "react-native-router-flux";
 import Orientation from "react-native-orientation";
 import {
   AnalysisCreate,
@@ -28,7 +14,6 @@ import {
   GameSearchUser,
   Login,
   ProfileEdit,
-  ProfileTop,
   ScoreCreate,
   ScoreView,
   SignUp,
@@ -36,15 +21,12 @@ import {
   ForgetPass,
   ForgetPassDone,
   SportSelect,
-  Usage
+  Usage,
+  Info
 } from "../containers";
 import { DrawerContent } from "organisms";
 import { GameIcon, AnalysisIcon, HamburgerIcon } from "molecules";
-import {
-  getShotTypesReceived,
-  getShotTypesRequest,
-  setSport
-} from "../modules/sport";
+import { getShotTypesReceived, getShotTypesRequest } from "../modules/sport";
 import {
   getValidTokenRequest,
   getValidTokenReceived,
@@ -57,6 +39,8 @@ import {
   SHOT_TYPES_ENDPOINT,
   VALIDATE_TOKEN_ENDPOINT
 } from "../config/api";
+import RNExitApp from "react-native-exit-app";
+
 const RouterWithRedux = connect()(Router);
 const AppLogo = () => {
   return (
@@ -80,7 +64,7 @@ class Route extends React.Component {
     this.networkError.bind(this);
   }
   networkError() {
-    return new Promise(resolve => {
+    return new Promise(() => {
       Alert.alert(
         "ネットワークエラー",
         "インターネットの接続を確認して下さい",
@@ -149,8 +133,25 @@ class Route extends React.Component {
       this.networkError();
     }
   }
+  exitApp() {
+    Alert.alert("サービス終了", "Spolyzerはサービスを終了しています", [
+      {
+        text: "アプリを終了する",
+        onPress: () => {
+          RNExitApp.exitApp();
+        }
+      }
+    ]);
+  }
   async componentWillMount() {
-    await this.componentWillMountValidToken();
+    let dt = new Date();
+    let year = dt.getFullYear();
+    let month = dt.getMonth() + 1;
+    if (year >= 2018 && month >= 8) {
+      this.exitApp();
+    } else {
+      await this.componentWillMountValidToken();
+    }
   }
   render() {
     if (this.state.loading) {
@@ -190,8 +191,7 @@ class Route extends React.Component {
           />
           <Drawer
             key="drawer"
-            // drawerImage={{ url: "hamburger.png" }} // デフォルトのハンバーガーメニューを差し替える
-            drawerIcon={() => <HamburgerIcon />} // デフォルトのハンバーガーメニューを差し替える
+            drawerIcon={() => <HamburgerIcon />}
             hideNavBar
             drawerWidth={280}
             contentComponent={DrawerContent}
@@ -212,6 +212,14 @@ class Route extends React.Component {
               key="usage"
               component={Usage}
               title="使い方"
+              hideDrawerButton
+              drawerLockMode="locked-closed"
+              back
+            />
+            <Scene
+              key="info"
+              component={Info}
+              title="お知らせ(重要)"
               hideDrawerButton
               drawerLockMode="locked-closed"
               back
@@ -324,7 +332,7 @@ class Route extends React.Component {
   }
 }
 
-function mapStateToProps(state, props) {
+function mapStateToProps(state) {
   return {
     header: state.authentication.header || {},
     isValidToken: state.authentication.isValidToken,

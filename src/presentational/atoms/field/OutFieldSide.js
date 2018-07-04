@@ -1,6 +1,5 @@
 import React from "react";
-import { StyleSheet, TouchableHighlight, View } from "react-native";
-import { connect } from "react-redux";
+import { TouchableHighlight, View } from "react-native";
 
 export default class OutFieldSide extends React.Component {
   renderInButton(position, side) {
