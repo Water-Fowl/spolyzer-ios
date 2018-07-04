@@ -1,4 +1,3 @@
-import Orientation from "react-native-orientation";
 import React from "react";
 import templateEnhancer from "./hoc";
 import { Actions } from "react-native-router-flux";
@@ -6,8 +5,6 @@ import {
   StyleSheet,
   Image,
   Text,
-  TextInput,
-  TouchableOpacity,
   View
 } from "react-native";
 import { connect } from "react-redux";

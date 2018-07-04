@@ -1,6 +1,6 @@
 import React from "react";
 import {
-  StyleSheet, Text, TouchableHighlight, View
+  StyleSheet, View
 } from "react-native";
 
 import { ParametricButton } from "atoms";

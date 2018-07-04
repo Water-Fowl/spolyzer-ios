@@ -1,11 +1,9 @@
 import React from "react";
-import { Actions } from "react-native-router-flux";
 import { ScrollView, StyleSheet, TouchableOpacity, View } from "react-native";
 
 import { UserListItem } from "molecules";
 import { connect } from "react-redux";
 import { mapStateToProps } from "../../modules/mapToProps";
-import { cleanSingle } from "react-native-image-crop-picker";
 
 class UserList extends React.Component {
   constructor(props) {

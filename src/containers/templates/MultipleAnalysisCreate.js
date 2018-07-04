@@ -1,6 +1,6 @@
 import React from "react";
 import baseEnhancer from "./hoc";
-import { Actions, ActionConst } from "react-native-router-flux";
+import { Actions } from "react-native-router-flux";
 import {
   StyleSheet,
   Text,
@@ -10,7 +10,6 @@ import {
   ScrollView
 } from "react-native";
 import { connect } from "react-redux";
-import { listToQueryParams } from "utils";
 import { SegmentedControl } from "react-native-ios-kit";
 
 import {
@@ -21,13 +20,11 @@ import {
 import {
   SelectedUserName,
   NavigateButton,
-  TopContentBar,
-  TextBox
+  TopContentBar
 } from "atoms";
 import * as analysisModules from "../../modules/analysis";
 import * as requestModules from "../../modules/request";
 import {
-  POSITIONS_COUNTS_ENDPOINT,
   analysisEndpointGenerator
 } from "../../config/api";
 

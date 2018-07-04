@@ -1,11 +1,9 @@
 import ImagePicker from "react-native-image-crop-picker";
 import React from "react";
 import templateEnhancer from "./hoc";
-import { ActionConst, Actions } from "react-native-router-flux";
+import { Actions } from "react-native-router-flux";
 import {
   Alert,
-  Image,
-  Picker,
   StyleSheet,
   Text,
   TextInput,

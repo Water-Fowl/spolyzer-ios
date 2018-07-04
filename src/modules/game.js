@@ -280,9 +280,6 @@ export function gameReducer(state = initialState, action = {}) {
         selectedShotTypeCounts: []
       };
     }
-    return Object.assign({}, state, {
-      selectedShotTypeCounts: selectedShotTypeCounts
-    });
   case RESET_STATE:
     let newInitial = JSON.stringify(initialProps);
     newInitial = JSON.parse(newInitial);

@@ -1,22 +1,7 @@
 import { alphabet } from "const";
 
-function pushPositionCount(list, count, positionString){
-  if(count[0]){
-    list.push({
-      label: positionString,
-      value: count[0]
-    });
-  }
-  else{
-    list.push({
-      valuep: 0,
-      label: positionString
-    });
-  }
-}
 export function reshapePositionsCount(counts, side, minPosition, maxPosition){
   const positionsCountList = [];
-  const missPositionsCountList = [];
   if (!counts){
     return [];
   }

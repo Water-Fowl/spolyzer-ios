@@ -1,6 +1,6 @@
 import React from "react";
 import configureStore from "../stores";
-import { Provider, connect } from "react-redux";
+import { Provider } from "react-redux";
 import { ThemeProvider } from "react-native-ios-kit";
 
 import Route from "./routes";

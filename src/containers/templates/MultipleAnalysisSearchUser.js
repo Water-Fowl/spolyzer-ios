@@ -1,13 +1,10 @@
 import React from "react";
-import templateEnhancer from "./hoc";
-import { ActionConst, Actions } from "react-native-router-flux";
-import { Image, StyleSheet, Text, TextInput, View } from "react-native";
+import {Actions } from "react-native-router-flux";
+import { StyleSheet, TextInput, View } from "react-native";
 import { connect } from "react-redux";
 
 import {
   Background,
-  NavBar,
-  NavigateButton,
   TopContentBar,
   TextBox
 } from "atoms";

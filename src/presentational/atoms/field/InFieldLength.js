@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, TouchableHighlight, View } from "react-native";
+import { TouchableHighlight, View } from "react-native";
 
 export default class InFieldLength extends React.Component {
   constructor(props) {

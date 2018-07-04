@@ -1,6 +1,3 @@
-import { Alert } from "react-native";
-import { errorMessage } from "utils";
-
 function queryParmasGenerator(list) {
   var params = "?";
   for (key in list) {
@@ -18,10 +15,6 @@ function responseToHeader(responseHeader) {
     "token-type": responseHeader.get("token-type")
   };
   return header;
-}
-
-function errorInstanceCallback(json) {
-  return new Error(json.error.message);
 }
 
 export function postApiRequest(
@@ -119,7 +112,7 @@ export function getApiRequest(
         dispatch(receivedCallback(json));
         return json;
       })
-      .catch(error => {
+      .catch(() => {
         return false;
       });
   };

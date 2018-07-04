@@ -1,6 +1,5 @@
 import React from "react";
-import { StyleSheet, TouchableHighlight, View, Dimensions } from "react-native";
-const { height, width } = Dimensions.get("window");
+import { TouchableHighlight, View, Dimensions } from "react-native";
 
 export default class InFieldCircle extends React.Component {
   renderInButton(position, side) {

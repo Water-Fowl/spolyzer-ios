@@ -1,8 +1,7 @@
 import Orientation from "react-native-orientation";
-import React, { Component } from "react";
+import React from "react";
 import { Actions } from "react-native-router-flux";
 import {
-  Dimensions,
   Image,
   StyleSheet,
   Text,
@@ -16,7 +15,6 @@ import { connect } from "react-redux";
 import { emailReg } from "const";
 import { ErrorText, Background } from "atoms";
 
-import { GET_USER_ENDPOINT } from "../../config/api";
 import * as authenticationModules from "../../modules/authentication";
 import * as requestModules from "../../modules/request";
 import { errorAlertCallback } from "utils";
