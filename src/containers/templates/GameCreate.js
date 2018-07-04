@@ -28,12 +28,7 @@ class GameCreate extends React.Component {
   }
 
   componentWillMount() {
-    if (
-      !this.props.profile.user.image.url &&
-      this.props.authentication.header
-    ) {
-      this.setChangedSupportInfo();
-    }
+    this.setChangedSupportInfo();
   }
 
   setChangedSupportInfo() {
