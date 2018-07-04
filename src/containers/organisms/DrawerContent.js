@@ -16,10 +16,7 @@ import { toastPresent } from "utils";
 import { ProfileImage } from "atoms";
 import * as sportModules from "../../modules/sport";
 import * as requestModules from "../../modules/request";
-import {
-  SHOT_TYPES_ENDPOINT,
-  SPORTS_ENDPOINT
-} from "../../config/api";
+import { SHOT_TYPES_ENDPOINT, SPORTS_ENDPOINT } from "../../config/api";
 
 class DrawerContent extends React.Component {
   constructor(props) {
@@ -132,6 +129,16 @@ class DrawerContent extends React.Component {
             <Text style={styles.takyogi}>競技一覧(変更)</Text>
           </View>
           {this.setSportsList()}
+        </View>
+        <View style={styles.endContainer}>
+          <Image source={{ url: "info.png" }} style={styles.endImage} />
+          <TouchableOpacity
+            onPress={() => {
+              Actions.info();
+            }}
+          >
+            <Text style={styles.endText}>お知らせ(重要)</Text>
+          </TouchableOpacity>
         </View>
         <View style={styles.endContainer}>
           <Image source={{ url: "book_icon.png" }} style={styles.endImage} />

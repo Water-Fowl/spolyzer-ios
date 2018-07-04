@@ -21,7 +21,8 @@ import {
   ForgetPass,
   ForgetPassDone,
   SportSelect,
-  Usage
+  Usage,
+  Info
 } from "../containers";
 import { DrawerContent } from "organisms";
 import { GameIcon, AnalysisIcon, HamburgerIcon } from "molecules";
@@ -211,6 +212,14 @@ class Route extends React.Component {
               key="usage"
               component={Usage}
               title="使い方"
+              hideDrawerButton
+              drawerLockMode="locked-closed"
+              back
+            />
+            <Scene
+              key="info"
+              component={Info}
+              title="お知らせ(重要)"
               hideDrawerButton
               drawerLockMode="locked-closed"
               back
