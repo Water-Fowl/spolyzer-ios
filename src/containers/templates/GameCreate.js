@@ -14,11 +14,7 @@ import {
 } from "react-native";
 import { connect } from "react-redux";
 
-import {
-  ProfileImage,
-  NavigateButton,
-  TopContentBar
-} from "atoms";
+import { ProfileImage, NavigateButton, TopContentBar } from "atoms";
 
 import { mapStateToProps } from "../../modules/mapToProps";
 import * as gameModules from "../../modules/game";
@@ -36,61 +32,41 @@ class GameCreate extends React.Component {
       !this.props.profile.user.image.url &&
       this.props.authentication.header
     ) {
-      this.setChangedThumbnailIds();
+      this.setChangedSupportInfo();
     }
   }
 
-  setChangedThumbnailIds() {
+  setChangedSupportInfo() {
     try {
-      AsyncStorage.getItem("changedThumbnailIds").then(result => {
-        let changedThumbnailIds = JSON.parse(result);
-        if (!changedThumbnailIds) {
-          this.alertThumbnail();
-          return;
-        }
-        if (changedThumbnailIds.indexOf(this.props.profile.user.id) === -1) {
-          this.alertThumbnail(changedThumbnailIds);
-          return;
-        }
+      AsyncStorage.getItem("changedSupportInfo").then(result => {
+        console.log(result);
+        if (!result) this.alertSupportInfo();
+        return;
       });
-    } catch (error) {
-    }
+    } catch (error) {}
   }
 
-  updateChangedThumbnailIds(changedThumbnailIds) {
-    changedThumbnailIds.push(this.props.profile.user.id);
+  updateChangedSupportInfo() {
     try {
-      AsyncStorage.setItem(
-        "changedThumbnailIds",
-        JSON.stringify(changedThumbnailIds)
-      );
-    } catch (error) {
-    }
+      AsyncStorage.setItem("changedSupportInfo", "true");
+    } catch (error) {}
   }
 
   alertPresent = false;
-  alertThumbnail(changedThumbnailIds = []) {
+  alertSupportInfo() {
     if (!this.alertPresent) {
       this.alertPresent = true;
       Alert.alert(
-        "プロフィール編集(推奨)",
-        "プロフィール画像が設定されていません。画像を設定すると検索時に見つけやすくなります。",
+        "サービス終了のお知らせ",
+        "このアプリは2018年7月31日を持ちましてサービスを終了いたします。詳細は公式サイト http://water-fowl.co.jp をご確認ください。",
         [
           {
-            text: "表示しない",
+            text: "確認",
             onPress: () => {
               this.alertPresent = false;
-              this.updateChangedThumbnailIds(changedThumbnailIds);
+              this.updateChangedSupportInfo();
             },
             style: "cancel"
-          },
-          {
-            text: "設定する",
-            onPress: () => {
-              this.alertPresent = false;
-              this.updateChangedThumbnailIds(changedThumbnailIds);
-              Actions.profileEdit();
-            }
           }
         ],
         { cancelable: false }
