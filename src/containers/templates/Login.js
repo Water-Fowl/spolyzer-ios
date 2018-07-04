@@ -17,10 +17,7 @@ import { connect } from "react-redux";
 import * as authenticationModules from "../../modules/authentication";
 import * as profileModules from "../../modules/profile";
 import * as requestModules from "../../modules/request";
-import {
-  SIGN_IN_ENDPOINT,
-  USERS_ENDPOINT
-} from "../../config/api";
+import { SIGN_IN_ENDPOINT, USERS_ENDPOINT } from "../../config/api";
 import { mapStateToProps } from "../../modules/mapToProps";
 import { errorAlertCallback } from "utils";
 
@@ -135,11 +132,9 @@ class Login extends React.Component {
                 パスワードをお忘れの方
               </Text>
             </TouchableOpacity> */}
-            <View style={styles.button}>
-              <TouchableOpacity onPress={Actions.signUp}>
-                <Text style={styles.buttonText}>新規登録(無料)</Text>
-              </TouchableOpacity>
-            </View>
+            <Text style={styles.signUpInfoText}>
+              ※サービス終了に伴い、新規登録の受付を終了いたしました。
+            </Text>
           </View>
         </SafeAreaView>
       </View>
@@ -224,6 +219,14 @@ const styles = StyleSheet.create({
   //   fontSize: 16,
   //   backgroundColor: "transparent"
   // },
+  signUpInfoText: {
+    color: "white",
+    textDecorationColor: "#28a8de",
+    marginBottom: 35,
+    marginTop: 8,
+    fontSize: 16,
+    backgroundColor: "transparent"
+  },
   buttonText: {
     color: "#28a8de",
     textAlign: "center",
